@@ -114,69 +114,9 @@ Stored procedure:
 
 ## 2. Download Sync From Server To Mobile
 
-These APIs download master data and setup data to the mobile device.
+This API downloads master data and setup data to the mobile device.
 
-### `index/getsyncdata`
-
-Endpoint:
-
-```text
-index/getsyncdata/routeid/{routeid}/userid/{userid}/deviceid/{deviceid}/mdate/{mdate}
-```
-
-PHP:
-
-```text
-IndexController::getsyncdataAction
-```
-
-Mobile callers:
-
-- `SFA_ENHANCE_HHT/assets/www/sync.html`
-- `SFA_ENHANCE_HHT/assets/www/sync_Orginalddevice_switch.html`
-- `SFA_ENHANCE_HHT/assets/www/sync - Copy.html`
-
-Purpose:
-
-This is the main mobile download sync API. It sends route data, setup data, customers, items, inventory, pricing, promotions, reasons, survey data, orders, and other master data to the device.
-
-Main stored procedures:
-
-- `sp_ws_syncicsdata_setting`
-- `sp_ws_syncicsdata_itemmust`
-- `sp_ws_syncicsdata_items`
-- `sp_ws_syncicsdata_inventory`
-- `sp_ws_syncicsdata_customers`
-- `sp_ws_syncicsdata_schemes`
-- `sp_ws_syncicsdata_survey`
-- `sp_ws_syncicsdata_reasons`
-- `sp_ws_syncicsdata_others`
-- `sp_ws_syncicsdata_orders`
-- `sp_ws_tablet_deletemaster`
-- `sp_ws_syncicsdata_customeritemgrp`
-
-### `index/getsyncdata` With Table Parameter
-
-Endpoint:
-
-```text
-index/getsyncdata/routeid/{routeid}/userid/{userid}/deviceid/{deviceid}/mdate/{mdate}/table/{table}
-```
-
-PHP:
-
-```text
-IndexController::getsyncdataAction
-```
-
-Mobile callers:
-
-- `SFA_ENHANCE_HHT/assets/www/startofday/checkinventorycount.html`
-- `SFA_ENHANCE_HHT/assets/www/inventory/checkinventorycount.html`
-
-Purpose:
-
-Downloads only one selected table. The mobile app uses this mainly around inventory count/check screens.
+The old `index/getsyncdata` table-by-table PHP action was removed from `IndexController.php` to avoid confusion. Current main sync uses `index/getsyncdata1` through the native Cordova Java plugin.
 
 ### `index/getsyncdata1`
 
