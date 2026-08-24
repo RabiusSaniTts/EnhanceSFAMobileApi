@@ -1,4 +1,4 @@
-import type { AppVersionRow, CompanyIdByDeviceResponseItem } from './index.types';
+import type { AppVersionRow, CompanyIdByDeviceResponseItem } from './auth.types';
 
 export function mapCompanyDeviceResponse(
   appVersion: AppVersionRow | null

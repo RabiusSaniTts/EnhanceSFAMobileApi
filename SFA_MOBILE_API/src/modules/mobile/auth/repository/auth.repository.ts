@@ -3,7 +3,7 @@ import type {
   AppVersionRow,
   RouteVersionRow,
   SalesmanLoginSuccessResponseItem
-} from './index.types';
+} from '../auth.types';
 
 type AppVersionDbRow = RowDataPacket & AppVersionRow;
 type CountDbRow = RowDataPacket & { count: number };

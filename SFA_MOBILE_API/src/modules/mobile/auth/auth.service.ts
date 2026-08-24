@@ -1,5 +1,5 @@
 import { withTransaction } from '../../../shared/db/transaction';
-import { mapCompanyDeviceResponse } from './index.mapper';
+import { mapCompanyDeviceResponse } from './auth.mapper';
 import {
   autoAssignDeviceForRegisteredRoute,
   countSalesmanByCredentials,
@@ -9,12 +9,12 @@ import {
   findRouteVersion,
   findSalesmanLoginSuccessRows,
   getUseEncryptionFlag
-} from './index.repository';
+} from './repository/auth.repository';
 import type {
   CompanyIdByDeviceResponseItem,
   SalesmanLoginResponseItem,
   SalesmanVersionCheckResponseItem
-} from './index.types';
+} from './auth.types';
 
 export async function getCompanyIdByDevice(
   deviceId: string

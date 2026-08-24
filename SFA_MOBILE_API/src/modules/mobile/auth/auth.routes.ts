@@ -1,13 +1,13 @@
 import type { FastifyInstance } from 'fastify';
+import { masterDataSyncAction } from '../masterdatasync/masterdatasync.controller';
 import {
   companyIdByDevice,
-  getSyncData1,
   salesmanLogin,
   salesmanVersionCheck,
   updateSyncDate
-} from './index.controller';
+} from './auth.controller';
 
-export async function indexRoutes(app: FastifyInstance): Promise<void> {
+export async function authRoutes(app: FastifyInstance): Promise<void> {
   app.route({
     method: ['GET', 'POST'],
     url: '/api/index/companyidbydevice/deviceid/:deviceid',
@@ -29,7 +29,7 @@ export async function indexRoutes(app: FastifyInstance): Promise<void> {
   app.route({
     method: ['GET', 'POST'],
     url: '/api/index/getsyncdata1/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate/table/:table',
-    handler: getSyncData1
+    handler: masterDataSyncAction
   });
 
   app.route({

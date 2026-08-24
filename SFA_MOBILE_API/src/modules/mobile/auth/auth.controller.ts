@@ -4,12 +4,12 @@ import {
   checkSalesmanVersion,
   getCompanyIdByDevice,
   loginSalesman
-} from './index.service';
+} from './auth.service';
 import type {
   CompanyIdByDeviceParams,
   SalesmanLoginParams,
   SalesmanVersionCheckParams
-} from './index.types';
+} from './auth.types';
 
 export async function companyIdByDevice(
   request: FastifyRequest<{ Params: CompanyIdByDeviceParams }>,
@@ -40,10 +40,6 @@ export async function salesmanVersionCheck(
     request.params.verno
   );
   await reply.send(result);
-}
-
-export async function getSyncData1() {
-  throw new NotImplementedApiError('index/getsyncdata1');
 }
 
 export async function updateSyncDate() {
