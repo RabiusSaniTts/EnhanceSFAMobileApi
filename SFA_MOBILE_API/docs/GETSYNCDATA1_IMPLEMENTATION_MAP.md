@@ -29,10 +29,10 @@ The public mobile endpoint must remain:
 /api/index/getsyncdata1/routeid/{routeid}/userid/{userid}/deviceid/{deviceid}/mdate/{mdate}/table/{table}
 ```
 
-The new Node.js TypeScript internal handler can be named:
+The new Node.js TypeScript internal handler is:
 
 ```ts
-getsyncdataAction()
+masterDataSyncAction()
 ```
 
 Reason:
@@ -40,7 +40,7 @@ Reason:
 - The PhoneGap app currently calls `getsyncdata1`.
 - We must not change the mobile app URL.
 - The old PHP `getsyncdataAction` was removed from the mobile API folder to avoid confusion.
-- In the new Node API, `getsyncdataAction` can be the clean internal function that handles the current `getsyncdata1` route.
+- In the new Node API, `masterDataSyncAction` handles the current `getsyncdata1` route.
 
 Route mapping should be:
 
@@ -48,7 +48,7 @@ Route mapping should be:
 app.route({
   method: ['GET', 'POST'],
   url: '/api/index/getsyncdata1/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate/table/:table',
-  handler: getsyncdataAction
+  handler: masterDataSyncAction
 });
 ```
 
@@ -299,8 +299,9 @@ Node implementation recommendation:
 
 - Avoid physical route-specific temp tables.
 - Use CTEs/subqueries for open stock.
-- Keep side-effect updates in a transaction if we decide they are still required.
-- Replace `sp_update_sequence_numbers` only after reading that procedure separately.
+- Keep side-effect updates in a transaction.
+- Replace `sp_update_sequence_numbers` with direct SQL, not a stored procedure call.
+- Current Node implementation updates route sequence fields and vehicle odometer in `src/modules/mobile/masterdatasync/repository/setting.repository.ts`.
 
 ### `sp_ws_syncicsdata_customers`
 
@@ -443,6 +444,7 @@ This procedure is called twice by current PHP `getsyncdata1Action()`. The second
 Current Node status:
 
 - Implemented in `src/modules/mobile/masterdatasync/repository/items.repository.ts`.
+- Exposed through the single exported repository function `getItemSyncSections()`.
 - Replaces `sp_ws_syncicsdata_itemmust` with direct MySQL queries.
 - Node calls the logic once and returns the final effective four keys.
 - Uses separate named functions per dataset for maintainability.
@@ -554,6 +556,34 @@ src/modules/mobile/masterdatasync/
     customerItemGroup.repository.ts
 ```
 
+Item master data and item-must/NRP data are intentionally handled together in:
+
+```text
+src/modules/mobile/masterdatasync/repository/items.repository.ts
+```
+
+That repository exposes one public function:
+
+```ts
+getItemSyncSections()
+```
+
+It returns all item-related mobile response sections:
+
+```text
+itemgroup
+ItemMaster
+itempackagemaster
+routegoal
+avgsalesqty
+outletitemcodes
+taxmaster
+itemmustheader
+itemmustdetail
+itemnrp
+custnrp
+```
+
 ## 9. Suggested Implementation Order
 
 Do not implement all result sets at once. Build and compare section by section.
@@ -569,11 +599,18 @@ Do not implement all result sets at once. Build and compare section by section.
    - `startendday`
    - `synctime`
    - `CurrencyMaster`
-4. Implement item master group:
+4. Implement item master and item-must group in `items.repository.ts`:
    - `itemgroup`
    - `ItemMaster`
    - `itempackagemaster`
+   - `routegoal`
+   - `avgsalesqty`
+   - `outletitemcodes`
    - `taxmaster`
+   - `itemmustheader`
+   - `itemmustdetail`
+   - `itemnrp`
+   - `custnrp`
 5. Implement inventory group:
    - `startingloaddetail`
    - `inventorysummarydetail`
@@ -586,10 +623,9 @@ Do not implement all result sets at once. Build and compare section by section.
 8. Implement promotion/pricing group.
 9. Implement survey/reasons/others reference data.
 10. Implement orders/open stock/FOC group.
-11. Implement itemmust and NRP group.
-12. Implement `deletemaster`.
-13. Implement `customeritemgrp` and `customeritemmap`.
-14. Compare full JSON against Zend for a real route.
+11. Implement `deletemaster`.
+12. Implement `customeritemgrp` and `customeritemmap`.
+13. Compare full JSON against Zend for a real route.
 
 ## 10. Performance Plan
 
