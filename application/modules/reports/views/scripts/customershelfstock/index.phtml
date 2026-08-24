@@ -1,0 +1,83 @@
+<?php
+    $this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({
+   	url:base_url+"/reports/customershelfstock/customershelfstockdata/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Route Code');?>','<?php echo $this->translate->_('Route Name');?>','<?php echo $this->translate->_('Salesman Code');?>','<?php echo $this->translate->_('Salesman Name');?>','<?php echo $this->translate->_('Customer Code');?>','<?php echo $this->translate->_('Customer');?>','<?php echo $this->translate->_('Item Code');?>','<?php echo $this->translate->_('Item Description');?>','<?php echo $this->translate->_('Date Entered');?>','<?php echo $this->translate->_('Visit Time');?>','<?php echo $this->translate->_('Case Qty');?>','<?php echo $this->translate->_('Unit Qty');?>','<?php echo $this->translate->_('Channel');?>','<?php echo $this->translate->_('Grouping Code');?>','<?php echo $this->translate->_('Outlet Quality');?>'],
+   	colModel:[
+		{name:'salesmancode',index:'salesmancode', width:100, align:"right"},
+        {name:'salesmanname',index:'salesmanname', width:150, align:"right"},
+		{name:'routecode',index:'routecode', width:100},
+        {name:'routename',index:'routename', width:170, align:"right"},
+	    {name:'customercode',index:'customercode', width:100, align:"right"},
+        {name:'customername',index:'customername', width:170, align:"right"},
+		{name:'itemcode',index:'itemcode', width:70, align:"right"},
+		{name:'itemshortdescription',index:'itemshortdescription', width:170, align:"right"},
+   		{name:'entrydate',index:'entrydate', width:70, align:"right"},
+        {name:'visitstarttime',index:'visitstarttime', width:100, align:"right"},
+        {name:'shelfstockcase',index:'shelfstockcase', width:170, align:"right"},
+		{name:'shelfstockeach',index:'shelfstockeach', width:70, align:"right"},
+		{name:'channelcode',index:'channelcode', width:70, align:"right"},
+		{name:'Grouping_Code',index:'Grouping_Code', width:70, align:"right"},
+		{name:'Outlet_Quality',index:'Outlet_Quality', width:70, align:"right"}
+		
+	],
+	<?php if($this->css == 'ar_') { ?>
+        direction :"rtl", 
+    <?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+    pager: '#pagersr',
+   	sortname: 'routecode',
+	viewrecords:true,
+	sortorder: "desc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:false,
+	groupingView :
+    {
+        groupField : ['route'],
+        groupColumnShow : [false],
+        groupCollapse : false,
+        groupOrder: ['asc'] ,
+        groupSummary : [false],
+        groupDataSorted : true,
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+
+);
+
+
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+</script>

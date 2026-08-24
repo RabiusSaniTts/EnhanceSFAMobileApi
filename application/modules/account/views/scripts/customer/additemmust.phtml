@@ -1,0 +1,779 @@
+<?php
+/**
+* @name       additemmust.phtml
+* @since      1 feb, 2012
+* @version    Release: 1.0
+* @author     PM <pankit@elantechnologies.com>
+* @copyright  2011 Elan Technologies
+*
+*
+*/
+
+$this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<style>
+.margin_zero {margin-top:0px !important;}
+.actions {width:100%;}
+.box .content {border:none !important;} td{padding:5px;}
+</style>
+<script>
+    $(document).ready(function(){
+		
+		$('#txtgrp_desc').focus();
+		
+		loaddata('<?php echo $this->itemgrid; ?>','item-grid');
+		
+		$("#btndeleteall").click(function (e) {
+			e.preventDefault();
+
+			var ids = [];
+			var grp_no = '';
+
+			// Process only selected row checkboxes
+			$('#table-example tbody input[type="checkbox"]:checked').each(function () {
+
+				// Find the Edit link inside the selected checkbox's row
+				var editLink = $(this)
+					.closest('tr')
+					.find('td a[id]')
+					.first();
+
+				if (editLink.length === 0) {
+					return;
+				}
+
+				var str = editLink.attr('id');
+				var qry_str = str.split('/');
+
+				if (qry_str.length < 3) {
+					return;
+				}
+
+				var tbl_id = qry_str[2].split('_');
+
+				if (tbl_id.length < 2) {
+					return;
+				}
+
+				var primaryKey = tbl_id[0];
+				var groupNumber = tbl_id[1];
+
+				if (primaryKey !== '') {
+					ids.push(primaryKey);
+					grp_no = groupNumber;
+				}
+			});
+
+			console.log("Selected IDs:", ids);
+			console.log("Group Number:", grp_no);
+
+			// No checkbox selected
+			if (ids.length === 0) {
+				$('#hdndeleteall').val('');
+
+				jAlert(
+					'Please select at least one record.',
+					'Message'
+				);
+
+				return false;
+			}
+
+			jConfirm(
+				'Are You Sure To Delete This Record(s)?',
+				'Message',
+				function (resp) {
+					if (!resp) {
+						return;
+					}
+
+					var selectedIds = ids.join(',');
+
+					$('#hdnitemmustno').val(grp_no);
+					$('#hdndeleteall').val(selectedIds);
+
+					$.ajax({
+						type: "POST",
+						url: base_url + "/account/customer/itemmustitemgrid",
+						data: {
+							hdnitemmustno: grp_no,
+							hdndeleteall: selectedIds,
+							deleteall: 'yes'
+						},
+						success: function (returndata) {
+							$('#item-grid').html(returndata);
+						},
+						error: function (xhr) {
+							console.log("Delete error:", xhr.responseText);
+
+							jAlert(
+								'Unable to delete the selected record.',
+								'Message'
+							);
+						}
+					});
+				}
+			);
+
+			return false;
+		});
+		
+		$("#sbtnadd").click(function(){
+			if(!$("#frmdet").valid()){
+			return false;
+			}else{
+				var values = $('#frmdet').serialize();
+				$.ajax({
+					type : "POST",
+					url : base_url+"/account/customer/itemmustitemgrid",
+					data :values+'&add=yes',
+					success:function(returndata){
+						//alert(returndata);
+						//$("body").html(returndata);
+					$("#ddlitem_group").val("");
+					$("#ddlitem_code").val("");
+					$("#ddlitem_code").html("");
+					$('<option/>').val('').html('--- Select ---').appendTo('#ddlitem_code');
+					$("#ddlagency").val(0);
+			$("#ddlbrand").val(0);$("#ddlcategory").val(0);$("#ddlsubcat").val(0);
+			$('#ddlitem_code').val(0);$("#ddlitem_code").html("");
+			$('#ddlagency').trigger('liszt:updated');
+			$('#ddlbrand').trigger('liszt:updated');
+			$('#ddlcategory').trigger('liszt:updated');
+			$('#ddlsubcat').trigger('liszt:updated');$('#ddlitem_code').trigger('liszt:updated');
+					$('select').trigger('liszt:updated');
+					$('#item-grid').html(returndata); 
+					}
+				});
+			}
+		});
+		
+		$("#searchval").keyup(function(){ 
+		 	var searchval = $("#searchval").val();
+			var strnglngth=searchval.length;
+			if(strnglngth>3 || strnglngth==0)
+			{ 
+			var values = $('#frmdet').serialize();
+			$.ajax({
+					type : "POST",
+					url : base_url+"/account/customer/itemmustitemgrid",
+					data :values+'&add=yes&searchval='+searchval,
+					success:function(returndata){
+					$("#ddlitem_group").val("");
+					$("#ddlitem_code").val("");
+					$("#ddlitem_code").html("");
+					$('<option/>').val('').html('--- Select ---').appendTo('#ddlitem_code');
+					$('select').trigger('liszt:updated');
+					$('#item-grid').html(returndata); 
+					}
+				});
+			}
+		});
+		
+		$("#selMBC").change(function(){ 
+		 	var pages = $("#selMBC").val();
+			
+			var values = $('#frmdet').serialize();
+			$.ajax({
+					type : "POST",
+					url : base_url+"/account/customer/itemmustitemgrid/key/"+$("#hdnid").val()+"/show_records_per_page/"+pages,
+					data :values+'&add=yes&show_records_per_page='+pages,
+					success:function(returndata){
+					$("#ddlitem_group").val("");
+					$("#ddlitem_code").val("");
+					$("#ddlitem_code").html("");
+					$('<option/>').val('').html('--- Select ---').appendTo('#ddlitem_code');
+					$('select').trigger('liszt:updated');
+					$('#item-grid').html(returndata); 
+					}
+				});
+		});
+		
+		$("#btnsave").click(function(){
+			$("#ddlitem_group").removeClass('required');
+			$("#ddlitem_code").removeClass('required');			
+		});
+		$("#ddlagency").change(function(){
+			
+			var val = $("#ddlagency").val();
+			var brandval = $("#brandval").val();
+			var catryval = $("#categoryval").val();
+			var subctval = $("#subcatgrval").val();
+			var arrbrand = brandval.split(','); 
+			var arrcatval = catryval.split(',');
+			var arrsubcat = subctval.split(','); 
+			$("#brandval").val(brandval);
+			if(val != "")
+			{
+				var values = $('#frmdet').serialize();
+				
+				$.ajax({
+					type : "POST",
+					url : base_url+"/account/customer/getitemlistforitemmustlist/agency/"+val,
+					data :values,
+					beforeSend: function() {
+						$("#loader1").html("<img src='"+base_url+"/public/images/ajax-loader-bar.gif' alt='Loading..' />");	    
+					},
+					success:function(data) {
+					
+						var item_info = JSON.parse(data);
+						if (item_info == '')
+						{
+							return false;
+						}
+						//alert(item_info)
+						$("#ddlitem_code").html("");$("#ddlbrand").html("");$("#ddlcategory").html("");$("#ddlsubcat").html("");
+						if(typeof(item_info[0]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlitem_code');
+							for (i=0;i<item_info[0].length;i++) {	
+								$('<option/>').val(item_info[0][i]['id']).html(item_info[0][i]['val']).appendTo('#ddlitem_code');	
+							}
+						}
+						if(typeof(item_info[1]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlbrand');
+							for (i=0;i<item_info[1].length;i++) {	
+								if(brandval != ""){
+									var count =0;
+									for(var j=0;j<=arrbrand.length;j++){
+										if(arrbrand[j] == item_info[1][i]['id']){
+											count =1;	
+										}
+									}
+									if(count == 1){
+											$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).attr('selected','selected').appendTo('#ddlbrand');
+										} else{
+											$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).appendTo('#ddlbrand');	
+										}	
+								}else{						
+								$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).appendTo('#ddlbrand');	
+								}							
+							}
+						}
+						if(typeof(item_info[2]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlcategory');
+							for (i=0;i<item_info[2].length;i++) {	
+								if(catryval != ""){
+									var count =0;
+									for(var j=0;j<=arrcatval.length;j++){
+										if(arrcatval[j] == item_info[2][i]['id']){
+											count =1;	
+										}
+									}
+									//alert(count+"<<"+ item_info[2][i]['id'])
+									if(count == 1){
+										$('<option/>').val(item_info[2][i]['id']).html(item_info[2][i]['val']).attr('selected','selected').appendTo('#ddlcategory');
+									} else{
+										$('<option/>').val(item_info[2][i]['id']).html(item_info[2][i]['val']).appendTo('#ddlcategory');	
+									}	
+								}else{
+								$('<option/>').val(item_info[2][i]['id']).html(item_info[2][i]['val']).appendTo('#ddlcategory');
+								}
+							}
+						}
+						if(typeof(item_info[3]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlsubcat');
+							for (i=0;i<item_info[3].length;i++) {
+								if(subctval != ""){
+									var count = 0;
+									for(var j=0;j<=arrsubcat.length;j++){
+										if(arrsubcat[j] == item_info[3][i]['id']){
+											count = 1;	
+										}
+									}	
+									//alert(count+"<<"+ item_info[3][i]['id'])
+									if(count == 1){
+											$('<option/>').val(item_info[3][i]['id']).html(item_info[3][i]['val']).attr('selected','selected').appendTo('#ddlsubcat');
+										} else{
+											$('<option/>').val(item_info[3][i]['id']).html(item_info[3][i]['val']).appendTo('#ddlsubcat');	
+										}
+								}else{								
+								$('<option/>').val(item_info[3][i]['id']).html(item_info[3][i]['val']).appendTo('#ddlsubcat');	
+								}							
+							}
+						}
+						$('#ddlitem_code').trigger('liszt:updated');
+						$('#ddlbrand').trigger('liszt:updated');
+						$('#ddlcategory').trigger('liszt:updated');
+						$('#ddlsubcat').trigger('liszt:updated');
+						$("#loader1").html("");					
+					}
+				});
+			}
+			else
+			{
+				$("#ddlitem_code").html("");
+				$('#ddlitem_code').trigger('liszt:updated');
+			}
+		});		
+		$("#ddlbrand").change(function(){
+			var val = $("#ddlagency").val();
+			var brandval = $("#ddlbrand").val();
+			var catryval = $("#categoryval").val();
+			var subctval = $("#subcatgrval").val();
+			var arrcatval = catryval.split(',');
+			var arrsubcat = subctval.split(','); 
+			$("#brandval").val(brandval);
+			if(brandval != '')
+			{
+				var values = $('#frmdet').serialize();
+				$.ajax({
+					type : "POST",
+					url : base_url+"/account/customer/getitemlistforitemmustlist/agency/"+val+"/brand/"+brandval,
+					data :values,
+					beforeSend: function() {
+						$("#loader1").html("<img src='"+base_url+"/public/images/ajax-loader-bar.gif' alt='Loading..' />");	    
+					},
+					success:function(data) {
+						var item_info = JSON.parse(data);
+						if (item_info == '')
+						{
+							return false;
+						}
+						$("#ddlitem_code").html("");$("#ddlcategory").html("");$("#ddlsubcat").html("");
+						if(typeof(item_info[0]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlitem_code');
+							for (i=0;i<item_info[0].length;i++) {	
+															
+								$('<option/>').val(item_info[0][i]['id']).html(item_info[0][i]['val']).appendTo('#ddlitem_code');
+																
+							}
+						}
+						if(typeof(item_info[1]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlcategory');
+							for (i=0;i<item_info[1].length;i++) {
+								if(catryval != ""){
+									var count =0;
+									for(var j=0;j<=arrcatval.length;j++){
+										if(arrcatval[j] == item_info[1][i]['id']){
+												count = 1;
+										}
+									}
+									
+										if(count == 1){
+											$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).attr('selected','selected').appendTo('#ddlcategory');
+										} else{
+											$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).appendTo('#ddlcategory');	
+										}	
+								}else{
+								$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).appendTo('#ddlcategory');	
+								}	
+							}
+						}
+						if(typeof(item_info[2]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlsubcat');
+							for (i=0;i<item_info[2].length;i++) {
+								if(subcatgrval != ""){
+								var count = 0;
+									for(var j=0;j<=arrsubcat.length;j++){
+										if(arrsubcat[j] == item_info[2][i]['id']){
+											count = 1;
+										}
+									}
+									if(count == 1){
+											$('<option/>').val(item_info[2][i]['id']).html(item_info[2][i]['val']).attr('selected','selected').appendTo('#ddlsubcat');
+										} else{
+											$('<option/>').val(item_info[2][i]['id']).html(item_info[2][i]['val']).appendTo('#ddlsubcat');
+										}	
+								}else{								
+									$('<option/>').val(item_info[2][i]['id']).html(item_info[2][i]['val']).appendTo('#ddlsubcat');
+								}								
+							}
+						}
+						$('#ddlitem_code').trigger('liszt:updated');
+						$('#ddlcategory').trigger('liszt:updated');
+						$('#ddlsubcat').trigger('liszt:updated');	
+						$("#loader1").html("");					
+					}
+				});
+			}
+			else
+			{
+				$("#ddlitem_code").html("");
+				$('#ddlitem_code').trigger('liszt:updated');
+			}
+		});		
+		$("#ddlcategory").change(function(){
+			var val = $("#ddlagency").val();
+			var brandval = $("#ddlbrand").val();
+			var catval = $("#ddlcategory").val();
+			$("#categoryval").val(catval);
+			var subctval = $("#subcatgrval").val();
+			var arrsubcat = subctval.split(',');
+			
+			if(catval != '')
+			{
+				var values = $('#frmdet').serialize();
+				$.ajax({
+					type : "POST",
+					url : base_url+"/account/customer/getitemlistforitemmustlist/agency/"+val+"/brand/"+brandval+"/category/"+catval,
+					data :values,
+					beforeSend: function() {
+						$("#loader1").html("<img src='"+base_url+"/public/images/ajax-loader-bar.gif' alt='Loading..' />");	    
+					},
+					success:function(data) {
+						var item_info = JSON.parse(data);
+						if (item_info == '')
+						{
+							return false;
+						}
+						$("#ddlitem_code").html("");$("#ddlsubcat").html("");
+						if(typeof(item_info[0]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlitem_code');
+							for (i=0;i<item_info[0].length;i++) {								
+								$('<option/>').val(item_info[0][i]['id']).html(item_info[0][i]['val']).appendTo('#ddlitem_code');								
+							}
+						}
+						if(typeof(item_info[1]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlsubcat');
+							for (i=0;i<item_info[1].length;i++) {
+								if(subcatgrval != ""){
+									var count = 0;
+									for(var j=0;j<=arrsubcat.length;j++){
+										if(arrsubcat[j] == item_info[1][i]['id']){
+											count = 1;
+										}
+									}
+									if(count == 1){
+											$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).attr('selected','selected').appendTo('#ddlsubcat');
+										} else{
+											$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).appendTo('#ddlsubcat');
+										}	
+								}else{								
+								$('<option/>').val(item_info[1][i]['id']).html(item_info[1][i]['val']).appendTo('#ddlsubcat');
+								}								
+							}
+						}
+						$('#ddlitem_code').trigger('liszt:updated');$('#ddlsubcat').trigger('liszt:updated');	
+						$("#loader1").html("");						
+					}
+				});
+			}
+			else
+			{
+				$("#ddlitem_code").html("");
+				$('#ddlitem_code').trigger('liszt:updated');
+			}
+		});	
+		$("#sbtnreset").click(function(){
+			$("#ddlagency").val(0);
+			$("#ddlbrand").val(0);$("#ddlcategory").val(0);$("#ddlsubcat").val(0);
+			$('#ddlitem_code').val(0);$("#ddlitem_code").html("");
+			$('#ddlagency').trigger('liszt:updated');
+			$('#ddlbrand').trigger('liszt:updated');
+			$('#ddlcategory').trigger('liszt:updated');
+			$('#ddlsubcat').trigger('liszt:updated');$('#ddlitem_code').trigger('liszt:updated');
+		});
+		$("#ddlsubcat").change(function(){
+			
+			var scatval = $("#ddlsubcat").val();
+			var val  = $("#ddlagency").val();
+			var brandval = $("#ddlbrand").val();
+			var catval = $("#ddlcategory").val();
+			$("#subcatgrval").val(scatval);
+			if(scatval !='')
+			{
+				var values = $('#frmdet').serialize();
+				$.ajax({
+					type : "POST",
+					url : base_url+"/account/customer/getitemlistforitemmustlist/agency/"+val+"/brand/"+brandval+"/category/"+catval+"/subcategory/"+scatval,
+					data :values,
+					beforeSend: function() {
+						$("#loader1").html("<img src='"+base_url+"/public/images/ajax-loader-bar.gif' alt='Loading..' />");	    
+					},
+					success:function(data) {
+						var item_info = JSON.parse(data);
+						if (item_info == '')
+						{
+							return false;
+						}
+						$("#ddlitem_code").html("");
+						if(typeof(item_info[0]) == 'object')
+						{
+							$('<option/>').val('').html('--- Select ---').appendTo('#ddlitem_code');
+							for (i=0;i<item_info[0].length;i++) {								
+								$('<option/>').val(item_info[0][i]['id']).html(item_info[0][i]['val']).appendTo('#ddlitem_code');								
+							}
+						}
+						$('#ddlitem_code').trigger('liszt:updated');
+						$("#loader1").html("");						
+					}
+				});
+			}
+			else
+			{
+				$("#ddlitem_code").html("");
+				$('#ddlitem_code').trigger('liszt:updated');
+			}
+		});		
+    });
+    
+    
+</script>
+<?php if(SFA_Message::isSetMsg()) {  ?>
+    <div class="alert success">
+        <span class="icon"></span><span class="hide">x</span><strong><?php echo SFA_Message::getMsg(); ?></strong>
+    </div>
+<?php } ?>
+<div class="clean"></div>
+<div class="grid_12 margin_bottom_10">
+<div class="box" id="account_customer_addauthorise">
+<form id="frmdet" name="frmdet" class="validate" novalidate action="" method="post">
+    <div class="header">
+	<div class="_50_3 back_btn">
+	    <img class="margin_top_7"  alt="" src="<?php echo $this->baseUrl()?>/public/images/icon_accountreceivables.png">
+	    <h3><?php echo $this->translate->_('Item Must')?></h3>
+	</div>
+	<div class="_50_3">
+	    <div class="_10 save_btn">
+		<input class="border_none" type="button" value="" name="btncancel" id="btncancel" onclick="winloc('<?php echo $this->url(array("module"=>"account","controller"=>"customer","action"=>"itemmust"), "default", true);?>')" >
+	    </div>
+	    <div class="_10 save_btn"><input class="border_none" type="submit" value="" name="btnsave" id="btnsave"></div>
+	</div>
+    </div>
+    <div class="clear"></div>
+    <div class="clear"></div>
+    <div id="nav_sub" class="ie_nav_sub">
+    <div class="container_12">
+	<ul id="nav_main">
+	    <li class="current">
+		<ul style="display: block;">
+		   <li>
+			<a href="<?php echo $this->url(array("module"=>"account","controller"=>"customer","action"=>"itemmust"),"default", true);?>"><?php echo $this->translate->_('Overview'); ?></a>
+		    </li>
+		    <li class="last-child">
+			<a href="<?php echo $this->url(array("module"=>"account","controller"=>"customer","action"=>"additemmust"),"default", true);?>"><b><?php echo $this->translate->_('Details'); ?></b></a>
+		    </li>
+		</ul>
+	    </li>
+	</ul>
+    </div>
+    </div>
+    <div class="content with-actions min_height_10">
+		<div class="_100">
+			<div class="clear"></div>
+		</div>
+		<div class="_100">
+			<div class="clear"></div>
+		</div>
+		<div class="_100">
+			<div class="_25">
+				<label class="_50 margin_top_12 label_text_align">
+						<?php echo $this->translate->_('Agency').''.$this->colan;?>
+					</label>
+			</div>
+			<div class="_20">
+				<label class="_50 margin_top_12 label_text_align">
+					<?php echo $this->translate->_('brand').''.$this->colan;?>
+				</label>
+			 </div>
+			 <div class="_25">
+				<label class="_50 margin_top_12 label_text_align">
+					<?php echo $this->translate->_('Category').''.$this->colan;?>
+				</label>
+			 </div>
+			 <div class="_25">
+				<label class="_90 margin_top_12 label_text_align">
+					<?php echo $this->translate->_('Sub Category').''.$this->colan;?>
+				</label>
+			 </div>
+		</div>
+		<div class="_100">
+			<div class="_25">
+				<div class="_90">
+					<select id="ddlagency" name="ddlagency" multiple="multiple" >
+						<option value="">--- Select ---</option>
+						<?php
+						for($i=0; $i<count($this->agency);$i++){ ?>
+						<option value="<?php echo $this->agency[$i]['id'];?>"><?php echo $this->agency[$i]['val'];?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+			<div class="_20">
+				<div class="_90">
+					<select id="ddlbrand" name="ddlbrand" multiple="multiple"  >
+						<option value="">--- Select ---</option>
+						<?php
+						for($i=0; $i<count($this->brand);$i++){ ?>
+						<option value="<?php echo $this->brand[$i]['id'];?>"><?php echo $this->brand[$i]['val'];?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+			
+	<!--</div>
+	<div class="_100">-->
+		<div class="_25">
+				<div class="_90">
+					<select id="ddlcategory" name="ddlcategory" multiple="multiple"  >
+						<option value="">--- Select ---</option>
+						<?php
+						for($i=0; $i<count($this->mcategory);$i++){ ?>
+						<option value="<?php echo $this->mcategory[$i]['id'];?>"><?php echo $this->mcategory[$i]['val'];?></option>
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+			<div class="_35">
+				<div class="_80">
+					<select id="ddlsubcat" name="ddlsubcat" multiple="multiple"  >
+						<option value="">--- Select ---</option>
+						<?php for($i=0; $i<count($this->item_group);$i++){ ?>
+							<option value="<?php echo $this->item_group[$i]['id'];?>"><?php echo $this->item_group[$i]['val'];?></option>
+						<?php } ?>
+					</select>
+				</div>
+			<div class="_10">
+				<input type="hidden" value="" id="categoryval" name="categoryval" class="margin_top_10">
+				<input type="hidden" value="" id="subcatgrval" name="subcatgrval" class="margin_top_10">
+				<input type="hidden" value="" id="brandval" name="brandval" class="margin_top_10">
+				<input type="reset" value="<?php echo $this->translate->_('RESET');?>" id="sbtnreset" name="sbtnreset" class="margin_top_10">
+			</div>	
+		</div>
+	</div>
+	<div class="_100">
+		<div class="clear"></div>
+	</div>
+	
+	<div class="_100">
+		<div class="clear" style="height:20px"></div>
+	</div>
+	<div class="_50">
+		<div class="_100">
+			<label class="_32 margin_top_12 label_text_align">
+				<?php echo $this->translate->_('Item Must Number').''.$this->colan;?>
+			</label>
+			<div class="_50">
+				<input type="text" value="<?php echo $this->formdata['txtitemmust_id']; ?>" name="txtitemmust_id" id="txtitemmust_id" readonly="readonly"/>
+			</div>
+		</div>
+		<div class="_100">
+			<label class="_32 margin_top_12 label_text_align">
+				<?php echo $this->translate->_('Description').''.$this->required;?>
+			</label>
+			<div class="_50">
+				<input type="text" maxlength="50" value="<?php echo $this->formdata['txt_desc']; ?>" name="txt_desc" id="txt_desc" class="required margin_top_5"/>
+			</div>	    
+		</div>		
+		<div class="_100 ">
+			<label class="_32 margin_top_12 label_text_align">
+				<?php echo $this->translate->_('Description ('.$this->sec_lang.')').''.$this->colan;?>
+			</label>
+			<div class="_50">
+				<input type="text" maxlength="50" value="<?php echo $this->formdata['txtdesc_arb']; ?>" name="txtdesc_arb" class="margin_top_5 arb_text_align" id="txtdesc_arb"/>
+			</div>
+		</div>
+		<div class="_100">
+			<label class="_32 margin_top_12 label_text_align">
+				<?php echo $this->translate->_('Min Quantity').''.$this->required;?>
+			</label>
+			<div class="_50">
+				<input type="text" maxlength="50" value="<?php echo $this->formdata['txt_qty']; ?>" name="txt_qty" id="txt_qty" class="required margin_top_5"/>
+				
+				 
+			</div>	   
+			
+		</div>
+		<div class="_100">
+			<label class="_32 margin_top_12 label_text_align">
+				<?php echo $this->translate->_('Max Quantity').''.$this->required;?>
+			</label>
+			<div class="_50">
+				
+				<input type="text" maxlength="50" value="<?php echo $this->formdata['txt_qty']; ?>" name="mxtxt_qty" id="mxtxt_qty" class="required margin_top_5"/>
+				 
+			</div>	   
+			
+		</div>
+		
+		
+	</div>
+	<div class="_50">
+		<div class="_100">
+			<label class="_30 margin_top_7 label_text_align">
+				<?php echo $this->translate->_('Items').''.$this->required;?>
+			</label>
+			<div class="_70 simple_dropdown margin_top_5">
+				<select id="ddlitem_code" name="ddlitem_code[]" class="required" style="height: 130px; display: inline;" multiple="multiple">
+					<option value="">--- Select ---</option>				
+				</select>
+			</div>
+		</div>	
+					
+		<div class="_100">		
+			<div class="_80 simple_dropdown margin_top_5">&nbsp;</div>
+			<div class="_10">
+				<input type="button" value="<?php echo $this->translate->_('ADD');?>" id="sbtnadd" name="sbtnadd" class="margin_top_10">
+			</div>
+		</div>
+	</div>	
+    </div>
+	<div class="_100">	
+	 <div id="loader1"></div>
+	 </div>
+<input type="hidden" id="hdnid" name="hdnid" value="<?php echo $this->params["id"];?>">
+</form>
+
+		
+		
+		
+		
+<div class="content with-actions min_height_10">
+<form id="frmsrch" name="frmsrch" class="validate" novalidate="novalidate" action="" method="post">
+	<div class="_100 margin_top_25">
+	    <fieldset id="ab" name="ab" class="fieldset_effect">
+		<legend class="ttl"><?php echo $this->translate->_('Item Must List Group');?></legend>
+		<hr id="ie_hr" >
+		<div class="_5 clear_only">&nbsp;</div>
+		
+		
+		<div class="_100">
+			<div class="_50">
+				<label class="_30 margin_top_7 label_text_align">Show entries:</label>
+				<div class="_30" >
+						    <select name="show_records_per_page" size="1" id="selMBC" class="pageitem"  >
+						      <option value="10" <?php if($show_records_per_page==10 ) { ?> selected="selected" <?php } ?> >10</option>
+						      <option value="25" <?php if($show_records_per_page==25 ) { ?> selected="selected" <?php } ?> >25</option>
+						      <option value="50" <?php if($show_records_per_page==50 ) { ?> selected="selected" <?php } ?> >50</option>
+						      <option value="100" <?php if($show_records_per_page==100 ) { ?> selected="selected" <?php } ?> >100</option>
+						    </select>
+						      
+				</div>
+			</div>
+			<div class="_50" style="float:right;">
+				<label class="_30 margin_top_7 label_text_align">
+					<?php echo $this->translate->_('Search').''.$this->required;?>
+				</label>
+				<div class="_50" >
+					<input type="text" id="searchval" name="searchval" style="width: 70% !important;float:left;display:inline;">
+				</div>	
+			</div>   
+			
+		</div>	
+		<div class="_100">
+		
+		    <div id="loader"></div>
+		    <div id="item-grid"> <!--grid load here --> </div>			
+		    <input type="hidden" id="hdnitemmustno" name="hdnitemmustno" value="<?php echo $this->params["id"]; ?>">
+		</div>
+		
+		<div class="space_20 _100">&nbsp;</div>
+		<div class="_100">
+			<input type="button" id="btndeleteall" name="btndeleteall" value="<?php echo $this->translate->_('DELETE');?>" >
+		</div>		
+		</div>
+	    </fieldset>
+	</div>
+	<input type="hidden" name="hdndeleteall" id="hdndeleteall" value="" >
+	</form>
+</div>
+</div> <!-- End of .box -->

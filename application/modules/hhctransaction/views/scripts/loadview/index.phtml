@@ -1,0 +1,46 @@
+<?php
+/**
+* @name       loadtransfer.phtml
+* @since      30-01-2012
+* @version    Release: 1.0
+* @author     M@M <miral@elantechnologies.com>
+* @copyright  Elan Technologies
+*
+*
+*/
+
+$this->translate = Zend_Registry::get('Zend_Translate');
+
+?>
+<style>
+.margin_zero {margin-top:0px !important;}
+</style>
+<?php if(SFA_Message::isSetMsg()) {  ?>
+    <div class="alert success">
+        <span class="icon"></span><span class="hide">x</span><strong><?php echo SFA_Message::getMsg(); ?></strong>
+    </div>
+<?php } ?>
+<form name="frmoverview" id="frmoverview" action="" method="post">
+
+<div class="grid_12">
+    <div class="box">
+      <?php
+		echo route_info[$i]['loadperiodnumber'];
+	  ?>  
+	
+	<div class="clear"></div>
+
+		
+        <div class="clear"></div>
+    </div> <!-- End of .box -->
+</div> <!-- End of .grid_12 -->
+</form>
+<script type="text/javascript">
+$(window).load(function() {
+    $(function() {
+	$( "#txtdate" ).datepicker({
+	    dateFormat: 'dd-mm-yy'
+	});
+    });
+});
+</script>

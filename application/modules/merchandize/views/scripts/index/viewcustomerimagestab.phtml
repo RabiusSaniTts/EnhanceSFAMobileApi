@@ -1,0 +1,68 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+		var glob_i = <?php echo (isset($curimg) && $curimg > 2) ? ($curimg+1): '2';?>;
+	$('#plus_img').live('click',function(){
+	    
+	    $('.image_caption_area:last').after('<div class="_100 image_caption_area"><label class="_36 margin_top_12 label_text_align"></label><div class="_50 margin_right_1"><div class="_50 margin_right_1"><input name="txtdesc['+glob_i+']" id="txtdesc['+glob_i+']" type="text"  class="margin_bottom_5" value="" ></div><input type="hidden" name="oldfile['+glob_i+']" value="" /><?php $image1 = $this->baseUrl('public/images/thumbnail-default.jpg');?><img id="image'+glob_i+'" src="<?php echo $image1; ?>" alt="your image" width="120" height="80" style="float: right; margin-top: 10px;" /><input type="file" name="imagefile'+glob_i+'" value="" onchange="readURL(this,\'image'+glob_i+'\');" class="_50 margin_top_5" /><a class="minus_img" title="Remove Image" style="display:inline-block; float:right; margin-top:10px; clear:both;">Remove</a></div></div>');
+	    glob_i = glob_i + 1; // increment the value for KIDS DOB
+	});
+ });
+</script>
+
+<?php
+//var_dump($this->images);die;
+if(count($this->images) > 0)
+{
+    ?>
+    <div class="content with-actions padding_zero clear_only" id="customerimages">
+        <table border="1" cellpadding="10px" >
+            <tr> 
+                <?php
+                $i=0;						
+                foreach($this->images as $curimg)
+                {
+                    if(file_exists($this->path.$curimg['imagename']) && $curimg['imagename'] != '.' && $curimg['imagename'] != '..')
+                    {
+                        ?>
+                        <td align="center" class="padding_top_10">
+						<a href="<?php echo  $this->path1.$curimg['imagename']; ?>" rel="prettyPhoto[gallery]" id="pretty_link" title="<?php echo $curimg['imagename']; ?>" class="btn btn2">
+
+						<?php echo '<img height="200" width="200" src="' . $this->path1.$curimg['imagename'] . '" /></a><br>'.$curimg['remarks'].'&nbsp;'; ?></td>
+                        <?php
+                        if(++$i%4 == 0) echo '</tr><tr>';
+                    }
+                }
+                ?>
+            </tr>
+        </table>
+    </div>
+    <?php
+}
+else
+{
+    ?>
+    <div class="content with-actions min_height_10 margin_top_10">
+        <div class="clear_only nodata_message margin_top_50 margin_bottom_10"><b><?php echo $this->message;?></b></div>
+    </div>
+    <?php
+}
+?>
+<script type="text/javascript">
+    $(document).ready(function(){
+		$("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast', theme:'light_rounded', allow_resize: true, slideshow:5000, autoplay_slideshow:false, opacity:0.70});
+    });
+</script>
+
+<script type="text/javascript">
+    function readURL(input,id) {
+	if (input.files && input.files[0]) {
+	    var reader = new FileReader();
+
+	    reader.onload = function (e) {
+		$('#'+id).attr('src', e.target.result);
+	    }
+
+	    reader.readAsDataURL(input.files[0]);
+	}
+    }
+</script>

@@ -1,0 +1,88 @@
+<?php
+$this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({        
+   	url:base_url+"/reports/salesmanroutesummary/salesmanroutesummary/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Region');?>','<?php echo $this->translate->_('Area');?>','<?php echo $this->translate->_('Salesman');?>','<?php echo $this->translate->_('Planned Visit');?>','<?php echo $this->translate->_('Actual Visit');?>','<?php echo $this->translate->_('Productive Calls');?>','<?php echo $this->translate->_('Target');?>','<?php echo $this->translate->_('Todays Sales');?>','<?php echo $this->translate->_('MTD Sales');?>','<?php echo $this->translate->_('Sales Vs Target%');?>','<?php echo $this->translate->_('Return');?>','<?php echo $this->translate->_('Return Vs Sales%');?>','<?php echo $this->translate->_('FOC Qty');?>','<?php echo $this->translate->_('No of Customer Billed in last 3 months');?>','<?php echo $this->translate->_('No Of Customer Billed');?>','<?php echo $this->translate->_('No of invoice Billed');?>','<?php echo $this->translate->_('No of SKU Billed');?>','<?php echo $this->translate->_('Avg Inv Value');?>','<?php echo $this->translate->_('Monthly Collection Target');?>','<?php echo $this->translate->_('Collection');?>'],
+   	colModel:[
+   		{name:'regionmstcode',index:'regionmstcode', width:75},
+		{name:'areaname',index:'areaname', width:75},
+		{name:'salesman',index:'salesman', width:70},
+        {name:'targettovisit',index:'targettovisit', width:70,align:'right',summaryType:'sum'},
+        {name:'targetvisits',index:'totalvisits', width:70,align:'right',summaryType:'sum'},
+        {name:'productivecalls',index:'callexceptions', width:70,align:'right',summaryType:'sum'},
+        {name:'target',index:'nontargetvisits', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces }},
+        {name:'todayssale',index:'totalvisits', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'MTDsales',index:'schedulesale', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'salestarget',index:'schedulenosale', width:70,align:'right',summaryType:'sum'},	
+		{name:'returnamt',index:'unschedsale', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'returntarget',index:'unschedulenosale', width:70,align:'right',summaryType:'sum'},
+        {name:'foc',index:'effectivevisit', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'lastcustomerbilled',index:'lastcustomerbilled', width:70,align:'right',summaryType:'sum'},
+		{name:'customerbilled',index:'customerbilled', width:75},
+        {name:'invbilled',index:'invbilled', width:70,align:'right',summaryType:'sum'},
+		{name:'itembilled',index:'itembilled', width:70,align:'right',summaryType:'sum'},
+		{name:'avginv',index:'avginv', width:70,align:'right',summaryType:'sum'},
+		{name:'mtdtarget',index:'mtdtarget', width:70,align:'right',summaryType:'sum'},
+        {name:'collection',index:'collection', width:75,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'}
+
+   	],
+	<?php if($this->css == 'ar_') { ?>
+		direction :"rtl",
+	<?php } ?>	
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+    rowList:eval(RP_ROWLISTSHOW),
+  //  loadonce:true,
+    pager: '#pagersr',
+   	sortname: 'regionmstcode',
+	viewrecords:true,
+	sortorder: "asc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:true,        
+	groupingView :
+        {
+            groupField : ['regionmstcode'],
+            groupColumnShow : [false],
+            groupCollapse : true,
+            groupOrder: ['asc'] ,
+            groupSummary : [true],
+            groupDataSorted : true,
+            showSummaryOnHide: false
+        }
+});
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+ 
+
+);
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    //document.location.href = exporturl;
+    return false;
+});
+</script>

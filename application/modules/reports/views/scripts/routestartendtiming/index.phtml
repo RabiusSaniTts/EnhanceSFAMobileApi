@@ -1,0 +1,79 @@
+<?php
+    $this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({
+   	url:base_url+"/reports/routestartendtiming/routestartendtimingdata/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Route');?>','<?php echo $this->translate->_('Route Name');?>','<?php echo $this->translate->_('Salesman Code');?>','<?php echo $this->translate->_('Salesman Name');?>','<?php echo $this->translate->_('Transaction Date');?>','<?php echo $this->translate->_('First Visit Time');?>','<?php echo $this->translate->_('First Invoice No');?>','<?php echo $this->translate->_('Last Invoice Time');?>','<?php echo $this->translate->_('Last Invoice No');?>','<?php echo $this->translate->_('Valid Invoices');?>','<?php echo $this->translate->_('Cancelled Invoices');?>'],
+   	colModel:[
+   		{name:'routecode',index:'routecode', width:70, align:"right"},
+        {name:'routename',index:'routename', width:150, align:"right"},
+        {name:'alternatesalesmancode',index:'alternatesalesmancode', width:70, align:"right"},
+		{name:'salesmanname',index:'salesmanname', width:150, align:"right"},
+        {name:'transactiondate',index:'transactiondate', width:100, align:"right"},
+        {name:'firstvisit',index:'firstvisit', width:100, align:"right"},
+		{name:'firstinvoice',index:'firstinvoice', width:100, align:"right"},
+		{name:'lastvisit',index:'lastvisit', width:100, align:"right"},
+		{name:'lastinvoice',index:'lastinvoice', width:100, align:"right"},
+        {name:'validinvoice',index:'validinvoice', width:100, align:"right"},
+        {name:'cancelledinvoice',index:'cancelledinvoice', width:100, align:"right"}
+		
+	],
+	<?php if($this->css == 'ar_') { ?>
+        direction :"rtl", 
+    <?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+    pager: '#pagersr',
+   	sortname: 'ih.routecode',
+	viewrecords:true,
+	sortorder: "desc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:false,
+	groupingView :
+    {
+        groupField : ['route'],
+        groupColumnShow : [false],
+        groupCollapse : false,
+        groupOrder: ['asc'] ,
+        groupSummary : [false],
+        groupDataSorted : true,
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+
+);
+
+
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+</script>

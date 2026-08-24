@@ -1,0 +1,86 @@
+<?php
+$this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({        
+   	url:base_url+"/reports/salesmanrouteformat/salesmanrouteformat/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Route');?>','<?php echo $this->translate->_('Route Start Date');?>','<?php echo $this->translate->_('Day');?>','<?php echo $this->translate->_('Route End Date');?>','<?php echo $this->translate->_('Planned Visit');?>','<?php echo $this->translate->_('Actual Visit');?>','<?php echo $this->translate->_('Productive Calls');?>','<?php echo $this->translate->_('Target');?>','<?php echo $this->translate->_('Todays Sales Order');?>','<?php echo $this->translate->_('Todays invoices');?>','<?php echo $this->translate->_('MTD Sales');?>','<?php echo $this->translate->_('Sales Vs Target%');?>','<?php echo $this->translate->_('Return');?>','<?php echo $this->translate->_('Return Vs Sales%');?>','<?php echo $this->translate->_('FOC Qty');?>','<?php echo $this->translate->_('Collection');?>','<?php echo $this->translate->_('Starting Kms');?>','<?php echo $this->translate->_('Ending Kms');?>','<?php echo $this->translate->_('Total Kms Covered');?>'],
+   	colModel:[
+   		{name:'routecode',index:'sed1.routecode', width:75},
+		{name:'routestartdate',index:'routestartdate', width:75},
+		{name:'daytxt',index:'daytxt', width:70},
+		{name:'routeenddate',index:'routeenddate', width:75},
+        {name:'targettovisit',index:'targettovisit', width:70,align:'right',summaryType:'sum'},
+        {name:'targetvisits',index:'totalvisits', width:70,align:'right',summaryType:'sum'},
+        {name:'productivecalls',index:'productivecalls', width:70,align:'right',summaryType:'sum'},
+        {name:'target',index:'target', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces }},
+        {name:'todayssale',index:'todayssale', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+		{name:'todaysinvoice',index:'todaysinvoice', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'MTDsales',index:'MTDsales', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces }},
+        {name:'salestarget',index:'salestarget', width:70,align:'right',summaryType:'sum'},	
+		{name:'returnamt',index:'salestarget', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'returntarget',index:'returntarget', width:70,align:'right',summaryType:'sum'},
+        {name:'foc',index:'foc', width:70,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'collection',index:'collection', width:75,align:'right',formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+        {name:'endkms',index:'endkms', width:70,align:'right'},
+		{name:'startkms',index:'endkms', width:70,align:'right'},
+        {name:'kmscovered',index:'kmscovered', width:70,align:'right',summaryType:'sum'}
+   	],
+	<?php if($this->css == 'ar_') { ?>
+		direction :"rtl",
+	<?php } ?>	
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+    rowList:eval(RP_ROWLISTSHOW),
+  //  loadonce:true,
+    pager: '#pagersr',
+   	sortname: 'sed1.routecode',
+	viewrecords:true,
+	sortorder: "asc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:false,        
+	groupingView :
+        {
+            groupField : ['routecode'],
+            groupColumnShow : [false],
+            groupCollapse : true,
+            groupOrder: ['asc'] ,
+            groupSummary : [true],
+            groupDataSorted : true,
+            showSummaryOnHide: false
+        }
+});
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+ 
+
+);
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    //document.location.href = exporturl;
+    return false;
+});
+</script>

@@ -1,0 +1,143 @@
+1.sp_import_pricing_key_oracle
+
+DELIMITER $$
+
+USE `sfa_test`$$
+
+DROP PROCEDURE IF EXISTS `sp_import_pricing_key_oracle`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_import_pricing_key_oracle`(
+IN	var_pricing_key	VARCHAR(50),
+IN	var_item_code	VARCHAR(20),
+IN	var_description	VARCHAR(50),
+IN	var_start_date	DATE,
+IN	var_end_date	DATE,
+IN	var_special_case_price	FLOAT,
+IN	var_special_piece_price	FLOAT,
+IN	var_special_return_case_price	FLOAT,
+IN	var_special_return_price FLOAT,
+IN	var_price_list_status	CHAR(1),
+IN	var_uom	VARCHAR(10),
+IN	var_uom_rate	INT
+)
+BEGIN
+DECLARE VAR_PRICINGKEY BIGINT(50);
+DECLARE VAR_THIS_REC_EXIST BIGINT(50);
+DECLARE VAR_REC_EXIST INT;
+DECLARE VAR_ACTUALCODE INT;
+SELECT IFNULL(COUNT(*),0) INTO VAR_REC_EXIST FROM customerpricingplanheader1 WHERE alternatecode=var_pricing_key;
+
+
+ 
+IF VAR_REC_EXIST=0 THEN
+
+ 
+INSERT INTO customerpricingplanheader1
+(description,arbdescription,alternatecode,activeindicator)
+SELECT  var_description,'',var_pricing_key,CASE WHEN var_price_list_status='Y' THEN 1 ELSE 0 END  ;
+SELECT MAX(pricingplankey) INTO VAR_PRICINGKEY FROM customerpricingplanheader1;
+
+ELSE
+SELECT pricingplankey INTO VAR_PRICINGKEY  FROM customerpricingplanheader1 WHERE alternatecode=var_pricing_key;
+
+UPDATE customerpricingplanheader1 SET description=var_description,activeindicator=CASE WHEN var_price_list_status='Y' THEN 1 ELSE 0 END WHERE alternatecode=var_pricing_key AND pricingplankey=VAR_PRICINGKEY;
+SELECT MAX(pricingplankey) INTO VAR_PRICINGKEY  FROM customerpricingplanheader1 WHERE alternatecode=var_pricing_key;
+-- SELECT MAX(pricingplankey)+1 INTO VAR_PRICINGKEY  FROM customerpricingplanheader1 WHERE alternatecode=var_pricing_key;
+
+END IF;
+
+
+
+INSERT INTO customerpricing1
+(CustomerPricingKey,PricingPlanKey,Sequencecode,Description,ARBDescription,active,startdate,enddate)
+SELECT  VAR_PRICINGKEY,VAR_PRICINGKEY AS PricingPlanKey,'',var_description,'',CASE WHEN var_price_list_status='Y' THEN 1 ELSE 0 END ,var_start_date,var_end_date ;
+
+
+
+
+SELECT IFNULL(COUNT(*),0) INTO VAR_THIS_REC_EXIST FROM pricingplanheader1 WHERE customerpricingkey=VAR_PRICINGKEY;
+ 
+IF VAR_THIS_REC_EXIST=0 THEN
+INSERT INTO pricingplanheader1(CustomerPricingKey,Description,ARBDescription,TYPE,active)
+SELECT  VAR_PRICINGKEY AS CustomerPricingKey,var_description,'','1',CASE WHEN var_price_list_status='Y' THEN 1 ELSE 0 END ;
+
+ELSE
+UPDATE pricingplanheader1 SET Description=var_description,active=CASE WHEN var_price_list_status='Y' THEN 1 ELSE 0 END WHERE customerpricingkey=VAR_PRICINGKEY;
+END IF;
+
+
+
+
+
+
+SELECT actualitemcode INTO VAR_ACTUALCODE FROM itemmaster WHERE alternatecode=var_item_code;
+
+INSERT INTO pricingdetail1(CustomerPricingKey,ItemCode,SalesPrice,ReturnPrice,RetailPrice,
+SalesCasePrice,ReturnCasePrice,created,cdat,modified,mdat)
+ SELECT  VAR_PRICINGKEY ,VAR_ACTUALCODE,var_special_piece_price,var_special_return_price,'',var_special_case_price,var_special_return_case_price,"admin",NOW(),"admin",NOW();
+ 
+ SELECT "Success";
+END$$
+
+DELIMITER ;
+
+
+2.sp_import_sales_order_status_oracle
+
+
+DELIMITER $$
+
+USE `sfa_test`$$
+
+DROP PROCEDURE IF EXISTS `sp_import_sales_order_status_oracle`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_import_sales_order_status_oracle`(
+    IN var_sales_man  VARCHAR (20) ,
+    IN var_route_code VARCHAR (20) ,
+    IN var_customer_code VARCHAR (20) ,
+    IN var_customer_name VARCHAR (50),
+    IN var_order_number VARCHAR (30),
+    IN var_order_date DATE ,
+    IN var_invoice_no DECIMAL (29),
+    IN var_invoice_date DATE ,
+    IN var_difference_amount DECIMAL (21),
+    IN var_order_status VARCHAR (30) ,
+    IN var_alternate_code VARCHAR (50),
+    IN var_alternate_order_number  VARCHAR (60),
+    IN var_alternate_invoice_number VARCHAR (50),
+    IN var_difference_date DATE
+     
+    
+	)
+BEGIN
+DECLARE VAR_RECORD_EXIST BIGINT(20);
+DECLARE var_salesman_code VARCHAR(10);
+ 
+ -- SELECT salesmancode into var_salesman_code FROM salesman where alternatesalesmancode=var_sales_man;
+ 
+ 
+SELECT IFNULL(COUNT(*),0) INTO VAR_RECORD_EXIST FROM orderstatus WHERE invoicenumber=var_invoice_no;
+IF VAR_RECORD_EXIST=0 THEN
+ INSERT INTO orderstatus (routecode,salesmancode,customercode,customername,ordernumber,orderdate,invoicenumber,invoicedate,differenceamount,STATUS,alternatecode,alternateordernumber,alternateinvoicenumber,differencedate) SELECT var_route_code,var_sales_man,var_customer_code,var_customer_name,var_order_number,var_order_date,var_invoice_no,var_invoice_date,var_difference_amount,var_order_status,var_alternate_code,var_alternate_order_number,var_alternate_invoice_number,var_difference_date;
+ 
+ 
+ELSE
+ 
+UPDATE orderstatus SET  routecode=var_route_code,
+			salesmancode=var_sales_man,
+			customercode=var_customer_code,
+			customername=var_customer_name,
+			ordernumber=var_order_number,
+			orderdate=var_order_date,
+			invoicedate=var_invoice_date,
+			differenceamount=var_difference_amount,
+			STATUS=var_order_status,
+			alternatecode=var_alternate_code,
+			alternateordernumber=var_alternate_order_number,
+			alternateinvoicenumber=var_alternate_invoice_number,
+			differencedate=var_difference_date WHERE invoicenumber=var_invoice_no;
+END IF;
+ SELECT "success";
+END$$
+
+DELIMITER ;

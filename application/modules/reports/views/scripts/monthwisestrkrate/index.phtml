@@ -1,0 +1,82 @@
+<?php
+$this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({
+   	url:base_url+"/reports/monthwisestrkrate/routesummarydata/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Division Code');?>','<?php echo $this->translate->_('Salesman Code');?>','<?php echo $this->translate->_('Salesman Name');?>','<?php echo $this->translate->_('Arb Salemancode');?>','<?php echo $this->translate->_('Mtd odometer');?>','<?php echo $this->translate->_('Planned Calls');?>','<?php echo $this->translate->_('Actual Calls');?>','<?php echo $this->translate->_('Unscheduled Call');?>','<?php echo $this->translate->_('Cash Sale');?>','<?php echo $this->translate->_('Credit Sale');?>','<?php echo $this->translate->_('Productive Calls');?>','<?php echo $this->translate->_('Total Receipt');?>','<?php echo $this->translate->_('Strike Rate');?>','<?php echo $this->translate->_('Productive Rate');?>','<?php echo $this->translate->_('Customer Face Time ');?>','<?php echo $this->translate->_('OTP Used Count');?>','<?php echo $this->translate->_('Settlement Skipped Days');?>'],
+   	colModel:[
+		{name:'divisioncode',index:'divisioncode', width:50},
+        {name:'salesmancode',index:'salesmancode', width:70, align:"right"},
+        {name:'salesmanname1',index:'salesmanname1', width:70, align:"right"},
+		{name:'arbsalesmanname1',index:'arbsalesmanname1', width:70, align:"right"},
+		{name:'Mtd_odometer',index:'Mtd_odometer', width:70, align:"right"},
+        {name:'plannedcalls',index:'plannedcalls', width:70, align:"right"},
+        {name:'actualcalls',index:'actualcalls', width:70, align:"right"},
+        {name:'unschedulecall',index:'unschedulecall', width:70, align:"right"},
+		{name:'cashsale',index:'cashsale', width:70, align:"right"},
+        {name:'creditsale',index:'creditsale', width:70, align:"right"},
+		{name:'productivecalls',index:'productivecalls', width:70, align:"right"},
+		{name:'totalreceipt',index:'totalreceipt', width:70, align:"right"},
+		{name:'strikerate',index:'strikerate', width:70, align:"right"},
+		{name:'productiverate',index:'productiverate', width:70, align:"right"},
+		{name:'CustomerFaceTime',index:'CustomerFaceTime', width:70, align:"right"},
+		{name:'OTPUsedCount',index:'OTPUsedCount', width:70, align:"right"},
+		{name:'settlementskipeddays',index:'settlementskipeddays', width:70, align:"right"}
+		
+	],
+    <?php if($this->session->lang == "ar_AR") { ?>
+        direction :"rtl", 
+    <?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+   	pager: '#pagersr',
+   	sortname: 'routecode',
+	viewrecords:true,
+	sortorder: "asc",
+    footerrow : true,
+	userDataOnFooter : true,
+   	altRows : false,
+    grouping:false,
+    groupingView :
+    {
+        groupField : ['routecode'],
+        groupColumnShow : [true],
+        groupCollapse : true,
+        groupOrder: ['asc']
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+);
+
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    //document.location.href = exporturl;
+    return false;
+});
+
+</script>

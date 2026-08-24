@@ -1,0 +1,86 @@
+<?php
+$this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+
+jQuery("#search").jqGrid({        
+   	url:base_url+"/reports/transactionitemhistory/itemhis/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Route');?>','<?php echo $this->translate->_('Group');?>','<?php echo $this->translate->_('Item Code');?>','<?php echo $this->translate->_('Trip Start Date');?>','<?php echo $this->translate->_('Trip End Date');?>','<?php echo $this->translate->_('Opening Case');?>','<?php echo $this->translate->_('Opening Unit');?>','<?php echo $this->translate->_('Load Case');?>','<?php echo $this->translate->_('Load Unit');?>','<?php echo $this->translate->_('Transfer IN Case');?>','<?php echo $this->translate->_('Transfer IN Unit');?>','<?php echo $this->translate->_('Transfer OUT Case');?>','<?php echo $this->translate->_('Transfer OUT Unit');?>','<?php echo $this->translate->_('Sales Case');?>','<?php echo $this->translate->_('Sales Unit');?>','<?php echo $this->translate->_('Good Return Case');?>','<?php echo $this->translate->_('Good Return Unit');?>','<?php echo $this->translate->_('Damaged Case');?>','<?php echo $this->translate->_('Damaged Unit');?>','<?php echo $this->translate->_('Expiry Case');?>','<?php echo $this->translate->_('Expiry Unit');?>','<?php echo $this->translate->_('Promo Free Case');?>','<?php echo $this->translate->_('Promo Free Unit');?>','<?php echo $this->translate->_('Manual Sample Case');?>','<?php echo $this->translate->_('Manual Sample Unit');?>','<?php echo $this->translate->_('Closing Case');?>','<?php echo $this->translate->_('Closing Unit');?>','<?php echo $this->translate->_('Opening Stock Value');?>','<?php echo $this->translate->_('Daily Loaded Value');?>','<?php echo $this->translate->_('Truck Stock Value');?>','<?php echo $this->translate->_('Closing Value');?>'],
+   	colModel:[
+   		{name:'routecode',index:'routecode', width:100},
+		{name:'majorcategorycode',index:'majorcategorycode', width:200},
+		{name:'actualitemcode',index:'actualitemcode', width:120},
+		{name:'routestartdate',index:'routestartdate', width:80},
+		{name:'routeenddate',index:'routeenddate', width:80},
+		{name:'beginqtycase',index:'beginqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'beginqtypcs',index:'beginqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'loadqtycase',index:'loadqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'loadqtypcs',index:'loadqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'loadaddqtycase',index:'loadaddqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'loadaddqtypcs',index:'loadaddqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'loadcutqtycase',index:'loadcutqtycase', width:55,summaryType:'sum', align:"right"},
+		{name:'loadcutqtypcs',index:'loadcutqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'salesqtycase',index:'salesqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'salesqtypcs',index:'salesqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'returnqtycase',index:'returnqtycase', width:50,summaryType:'sum', align:"right"},
+		 {name:'returnqtypcs',index:'returnqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'damagedqtycase',index:'damagedqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'damagedqtypcs',index:'damagedqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'expiryqtycase',index:'expiryqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'expiryqtypcs',index:'expiryqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'freesampleqtycase',index:'freesampleqtycase', width:50,summaryType:'sum', align:"right"},
+		 {name:'freesampleqtypcs',index:'freesampleqtypcs', width:48,summaryType:'sum', align:"right"},
+		{name:'manualfreeqtycase',index:'manualfreeqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'manualfreeqtypcs',index:'manualfreeqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'endqtycase',index:'endqtycase', width:50,summaryType:'sum', align:"right"},
+		{name:'endqtypcs',index:'endqtypcs', width:50,summaryType:'sum', align:"right"},
+		{name:'beginstockvalue',index:'beginstockvalue', width:90, align:"right",summaryType:'sum', formatter: 'number',formatoptions: { decimalSeparator: ".", decimalPlaces: <?php echo $this->decimalplaces; ?>, defaultValue: '0.00' }},
+		{name:'loadvalue',index:'loadvalue', width:90, align:"right",summaryType:'sum', formatter: 'number',formatoptions: { decimalSeparator: ".", decimalPlaces: <?php echo $this->decimalplaces; ?>, defaultValue: '0.00' }},
+		{name:'truckstockvalue',index:'truckstockvalue', width:90, align:"right",summaryType:'sum', formatter: 'number',formatoptions: { decimalSeparator: ".", decimalPlaces: <?php echo $this->decimalplaces; ?>, defaultValue: '0.00' }},
+		{name:'endstockvalue',index:'endstockvalue', width:90, align:"right",summaryType:'sum', formatter: 'number',formatoptions: { decimalSeparator: ".", decimalPlaces: <?php echo $this->decimalplaces; ?>, defaultValue: '0.00' }}		
+   	],
+	<?php if($this->css == 'ar_') { ?>
+		direction :"rtl",
+	<?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+    rowList:eval(RP_ROWLISTSHOW),
+  //  loadonce:true,
+    pager: '#pagersr',
+   	sortname: 'routecode',
+	viewrecords:true,
+	sortorder: "desc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:true,        
+	groupingView :
+        {
+            groupField : ['routecode','majorcategorycode','actualitemcode'],
+            groupColumnShow : [false,false,false],
+            groupCollapse : true,
+            groupOrder: ['asc','asc','asc'] ,
+            groupSummary : [false,false,true],
+            groupDataSorted : true,
+            showSummaryOnHide: false,
+	    groupText : ['','','']
+        }
+});
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+ 
+
+);
+
+</script>

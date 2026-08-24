@@ -1,0 +1,84 @@
+<?php
+    $this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({
+   	url:base_url+"/reports/routejourneyplan/routejourneyplandata/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Route');?>','<?php echo $this->translate->_('Route Name');?>','<?php echo $this->translate->_('Customer Code');?>','<?php echo $this->translate->_('Customer');?>','<?php echo $this->translate->_('MOP');?>','<?php echo $this->translate->_('Credit Limit');?>','<?php echo $this->translate->_('Credit Days');?>','<?php echo $this->translate->_('Grace Period');?>','<?php echo $this->translate->_('Customer Address1');?>','<?php echo $this->translate->_('Customer Address2');?>','<?php echo $this->translate->_('Customer Address3');?>','<?php echo $this->translate->_('Day');?>','<?php echo $this->translate->_('DaySeq');?>','<?php echo $this->translate->_('Channel');?>','<?php echo $this->translate->_('Grouping Code');?>','<?php echo $this->translate->_('Outlet Quality');?>'],
+   	colModel:[
+   		{name:'routecode',index:'routecode', width:70, align:"right"},
+        {name:'routename',index:'routename', width:100, align:"right"},
+        {name:'customercode',index:'customercode', width:70, align:"right"},
+		{name:'customername',index:'customername', width:170, align:"right"},
+        {name:'invoicepaymentterms',index:'invoicepaymentterms', width:70, align:"right"},
+        {name:'creditlimit',index:'creditlimit', width:50, align:"right"},
+		{name:'creditlimitdays',index:'creditlimitdays', width:70, align:"right"},
+		{name:'graceperiod',index:'graceperiod', width:70, align:"right"},
+		{name:'customeraddress1',index:'customeraddress1', width:170, align:"right"},
+        {name:'customeraddress2',index:'customeraddress2', width:170, align:"right"},
+        {name:'customeraddress3',index:'customeraddress3', width:150, align:"right"},
+		{name:'day',index:'day', width:70, align:"right"},
+        {name:'dayseq',index:'dayseq', width:70, align:"right"},
+		{name:'channelname',index:'channelname', width:70, align:"right"},
+		{name:'Grouping_Code',index:'Grouping_Code', width:70, align:"right"},
+		{name:'Outlet_Quality',index:'Outlet_Quality', width:70, align:"right"}
+		
+	],
+	<?php if($this->css == 'ar_') { ?>
+        direction :"rtl", 
+    <?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+    pager: '#pagersr',
+   	sortname: 'routecode',
+	viewrecords:true,
+	sortorder: "desc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:false,
+	groupingView :
+    {
+        groupField : ['route'],
+        groupColumnShow : [false],
+        groupCollapse : false,
+        groupOrder: ['asc'] ,
+        groupSummary : [false],
+        groupDataSorted : true,
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+
+);
+
+
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+</script>

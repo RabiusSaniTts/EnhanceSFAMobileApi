@@ -1,0 +1,131 @@
+<?php
+    $this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({
+   	url:base_url+"/reports/routejourneyplan/routejourneyplandata/",
+	datatype: "json",
+   	colNames:[
+        '<?php echo $this->translate->_('Division Code');?>',
+        '<?php echo $this->translate->_('Route Code');?>',
+        '<?php echo $this->translate->_('Route Name');?>',
+        '<?php echo $this->translate->_('SalesmanName');?>',
+        '<?php echo $this->translate->_('Active Status');?>',
+        '<?php echo $this->translate->_('Customer Code');?>',
+        '<?php echo $this->translate->_('Customer');?>',
+        '<?php echo $this->translate->_('Customer Address1');?>',
+        '<?php echo $this->translate->_('Customer Address2');?>',
+        '<?php echo $this->translate->_('Customer Address3');?>',
+        '<?php echo $this->translate->_('Fixed Latitude');?>',
+        '<?php echo $this->translate->_('Fixed Longitude');?>',
+         '<?php echo $this->translate->_('WeekNumber');?>',
+        
+        '<?php echo $this->translate->_('Monday');?>',
+
+        '<?php echo $this->translate->_('Tuesday');?>',
+
+        '<?php echo $this->translate->_('Wednesday');?>',
+    
+        '<?php echo $this->translate->_('Thursday');?>',
+  
+        '<?php echo $this->translate->_('Friday');?>',
+       
+        '<?php echo $this->translate->_('Saturday');?>',
+   
+        '<?php echo $this->translate->_('Sunday');?>', 
+         '<?php echo $this->translate->_('Monday DaySeq');?>','<?php echo $this->translate->_('Tuesday DaySeq');?>','<?php echo $this->translate->_('Wednesday DaySeq');?>','<?php echo $this->translate->_('Thursday DaySeq');?>', '<?php echo $this->translate->_('Friday DaySeq');?>','<?php echo $this->translate->_('Saturday DaySeq');?>','<?php echo $this->translate->_('Sunday DaySeq');?>'
+    ],
+   	colModel:[
+   		{name:'DivisionCode',index:'DivisionCode', width:70, align:"right"},
+        {name:'RouteCode',index:'RouteCode', width:100, align:"right"},
+
+        {name:'arbroutename',index:'arbroutename', width:100, align:"right"},
+          {name:'SalesmanName',index:'RouteCode', width:100, align:"right"},
+        {name:'activecustomer',index:'activecustomer', width:70, align:"right"},
+        {name:'CustomerCode',index:'CustomerCode', width:70, align:"right"},
+		{name:'CustomerName',index:'CustomerName', width:200, align:"right"},
+		{name:'customeraddress1',index:'customeraddress1', width:200, align:"right"},
+        {name:'customeraddress2',index:'customeraddress2', width:200, align:"right"},
+        {name:'customeraddress3',index:'customeraddress3', width:200, align:"right"},
+        {name:'fixedlatitude',index:'fixedlatitude', width:100, align:"right"},
+        {name:'fixedlongitude',index:'fixedlongitude', width:100, align:"right"},
+        {name:'WeekNumber',index:'WeekNumber', width:70, align:"right"},
+		{name:'Monday',index:'Monday', width:70, align:"right"},
+        {name:'Tuesday',index:'Tuesday', width:70, align:"right"},
+        {name:'Wednesday',index:'Wednesday', width:70, align:"right"},
+        {name:'Thursday',index:'Thursday', width:70, align:"right"},
+        {name:'Friday',index:'Friday', width:70, align:"right"},
+        {name:'Saturday',index:'Saturday', width:70, align:"right"},
+        {name:'Sunday',index:'Sunday', width:70, align:"right"},
+        {name:'MondaySequence',index:'MondaySequence', width:70, align:"right"},
+	
+        {name:'TuesdaySeqence',index:'TuesdaySeqence', width:70, align:"right"},
+		
+        {name:'WednesdaySequence',index:'WednesdaySequence', width:70, align:"right"},
+		
+        {name:'ThursdaySequence',index:'ThursdaySequence', width:70, align:"right"},
+		
+        {name:'FridaySequence',index:'FridaySequence', width:70, align:"right"},
+	
+        {name:'SaturdaySequence',index:'SaturdaySequence', width:70, align:"right"},
+		
+        {name:'SundaySequence',index:'SundaySequence', width:70, align:"right"},
+		
+	],
+	<?php if($this->css == 'ar_') { ?>
+        direction :"rtl", 
+    <?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+    pager: '#pagersr',
+   	sortname: 'routecode',
+	viewrecords:true,
+	sortorder: "desc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:false,
+	groupingView :
+    {
+        groupField : ['route'],
+        groupColumnShow : [false],
+        groupCollapse : false,
+        groupOrder: ['asc'] ,
+        groupSummary : [false],
+        groupDataSorted : true,
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+
+);
+
+
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+</script>

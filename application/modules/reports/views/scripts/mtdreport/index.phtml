@@ -1,0 +1,77 @@
+<?php
+$this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({ 
+     
+   	url:base_url+"/reports/aandpreport/aandpreportdata/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Route Code');?>','<?php echo $this->translate->_('Salesman Code');?>','<?php echo $this->translate->_( 'Transaction Date');?>','<?php echo $this->translate->_('Invoice Number');?>','<?php echo $this->translate->_('Customer Code');?>','<?php echo $this->translate->_('Customer Name');?>','<?php echo $this->translate->_('Deduction Amount');?>'],
+   	colModel:[
+            {name:'routecode',index:'routecode', width:120}, 
+            {name:'salesmancode',index:'salesmancode', width:70},
+			{name:'transactiondate',index:'transactiondate', width:100},
+            {name:'invoicenumber',index:'invoicenumber', width:90},
+			{name:'customercode',index:'customercode', width:90},
+            {name:'customername',index:'customername', width:250},
+            {name:'deductionamount',index:'deductionamount', width:75, align:"right",formatter: 'number', formatoptions: { decimalPlaces: decimalplaces },summaryType:'sum'},
+          
+	],
+	<?php if($this->css == 'ar_') { ?>
+		direction :"rtl",
+	<?php } ?>	
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+   	pager: '#pagersr',
+   	sortname: 'routecode',
+	viewrecords:true,
+	sortorder: "asc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:true,
+	groupingView :
+    {
+        groupField : ['routecode','transactiondate'],
+        groupColumnShow : [false,false],
+        groupCollapse : true,
+        groupOrder: ['asc','asc'] ,
+        groupSummary : [false,true],
+        groupDataSorted : true
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+ 
+
+);
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    //document.location.href = exporturl;
+    return false;
+});
+
+
+</script>

@@ -1,0 +1,79 @@
+<?php
+    $this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({
+   	url:base_url+"/reports/routestrikerateandproductivity/routestrikerateandproductivitydata/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Route Code');?>','<?php echo $this->translate->_('Route Name');?>','<?php echo $this->translate->_('Salesman');?>','<?php echo $this->translate->_('Planned Calls');?>','<?php echo $this->translate->_('Actual calls');?>','<?php echo $this->translate->_('Total Cash Sale');?>','<?php echo $this->translate->_('Total Credit Sale');?>','<?php echo $this->translate->_('Total Receipts');?>','<?php echo $this->translate->_('Productive Calls');?>','<?php echo $this->translate->_('StrikeRate %');?>','<?php echo $this->translate->_('Productivity %');?>'],
+   	colModel:[
+		{name:'routecode',index:'routecode', width:50},
+        {name:'routename',index:'routename', width:70, align:"right"},
+        {name:'salesmanname',index:'salesmanname', width:170, align:"right"},
+        {name:'plannedcalls',index:'plannedcalls', width:100, align:"right"},
+        {name:'actualcalls',index:'actualcalls', width:70, align:"right"},
+        {name:'cashsale',index:'cashsale', width:150, align:"right"},
+		{name:'creditsale',index:'creditsale', width:70, align:"right"},
+        {name:'totalreceipt',index:'totalreceipt', width:170, align:"right"},
+		{name:'productivecalls',index:'productivecalls', width:70, align:"right"},
+		{name:'strikerate',index:'strikerate', width:70, align:"right"},
+		{name:'productiverate',index:'productiverate', width:70, align:"right"}
+		
+	],
+	<?php if($this->css == 'ar_') { ?>
+        direction :"rtl", 
+    <?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+    pager: '#pagersr',
+   	sortname: 'routecode',
+	viewrecords:true,
+	sortorder: "desc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:false,
+	groupingView :
+    {
+        groupField : ['route'],
+        groupColumnShow : [false],
+        groupCollapse : false,
+        groupOrder: ['asc'] ,
+        groupSummary : [false],
+        groupDataSorted : true,
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+
+);
+
+
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+</script>

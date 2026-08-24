@@ -1,0 +1,81 @@
+<?php
+    $this->translate = Zend_Registry::get('Zend_Translate');
+?>
+<table id="search" ></table>
+<div id="pagersr"></div>
+
+<script  type="text/javascript">
+var decimalplaces = <?php echo $this->decimalplaces; ?>;
+jQuery("#search").jqGrid({
+   	url:base_url+"/reports/otpgeneration/otpgenerationdata/",
+	datatype: "json",
+   	colNames:['<?php echo $this->translate->_('Division');?>','<?php echo $this->translate->_('Route Code');?>','<?php echo $this->translate->_('Salesman Name');?>','<?php echo $this->translate->_('Customer Category');?>','<?php echo $this->translate->_('Customer Code');?>','<?php echo $this->translate->_('Customer Name');?>','<?php echo $this->translate->_('Override Reason for');?>','<?php echo $this->translate->_('Password Provided by');?>','<?php echo $this->translate->_('Date');?>','<?php echo $this->translate->_('Time');?>','<?php echo $this->translate->_('Latitude');?>','<?php echo $this->translate->_('Longitude');?>','<?php echo $this->translate->_('Comments');?>'],
+   	colModel:[
+	   	{name:'division',index:'division', width:100, align:"right"},
+        {name:'route',index:'route', width:170, align:"right"},
+        {name:'salesman',index:'salesman', width:100, align:"right"},
+		{name:'customercategory',index:'customercategory', width:170, align:"right"},
+		{name:'customer',index:'customer', width:170, align:"right"},
+		{name:'customername',index:'customername', width:170, align:"right"},
+		{name:'otptype',index:'otptype', width:170, align:"right"},
+		{name:'username',index:'username', width:170, align:"right"},
+		{name:'otpdate',index:'otpdate', width:100},
+        {name:'otptime',index:'otptime', width:70, align:"right"},
+		{name:'fixedlatitude',index:'fixedlatitude', width:70, align:"right"},
+		{name:'fixedlongitude',index:'fixedlongitude', width:70, align:"right"},
+		{name:'comments',index:'comments', width:70, align:"right"}
+		
+	],
+	<?php if($this->css == 'ar_') { ?>
+        direction :"rtl", 
+    <?php } ?>
+    height: 'auto',
+    width: 'auto',
+   	rowNum:eval(RP_NOOFRECORDSHOW),
+   	rowList:eval(RP_ROWLISTSHOW),
+    pager: '#pagersr',
+   	sortname: 'cm.customercode',
+	viewrecords:true,
+	sortorder: "desc",
+   	footerrow : true,
+	userDataOnFooter : true,
+	altRows : false,
+	grouping:false,
+	groupingView :
+    {
+        groupField : ['route'],
+        groupColumnShow : [false],
+        groupCollapse : false,
+        groupOrder: ['asc'] ,
+        groupSummary : [false],
+        groupDataSorted : true,
+    }
+});
+
+jQuery("#search").jqGrid('navGrid','#pagersr',
+{
+	edit:false,add:false,del:false,search:false,refresh:false
+},
+{}, // edit options
+{}, // add options
+{}, //del options
+{multipleSearch:false,showQuery: false} // search options,
+
+);
+
+
+jQuery("#xlsexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+jQuery("#csvexport").click( function() {
+    var sortname = $("#search").jqGrid('getGridParam',"sortname");
+    var sortorder = $("#search").jqGrid('getGridParam',"sortorder");
+    var exporturl = $(this).attr('href')+"?sidx="+sortname+"&sord="+sortorder;
+    document.location.href = exporturl;
+    return false;
+});
+</script>

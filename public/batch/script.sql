@@ -1,0 +1,1 @@
+call sp_import_customer();
