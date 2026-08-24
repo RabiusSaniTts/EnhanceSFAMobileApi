@@ -1,0 +1,558 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 24/02/2011
+ '  Description  : This page is used for order comment.
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Order Comment</title>
+		<meta name="viewport"
+			content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+		<link rel="stylesheet" href="../bs/css/bootstrap.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../icons/font/bootstrap-icons.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script type="text/javascript" src="../js/WizzitIndent.js"></script>
+
+		<script>
+	if (navigator.userAgent.toLowerCase().match(/android/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+		document
+				.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+	} else if (navigator.userAgent.toLowerCase().match(/iphone/)
+			|| navigator.userAgent.toLowerCase().match(/ipad/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+	}
+</script>
+
+		<script type="text/javascript" src="../js/jquery.json-2.3.min.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+	</head>
+
+	<body>
+		<div data-role="page" data-theme="d">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<a href="salesinvoice_option.html" id="Back_inner" rel="external"
+					lang="en">Back</a>
+				<h1 lang="en">Invoice Comment</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="border border-info rounded"
+					style="min-height: 87%; max-height: 87%; overflow-x: hidden; overflow-y: auto; !important">
+					<div class="boxContent Spacing">
+						<div class="tblBox">
+							<table border="0" cellpadding="5" cellspacing="5" width="100%"
+								id="tblContent">
+								<tr>
+									<td style="width: 100%" class="captionLabel" lang="en">
+										Comments / Remarks</td>
+								</tr>
+								<tr>
+									<td style="width: 100%"><textarea id="txtComment"
+											class="textFont textareaheight" name="txtComment">
+                             </textarea></td>
+								</tr>
+								<tr>
+									<td>&nbsp;</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="bottomMenuNew border border-info rounded"
+					style="min-height: 13%; max-height: 13%;width: 100% !important;">
+					<div class="row">
+
+						<div class="col-12" style="text-align: center;margin-top: 0px;">
+							<a href="#" rel="external" id="ContLnk"
+								style="text-decoration: none; font-weight: normal; text-align: center">
+								<i class='bi bi-check-square-fill' id="ContIcon"
+									style='font-size: 72px; color: green; text-align: center;'></i>
+								<br>Continue
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter"></div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+								lang="en">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" language="javascript">
+		var platform = '';
+		var promotionKey = 0, enablePromotion = 0, promotionKeyplan = 0;
+		window.lang = new jquery_lang_js();
+		resizeOrientationWindow();
+		$(document)
+				.ready(
+						function() {
+							resizeWindow();
+							$('#txtComment').focus();
+							$(".leftfooter").html(getCurrentDate());
+
+							document.addEventListener("deviceready", updateInv,
+									false);
+
+							var lan = sessionStorage.getItem("Language");
+							window.lang.run(lan);
+
+							if (sessionStorage.getItem("Language") != "en") {
+
+								window.lang.change('InvoceComment' + lan, lan);
+								window.lang.change('Footer' + lan, lan);
+								if (lan == "AR") {
+									$(".centerboxInvReq").attr("dir", "rtl");
+									$('#Back_inner')
+											.removeClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#Back_inner')
+											.addClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.removeClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.addClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								}
+
+							} else {
+								window.lang.change('en', 'en');
+								$(".centerboxInvReq").attr("dir", "ltr");
+								$('#Back_inner')
+										.removeClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#Back_inner')
+										.addClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.removeClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.addClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+							}
+
+						});
+
+		function updateInv() {
+			$("#ContLnk").hide();
+			$.mobile.showPageLoadingMsg();
+			$('.ui-loader h1').text("Updating Invoice");
+			var visitkey = sessionStorage.getItem("VisitKey");
+			//plugins.WizzitIndent.pay(visitkey, visitkey);
+			plugins.WizzitIndent.viewpromo(visitkey, visitkey);
+
+			//
+			//alert('Updated');
+
+			setTimeout(function() {
+				getComment();
+			}, 4000);
+		}
+
+		function getComment() {
+			$("#ContLnk").show();
+			document.getElementById("ContLnk").addEventListener('click',
+					UpdateComment);
+
+			platform = sessionStorage.getItem("platform");
+			getPromotionSetting();
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+									if (result.length > 0) {
+										$("#txtComment").val(unescape(result));
+									} else {
+										$("#txtComment").val('');
+									}
+								},
+								function(error) {
+									navigator.notification
+											.alert("Error updating record in salesman");
+								},
+								"PluginClass",
+								"GetdataMethod",
+								[ "select comments from invoiceheader where routekey = "
+										+ sessionStorage.getItem("RouteKey")
+										+ " and visitkey = "
+										+ sessionStorage.getItem("VisitKey")
+										+ " and customercode = "
+										+ sessionStorage.getItem("customerid")
+										+ "" ]);
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper.select(
+						"select IFNULL(comments,'') comments from invoiceheader where routekey = "
+								+ sessionStorage.getItem("RouteKey")
+								+ " and visitkey = "
+								+ sessionStorage.getItem("VisitKey")
+								+ " and customercode = "
+								+ sessionStorage.getItem("customerid") + "",
+						function(result) {
+							if (result.array != undefined) {
+								var result = $.map(result.array, function(item,
+										index) {
+									return [ [ item.comments ] ];
+								});
+								if (result.length > 0) {
+									$("#txtComment").val(unescape(result));
+								} else
+									$("#txtComment").val('');
+							} else {
+								$("#txtComment").val('');
+							}
+						}, function() {
+							console.warn("Error calling plugin");
+						});
+			}
+			$.mobile.hidePageLoadingMsg();
+		}
+
+		function getPromotionplan() {
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+
+									promotionKeyplan = result[0][0];
+
+								},
+								function(error) {
+									navigator.notification
+											.alert("Error updating record in salesman");
+								},
+								"PluginClass",
+								"GetdataMethod",
+								[ "select count(*) as cnt from promokeydetail where promotionkey = "
+										+ promotionKey + "" ]);
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper.select(
+						"select count(*) as cnt from promokeydetail where promotionkey = "
+								+ promotionKey + "", function(result) {
+							var result = $.map(result.array, function(item,
+									index) {
+								return [ [ item.cnt ] ];
+							});
+
+							promotionKeyplan = result[0][0];
+
+							console.log("promotionKeyplan---"
+									+ promotionKeyplan);
+
+						}, function() {
+							console.warn("Error calling plugin");
+						});
+			}
+		}
+		function getPromotionSetting() {
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+									if (result.length > 0) {
+										promotionKey = result[0][0];
+										enablePromotion = result[0][1];
+										getPromotionplan();
+									} else {
+										promotionKey = 0;
+										enablePromotion = 0;
+
+									}
+								},
+								function(error) {
+									navigator.notification
+											.alert("Error updating record in salesman");
+								},
+								"PluginClass",
+								"GetdataMethod",
+								[ "select promotionkey,enableaddlpromoinvs from customermaster where customercode = "
+										+ sessionStorage.getItem("customerid")
+										+ "" ]);
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper
+						.select(
+								"select promotionkey,enableaddlpromoinvs from customermaster where customercode = "
+										+ sessionStorage.getItem("customerid")
+										+ "", function(result) {
+									var result = $.map(result.array, function(
+											item, index) {
+										return [ [ item.promotionkey,
+												item.enableaddlpromoinvs ] ];
+									});
+
+									if (result.length > 0) {
+										promotionKey = result[0][0];
+										enablePromotion = result[0][1];
+										getPromotionplan();
+									} else {
+										promotionKey = 0;
+										enablePromotion = 0;
+									}
+									console.log("enablePromotion---"
+											+ enablePromotion);
+									console.log("promotionKey---"
+											+ promotionKey);
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+		}
+
+		function UpdateComment() {
+
+			localStorage.custpro = 'sales';
+			var comment = $("#txtComment").val();
+			var SignEnabled = window.localStorage.getItem("SignEnabled");
+			var base = window.location.toString().substring(0,
+					window.location.toString().lastIndexOf("/"))
+					+ "/";
+			if ($.trim(comment) == "") {
+				//navigator.notification.alert("Please enter comments to proceed");
+				//return false;
+			}
+			// else {
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+									if (sessionStorage
+											.getItem("onlyemptycontainers") != 1) {
+										//navigator.notification.alert("Update record successfully");
+										if ((promotionKey == 0 && enablePromotion == 0)
+												|| (promotionKey == 0 && enablePromotion == 2)) {
+											if (sessionStorage
+													.getItem("SignEnabled") != 1)
+												window.location = base
+														+ "../customer/signature.html";
+											//	window.location = base + '../customer/customer_promotion_list.html';
+											else {
+												if (eval(sessionStorage
+														.getItem("invoicepaymentterms")) != 2)
+													window.location = '../customer_opt/cashcollection_mop.html';
+												else {
+													var allowgctocash = sessionStorage
+															.getItem("allowgctocash");
+													if (allowgctocash == 1) {
+														var msg = "Do You Want To Make Payment ?";
+														navigator.notification
+																.confirm(
+																		msg,
+																		function(
+																				action) {
+																			if (action == true)
+																				window.location = '../customer_opt/cashcollection_mop.html';
+																			else
+																				window.location = '../review/printoption.html';
+																		})
+													} else
+														window.location = '../review/printoption.html';
+												}
+											}
+											localStorage.sign = 'promo';
+										} else if (sessionStorage.onlyrentorfree == "") {
+											sessionStorage.setItem('arrayplan',
+													null);
+											window.location = base
+													+ '../customer/customer_promotion_list.html';
+										} else {
+											if (SignEnabled != 1)
+												window.location = base
+														+ "../customer/signature.html";
+											else
+												window.location = '../review/printoption.html';
+										}
+									} else {
+										if (SignEnabled != 1)
+											window.location = base
+													+ "../customer/signature.html";
+										else
+											window.location = '../review/printoption.html';
+									}
+								},
+								function(error) {
+									navigator.notification
+											.alert("Error updating record in invoice header");
+								}, "PluginClass", "InsertUpdateMethod",
+								[ "Update invoiceheader set comments = trim('"
+										+ escape($("#txtComment").val())
+										+ "'),issync=0 where routekey = "
+										+ sessionStorage.getItem("RouteKey")
+										+ " and visitkey = "
+										+ sessionStorage.getItem("VisitKey")
+										+ " and customercode = "
+										+ sessionStorage.getItem("customerid")
+										+ "" ]);
+
+			} else if (platform == 'Android') {
+
+				//alert(escape($.trim($("#txtComment").val())));
+				//alert("Update invoiceheader set comments = trim('" + $("#txtComment").val() + "'),issync=0 where routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey") + " and customercode = " + sessionStorage.getItem("customerid") + "");
+				window.plugins.DataBaseHelper
+						.insert(
+								"Update invoiceheader set comments = trim('"
+										+ $("#txtComment").val()
+										+ "'),issync=0 where routekey = "
+										+ sessionStorage.getItem("RouteKey")
+										+ " and visitkey = "
+										+ sessionStorage.getItem("VisitKey")
+										+ " and customercode = "
+										+ sessionStorage.getItem("customerid")
+										+ "",
+								function(result) {
+									//navigator.notification.alert("Update record successfully");
+									/*if (sessionStorage
+											.getItem("onlyemptycontainers") != 1) {
+										
+										if ((promotionKey == 0 && enablePromotion == 0)
+												|| (promotionKey == 0 && enablePromotion == 2)
+												|| promotionKeyplan == 0) {
+											//alert("3");
+											if (SignEnabled != 1)
+												window.location = base
+														+ "../customer/signature.html";
+											else {
+												var manualfree = window.localStorage
+														.getItem("manualfree");
+												var isreturn = window.localStorage
+														.getItem("isreturn");
+												if (eval(manualfree) > 0
+														&& eval(isreturn) == 1) {
+													window.location = '../customer_opt/Customer_manualfree.html';
+												} else {
+													if (eval(sessionStorage
+															.getItem("invoicepaymentterms")) != 2) {
+														window.location = '../customer_opt/cashcollection_mop.html';
+													} else {
+														var allowgctocash = sessionStorage
+																.getItem("allowgctocash");
+														if (allowgctocash == 1) {
+															var msg = "Do You Want To Make Payment ?";
+															navigator.notification
+																	.confirm(
+																			msg,
+																			function(
+																					action) {
+																				if (action == true)
+																					window.location = '../customer_opt/cashcollection_mop.html';
+																				else
+																					window.location = '../review/printoption.html';
+																			})
+														} else
+															window.location = '../review/printoption.html';
+													}
+												}
+											}
+											localStorage.sign = 'promo';
+										} else if (sessionStorage.onlyrentorfree == "") {
+											sessionStorage.setItem('arrayplan',
+													null);
+											window.location = base
+													+ '../customer/customer_promotion_list.html';
+										} else {
+											if (SignEnabled != 1)
+												window.location = base
+														+ "../customer/signature.html";
+											// window.location = base + '../customer/customer_promotion_list.html';
+											else
+												window.location = '../review/printoption.html';
+										}
+									} else {
+										if (SignEnabled != 1)
+											window.location = base
+													+ "../customer/signature.html";
+										else
+											window.location = '../review/printoption.html';
+									}*/
+									
+									sessionStorage.setItem('arrayplan',
+											null);
+									window.location = base
+											+ '../customer/customer_promotion_list.html';
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+			// }
+		}
+	</script>
+
+	</body>
+
+</html>

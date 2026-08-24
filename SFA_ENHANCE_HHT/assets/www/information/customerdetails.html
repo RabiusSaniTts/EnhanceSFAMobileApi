@@ -1,0 +1,286 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 06/02/2012
+ '  Description  : This page is used for customer detail screen.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Customer Details</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="todaysunserviced.html" id="Back_inner" rel="external">Back</a>-->
+                <a href="#" id="Back_inner" data-rel="back" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Customer Details</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="tbl_body ui-corner-all CustDetailBox"
+                    style="margin-top: 10px;">
+                    <table id="tblContent" cellpadding="13" cellspacing="0"
+                        border="0" width="80%" align="center">
+                        <tbody>
+                            <tr>
+                                <td style="width: 20%" lang="en">
+                                    Customer#
+                                </td>
+                                <td style="width: 40%">
+                                    <div class="readonly_text"
+                                        id="lblcustomercode"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" id="lblcustomername"></td>
+                            </tr>
+                            <tr>
+                                <td lang="en">
+                                    Phone#
+                                </td>
+                                <td>
+                                    <div class="readonly_text rightAlign"
+                                        id="lblcustomerphone"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en">
+                                    Contact Person
+                                </td>
+                                <td>
+                                    <div class="readonly_text"
+                                        id="lblcontactperson"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en">
+                                    Payment Terms
+                                </td>
+                                <td>
+                                    <div class="readonly_text"
+                                        id="lblpaymentterms"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en">
+                                    Balance Due
+                                </td>
+                                <td>
+                                    <div class="readonly_text rightAlign"
+                                        id="lblbalance"></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="#" rel="external" id="simplestring"
+                        style="text-decoration: none" data-role="none"
+                        data-rel="back">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="info"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        window.lang = new jquery_lang_js();
+        var custid,platform,decimalplace;
+		 resizeOrientationWindow();
+        $(document).ready(function() {
+		 	resizeWindow();
+            $(".leftfooter").html(getCurrentDate());
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            
+            custid = window.location.toString().substr(window.location.toString().indexOf("=") + 1);
+            
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {                
+                platform = sessionStorage.getItem("platform");
+                decimalplace = sessionStorage.getItem("decimalplace");
+                getRecords();               
+            }
+            
+            function getRecords()
+            {                
+                /*var QrySchedule = "SELECT DISTINCT cm.customercode,cm.customername FROM customeroperationscontrol coc JOIN customermaster cm ON cm.customercode =  coc.customercode AND cm.routecode = coc.routecode";*/
+                var Qry = "SELECT customercode,customername,customerphone,contactname,CASE invoicepaymentterms WHEN 1 THEN 'CASH ONLY' WHEN 2 THEN 'CASH OR CHEQUE' WHEN 3 THEN 'CHARGE ONLY' WHEN 4 THEN 'TC (CASH Or CHEQUE)' WHEN 5 THEN 'TC (CASH ONLY)' END AS invoicepaymentterms,balance FROM customermaster WHERE customercode = " + custid;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                            BindData(result);
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                        	var result = $.map(result.array, function(item, index) {                           
+                                return [[item.customercode,item.customername]];
+                        	});
+                            BindData(result);
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function BindData(data)
+            {
+                var customercode = data[0][0];
+                var customername = data[0][1];
+                var customerphone = data[0][2];
+                var contactperson = data[0][3];
+                var paymentterms = data[0][4];
+                var balance = eval(data[0][5]).toFixed(decimalplace);
+                
+                $("#lblcustomercode").text(customercode);
+                $("#lblcustomername").text(customername);
+                $("#lblcustomerphone").text(customerphone);
+                $("#lblcontactperson").text(contactperson);
+                $("#lblpaymentterms").text(paymentterms);
+                $("#lblbalance").text(balance);
+            }
+
+            if ($("#lang_inner").text() == "EN") {
+
+                window.lang.change('CustomerDetails' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                window.lang.change('en', 'en');
+
+                $(".centerboxInvReq").attr("dir", "ltr");
+
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+        });
+    </script>
+
+    </body>
+</html>

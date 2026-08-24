@@ -1,0 +1,1196 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 26/1/2011
+ '  Description  : This page is used for detail of commission
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a href="#" id="Back_inner" class="enableText" data-rel="back"
+                    rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Post Void</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <table border="0" width="100%" cellpadding="10"
+                        cellspacing="0" id="tbl1" data-role="none">
+                        <thead>
+                            <tr>
+                                <td colspan="2" class="tblHeader"
+                                    style="padding: 10px;" lang="en">
+                                    Post Void
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody class="tbl_body">
+                            <tr>
+                                <td lang="en" class="captionLabel" width="30%">
+                                    Customer #
+                                </td>
+                                <td width="70%">
+                                    <div class="readonly_text" id="lblCustNo">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en" class="captionLabel">
+                                    Customer Name
+                                </td>
+                                <td>
+                                    <div class="readonly_text" id="lblCustName">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en" class="captionLabel">
+                                    Invoice #
+                                </td>
+                                <td>
+                                    <div class="readonly_text" id="lblDocNo">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en" class="captionLabel">
+                                    Amount
+                                </td>
+                                <td>
+                                    <div class="readonly_text" id="lblAmount"
+                                        style="text-align:right">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en" class="captionLabel">
+                                    Reason
+                                </td>
+                                <td>
+                                    <div style="width:90%">
+                                        <select id="ddlReason"
+                                            style="display:inline">
+                                        </select>
+                                    </diiv>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" onclick="PostVoid()" rel="external"
+                        style="text-decoration: none"
+                        data-role="none">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/delete.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Post Void</div>
+                        </a>
+                    </div>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" class="enableText" data-rel="back"
+                        rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform;
+        var data;
+        var TransType;
+        var InvoiceNumber;
+        var SalesWithCollection = false;
+        var decimalplace = sessionStorage.getItem("decimalplace");
+        resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();   
+            platform = sessionStorage.getItem("platform");
+            document.addEventListener("deviceready", getDetail, false);
+            
+            // Retrive Detail By Selected Invoice Number
+            function getDetail()
+            {
+                TransType = localStorage.PVTrans.toLowerCase();
+                InvoiceNumber = localStorage.PVInvoice;
+                var Qry;
+                if(TransType == "sales")
+                    Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,(SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,inv.invoicenumber,inv.totalinvoiceamount as amount,inv.routekey,inv.visitkey,cm.customercode custcode FROM invoiceheader inv JOIN customermaster cm ON cm.customercode = inv.customercode WHERE inv.invoicenumber = " + localStorage.PVInvoice;
+                else if(TransType == "order")
+                    Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,(SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,ord.invoicenumber,(ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)) as amount,ord.routekey,ord.visitkey,cm.customercode custcode FROM salesorderheader ord JOIN customermaster cm ON cm.customercode = ord.customercode WHERE ord.invoicenumber = " + localStorage.PVInvoice;
+                else if(TransType == "collection")
+                    Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,(SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,arh.invoicenumber,arh.amountpaid as amount,arh.routekey,arh.visitkey,arh.transactionkey,cm.customercode custcode FROM arheader arh JOIN customermaster cm ON cm.customercode = arh.customercode WHERE arh.invoicenumber = " + localStorage.PVInvoice;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            data = result;
+                            $("#lblCustName").text(data[0][0]);
+                            $("#lblCustNo").text(data[0][1]);
+                            $("#lblDocNo").text(parseInt(data[0][2]));
+                            $("#lblAmount").text(eval(data[0][3]).toFixed(decimalplace));   
+                            FillReason();                      
+                        }                        
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform =="Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                        	if(TransType == "collection")
+                        	{
+                        		result = $.map(result.array, function (item, index) {                
+                        			return [[item.customername,item.customercode,item.invoicenumber,item.amount,item.routekey,item.visitkey,item.transactionkey,item.custcode]];
+                    			});
+                        	}
+                        	else
+                        	{
+                        		result = $.map(result.array, function (item, index) {                
+	                        		return [[item.customername,item.customercode,item.invoicenumber,item.amount,item.routekey,item.visitkey,item.custcode]];
+    	                		});
+    	                	}
+                            data = result;
+                            $("#lblCustName").text(data[0][0]);
+                            $("#lblCustNo").text(data[0][1]);
+                            $("#lblDocNo").text(parseInt(data[0][2]));
+                            $("#lblAmount").text(eval(data[0][3]).toFixed(decimalplace)); 
+                            FillReason();
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+                    
+            }
+            
+            function FillReason()
+            {       
+                $("#ddlReason").empty();
+                var Qry;                
+                    Qry = "select code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN description Else arbdescription END AS description from voidreasons order by code";
+                /*else if(ActiveIndex == 1)
+                    Qry = "select reason_code as code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN reason_desc Else reason_arb_desc END AS description from freegoodreasons order by reason_code";*/
+                if(platform=="iPad")
+                {
+                    Cordova.exec(function(result) { 
+                          if(result.length > 0)
+                             $("<option />" ,{value:"0",text:getLangTextdata("-- SELECT --")}).appendTo($("#ddlReason"));
+                          for(i=0;i<result.length;i++){                    
+                          $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlReason"));                                           
+                          }
+                          $("#ddlReason").selectmenu("refresh");                          
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in binding Reason : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [Qry]);         
+            
+                }
+                else if(platform=="Android")
+                {
+	           		window.plugins.DataBaseHelper.select(Qry,function(result)
+					{	
+						if(result.array != undefined)
+						{				 	
+		                    result = $.map(result.array, function (item, index) {                
+                				return [[item.code, item.description]];
+            				});
+                        if(result.length > 0)
+                            $("<option />" ,{value:"0",text:getLangTextdata("-- SELECT --")}).appendTo($("#ddlReason"));
+		                  for(i=0;i<result.length;i++){                    
+                          $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlReason"));                                           
+                          }
+                          $("#ddlReason").selectmenu("refresh");    
+                        }                              
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+                } 
+            }
+            
+            
+            $(".leftfooter").html(getCurrentDate());            
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            if (sessionStorage.getItem("Language")  != "en") {               
+                window.lang.change('Postvoiddetail'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                    $(".contentWrapper").attr("dir", "rtl");                   
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }		
+            }
+            else
+            {
+                window.lang.change('en','en');
+                $(".contentWrapper").attr("dir", "ltr");               
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+        });
+        
+        function PostVoid()
+            {
+                if($("#ddlReason").get(0).selectedIndex == 0)
+                {
+                    getLangText("Please Select Reason");
+                    return false;
+                }
+                var msg = "Are You Sure To Void This Transaction?";
+                navigator.notification.confirm(msg,function(action){
+                    if(action == 1)
+                    {
+                            if(TransType == "sales")
+                            {
+                                //GetSalesInfo();
+                                CheckSalesWithCollection();
+                            }
+                            else if(TransType == "order")
+                            {
+                                UpdateOrderHeader();
+                            }
+                            else if(TransType == "collection")
+                            {
+                                GetCollectionOrAdvance();
+                            }
+                    }
+                });                
+            }
+            
+            // Start Post Void Sales
+            function CheckSalesWithCollection()
+            {
+                var Qry = "SELECT COUNT(*) as cnt FROM invoiceheader inv JOIN ardetail ard ON ard.invoicenumber = inv.invoicenumber AND inv.invoicenumber=" + InvoiceNumber;
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                       if(eval(result[0][0]) > 0)
+                       {
+                            var msg = "Collection Made For This Invoice. Both Transactions Will Be Voided.";
+                            navigator.notification.confirm(msg,
+                                function(button){ 
+                                    if(button == 1) 
+                                    {
+                                        SalesWithCollection = true;
+                                        CheckNullTransaction(); 
+                                    }
+                                })
+                       }
+                       else
+                       {                            
+                            CheckNullTransaction();
+                       }
+                    },
+                    function(error) {
+                        navigator.notification.alert("Error");
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                       if(eval(result.array[0].cnt) > 0)
+                       {
+                            var msg = "Collection Made For This Invoice. Both Transactions Will Be Voided.";
+                            navigator.notification.confirm(msg,
+                                function(button){ 
+                                    if(button == 1) 
+                                    {
+                                        SalesWithCollection = true;
+                                        CheckNullTransaction(); 
+                                    }
+                                })
+                       }
+                       else
+                            CheckNullTransaction();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function CheckNullTransaction()
+            {
+                var Qry = "select (ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)) as amount from invoiceheader where routekey="+ data[0][4] +" and visitkey="+ data[0][5];
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        /*if(result[0][0] == 0)
+                        {
+                            navigator.notification.alert("Can't Void Null Transaction");
+                            return false;
+                        }
+                        else*/
+                            CheckAvailQtyForReturn();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        /*if(result.array[0].amount == 0)
+                        {
+                            navigator.notification.alert("Can't Void Null Transaction");
+                            return false;
+                        }
+                        else*/
+                            CheckAvailQtyForReturn();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function CheckAvailQtyForReturn()
+            {
+                var Qry = "SELECT bcd.quantity as returnqty,bm.quantity as availqty FROM batchexpirydetail bcd JOIN batchmaster bm ON bm.batchnumber = bcd.batchnumber AND bm.itemcode = bcd.itemcode WHERE bcd.transactiontypecode = 18 AND bcd.visitkey = " + data[0][5] + " AND bcd.routekey=" + data[0][4] + " AND bcd.istemp = 'false' "
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                if(eval(result[i][0]) > eval(result[i][1])) // If returnqty exceeds available qty.
+                                {
+                                    getLangText("Stock Not Available.");
+                                    return false;
+                                }
+                            }
+                        }
+                        GetSalesInfo();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            for(i=0;i<result.array.length;i++)
+                            {
+                                if(eval(result.array[i].returnqty) > eval(result.array[i].availqty)) // If returnqty exceeds available qty.
+                                {
+                                    getLangText("Stock Not Available.");
+                                    return false;
+                                }
+                            }
+                        }                        
+                        GetSalesInfo();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function GetSalesInfo()
+            {
+                var Qry = "SELECT inv.itemcode,ifnull(salesqty,0) as SalesQty,ifnull(inv.returnqty,0) as RetQty,ifnull(inv.manualfreeqty,0) as FreeQty,ifnull(inv.freesampleqty,0) as freesampleqty,ifnull(inv.returnfreeqty,0) as returnfreeqty,ifnull(inv.damagedqty,0) as damagedqty, (ifnull(invsum.loadqty,0)+ifnull(invsum.beginstockqty,0) + ifnull(invsum.loadaddqty,0) - ifnull(invsum.saleqty,0) + ifnull(invsum.returnqty,0) + ifnull(invsum.returnfreeqty,0) - ifnull(invsum.freesampleqty,0)) As AvialableQty FROM invoicedetail inv left join inventorysummarydetail invsum on invsum.itemcode = inv.itemcode and invsum.routekey = inv.routekey where inv.routekey=" + data[0][4] + " and visitkey = " + data[0][5] + " and inv.istemp='false'";                            
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            var Quantity = {};
+                            console.log("in loop");
+                            for(i=0;i<result.length;i++)
+                            {
+                                /*if(eval(result[i][2]) > eval(result[i][7])) // If returnqty exceeds available qty.
+                                {
+                                    navigator.notification.alert("Stock Not Available.");
+                                    return false;
+                                }*/
+                                Quantity.ItemCode = result[i][0];
+                                Quantity.SalesQty = result[i][1];
+                                Quantity.RetQty = result[i][2];
+                                Quantity.FreeQty = result[i][3];
+                                Quantity.freesampleqty = result[i][4];
+                                Quantity.returnfreeqty = result[i][5];
+                                Quantity.damagedqty = result[i][6];                                
+                                UpdateInventorySalesQty(Quantity);
+                                if(i == (result.length - 1))
+                                   UpdateCustomerBalanceSales();                                
+                            }
+                        }                        
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var array = $.map(result.array, function(item, index) {
+                                return [[item.itemcode, item.SalesQty, item.RetQty, item.FreeQty,item.freesampleqty,item.returnfreeqty,item.damagedqty,item.AvialableQty]];
+                            });
+                            result = array;
+                            var Quantity = {};
+                            for(i=0;i<result.length;i++)
+                            {
+                                Quantity.ItemCode = result[i][0];
+                                Quantity.SalesQty = result[i][1];
+                                Quantity.RetQty = result[i][2];
+                                Quantity.FreeQty = result[i][3];
+                                Quantity.freesampleqty = result[i][4];
+                                Quantity.returnfreeqty = result[i][5];
+                                Quantity.damagedqty = result[i][6];                                
+                                UpdateInventorySalesQty(Quantity);
+                                if(i == (result.length - 1))
+                                   UpdateCustomerBalanceSales();
+                            }
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }          
+            
+            
+            function UpdateInventorySalesQty(obj)
+            {
+                
+                var Qry = "UPDATE inventorysummarydetail set issync=0,saleqty = (ifnull(saleqty,0) - " + obj.SalesQty + "),returnqty=(ifnull(returnqty,0) - " + obj.RetQty+"),freesampleqty=(ifnull(freesampleqty,0) - " + obj.FreeQty + "-" + obj.freesampleqty + "),returnfreeqty=(ifnull(returnfreeqty,0) - " + obj.returnfreeqty + "),damageqty=(ifnull(damageqty,0) - " + obj.damagedqty + "),issync=0 where routekey = " + data[0][4] + " and itemcode = " + obj.ItemCode;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                       
+                    },
+                    function(error) {
+                        navigator.notification.alert("Error");
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                      
+					  UpdateInventoryTranscationDamgQty(obj);
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+			function UpdateInventoryTranscationDamgQty(obj)
+            {
+                
+                var Qry = "UPDATE inventorytransactiondetail set quantity=(ifnull(quantity,0) - " + obj.damagedqty + "),issync=0 where routekey = " + data[0][4] + " and transactiontypecode=07 and itemcode = " + obj.ItemCode;
+                console.log(Qry);
+				//alert(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                       
+                    },
+                    function(error) {
+                        navigator.notification.alert("Error");
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                        
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateCustomerBalanceSales()
+            {   
+                var Qry = "Update customermaster set issync=0, balance = ifnull(balance,0) - (select sum(invoicebalance) from invoiceheader where customercode=" + data[0][6] + " and routecode=" + sessionStorage.getItem("RouteCode")+ " and routekey=" + data[0][4] + " and visitkey=" + data[0][5] +") WHERE customercode=" + data[0][6];            
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {    
+                        UpdateCustomerInvoiceSales();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        UpdateCustomerInvoiceSales();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateCustomerInvoiceSales()
+            {
+                if(SalesWithCollection)
+                    var Qry = "UPDATE customerinvoice set issync=0,invoicebalance=(invoicebalance + amountpaid),amountpaid=0 WHERE invoicenumber=" + InvoiceNumber;
+                else
+                    var Qry = "UPDATE customerinvoice set issync=0,voidflag = 1 WHERE invoicenumber=" + InvoiceNumber;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        GetBatchExpiryDetail();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        GetBatchExpiryDetail();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function GetBatchExpiryDetail()
+            {
+                var Qry = "SELECT quantity,transactiontypecode,batchnumber,itemcode FROM batchexpirydetail WHERE routekey=" + data[0][4] + " AND visitkey=" + data[0][5] + " AND istemp='false'";
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        //alert(result.length);
+                        if(result.length > 0)
+                        {
+                            for(var i=0;i<result.length;i++)
+                            {
+                                var obj = {};
+                                obj.quantity = result[i][0];
+                                obj.transactiontypecode = result[i][1];
+                                obj.batchnumber = result[i][2];
+                                obj.itemcode = result[i][3];
+                                UpdateBatchMaster(obj);
+                                if(i == (result.length - 1))
+                                    UpdateBatchExpiryDetail();
+                            }
+                        }
+                        else
+                        	UpdateInvoiceHeader();
+                    },
+                    function(error)
+                    {
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result)
+                    {
+                    	if(result.array != undefined)
+                    	{
+                        	var array = $.map(result.array, function(item, index) {
+                                return [[item.quantity, item.transactiontypecode, item.batchnumber, item.itemcode]];
+                            });
+                            result = array;
+                        	if(result.length > 0)
+                        	{
+	                            for(var i=0;i<result.length;i++)
+                            	{
+	                                var obj = {};
+                                	obj.quantity = result[i][0];
+                                	obj.transactiontypecode = result[i][1];
+                                	obj.batchnumber = result[i][2];
+                                	obj.itemcode = result[i][3];
+                                	UpdateBatchMaster(obj);
+                                	if(i == (result.length - 1))
+	                                    UpdateBatchExpiryDetail();
+    	                        }
+                        	}
+                        }
+                        else
+                        	UpdateInvoiceHeader();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateBatchMaster(obj)
+            {
+                var Qry = "";                
+                switch(obj.transactiontypecode)
+                {
+                    case "15" || "16" || "17" || "22":
+                        Qry = "UPDATE batchmaster SET issync=0,quantity = (quantity + " + obj.quantity + ") WHERE batchnumber = '" + obj.batchnumber + "' AND itemcode = " + obj.itemcode;
+                        break;
+                    case "18" || "19":
+                        Qry = "UPDATE batchmaster SET issync=0,quantity = (quantity - " + obj.quantity + ") WHERE batchnumber = '" + obj.batchnumber + "' AND itemcode = " + obj.itemcode;
+                        break;
+                    case "20" || "21":
+                        Qry = "UPDATE batchmaster SET issync=0,damagequantity = (damagequantity - " + obj.quantity + ") WHERE batchnumber = '" + obj.batchnumber + "' AND itemcode = " + obj.itemcode;
+                        break;
+                }                            
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result){                        
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateBatchExpiryDetail()
+            {
+                var Qry = "UPDATE batchexpirydetail set issync=0,quantity=0 WHERE routekey=" + data[0][4] + " and visitkey=" + data[0][5];
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        UpdateInvoiceHeader();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        UpdateInvoiceHeader();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateInvoiceHeader()
+            {
+                var Qry = "UPDATE invoiceheader set issync=0,voidflag = 1,voidreasoncode=" + $("#ddlReason").val() + ",invoicebalance=(invoicebalance + amountpaid),amountpaid=0 WHERE invoicenumber=" + InvoiceNumber;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(SalesWithCollection)
+                            UpdateARheader();
+                        else
+                            UpdateCashCheckSales();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                
+                //here We have to call
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        if(SalesWithCollection)
+                            UpdateARheader();
+                        else
+                            UpdateCashCheckSales();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateCashCheckSales()
+            {
+                var Qry = "UPDATE cashcheckdetail set issync=1,istemp = 'true' WHERE visitkey=" + data[0][5];
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                        SaveAndExit();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {                        
+                        SaveAndExit();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            // Over Post Void Sales
+            
+            // Start Post void Order            
+            function UpdateOrderHeader()
+            {
+                var Qry  = "UPDATE salesorderheader set issync=0,voidflag = 1,voidreasoncode=" + $("#ddlReason").val() + " WHERE invoicenumber=" + InvoiceNumber;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        SaveAndExit();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        SaveAndExit();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            // Over Post Void Order
+            
+            
+            // Start Post Void Collection
+            function GetCollectionOrAdvance()
+            {
+                var Qry = "SELECT advancepaymentflag FROM arheader WHERE invoicenumber=" + InvoiceNumber;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result[0][0] == 0)                        
+                            GetCustomerInvoice();                        
+                        else if(result[0][0] == 1 || result[0][0] == 2)
+                            UpdateARheader();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array[0].advancepaymentflag == 0)                        
+                            GetCustomerInvoice();                        
+                        else if(result.array[0].advancepaymentflag == 1 || result.array[0].advancepaymentflag == 2)
+                            UpdateARheader();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function GetCustomerInvoice_backup()
+            {                            
+                var Qry = "UPDATE customerinvoice SET issync=0,invoicebalance = (invoicebalance + amountpaid),amountpaid = 0 WHERE invoicenumber = (SELECT invoicenumber FROM ardetail WHERE transactionkey=" + data[0][6] + ")";
+				//alert(Qry);
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        UpdateARheader();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        UpdateARheader();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            //------------- backup function for update customer invoice
+			function GetCustomerInvoice()
+            {                            
+                var Qry = "SELECT invoicenumber,amountpaid,pdcbalance FROM ardetail WHERE transactionkey=" + data[0][6] + "";
+				//alert(Qry);
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        UpdateARheader();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry,function(result)
+						{		
+								var array = $.map(result.array, function (item, index) {               
+                				return [[item.invoicenumber, item.amountpaid,item.pdcbalance]];            					
+            					});
+            					result = array;
+            					
+						    	for(i=0;i<result.length;i++){  
+										var pdcbalance=eval(result[i][2]);
+										var Qry;
+										
+										if(pdcbalance!=0){
+											Qry = "UPDATE customerinvoice SET issync=0,pdcbalance=(pdcbalance - "+ result[i][2] +") WHERE invoicenumber = " + result[i][0] + "";							 
+										
+										}else{
+											Qry = "UPDATE customerinvoice SET issync=0,invoicebalance = (invoicebalance + "+result[i][1] +"),amountpaid = (amountpaid - "+ result[i][1] +"),pdcbalance=(pdcbalance - "+ result[i][2] +") WHERE invoicenumber = " + result[i][0] + "";							 
+										
+										}
+										
+										window.plugins.DataBaseHelper.insert(Qry, function(result)
+											{
+													//UpdateARheader();
+											},
+											function()
+											{
+												console.warn("Error calling plugin");
+											});
+								
+                                        //$("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlCategory"));                                           
+                                        }
+                                        
+                                UpdateARheader();
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+                }
+            }
+			//---------------------
+            function UpdateARheader()
+            {
+                if(SalesWithCollection) // IF SALES POST VOID THEN POST VOID COLLECTION TOO
+                    var Qry = "UPDATE arheader SET issync=0,voidflag=1,voidreasoncode=" + $("#ddlReason").val() + ",invoicebalance=(invoicebalance + amountpaid),amountpaid=0,totalinvoiceamount=0 WHERE transactionkey IN(SELECT transactionkey FROM ardetail WHERE invoicenumber=" + InvoiceNumber + ")";
+                else                
+                    var Qry = "UPDATE arheader SET issync=0,voidflag=1,voidreasoncode=" + $("#ddlReason").val() + ",invoicebalance = (invoicebalance + amountpaid),amountpaid = 0,totalinvoiceamount=0 WHERE invoicenumber = " + InvoiceNumber;
+                console.log(Qry);
+              //  alert(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        UpdateCustomerBalanceCollection();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        UpdateCustomerBalanceCollection();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateCustomerBalanceCollection()
+            {
+                if(SalesWithCollection)
+                    var Qry = "Update customermaster set issync=0,balance = ifnull(balance,0) - (select sum(invoicebalance) from invoiceheader where customercode=" + data[0][6] + " and routecode=" + sessionStorage.getItem("RouteCode")+ " and routekey=" + data[0][4] + " and visitkey=" + data[0][5] +")  WHERE customercode=" + data[0][6];
+                else
+                    var Qry = "UPDATE customermaster SET issync=0,balance = (ifnull(balance,0) + " + data[0][3] + ") WHERE customercode=" + data[0][7];
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        UpdateCashCheckCollection();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        UpdateCashCheckCollection();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateCashCheckCollection()
+            {
+            	
+            	if(SalesWithCollection)
+            	{
+               		 var Qry = "UPDATE cashcheckdetail SET issync=1,istemp = 'true' WHERE visitkey in(SELECT visitkey FROM ardetail WHERE invoicenumber=" + InvoiceNumber + ")";
+               	}
+                else
+                {
+                 	  var Qry = "UPDATE cashcheckdetail SET issync=1,istemp = 'true' WHERE visitkey=" + data[0][5];
+                }
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        SaveAndExit();
+                    },
+                    function(error) 
+                    {
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result)
+                    {
+                        SaveAndExit();
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            // Over Post Void Collection
+
+            
+            function SaveAndExit()
+            {
+                ClearVariables();
+                getLangText("Transaction Voided Successfully.");
+                window.location = "customer_operation.html";
+            }
+            
+            function ClearVariables()
+            {
+                SalesWithCollection = false;
+            }
+        </script>
+
+        </div>
+    </body>
+</html>

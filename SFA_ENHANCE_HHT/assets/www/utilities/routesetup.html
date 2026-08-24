@@ -1,0 +1,483 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 03/02/2012
+ '  Description  : This page is used for route assignment.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Route Assignment</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <link type="text/css" rel="stylesheet" href="../css/jquery.alerts.css">
+
+        <script type="text/javascript" src="../js/jquery.alerts.js"></script>
+
+        <!--<script type="application/javascript" src="../js/iscroll.js"></script>-->
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+        <script type="text/javascript">
+
+        //        var scrollContent;
+        //        function loaded() {
+        //            scrollContent = new iScroll('contentWrapper', { useTransform: false,
+        //                onBeforeScrollStart: function(e) {
+        //                    var target = e.target;
+        //                    while (target.nodeType != 1) target = target.parentNode;
+
+        //                    if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
+        //                        e.preventDefault();
+        //                }
+        //            });
+        //        }
+        //        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+        //        document.addEventListener('DOMContentLoaded', loaded, false);  
+
+</script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="utilities.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Route Assignment</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="tblBox">
+                        <table id="tblContent" border="0" cellpadding="0"
+                            cellspacing="0" width="100%">
+                            <tr class="tblHeader">
+                                <th style="width: 100%;"
+                                    class="captionLabel leftAlign" lang="en">
+                                    Information
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="tbl-Route tbl-Route480">
+                            <table id="tblRoute" border="0" cellpadding="2"
+                                cellspacing="2" width="100%"
+                                class="tablepadding">
+                                <tr>
+                                    <td style="width: 50%;" class="captionLabel"
+                                        lang="en">
+                                        Salesman #
+                                    </td>
+                                    <td style="width: 50%;" class="captionLabel"
+                                        lang="en">
+                                        Route #
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="txtSalesmanNo" type="text"
+                                            class="textWidth textFont"
+                                            value="8861" />
+                                    </td>
+                                    <td>
+                                        <input id="txtRouteNo" type="text"
+                                            class="textWidth textFont"
+                                            value="102002" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="captionLabel" lang="en">
+                                        Salesman Name
+                                    </td>
+                                    <td class="captionLabel" lang="en">
+                                        Vehicle #
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="captionLabel">
+                                        <div style="width: 96%;">
+                                            <select name="select-choice-1"
+                                                id="salemanid"
+                                                style="display: inline;"
+                                                disabled="disabled">
+
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input id="txtVehicleNo" type="text"
+                                            class="textWidth textFont"
+                                            value="10" readonly="readonly" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="captionLabel" lang="en">
+                                        Odometer
+                                    </td>
+                                    <td class="captionLabel" lang="en">
+                                        Tablet Serial #
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <!--<input id="txtOdometer" type="text" pattern="[0-9]*" class="textWidth textFont" value="1" readonly="readonly" />-->
+                                        <input id="txtOdometer" type="number"
+                                            class="textWidth textFont" value="1"
+                                            readonly="readonly" />
+                                    </td>
+                                    <td>
+                                        <input id="txtHHC" type="text"
+                                            class="textWidth textFont" value="0"
+                                            readonly="readonly" />
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="captionLabel" lang="en">
+                                        Invoice Sequence #
+                                    </td>
+                                    <td class="captionLabel" lang="en">
+                                        Recipet Sequence #
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="txtInvoice" type="text"
+                                            class="textWidth textFont"
+                                            value="2102002949"
+                                            readonly="readonly" />
+                                    </td>
+                                    <td>
+                                        <input id="txtRecipet" type="text"
+                                            class="textWidth textFont"
+                                            value="6102002105"
+                                            readonly="readonly" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="captionLabel" lang="en">
+                                        Default Sequence #
+                                    </td>
+                                    <td class="captionLabel" lang="en">
+                                        Order Sequence #
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="txtDefault" type="text"
+                                            class="textWidth textFont"
+                                            value="410200269"
+                                            readonly="readonly" />
+                                    </td>
+                                    <td>
+                                        <input id="txtOrder" type="text"
+                                            class="textWidth textFont"
+                                            value="51020022"
+                                            readonly="readonly" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="captionLabel" lang="en"
+                                        colspan=2>Messages</td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2><div
+                                            class="addressdiv routediv"
+                                            id="messages"></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leftbottomMenu">
+
+                    <a href="utilities.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" class="ui-btn-active" rel="external"
+                                id="setup" data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div id="SubmitMessage" style="display: none;" lang="en">
+            Data Submit Successfully</div>
+        <div id="Information" style="display: none;" lang="en">
+            Information</div>
+        <div id="AlertOK" style="display: none;" lang="en">
+            OK</div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+		resizeOrientationWindow();
+        $(document).ready(function() {
+		resizeWindow();
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+                          $("#txtOdometer").ForceNumericOnly();
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+                          document.addEventListener("deviceready", getrecord, false);
+            //Dropdown text color and disabled opacity setting
+            $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+            $('.ui-disabled').css({ 'opacity': '0.8' });
+            
+            //Set radius border for table
+            $("#tblContent tr:first th").addClass('tableBorderTopLeft tableBorderTopRight');
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                
+                var lan = sessionStorage.getItem("Language");
+                var val = 'RouteAssignment' + lan;
+                window.lang.change(val, lan);
+                window.lang.change('CommonMessage' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                
+                    //Set html right alignment for arbic language    
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    //Set header align                 
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html right alignment for english language
+                $(".centerboxInvReq").attr("dir", "ltr");
+
+                //Set header align               
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+        });
+        function getrecord()
+        {
+            var routecode=sessionStorage.getItem("RouteCode");
+            var platform= sessionStorage.getItem("platform");
+            getsalesman();
+            var qry = "select salesmancode,routecode,vehiclenumber,vehicleodometer,hhcinvseq,bodocseq,hhcivtseq,hhcordseq from routemaster where routecode="+routecode;
+            var selectquery = "select CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message1 ELSE arbmessageline1 END As message1,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message2 ELSE arbmessageline2 END As message2,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message3 ELSE arbmessageline3 END As message3,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message4 ELSE arbmessageline4 END As message4 from salesmanmessages inner join salesman on salesman.messagekey = salesmanmessages.messagekey where salesman.salesmancode="+sessionStorage.getItem("SalesmanCode");
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        
+                                        TableDataOffLine(result);
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        [qry]);
+                var abc = Cordova.exec(function(result) {
+                                        
+                                        console.log(result[0][0]);
+                                        var messages = result[0][0]+'<br/>'+result[0][1]+'<br/>'+result[0][2]+'<br/>'+result[0][3];
+                                        console.log(messages);
+                                        $('#messages').html(messages);
+                                        
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        [selectquery]);
+            }
+            else if(platform=='Android')
+            {
+                
+                window.plugins.DataBaseHelper.select(qry, function(result)
+                                                     {
+                                                                                                         
+                                                     TableDataOffLine(result);
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(selectquery, function(result)
+                                                     {
+                                                     
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            } 
+        }
+        function TableDataOffLine(result)
+        {
+             var platform= sessionStorage.getItem("platform");
+            if(platform=='Android')
+            {
+            var result = $.map(result.array, function (item, index) {               
+                              return [[item.salesmancode, item.routecode,item.vehiclenumber,item.vehicleodometer,item.hhcinvseq,item.bodocseq,item.hhcivtseq,item.hhcordseq]];            					
+                              });
+            }
+            data = result;
+            $('#txtSalesmanNo').val(result[0][0]);
+            $('#txtRouteNo').val(result[0][1]);
+            $('#salemanid').val(result[0][0]);
+            $('#txtVehicleNo').val(result[0][2]);
+            $('#txtOdometer').val(result[0][3]);
+            $('#txtHHC').val(device.uuid);
+            $('#txtInvoice').val(result[0][4]);
+            $('#txtRecipet').val(result[0][5]);
+             $('#txtDefault').val(result[0][6]);
+             $('#txtOrder').val(result[0][7]);
+            
+        }
+        function getsalesman()
+        {
+            var routecode=sessionStorage.getItem("RouteCode");
+            var platform= sessionStorage.getItem("platform");
+            var qry = "select salesmancode,salesmanname1 from salesman";
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        for(i=0;i<result.length;i++){                    
+                                        $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#salemanid"));                                           
+                                        }
+                                        
+                                        
+                                        $("#salemanid").selectmenu("refresh");
+                                        
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        [qry]);
+            }
+            else if(platform=='Android')
+            {
+                
+                window.plugins.DataBaseHelper.select(qry, function(result)
+                                                     {
+                                                     var array = $.map(result.array, function (item, index) {               
+                                                                       return [[item.salesmancode, item.salesmanname1]];            					
+                                                                       });
+                                                     
+                                                     result = array;
+                                                     
+                                                     for(i=0;i<result.length;i++){                    
+                                                     $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#salemanid"));                                           
+                                                     }
+                                                     
+                                                     
+                                                     $("#salemanid").selectmenu("refresh");
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            } 
+        }
+    </script>
+
+    </body>
+</html>

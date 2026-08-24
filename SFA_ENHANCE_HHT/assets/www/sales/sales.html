@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sales</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1400px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 700px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+		<script src="../LangJS/langpack/th.js" charset="utf-8"
+			type="text/javascript"></script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="index.html"   id="Back_inner">test</a>-->
+				<a id="Back_inner" href="../customer/customerselection.html" rel="external"
+					lang="en">Back</a>
+				<h1 lang="en">Sales</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+
+			<div data-role="content" class="centerbox">
+				<!--<div class="topbox">
+	    <div class="content-primary1">
+		<label class="cus_lable" lang="en" id="custname">Customer Name</label>
+	    </div>
+	    <div class="second-primary1">
+		<label class="cus_lable" lang="en">Customer No.</label>
+		<span class="nobox" id="custid">123456</span>
+	    </div>
+	    
+	   </div>-->
+				<div class="content-primary">
+					<ul data-role="listview" id="MenuList">
+						<li><a href="review_visit.html" class="enableText" rel="external">
+								<img src="../images/shelf.png" class="HomeIconPosEN" />
+								<h3 lang="en">On Shelf</h3>
+
+							</a></li>
+					</ul>
+				</div>
+				<div class="second-primary">
+					<ul data-role="listview" id="MenuList">
+						<li><a href="../customer/customer_inventory.html" class="enableText"
+								rel="external">
+								<img src="../images/icon-6.png" class="HomeIconPosEN" />
+								<h3 lang="en">Sales Invoice</h3>
+
+							</a></li>
+
+					</ul></div>
+				<div class="content-primary">
+					<ul data-role="listview" id="MenuList">
+						<li><a href="orderRequest.html" rel="external">
+								<img src="../images/good-ret.png" class="HomeIconPosEN" />
+								<h3 lang="en">Good Returns</h3>
+
+							</a></li>
+
+					</ul></div>
+				<div class="second-primary">
+					<ul data-role="listview" id="MenuList">
+						<li><a href="salesInvoice.html" rel="external">
+								<img src="../images/bed-ret.png" class="HomeIconPosEN" />
+								<h3 lang="en">Bad Returns</h3>
+
+							</a></li>
+
+					</ul>
+				</div>
+				<div class="content-primary">
+					<ul data-role="listview" id="MenuList">
+						<li><a href="autosettle.html" rel="external">
+								<img src="../images/rental.png" class="HomeIconPosEN" />
+								<h3 lang="en">Rental</h3>
+
+							</a></li>
+					</ul></div>
+				<div class="second-primary">
+					<ul data-role="listview" id="MenuList">
+						<li><a href="../customer/customer_info.html" rel="external">
+								<img src="../images/empty-cont.png" class="HomeIconPosEN" />
+								<h3 lang="en">Empty Containers</h3>
+
+							</a></li>
+					</ul>
+				</div>
+				<div class="content-primary">
+					<ul data-role="listview" id="MenuList">
+
+						<li><a href="merchandising.html" rel="external">
+								<img src="../images/end-invoice.png" class="HomeIconPosEN" />
+								<h3 lang="en">End Invoice</h3>
+
+							</a></li>
+					</ul></div>
+				<div class="second-primary">
+					<ul data-role="listview" id="MenuList">
+						<li style="color:#999;"><a href="finalizetransaction.html" rel="external">
+								<img src="../images/invoice-summery.png" class="HomeIconPosEN" />
+								<h3 style lang="en">Invoice Summary</h3>
+
+							</a></li>
+
+					</ul>
+				</div>
+
+			</div>
+			<div data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div data-role="footer" style="bottom:0;position:fixed;z-index:5;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom:0 !important;"><a
+								href="../startofday/startofday.html" rel="external" id="day"
+								data-icon="custom" lang="en">Start of day</a></li>
+						<li style="margin-bottom:0 !important;"><a
+								href="../inventory/inventory.html" rel="external" id="inve"
+								data-icon="custom" lang="en">Inventory</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+								id="cust" data-icon="custom" class="ui-btn-active" lang="en">Customer
+								opt</a></li>
+						<li style="margin-bottom:0 !important;"><a
+								href="../settlement/managesettlement.html" rel="external" id="sett"
+								data-icon="custom" lang="en">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom:0 !important;"><a
+								href="../information/information.html" rel="external" id="info"
+								data-icon="custom" lang="en">Information</a></li>
+						<li style="margin-bottom:0 !important; width:14.0%"><a
+								href="../utilities/utilities.html" rel="external" id="setup"
+								data-icon="custom" lang="en">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+			<script type="text/javascript">
+ window.lang = new jquery_lang_js();
+        $(document).ready(function() {
+	    var customerid = sessionStorage.getItem("customerid");
+	    var customername= sessionStorage.getItem("customername");
+	    $('#custid').text(customerid);
+	    $('#custname').text(customername);
+            window.lang.run();
+            $("#lang_inner").click(function() {
+                if ($("#lang_inner").text() == "EN") {
+                    $("#lang_inner").text("AR");
+                    window.lang.change('CustOptAR');
+                   window.lang.change('FooterAR');
+                    sessionStorage.setItem("Language", "AR");
+                    $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+                    $('.HomeIconPosEN').removeClass('HomeIconPosEN').addClass('HomeIconPosAR');
+                    $('h3').css({ 'text-align': 'right', 'padding-right': '15%', 'float': 'right' });
+		    $('#Back_inner').css({ 'float': 'right','right':'10px'});
+		    $('#lang_inner').css({ 'float': 'left','left':'10px;'});
+		    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('.cus_lable').css({ 'float': 'right','text-align':'right'});
+		     $('.nobox').css({ 'float': 'right','margin-right':'20px'});
+                }
+                else {
+                    $("#lang_inner").text("EN");
+                    window.lang.change('en');
+                    //$("#content").attr("dir", "ltr");
+                    sessionStorage.setItem("Language", "EN");
+		    
+                    $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+                    $('.HomeIconPosAR').removeClass('HomeIconPosAR').addClass('HomeIconPosEN');
+                    $('h3').css({ 'text-align': 'left', 'padding-left': '0px', 'float': 'left', 'padding-right': '0px' });
+		    $('#Back_inner').css({ 'float': 'left','left':'10px;'});
+		    $('#lang_inner').css({ 'float': 'right','right':'10px'});
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		     $('.cus_lable').css({ 'float': 'left','text-align':'left'});
+		     $('.nobox').css({ 'float': 'left','margin-left':'20px'});
+                }
+            });
+          
+        });
+       
+    </script>
+		</div>
+	</body>
+</html>

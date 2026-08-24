@@ -1,0 +1,1382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>View Customer Inventory</title>
+        <meta name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1201px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner"
+                    rel="external"
+                    onclick="updateForceStockCapture();"
+                    lang="en">Back</a>
+                <h1 lang="en">Customer Inventory</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div style="width: 90%;">
+                        <div>
+                            <input type="text" name="txtSearch" id="txtSearch"
+                                value size="40"
+                                placeholder="Search by item code/desc./barcode"
+                                style="width:70%;float:left;" />
+                            <div>
+                                <a href="#" id="searchOrder" rel="external"
+                                    style="text-decoration: none;">
+                                    <img src="../images/search.png"
+                                        style="float:right;"
+                                        onclick="getSearchResults();" />
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="textBar">
+                        <table cellpadding="1" cellspacing="1" border="0"
+                            width="100%">
+                            <tr>
+                                <td lang="en" colspan="2" width="40%" id="group"
+                                    class="rtext">
+                                    Select Item Group
+                                </td>
+                                <td colspan="2" width="35%">
+                                    <select style="width:50%"
+                                        name="select-choice-1" id="itemgroup">
+                                    </select>
+                                </td>
+                                <td colspan="2" lang="en" width="10%"
+                                    class="rtext">
+                                    MSL
+                                </td>
+                                <td colspan="2" width="25%">
+                                    <div class="msl"
+                                        style="position: absolute; width: 23%;  margin-top: -30px;">
+                                        <input type="checkbox" name="checkbox-0"
+                                            id="checkbox-mini-0"
+                                            onclick="getMsl();" />
+                                        <label class="lbl"
+                                            for="checkbox-mini-0">MSL</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="display:none;">
+                                <td colspan="2" lang="en" width="40%"
+                                    class="rtext">
+                                    Item Group Code #
+                                </td>
+                                <td colspan="2" lang="en" width="50%"
+                                    class="rtext">
+                                    Alternate Group Code
+                                </td>
+                            </tr>
+                            <tr style="display:none;">
+                                <td colspan="2">
+                                    <div class="addressdiv" id="groupcode"
+                                        style="width:80%"></div>
+                                </td>
+                                <td colspan="2">
+                                    <div class="addressdiv" id="alcode"
+                                        style="width:80%"></div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0"
+                            width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 12%;" lang="en">Item Code</th>
+                                <th style="width: 30%;" class="leftAlign"
+                                    lang="en">Item Description</th>
+                                <th style="width: 12%;" lang="en">Cases</th>
+                                <th style="width: 12%;" lang="en">Units</th>
+                                <th style="width: 12%; display: none;"
+                                    lang="en">Case Price
+                                </th>
+                                <th style="width: 12%; display: none;"
+                                    lang="en">Unit Price
+                                </th>
+                                <th style="width: 12%; display: none;"
+                                    lang="en">
+                                    Total</th>
+                                <th style="width: 20%;" lang="en"
+                                    class="last">Expiry</th>
+                            </tr>
+                        </table>
+                        <div class="tblSalesHeight">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0"
+                                width="100%">
+                                <tr>
+                                    <td style="width: 12%;"></td>
+                                    <td style="width: 30%;"></td>
+                                    <td style="width: 12%;"></td>
+                                    <td style="width: 12%;" class="last"></td>
+                                    <td style="width: 12%; display: none;"></td>
+                                    <td style="width: 12%; display: none;"></td>
+                                    <td style="width: 12%; display: none;"></td>
+                                    <td style="width: 20%; " class="last">
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <div
+                                style="visibility: hidden;height: 0px;float: right;">
+                                <input name="mydate" id="mydate" type="date"
+                                    data-role="datebox"
+                                    data-options='{"noButton": true,"mode": "datebox"}'></div>
+                        </div>
+
+                    </div>
+                    <div class="tabedBar" style="display:none;">
+                        <div id="TabPanel" class="TabPanelEN"></div>
+                    </div>
+                    <div
+                        style="float: right; padding-top: 0px; margin-top: 0px;">
+                        <!--<table>
+                        <tr>
+                            <td>                                
+                            </td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input id="txtTotal2" type="text" size="11" class="textWidth textFont" style="text-align:right;" readonly="readonly"/>                                
+                            </td>
+                        </tr>
+                    </table>-->
+                    </div>
+                    <div class="textBar">
+                        <table cellpadding="2" cellspacing="2" border="0"
+                            width="100%">
+                            <tr>
+                                <td class="captionLabel" lang="en">Price</td>
+                                <td class="captionLabel" lang="en" id="lblUPC"
+                                    style="display:none;">UPC</td>
+                                <td class="captionLabel" lang="en"
+                                    id="lblAltField">Total Qty</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 28%"><input id="txtItemNo"
+                                        type="text"
+                                        class="textWidth textFont"
+                                        readonly="readonly" /></td>
+                                <td style="width: 28%;display:none;"><input
+                                        id="txtUPC" type="text"
+                                        size="11" class="textWidth textFont"
+                                        readonly="readonly" /></td>
+                                <td style="text-align: center; width: 44%;">
+                                    <!--<input id="AvailQty" type="text" size="11" class="textWidth textFont" style="text-align:center;" readonly="readonly" />-->
+                                    <input id="txtTotal1" type="text" size="11"
+                                        style="text-align: center;"
+                                        class="textWidth textFont"
+                                        readonly="readonly" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+
+                    <a href="#" class="enableText" rel="external"
+                        onclick="ClearVariables(1)">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos"><img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Done</div>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+        var data = null;       
+	
+	 window.lang = new jquery_lang_js();
+        var ActiveIndex = 0;
+        var Qty = '';
+        var CaseEnabled,AvailQty;
+        var AvailQty;
+        var platform = '';
+        var selRowExpityIndex='';
+        var decimalplace = sessionStorage.getItem("decimalplace"); 
+        var selRowIndex,selRowItemCode,selRowQty;
+        var ArrTab;
+        var anytimetabclick = true;
+        var searchTxt="";
+        var mslCount =0;
+        $("#tblContent").click(function() { });
+		resizeOrientationWindow();
+        $(document).ready(function() {
+		resizeWindow();
+            $(".leftfooter").html(getCurrentDate());
+            $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+
+            //DB Integration Start                          
+            //On Device Ready Event
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {
+                platform = sessionStorage.getItem("platform");
+                $.mobile.showPageLoadingMsg(); 
+                getItemGroups();
+                getSettings();
+                
+            }
+
+            // Case and Edit setting initialization
+            function getSettings() {
+                //Setting for Case Field Enabled
+                if (sessionStorage.getItem("CaseEnabled") == "0" || sessionStorage.getItem("CaseEnabled") == null)
+                    CaseEnabled = false;
+                else if (sessionStorage.getItem("CaseEnabled") == "1")
+                    CaseEnabled = true;
+				
+                // Removing Case and Caseprice column if case is not enabled.
+                if (!CaseEnabled) {
+                    $("#tblHeaderContent tr th:eq(2)").remove();
+                    $("#tblHeaderContent tr th:eq(3)").remove();
+                    $("#tblContent tr td:eq(2)").remove();
+                    $("#tblContent tr td:eq(3)").remove();
+                }
+                
+                if(localStorage.addshelf == "qtyloc1each")                
+                    ActiveIndex = 0;
+                else if(localStorage.addshelf == "qtyloc2each")                
+                    ActiveIndex = 1;
+                else if(localStorage.addshelf == "qtyloc3each")                
+                    ActiveIndex = 2;                
+                
+                var Qry = "SELECT code,description from inventorylocation ORDER BY CODE LIMIT 3";
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            var description;
+                            for(i=0;i<result.length;i++)
+                            {
+                                description = result[i][1];
+                                if(description.toString().length > 9)
+                                    description = description.toString().substring(0,9) + "..";
+                                    
+                                description = getLangTextdata(description); 
+                                var strTab = "<div id='Tab'" + i + " class='Tab' lang='en' style='display: block;'>" + description + "</div>";                
+                                $("#TabPanel").append(strTab);
+                            }
+                            
+                            var TabCount = $("#TabPanel div").length;
+                            $("#TabPanel div:eq(" + (eval(TabCount) - 1) + ")").addClass("TabLast"); //Class for last Tab
+                            if(TabCount >= 2)
+                            {
+                                $("#TabPanel div:eq(0)").addClass("TabFirst");
+                                $("#TabPanel div:eq(1)").addClass("Tabmiddle");
+                            }
+                            if(TabCount == 1)
+                            {
+                                $("#TabPanel div:eq(0)").addClass("TabFirst");
+                            }
+                            
+                             //Setting Tab Styles
+                            $("#TabPanel div").click(function() {
+                            if(anytimetabclick)
+                            {
+                            ActiveIndex = $("#TabPanel div").index(this);
+                            switch (ActiveIndex) {
+                                case 0:
+                                    Qty = 'qtyloc1each'; break;
+                                case 1:
+                                    Qty = 'qtyloc2each'; break;
+                                case 2:
+                                    Qty = 'qtyloc3each'; break;
+                            }
+                            $("#TabPanel div").removeClass("TabActive");
+                            $(this).removeClass("TabInactive").addClass("TabActive");
+                            getRecord();
+                            }
+                            });
+                            
+                            $("#TabPanel div:eq(" + ActiveIndex + ")").click();
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) { 
+                    	result = $.map(result.array, function (item, index) {                
+                       		 return [[item.code,item.description]];
+                    	});
+                    	if(result.length > 0)
+                        {
+                            var description;
+                            for(i=0;i<result.length;i++)
+                            {
+                                description = result[i][1];
+                                if(description.toString().length > 9)
+                                    description = description.toString().substring(0,9) + "..";
+                                    
+                                description = getLangTextdata(description);     
+                                var strTab = "<div id='Tab'" + i + " class='Tab' lang='en' style='display: block;'>" + description + "</div>";                
+                                $("#TabPanel").append(strTab);
+                            }
+                            
+                            var TabCount = $("#TabPanel div").length;
+                            $("#TabPanel div:eq(" + (eval(TabCount) - 1) + ")").addClass("TabLast"); //Class for last Tab
+                            if(TabCount >= 2)
+                            {
+                                $("#TabPanel div:eq(0)").addClass("TabFirst");
+                                $("#TabPanel div:eq(1)").addClass("Tabmiddle");
+                            }
+                            if(TabCount == 1)
+                            {
+                                $("#TabPanel div:eq(0)").addClass("TabFirst");
+                            }
+                            
+                             //Setting Tab Styles
+                            $("#TabPanel div").click(function() {
+                            ActiveIndex = $("#TabPanel div").index(this);
+                            switch (ActiveIndex) {
+                                case 0:
+                                    Qty = 'qtyloc1each'; break;
+                                case 1:
+                                    Qty = 'qtyloc2each'; break;
+                                case 2:
+                                    Qty = 'qtyloc3each'; break;
+                            }
+                            $("#TabPanel div").removeClass("TabActive");
+                            $(this).removeClass("TabInactive").addClass("TabActive");
+                            getRecord();                            
+                            });
+                            
+                            $("#TabPanel div:eq(" + ActiveIndex + ")").click();
+                        }                    
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+
+            //Alternate table row style
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            if (sessionStorage.getItem("Language") != "en") {
+
+                window.lang.change('SalesInvoice' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+                if (lan == "AR") {
+                    $(".centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+
+            }
+            else {
+                window.lang.change('en', 'en');
+                $(".centerboxInvReq").attr("dir", "ltr");
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+
+            function ChangeTableRadius() {
+                if (sessionStorage.getItem("Language") == "EN") {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomRight');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomLeft');
+                }
+                else {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomLeft');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomRight');
+                }
+            }
+
+            $("#itemgroup").change(function(){ 
+            	$.mobile.showPageLoadingMsg();
+            	$("#txtSearch").val("");
+            	$("#txtSearch").text("");
+            	getRecord();
+				
+			});
+            
+            $("#txtSearch").keyup(function(){ 
+            	searchTxt=$("#txtSearch").val();
+            	$.mobile.showPageLoadingMsg();
+            	$("#itemgroup").val(0);
+            	$("#itemgroup").selectmenu("refresh");
+            	
+            	 getRecord();
+				
+			});
+            
+//             $("#txtSearch").blur(function(){ 
+//             	 searchTxt=$("#txtSearch").val();
+//             	if(searchTxt.trim()!=""){
+//             		alert("blur")
+//             	$.mobile.showPageLoadingMsg();
+//             	$("#itemgroup").val(0);
+//             	$("#itemgroup").selectmenu("refresh");
+            	
+//             	 getRecord();
+//             	}
+				
+// 			});
+            
+
+
+        });
+
+        // Settings for Add button click.
+        function AddDetail() {
+            localStorage.addshelf = Qty;
+            sessionStorage.addmodule = 'customer';
+            window.location = 'on_shelf.html';
+        }
+        
+        // Settings for view button click
+        function ViewOption()
+        {
+            var Link = "../customer_opt/invoiceoptions.html";
+            localStorage.setItem("invopt","salesinvoice");
+            localStorage.setItem("invoice","inventory");
+            var base = window.location.toString().substring(0, window.location.toString().lastIndexOf("/")) + "/";
+            window.location = base + Link;
+        }
+        
+        // Checking Value is Number
+        function CheckIsNaN(val)
+        {
+            if(isNaN(val))
+                return 0;
+            else
+                return val;
+        }
+        
+    
+        function updateForceStockCapture(){
+        
+        	 var Qry_promotiondetail = "update customermaster set forcestockcapture=1 where customercode="+sessionStorage.getItem("customerid")+"";
+	         window.plugins.DataBaseHelper.insert(Qry_promotiondetail, function(result) 
+             {   
+              	 localStorage.removeItem('addshelf');
+              	 sessionStorage.setItem('custinventvisit','true');
+              	 
+              	 if(sessionStorage.getItem("backScreen")=="orderRequest.html"){
+              		 window.location="../customer_opt/orderRequest.html"
+              	 }else{
+              		window.location="../customer_opt/salesinvoice_option.html";
+              	 }
+              	 
+              	 
+             },
+             function()
+             {
+                 console.warn("Error calling plugin");
+             });
+        
+        
+        }
+        // Function for bind customer list
+        function getItemGroups()
+        {    
+        	$.mobile.showPageLoadingMsg();
+            if(platform=='iPad')
+       		{ 
+                Cordova.exec(function(result) { 
+                              
+                             
+                              },
+                              function(error) {
+                              alert("Error in binding Category : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              ["select customercode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN customername ELSE arbcustomername END as Desc from customermaster WHERE templateindicator IS NOT 1 order by customercode"]);         
+                
+            }
+         	else if(platform=='Android')
+        	{
+         						window.plugins.DataBaseHelper.select("select itemgroupcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemgroupname ELSE arbitemgroup END as groupname,alternateitemgroupcode from itemgroup order by itemgroupname asc",function(result)
+								{		
+                                        var array = $.map(result.array, function (item, index) {               
+                                                           return [[item.itemgroupcode, item.groupname,item.alternateitemgroupcode]];            					
+                                                    });
+                                         
+                                         result = array;
+                                        
+                                         $("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#itemgroup"));
+                                         for(i=0;i<result.length;i++){                    
+                                        	$("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#itemgroup"));                                           
+                                         }
+                                       //  getRecord();
+                                 },
+                                 function()
+                                 {
+                                	 	console.warn("Error calling plugin");
+                                 });
+        	}
+        }
+        
+        
+        function getMSLItems()
+        {
+        	
+        	var itemgroupcode = $('#itemgroup').val();
+        	var searchCondition=" '' ";
+    		if(searchTxt.trim()!=""){
+    			
+    			 searchCondition=" im.itemdescription LIKE '%" + searchTxt
+        		+ "%' OR im.alternatecode LIKE '%" +searchTxt+ "%' OR im.barcode1 LIKE '%" +searchTxt+ "%' OR im.barcode2 LIKE '%" 
+        		+searchTxt+ "%' ";
+    		}
+    			 
+    			 
+        	var Qry= " SELECT CASE WHEN  (select ifnull(itemcode,0) from itemmustdetail imd where "
+        	+"  imd.itemmustcode=(select itemmustkey from customermaster rm join itemmustheader imh on imh.itemmustcode =rm.itemmustkey and rm.customercode="+sessionStorage.getItem("customerid")+") "
+        	+"  and imd.itemcode=im.actualitemcode) then '*' else '' end || CASE WHEN 'en' = 'en' THEN itemdescription ELSE itemshortdescription END"
+        	+"   as Desc, CASE WHEN COALESCE(" + Qty + ",0)=0 THEN 0 ELSE (CASE WHEN im.unitspercase=1 THEN 0 ELSE (" + Qty + "/im.unitspercase) END) END AS cases,"
+            +" CASE WHEN COALESCE(" + Qty + ",0)=0 THEN 0 ELSE (CASE WHEN im.unitspercase=1 THEN " + Qty + " ELSE (" + Qty + " % im.unitspercase) END) END AS units, im.caseprice AS caseprice,im.defaultsalesprice AS price,NULL AS total,"
+            +"CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END AS Code, "
+            +"im.actualitemcode AS actualitemcode,im.unitspercase AS unitspercase ,im.caseprice AS caseprice,(CASE printsequencecust WHEN 0 THEN"
+            +" 100000 ELSE printsequencecust END) AS seqprint,cid.expirydate  as expirydate FROM itemmaster im left join customerinventorydetail cid on "
+            +"cid.itemcode=im.actualitemcode and cid.routekey="+ sessionStorage.getItem("RouteKey")+" and cid.visitkey="+sessionStorage.getItem("VisitKey")+ " inner join itemmustdetail itm on itm.itemcode=im.actualitemcode  "
+            +" inner join customermaster cm on cm.itemmustkey=itm.itemmustcode and cm.customercode= "+sessionStorage.getItem("customerid");
+        	
+        	if( itemgroupcode > 0)
+			{
+        		Qry = Qry + " WHERE  CASE WHEN "+itemgroupcode+">0  then  im.itemgroupcode="+itemgroupcode+" WHEN "+ searchCondition+"<>'' THEN "+searchCondition+" ELSE im.activeitem=0 END AND cm.customercode = " + sessionStorage.getItem("customerid") + " order by actualitemcode ";
+			}else 
+			{
+				Qry = Qry + "  order by actualitemcode" ;
+			}
+			console.log(Qry);
+			//alert(Qry);
+			if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                	if(result.array != undefined)
+                    	TableDataOffLine(result);
+                    else
+                    $.mobile.hidePageLoadingMsg();
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+
+        //Function to fetch Items for sales from the database.
+        function getRecord() {
+        	ClearTable('tblContent');
+        	 var itemgroupcode = $('#itemgroup').val();
+        	
+            if (CaseEnabled) {
+              
+            	var searchCondition=" '' ";
+        		if(searchTxt.trim()!=""){
+        			
+        			 searchCondition=" im.itemdescription LIKE '%" + searchTxt
+	        		+ "%' OR im.alternatecode LIKE '%" +searchTxt+ "%' OR im.barcode1 LIKE '%" +searchTxt+ "%' OR im.barcode2 LIKE '%" 
+	        		+searchTxt+ "%' ";
+        		}
+                
+                var Qry= " SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription "
+                +"ELSE arbitemdescription END AS Desc, CASE WHEN COALESCE(" + Qty + ",0)=0 THEN 0 ELSE (CASE WHEN im.unitspercase=1 THEN 0 ELSE (" + Qty + "/im.unitspercase) END) END AS cases,"
+                +" CASE WHEN COALESCE(" + Qty + ",0)=0 THEN 0 ELSE (CASE WHEN im.unitspercase=1 THEN " + Qty + " ELSE (" + Qty + " % im.unitspercase) END) END AS units, im.caseprice AS caseprice,im.defaultsalesprice AS price,NULL AS total,"
+                +"CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END AS Code, "
+                +"im.actualitemcode AS actualitemcode,im.unitspercase AS unitspercase ,im.caseprice AS caseprice,(CASE printsequencecust WHEN 0 THEN"
+                +" 100000 ELSE printsequencecust END) AS seqprint,cid.expirydate  as expirydate FROM itemmaster im left join customerinventorydetail cid on "
+                +"cid.itemcode=im.actualitemcode and cid.routekey="+ sessionStorage.getItem("RouteKey")+" and cid.visitkey="+sessionStorage.getItem("VisitKey")+"  WHERE "
+                +"CASE WHEN "+itemgroupcode+">0  then  im.itemgroupcode="+itemgroupcode //condition for group searching
+        		+" WHEN "+ searchCondition+"<>'' THEN "+searchCondition  // condition for text box searching
+        		+" ELSE im.activeitem=0 END " 
+                +" ORDER BY seqprint";
+            }
+            else {
+                var Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(SELECT CASE WHEN " + Qty + "=0 THEN 'NULL' ELSE " + Qty + " END  from customerinventorydetail invd where invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as units,im.defaultsalesprice AS price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM itemmaster AS im join customerinventorydetail on customerinventorydetail.itemcode = im.actualitemcode and customerinventorydetail.routekey=" + sessionStorage.getItem("RouteKey") + " and customerinventorydetail.visitkey=" + sessionStorage.getItem("VisitKey") + " where im.itemtype=1 group by actualitemcode order by CASE printsequencecust WHEN 0 THEN 100000 ELSE printsequencecust END";
+            }
+            console.log(Qry);
+            //alert(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                    TableDataOffLine(result)
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                	if(result.array != undefined)
+                    	TableDataOffLine(result);
+                    else
+                    $.mobile.hidePageLoadingMsg();
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+
+        
+        /*
+         * @method getSearchResults
+         *Fired when the seach button is clicked
+         */            
+                   
+        function getSearchResults(){
+        	$.mobile.showPageLoadingMsg();
+        	$("#itemgroup").val(0);
+        	$("#itemgroup").selectmenu("refresh");
+        	 searchTxt=$("#txtSearch").val();
+        	 getRecord();
+        }  
+        
+        function getMsl()
+        {
+        	
+        	if ($('#checkbox-mini-0').is(":checked"))
+        	{
+        	  mslCount = 1;
+        	  getMSLItems();
+        	} else 
+        		{
+        		mslCount = 0;
+        		ClearTable('tblContent');
+        		//$("#Ulpagin").empty();
+        		
+        		}
+        }
+
+        // Salesinvoice grid data bind.
+        function TableDataOffLine(RecSet) {
+            ClearTable('tblContent');
+            var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+            var temp;
+            data = RecSet;
+            if (platform == "Android") {
+                var array = $.map(data.array, function(item, index) {
+                    if (CaseEnabled)
+                    {                            
+                    	return [[ item.Code,item.Desc, item.cases, item.units, item.caseprice, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice,item.expirydate]];
+                    }
+                    else
+                    {
+                    	return [[ item.Code,item.Desc, item.units, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice,item.expirydate]];
+                    }
+                });
+                data = array;
+                RecSet = array;
+               // alert(JSON.stringify(data));
+            }
+            for (i = 0; i < data.length; i++) {
+                var r = "<tr class='contentFont'>";
+                for (j = 0; j < CellCount; j++) {
+                    if (CaseEnabled) 
+                    {
+                    	 
+                    	 
+                        if (j == 2 || j == 3 || j == 4 ) { // cases and units
+                            if(j==2 && eval(data[i][8])==1){
+                        		temp='';
+                        	}else{
+                            	temp = "class = 'editable'"; 
+                            }                             
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                                data[i][j] = parseInt(data[i][j]);
+                            else 
+                            {
+                                data[i][j] = '';
+                            }
+                            var value='';
+                           
+                           
+                        }
+                        else
+                            temp = '';
+                    }
+                    else {
+                        if (j == 2) // units
+                        {
+                        	
+                            temp = "class = 'editable'";
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                                data[i][j] = parseInt(data[i][j]);
+                            else
+                                data[i][j] = '';
+                        }
+                        else
+                            temp = '';
+                    }
+                  //  temp += (j == 1) ? 'class = leftAlign' : '';
+                    if(j==1){
+                     	if(data[i][1].charAt(0)=='*'){
+                         	temp +=  'class = leftAlignMustStock';
+                       	}else{
+                       		temp +='class = leftAlign';
+                       	}
+                     }
+                    if (j == CellCount - 1) {
+                        temp += " class ='last' style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+                        /*if (data[i][1] == '')
+                        { 
+                            data[i][j] = ''; //Overriding total column to set blank;
+                        }
+                        else
+                            data[i][j] = data[i][1];
+                        
+                        if (CaseEnabled) {
+                            // Total = (case * caseprice) + (Units * salesprice)
+                            data[i][j] = eval(data[i][2] * data[i][4]) + eval(data[i][3] * data[i][5])
+                        }
+                        else {
+                            // Total = (Units * salesprice)                  
+                            data[i][j] = eval(data[i][2] * data[i][3])
+                        }
+                        if (isNaN(data[i][j]))
+                            data[i][j] = 0;*/
+                    }
+                    if (j == CellCount - 1)
+                     temp += " class = 'last' style='text-align:right;padding:0px 10px 0px 10px;'";
+                    if (CaseEnabled) {
+                        if (j >= 5 && j <= 6) {
+                             temp += " style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                                data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+                        }
+                        
+                    }
+                    else {
+                        if (j >= 3 && j <= 4)
+                        {
+                            temp += " style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                            data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+                        }
+                    }
+                    
+                    var c ="";
+                    if(j==4)
+                	{
+                    temp = " style='width: 20%;' class = 'editable1' ";
+                    c = "<td " + temp + ">" + data[i][10] + "</td>";
+                	}
+                    else 
+                     c = "<td " + temp + ">" + data[i][j] + "</td>";
+                    r += c;  
+                    
+                    
+                }
+                r += "</tr>";
+                console.log(r);
+               // alert(r);
+                $('#tblContent tbody').append(r);
+                
+            }
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+
+            //Click event for each row in table to process row data.
+//             $("#tblContent tr").live('click', function() {
+//                 $(this).addClass('clicked');
+//                 $(this).siblings().removeClass('clicked');
+//                 var idx = $(this).index();
+//                 selRowIndex = idx; 
+//                 if (CaseEnabled) {
+//                     $('#txtItemNo').val(RecSet[idx - 1][4]+"/"+RecSet[idx - 1][5]);
+
+//                     var cases = $(this).children().eq(2).text();
+//                     var units = $(this).children().eq(3).text();
+//                     var total = $(this).children().eq(6).text();
+//                     var SalesPrice = RecSet[idx - 1][5];
+//                     var CasePrice = RecSet[idx - 1][4];
+//                     if (SalesPrice == '')
+//                         SalesPrice = 0;
+//                     if (CasePrice == '')
+//                         CasePrice = 0;
+                    
+//                     $('#txtUPC').val(RecSet[idx - 1][8]);
+//                     $('#txtTotal1').val(GetCaseUnitTotal());
+//                     //$('#txtTotal2').val(GetTotalAmount());
+                    
+//                     if(cases != '' && units != '')
+//                         selRowItemCode =  data[idx - 1][7];
+
+//                     AvailQty = null;
+//                     getAvailQty(RecSet[idx - 1][7]);
+
+//                 }
+//                 else {
+//                     $('#txtItemNo').val(RecSet[idx - 1][3]);
+//                     $('#txtUPC').val(RecSet[idx - 1][6]);
+//                     $('#txtTotal1').val(GetCaseUnitTotal());
+//                     //$('#txtTotal2').val(GetTotalAmount());
+                    
+//                     if(units != '')
+//                         selRowItemCode =  data[RowIndex - 1][5];
+
+//                     AvailQty = null;
+//                     getAvailQty(RecSet[idx - 1][5]);
+//                 }
+//             });
+            
+             $("#tblContent tr").live('click', function() {
+                 $(this).addClass('clicked');
+                 $(this).siblings().removeClass('clicked');
+                 var idx = $(this).index();
+                 selRowExpityIndex = idx; 
+             });
+			 
+             
+             
+             $('#tblContent td.editable1').click(function() { 
+	 			   $.mobile.showPageLoadingMsg();
+	 			   anytimetabclick = false;
+	 			   var col = $(this).parent().children().index($(this));
+	 			   var row = $(this).parent().parent().children().index($(this).parent());
+	 			   var oldval =$(this).text();
+	 			  
+	 			   $('#mydate').val(oldval);
+	 			   $('input[name=mydate]').datebox('refresh');  
+	 			   $('#mydate').datebox('open');
+          
+	 			   var obj =this;
+	 			   $.mobile.hidePageLoadingMsg();   
+            
+	 			   $('#mydate').bind('datebox', function(e, p) {
+	 				   if ( p.method === 'set' ) {
+	 					   e.stopImmediatePropagation();
+	 					  
+	 					   $("#tblContent tr:eq(" + selRowExpityIndex + ") td:eq(4)").text($(this).val());	   
+	 					   $('#mydate').datebox('close');
+            }
+          });
+           
+        });
+             
+            
+            // If Edit is enabled allow editing in grid
+            $('#tblContent td.editable').click(function() { 
+                anytimetabclick = false;
+
+                $("#txtSearch").val("");  //clearing text field for barcode searching
+                $("#txtSearch").text("");
+                
+                if(eval($(this).text()) <= 0)
+                	$(this).text("");
+                var input = $("<input type='tel'/>").attr('value', $(this).text());
+                var w = $(this).innerWidth();
+                w = w - 50 + "px";
+               if(window.innerWidth>1000){
+                	input.css('width', w).css('border', '0').css('height', 60).css('font-size',35);
+                }else{
+                	input.css('width', w).css('border', '0').css('height', 30).css('font-size', 16);
+                }                    $(this).empty();
+                $(this).append(input);
+                input.bind("keyup",function() { return SetNumberMaxLength(this,4) });
+                input.focusout(function() {
+                	var v = parseInt($(input).val(),10);
+                    $(input).val(v); 
+                	if(ValidateGridCaseUnit(this)) 
+                	{ 
+                		UpdateData(this) 
+                	} 
+                });
+                $(this).find('input').live("keypress", function(event) {                                     	
+                    if (event.which == 13) {
+                        input.focusout();
+                    }
+                });
+                input.focus();
+            });
+            
+            
+            
+        	$.mobile.hidePageLoadingMsg();
+        }
+        // Function for getting Available Qty
+        function getAvailQty(ItemNo)
+        {
+            //navigator.notification.alert(ItemNo);
+            var Qry = "Select ((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0) +ifnull(inventorysummarydetail.beginstockqty,0)+ ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -   ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) +ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))/itemmaster.unitspercase) As LoadQty,(((ifnull(inventorysummarydetail.loadqty,0) + ifnull(inventorysummarydetail.loadaddqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -  ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))%itemmaster.unitspercase)) As LoadUnit,itemmaster.unitspercase,itemmaster.defaultsalesprice,(ifnull(inventorysummarydetail.loadqty,0) + ifnull(inventorysummarydetail.loadaddqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) - ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0)) As AvialableQty from inventorysummarydetail inner join itemmaster on inventorysummarydetail.itemcode = itemmaster.actualitemcode  and inventorysummarydetail.routekey = " + sessionStorage.getItem('RouteKey') + " where itemmaster.actualitemcode = " + ItemNo
+            console.log(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                    //navigator.notification.alert(result);
+                    if (CaseEnabled)
+                        $("#AvailQty").val(parseInt(result[0][0]) + "/" + parseInt(result[0][1]));
+                    else
+                        $("#AvailQty").val(parseInt(result[0][4]));
+
+                    AvailQty = result[0][4];
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") 
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {                      	      	
+                    /*var res = $.map(result.array, function(item, index) {
+                        return [[item.LoadQty, item.LoadUnit, item.unitspercase, item.defaultsalesprice, item.AvailableQty]];
+                    });*/
+                    //var result = res;
+                    if (CaseEnabled)
+                        $("#AvailQty").val(parseInt(result.array[0].LoadQty) + "/" + parseInt(result.array[0].LoadUnit));
+                    else
+                        $("#AvailQty").val(parseInt(result.array[0].LoadUnit));
+                    AvailQty = result.array[0].AvailableQty;
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+
+        // Update Quantity according to changes in grid.
+        function UpdateData(obj) {
+            var RowIndex = $(obj).parent().parent().index();
+            var ObjIndex = $(obj).parent().index(); //Cell Index                
+            $(obj).parent().text(parseInt(CheckIsNaN($(obj).val())));
+                    
+            var Cases, Units, UnitsPerCase, ItemCode, RouteCode, CurrQty, Price,CasePrice;
+            CasePrice = 0;
+            if (CaseEnabled) {                 
+                Cases = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text());
+                Units = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text());
+                                    
+                ItemCode = data[RowIndex - 1][7];
+                UnitsPerCase = data[RowIndex - 1][8];
+                RouteKey = sessionStorage.getItem("RouteKey");                                   
+                Cases = (Cases == undefined || Cases == '') ? 0 : parseInt(CheckIsNaN(Cases));
+                Units = (Units == undefined || Units == '') ? 0 : parseInt(CheckIsNaN(Units));                    
+                CurrQty = (parseInt(Cases) * UnitsPerCase) + parseInt(Units);
+                
+                //navigator.notification.alert(CurrQty + " : " + AvailQty + " : " + UnitsPerCase);
+                if(ObjIndex == 2 || ObjIndex == 3)
+                {
+                    /*if (CurrQty > AvailQty) 
+                    {
+                        navigator.notification.alert("Qty not available");
+                        $("#tblContent tr:eq(" + RowIndex + ") td:eq(" + ObjIndex + ")").text(0);
+                        return false;
+                    }*/
+                }
+                Price = eval(data[RowIndex - 1][5]).toFixed(decimalplace);
+                CasePrice = eval(data[RowIndex - 1][4]).toFixed(decimalplace);
+               
+                 if(eval(UnitsPerCase)==1){
+                
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text("0");
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text(parseInt(CurrQty));                  //Calculating Total value ([case * caseprice] + [units * salesprice])
+               
+                
+                }else{
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text(parseInt(CurrQty / UnitsPerCase));
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text(parseInt(CurrQty % UnitsPerCase));                  //Calculating Total value ([case * caseprice] + [units * salesprice])
+               
+                }
+                
+                
+                               //Calculating Total value ([case * caseprice] + [units * salesprice])
+                var Total = eval(Cases * data[RowIndex - 1][4]) + eval(Units * data[RowIndex - 1][5]);
+                $("#tblContent tr:eq(" + RowIndex + ") td:eq(6)").text(CheckIsNaN(Total.toFixed(decimalplace)));
+                $('#txtTotal1').val(GetCaseUnitTotal());
+                //$("#txtTotal2").val(GetTotalAmount());
+                //Over
+                
+                 var expirydate=$("#tblContent tr:eq(" + RowIndex + ") td:eq(4)").text();
+                 
+                 
+                // alert('expirydate' +expirydate);
+                 if(expirydate!=null && expirydate!='' && expirydate!=undefined && expirydate.length>0 && expirydate!=0){ 
+                	 HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice,expirydate); 
+   		    	   
+   		       }else{ 
+   		    	   $("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text("0");
+   		    	   $("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text("0");    
+   		    	   getLangText("Please Enter Expiry Date.");
+   		       }
+                 // org line sujee commented 
+                //HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice);                    
+            }
+            else {
+                Units = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text());
+                                    
+                ItemCode = data[RowIndex - 1][5];
+                UnitsPerCase = data[RowIndex - 1][6];
+                RouteKey = sessionStorage.getItem("RouteKey");
+                Units = (Units == undefined || Units == '') ? 0 : parseInt(Units);
+                CurrQty = parseInt(Units);
+                if(ObjIndex == 2)
+                {
+                    /*if (CurrQty > AvailQty) 
+                    {
+                        navigator.notification.alert("Qty not available");
+                        $("#tblContent tr:eq(" + RowIndex + ") td:eq(" + ObjIndex + ")").text(0);
+                        return false;
+                    }*/
+                }
+                Price = eval(data[RowIndex - 1][3]).toFixed(decimalplace);
+                //Calculating Total value (Units * Salesprice)
+                var Total = eval(Units * data[RowIndex - 1][2]);
+                $("#tblContent tr:eq(" + RowIndex + ") td:eq(4)").text(CheckIsNaN(Total.toFixed(decimalplace)));
+                $('#txtTotal1').val(GetCaseUnitTotal());
+                //$("#txtTotal2").val(GetTotalAmount());
+                //Over
+                HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice);                    
+            }
+        }
+
+        // Check For Entry of quantity in database
+        function HasEntry(ItemCode, RouteKey, VisitKey, CurrQty, Price,CasePrice,expirydate) {
+            var res = true;
+            expirydate = expirydate.split("-");
+            
+             var expiry = expirydate[2] + "-" + expirydate[1] + "-" + expirydate[0];
+             //alert('expiry' +expiry);
+             
+            var Qry = "SELECT COUNT(*) as totalcount FROM customerinventorydetail where istemp = 'true' AND itemcode=" + ItemCode + " and expirydate= '"+expiry+"' and visitkey=" + VisitKey + " AND routekey = " + RouteKey
+            console.log(Qry);
+           // alert(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                    CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, result,CasePrice)
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    var res = $.map(result.array, function(item, index) {
+                        return [[item.totalcount]];
+                    });
+
+                    CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, res,CasePrice,expiry);
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+
+        // Insert/Update Quantity according to result.
+        function CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, result,CasePrice,expiry) {
+        	//alert("CheckInsert");
+        	//alert('expiry' +expiry);
+        	
+             
+            anytimetabclick = true;
+            if (result == 0) {
+                Qry = "INSERT INTO customerinventorydetail(itemcode,routekey,visitkey," + Qty + ",issync,istemp,expirydate) VALUES(" + ItemCode + "," + RouteKey + "," + VisitKey + "," + CurrQty + ",0,'true','"+expiry+"')";
+                console.log(Qry);
+               // navigator.notification.alert(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {                            
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                    	mslQuantity(ItemCode,CurrQty,RouteKey,VisitKey);
+                    },
+				    function() {
+				        console.warn("Error calling plugin");
+				    });
+                }
+            }
+            else {
+                Qry = "UPDATE customerinventorydetail SET " + Qty + " = " + CurrQty + ",issync=0,istemp='true' where itemcode=" + ItemCode + " and expirydate = '"+expiry+"' and visitkey=" + VisitKey + " AND routekey = " + RouteKey;
+                console.log(Qry);
+                //navigator.notification.alert(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {                            
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {    
+                    	mslQuantity(ItemCode,CurrQty,RouteKey,VisitKey);                       
+                    },
+				    function() {
+				        console.warn("Error calling plugin");
+				    });
+                }
+            }
+        }
+        
+        function mslQuantity(ItemCode,CurrQty,RouteKey,VisitKey)
+        {
+        	
+        	var Qry = "Update itemmustdetail set mslqty=(ifnull(mslqty,0) + " + CurrQty + ") where itemcode ="+ItemCode;
+        	console.log(Qry);
+        	//alert(Qry);
+        	if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) { 
+                	Updatemslqty(ItemCode,CurrQty,RouteKey,VisitKey);
+                },
+			    function() {
+			        console.warn("Error calling plugin");
+			    });
+            }
+        }
+        
+        function Updatemslqty(ItemCode,CurrQty,RouteKey,VisitKey)
+        {
+        	var Qry=" Select count(*) as totalcount from msltemp where customercode="+sessionStorage.getItem("customerid") +" and itemcode="+ItemCode;
+        	console.log(Qry);
+        	//alert(Qry);
+        	if (platform == "Android") {
+        		window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    var res = $.map(result.array, function(item, index) {
+                        return [[item.totalcount]];
+                    });
+
+                    CheckmslInsert(ItemCode, RouteKey, VisitKey, CurrQty, res);
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        	
+        }
+        
+        function CheckmslInsert(ItemCode, RouteKey, VisitKey, CurrQty, res)
+        {
+         if (res == 0) 
+        	 {
+        	   var Qry =" INSERT into msltemp(routekey,visitkey,itemcode,mslqty,customercode) values("+RouteKey+","+VisitKey+","+ItemCode+","+CurrQty+","+sessionStorage.getItem("customerid")+")";
+        	   
+        	 } else {
+        	    var Qry ="Update msltemp set mslqty=(ifnull(mslqty,0) + " + CurrQty + ") where routekey="+RouteKey+" and visitkey="+VisitKey+" and itemcode="+ItemCode+" and customercode="+sessionStorage.getItem("customerid");
+        	 }
+         console.log(Qry);
+         //alert(Qry);
+         if (platform == "Android") {
+             window.plugins.DataBaseHelper.insert(Qry, function(result) { 
+            // alert("inserted");
+             },
+			    function() {
+			        console.warn("Error calling plugin");
+			    });
+         }
+        }
+
+        // Calculating Total Cases and Total Units in grid.
+        function GetCaseUnitTotal() {
+            var TC = 0;
+            var TU = 0;
+            var C, U;
+            for (i = 0; i < data.length; i++) {
+                if (CaseEnabled) {
+                    C = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(2)").text());
+                    U = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(3)").text());
+                    if (C == undefined)
+                        C = 0;
+                    else
+                        TC = TC + C;
+                    if (U == undefined)
+                        U = 0;
+                    else
+                        TU = TU + U;
+                }
+                else {
+                    U = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(2)").text());
+                    if (U == undefined)
+                        U = 0;
+                    TU += eval(U);
+                }
+            }
+            return (TC + " / " + TU);
+        }
+
+        // Calculating Total Amount in grid.
+        function GetTotalAmount() {
+            var T;
+            var Total = 0;
+            for (i = 0; i < data.length; i++) {
+                if (CaseEnabled) {
+                    T = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(6)").text());
+                }
+                else {
+                    T = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(4)").text());
+                }
+
+                if (T == undefined)
+                    T = 0;
+                else
+                    Total = Total + T;
+            }
+            return Total.toFixed(decimalplace);
+        }
+
+        //DB Integration Over            
+
+        function ClearTable(TBL) {
+            $("#" + TBL + " tr:gt(0)").remove();
+        }
+        function ClearVariables(act)
+        {
+            $("#itemno").val("");
+            $("#txtCase").val("");
+            $("#txtUnits").val("");
+            $("#lblDesc").text("");           
+            sessionStorage.setItem("ItemCode","");
+            sessionStorage.setItem("ItemDesc","");
+            sessionStorage.setItem("itemno","");
+            //localStorage.removeItem("addshelf");
+            if(act == 1)
+                window.location = "customer_inventory.html";
+        }                      
+    </script>
+
+    </body>
+</html>

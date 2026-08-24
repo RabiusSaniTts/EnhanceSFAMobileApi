@@ -1,0 +1,488 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 30/1/2011
+ '  Description  : This page is used for detail of route book update
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="advance_payment_comment.html"
+                    rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Advance Payment</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="tblBox com_div">
+                    <div class="tblHeader">
+                        <table width="100%" cellpadding="10" cellspacing="0">
+                            <tr>
+                                <td lang="en" class="Cell1Style">
+
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <table border="0" width="100%" cellpadding="10"
+                        cellspacing="3" id="tbl1" data-role="none">
+                        <tbody class="tbl_body">
+
+                            <tr>
+                                <td colspan="2">
+
+                                    <div style="width: 40%; float: left;">
+                                        <div class="Option1">
+                                            <div class="Opt1Img">
+                                                <img src="../images/r-btn-1.png"
+                                                    id="bt1" alt
+                                                    onclick="javascript:setToggle('#bt1');" />
+                                                <input
+                                                    type="hidden" value="cash"
+                                                    name="search" id="search" />
+                                            </div>
+                                            <div class="Opt1Text">
+                                                <div>
+                                                    <a href="#" data-role="none"
+                                                        class="OptTextStyle"
+                                                        lang="en">Cash</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Option2">
+                                            <div class="Opt2Img">
+                                                <img src="../images/r-btn-2.png"
+                                                    id="bt2" alt
+                                                    onclick="javascript:setToggle('#bt2');" />
+                                            </div>
+                                            <div class="Opt2Text">
+                                                <div>
+                                                    <a href="#" data-role="none"
+                                                        class="OptTextStyle"
+                                                        lang="en">Cheque</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div id="check_data" style="display: none;">
+                                        <table border="0" width="100%"
+                                            cellpadding="10" cellspacing="3">
+                                            <tr class="td_update">
+                                                <td width="50%"><label
+                                                        for="shipping"
+                                                        id="UserName"
+                                                        lang="en"> Cheque
+                                                        #</label> <input
+                                                        type="text"
+                                                        pattern="[0-9]*"
+                                                        name="name"
+                                                        id="txtChequeNo"
+                                                        value /></td>
+                                                <td><label for="shipping"
+                                                        id="UserName" lang="en">
+                                                        Amount</label> <input
+                                                        type="text"
+                                                        pattern="[0-9]*"
+                                                        name="name"
+                                                        id="txtCheque" value
+                                                        class="textFont rightAlign" /></td>
+                                            </tr>
+                                            <tr class="td_update">
+                                                <td width="50%"><label
+                                                        for="shipping"
+                                                        id="UserName"
+                                                        lang="en"> Bank
+                                                        Name</label><br />
+                                                    <div>
+                                                        <select
+                                                            name="select-choice-1"
+                                                            id="ddlBank"
+                                                            style="display: inline;">
+
+                                                        </select>
+                                                    </div></td>
+                                                <td><label for="shipping"
+                                                        id="UserName" lang="en">
+                                                        Cheque Date</label>
+                                                    <input name="startdate"
+                                                        value type="date"
+                                                        readonly="readonly"
+                                                        data-role="datebox"
+                                                        id="startdate"
+                                                        data-options='{"mode": "datebox","dateFormat": "dd-MM-YYYY"}' />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div id="cash_data">
+                                        <table border="0" width="100%"
+                                            cellpadding="10" cellspacing="3">
+                                            <tr class="td_update">
+
+                                                <td><label for="shipping"
+                                                        id="UserName" lang="en">
+                                                        Amount</label> <input
+                                                        type="text"
+                                                        pattern="[0-9]*"
+                                                        name="name"
+                                                        id="txtCash" value
+                                                        class="textFont rightAlign" /></td>
+                                                <td width="50%"></td>
+                                            </tr>
+                                        </table>
+                                    </div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" rel="external" class="enableText"><div
+                            class="MenuPosition" onclick="SaveAmountPaid()">
+                            <div class="iconPos">
+                                <img src="../images/accept.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Accept</div>
+                        </div></a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="advance_payment_comment.html" rel="external"
+                        class="enableText">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var Amount;
+        var InvoiceNumber;
+        var AdvanceInvoice = eval(localStorage.getItem("AdvanceInvoice")); 
+        var decimalplace = sessionStorage.getItem("decimalplace");
+        var invoicepaymentterms = sessionStorage.getItem("invoicepaymentterms");
+            function setToggle(id) 
+            {
+                var sval = $('#search').val();
+                if (sval == "cash") 
+                {
+                    $('#bt2').attr("src", "../images/r-btn-1.png");
+                    $('#bt1').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('cheque');
+                    $('#cash_data').css({'display':'none'});
+                    $('#check_data').css({'display':'block'});
+                }
+                else 
+                {
+                    $('#bt1').attr("src", "../images/r-btn-1.png");
+                    $('#bt2').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('cash');
+                    $('#cash_data').css({'display':'block'});
+                    $('#check_data').css({'display':'none'});
+                }
+            }
+            $('.Opt1Text').css({ 'float': 'right', 'width': '70%', 'font-size': '22px' });
+            $('.Opt1Img').css({ 'float': 'left', 'width': '30%' });
+            $('.Opt2Text').css({ 'float': 'right', 'width': '70%', 'font-size': '22px' });
+            $('.Opt2Img').css({ 'float': 'left', 'width': '30%' });
+        var platform = '';
+		resizeOrientationWindow();
+        $(document).ready(function() 
+        {            
+           resizeWindow();  
+           document.addEventListener("deviceready", getRecord, false);
+                          $("#txtCash").ForceNumericOnly();
+                          $("#txtCheque").ForceNumericOnly();
+                          $("#txtChequeNo").ForceNumericOnly();
+            if(localStorage.getItem("AdvanceInvoice") != '');
+           {          
+            $("#txtCash").val(localStorage.getItem("AdvanceInvoice"));
+            $("#txtCheque").val(localStorage.getItem("AdvanceInvoice"));
+           }
+           
+           function getRecord()
+           {
+                platform = sessionStorage.getItem("platform");                
+                if(platform=='iPad')
+		    		{       
+            				var abc = Cordova.exec(function(result) {   
+                                    //alert(result);
+                                    if(result.length > 0)
+                                    {
+                                        for(i=0;i<result.length;i++){   
+                                            $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlBank"));                                           
+                                        }
+                                         $("#ddlBank").selectmenu("refresh");
+                                    }          
+                                    
+                                    
+                                    },
+                                    function(error) {
+                                        alert("Error in binding Bank Name : " + error);
+                                    },
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    ["select bankcode,bankname From bankmaster"]);
+                                    
+                  }
+                  else if(platform=='Android')
+           			{
+	           		window.plugins.DataBaseHelper.select("select bankcode,bankname From bankmaster",function(result)
+					{
+					 	result = $.map(result.array, function (item, index) {
+                
+                				return [[item.bankcode,item.bankname]];
+            				});
+		                   if(result.length > 0)
+                                    {  
+                                    
+                                         for(i=0;i<result.length;i++){   
+                                            $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlBank"));                                           
+                                        }
+                                         $("#ddlBank").selectmenu("refresh");
+                                    }  
+		                
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           		}
+           }
+           
+           $(".leftfooter").html(getCurrentDate());
+            $('.ui-body-d').css({ 'background': '#fff' });
+            $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+            $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+            $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+            $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+           
+           var lan = sessionStorage.getItem("Language");
+           window.lang.run(lan);
+		
+           if (sessionStorage.getItem("Language")  != "en") 
+           {               
+                window.lang.change('Advancedetail'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {                   
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }		
+            }
+            else
+            {
+                window.lang.change('en','en');		    
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+        });
+        
+        function SaveAmountPaid()
+        {   
+            if(ValidateAmount() == false)
+            {
+                return false;
+            }            
+            if($('#search').val() == "cash")
+            {
+                var Qry = "INSERT INTO cashcheckdetail(routekey,visitkey,amount,typecode,istemp,issync,transactiontype,paymenttype) VALUES(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("VisitKey") + "," + Amount + ",0,'false',0,2," + invoicepaymentterms + ")";
+            }
+            else
+            {
+                var Qry = "INSERT INTO cashcheckdetail(routekey,visitkey,amount,typecode,istemp,checknumber,bankcode,issync,transactiontype,paymenttype) VALUES(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("VisitKey") + "," + Amount + ",0,'false'," + $("#txtChequeNo").val() + "," + $('#ddlBank').val() + ",0,2," + invoicepaymentterms + ")";
+            }
+            console.log(Qry);   
+            console.log(platform);                    
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    if(result == 0)
+                    {       
+                       SetAmount();
+                       ClearVal();
+                       window.location = "../review/printoption.html";                 
+                    }
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    SetAmount();
+                    ClearVal();
+                    window.location = "../review/printoption.html";                 
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function ValidateAmount()
+        {
+            if(AdvanceInvoice == '')
+            {
+                alert('No Invoice Amount');
+                return false;
+            }        
+            
+            if($('#search').val() == "cash")            
+                Amount = eval($("#txtCash").val());
+            else
+                Amount = eval($("#txtCheque").val());      
+                
+            if(Amount == undefined)
+            {
+                getLangText("Please Enter Amount.");
+                return false;
+            }
+
+            if(Amount == 0)
+            {                
+                getLangText("Enter Receipt Amount.");
+                return false;
+            }            
+            else
+                return true;
+        }     
+      
+        function SetAmount()
+        {
+            var objData = {};
+            objData.ARAmount = Amount;
+            objData.balancedue = eval(localStorage.getItem("AdvanceInvoice"));
+            localStorage.setItem("ARDATA",JSON.stringify(objData));
+        }
+        
+        function ClearVal()
+        {
+            /*localStorage.setItem("DocNos",'');
+            localStorage.setItem("AdvanceInvoice",'');            */
+        }
+        
+        </script>
+    </body>
+</html>

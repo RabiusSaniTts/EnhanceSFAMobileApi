@@ -1,0 +1,642 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 14/02/2012
+ '  Description  : This page is used for unload summary screen.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Unload Summary</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="unload_option.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Unload Summary</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="com_div comm  captionLabel">
+                    <table id="tblContent11" cellpadding="2" cellspacing="10"
+                        border="0"
+                        width="100%">
+                        <tr>
+                            <td style="width: 15%;" class="leftAlign"
+                                lang="en">UNLOAD</td>
+                            <td style="width: 12%;" lang="en"
+                                id="case">Cases</td>
+                            <td style="width: 12%;" lang="en">Units</td>
+                            <td style="width: 20%;" lang="en">Amount</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px" lang="en">Bad Return</td>
+                            <td>
+                                <input type="text" id="txtExpCases"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtExpUnits"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtExpAmount"
+                                    class="textFont rightAlign"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px" lang="en">Truck Damage</td>
+                            <td>
+                                <input type="text" id="txtTSCases"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtTSUnits"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtTSAmount"
+                                    class="textFont rightAlign"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px" lang="en">Fresh Unload</td>
+                            <td>
+                                <input type="text" id="txtFUCases"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtFUUnits"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtFUAmount"
+                                    class="textFont rightAlign"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px" lang="en">Ending Inv</td>
+                            <td>
+                                <input type="text" id="txtEICases"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtEIUnits"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtEIAmount"
+                                    class="textFont rightAlign"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px" lang="en">Inv Variance</td>
+                            <td>
+                                <input type="text" id="txtVCases"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtVUnits"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtVAmount"
+                                    class="textFont rightAlign"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:10px" lang="en">Bad Return
+                                Variance</td>
+                            <td>
+                                <input type="text" id="txtBVCases"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtBVUnits"
+                                    class="textFont" readonly="readonly" />
+                            </td>
+                            <td style="padding: 5px">
+                                <input type="text" id="txtBVAmount"
+                                    class="textFont rightAlign"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+
+                    <a href="unload_option.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="iconPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png" alt="Exit" />
+                            </div>
+                            <div id="divmenutext" class="MenuTextPos MenuText"
+                                lang="en">
+                                Done</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                class="ui-btn-active" rel="external"
+                                data-icon="custom" lang="en">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = null;
+        var platform='';
+        var routekey='';
+        var detailkey ='';
+        var inputvalue='';
+        var CaseEnabled=true;
+        var decimalplace = sessionStorage.getItem("decimalplace");
+	window.lang = new jquery_lang_js();
+        resizeOrientationWindow();
+        $(document).ready(function() {
+       		resizeWindow();
+                          
+                          platform = sessionStorage.getItem("platform");
+                          routekey = sessionStorage.getItem("RouteKey");
+                          if (sessionStorage.getItem("CaseEnabled") == "0" || sessionStorage.getItem("CaseEnabled") == null)
+                          CaseEnabled = false;
+                          else if (sessionStorage.getItem("CaseEnabled") == "1")
+                          CaseEnabled = true;
+                          
+                          if (!CaseEnabled) {
+                         	 $("#tblContent11 tr td:nth-child(2)").remove();
+                         	
+                          }
+                          document.addEventListener("deviceready", getRecord, false);
+                          
+            $(".leftfooter").html(getCurrentDate());
+           
+           var lan = sessionStorage.getItem("Language");
+	    window.lang.run(lan);
+           if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('UnloadSummary'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                    $(".centerbox").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+            }
+	    else
+	    {
+		window.lang.change('en','en');
+		$(".centerbox").attr("dir", "ltr");
+		$('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		$('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		$('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		$('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	    }
+            function GetElements(xmlDoc) {
+                var PageName = 'orderRequest';
+            }
+            
+
+        });
+        function getRecord()
+        {
+            getfresh();
+            gettruckdamage();
+            getdamage();
+            
+            setTimeout(function(){
+            	getVariance();
+            	getBadReturnVariance();
+            }, 400);
+            
+            //var calculateqty = "(ifnull(loadqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)-ifnull(freesampleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(itd.quantity,0)-ifnull(itd2.quantity,0))";
+	    	var calculateqty ="CASE WHEN endinvqty=0 THEN (ifnull(vanstock,0)-ifnull(truckdamageqty,0)-ifnull(freshunloadqty,0)) ELSE ifnull(endinvqty,0) END";
+	    
+	    
+            var calculateqty ="CASE WHEN endinvqty=0 THEN (ifnull(vanstock,0)-ifnull(truckdamageqty,0)-ifnull(freshunloadqty,0)-ifnull(varianceqty,0)) ELSE ifnull(endinvqty,0) END";
+	    
+	    
+	    
+            if (CaseEnabled) {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+"%unitspercase) as units,sum((("+calculateqty+"%unitspercase)*defaultsalesprice)+(("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            else
+            {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+") as units,sum((("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            console.log(Qry);
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                              EndInvData(result)
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     var array = $.map(result.array, function(item, index) {
+                                                                       if (CaseEnabled)
+                                                                       return [[item.cases, item.units,item.amount]];
+                                                                       else
+                                                                       return [[item.units,item.amount]];
+                                                                       });
+                                                     EndInvData(array);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function EndInvData(data)
+        {
+            if (CaseEnabled) {
+            $("#txtEICases").val(parseInt(CheckIsNaN(data[0][0])));
+            $("#txtEIUnits").val(parseInt(CheckIsNaN(data[0][1])));
+            $("#txtEIAmount").val(eval(CheckIsNaN(data[0][2])).toFixed(sessionStorage.getItem('decimalplace')));
+                
+            }
+            else
+            {
+                $("#txtEIUnits").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtEIAmount").val(eval(CheckIsNaN(data[0][1])).toFixed(sessionStorage.getItem('decimalplace')));
+            }
+        }
+        function FreshData(data)
+        {
+            if (CaseEnabled) {
+                $("#txtFUCases").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtFUUnits").val(parseInt(CheckIsNaN(data[0][1])));
+                $("#txtFUAmount").val(eval(CheckIsNaN(data[0][2])).toFixed(sessionStorage.getItem('decimalplace')));
+                
+            }
+            else
+            {
+                $("#txtFUUnits").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtFUAmount").val(eval(CheckIsNaN(data[0][1])).toFixed(sessionStorage.getItem('decimalplace')));
+            }
+        }
+        function TruckData(data)
+        {
+            if (CaseEnabled) {
+                $("#txtTSCases").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtTSUnits").val(parseInt(CheckIsNaN(data[0][1])));
+                $("#txtTSAmount").val(eval(CheckIsNaN(data[0][2])).toFixed(sessionStorage.getItem('decimalplace')));
+                
+            }
+            else
+            {
+                $("#txtTSUnits").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtTSAmount").val(eval(CheckIsNaN(data[0][1])).toFixed(sessionStorage.getItem('decimalplace')));
+            }
+        }
+        function DamageData(data)
+        {
+            if (CaseEnabled) {
+                $("#txtExpCases").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtExpUnits").val(parseInt(CheckIsNaN(data[0][1])));
+                $("#txtExpAmount").val(eval(CheckIsNaN(data[0][2])).toFixed(sessionStorage.getItem('decimalplace')));
+                
+            }
+            else
+            {
+                $("#txtExpUnits").val(Math.round(CheckIsNaN(data[0][0])));
+                $("#txtExpAmount").val(eval(CheckIsNaN(data[0][1])).toFixed(sessionStorage.getItem('decimalplace')));
+            }
+        }
+        function VarianceData(data)
+        {
+            if (CaseEnabled) {
+                $("#txtVCases").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtVUnits").val(parseInt(CheckIsNaN(data[0][1])));
+                $("#txtVAmount").val(eval(CheckIsNaN(data[0][2])).toFixed(sessionStorage.getItem('decimalplace')));
+                
+            }
+            else
+            {
+                $("#txtVUnits").val(Math.round(CheckIsNaN(data[0][0])));
+                $("#txtVAmount").val(eval(CheckIsNaN(data[0][1])).toFixed(sessionStorage.getItem('decimalplace')));
+            }
+        }
+        
+        function VarianceDamageData(data)
+        {
+            if (CaseEnabled) {
+                $("#txtBVCases").val(parseInt(CheckIsNaN(data[0][0])));
+                $("#txtBVUnits").val(parseInt(CheckIsNaN(data[0][1])));
+                $("#txtBVAmount").val(eval(CheckIsNaN(data[0][2])).toFixed(sessionStorage.getItem('decimalplace')));
+                
+            }
+            else
+            {
+                $("#txtBVUnits").val(Math.round(CheckIsNaN(data[0][0])));
+                $("#txtBVAmount").val(eval(CheckIsNaN(data[0][1])).toFixed(sessionStorage.getItem('decimalplace')));
+            }
+        }
+        function getfresh()
+        {
+            var calculateqty ="ifnull(freshunloadqty,0)";
+            if (CaseEnabled) {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+"%unitspercase) as units,sum((("+calculateqty+"%unitspercase)*defaultsalesprice)+(("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+                
+            }
+            else
+            {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+") as units,sum((("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            console.log(Qry);
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                              FreshData(result)
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     var array = $.map(result.array, function(item, index) {
+                                                                       if (CaseEnabled)
+                                                                       return [[item.cases, item.units,item.amount]];
+                                                                       else
+                                                                       return [[item.units,item.amount]];
+                                                                       });
+                                                     FreshData(array);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function gettruckdamage()
+        {
+            var calculateqty ="ifnull(truckdamageqty,0)";
+            if (CaseEnabled) {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+"%unitspercase) as units,sum((("+calculateqty+"%unitspercase)*defaultsalesprice)+(("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+                
+            }
+            else
+            {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+") as units,sum((("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            console.log(Qry);
+            console.log(Qry);
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                              TruckData(result)
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     var array = $.map(result.array, function(item, index) {
+                                                                       if (CaseEnabled)
+                                                                       return [[item.cases, item.units,item.amount]];
+                                                                       else
+                                                                       return [[item.units,item.amount]];
+                                                                       });
+                                                     TruckData(array);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function getdamage()
+        {
+            if (CaseEnabled) {
+                var Qry ="select case when sum(inventorytransactiondetail.quantity) IS NULL THEN 0 ELSE sum(inventorytransactiondetail.quantity/unitspercase) END as cases,case when sum(inventorytransactiondetail.quantity) IS NULL THEN 0 ELSE sum(CAST((inventorytransactiondetail.quantity%unitspercase) as int)) END as units,sum(((ifnull(inventorytransactiondetail.quantity,0)%unitspercase)*itemprice)+((ifnull(inventorytransactiondetail.quantity,0)/unitspercase)*itemcaseprice)) as amount from inventorytransactiondetail join itemmaster on itemmaster.actualitemcode=inventorytransactiondetail.itemcode where routekey="+routekey+" and transactiontypecode=07 and inventorytransactiondetail.istemp='true'";
+            }
+            else
+            {
+                var Qry ="select case when sum(inventorytransactiondetail.quantity) IS NULL THEN 0 ELSE sum(inventorytransactiondetail.quantity) END as units,sum((CAST((ifnull(inventorytransactiondetail.quantity,0)%unitspercase) as int)*itemprice)) as amount from inventorytransactiondetail join itemmaster on itemmaster.actualitemcode=inventorytransactiondetail.itemcode where routekey="+routekey+" and transactiontypecode=07 and inventorytransactiondetail.istemp='true'";
+            }
+            console.log(Qry);
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                              DamageData(result)
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     var array = $.map(result.array, function(item, index) {
+                                                                       if (CaseEnabled)
+                                                                       return [[item.cases, item.units,item.amount]];
+                                                                       else
+                                                                       return [[item.units,item.amount]];
+                                                                       });
+                                                     DamageData(array);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        
+        function getVariance()
+        {
+            var calculateqty ="CASE WHEN endinvqty = 0 THEN 0 ELSE (ifnull(vanstock,0)-ifnull(truckdamageqty,0)-ifnull(endinvqty,0)-ifnull(freshunloadqty,0)) END";
+	        var calculateqty = "ifnull(varianceqty,0)";
+            if (CaseEnabled) {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+"%unitspercase) as units,sum((("+calculateqty+"%unitspercase)*defaultsalesprice)+(("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            else
+            {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+") as units,sum((("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            console.log(Qry);
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                              VarianceData(result)
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     var array = $.map(result.array, function(item, index) {
+                                                                       if (CaseEnabled)
+                                                                       return [[item.cases, item.units,item.amount]];
+                                                                       else
+                                                                       return [[item.units,item.amount]];
+                                                                       });
+                                                     VarianceData(array);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function CheckIsNaN(val)
+        {
+            if(isNaN(val))
+            return 0;
+            else
+            return val;
+        }
+        
+        
+        function getBadReturnVariance(){
+        
+        	var calculateqty = "ifnull(badreturnvariance,0)";
+            if (CaseEnabled) {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+"%unitspercase) as units,sum((("+calculateqty+"%unitspercase)*defaultsalesprice)+(("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            else
+            {
+                var Qry ="select sum("+calculateqty+"/unitspercase) as cases,sum("+calculateqty+") as units,sum((("+calculateqty+"/unitspercase)*caseprice)) as amount from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+            }
+            console.log(Qry);
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                               VarianceDamageData(array);
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     var array = $.map(result.array, function(item, index) {
+                                                                       if (CaseEnabled)
+                                                                       return [[item.cases, item.units,item.amount]];
+                                                                       else
+                                                                       return [[item.units,item.amount]];
+                                                                       });
+                                                     VarianceDamageData(array);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        	
+        
+        
+        }
+    </script>
+
+    </body>
+</html>

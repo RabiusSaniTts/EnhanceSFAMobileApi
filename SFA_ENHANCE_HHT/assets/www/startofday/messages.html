@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Messages</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/th.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="startofday.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Salesman Messages</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="CRow1">
+                        <table border="0" cellpadding="4" cellspacing="4"
+                            width="100%">
+                            <tr>
+                                <td style="width: 3%">
+                                    &nbsp;
+                                </td>
+                                <td class="captionLabel rightAlign"
+                                    style="width: 17%" lang="en" id="td2">
+                                    Route No.
+                                </td>
+                                <td class="captionLabel leftAlign"
+                                    style="width: 25%;text-decoration:none;">
+                                    <div class="labelBG ui-corner-all">
+                                        <label id="Route">4564646465</label>
+                                    </div>
+                                </td>
+                                <td class="captionLabel rightAlign"
+                                    style="width: 23%" lang="en" id="td4">
+                                    Salesman No.
+                                </td>
+                                <td class="captionLabel leftAlign"
+                                    style="width: 25%">
+                                    <div class="labelBG ui-corner-all">
+                                        4564646465</div>
+                                </td>
+                                <td style="width: 7%">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="tblBox">
+                        <table border="0" cellpadding="0" cellspacing="0"
+                            width="100%" id="tblContent">
+                            <tr class="tblHeader">
+                                <th class="leftAlign">
+                                    Ronaldo Jocson
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="tblMessage">
+                                    <p>
+                                        A Punch Sentence This sentence at the
+                                        end of the paragraph expresses the
+                                        paragraph's
+                                        relation to the essay topic as a whole.
+                                        It is called "punch" because it should
+                                        say
+                                        something in a striking way that the
+                                        reader will notice and remember. Some
+                                        paragraphs
+                                        end with a transitional sentence that
+                                        links the paragraph to the next one, but
+                                        also
+                                        here a punch sentence should appear near
+                                        the end of the paragraph.</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="startofday.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="day"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        $(document).ready(function() {
+            window.lang.run();
+
+            $("#tblContent tr:first th:first").addClass('tableBorderTopLeft tableBorderTopRight');
+            $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft tableBorderBottomRight');
+            $("#lang_inner").click(function() {
+                if ($("#lang_inner").text() == "EN") {
+                    $("#lang_inner").text("AR");
+                    window.lang.change('MessagesAR');
+                    window.lang.change('FooterAR');
+                    $(".boxContent").attr("dir", "rtl");
+                    sessionStorage.setItem("Language", "AR");
+
+                    //Set table column align 
+                    $("#td2").removeClass('rightAlign');
+                    $("#td4").removeClass('rightAlign');
+                    $("#td2").addClass('leftAlign');
+                    $("#td4").addClass('leftAlign');
+
+                    $("th").addClass('rightAlign');
+
+                    //Set header align
+                    $('#Back_inner').css({ 'float': 'right', 'right': '10px' });
+                    $('#lang_inner').css({ 'float': 'left', 'left': '10px;' });
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+                else {
+                    $("#lang_inner").text("EN");
+                    window.lang.change('en');
+                    $(".boxContent").attr("dir", "ltr");
+                    sessionStorage.setItem("Language", "EN");
+                    //Set table column align 
+                    $("#td2").removeClass('leftAlign');
+                    $("#td4").removeClass('leftAlign');
+                    $("#td2").addClass('rightAlign');
+                    $("#td4").addClass('rightAlign');
+
+                    $("th").removeClass('rightAlign');
+
+                    //Set header align
+                    $('#Back_inner').css({ 'float': 'left', 'left': '10px;' });
+                    $('#lang_inner').css({ 'float': 'right', 'right': '10px' });
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });
+            if (sessionStorage.getItem("Language") == "AR") {
+                $("#lang_inner").trigger('click');
+            }
+        });
+    </script>
+
+    </body>
+</html>

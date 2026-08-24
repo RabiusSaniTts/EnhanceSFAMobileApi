@@ -1,0 +1,880 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 31/1/2011
+ '  Description  : This page is used for settle completion task.    
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Route Sequence</title>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <link rel="stylesheet" type="text/css"
+            href="../css/jquery.mobile.simpledialog.css" />
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.simpledialog.js"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="customer_operation.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Customer Selection</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="tblBox com_div comm">
+                    <table border="0" cellpadding="2" cellspacing="2"
+                        width="100%"
+                        class="ManageCheckHeader">
+                        <tr>
+                            <td class="CheckCaption leftAlign"
+                                style="width: 82%" id="td2"
+                                lang="en">Customer #</td>
+
+                        </tr>
+                        <tr>
+                            <td class="leftAlign" style="width: 82%">
+                                <div class="label_text ui-corner-all"
+                                    style="width: 90%" id="code"></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="leftAlign" style="width: 82%">
+                                <div class="label_text ui-corner-all"
+                                    style="width: 90%" id="name"></div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="divhr">
+                    </div>
+                    <div class="boxContent SpacingCheck">
+                        <div class="content-SettleCash routeseq">
+                            <ul data-role="listview" id="MenuList">
+                                <li><a href="route_sequence_detail.html"
+                                        id="route" rel="external">
+                                        <img src="../images/group.png"
+                                            id="imgseq"
+                                            class="HomeIconPosEN cicon" />
+                                        <h3 id="lblStartOfDay" lang="en">
+                                            Use Customer Sequence</h3>
+                                    </a></li>
+                                <li><a href="customerselection.html"
+                                        rel="external" id="selectcust">
+                                        <img src="../images/man.png"
+                                            class="HomeIconPosEN cicon" />
+                                        <h3 id="lblCustomerOpt" lang="en">
+                                            Select Manually</h3>
+                                    </a></li>
+                                <li><a href="ListCustomers.html" rel="external"
+                                        id="selectcust" ">
+                                        <img src="../images/search_cusst.png"
+                                            class="HomeIconPosEN cicon" />
+                                        <h3 id="lblCustomerOpt" lang="en">
+                                            Locate Customers</h3>
+                                    </a></li>
+                                <li><a href="#" rel="external" id="routemap"
+                                        onclick="CustomerSelction();"> <img
+                                            src="../images/map.png"
+                                            class="HomeIconPosEN cicon" />
+                                        <h3 id="lblCustomerOpt" lang="en">Route
+                                            Map</h3>
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="customer_operation.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="iconPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Settlement Complete" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+            <table id="tblPassword" border="0" cellpadding="2" cellspacing="0"
+                width="100%;" style="display: none;">
+                <tr>
+                    <th class="tblHeader captionLabel leftAlign popupTitle"
+                        colspan="2"
+                        lang="en">Password Entry</th>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2" class="popupSubTitle" lang="en">Call
+                        Sequence
+                        Enforced</td>
+                </tr>
+                <tr class="popupRow">
+                    <td class="popupSubTitle" lang="en">Access Key</td>
+                    <td class="popupSubTitle" id="passkey" lang="en"></td>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2" lang="en" class="popupInfo">Please Enter The
+                        Security Password</td>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2"><input id="txtPassword" type="tel"
+                            pattern="[0-9]*" value maxlength="10"
+                            class="textWidth textFont passwordCenter" /> <label
+                            id="lblMessage" lang="en"
+                            style="display: none">Enter Correct
+                            Password</label></td>
+                </tr>
+                <tr class="popupRow">
+                    <td style="width: 50%;"><input id="btnSubmit" type="button"
+                            value="Submit"
+                            onclick="VerifyPassword1('btnSubmit','customerselection.html',tblPassword.innerHTML);"
+                            data-role="none" lang="en" /></td>
+                    <td style="width: 50%;"><input id="btnCancel" type="button"
+                            rel="close" value="Cancel"
+                            onclick="ClearPassword();"
+                            data-role="none" lang="en" /></td>
+                </tr>
+            </table>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var routesequenceplanflag;
+      resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+        $(".leftfooter").html(getCurrentDate());
+            var custid=sessionStorage.getItem("customerid");
+            var custcode=sessionStorage.getItem("customercode");
+            var custname=sessionStorage.getItem("customername");
+            $('#code').text(custcode);
+            $('#name').text(custname);
+            document.addEventListener("deviceready", offlinegetrecord, false);
+            var lan = sessionStorage.getItem("Language");
+	     window.lang.run(lan);
+           if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Routeseq'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                   $(".centerboxInvReq").attr("dir", "rtl");
+                   $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+                      $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		       $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		      $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		       $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+            }
+	    else
+	    {
+		window.lang.change('en','en');
+                 $(".centerboxInvReq").attr("dir", "ltr");
+               $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+		 $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	    }
+        });
+        function TableDataOffLine(RecSet,flag)
+        {       
+            try
+            {
+            getlastOdometer(); 
+            }
+            catch(e)
+            {
+                alert(e);
+            }
+            var data = RecSet;
+           if(flag=='ipad')
+            var cnt=data[0][0];
+            else
+            var cnt=data.array[0].cnt;
+            if(cnt==0)
+            {
+                $('#lblStartOfDay').addClass('MenuGray');
+                $('#imgseq').attr('src','../images/group-grey.png');
+                $('#route').attr('href','');
+            }
+            else
+            {
+                $('#lblStartOfDay').removeClass('MenuGray');
+                $('#imgseq').attr('src','../images/group.png');
+                $('#route').attr('href','route_sequence_detail.html');
+            }
+            getdata();
+        }
+        function offlinegetrecord()
+        {       
+            
+            var routecode=sessionStorage.getItem("RouteCode");
+            var platform= sessionStorage.getItem("platform");
+            var secondqry ="select routesequenceplanflag from setup where setupid=1";
+             if(platform=='iPad')
+		        {
+             var abc = Cordova.exec(function(result) {
+             TableDataOffLine(result,"ipad");
+             },
+             function(error) {
+             alert(error);},
+             "PluginClass", 
+             "GetdataMethod", 
+             ["select count(*) as cnt from routesequence where routecode="+routecode]);
+             
+             
+             var abc = Cordova.exec(function(result) {
+                                                if(result.length > 0)
+                                                {
+                                                    routesequenceplanflag = result[0][0];
+                                                   
+                                                }
+                                              
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            [secondqry]);
+             
+            }
+            else if(platform=='Android')
+		    {
+                         window.plugins.DataBaseHelper.select(secondqry,function(result)
+						{
+                            routesequenceplanflag = result.array[0].routesequenceplanflag;
+                             window.localStorage.setItem("routesequenceplanflag",routesequenceplanflag);
+						   
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+                         
+		           	window.plugins.DataBaseHelper.select("select count(*) as cnt from routesequence where routecode="+routecode,function(result)
+						{
+						 TableDataOffLine(result,"andoid");
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+		    }
+        }
+        
+        Date.prototype.getWeek = function(start)
+        {
+            //Calcing the starting point
+            start = start || 0;
+            var today = new Date(this.setHours(0, 0, 0, 0));
+           
+            var day = (7+today.getDay()-start)%7;
+            var date = today.getDate() - day;
+            
+            // Grabbing Start/End Dates
+            var StartDate = new Date(today.setDate(date));
+           var EndDate = new Date(StartDate.getTime()+6*24*60*60*1000);
+           //var EndDate = new Date(today.setDate(date + 6));
+            return [StartDate, EndDate];
+        }
+        function formatDate(d)
+        {
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth();
+            var curr_year = d.getFullYear();
+            curr_month =curr_month + 1;
+            
+            if(curr_month<10)
+            curr_month = "0"+curr_month;
+            
+            if(curr_date<10)
+            curr_date = "0"+curr_date;
+            
+            return curr_year+ "-" +curr_month+ "-" + curr_date;
+        }
+       
+
+        function getdata()
+        {
+            var platform= sessionStorage.getItem("platform");
+           	 var today=new Date();
+            today = formatDate(today);
+            today = today +' 00:00:00';
+            getdate(today);
+               /* if(platform=='iPad')
+		    {    
+            var abc = Cordova.exec(function(result) {
+                                   
+                                    var startDay=result;
+                                    
+                                    //startDay=6;
+                                   var today=new Date();
+                                   
+                                 //  var weekStart = new Date(today.getDate() - (7 + today.getDay() - startDay) % 7);
+                                 //   var weekEnd = new Date(today.getDate() + (7 - today.getDay() - startDay) % 7);
+                                    // test code
+                                    var Dates = new Date().getWeek(startDay);
+                                    
+                                  var weekStart = Dates[0].toLocaleDateString();
+                                    var weekEnd =Dates[1].toLocaleDateString();
+                                    console.log(weekEnd);
+                                    var weekStart =formatDate(Dates[0]);
+                                    var weekEnd =formatDate(Dates[1]);
+                                    
+                                    weekStart = weekStart+" 00:00:00";
+                                    weekEnd = weekEnd+" 00:00:00";
+                                    getdate(weekStart,weekEnd);
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    ["select weekstartday from setup where setupid=1"]);
+			}
+			else if(platform=='Android')
+		    {
+				           	window.plugins.DataBaseHelper.select("select weekstartday from setup where setupid=1",function(result)
+								{
+								  var startDay=result.array[0].weekstartday;
+                                    
+                                    //startDay=6;
+                                   var today=new Date();
+                                   
+                                 //  var weekStart = new Date(today.getDate() - (7 + today.getDay() - startDay) % 7);
+                                 //   var weekEnd = new Date(today.getDate() + (7 - today.getDay() - startDay) % 7);
+                                    // test code
+                                    var Dates = new Date().getWeek(startDay);
+                                    
+                                  var weekStart = Dates[0].toLocaleDateString();
+                                    var weekEnd =Dates[1].toLocaleDateString();
+                                    
+                                    var weekStart =formatDate(Dates[0]);
+                                    var weekEnd =formatDate(Dates[1]);
+                                    
+                                    weekStart = weekStart+" 00:00:00";
+                                    weekEnd = weekEnd+" 00:00:00";
+                                    getdate(weekStart,weekEnd);
+								},
+								function()
+								{
+							   	 console.warn("Error calling plugin");
+								});
+		    }*/
+        }
+        function getdate(today)
+        {
+            console.log("select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate");
+           var platform= sessionStorage.getItem("platform");
+           	if(platform=='iPad')
+		    {
+            var abc = Cordova.exec(function(result) {
+                                   
+                                     sessionStorage.setItem("rp32weeknumber",result);
+                                     getcustomer(result);
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    ["select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate"]);
+        }
+         else if(platform=='Android')
+             {
+             
+             window.plugins.DataBaseHelper.select("select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate",function(result)
+				{
+				 if(result.array!=undefined)
+				 {
+				 sessionStorage.setItem("rp32weeknumber",result.array[0].rp32weeknumber);
+				 getcustomer(result.array[0].rp32weeknumber);
+                 
+                 }
+                 else
+                {
+                $('#lblStartOfDay').addClass('MenuGray');
+                $('#imgseq').attr('src','../images/group-grey.png');
+                $('#route').attr('href','');
+                
+                }
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+             }  
+        }
+        function getcustomer(result)
+        {
+            var routecode=sessionStorage.getItem("RouteCode");
+            
+            var routekey=sessionStorage.getItem("RouteKey");
+            var platform= sessionStorage.getItem("platform");
+            var d = new Date();
+            var n = d.getDay();
+            var array = ['sunseq','monseq','tueseq','wedseq','thuseq','friseq','satseq'];
+            var callarray=['callrestrictiondays7','callrestrictiondays1','callrestrictiondays2','callrestrictiondays3','callrestrictiondays4','callrestrictiondays5','callrestrictiondays6'];
+            var days = array[n];
+            var calldays = callarray[n];
+            sessionStorage.setItem("days",days);
+            sessionStorage.setItem("calldays",calldays);
+            
+            if(routesequenceplanflag==1)
+            {
+                result=9;
+                sessionStorage.setItem("rp32weeknumber",result);
+            }
+		    
+                    
+                    
+            console.log("select c.customercode,c.customername,alternatecode,ancustomercode from routesequence r join customermaster as c on c.customercode=r.customercode where r.routecode='"+routecode+"' and rp32weeknumber='"+result+"' and "+calldays+"=1 and c.customercode NOT IN (select distinct customeroperationscontrol.customercode from customeroperationscontrol where (totaltransactions > 0 or reasoncode > 0)) order by "+days+" limit 1");
+           	if(platform=='iPad')
+		    {
+            var abc = Cordova.exec(function(result) {
+            						if(result.length > 0)
+                                    {
+                                    setdata(result,'ipad');
+                                    }
+                                    else
+                                    {
+                                    $('#lblStartOfDay').addClass('MenuGray');
+                                    $('#imgseq').attr('src','../images/group-grey.png');
+                                    $('#route').attr('href','');
+                                    
+                                    }
+                                    
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    ["select c.customercode,c.customername,alternatecode,ancustomercode from routesequence r join customermaster as c on c.customercode=r.customercode where r.routecode='"+routecode+"' and rp32weeknumber='"+result+"' and "+calldays+"=1 and c.customercode NOT IN (select distinct customeroperationscontrol.customercode from customeroperationscontrol where (totaltransactions > 0 or reasoncode > 0)) order by "+days+" limit 1"]);
+        	}
+        	else if(platform=='Android')
+             {
+             
+             window.plugins.DataBaseHelper.select("select c.customercode, CASE WHEN '"+ sessionStorage.getItem("Language") + "' = 'en' THEN c.customername ELSE c.arbcustomername END as customername,alternatecode,ancustomercode from routesequence r join customermaster as c on c.customercode=r.customercode where r.routecode='"+routecode+"' and rp32weeknumber='"+result+"' and "+calldays+"=1 and c.customercode NOT IN (select distinct customeroperationscontrol.customercode from customeroperationscontrol where (totaltransactions > 0 or reasoncode > 0)) order by "+days+" limit 1",function(result)
+				{
+				  if(result.array!=undefined)
+				 {
+				  setdata(result,"android");
+				  }
+				  else
+                                    {
+                                    $('#lblStartOfDay').addClass('MenuGray');
+                                    $('#imgseq').attr('src','../images/group-grey.png');
+                                    $('#route').attr('href','');
+                                    
+                                    }
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+             }  
+        }
+        function setdata(data,flag)
+        {
+         
+         var platform= sessionStorage.getItem("platform");
+            if(flag=='ipad')
+            {
+            var custid = data[0][0];
+            var custname = data[0][1];
+            }
+            else
+            {
+            var custid = data.array[0].customercode;
+            var custname = data.array[0].customername;
+            }
+           
+            $('#code').text(custid);
+            $('#name').text(custname);
+            sessionStorage.setItem("customerid",custid);
+            sessionStorage.setItem("customername",custname);
+            var routecode=sessionStorage.getItem("RouteCode");
+            if(platform=='iPad')
+		    {
+            var abc = Cordova.exec(function(result) {
+                                    var acode=result[0][0];
+                                    if(acode==1)
+                                    {
+                                    var custid = data[0][2];
+                                    $('#code').text(custid);
+                                    sessionStorage.setItem("customercode",custid);
+                                    }
+                                    else
+                                    {
+                                    var custid = data[0][0];
+                                    $('#code').text(custid);
+                                    sessionStorage.setItem("customercode",custid);
+                                    }
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    ["select usealternatecodes from routemaster where routecode="+routecode]);
+           }
+           else if(platform=='Android')
+             {
+             
+             window.plugins.DataBaseHelper.select("select usealternatecodes from routemaster where routecode="+routecode,function(result)
+				{
+				   var acode=result.array[0].usealternatecodes;
+                                    if(acode==1)
+                                    {
+                                    var custid = data.array[0].alternatecode;
+                                    $('#code').text(custid);
+                                    sessionStorage.setItem("customercode",custid);
+                                    }
+                                    else
+                                    {
+                                    var custid = data.array[0].customercode;
+                                    $('#code').text(custid);
+                                    sessionStorage.setItem("customercode",custid);
+                                    }
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+             }  
+        }
+        
+        function checkenforce()
+        {
+            var platform= sessionStorage.getItem("platform");
+            var routecode=sessionStorage.getItem("RouteCode");
+            var CompanyCode=parseInt(sessionStorage.getItem("CompanyCode"));
+            console.log(CompanyCode);
+            if(platform=='iPad')
+		    {
+                var abc = Cordova.exec(function(result) {
+                                        var acode=result[0][0];
+                                        if(acode==1)
+                                        {
+//                                        var d = new Date();
+//                                        var n = d.getMinutes();                                        
+//                                        //var s = d.getSeconds();
+//                                        if(n<10)
+//                                        n='0'+n;
+//                                        var key = routecode+CompanyCode+n;
+//                                        var str = key;
+                                        	
+                                    	var customercode=sessionStorage.getItem("RouteCode").toString().slice(-2);
+                        	            var d = new Date();
+                        	            var unixtime = parseInt(d.getTime() / 1000);
+                        	            var randomnumber= Math.floor(Math.random() * 9999999) + 100000;
+                        	           
+                        	            var timestamp=unixtime.toString().slice(-7)+customercode;
+                        	            var key =  Math.abs(eval(timestamp)-eval(randomnumber));
+                        	            var str = key.toString();
+                            				
+                                        	
+                                        	
+                                        var a=str.split(''), b = a.length;
+                                        for (var i=0; i<b; i++) {
+                                        a.unshift(a.splice(1+i,1).shift())
+                                        }
+                                        a.shift();
+                                        var pass = a.join('');
+                                        $('#passkey').text(pass);
+                                        console.log(key);
+                                       
+                                        
+                                        var mydate = new Date();
+                                        
+                                        var thehour = mydate.getHours();
+                                        var theminut = mydate.getMinutes();
+                                        
+                                        popuppasswordgenerator('selectcust','route_sequence.html',tblPassword.innerHTML,'route_sequence.html');
+                                        }
+                                        else
+                                        {
+                                        window.location='customerselection.html';
+                                        }
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select enforcecallsequence from routemaster where routecode="+routecode]);
+            }
+            else if(platform=='Android')
+            {
+                
+                window.plugins.DataBaseHelper.select("select enforcecallsequence from routemaster where routecode="+routecode,function(result)
+                                                     {
+                                                     var acode=result.array[0].enforcecallsequence;
+                                                     if(acode==1)
+                                                     {
+//                                                     var d = new Date();
+//                                                     var n = d.getMinutes();                                        
+//                                                     //var s = d.getSeconds();
+//                                                     if(n<10)
+//                                                     n='0'+n;
+//                                                     var key = routecode+CompanyCode+n;
+//                                                     var str = key;
+                                                    	 
+                                                	var customercode=sessionStorage.getItem("RouteCode").toString().slice(-2);
+                                     	            var d = new Date();
+                                     	            var unixtime = parseInt(d.getTime() / 1000);
+                                     	            var randomnumber= Math.floor(Math.random() * 9999999) + 100000;
+                                     	            console.log(CompanyCode);
+                                     	            var timestamp=unixtime.toString().slice(-7)+customercode;
+                                     	           var key =  Math.abs(eval(timestamp)-eval(randomnumber));
+                                     	            var str = key.toString();
+                                         				 	 
+                                                    	 
+                                                    	 
+                                                     var a=str.split(''), b = a.length;
+                                                     for (var i=0; i<b; i++) {
+                                                     a.unshift(a.splice(1+i,1).shift())
+                                                     }
+                                                     a.shift();
+                                                     var pass = a.join('');
+                                                     $('#passkey').text(pass);
+                                                     console.log(key);
+                                                     
+                                                     
+                                                     var mydate = new Date();
+                                                     
+                                                     var thehour = mydate.getHours();
+                                                     var theminut = mydate.getMinutes();
+                                                     popuppasswordgenerator('selectcust','route_sequence.html',tblPassword.innerHTML,'route_sequence.html');
+                                                     }
+                                                     else
+                                                     {
+                                                    window.location='customerselection.html';
+                                                     }
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }  
+        }
+        function CustomerSelction()
+        {
+        	var plateform=sessionStorage.getItem("platform");
+        	 var routecode=sessionStorage.getItem("RouteCode");
+        	
+        	if(plateform=='ipad')
+        	{
+        		
+        		
+        	
+        	}else if(plateform=='Android')
+        	{
+        		window.plugins.DataBaseHelper.select("select enforcecallsequence from routemaster where routecode="+routecode,function(result)
+				{
+				   var acode=result.array[0].enforcecallsequence;
+				   
+                                    if(acode==1)
+                                    {
+                                   		 getCustomerSequence(true);		
+                                    }else
+                                    {
+                                   		 getCustomerSequence(false);		
+                                    }
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+        
+        				
+        		
+        	
+        	}
+        
+        
+        
+        }
+        
+        
+        function getCustomerSequence(isSingleCustomer)
+        {
+        	var Qry='';
+        	
+        	var rp32weeknumber=sessionStorage.getItem("rp32weeknumber");
+	        var days=sessionStorage.getItem("days");
+	        var calldays=sessionStorage.getItem("calldays");
+        	
+        	if(isSingleCustomer)
+        	{
+        		
+        		Qry = "select * from customermaster where customercode="+sessionStorage.getItem("customercode");
+            }else
+        	{
+        		
+        		Qry = "select DISTINCT c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,customeraddress3,"+days+",fixedlatitude,fixedlongitude,IFNULL(visitkey,0) as visitkey from customermaster c left join customeroperationscontrol co on co.customercode = c.customercode and routekey = "+sessionStorage.getItem("RouteKey")+" join routesequence as r on r.customercode=c.customercode where rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1 group by c.customercode order by "+days;
+        		
+        	}
+        	console.log(Qry);
+        	
+        	
+            if (platform == 'iPad') 
+            {
+                
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                    	
+                    	console.warn("Latlong Squence"+JSON.stringify(result));
+                    	if(result.array.length==1 && (result.array[0].fixedlatitude<1 || result.array[0].fixedlongitude<1))
+                    	{
+                    		getLangText("Invalid Master Coordinates!");
+                    		
+                    	}else
+                    	{
+                    	
+                    		showMap(result);
+                    	}
+                        
+                    }
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        
+        function showMap(data)
+        {
+        	
+        	var platform=sessionStorage.getItem("platform");
+        	if(platform=='Android')
+        	{
+        	
+        		 window.plugins.MapHelper.getMap(data,function(data)
+        		 {
+        							
+        		 },
+        		 function()
+        		 {
+        				   	 
+        		 });
+        		
+        		
+        		
+        	}else
+        	{
+        		
+        		
+        	}
+        		
+        		
+        	
+        	
+        }
+    </script>
+
+</body>
+</html>

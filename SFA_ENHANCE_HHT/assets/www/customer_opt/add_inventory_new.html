@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script type="text/javascript" src="../barcodescanner.js"></script>
+        <script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en"
+                    onclick="ClearVariables(1);">Back</a>
+                <h1 lang="en">Item Entry</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <table class="topbox" cellpadding="0">
+                        <tr>
+                            <td style="width:25%">
+                                <table cellpadding="0">
+                                    <tr>
+                                        <td style="width:10%" lang="en">No.</td>
+                                        <td style="width:80%;">
+
+                                            <input type="tel" name="itemno"
+                                                id="itemno"
+                                                class="textWidth textFont"
+                                                value>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:60%;padding-left:40px">
+                                <label class="cus_lable heading" lang="en"
+                                    id="lblDesc">
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="10" cellspacing="2" border="0"
+                        width="100%" align="center">
+
+                        <tr>
+                            <td style="width: 10%;"></td>
+                            <td class="captionLabel" id="tdCaseLabel" lang="en"
+                                style="width: 15%;">
+                                Cases
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 15%;">
+                                Units
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 60%;">
+                                Expiry Date
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="captionLabel" lang="en"
+                                style="width: 10%;">
+                                Qty.
+                            </td>
+                            <td>
+                                <!--<input id="txtCase" type="text" pattern="[0-9]*" size="11" class="textWidth textFont" onblur="SetFormat(this)"/>-->
+                                <input id="txtCase" type="tel" size="11"
+                                    value="0" class="textWidth textFont"
+                                    onblur="SetFormat(this)" />
+                            </td>
+                            <td>
+                                <!--<input id="txtUnits" type="text" pattern="[0-9]*" size="11" class="textWidth textFont" onblur="SetFormat(this)"/>-->
+                                <input id="txtUnits" type="tel" size="11"
+                                    value="0" class="textWidth textFont"
+                                    onblur="SetFormat(this)" />
+                            </td>
+                            <td style="width: 60%;">
+                                <!--<input id="txtUnits" type="text" pattern="[0-9]*" size="11" class="textWidth textFont" onblur="SetFormat(this)"/>-->
+                                <input id="txtDate" type="date"
+                                    class="textWidth textFont"
+                                    data-role="datebox"
+                                    data-options='{"mode": "datebox","dateFormat": "dd-MM-YYYY"}'
+                                    style="width: 80%;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <!--   <div class="menuPadding">
+                    &nbsp;</div> -->
+                    <a href="#" rel="external" id="exit"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPosition printDocumentHeight ">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon" src="../images/save.png"
+                                    alt="Exit" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Save</div>
+                        </div>
+                    </a>
+
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a id="addinv" href="DistributionCheck_New.html"
+                        rel="external" class="enableText">
+                        <div class="MenuPosition printDocumentHeight MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png" alt /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Done</div>
+
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            <div data-role="footer" class="ui-bar" id="f1">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" style="bottom: 0; position: absolute;"
+                id="f2">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Info</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = null; 
+        var ArrPrice;
+        var dataInventory = null;
+        var index = 0;
+        var caseprice = 0;
+        var platform='';         
+        var Qty;
+        var UPC;
+        var itemno;
+        var rpitemno;
+        var barcode;
+         
+        window.lang = new jquery_lang_js();        
+         resizeOrientationWindow();
+	   $(document).ready(function() {
+	 	resizeWindow();
+	    if(sessionStorage.getItem('CheckCode') =='alternatecode')
+             $('#itemno').clone().attr('type','text').insertAfter('#itemno').prev().remove();
+            else
+             $('#itemno').clone().attr('type','tel').insertAfter('#itemno').prev().remove();
+        $(".leftfooter").html(getCurrentDate());
+        platform= sessionStorage.getItem("platform");  
+        itemno = sessionStorage.getItem("itemno");
+        rpitemno = sessionStorage.getItem("rpItmCode");
+         $('#lblDesc').text(sessionStorage.getItem('itmDes')); 
+         $("#itemno").val(sessionStorage.getItem('itmCode'));
+         
+        Qty = localStorage.addshelf1;
+	
+        
+        document.addEventListener("deviceready", GetUPC, false);
+            
+               var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {               
+                    window.lang.change('Onshelf'+lan,lan);
+                    window.lang.change('Footer'+lan,lan);
+                    if(lan=="AR")
+                    {
+                        $("#centerboxInvReq").attr("dir", "rtl");
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+                
+                }
+                else
+                {
+                    window.lang.change('en','en');
+                    $(".centerboxInvReq").attr("dir", "ltr");
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            
+                $("#exit").click( function () {
+                	Validate();
+                	//InsertTempDetail();
+                	//window.location='DistributionCheck_New.html';
+                });
+        });
+        
+        $("#txtCase").blur(function () { $(this).val(parseFloat($(this).val())) });
+        $("#txtUnits").blur(function () { $(this).val(parseFloat($(this).val())) }); 
+        
+       
+        
+        
+        function Validate()
+        {
+            try{
+          /*  if(itemno == "" || itemno == null)
+            {
+                getLangText("Please Select Item.");
+                return false;
+            }   
+            */
+           
+            if($.trim($("#txtCase").val()) == 0 && $.trim($("#txtUnits").val()) == 0)
+            {
+                getLangText("Please Enter Quantity");
+                return false;
+            }
+		    else if($.trim($("#txtDate").val()) == "")
+		    {
+					getLangText("Please Enter Expiry Date.");
+	                return false;
+		    }
+            else
+            	InsertTempDetail();
+                }
+                catch(ex)
+                {
+                    alert(ex);
+                }
+        }
+        
+        
+       
+
+        function InsertTempDetail()
+        {     
+        	
+        	//alert("InsertTempDetail");
+             var cases = parseInt(CheckIsNaN($("#txtCase").val()));
+            var units = parseInt(CheckIsNaN($("#txtUnits").val()));
+            
+	        var edate = $("#txtDate").val();
+	        edate = edate.split("-");
+	       
+            var expiry = edate[2] + "-" + edate[1] + "-" + edate[0];
+            var currqty = eval((cases * UPC)) + eval(units);
+           
+            var Qry = "Insert Into tempcustomerinventory(routekey,visitkey,itemcode,alternatecode,customercode,quantity,expirydate,barcode,issync,entryflag,routecode,salesmancode) values(" + sessionStorage.getItem('RouteKey') + "," + sessionStorage.getItem('VisitKey') + "," + rpitemno  + ",'"+sessionStorage.getItem('itmCode')+"',"+sessionStorage.getItem("customerid")+"," + currqty + ",'"+expiry+"','"+barcode+"',0,1,"+sessionStorage.getItem("RouteCode")+","+sessionStorage.getItem("SalesmanCode")+")";
+            console.log(Qry);
+          // alert(Qry);
+            if(platform=='iPad')
+		    {                
+                Cordova.exec(function(result)
+                {
+                    ClearVariables(1);
+                },
+                function(error) {
+                    navigator.notification.alert("Error inserting record in a invoice detail");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform=='Android')
+           	{
+                window.plugins.DataBaseHelper.insert(Qry, function(result)
+                {
+                	CheckInvoiceDetailItemCount();
+                   // ClearVariables(1);
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            } 
+        }
+        function CheckInvoiceDetailItemCount()
+        {
+	    
+	       var edate = $("#txtDate").val();
+            if(platform=='iPad')
+		    {
+            Cordova.exec(function(result) {
+                            if(result.length > 0)
+                            {
+                                UPC = result[0][1];                                
+                                if(result[0][0] == 0)
+                                {   
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    InsertInvoiceDetail();
+                                }
+                                else
+                                {   
+                                    UPC = result[0][1];                                    
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    UpdateInvoiceDetail();
+                                }
+                            }
+                          },
+                          function(error) {
+                            navigator.notification.alert("Error in check invoice detail item count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["Select Count(routekey) as routekey,(SELECT unitspercase FROM itemmaster WHERE actualitemcode = " + itemno + ") unitspercase From customerinventorycheck where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and istemp = 'false' and itemcode = "+ itemno +" and expiry_date='"+edate+"'"]);    
+       		}
+       		else if(platform=='Android')
+           	{
+       			
+	           		window.plugins.DataBaseHelper.select("Select Count(routekey) as routekey,(SELECT unitspercase FROM itemmaster WHERE actualitemcode = " + sessionStorage.getItem("rpItmCode") + ") unitspercase From customerinventorycheck where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and istemp = 'false' and itemcode = "+ rpitemno +" and expiry_date='"+edate+"'",function(result)
+					{
+						if(result.array != undefined)
+						{
+		                    result = $.map(result.array, function (item, index) {
+                				return [[item.routekey,item.unitspercase]];
+            				});
+		                   
+		                  	if(result.length > 0)
+                            {
+                                UPC = result[0][1];                                
+                                if(result[0][0] == 0)
+                                {   
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    InsertInvoiceDetail();
+                                }
+                                else
+                                {   
+                                    UPC = result[0][1];                                    
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    UpdateInvoiceDetail();
+                                }
+                            }
+                         }                
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	} 
+        }
+        
+
+        function InsertInvoiceDetail()
+        {       
+        	
+            var cases = parseInt(CheckIsNaN($("#txtCase").val()));
+            var units = parseInt(CheckIsNaN($("#txtUnits").val()));
+	        var edate = $("#txtDate").val();
+	        edate = edate.split("-");
+            
+            var expiry = edate[2] + "-" + edate[1] + "-" + edate[0];
+            var currqty = eval((cases * UPC)) + eval(units);
+           
+            var Qry = "Insert Into customerinventorycheck(routekey,visitkey,itemcode," + Qty + ",issync,istemp,expiry_date) values(" + sessionStorage.getItem('RouteKey') + "," + sessionStorage.getItem('VisitKey') + "," +sessionStorage.getItem("rpItmCode")+ "," + currqty + ",0,'false','"+expiry+"')";
+            console.log(Qry);
+            //alert(Qry);
+            if(platform=='iPad')
+		    {                
+                Cordova.exec(function(result)
+                {
+                    ClearVariables(0);
+                },
+                function(error) {
+                    navigator.notification.alert("Error inserting record in a invoice detail");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform=='Android')
+           	{
+                window.plugins.DataBaseHelper.insert(Qry, function(result)
+                {
+                	
+                    ClearVariables(1);
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            } 
+        }
+        
+       function UpdateInvoiceDetail()
+        {      
+    	  
+                var cases = parseInt(CheckIsNaN($("#txtCase").val()));
+                var units = parseInt(CheckIsNaN($("#txtUnits").val()));
+                var currqty = eval((cases * UPC)) + eval(units);
+		        var edate = $("#txtDate").val();
+		        edate = edate.split("-");
+	            
+	            var expiry = edate[2] + "-" + edate[1] + "-" + edate[0];
+                var Qry = "Update customerinventorycheck set " + Qty  + " =  (ifnull(" + Qty  + ",0) + " + CurrQty + "),issync=0,istemp='false',expiry_date='"+expiry+"' where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and itemcode = " + sessionStorage.getItem("rpItmCode")+" and expiry_date='"+edate+"'";
+                console.log(Qry);
+               // alert(Qry);
+                if(platform=='iPad')
+		    	{                   
+                	Cordova.exec(function(result)
+                    {
+                        ClearVariables(0);
+                    },
+                    function(error) {
+                        navigator.notification.alert("Error updating record in a invoice detail");
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);                              
+            	}
+            	else if(platform=='Android')
+           	  	{
+           	  	    window.plugins.DataBaseHelper.insert(Qry, function(result)
+					{
+           	  	        
+                        ClearVariables(1);
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	}
+        }
+        
+        function ClearVariables(act)
+        {
+            $("#itemno").val("");
+            $("#txtCase").val("");
+            $("#txtUnits").val("");
+	        $("#txtDate").val("");
+            $("#lblDesc").text("");           
+            sessionStorage.setItem("ItemCode","");
+            sessionStorage.setItem("ItemDesc","");
+            sessionStorage.setItem("itemno","");
+            sessionStorage.setItem("rpItmCode","");
+            sessionStorage.setItem("itmDes","");
+            sessionStorage.setItem("itmCode","");
+            //localStorage.removeItem("addshelf");
+            if(act == 1)
+                window.location = "DistributionCheck_New.html";
+        }  
+       
+        function GetUPC()
+        {
+            var Qry = "SELECT unitspercase,barcode1 FROM itemmaster WHERE actualitemcode = " + sessionStorage.getItem("rpItmCode");
+            console.log(Qry);
+            if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        UPC = result[0][0];
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+            }
+            else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	UPC = result.array[0].unitspercase;
+                    	barcode = result.array[0].barcode1;
+                    	if(eval(UPC)==1){
+                    		    $("#txtCase").textinput("disable");
+                    		   
+                    		   
+                    		   
+                    	}else{
+	                    		$("#txtCase").textinput("enable");
+	                		   
+	                		    
+                    	}      
+                    	
+                    	
+                    },
+				    function() {
+				        console.warn("Error calling plugin");
+				    });
+            }
+        }
+        
+        
+        function CheckIsNaN(val)
+        {
+      
+            if(isNaN(val))
+            return 0;
+            else
+            return val;
+        }  
+        
+        function SetFormat(obj)
+        {
+            var Num = new Number($(obj).val());            
+            $(obj).val(parseInt(Num));
+        }
+        
+    </script>
+
+    </body>
+</html>

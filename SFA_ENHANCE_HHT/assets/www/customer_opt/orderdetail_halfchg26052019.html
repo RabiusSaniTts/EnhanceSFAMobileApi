@@ -1,0 +1,1346 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 24/02/2011
+ '  Description  : This page is used for order detail task.   
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Order Request</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="orderRequest.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Order Request</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq captionLabel">
+                <table id="tblContent11" cellpadding="2" cellspacing="0"
+                    border="0" width="100%">
+                    <tr>
+                        <td lang="en" style="font-weight:bold">
+                            Customer#
+                        </td>
+                        <td>
+                            <label id="lblCustomerNo" style="font-weight:bold">
+                            </label>
+                            <!--<div style="float:left"><input type="button" id="btnSearch" value="Go" data-role="none"/></div>-->
+                        </td>
+                        <td colspan="2" style="font-weight:bold">
+                            <label id="lblDesc">
+                            </label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td lang="en" width="25%">
+                            Order
+                        </td>
+                        <td lang="en" width="25%">
+                            Cases
+                        </td>
+                        <td lang="en" width="25%">
+                            Units
+                        </td>
+                        <td lang="en" width="25%">
+                            Amount
+                        </td>
+                    </tr>
+                    <tr>
+                        <td lang="en" id="tdSales">
+                            Orders
+                        </td>
+                        <td>
+                            <input type="text" id="txtSalesCase"
+                                class="textWidth textFont" style="width: 10%"
+                                value="0" readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtSalesUnit"
+                                class="textWidth textFont" value="0"
+                                readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtSalesAmt"
+                                class="textWidth textFont amountright"
+                                value="0.00" readonly="readonly" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td lang="en" id="tdGoodReturns">
+                            Good Returns
+                        </td>
+                        <td>
+                            <input type="text" id="txtgoodCase"
+                                class="textWidth textFont" value="0"
+                                readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtgoodUnit"
+                                class="textWidth textFont" value="0"
+                                readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtgoodAmt"
+                                class="textWidth textFont amountright"
+                                value="0.00" readonly="readonly" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td lang="en" id="tdBadReturns">
+                            Bad Returns
+                        </td>
+                        <td>
+                            <input type="text" id="txtReturnsCase"
+                                class="textWidth textFont" value="0"
+                                readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtReturnsUnit"
+                                class="textWidth textFont" value="0"
+                                readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtReturnsAmt"
+                                class="textWidth textFont amountright"
+                                value="0.00" readonly="readonly" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td lang="en" id="tdFree">
+                            Free
+                        </td>
+                        <td>
+                            <input type="text" id="txtFreegoodsCase"
+                                class="textWidth textFont" value="0"
+                                readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtFreegoodsUnit"
+                                class="textWidth textFont" value="0"
+                                readonly="readonly" />
+                        </td>
+                        <td>
+                            <input type="text" id="txtFreeGoodsAmt"
+                                class="textWidth textFont amountright"
+                                value="0.00" readonly="readonly" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td lang="en">
+                            Discount Amount
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="text" id="txtProAmt"
+                                class="textWidth textFont amountright"
+                                value="0.00" readonly="readonly" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td lang="en">
+                            Order Total
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <input type="text" id="txtInvTotalAmt"
+                                class="textWidth textFont amountright"
+                                value="0.00" readonly="readonly" />
+                        </td>
+                    </tr>
+
+                    <tr id="onHoldOrder">
+                        <td colspan="2" class="captionLabel">
+                            <div style="width: 100%;margin-top:2%;">
+                                <img id="orderOnHold" src="../images/check.png"
+                                    alt="check"
+                                    style="vertical-align: middle;margin-right:10px;">Place
+                                Order on Hold
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr id="id_send">
+                        <td colspan="2" class="captionLabel">
+                            <div style="width: 100%;margin-top:2%;">
+                                <img id="id_send1" src="../images/check.png"
+                                    alt="check"
+                                    style="vertical-align: middle;margin-right:10px;">Send
+                                Mail
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" rel="external"
+                        style="text-decoration: none; font-weight: normal;"
+                        onclick="checkOnholdOrders()">
+                        <div class="MenuPosition printLoadHeight">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/print.png"
+                                    alt="Continue" /></div>
+                            <div class="MenuTextPos MenuText" id="lblMainMenu"
+                                lang="en">
+                                Print</div>
+                        </div>
+                    </a>
+                    <!--     <div class="menuPadding ">
+                    &nbsp;</div>
+                <a href="#"  rel="external" style="text-decoration: none; font-weight: normal;" onclick="GetDocumentNumber()">
+                    <div class="MenuPosition printLoadHeight MenuExit">
+                        <div class="MenuTextPos">
+                            <img  class="bottomicon" src="../images/ok.png" alt="Exit" /></div>
+                        <div class="MenuTextPos MenuText" lang="en"  id="extlbl">
+                        Submit</div>
+                    </div>
+                </a> -->
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" class="ui-btn-active" rel="external"
+                                id="setup" data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var decimalplace = sessionStorage.getItem("decimalplace"); 
+        var platform = '';
+        var promoamount=0;
+        sessionStorage.setItem("Sendmail",0);
+        resizeOrientationWindow();
+	    $(document).ready(function() {
+	 	resizeWindow();
+            $(".leftfooter").html(getCurrentDate());            
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);		
+                          var customercode = sessionStorage.getItem("customercode");
+                          var customername = sessionStorage.getItem("customername");
+                          $("#lblCustomerNo").text(customercode);
+                          $("#lblDesc").text(customername);
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {
+                platform = sessionStorage.getItem("platform");                
+                sessionStorage.removeItem('PendingOrdermessage');
+                          getTotalAmount();
+                          getRecord();
+                          $("#orderOnHold").click();
+            }
+            
+            function getRecord()
+            {
+                $("#OrderFor").text(sessionStorage.getItem("customername"))
+                var Qry = "select (SUM(salesqty) + SUM(freesampleqty)) - (SUM(damagedqty) + SUM(returnqty)) TotalQty FROM salesorderdetail WHERE routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey");
+                var Qry = "select ids.salesqty,damagedqty,returnqty,manualfreeqty,ids.itemcode,i.unitspercase,CASE WHEN p.salesprice NOT NULL THEN p.salesprice ELSE i.defaultsalesprice END salesprice,CASE  WHEN p.salescaseprice NOT NULL THEN p.salescaseprice ELSE i.caseprice END caseprice,CASE  WHEN p.returncaseprice NOT NULL THEN p.returncaseprice ELSE i.returncaseprice END returncaseprice,CASE  WHEN p.returnprice NOT NULL THEN p.returnprice ELSE i.defaultreturnprice END returnsalesprice,CASE  WHEN p.returncaseprice NOT NULL THEN p.returncaseprice ELSE i.defaultgoodreturncaseprice END goodreturncaseprice,CASE  WHEN p.returnprice NOT NULL THEN p.returnprice ELSE i.defaultgoodreturnprice END goodreturnsalesprice  from salesorderdetail as ids join itemmaster as i on i.actualitemcode=ids.itemcode left join pricingdetail1 p on p.itemcode = actualitemcode and customerpricingkey = (select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey");
+                          
+                          console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                           // $("#lblQty").text(parseInt(result[0][0]));
+                           // getTotalAmount();
+                                   
+                                  TableDataOffLine(result,'ipad');
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert("Error save invoice header detail record");
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {     
+                        if(result.array != undefined)
+                        {                             
+                            TableDataOffLine(result,'android');
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+                          function TableDataOffLine(RecSet,flag)
+                          {                       
+                          var data = RecSet;
+                         
+                          var salesamount=0;
+                          var damageamount=0;
+                          var returnamount=0;
+                          var returnfreeamount=0;
+                          var manualfreeamount=0;
+                          var fixedrentamount=0;
+                          
+                          var salesunit=0;
+                          var salescase=0;
+                          var damagedunit=0;
+                          var damagecase=0;
+                          var returnunit=0;
+                          var returncase=0;
+                          var returnfreeunit=0;
+                          var returnfreecase=0;
+                          var manualfreeunit=0;
+                          var manualfreecase=0;
+                          var fixedrentunit=0;
+                          var fixedrentcase=0;
+                          if(flag=='ipad')
+                          var datas = data.length;
+                          else
+                          var datas = data.array.length;
+                          
+                          
+                          for (i = 0; i < datas; i++)
+                          {
+                          if(flag=='ipad')
+                          {
+                          
+                          var salesqty = data[i][0];
+                          var damagedqty = data[i][1];
+                          var retrunqty = data[i][2];
+                          var manualfreeqty = data[i][3];
+                          
+                          var itemcode = data[i][4];
+                          var unitspercase = data[i][5];
+                          var salesprice = eval(data[i][6]).toFixed(decimalplace);
+                          var caseprice = eval(data[i][7]).toFixed(decimalplace);
+                          var returncaseprice = eval(data[i][8]).toFixed(decimalplace);
+                          var returnprice = eval(data[i][9]).toFixed(decimalplace);
+                          var goodreturncaseprice = eval(data[i][10]).toFixed(decimalplace);
+                          var goodreturnprice = eval(data[i][11]).toFixed(decimalplace);
+                          
+                          }
+                          else
+                          {
+                          
+                          var salesqty = data.array[i].salesqty;
+                          var damagedqty = data.array[i].damagedqty;
+                          var retrunqty = data.array[i].returnqty;
+                          var manualfreeqty = data.array[i].manualfreeqty;
+                         
+                          var itemcode = data.array[i].itemcode;
+                          var unitspercase = data.array[i].unitspercase;
+                          var salesprice = eval(data.array[i].salesprice).toFixed(decimalplace);
+                          var caseprice = eval(data.array[i].caseprice).toFixed(decimalplace);
+                          var returncaseprice = eval(data.array[i].returncaseprice).toFixed(decimalplace);
+                          var returnprice = eval(data.array[i].returnsalesprice).toFixed(decimalplace);
+                          var goodreturncaseprice = eval(data.array[i].goodreturncaseprice).toFixed(decimalplace);
+                          var goodreturnprice = eval(data.array[i].goodreturnsalesprice).toFixed(decimalplace);
+                          }
+                          
+                          
+                          if(salesqty != '')
+                          {
+                          salesunits =parseInt(salesqty%unitspercase);
+                          salescases =parseInt(salesqty/unitspercase);
+                          salesamount = salesamount + ((salescases * caseprice) + ((salesunits) * salesprice));
+                          salesunit += salesunits;
+                          salescase += salescases;
+                          
+                          }
+                          
+                          if(damagedqty !='')
+                          {
+                          damagedunits = parseInt(damagedqty%unitspercase);
+                          damagecases = parseInt(damagedqty/unitspercase);
+                          
+                          damageamount += ((damagecases * returncaseprice) + ((damagedunits) * returnprice));
+                          damagecase +=damagecases;
+                          damagedunit +=damagedunits;
+                          }
+                          
+                          if(retrunqty !='')
+                          {
+                          returnunits = parseInt(retrunqty%unitspercase);
+                          returncases = parseInt(retrunqty/unitspercase);
+                          
+                          
+                          returnamount += ((returncases * goodreturncaseprice) + ((returnunits) * goodreturnprice));
+                          
+                          
+                          returnunit +=returnunits;
+                          returncase +=returncases;
+                          }
+                          
+                          if(manualfreeqty !='')
+                          {
+                          manualfreeunits = parseInt(manualfreeqty%unitspercase);
+                          manualfreecases = parseInt(manualfreeqty/unitspercase);
+                           
+                          manualfreeamount += ((manualfreecase * caseprice) + ((manualfreeunit) * salesprice));
+                          manualfreeunit +=manualfreeunits;
+                          manualfreecase +=manualfreecases;
+                          }
+                         
+                           
+                          }
+                          
+                          $("#txtSalesCase").val(Math.round(salescase));
+                          $("#txtSalesUnit").val(Math.round(salesunit));
+                          $("#txtSalesAmt").val(eval(salesamount).toFixed(sessionStorage.getItem('decimalplace')));
+                          
+                          $("#txtFreegoodsCase").val(Math.round(manualfreecase));
+                          $("#txtFreegoodsUnit").val(Math.round(manualfreeunit));
+                          $("#txtFreegoodsAmt").val(eval(manualfreeamount).toFixed(sessionStorage.getItem('decimalplace')));
+                          
+                          $("#txtgoodCase").val(Math.round(returncase));
+                          $("#txtgoodUnit").val(Math.round(returnunit));
+                          $("#txtgoodAmt").val(eval(returnamount).toFixed(sessionStorage.getItem('decimalplace')));
+                          
+                          
+                          $("#txtReturnsCase").val(Math.round(damagecase));
+                          $("#txtReturnsUnit").val(Math.round(damagedunit));
+                          $("#txtReturnsAmt").val(eval(damageamount).toFixed(sessionStorage.getItem('decimalplace')));
+                          if(promoamount=='')
+                          {
+                          promoamount=0;
+                          }
+                          $("#txtProAmt").val(eval(promoamount).toFixed(sessionStorage.getItem('decimalplace')));
+                            var InvTotalAmt = salesamount-returnamount-damageamount-eval(promoamount);                           
+                          $("#txtInvTotalAmt").val(eval(InvTotalAmt).toFixed(sessionStorage.getItem('decimalplace')));
+                          
+                          // Set Detaillink for detail view of summary
+                          if (Math.round(salescase) != 0 || Math.round(salesunit) != 0)
+                          $("#tdSales").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('sales')>"+getLangTextdata("Orders")+"</a>");
+                          else
+                          $("#tdSales").html(getLangTextdata("Orders"));
+                          
+                          if (Math.round(manualfreecase) != 0 || Math.round(manualfreeunit) != 0)
+                          $("#tdFree").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('free')>"+getLangTextdata("Free")+"</a>");
+                          else
+                          $("#tdFree").html(getLangTextdata("Free"));
+                          
+                          if (Math.round(returncase) != 0 || Math.round(returnunit) != 0)
+                          $("#tdGoodReturns").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('goodreturns')>"+getLangTextdata("Good Returns")+"</a>");
+                          else
+                          $("#tdGoodReturns").html(getLangTextdata("Good Returns"));
+                          
+                          
+                          if (Math.round(damagecase) != 0 || Math.round(damagedunit) != 0)
+                          $("#tdBadReturns").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('badreturns')>"+getLangTextdata("Bad Returns")+"</a>");
+                          else
+                          $("#tdBadReturns").html(getLangTextdata("Bad Returns"));
+                          
+                          
+                          // Over
+                          }      
+            function getTotalAmount()
+            {
+                var Qry = "select ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0) AS TotalAmt,totalpromoamount FROM salesorderheader WHERE routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey");
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                                  promoamount =result[0][1];
+                                  /*if(result.length > 0)
+                        {
+                            $("#lblAmount").text(eval(result[0][0]).toFixed(decimalplace));                            
+                        }*/
+                    },
+                    function(error) {
+                        navigator.notification.alert("Error save invoice header detail record");
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {     
+                       promoamount = result.array[0].totalpromoamount;
+                                                         /*if(result.array != undefined)
+                        {
+                            $("#lblAmount").text(eval(result.array[0].TotalAmt).toFixed(decimalplace));
+                        }*/
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            if (sessionStorage.getItem("Language")  != "en") 
+            {               
+                window.lang.change('OrderDetail'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                    $(".centerboxInvReq").attr("dir", "rtl");
+                     $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }		
+            }
+            else
+            {
+                window.lang.change('en','en');
+                $(".centerboxInvReq").attr("dir", "ltr");
+                $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+            
+            
+            $("#id_send").click(function (){
+				sessionStorage.setItem("Sendmail",1);
+				
+				 if ($("#id_send1").attr("src") == '../images/check.png'){
+	        	 sessionStorage.setItem("Sendmail",1);
+				 $("#id_send1").attr('src','../images/check-box.png');
+	        	} else { 
+	        		sessionStorage.setItem("Sendmail",0);
+	        		$("#id_send1").attr('src','../images/check.png');
+	        		}
+			});
+            
+            
+        });
+        
+       
+        
+        function GetDocumentNumber()
+        { //alert("GetDocumentNumber");
+            savecustomercontrol();
+            var Qry;
+            if(sessionStorage.getItem("onHoldOrderInvoice")>1){
+              // org qry sujee commented 
+            //	Qry="SELECT salesorderheader.documentnumber as doucmentNumber from salesorderheader where routekey="
+            	//+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey");
+              
+            	Qry="SELECT pendingorderheader.documentnumber as doucmentNumber from pendingorderheader where customercode="+sessionStorage.getItem("customerid");
+            }else{
+            	 Qry = "SELECT CASE WHEN MAX(bodocseq) IS NULL OR MAX(bodocseq) <=0 OR MAX(bodocseq) = '' OR MAX(bodocseq) = 'null' THEN 0 ELSE bodocseq END AS documentnumber FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            }
+            
+           
+             console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              if(result.length > 0)
+                              {
+                              var DocPrefix  = sessionStorage.getItem("RouteCode").toString();
+                              DocumentNumber = DocPrefix.toString() + (eval(result[0][0]) + 1).toString().lpad("0",6);                              
+                              SavePromotionDetailorderData();
+                              SaveOrderDetail();
+                              savecustomercontrol();
+                              }
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                                                     {
+                                                     if(result.array != undefined)
+                                                     {
+                                                    	 if(sessionStorage.getItem("onHoldOrderInvoice")>1){
+                                                    		 DocumentNumber=eval(result.array[0].doucmentNumber);
+                                                    	}else{
+                                                    	var DocPrefix  = sessionStorage.getItem("RouteCode").toString();
+                                                     	DocumentNumber = DocPrefix.toString() + (eval(result.array[0].documentnumber)+1).toString().lpad("0",6);
+                                                    	 }
+                                                     	
+                                                     	SavePromotionDetailorderData();
+                                                     	savecustomercontrol();
+                                                     	SaveOrderDetail();
+                                                     	
+                                                     }
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function savecustomercontrol()
+        {
+            var mydate = new Date();
+            
+            var thehour = mydate.getHours();
+            var theminut = mydate.getMinutes();
+            var time = thehour+":"+theminut;
+            var Qry = "Update customeroperationscontrol set totaltransactions = totaltransactions+1,visitendtime='"+time+"' where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and customercode="+ sessionStorage.getItem('customerid')+" and routecode="+ sessionStorage.getItem('RouteCode');
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              //navigator.notification.alert("Save promtion detail record successfully");
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error save promtion detail record");
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function SaveOrderDetail()
+        {
+            var Qry = "UPDATE salesorderdetail SET istemp='false',issync=0,transactionkey=(SELECT transactionkey FROM salesorderheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey") + ") WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    SaveOrderHeader();
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                    SaveOrderHeader();
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+       var pendingFlag=0;
+        function SaveOrderHeader() { alert("SaveOrderHeader");
+        	
+        	 
+        	var dexflag=0; // onhold orders flag is kept in dexflag field in salesorderheader
+        	var data=0; // for identifying edited order
+        	if ($("#orderOnHold").attr("src") == '../images/check-box.png'){  alert("check box alert");
+        		dexflag=1;
+        	 sessionStorage.setItem("PendingOrdermessage",1);
+        	 
+        	 // sujee added 
+        	 pendingFlag = 1;
+        	
+        		
+        	}else{
+        		sessionStorage.setItem("onHoldOrderInvoice",0);
+        		sessionStorage.setItem("PendingOrdermessage",0);
+        		pendingFlag = 0;
+        	}
+        
+        	 var orderconfirm =  sessionStorage.getItem("confirmorderFlag");
+        	//alert('orderconfirm'+orderconfirm);
+            var Qry = "Update salesorderheader set totalinvoiceamount=(ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)),istemp = 'false',issync=0,invoicenumber=" + sessionStorage.getItem("OrderNumber") + ",documentnumber=" + DocumentNumber + ",dexflag="+dexflag+",data="+data+",confirmorder="+orderconfirm+" where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + "";
+            console.log(Qry);
+            
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                   updateSignature();                                     
+                },
+                function(error) {
+                    navigator.notification.alert("Error save invoice header detail record");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) { 
+                	
+                	if(pendingFlag==1)
+                	{  
+                		 // sujee added 
+                	 sessionStorage.setItem("holdflag",1);
+                   	   CheckPendingOrders();
+                	}
+                	else
+                  {
+                	 
+                	sessionStorage.setItem("editpendingorder",0);
+                	}
+                	SaveOrderRXDDetail();
+                	//}
+                                  
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        } 
+        function CheckPendingOrders()
+        {alert("CheckPendingOrders");
+       
+        	var Qry = "SELECT 1,(select count(*)  from pendingorderheader where customercode="+sessionStorage.getItem("customerid")+") as cnt  ,(Select ifnull(max(transactionkey),1) from salesorderheader) as transactionkey ";
+        	console.log(Qry);
+        	alert(Qry);
+        	if(platform == "iPad")
+            {
+               
+            } 
+        	else if(platform == "Android")
+        		{
+        		 window.plugins.DataBaseHelper.select(Qry, function(result) { 
+                 	
+        			 var res = $.map(result.array, function(item, index) {
+                         return [[item.cnt,item.transactionkey]];
+                     });
+        			 alert(JSON.stringify(res));
+        			// alert('res'+res[0][0]);
+        			// alert('resccc'+res[0][1]);
+        			/* if(res[0][0]==0)
+        				{
+        				     InsertPendingOrders(res[0][1]);
+        				}
+        			 else 
+        				 {  alert("update");
+        				     UpdatePendingOrders(res[0][1]);
+        				 
+        				 }
+        			 */
+        			 
+        			 if(res[0][0]>0)
+     				{
+        				 
+        				 sessionStorage.setItem("editpendingorder",1);
+     				}
+        			 else
+        			 sessionStorage.setItem("editpendingorder",0);
+        			 //InsertPendingOrders(res[0][1])
+        			 DeletePendingOrder(res[0][1]);
+        			// DeletePendingOrderDetail(res[0][1]);
+                                   
+                 },
+ 				function() {
+ 				    console.warn("Error calling plugin");
+ 				});
+        		}
+        	
+        }
+        
+
+        function DeletePendingOrder(transactionkey)
+        {alert("DeletePendingOrder");
+        	//var qry="Delete from pendingorderdetail where transactionkey="+transactionkey;
+        	var qry="Delete from pendingorderdetail where transactionkey in(Select transactionkey from pendingorderheader where customercode="+sessionStorage.getItem("customerid")+")";
+        	console.log(qry);
+        	alert(qry);
+        	if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(qry, function(result) {
+                //	alert("deleted Details");
+                	DeletePendingHeader(transactionkey);
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                }); 
+            }
+        }
+        
+        function DeletePendingHeader(transactionkey)
+        {//alert("DeletePendingHeader");
+        	var Qry="Delete from pendingorderheader where customercode="+sessionStorage.getItem("customerid");
+        	console.log(Qry);
+        	//alert(Qry);
+        	if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                //	alert("deleted Header");
+                	InsertPendingOrders(transactionkey);
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                }); 
+            }
+        }
+        
+        function UpdatePendingOrders(transkey)
+        { //alert("UpdatePendingOrders");
+        	var qry = "Update pendingorderdetail set salesqty=(select salesqty from pendingorderdetail where transactionkey="+transkey+"),itemcode=(select itemcode from pendingorderdetail where transactionkey="+transkey+")";
+        	console.log(qry);
+        	//alert(qry);
+        	if(platform == "Android")
+    		{
+    		 window.plugins.DataBaseHelper.insert(qry, function(result) { 
+             	
+    			//alert("Updated  successfully");
+    			
+                               
+             },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+    		}
+        }
+        function InsertPendingOrders(transactionkey)
+        {alert("InsertPendingOrders");
+        
+            
+        	var qry = "INSERT INTO pendingorderdetail(itemcode,transactionkey,salesqty,istemp,salesprice,issync,salescaseprice,returncaseprice,returnprice,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice) SELECT itemcode,(select ifnull(max(transactionkey+1),1) from pendingorderheader) as transactionkey,salesqty,istemp,salesprice,issync,salescaseprice,returncaseprice,returnprice,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice from salesorderdetail where transactionkey="+transactionkey;
+        	console.log(qry);
+        	alert(qry);
+        	
+        	if(platform == "iPad")
+            {
+               
+            } 
+        	else if(platform == "Android")
+    		{
+    		 window.plugins.DataBaseHelper.insert(qry, function(result) { 
+             	
+    			//alert("inserted Pending details successfully");
+    			PendingorderHeader();
+                               
+             },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+    		}
+        	
+        }
+        
+        function PendingorderHeader()
+        { alert("PendingorderHeader");
+          // sujee commented 20/05/2019 
+        	//var qry ="INSERT INTO pendingorderheader(istemp,transactionkey,documentnumber,invoicenumber,transactiondate,transactiontime,customercode,routecode,salesmancode,totalsalesamount,totalreturnamount,totaldamagedamount,totalbuybackfreeamount,issync,totalinvoiceamount,hhctransactionkey,orderdeliverydate,actualtransactiondate) select istemp,(select max(transactionkey) from pendingorderdetail) as transactionkey,documentnumber,invoicenumber,transactiondate,transactiontime,customercode,routecode,salesmancode,totalsalesamount,totalreturnamount,totaldamagedamount,totalbuybackfreeamount,issync,totalinvoiceamount,hhctransactionkey,orderdeliverydate,actualtransactiondate from salesorderheader where invoicenumber="+sessionStorage.getItem("OrderNumber") +" and customercode="+sessionStorage.getItem("customerid")+" and dexflag=1";
+        	
+        	var qry ="INSERT INTO pendingorderheader(istemp,transactionkey,documentnumber,invoicenumber,transactiondate,transactiontime,customercode,routecode,salesmancode,totalsalesamount,totalreturnamount,totaldamagedamount,totalbuybackfreeamount,issync,totalinvoiceamount,hhctransactionkey,orderdeliverydate,actualtransactiondate) select istemp,(select max(transactionkey) from pendingorderdetail) as transactionkey,(select ifnull(max(documentnumber)+1,1) from  pendingorderheader ) as documentnumber,(select ifnull(max(invoicenumber)+1,1) from  pendingorderheader ) as invoicenumber,transactiondate,transactiontime,customercode,routecode,salesmancode,totalsalesamount,totalreturnamount,totaldamagedamount,totalbuybackfreeamount,issync,totalinvoiceamount,hhctransactionkey,orderdeliverydate,actualtransactiondate from salesorderheader where invoicenumber="+sessionStorage.getItem("OrderNumber") +" and customercode="+sessionStorage.getItem("customerid")+" and dexflag=1";
+        	console.log(qry);
+        	alert(qry);
+        	if(platform == "iPad")
+            {
+               
+            }
+        	else if(platform == "Android")
+    		{
+    		 window.plugins.DataBaseHelper.insert(qry, function(result) { 
+             	
+    			 // sujee commented 20/05/2019
+    			// UpdatePendingOrderDocNum();         
+             },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+    		}
+        	
+        }
+        
+        
+        function SaveOrderRXDDetail() {
+          
+        	//updatePendingOrder();
+            var Qry = "Update orderrxddetail set istemp = 'false',issync=0,transactionkey=(SELECT transactionkey FROM salesorderheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey") + ") where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + "";
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    // navigator.notification.alert("Save invoice rxd detail
+					// record successfully");
+                },
+                function(error) {
+                    navigator.notification.alert("Error save invoice rxd detail record");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                	UPdateCustomerInventory();
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }        
+        function UPdateCustomerInventory()
+        {
+            var Qry = "UPDATE customerinventorydetail SET istemp = 'false' WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    SetNextPage();
+                },
+                function(error) {
+                    alert(error);
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                {
+                	GetSummarizeQtyByPackageForOrder();
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }        
+        
+     // Calculate Qty by package and itemcode to update in route goal
+        function GetSummarizeQtyByPackageForOrder()
+        {
+            var Qry = "SELECT packagecode,SUM(ifnull(salesqty,0) - ifnull(returnqty,0)) as qty,SUM((CAST((COALESCE(inv.salesqty, 0)/im.unitspercase) AS INT) * inv.salescaseprice) + ((COALESCE(inv.salesqty, 0) % im.unitspercase) * inv.salesprice)) as amt  FROM salesorderdetail inv JOIN itemmaster im ON inv.itemcode = im.actualitemcode AND im.itemtype = 1 WHERE routekey = " + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey") + " AND inv.istemp = 'false' GROUP BY packagecode";
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result){
+                    if(result.length > 0)
+                    {
+                        var packagecode,qty;
+                        for(i=0;i<result.length;i++)
+                        {
+                            packagecode = result[i][0];
+                            qty = result[i][1];
+                            UpdateRouteGoal(packagecode,qty,i,result.length);
+                        }
+                    }
+                    else
+                        UpdateSignature('sales');
+                },
+                function(error){
+                },
+                "PluginClass",
+                "GetdataMethod",                
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                	if(!$.isEmptyObject(result))
+                    {
+                    	result = $.map(result.array, function(item, index) {
+	                        return [[item.packagecode,item.qty,item.amt]];
+                    	});
+                    	if (result.length > 0) {
+	                        var packagecode, qty,amt;
+                        	for (i = 0; i < result.length; i++) {
+	                            packagecode = result[i][0];
+                            	qty = result[i][1];
+                            	amt=result[i][2];
+                            	UpdateRouteGoalForOrder(packagecode, qty,amt, i, result.length);
+                        	}
+                    	}
+                    }
+                    else
+                    	updateSignature();     
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+        
+        function UpdateRouteGoalForOrder(packagecode,qty,amt,i,len)
+        {
+           
+            var Qry = "UPDATE routegoal SET achievequantity= CASE WHEN targettype=1 THEN (ifnull(achievequantity,0) + " + qty + ") ELSE (ifnull(achievequantity,0) + " + amt + ") END WHERE packagenumber = " + packagecode + " AND routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND date() between fromdate and todate";
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {                    
+                    if(i == (len - 1))
+                        UpdateSignature('sales');
+                },
+                function(error) {
+                    navigator.notification.alert("Error save invoice header detail record");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                    if(i == (len - 1))
+                    	updateSignature();     
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+        
+        
+        
+         function updateSignature(){
+        	var visitkey=sessionStorage.getItem('VisitKey');
+        	var routekey=sessionStorage.getItem('RouteKey');
+        	var Qry = "SELECT COUNT(*) as cnt FROM sigcapturedata WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey");
+            var QryUpdate = "UPDATE sigcapturedata set istemp='false',issync=0,transactionkey=(SELECT transactionkey from salesorderheader WHERE routekey=" + routekey + " AND visitkey=" + visitkey + "),documentnumber=(SELECT documentnumber FROM salesorderheader WHERE routekey=" + routekey + " AND visitkey=" + visitkey + ") WHERE routekey=" + routekey + " AND visitkey=" + visitkey;
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                   
+                },
+                function(error) { alert(error);},
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry,function(result){                	
+                    if(result.array[0].cnt > 0)
+                    {
+                        console.log(QryUpdate);
+                        window.plugins.DataBaseHelper.insert(QryUpdate,function(result){
+                            UpdateDocumentNumber();
+                        },
+                        function()
+                        {
+                            console.warn("Error calling plugin");
+                        });
+                    }
+                    else
+                       UpdateDocumentNumber();
+                },
+                function()
+                {
+                	console.warn("Error calling plugin");
+                });
+            }
+        
+        
+        }
+        
+         
+         function UpdatePendingOrderDocNum()
+		 {
+        	 
+			 var Qry = "UPDATE routemaster SET bodocseq = (ifnull(bodocseq,0) + 1),hhcordseq=(ifnull(hhcordseq,0) + 1) WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+			 window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                {
+                    
+                    			
+                },
+                function() 
+                {
+                    console.warn("Error calling plugin");
+                });
+		 }
+         
+        function UpdateDocumentNumber()
+        { 
+        	if(sessionStorage.getItem("onHoldOrderInvoice")>1){
+        		ClearVal();
+                updateOrderSyncStatus();
+        	}else{
+            var Qry = "UPDATE routemaster SET bodocseq = (ifnull(bodocseq,0) + 1),hhcordseq=(ifnull(hhcordseq,0) + 1) WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+           
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {   
+                              ClearVal();
+                              if(localStorage.po == "inventory")
+                                    var rlink = "../inventory/inventory.html";
+                                else
+                                    var rlink = "../customer_opt/cust_opt.html";
+                             
+                                if(sessionStorage.getItem('syncmode') == 1)
+                                {
+                                    senddata('print',rlink);
+                                }
+                                else
+                                {
+                              		navigator.notification.alert("Transaction Saved Successfully.");
+                              		window.location = "../customer_opt/cust_opt.html";
+                                }
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                {
+                    ClearVal();
+                    updateOrderSyncStatus();
+                    			
+                },
+                function() 
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        	}
+        }    
+        
+        function updateOrderSyncStatus(){
+        
+        	var Qry ="UPDATE salesorderheader SET issync = 0 where transactionkey in (select Distinct transactionkey from salesorderdetail where issync=0)";
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    
+                },
+                function(error) {
+                    navigator.notification.alert("Error save invoice rxd detail record");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                   				if(localStorage.po == "inventory")
+                                    var rlink = "../inventory/inventory.html";
+                                else
+                                    var rlink = "../customer_opt/cust_opt.html";
+                             
+                                if(sessionStorage.getItem('syncmode') == 1)
+                                {
+                                	var confirmsendorder = sessionStorage.getItem("salesorderPending");
+                                	//alert('confirmsendorder' +confirmsendorder);
+                                	if(confirmsendorder == 1)
+                                	{
+                                		CheckPendingOrders();
+                                	}
+                                    senddata('print',rlink);
+                                }
+                                else
+                                {
+                    				navigator.notification.alert("Transaction Saved Successfully.");
+                    				window.location = "../customer_opt/cust_opt.html";
+                                }
+                   	
+                   	
+                   	
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        
+        }
+        
+        function SavePromotionDetailorderData() {
+            var Qry = "Update promotiondetail set istemp = 'false',issync=0,transactionkey=(SELECT transactionkey FROM salesorderheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey") + ") where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + "";
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              //navigator.notification.alert("Save promtion detail record successfully");
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error save promtion detail record");
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+            
+        }
+      
+       
+        
+        
+        function SetLocalStorage(Qty)
+        {
+            localStorage.orderlink = Qty;
+            window.location = 'ordersummarydetail.html';
+        }
+        function ClearVal()
+        {
+            sessionStorage.setItem("InvoiceNumber","");
+            sessionStorage.setItem("OrderNumber","");
+        }
+    $("#orderOnHold").click(function() {
+            if ($("#orderOnHold").attr("src") == '../images/check.png') {
+           	 setOnHoldCheckBox(true);
+           }
+           else {
+        	   setOnHoldCheckBox(false);
+           }
+           
+       });
+        
+        function setOnHoldCheckBox(checked){
+       	 if(checked){
+       		 $("#orderOnHold").attr("src", "../images/check-box.png");
+                
+                //check box selected
+                sessionStorage.setItem("orderOnHold",1);
+                sessionStorage.setItem("confirmorderFlag",0);
+                sessionStorage.setItem("salesorderPending",0);
+                sessionStorage.setItem("PendingOrdermessage",1);
+       	 }else{ 
+       		       $("#orderOnHold").attr("src", "../images/check.png");
+                   sessionStorage.setItem("orderOnHold",0);
+                   sessionStorage.setItem("pendingflag",0);
+                   sessionStorage.setItem("confirmorderFlag",1);
+                   sessionStorage.setItem("salesorderPending",1);
+                   sessionStorage.setItem("PendingOrdermessage",0);
+                  // CheckPendingOrders();
+       	 }
+        } 
+        
+        /*
+        *@method checkOnholdOrders
+        *function to check whether the on hold check box is clicked
+        */
+        function checkOnholdOrders(){
+        	
+        	if ($("#orderOnHold").attr("src") == '../images/check.png') {
+        		 sessionStorage.setItem("orderOnHold",0);
+        		 
+        		 
+        	  }else{
+        		  sessionStorage.setItem("orderOnHold",1);
+        	  }
+        	
+        	window.location="../review/printoption.html";
+        }
+       
+    </script>
+
+    </body>
+</html>

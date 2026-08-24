@@ -1,0 +1,282 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 3/2/2011
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+        <!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+           //scrollContent = new iScroll('contentWrapper');
+	    scrollContent = new iScroll('contentWrapper', {
+        useTransform: false,
+        onBeforeScrollStart: function (e) {
+            var target = e.target;
+            while (target.nodeType != 1) target = target.parentNode;
+
+            if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
+                e.preventDefault();
+        }
+    });
+
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="utilities.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Odometer Option</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="tblBox com_div">
+                    <div class="tblHeader info_header" lang="en">
+                        Odometer Option</div>
+                    <div class="info" id="contentWrapper">
+                        <table border="0" width="100%" cellpadding="10"
+                            cellspacing="0" id="tbl1">
+                            <tbody class="tbl_body">
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Start Odometer</label>
+                                        <input type="text" name="startodometer"
+                                            id="startodometer" value
+                                            readonly="readonly" />
+                                    </td>
+                                    <td>
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Current Odometer</label>
+                                        <input type="text" name="currodeomerer"
+                                            id="currodeomerer" value
+                                            readonly="readonly" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu com_info_right">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="utilities.html" class="enableText" rel="external">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/yes.png" alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="utilities.html" class="enableText" rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0;  position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" class="ui-btn-active" rel="external"
+                                id="setup" data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            var platform;
+			  resizeOrientationWindow();
+            $(document).ready(function() {
+				resizeWindow();
+               platform= sessionStorage.getItem("platform");
+                document.addEventListener("deviceready", getdata, false);
+                //Set current date in footer
+                $(".leftfooter").html(getCurrentDate());
+
+                //Fetch current language and set that language.
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+
+                //Check for current language and set css for that    
+                if (sessionStorage.getItem("Language") != "en") {
+
+                    window.lang.change('Odometer' + lan, lan);
+                    window.lang.change('Footer' + lan, lan);
+                    if (lan == "AR") {
+                        //Set header align
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+
+                }
+                else {
+                    //Change current language to english
+                    window.lang.change('en', 'en');
+
+                    //Set header align
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });
+        function getdata()
+        {
+            var selectqry = "select routestartodometer from startendday where routekey="+sessionStorage.getItem("RouteKey");
+            var qry ="select odometerreading from customeroperationscontrol where routekey="+sessionStorage.getItem("RouteKey")+" order by visitkey desc limit 1";
+            if(platform=='iPad')
+		    {
+                Cordova.exec(function(result) {
+                                        
+                                        $('#startodometer').val(result[0][0]);
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        [selectqry]);
+                Cordova.exec(function(result) {
+                                        
+                                        $('#currodeomerer').val(result[0][0]);
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        [qry]);
+            }
+            else if(platform=='Android')
+            {
+                
+                window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                     {
+                                                    $('#startodometer').val(result.array[0].routestartodometer);
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(qry,function(result)
+                                                     {
+                                                     $('#currodeomerer').val(result.array[0].odometerreading);
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }   
+        }
+        </script>
+
+        </div>
+    </body>
+</html>

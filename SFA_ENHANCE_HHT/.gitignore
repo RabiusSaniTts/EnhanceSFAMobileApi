@@ -1,0 +1,12 @@
+/bin/# Android build output
+/bin/
+/gen/
+/build/
+
+# Generated APK files
+*.apk
+
+# Generated dex/jar cache
+*.dex
+*.class
+jarlist.cache

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="lib" path="libs/dbutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/woosimprinter_bt.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/ZSDK_API.jar"/>
+	<classpathentry kind="lib" path="libs/bitmaplib.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/itext5-itextpdf-5.5.12.jar"/>
+	<classpathentry kind="lib" path="libs/jxl.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/cordova 2.4.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/BrotherPrintLibrary.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/MobilePrintLib.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gson-2.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/LinePrinter.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CaptureActivity1"/>
+	<classpathentry exported="true" kind="src" path="/MPChartLib1"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="/sujee/libs/cordova-2.4.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CaptureActivity"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/google-play-services_lib"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/sujee"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

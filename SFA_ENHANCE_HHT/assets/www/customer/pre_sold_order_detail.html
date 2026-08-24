@@ -1,0 +1,373 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 1/2/2011
+ '  Description  : This page is used for detail of order
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HOME</title>
+
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 699px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 599px)"
+			href="../css/style_600.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+		<script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="index.html"   id="Back_inner">test</a>-->
+				<a id="Back_inner" href="pre_sold_order_review.html" rel="external"
+					lang="en">Back</a>
+				<h1 lang="en">Pre Sold Orders Details</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="com_div comm captionLabel">
+					<div class="topbox">
+						<div class="content-primary1">
+							<label class="cus_lable heading" lang="en"> No.</label> <span
+								class="nobox headbox" id="custid"></span>
+						</div>
+						<div class="second-primary1">
+							<label class="cus_lable heading" lang="en" id="custname">
+								Customer Name</label>
+						</div>
+					</div>
+					<div class="textBar">
+						<table cellpadding="2" cellspacing="2" border="0" width="100%">
+							<tr>
+								<td width="20%" lang="en" id="cname" class="rtext">Order#</td>
+								<td width="30%">
+									<div class="addressdiv" id="orderid" style="width: 80%"></div>
+								</td>
+								<td lang="en" id="cname1" class="rtext" width="20%">
+									Delivery Date</td>
+								<td width="30%">
+									<div class="addressdiv" id="deliverydate" style="width: 80%"></div>
+								</td>
+							</tr>
+
+						</table>
+					</div>
+					<div class="tblBox tbltd">
+						<div>
+							<table class="tblHeader" width="100%" cellpadding="10" cellspacing="0"
+								id="tblHeaderContent">
+								<tr>
+									<td width="16%" lang="en">Item Code</td>
+									<td width="37%" lang="en">Item Name</td>
+									<td width="12%" lang="en">Qty</td>
+
+									<!-- 								<td style="display:none;" width="20%" lang="en">Price</td> -->
+
+									<td width="15%" lang="en" class="last">Total</td>
+								</tr>
+							</table>
+						</div>
+						<div class="route_table_height orderrequest" id="contentWrapper">
+							<table border="0" width="100%" cellpadding="10" cellspacing="0"
+								id="tbl1" data-role="none">
+								<tbody class="tblBody">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="textBar">
+						<table cellpadding="2" cellspacing="2" border="0" width="100%">
+							<tr>
+
+								<td lang="en" class="rtext">Discount Amount</td>
+								<td lang="en" class="rtext">Total Order Amount</td>
+							</tr>
+							<tr>
+
+								<td>
+									<div class="addressdiv rightAlign" id="discountamount"
+										style="width: 80%"></div>
+								</td>
+								<td>
+									<div class="addressdiv rightAlign" id="totaloderamount"
+										style="width: 80%"></div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="leftbottomMenu">
+					<div class="menuPadding">&nbsp;</div>
+					<a href="#" class="enableText"
+						rel="external" onclick="localStorage.po ='customer_opt'"><div
+							class="MenuPosition">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/print.png" alt="Save" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Print</div>
+						</div></a>
+					<div class="menuPadding">&nbsp;</div>
+					<a href="pre_sold_order_review.html" class="enableText"
+						rel="external">
+						<div class="MenuPosition MenuExit">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/icn-exit.png" alt="Exit" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Cancel</div>
+						</div>
+					</a>
+					<div class="menuPadding">&nbsp;</div>
+				</div>
+			</div>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+								lang="en">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+            var inputvalue='';
+            var platform='';
+            var CaseEnabled;
+	$("#tbl1").click(function() { });
+	 
+ 	 resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+	
+	
+                      platform= sessionStorage.getItem("platform");
+                      document.addEventListener("deviceready", getOrderList, false);
+                      var orderid = sessionStorage.getItem("orderid");
+                      
+                      var customeraid = sessionStorage.getItem('ordercust');
+                      var alternateid = sessionStorage.getItem('alternatecust');
+                      var customername = sessionStorage.getItem('ordercustname');
+                      $('#custid').text(alternateid);
+                      $('#custname').text(customername);
+                    
+                      if (sessionStorage.getItem("CaseEnabled") == "0" || sessionStorage.getItem("CaseEnabled") == null)
+                      CaseEnabled = false;
+                      else if (sessionStorage.getItem("CaseEnabled") == "1")
+                      CaseEnabled = true;
+                      
+                      $('#orderid').text(localStorage.ordernum);
+                    
+                     
+                      $('#deliverydate').text(localStorage.Deliverydate);
+                    
+                      $('#discountamount').text(eval(localStorage.promoamount).toFixed(sessionStorage.getItem("decimalplace")));
+                     
+                      
+                      $(".leftfooter").html(getCurrentDate());
+            
+	   $("#tbl1 tr").live('click', function() {
+	    $(this).toggleClass('clicked');
+	    $(this).siblings().removeClass('clicked');
+	     var i=$(this).index();
+	      $('#txtQty').val(inputvalue[i][0]);
+		$('#txtCustomername').val(inputvalue[i][1]);
+		
+    });
+            
+           var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Presolddetail'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $("#contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+            function getOrderList()
+            {
+                 $("#totaloderamount").text(eval(localStorage.totalamount).toFixed(sessionStorage.getItem("decimalplace")));
+                var qry = "select CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END as code,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,CAST((salesqty/unitspercase) as INTEGER) || '/' || CAST((salesqty%unitspercase) as INTEGER) as qty,salescaseprice,salesprice, (CAST(salesqty/unitspercase as int)  * salescaseprice )  + ( CAST(salesqty%unitspercase as int) * salesprice ) as total from salesorderdetail join itemmaster on itemmaster.actualitemcode=itemcode where transactionkey = " + sessionStorage.getItem("orderid")+" and istemp='false'";
+                console.log(qry);
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {                           
+                                  
+                                  if(result.length > 0)
+                                  {
+                                  
+                                  BindData(result);   
+                                  
+                                  
+                                  }
+                                  
+                                  
+                                  },
+                                  function(error) {
+                                  navigator.notification.alert("Error in binding promotion list : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  [qry]);         
+                }
+                else if(platform=='Android')
+                {          
+                    window.plugins.DataBaseHelper.select(qry,function(result)
+                                                         {
+                                                         
+                                                         if(result.array!=undefined)
+                                                         {     
+                                                         
+                                                         BindData(result); 
+                                                         
+                                                         }
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }    
+            }
+            function BindData(result) {
+                
+                var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+                data = result;
+                if (platform == 'Android') {                    
+                    var array = $.map(data.array, function(item, index) {
+                                      
+                                      return [[item.code, item.Desc,item.qty,item.salescaseprice,item.salesprice,item.total]];
+                                      });
+                    
+                    data = array;
+                }
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr>";
+                    
+                    for (j = 0; j < CellCount; j++) {  
+                        var c = '';
+                        var temp = '';
+                        
+                                                
+                        if(j==3)
+                        data[i][j] = eval(data[i][5]).toFixed(sessionStorage.getItem("decimalplace"));
+                        
+                        
+                                                
+                        if(j == 1)
+                        temp += " width = '37%'";
+                        else if (j == CellCount-1)
+                        temp += " width = '15%' class = 'last rightAlign'";
+                        else if(j == 2)
+                        temp += " width = '12%'";
+                        else if(j == 3)
+                        temp += "style='display:none;'";
+                        else
+                        temp += " width = '16%'";
+                        c = "<td " + temp + ">" + data[i][j] + "</td>"; 
+                        
+                        
+                        
+                        r += c;
+                    }
+                    r += "</tr>";
+                    
+                    $('#tbl1 tbody').append(r);                    
+                    
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');  
+                
+            }
+        </script>
+
+		</div>
+	</body>
+</html>

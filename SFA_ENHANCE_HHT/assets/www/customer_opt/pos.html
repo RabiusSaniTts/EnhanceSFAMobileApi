@@ -1,0 +1,572 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 30/1/2011
+ '  Description  : This page is used for detail of route book detail
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="#" rel="external" lang="en"
+                    onclick="updatecontrol('merchandising.html')">Back</a>
+                <h1 lang="en">POS/ Assets</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="book_detail_div">
+                    <div class="tblBox tbltd" id="contentWrapper">
+                        <div class="tblHeader" id="tblHeader">
+                            <table width="100%" cellpadding="10"
+                                cellspacing="0">
+                                <tr>
+                                    <td width="33.3%" lang="en">
+                                        POS
+                                    </td>
+                                    <td width="33.3%" lang="en">
+                                        Qty
+                                    </td>
+                                    <td width="33.3%" lang="en" class="last">
+                                        Serial
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="route_table_height tblFixedHeight">
+                            <table border="0" width="100%" cellpadding="10"
+                                cellspacing="0" id="tbl1"
+                                data-role="none">
+                                <tbody class="tblBody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="textBar">
+                        <table cellpadding="2" cellspacing="2" border="0"
+                            width="100%">
+                            <tr>
+                                <td lang="en" id="item" class="rtext"
+                                    style="display:none;">
+                                    POS Value
+                                </td>
+                                <td lang="en" id="limit" class="rtext"
+                                    style="display:none;">
+                                    Limit
+                                </td>
+                                <td lang="en" id="balance" class="rtext"
+                                    style="display:none;">
+                                    Balance
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="display:none;">
+                                    <input id="txtItemNo" type="text"
+                                        pattern="[0-9]*" size="11"
+                                        class="textWidth textFont amountright"
+                                        readonly="readonly" />
+                                </td>
+                                <td style="display:none;">
+                                    <input id="txtLimit" type="text"
+                                        pattern="[0-9]*" size="11"
+                                        class="textWidth textFont amountright"
+                                        readonly="readonly" />
+                                </td>
+                                <td style="display:none;">
+                                    <input id="txtBalance" type="text"
+                                        pattern="[0-9]*" size="11"
+                                        class="textWidth textFont amountright"
+                                        readonly="readonly" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" rel="external" style="text-decoration: none"
+                        data-role="none"
+                        class="enableText"
+                        onclick="updatecontrol('cust_opt.html')">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-select.png"
+                                    alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div></a>
+                    <a href="addeditpositem.html" id="linkadd" rel="external"
+                        style="text-decoration: none;display:none;"
+                        data-role="none"
+                        class="enableText">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-add.png" id="imgadd"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText" id="txtadd"
+                                lang="en">Add</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" onclick="getitem()" rel="external"
+                        style="text-decoration: none" data-role="none"
+                        class="enableText">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-edit.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Change</div>
+                        </div>
+                    </a>
+                    <a href="#" onclick="deletepos()" rel="external"
+                        style="text-decoration: none;display:none;"
+                        data-role="none" class="enableText">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/delete.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Delete</div>
+                        </div></a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div data-role="footer" class="ui-bar" id="f1">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" style="bottom: 0; position: absolute;"
+                id="f2">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+			var platform= sessionStorage.getItem("platform");
+                        var inputvalue='';
+            var itemcode='';
+            var actualcode='';
+            $("#tbl1").click(function() { });
+            resizeOrientationWindow();
+	   		$(document).ready(function() {
+	 		resizeWindow();
+                              $("#txtItemNo").ForceNumericOnly();
+                              
+                              $("#txtLimit").ForceNumericOnly();
+                              $("#txtBalance").ForceNumericOnly();
+                              sessionStorage.setItem("posdata",'');
+                $(".leftfooter").html(getCurrentDate());
+                localStorage.itemcode='';
+                sessionStorage.setItem("posno",'');
+                sessionStorage.setItem("posname",'');
+ 			
+                $('.ui-body-d').css({ 'background': '#fff' });
+                $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+                $('.ui-input-datebox input').css({ 'color': '#999' });
+                $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+              
+               document.addEventListener("deviceready", getrecord, false);
+              
+                $("#tbl1 tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i = $(this).index();
+                    $('#txtItemNo').val(inputvalue[i][3]);
+                    $('#txtLimit').val(inputvalue[i][4]);
+                    $('#txtBalance').val(inputvalue[i][5]);
+                    var jsData = JSON.stringify([inputvalue[i][6],inputvalue[i][0],inputvalue[i][1],inputvalue[i][2],inputvalue[i][8],inputvalue[i][9]]);
+                    sessionStorage.setItem("posdata",jsData);
+                                   actualcode = inputvalue[i][6];
+                    if(sessionStorage.getItem("CheckCode") == 'alternatecode')
+                    itemcode = inputvalue[i][7];
+                    else
+                    itemcode = inputvalue[i][6];
+                                   
+                });
+             
+
+               var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('POS'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            });
+            function updatecontrol(url)
+            {
+                var controlqry = "Update customeroperationscontrol set totaltransactions = totaltransactions+1 where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and customercode="+ sessionStorage.getItem('customerid')+" and routecode="+ sessionStorage.getItem('RouteCode');
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                 window.location = "merchandising.html";
+                                  },
+                                  function(error) {
+                                  alert(error);},
+                                  "PluginClass", 
+                                  "InsertUpdateMethod", 
+                                  [controlqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.insert(controlqry,function(result)
+                                                         {
+                                                        window.location = "merchandising.html";
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });   
+                }
+            }
+            function getrecord()
+            {
+                var custid=sessionStorage.getItem("customerid");
+                var routecode=sessionStorage.getItem("RouteCode");
+                if(sessionStorage.getItem("Language")=='en')
+                {
+                    var qry = "select p.itemdescription,cp.quantity,cp.serialnumber,p.itemvalue,plimit.poslimit,plimit.posbalance,p.itemcode,p.alternatecode,pq.instructioncode,pq.remarks from posmaster as p join customerposinventory as cp on cp.itemcode = p.itemcode join customerposlimit as plimit on plimit.customercode = cp.customercode left join posequipmentchangedetail as pq on pq.itemcode=p.itemcode where cp.customercode="+custid+" and activestatus=1 and is_delete=0";
+              }
+              else
+              {
+                 var qry = "select p.arbitemdescription,cp.quantity,cp.serialnumber,p.itemvalue,plimit.poslimit,plimit.posbalance,p.itemcode,p.alternatecode,pq.instructioncode,pq.remarks from posmaster as p join customerposinventory as cp on cp.itemcode = p.itemcode join customerposlimit as plimit on plimit.customercode = cp.customercode left join posequipmentchangedetail as pq on pq.itemcode=p.itemcode where cp.customercode="+custid+" and activestatus=1 and is_delete=0";
+               
+              }
+                console.log(qry);
+                
+                if(platform=='iPad')
+                {
+                    
+      
+                    Cordova.exec(function(result) {
+                                        if(result!='')
+                                        {
+                                            TableDataOffLine(result);
+                                        }
+                                        else
+                                        {
+                                        getLangText("POS Not Available.");
+                                        window.location='merchandising.html';
+                                        }
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [qry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                    
+                window.plugins.DataBaseHelper.select(qry,function(result)
+                       {
+                              if(result.array != undefined)
+                                {
+                                    result = $.map(result.array, function (item, index) {   
+                                    if(sessionStorage.getItem("Language")=='en')
+                                    {
+                                    return [[item.itemdescription,item.quantity,item.serialnumber,item.itemvalue,item.poslimit,item.posbalance,item.itemcode,item.alternatecode,item.instructioncode,item.remarks]];
+                                    }
+                                    else
+                                    {
+                                     return [[item.arbitemdescription,item.quantity,item.serialnumber,item.itemvalue,item.poslimit,item.posbalance,item.itemcode,item.alternatecode,item.instructioncode,item.remarks]];
+                                    }
+                                   
+                                                   });
+                                     TableDataOffLine(result);
+                                }
+                                else
+                                {
+                                     getLangText("POS Not Available.");
+                                    // window.location='merchandising.html';
+                                }
+                              
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+              }
+            
+            function TableDataOffLine(RecSet)
+            {
+                var CellCount = $("#tblHeader tr:eq(0) td").length;
+               
+                inputvalue=RecSet;
+                var data = RecSet;
+                if(data.length >= data[0][4])
+                {
+                    $('#txtadd').addClass('MenuGray');
+                    $('#imgadd').attr('src', '../images/icn-add-gray.png');
+                    $('#linkadd').attr('href', '');
+                }
+                else
+                {
+                   $('#txtadd').removeClass('MenuGray');
+                    $('#imgadd').attr('src', '../images/icn-add.png');
+                    $('#linkadd').attr('href', 'addeditpositem.html');
+                }
+                for (i = 0; i < data.length; i++) {
+                	var r = "<tr class='contentFont'>";
+                   
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 2) ? 'last' : '';
+                      
+                        var c = "<td width='33.3%' class='" + temp + "'>" + data[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                 
+                    $('#tbl1 tbody').append(r);
+                    $("#tbl1 tr:odd").addClass('oddRow');
+                    $("#tbl1 tr:even").addClass('evenRow');
+                   // $('#tbl1 tr:first').toggleClass('clicked');
+                }
+            }
+            function getitem()
+            {
+            if(sessionStorage.getItem("posdata")!='')
+                {
+                    localStorage.itemcode = itemcode;
+                    window.location='addeditpositem.html';
+                }
+            }
+            function onConfirm(button)
+            {               
+                if(button == 1)
+                {
+                    var posdata = sessionStorage.getItem("posdata");
+                    posdata=JSON.parse(posdata);
+                    var code = posdata[0];
+                    var qty = posdata[2];
+                    var serialno = posdata[3];
+                     var remarks = posdata[5];
+                    var insertqry = "insert into posequipmentchangedetail ('routekey','visitkey','posaction','itemcode','quantity','serialnumber','issync') values ("+sessionStorage.getItem("RouteKey")+","+sessionStorage.getItem("VisitKey")+",3,"+code+",'"+qty+"','"+serialno+"',0,'"+remarks+"')";
+                    console.log(insertqry);
+                    if(platform=='iPad')
+                    {
+                        Cordova.exec(function(result) {
+                                      updatebalance();
+                                      },
+                                      function(error) {
+                                      alert(error);},
+                                      "PluginClass", 
+                                      "InsertUpdateMethod", 
+                                      [insertqry]);
+                        
+                    }
+                    else if(platform=='Android')
+                    {
+                        
+                        window.plugins.DataBaseHelper.insert(insertqry,function(result)
+                                                             {
+                                                             updatebalance();                           
+                                                             },
+                                                             function()
+                                                             {
+                                                             console.warn("Error calling plugin");
+                                                             });
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            function deletepos()
+            {
+            //var res = confirm("Are you sure want to delete POS?");
+                if(sessionStorage.getItem("posdata")!='')
+                {
+                var res = navigator.notification.confirm("Are you sure want to delete POS?",onConfirm);              
+                }
+              
+            
+              }
+            
+            function updatebalance()
+            {
+              var qryupdatebalace="update customerposlimit set posbalance = posbalance+1 where customercode="+sessionStorage.getItem("customerid");
+                console.log(qryupdatebalace);
+              if(platform=='iPad')
+                 {
+                           Cordova.exec(function(result) {
+                                 deleteflag();   
+                           },
+                           function(error) {
+                           alert(error);},
+                           "PluginClass", 
+                           "InsertUpdateMethod", 
+                           [qryupdatebalace]);
+                           
+                 }
+                 else if(platform=='Android')
+                 {
+                                                 
+                        window.plugins.DataBaseHelper.insert(qryupdatebalace,function(result)
+                        {
+                               deleteflag();   
+                        },
+                        function()
+                        {
+                         console.warn("Error calling plugin");
+                        });
+                     }
+               }
+            function deleteflag()
+            {
+              var insertqry = "update posmaster set is_delete=1,issync=0 where itemcode="+actualcode;
+                console.log(insertqry);
+              if(platform=='iPad')
+                 {
+                           Cordova.exec(function(result) {
+                                 $("#tbl1  tr").remove();
+                                 getrecord();
+                           },
+                           function(error) {
+                           alert(error);},
+                           "PluginClass", 
+                           "InsertUpdateMethod", 
+                           [insertqry]);
+                           
+                 }
+                 else if(platform=='Android')
+                 {
+                                                 
+                        window.plugins.DataBaseHelper.insert(insertqry,function(result)
+                        {
+                               $("#tbl1  tr").remove();
+                               getrecord();
+                        },
+                        function()
+                        {
+                         console.warn("Error calling plugin");
+                        });
+                     }
+               }
+            
+        </script>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,307 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 30/1/2011
+ '  Description  : This page is used for detail of route book detail
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="addeditpositem.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Select POS Item</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="book_detail_div">
+                    <div class="tblBox tbltd" id="contentWrapper">
+                        <div class="tblHeader" id="tblHeader">
+                            <table width="100%" cellpadding="10"
+                                cellspacing="0">
+                                <tr>
+                                    <td width="50%" lang="en">
+                                        Item
+                                    </td>
+                                    <td width="50%" lang="en" class="last">
+                                        Description
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="info">
+                            <table border="0" width="100%" cellpadding="10"
+                                cellspacing="0" id="tbl1"
+                                data-role="none">
+                                <tbody class="tblBody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu com_info_right">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" data-rel="back" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-select.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Select</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="addeditpositem.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+	var platform= sessionStorage.getItem("platform");
+                        var inputvalue='';
+	$("#tbl1").click(function() { });
+		
+      resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+        $(".leftfooter").html(getCurrentDate());
+	     $('.ui-body-d').css({ 'background': '#fff' });
+	    $('.ui-input-datebox').css({ 'width': '92%','line-height':'4.0' });
+	    $('.ui-input-datebox input').css({'color':'#999' });
+	   $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important'});
+            document.addEventListener("deviceready", getrecord, false);
+	     $("#tbl1 tr:odd").addClass('oddRow');
+        $("#tbl1 tr:even").addClass('evenRow');
+	     $("#tbl1 tr").live('click', function() {
+	    $(this).toggleClass('clicked');
+	    $(this).siblings().removeClass('clicked');
+	     var i=$(this).index();
+	     
+	      sessionStorage.setItem("posno", inputvalue[i][2]);
+	      sessionStorage.setItem("posname", inputvalue[i][1]);
+    });
+            
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('selectPOS'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+         function getrecord()
+            {
+	     
+                var custid=sessionStorage.getItem("customerid");
+                var routecode=sessionStorage.getItem("RouteCode");
+                if(sessionStorage.getItem("Language")=='en')
+                {
+                    var qry = "select case WHEN "+sessionStorage.getItem("CheckCode")+" == 'alternatecode' THEN p.alternatecode ELSE p.itemcode END as alternatecode,p.itemdescription,p.itemcode  from posmaster as p where p.itemcode NOT IN( select itemcode from  customerposinventory where customercode="+custid+")";
+              }
+              else
+              {
+                 var qry = "select case WHEN "+sessionStorage.getItem("CheckCode")+" == 'alternatecode' THEN p.alternatecode ELSE p.itemcode END as alternatecode,p.arbitemdescription,p.itemcode from posmaster as p where p.itemcode NOT IN( select itemcode from  customerposinventory where customercode="+custid+")";
+               
+              }
+                console.log(qry);
+                if(platform=='iPad')
+                {
+                          Cordova.exec(function(result) {
+                                    TableDataOffLine(result);
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [qry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                       window.plugins.DataBaseHelper.select(qry,function(result)
+                       {
+                              if(result.array != undefined)
+			      {
+                                    result = $.map(result.array, function (item, index) {   
+                                    if(sessionStorage.getItem("Language")=='en')
+                                    {
+                                    return [[item.alternatecode,item.itemdescription,item.itemcode]];
+                                    }
+                                    else
+                                    {
+                                     return [[item.alternatecode,item.arbitemdescription,item.itemcode]];
+                                    }
+                                   
+            		      });
+                                     TableDataOffLine(result);
+                              }
+                              
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+              }
+	      function TableDataOffLine(RecSet)
+            {
+                var CellCount = $("#tblHeader tr:eq(0) td").length;
+                
+                inputvalue=RecSet;
+                var data = RecSet;
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr>";
+                   
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 1) ? 'last' : '';
+                      
+                        var c = "<td width='33.3%' class='" + temp + "'>" + data[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                 
+                    $('#tbl1 tbody').append(r);
+                   // $('#tbl1 tr:first').toggleClass('clicked');
+                }
+            }
+        </script>
+
+        </div>
+    </body>
+</html>

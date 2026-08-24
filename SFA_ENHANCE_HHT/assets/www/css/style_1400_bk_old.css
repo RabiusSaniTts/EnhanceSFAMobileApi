@@ -1,0 +1,185 @@
+/*iWebKit css 5.04 by Christopher Plieger
+//default height 800
+//defalt width 1280
+*/
+
+
+.textfield
+{
+	position: relative;
+	margin-top: 50px;
+	line-height: 50px;
+	margin-left: 15px;
+	color: #039EDC;
+	font-size: 22px;
+	font-weight: 700;
+}
+
+.com_rightdiv
+{
+        margin-right: -15px;
+}
+
+.input
+{
+	position: relative;
+	margin-left: 2%;
+	margin-right: 2%;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	border: 1px thick #ccc;
+	width: 94%;
+	height: 20%;
+	background-color: #B0DAEF;
+	-webkit-box-shadow: 0 0 1px 0 #fff;
+	-moz-box-shadow: 0 0 1px 0 #fff;
+	box-shadow: 0 0 1px 0 #fff;
+}
+
+.box
+{
+	width: 50%;
+	height: 35%;
+	position: relative;
+	background-color:green;
+	border: 15px solid #D9F1FF;
+	border-top: 12px solid #D9F1FF;
+	border-bottom: 12px solid #D9F1FF;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-webkit-box-shadow: 1px 5px 6px #999;
+	-moz-box-shadow: 1px 5px 6px #999;
+	box-shadow: 1px 5px 6px #999;
+	margin: 0 auto;
+}
+
+.loginbtn
+{
+	float: right;
+	width: 20%;
+	height: 15%;
+	margin-top: 3%;
+	margin-right: 5%;
+	color: #1FA7DE;
+	font-size: 20px;
+	font-weight: 700;
+	border: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #F1F0EE;
+	-webkit-box-shadow: 1px 5px 6px #999;
+	-moz-box-shadow: 1px 5px 6px #999;
+	box-shadow: 1px 5px 6px #999;
+}
+
+.remember
+{
+	float: left;
+	width: 60%;
+	margin-top: 3%;
+	color: #039EDC;
+	font-size: 22px;
+	font-weight: 700;
+}
+
+.check
+{
+	top: 1%;
+	margin-left: .5em;
+}
+
+.lostpass
+{
+	position: relative;
+	font-size: 22px;
+	top: 5%;
+	width: 100%;
+	color: #4F4F4F;
+	text-align: center;
+	text-shadow: 1px 1px 1px #FFF;
+	filter: dropshadow(color=#FFF,offx=1,offy=1);
+}
+
+.footer
+{
+	margin: 0 auto;
+	width: 80%;
+	margin-top: 20px;
+}
+.fmt
+{
+	top: 5%;
+}
+
+#topbar
+{
+	position: relative;
+	left: 0;
+	top: 5%;
+	width: auto;
+	text-align: center;
+	font-size: 80px;
+	font-weight: 700;
+	color: #009DDC;
+	text-shadow: 1px 1px 1px #FFF;
+	font-style: italic;
+	margin-bottom: 7%;
+}
+.homebox
+{
+	height: 75%;
+}
+.hometr
+{
+	margin-bottom: 1.5%;
+	height: 10%;
+}
+.arrow
+{
+	margin-top: 1%;
+}
+.homelable
+{
+	height: 60px;
+	line-height: 60px;
+}
+.icon
+{
+	margin-left: 5%;
+	margin-top: 0%;
+}
+
+/*Sales Invoice & Order Request page class*/
+.route_table_height
+{
+   height:230px;
+}
+.centerboxInvReq
+{
+	padding-right: 0px;
+}
+.pricelist
+{
+	height: 160px;
+}
+
+
+.orderrequest
+{
+   height:150px;
+}
+.item
+{
+   height:250px;
+}
+.auto
+{
+   height:150px;
+}
+.centerbox1 {
+padding-right: 0px;
+}
+/*Over Sales Invoice & Order Request page class*/

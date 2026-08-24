@@ -1,0 +1,704 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 2/2/2011
+ '  Description  : This page is used for promotion list
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--<script type="text/javascript" src="../js/iscroll.js"></script>-->
+
+        <script type="text/javascript">
+
+        //var scrollContent, scrollNav;
+        //
+        //function loaded() {
+        //    scrollContent = new iScroll('contentWrapper');
+        //}
+        //
+        //document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+        //
+        //document.addEventListener('DOMContentLoaded', loaded, false);   
+
+    </script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="#" rel="external" lang="en">Back</a>
+                <h1 lang="en">Promotion Details</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm">
+                    <div class="textBar captionLabel">
+                        <table cellpadding="2" cellspacing="2" border="0"
+                            width="100%">
+                            <tr>
+                                <td lang="en" colspan="2" id="pname">Promotion
+                                    Name</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input id="txtDescription"
+                                        type="text"
+                                        class="textWidth textFont"
+                                        readonly="readonly" /></td>
+                                <td colspan="2" id="txttype"
+                                    class="promotionfont">
+                                    <!-- <div style="float: left; width: 50px; height: 50px; position: relative">
+                                    <img id="imgCheck" src="../images/check.png" alt="" style="position: absolute;" />
+                                    <img id="imgSelect" src="../images/select.png" alt="" style="position: absolute;
+                                    left: 5px; display: none" />
+                                </div>
+                                <div style="float: left; position: relative; top: 15px;">
+                                    <label id="lbl" style="color: #999; display: none"
+                                        lang="en">
+                                        Exclusion</label>
+                                </div>-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td lang="en" class="rtext">Start Date</td>
+                                <td lang="en" class="rtext">End Date</td>
+                                <td lang="en" class="rtext">Qualification</td>
+                                <td lang="en" class="rtext">Assignment</td>
+                            </tr>
+                            <tr>
+                                <td><input name="txtStartDate" type="text"
+                                        id="txtStartDate"
+                                        class="textWidth textFont"
+                                        readonly="readonly" /></td>
+                                <td><input name="txtEndDate" type="text"
+                                        id="txtEndDate"
+                                        class="textWidth textFont"
+                                        readonly="readonly" /></td>
+                                <td><input id="txtQuality" type="text"
+                                        class="textWidth textFont"
+                                        readonly="readonly" /></td>
+                                <td><input id="txtAssignment" type="text"
+                                        class="textWidth textFont"
+                                        readonly="readonly" /></td>
+                            </tr>
+                        </table>
+                        <div class="tblBox tbltd" id="contentWrapper">
+
+                            <table class="tblHeader" id="tblHeaderContent"
+                                width="100%"
+                                cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td width="33.3%" lang="en"
+                                        class="leftAlign">Min</td>
+                                    <td width="33.3%" lang="en"
+                                        class="leftAlign">Max</td>
+                                    <td width="33.3%" lang="en"
+                                        class="last">Promo Value</td>
+                                </tr>
+                            </table>
+
+                            <div class="route_table_height pricelist">
+                                <table border="0" width="100%" cellpadding="0"
+                                    cellspacing="0"
+                                    id="tbl1" data-role="none">
+                                    <tbody>
+                                        <tr>
+                                            <th width="33.3%"
+                                                class="leftAlign"></th>
+                                            <th width="33.3%"
+                                                class="leftAlign"></th>
+                                            <th width="33.3%"
+                                                class="leftAlign last"></th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="tblBox tbltd" id="contentWrapper1"
+                            style="display: none;">
+                            <div class="tblHeader">
+                                <table id="tblHeaderContent1" width="100%"
+                                    cellpadding="10"
+                                    cellspacing="0">
+                                    <tr>
+                                        <td width="20%" lang="en"
+                                            class="leftAlign">Min</td>
+                                        <td width="20%" lang="en"
+                                            class="leftAlign">Max</td>
+                                        <td width="60%" lang="en"
+                                            class="leftAlign last">Item Name
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="route_table_height pricelist">
+                                <table border="0" width="100%" cellpadding="0"
+                                    cellspacing="0"
+                                    id="tbl11" data-role="none">
+                                    <tbody>
+                                        <tr>
+                                            <td width="20%"
+                                                class="leftAlign"></td>
+                                            <td width="20%"
+                                                class="leftAlign"></td>
+                                            <td width="60%"
+                                                class="leftAlign last"></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="MenuPosition promo">
+                        <div class="MenuTextPos">
+                            <img class="bottomicon" id="imgNext"
+                                src="../images/left.png"
+                                alt="Option" />
+                        </div>
+                        <div class="MenuTextPos MenuText" lang="en">Next</div>
+                    </div>
+                    <div class="MenuPosition promo">
+                        <div class="MenuTextPos">
+                            <img class="bottomicon" id="imgPrev"
+                                src="../images/right.png"
+                                alt="Add" />
+                        </div>
+                        <div class="MenuTextPos MenuText"
+                            lang="en">Previous</div>
+                    </div>
+                    <a id="linkExit" href="promotion_list.html"
+                        class="enableText"
+                        rel="external">
+                        <div class="MenuPosition MenuExit promo">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png" alt="Exit" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            var data = null,datassignment = null;  
+            var NoNext = false; 
+            var platform='';
+            var assignmentnumber = 0;
+            var arrayPlan = [];
+        window.lang = new jquery_lang_js();
+	
+	$('label').css({ 'background': '#D1ECFD','border':'none' });
+	$('.ui-btn-inner').css({ 'border-top':'none' });
+	 
+	 function setToggle() {
+           
+                $("#imgSelect").css("display", "block");
+           
+        }
+	
+ 		resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+
+	    
+        $(".leftfooter").html(getCurrentDate());
+                          
+        arrayPlan = sessionStorage.getItem('arrayplan');
+                          
+        document.addEventListener("deviceready", getPromotionList, false); 
+          
+	    if(localStorage.prodetail=='promo')
+		{
+		    var page = 'promotion_list.html'
+		}
+		else
+		{
+		    var page = 'customer_promotion_list.html';
+		}
+		$("#Back_inner").attr("href", page);
+        $("#linkExit").attr("href", page);
+                          
+                          var  NoPrev = true,ActiveIndex = 0;
+                          $("#imgNext").click(function() {
+                                              if (!NoNext) {
+                                              ActiveIndex += 1;   
+                                                
+                                              $("#txtDescription").val(data[ActiveIndex][1]);
+                                              $("#txtStartDate").val(data[ActiveIndex][2]); 
+                                              $("#txtEndDate").val(data[ActiveIndex][3]); 
+                                              $("#txtQuality").val(data[ActiveIndex][4]);
+                                              $("#txtAssignment").val(data[ActiveIndex][5]);                        
+                                             
+                                              var typearray = ["Net Price/Basket Price","Amount On Item","Percentage On Item","","","Amount On Invoice","Percentage On Invoice","Free"];
+                                              
+                                              $("#txttype").text(typearray[data[ActiveIndex][9]]);
+                                              
+                                              if(data[0][7] == 1)
+                                              {
+                                                setToggle();
+                                                $("#lbl").css({"display":"block"});
+                                              }
+                                              
+                                               assignmentnumber =  data[ActiveIndex][6];
+                                               getPromotionAssignment(data[ActiveIndex][9]);
+                                              
+                                              }
+                                              if (ActiveIndex >= (data.length - 1)) {
+                                              $(this).attr("src", "../images/left-gray.png");
+                                              NoNext = true;
+                                              
+                                              if(data.length == 2)
+                                              {
+                                              NoPrev = false;
+                                              $("#imgPrev").attr("src", "../images/right.png");
+                                              }
+                                              }
+                                              else {
+                                              NoNext = false;
+                                              NoPrev = false;
+                                              $("#imgPrev").attr("src", "../images/right.png");  
+                                              
+                                              }
+                                              });
+                          
+                          $("#imgPrev").click(function() {
+                                              if (!NoPrev) {
+                                              ActiveIndex -= 1;   
+                                              
+                                              $("#txtDescription").val(data[ActiveIndex][1]);
+                                              $("#txtStartDate").val(data[ActiveIndex][2]); 
+                                              $("#txtEndDate").val(data[ActiveIndex][3]); 
+                                              $("#txtQuality").val(data[ActiveIndex][4]);
+                                              $("#txtAssignment").val(data[ActiveIndex][5]); 
+                                              
+                                              var typearray = ["Net Price/Basket Price","Amount On Item","Percentage On Item","","","Amount On Invoice","Percentage On Invoice","Free"];
+                                              
+                                              $("#txttype").text(typearray[data[ActiveIndex][9]]);
+                                              
+                                              if(data[0][7] == 1)
+                                              {
+                                              setToggle();
+                                              $("#lbl").css({"display":"block"});
+                                              }
+                                              
+                                              assignmentnumber =  data[ActiveIndex][6];
+                                              getPromotionAssignment(data[ActiveIndex][9]);
+                                              
+                                              }
+                                              if (ActiveIndex <= 0) {
+                                              $(this).attr("src", "../images/right-gray.png");
+                                              NoPrev = true;
+                                              
+                                              if(data.length == 2)
+                                              {
+                                              NoNext = false;
+                                              $("#imgNext").attr("src", "../images/left.png");
+                                              }
+                                              }
+                                              else {
+                                              NoPrev = false;
+                                              NoNext = false;
+                                              $("#imgNext").attr("src", "../images/left.png");
+                                              }
+                                              });       
+            
+	    
+           var lan = sessionStorage.getItem("Language");
+        window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Promodetail'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $("#contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+            
+            //Function for bind item list
+            function getPromotionList()
+            {         
+            	          
+                platform= sessionStorage.getItem("platform");  
+                startdate = sessionStorage.getItem("promodate1");
+                 promocust = sessionStorage.getItem("promocust");
+                 
+                if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) {
+                              if(result.length > 0 )
+                              {
+                                data = result;                                 
+                           
+                                                           
+                                $("#txtDescription").val(data[0][1]);
+                                $("#txtStartDate").val(data[0][2]); 
+                                $("#txtEndDate").val(data[0][3]); 
+                                $("#txtQuality").val(data[0][4]);
+                                $("#txtAssignment").val(data[0][5]); 
+                              var typearray = ["Net Price/Basket Price","Amount On Item","Percentage On Item","","","Amount On Invoice","Percentage On Invoice","Free"];
+                              
+                              $("#txttype").text(typearray[data[0][9]]); 
+                              
+                             
+                                if(data[0][7] == 1)
+                                {
+                                    setToggle();
+                                    $("#lbl").css({"display":"block"});
+                                }
+                              
+                                assignmentnumber =  data[0][6];
+                                getPromotionAssignment(data[0][9]);
+                                
+                                $("#imgPrev").attr("src", "../images/right-gray.png");
+                              
+                                if(data.length == 1)
+                                {
+                                    $("#imgNext").attr("src", "../images/left-gray.png");
+                                    NoNext = true;
+                                }
+                              }
+                              else
+                              {
+                                //navigator.notification.alert("No record found for selected promotion");
+                              
+                                NoNext = true;
+                                $("#imgPrev").attr("src", "../images/right-gray.png");
+                                $("#imgNext").attr("src", "../images/left-gray.png");
+                              }
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding promotion detail : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod",
+                              ["SELECT distinct promokeydetail.plannumber,Case When '" + sessionStorage.getItem('Language') + "' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc,strftime('%d-%m-%Y', promokeydetail.startdate) as startdate,strftime('%d-%m-%Y',promokeydetail.enddate) as enddate, promokeydetail.qualificationgroup,promokeydetail.assignmentgroup,promokeydetail.assignmentnumber,promokeydetail.exclusionoption,promokeydetail.plannumber,promokeydetail.promotiontypecode FROM promokeydetail inner join customermaster on promokeydetail.promotionkey = customermaster.promotionkey inner join promoplanheader on promokeydetail.plannumber = promoplanheader.plannumber  where customermaster.customercode = " + promocust +" and promokeydetail.startdate <= '"+startdate+"' and promokeydetail.enddate >= '"+startdate+"'"]);         
+                
+                }
+            	else if(platform=='Android')
+            	{
+            	
+            		console.log("SELECT distinct promokeydetail.plannumber,Case When '" + sessionStorage.getItem('Language') + "' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc,strftime('%d-%m-%Y', promokeydetail.startdate) as startdate,strftime('%d-%m-%Y',promokeydetail.enddate) as enddate, promokeydetail.qualificationgroup,promokeydetail.assignmentgroup,promokeydetail.assignmentnumber,promokeydetail.exclusionoption,promokeydetail.plannumber,promokeydetail.promotiontypecode,promokeydetail.rangebasis FROM promokeydetail inner join customermaster on promokeydetail.promotionkey = customermaster.promotionkey inner join promoplanheader on promokeydetail.plannumber = promoplanheader.plannumber  where customermaster.customercode = " + promocust +" and promokeydetail.startdate <= '"+startdate+"' and promokeydetail.enddate >= '"+startdate+"'");
+            	    window.plugins.DataBaseHelper.select("SELECT distinct promokeydetail.plannumber,Case When '" + sessionStorage.getItem('Language') + "' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc,strftime('%d-%m-%Y', promokeydetail.startdate) as startdate,strftime('%d-%m-%Y',promokeydetail.enddate) as enddate, promokeydetail.qualificationgroup,promokeydetail.assignmentgroup,promokeydetail.assignmentnumber,promokeydetail.exclusionoption,promokeydetail.plannumber,promokeydetail.promotiontypecode,promokeydetail.rangebasis FROM promokeydetail inner join customermaster on promokeydetail.promotionkey = customermaster.promotionkey inner join promoplanheader on promokeydetail.plannumber = promoplanheader.plannumber  where customermaster.customercode = " + promocust +"", function(result)
+					{
+						if(result.array!=undefined)
+						{
+							data = result;                                 
+                            var array = $.map(data.array, function (item, index) {               
+               				 return [[item.plannumber, item.plandesc, item.startdate,item.enddate,item.qualificationgroup,item.assignmentgroup,item.assignmentnumber,item.exclusionoption,item.plannumber,item.promotiontypecode]];
+            				});
+            				
+            				data = array;
+                                                        
+                                $("#txtDescription").val(data[0][1]);
+                                $("#txtStartDate").val(data[0][2]); 
+                                $("#txtEndDate").val(data[0][3]); 
+                                $("#txtQuality").val(data[0][4]);
+                                $("#txtAssignment").val(data[0][5]);        
+                                var typearray = ["Net Price/Basket Price","Amount On Item","Percentage On Item","","","Amount On Invoice","Percentage On Invoice","Free"];
+                                                         
+                                $("#txttype").text(typearray[data[0][9]]); 
+                             
+                                if(data[0][7] == 1)
+                                {
+                                    setToggle();
+                                    $("#lbl").css({"display":"block"});
+                                }
+                              
+                                assignmentnumber =  data[0][6];
+                                getPromotionAssignment(data[0][9]);
+                                
+                                $("#imgPrev").attr("src", "../images/right-gray.png");
+                              
+                                if(data.length == 1)
+                                {
+                                    $("#imgNext").attr("src", "../images/left-gray.png");
+                                    NoNext = true;
+                                }
+						}
+						else
+                              {
+                                //navigator.notification.alert("No record found for selected promotion");
+                              
+                                NoNext = true;
+                                $("#imgPrev").attr("src", "../images/right-gray.png");
+                                $("#imgNext").attr("src", "../images/left-gray.png");
+                              }
+					},
+					function()
+					{
+			   	 	console.warn("Error calling plugin");
+					});
+            	} 
+            }
+        
+            //Function for getting promtion assignment for passed  assignment number
+            function getPromotionAssignment(typecode)
+            {	
+            	if(typecode==0)
+                {
+                    var qry = "select rangelow,rangehigh,itemdescription,promopcprice,promocaseprice from promotionassignmentadvanced join productgroupdetail on productgroupdetail.groupnumber=promotionassignmentadvanced.promotionamount join itemmaster on itemmaster.actualitemcode= productgroupdetail.itemcode where assignmentnumber = "+ assignmentnumber  +"";
+                }
+                else
+                {
+                    var qry = "select rangelow,rangehigh,promotionamount from promotionassignmentadvanced where assignmentnumber = "+ assignmentnumber  +"";
+                }
+                console.log(qry);
+                if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) {
+                              if(result.length > 0 )
+                              {
+                              if(typecode==0)
+                              {
+                                    ClearTable1();
+                                    BindData1(result);
+                              }
+                              else
+                              {
+                                    ClearTable();
+                                    BindData(result);
+                              }
+                             
+                              }
+                              else
+                              {
+                                ClearTable();
+                              ClearTable1();
+                                //navigator.notification.alert("No record found for promotion assignment");                           
+                             
+                              }
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in binding promotion assignment : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [qry]);         
+            	}
+            	else if(platform=='Android')
+            	{
+            		window.plugins.DataBaseHelper.select(qry,function(result)
+					{
+						if(result.array!=undefined)
+						{
+                            if(typecode==0)
+                            {
+                                ClearTable1();
+                                BindData1(result);
+                            }
+                            else
+                            {
+                                ClearTable();
+                                BindData(result);
+
+                            }
+						}
+						else
+                              {
+                                ClearTable();
+                                ClearTable1();
+                                //navigator.notification.alert("No record found for promotion assignment");                           
+                             
+                              }
+					},
+					function()
+					{
+			   	 		console.warn("Error calling plugin");
+					});
+            	}  
+            }
+            
+            //Bind data dynamically
+            function BindData(result) {
+                $("#contentWrapper1").css("display","none");
+                $("#contentWrapper").css("display","block");
+                var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+                datassignment = result;
+                if (platform == 'Android') {
+                    var array = $.map(datassignment.array, function(item, index) {
+                        return [[item.rangelow, item.rangehigh, item.promotionamount]];
+                    });
+                    datassignment = array;
+                }
+                for (i = 0; i < datassignment.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == CellCount - 1) ? "class = 'leftAlign last'" : 'class =leftAlign ';                        
+                        var c = "<td " + temp + ">" + eval(datassignment[i][j]).toFixed(sessionStorage.getItem('decimalplace')) + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tbl1 tbody').append(r);
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');
+                
+            }
+            function BindData1(result) {
+                 $("#contentWrapper").css("display","none");
+                $("#contentWrapper1").css("display","block");
+                var CellCount = $("#tblHeaderContent1 tr:eq(0) td").length;
+                datassignment = result;
+                if (platform == 'Android') {
+                    var array = $.map(datassignment.array, function(item, index) {
+                                      return [[item.rangelow, item.rangehigh, item.promopcprice,item.promocaseprice]];
+                                      });
+                    datassignment = array;
+                }
+                for (i = 0; i < datassignment.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == CellCount - 1) ? "class = 'leftAlign last'" : 'class =leftAlign ';                        
+                        if(j!=2)
+                        var c = "<td width='20%' " + temp + ">" + eval(datassignment[i][j]).toFixed(sessionStorage.getItem('decimalplace')) + "</td>";
+                        else
+                        var c = "<td width='20%' " + temp + ">" + datassignment[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tbl11 tbody').append(r);
+                }
+                
+                $("#tbl11 tr:odd").addClass('oddRow');
+                $("#tbl11 tr:even").addClass('evenRow');
+                
+            }
+                       
+            
+            //Clear table 
+            function ClearTable() {
+                $("#tbl1" + " tr:gt(0)").remove();
+            }
+            function ClearTable1() {
+                $("#tbl11" + " tr:gt(0)").remove();
+            }
+        </script>
+
+        </div>
+    </body>
+</html>

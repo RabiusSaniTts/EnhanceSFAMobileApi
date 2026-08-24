@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Order Details</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+			rel="stylesheet" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 699px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 599px)"
+			href="../css/style_600.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+		<script type="text/javascript" src="../js/OrderDetails.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script type="text/javascript"
+			src="../js/jquery.mobile.datebox.min.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+		<script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<a id="Back_inner" href="trackorder.html" rel="external" lang="en">Back</a>
+				<h1 lang="en">Order Details</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+
+				<div class="com_div comm">
+
+					<div class="tblBox tbltd">
+						<div style="text-align: center;">
+							<table id="tblHeaderContent" class="tblHeader" cellpadding="0"
+								cellspacing="0" border="0" width="100%">
+								<tr>
+									<th width="15%" lang="en">Item No</th>
+									<th width="25%" lang="en">Item Name</th>
+									<th width="15%" lang="en">Order Qty</th>
+									<th width="15%" lang="en">Delivered Qty</th>
+									<th width="15%" lang="en">FOC Qty</th>
+									<th width="15%" lang="en">Delivered FOC</th>
+
+								</tr>
+							</table>
+						</div>
+
+						<div class="route_table_height tblFixedHeight">
+							<table border="0" width="100%" cellpadding="0" cellspacing="0"
+								id="tblContent">
+								<tr>
+									<td style="width: 15%;" class="leftAlign"></td>
+									<td style="width: 25%;" class="rightAlign"></td>
+									<td style="width: 15%;" class="rightAlign"></td>
+									<td style="width: 15%;" class="rightAlign"></td>
+									<td style="width: 15%;" class="rightAlign"></td>
+									<td style="width: 15%;" class="rightAlign"></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="leftbottomMenu">
+					<a href="trackorder.html" class="enableText" id="oklink" rel="external">
+						<div class="MenuPositionSCLarge">
+							<div class="iconPos">
+								<img class="bottomicon" src="../images/icn-exit.png"
+									alt="Settlement Complete" /></div>
+							<div class="MenuTextPos MenuText" lang="en">
+								Done</div>
+						</div>
+					</a>
+				</div>
+
+			</div>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="cust" data-icon="custom"
+								lang="en">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+
+						<li style="margin-bottom: 0 !important;"><a href="#" class="ui-btn-active"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            OrderDetails.initPage();
+        });
+        </script>
+
+		</div>
+	</body>
+</html>

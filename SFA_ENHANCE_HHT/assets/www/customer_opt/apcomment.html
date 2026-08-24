@@ -1,0 +1,342 @@
+<!--
+ '  Created By   : Sujeeth
+ '  Created Date : 07/02/2021
+ '  Description  : This page is used for A&P.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AR Comment</title>
+        <meta name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="apautosettler.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    A&P Comment</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent Spacing">
+                    <div class="tblBox">
+                        <table border="0" cellpadding="5" cellspacing="5"
+                            width="100%" id="tblContent">
+                            <tr>
+                                <td style="width: 100%" class="captionLabel"
+                                    lang="en">
+                                    Comments / Remarks
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100%">
+                                    <textarea id="txtComment"
+                                        class="textFont textareaheight"
+                                        name="txtComment">
+                             </textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="#" rel="external" id="btnOk"
+                        style="text-decoration: none;
+                    font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/yes.png"
+                                    alt="Ok" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                    </div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var rec;
+        resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+            $('#txtComment').focus();
+            $(".leftfooter").html(getCurrentDate());
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+        
+            var platform = '';
+            var AndroidPlatform = "Android";
+            var iPadPlatform = "iPad";
+            
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {
+                platform = sessionStorage.getItem("platform");
+                getRecord();               
+            }
+            
+            $("#btnOk").click(function(){ CheckArCount(); });
+            
+            function getRecord()
+            {
+                var Qry = "SELECT comments FROM dcarheader WHERE customercode=" + sessionStorage.getItem("customerid") + " and routecode=" + sessionStorage.getItem("RouteCode") + " and salesmancode=" + sessionStorage.getItem("SalesmanCode") + " and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+                console.log(Qry);
+                if(platform == iPadPlatform)
+                {
+                Cordova.exec(function(result) {
+                            if(result.length>0)
+                            {
+                                rec = 1;
+                                $("#txtComment").val(unescape(result[0][0]));
+                            }
+                            else 
+                            {
+                              rec = 0;
+                              $("#txtComment").val('');
+                            }
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "GetdataMethod",
+                        [Qry]);
+                }
+                else if(platform == AndroidPlatform)
+                {
+                        window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                if(result.array != undefined)
+                                {
+                                    rec = 1;
+                                    $("#txtComment").val(unescape(result.array[0].comments));
+                                }
+                                else 
+                                {
+                                    rec = 0;
+                                    $("#txtComment").val('');
+                                }
+                        },
+                        function() {
+                            console.warn("Error calling plugin");
+                        });
+                }
+            }
+            function CheckArCount()
+            {
+                platform= sessionStorage.getItem("platform");  
+            
+                if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) {                                
+                                    if(result.length > 0)
+                                    {
+                              
+                                        if(result[0][0] == 0)
+                                        {
+                                            InsertImage();
+                                        }
+                                        else
+                                        {
+                                            UpdateImage();
+                                        }
+                                    }                                   
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in check signature count : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              ["select count(customercode) from sigcapturedata where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +""]);      
+            	}
+             else if(platform=='Android')
+            		{
+             		
+		             window.plugins.DataBaseHelper.select("select count(*) As cnt from dcarheader where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +"",function(result)
+					 {
+										
+										
+						    			if(result.array!=undefined)
+                                        {    
+                                        	var result = $.map(result.array, function (item, index) {
+                                       			return [[item.cnt]];
+                                        	});
+                                                                               
+                                            if(eval(result[0][0])> 0)
+                                        	{
+                                            	SaveComment(1);
+                                        	}
+                                        	else
+                                        	{
+                                            	SaveComment(0);
+                                        	}
+                                        }                                        
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+             		}   
+            }
+            function SaveComment(cnt)
+            {                
+
+                var comments;                
+                    comments = $.trim($("#txtComment").val());
+                   
+                    if(cnt == 0)
+                        var Qry = "INSERT INTO dcarheader(routekey,visitkey,documentnumber,transactiondate,transactiontime,customercode,routecode,salesmancode,voidflag,comments,issync,istemp) VALUES( " + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("VisitKey") + ",0,date('now', 'localtime'),time('now', 'localtime')," + sessionStorage.getItem("customerid") + "," + sessionStorage.getItem("RouteCode") + "," + sessionStorage.getItem("SalesmanCode") + ",0,'" + comments + "',0,'true')";
+                    else if(cnt == 1)
+                        var Qry = "UPDATE dcarheader SET comments = '" + comments + "',issync=0 WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey");
+                    
+                    console.log(Qry);
+                    //alert(Qry)
+                    if(platform == iPadPlatform)
+                    {
+                        Cordova.exec(function(result) {
+                        
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [Qry]);
+                    }
+                    else if(platform == AndroidPlatform)
+                    {
+                        window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                        	  window.location = "../review/printoption.html";
+                        },
+                        function() {
+                            console.warn("Error calling plugin");
+                        });
+                    }               
+            }		
+            
+            if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('SettleComment'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+        });
+    </script>
+
+    </body>
+</html>

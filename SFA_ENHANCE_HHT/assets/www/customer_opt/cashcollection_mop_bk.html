@@ -1,0 +1,731 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 09/03/2012
+ '  Description  : This page is used for cash collection.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cash Collection MOP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1400px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="salesinvoice_option.html" id="Back_inner"
+                    rel="external" lang="en" onclick="ClearVal()">Back</a>
+                <h1 lang="en">
+                    Cash Collection</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent Spacing">
+                    <div class="topbox">
+                        <div class="content-primary1">
+                            <label class="cus_lable heading" lang="en">
+                                No.</label>
+                            <span class="nobox headbox" id="code"></span>
+                        </div>
+                        <div class="second-primary1">
+                            <label class="cus_lable heading" lang="en"
+                                id="name"></label>
+                        </div>
+                    </div>
+                    <br />
+                    <table border="0" cellpadding="5" cellspacing="0"
+                        width="100%">
+                        <tr id="trminimumdue">
+                            <td style="width: 30%" lang="en">
+                                Minimum Due
+                            </td>
+                            <td style="width: 30%">
+                                <div class="label_textManageSettle rightAlign"
+                                    id="minimumdue">
+                                </div>
+                            </td>
+                            <td style="width: 35%">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr id="trallowedtc">
+                            <td style="width: 30%" lang="en">
+                                Allowed TC
+                            </td>
+                            <td style="width: 30%">
+                                <div class="label_textManageSettle rightAlign"
+                                    id="allowedtc">
+                                </div>
+                            </td>
+                            <td style="width: 35%">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%" lang="en">
+                                Amount Due
+                            </td>
+                            <td style="width: 30%">
+                                <div class="label_textManageSettle rightAlign"
+                                    id="amountdue">
+                                    0.0</div>
+                            </td>
+                            <td style="width: 35%">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr id="cashpanel">
+                            <td style="width: 30%">
+                                <a href="cashcollection_mopcash.html"
+                                    rel="external"
+                                    style="text-decoration: none;"
+                                    onclick="SetPage('cash')">
+                                    <div id="divCash"
+                                        class="btnCommission centerAlign ui-corner-all"
+                                        lang="en">
+                                        Cash</div>
+                                </a>
+                            </td>
+                            <td style="width: 35%">
+                                <div class="label_textManageSettle rightAlign"
+                                    id="cash">
+                                    0.0</div>
+                            </td>
+                            <td style="width: 35%">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr id="chequepanel">
+                            <td style="width: 30%">
+                                <a href="cashcollection_mopcheque.html"
+                                    rel="external"
+                                    style="text-decoration: none;"
+                                    onclick="SetPage('cheque')">
+                                    <div id="btnCehck"
+                                        class="btnCommission centerAlign ui-corner-all"
+                                        lang="en">
+                                        Cheques</div>
+                                </a>
+                            </td>
+                            <td style="width: 35%">
+                                <div class="label_textManageSettle rightAlign"
+                                    id="cheque">
+                                    0.00</div>
+                            </td>
+                            <td style="width: 35%">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 30%" lang="en">
+                                Total Paid
+                            </td>
+                            <td style="width: 30%">
+                                <div class="label_textManageSettle rightAlign"
+                                    id="paid">
+                                    0.00</div>
+                            </td>
+                            <td style="width: 35%">
+                                &nbsp;
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="../review/printoption.html" class="enableText"
+                        rel="external" onclick="return Validate()">
+                        <div class="MenuPosition printReportHeight">
+                            <div class="MenuTextPos">
+                                <img src="../images/ok.png"
+                                    alt="Continue" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Continue</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding printReportHeight">
+                        &nbsp;</div>
+                    <a id="lnkExit" href="#" rel="external"
+                        style="text-decoration: none; font-weight: normal;"
+                        onclick="Onexit()">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                of day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer
+                                opt</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">        
+        window.lang = new jquery_lang_js();
+         var platform='';
+         var decimalplace = sessionStorage.getItem("decimalplace");
+         var objSettle;
+        var salesamounts;
+        var CashSetting
+         $(document).ready(function() {            
+             $(".leftfooter").html(getCurrentDate());
+             platform = sessionStorage.getItem("platform");
+            //platform = "iPad";
+             localStorage.setItem("roundredirect",'cash');
+             if(sessionStorage.getItem("cash") == null)
+                sessionStorage.setItem("cash",0);
+             if(sessionStorage.getItem("cheque") == null)
+                sessionStorage.setItem("cheque",0);
+             $("#name").text(sessionStorage.getItem("customername"));
+             $("#code").text(sessionStorage.getItem("customercode"));
+             /*$("#cash").text(eval(sessionStorage.getItem("cash")).toFixed(decimalplace));
+             $("#cheque").text(eval(sessionStorage.getItem("cheque")).toFixed(decimalplace));*/
+             
+                                                      
+             document.addEventListener("deviceready", getrecord1, false);
+             var lan = sessionStorage.getItem("Language");
+             window.lang.run(lan);
+
+             CashSetting = sessionStorage.getItem("invoicepaymentterms");             
+             if (CashSetting == 0 || CashSetting == 4)
+                 $("#chequepanel").hide();
+             else
+                 $("#chequepanel").show();
+                
+                if (localStorage.po == 'sales') {                           
+                    var page = '../customer_opt/salesinvoice_option.html';
+                }
+                else {
+                    var page = '../customer_opt/autosettler.html';
+                }
+
+             $('#Back_inner').attr("href", page);
+             //$('#lnkExit').attr("href", page);
+
+             if (sessionStorage.getItem("Language") != "en") {
+
+                 window.lang.change('CashCollectionMOP' + lan, lan);
+                 window.lang.change('Footer' + lan, lan);
+                 if (lan == "AR") {
+                     $("#boxContent").attr("dir", "rtl");
+                     $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                     $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                     $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                     $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                 }
+
+             }
+             else {
+                 window.lang.change('en', 'en');
+                 $(".boxContent").attr("dir", "ltr");
+                 $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                 $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                 $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                 $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+             }
+         });
+         function getrecord1()
+       {       		
+           if(sessionStorage.getItem("SignEnabled") == 1 && localStorage.po == 'sales')
+                {                    
+                    getRoundingline();
+                    //getRoundinginvoice();
+                }
+                else
+                getrecord();
+                
+        }
+        function getrecord()
+        {
+            objSettle = localStorage.getItem("ARDATA");   
+            if(objSettle)
+                objSettle = JSON.parse(objSettle); 
+           var routekey=sessionStorage.getItem("RouteKey");
+            var visitkey=sessionStorage.getItem("VisitKey");
+            var customerid=sessionStorage.getItem("customerid");
+            if(localStorage.getItem("collectionMOP") == "autosettle")
+            {                
+                /*if(eval(localStorage.ARAmount) > 0)
+                    $('#amountdue').text(eval(objSettle.balancedue).toFixed(decimalplace) - eval(localStorage.ARAmount).toFixed(decimalplace));
+                else                
+                    $('#amountdue').text(objSettle.balancedue);*/
+                $('#trminimumdue').hide();
+                $('#trallowedtc').hide();    
+                $('#amountdue').text(objSettle.balancedue);
+                    
+                var amt = eval($('#amountdue').text())
+                $('#amountdue').text(eval(amt).toFixed(decimalplace))
+                sessionStorage.setItem("amountdue",eval($('#amountdue').text()));
+                if(eval(objSettle.balancedue) == 0)
+                    $("#chequepanel").hide();
+                GetCashDetail(); 
+            }           
+            else
+            {
+               
+                var Qry = "select ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0) as amount,ifnull(totalsalesamount,0) as salesamount from invoiceheader where routekey="+routekey+" and visitkey="+visitkey+" and customercode="+customerid+" and istemp='true' group by routekey,visitkey";
+                console.log(Qry);
+                if(platform=='iPad')
+		    	{  
+                var abc = Cordova.exec(function(result) {                                        
+                                        $('#amountdue').text(eval(result[0][0]).toFixed(decimalplace));
+                                        salesamounts = eval(result[0][1]);
+                                        sessionStorage.setItem("amountdue",eval(result[0][0]).toFixed(decimalplace));                                        
+                                        GetCashDetail();                                        
+                                        },
+                                        function(error) {
+                                        navigator.notification.alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        [Qry]);
+            	}
+            	 else if(platform=='Android')
+           		{
+	           		window.plugins.DataBaseHelper.select(Qry,function(result)
+					{
+		                    result = $.map(result.array, function (item, index) {                
+                				return [[item.amount,item.salesamount]];
+            				});
+            				var amount = eval(result[0][0]).toFixed(decimalplace);
+            				console.log("DECIMALED AMOUNT : " + amount);
+		                    $('#amountdue').text(amount);
+                            sessionStorage.setItem("amountdue",amount);
+                            GetCashDetail();
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           		} 
+            }
+        }
+        
+        function GetCashDetail()
+        {
+            var Qry = "SELECT ifnull(amount,0) as amount,typecode from cashcheckdetail where routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey") + "";
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {                            
+                            if(result.length > 0)
+                                {
+                                if(result[0][1] == 0)
+                                    $("#cash").text(eval(result[0][0]).toFixed(decimalplace));
+                                else
+                                    $("#cheque").text(eval(result[0][0]).toFixed(decimalplace));
+                                $("#paid").text(eval(result[0][0]).toFixed(decimalplace));                                 
+                                $('#amountdue').text(eval($('#amountdue').text()) - eval(result[0][0]));
+                                $('#amountdue').text(eval($('#amountdue').text()).toFixed(decimalplace));          
+                                sessionStorage.setItem("cash",result[0][0]);                                          
+                                    if(result[0][0] == 0)
+                                    {
+                                        $("#cashpanel").show();
+                                        if(CashSetting != 0 && CashSetting != 4)
+                                            $("#chequepanel").show();
+                                    }
+                                    else
+                                    {
+                                        if(result[0][1] == 0)
+                                        {
+                                            $("#cashpanel").show();
+                                            $("#chequepanel").hide();
+                                        }
+                                        else if(result[0][1] == 1)
+                                        {
+                                            $("#cashpanel").hide();
+                                            $("#chequepanel").show();
+                                        }
+                                    }
+                                    //GetChequeDetail();                                    
+                                }
+                                else
+                                {
+                                    $('#cash').text(eval(0).toFixed(decimalplace));
+                                    $('#paid').text(eval(0).toFixed(decimalplace));
+                                    sessionStorage.setItem("cash",0);
+                                    //GetChequeDetail();
+                                }                                
+                                if(localStorage.getItem("collectionMOP") != "autosettle") // For Only Sales Transaction
+                                        CheckForTC();
+					  else
+					  {
+						if(eval(objSettle.balancedue) == 0)
+	                                    $("#chequepanel").hide();
+					  }
+                            },
+                            function(error) {
+                            navigator.notification.alert(error);},
+                            "PluginClass",
+                            "GetdataMethod",
+                            [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                    	result = $.map(result.array, function (item, index) {                
+            				return [[item.amount,item.typecode]];
+        				});
+                        if(result[0][1] == 0)
+                                    $("#cash").text(eval(result[0][0]).toFixed(decimalplace));
+                        else
+                            $("#cheque").text(eval(result[0][0]).toFixed(decimalplace));
+                        $("#paid").text(eval(result[0][0]).toFixed(decimalplace));
+                        $('#amountdue').text(eval($('#amountdue').text()) - eval(result[0][0]));
+                        $('#amountdue').text(eval($('#amountdue').text()).toFixed(decimalplace));          
+                        sessionStorage.setItem("cash",result[0][0]);                                          
+                        if(result[0][0] == 0)
+                        {
+                            $("#cashpanel").show();
+                            if(CashSetting != 0 && CashSetting != 4)
+                                $("#chequepanel").show();
+                        }
+                        else
+                        {
+                            if(result[0][1] == 0)
+                            {
+                                $("#cashpanel").show();
+                                $("#chequepanel").hide();
+                            }
+                            else if(result[0][1] == 1)
+                            {
+                                $("#cashpanel").hide();
+                                $("#chequepanel").show();
+                            }
+                        }
+                        //GetChequeDetail();  
+                    }
+                    else
+                    {
+                        $('#cash').text(eval(0).toFixed(decimalplace));
+                        $('#paid').text(eval(0).toFixed(decimalplace));
+                        sessionStorage.setItem("cash",0);
+                        //GetChequeDetail();
+                    }                   
+                    if(localStorage.getItem("collectionMOP") != "autosettle") // For Only Sales Transaction
+                        CheckForTC();
+			  else
+			  {
+				if(eval(objSettle.balancedue) == 0)
+	                  	$("#chequepanel").hide();
+			  }
+
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function GetChequeDetail()
+        {
+            var Qry = "SELECT ifnull(amount,0) as amount from cashcheckdetail where routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey") + " and typecode = 1";
+            
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                            if(result.length > 0)
+                                {
+                                    $("#cheque").text(eval(result[0][0]).toFixed(decimalplace));
+                                    $("#paid").text(eval(result[0][0]).toFixed(decimalplace));
+                                    $('#amountdue').text(eval($('#amountdue').text()) - eval(result[0][0]));  
+                                    $('#amountdue').text(eval($('#amountdue').text()).toFixed(decimalplace));               
+                                    sessionStorage.setItem("cheque",result[0][0]);
+                                    if(result > 0)
+                                    {
+                                        $("#cashpanel").hide();
+                                        $("#chequepanel").show();
+                                    }
+                                    else
+                                    {
+                                        $("#cashpanel").show();
+                                        $("#chequepanel").show();
+                                    }
+                                }
+                                else
+                                {  
+                                    $('#cheque').text(eval(0).toFixed(decimalplace));
+                                    sessionStorage.setItem("cheque",0);
+                                }
+                            },
+                            function(error) {
+                            navigator.notification.alert(error);},
+                            "PluginClass",
+                            "GetdataMethod",
+                            [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+					{
+                        if(result.array != undefined)
+                        {
+                            if(result.array[0][0] > 0)
+                            {
+                                $("#cheque").text(eval(result[0][0]).toFixed(decimalplace));
+                                $("#paid").text(eval(result[0][0]).toFixed(decimalplace));  
+                                $('#amountdue').text(eval($('#amountdue').text()) - eval(result[0][0]));  
+                                $('#amountdue').text(eval($('#amountdue').text()).toFixed(decimalplace));                                 
+                                sessionStorage.setItem("cheque",result[0][0]);                                
+                            }
+                        else
+                            {
+                                $('#cheque').text(eval(0).toFixed(decimalplace));
+                                $('#paid').text(eval(0).toFixed(decimalplace));
+                                sessionStorage.setItem("cheque",0);
+                            }
+                        }
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+                
+            }
+        }
+        
+        function Validate()
+        {
+             var amt = eval($("#paid").text());
+            if(sessionStorage.getItem("amountdue") == 0)
+            {
+                return true;
+            }
+            else if((amt == 0 || amt == '') && eval($("#minimumdue").text()) != 0)
+            {
+                navigator.notification.alert("Please Provide Payment Details.");
+                return false;
+            }
+            else
+                return true;
+        }
+        //-----------On Exit
+        function Onexit()
+        {
+            var msg = "Are You Sure To Exit?";
+            navigator.notification.confirm(msg,function(action){
+                //alert(action);
+            if(action == 1)
+                {
+                ClearVal();
+                }   
+               // window.location = '../customer_opt/salesinvoice_option.html';
+            
+            });
+        }
+        //------------End
+        
+        function ClearVal()
+        {
+                console.log("Clear Value");            
+            //localStorage.setItem('invoicenumber',null);
+            //localStorage.setItem('collectionMOP',null);
+            //localStorage.setItem('ARDATA',null)
+            
+             console.log("Clear Value");
+            var Qry = "DELETE FROM cashcheckdetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey= " + sessionStorage.getItem("VisitKey");
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    localStorage.setItem('invoicenumber','');
+                    localStorage.setItem('collectionMOP','');
+                    localStorage.setItem('ARDATA','');
+                    if(localStorage.po == "sales")
+                        window.location= 'salesinvoice_option.html';
+                    else if(localStorage.po == "collection")
+                        window.location= 'autosettler.html';
+                },
+                function(error) {
+                navigator.notification.alert(error);},
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result)
+                {
+                    localStorage.setItem('invoicenumber','');
+                    localStorage.setItem('collectionMOP','');
+                    localStorage.setItem('ARDATA','');
+                    if(localStorage.po == "sales")
+                        window.location= 'salesinvoice_option.html';
+                    else if(localStorage.po == "collection")
+                        window.location= 'autosettler.html'
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function CheckForTC()
+        {
+            
+            var Qry = "";
+            var ipt = sessionStorage.getItem("invoicepaymentterms");
+            var minimumdue = 0;
+            var tcamount = 0;
+            if(ipt == 3 || ipt == 4)
+            {
+                if(ipt == 4)
+                    $("#chequepanel").hide();
+                Qry = "SELECT (SELECT (IFNULL(SUM(amount),0)  - IFNULL(SUM(promoamount),0)) FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode AND im.tcallowed IS NOT 1 WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey") + ") nontcamount, (SELECT (IFNULL(SUM(amount),0)  - IFNULL(SUM(promoamount),0)) FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode AND im.tcallowed IS 1 WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey") + ") tcamount";
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            minimumdue = result[0][0];
+                            tcamount = result[0][1];
+                            $("#minimumdue").text(eval(minimumdue).toFixed(decimalplace));
+                            $("#allowedtc").text(eval(tcamount).toFixed(decimalplace));
+                        }
+                    },
+                    function(error) {
+                    navigator.notification.alert(error);},
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result)
+                    {
+                        if(result.array != undefined)
+                        {
+                            minimumdue = result.array[0].nontcamount;
+                            tcamount = result.array[0].tcamount;
+                            $("#minimumdue").text(eval(minimumdue).toFixed(decimalplace));
+                            $("#allowedtc").text(eval(tcamount).toFixed(decimalplace));
+                        }
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            else
+            {
+                minimumdue = $('#amountdue').text();
+                $("#minimumdue").text(eval(minimumdue).toFixed(decimalplace));
+                $("#allowedtc").text(eval(tcamount).toFixed(decimalplace));                
+            }
+        }
+        
+        function SetPage(page)
+        {
+            if(page == "cash")
+            {
+                sessionStorage.setItem("amountdue",eval($("#amountdue").text()));
+                if(localStorage.getItem("collectionMOP") != "autosettle")
+                    sessionStorage.setItem("minimumdue",eval($("#minimumdue").text()));
+                window.location = "cashcollection_mopcash.html";
+            }
+            else if(page == "cheque")
+            {
+                sessionStorage.setItem("amountdue",eval($("#amountdue").text()));
+                if(localStorage.getItem("collectionMOP") != "autosettle")
+                    sessionStorage.setItem("minimumdue",eval($("#minimumdue").text()));
+                localStorage.collectioncheque='collection';
+                window.location = "cashcollection_mopcheque.html";
+            }
+        }
+    </script>
+
+    </body>
+</html>

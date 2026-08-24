@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="#" rel="external" lang="en"
+                    onclick="SetPage()">Back</a>
+                <h1 lang="en">Invoice Detail</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="tblBox com_div">
+                    <div class="tblHeader info_header" lang="en"
+                        id="customercode">
+                        Customer# </div>
+                    <div class="info invoiceHeight " id="contentWrapper"
+                        style="width:100%">
+                        <table border="0" width="100%" cellpadding="8"
+                            cellspacing="3" id="tbl1" data-role="none">
+                            <tbody class="tbl_body CheckCaption">
+                                <tr class="td_com">
+                                    <!--<td width="50%">
+                                    <label for="shipping" lang="en">
+                                        Customer #</label>
+                                    <div class="readonly_text" id="customercode"  style="width: 90%; text-align: right;">
+                                    </div>
+                                </td>-->
+                                    <td colspan="2">
+                                        <label for="shipping" lang="en">
+                                            Customer Name</label>
+                                        <div class="addressdiv"
+                                            id="customername"></div>
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <label for="shipping" lang="en">
+                                            Invoice No.</label>
+                                        <div class="addressdiv"
+                                            id="invoicenumber"></div>
+                                    </td>
+                                    <td width="50%">
+                                        <label for="shipping" lang="en">
+                                            Invoice Amount</label>
+                                        <div class="addressdiv rightAlign"
+                                            id="invoiceamount"></div>
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <label for="shipping" lang="en">
+                                            Credit Days</label>
+                                        <div class="addressdiv rightAlign"
+                                            id="creditdays"></div>
+                                    </td>
+                                    <td>
+                                        <label for="shipping" lang="en">
+                                            Credit Status</label>
+                                        <div class="addressdiv"
+                                            id="creditstatus"></div>
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <label for="shipping" lang="en">
+                                            Invoice Date</label>
+                                        <div class="addressdiv"
+                                            id="invoicedate"></div>
+                                    </td>
+                                    <td>
+                                        <label for="shipping" lang="en">
+                                            Total Balance</label>
+                                        <div class="addressdiv rightAlign"
+                                            id="totalbalance"></div>
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <label for="shipping" lang="en">
+                                            PDC Date</label>
+                                        <div class="addressdiv"
+                                            id="pdcdate"></div>
+                                    </td>
+                                    <td>
+                                        <label for="shipping" lang="en">
+                                            PDC Balance</label>
+                                        <div class="addressdiv rightAlign"
+                                            id="pdcbalance"></div>
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <label for="shipping" lang="en">
+                                            Due Date</label>
+                                        <div class="addressdiv"
+                                            id="duedate"></div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="#" class="enableText" rel="external"
+                        onclick="SetPage()">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            var platform,decimalplace,data;
+            window.lang = new jquery_lang_js();
+            var custid;
+            resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 		resizeWindow();
+
+                $(".leftfooter").html(getCurrentDate());
+                var url = window.location.toString();
+                //custid = url.substring(url.indexOf("=")+1);
+				custid = sessionStorage.AgingCustCode;                
+                document.addEventListener("deviceready", getRecord, false); 
+                
+                function getRecord()
+                {
+                    platform = sessionStorage.getItem("platform");
+                    decimalplace = sessionStorage.getItem("decimalplace");
+                    var routecode=sessionStorage.getItem("RouteCode");
+                    var invoicenumber = sessionStorage.getItem("AAinvoicenumber");
+                    var Qry = "SELECT (CASE (select usealternatecodes from routemaster where routecode="+routecode+") WHEN 1 THEN cm.alternatecode ELSE cm.customercode END) customercode,cm.customername,inv.erpreferencenumber,inv.totalinvoiceamount,cm.creditlimitdays,CASE WHEN date() BETWEEN transactiondate AND date(transactiondate,'+' || creditlimitdays || ' day') THEN 'OK' ELSE 'OVERDUE' END AS creditstatus,strftime('%d-%m-%Y',inv.transactiondate) transactiondate,inv.invoicebalance,pdcbalance,(SELECT strftime('%d-%m-%Y',checkdate) FROM ardetail ard JOIN cashcheckdetail ccd ON ccd.routekey = ard.routekey AND ccd.visitkey = ard.visitkey AND ccd.typecode = 1 WHERE ard.invoicenumber = " + invoicenumber + " order by ccd.checkdate limit 1) pdcdate,inv.duedate as duedate FROM customerinvoice inv JOIN customermaster cm ON cm.customercode = inv.customercode WHERE inv.invoicenumber = " + invoicenumber;
+                    console.log(Qry);
+                    if(platform == "iPad")
+                    {
+                        Cordova.exec(function(result) {                        
+                            BindData(result);
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "GetdataMethod",
+                        [Qry]);
+                    }
+                    else if(platform == "Android")
+                    {
+                        window.plugins.DataBaseHelper.select(Qry, function(result) {
+                            var array = $.map(result.array, function(item, index) {
+                                return [[item.customercode, item.customername,item.erpreferencenumber,item.totalinvoiceamount,item.creditlimitdays,item.creditstatus,item.transactiondate,item.invoicebalance,item.pdcbalance,item.pdcdate,item.duedate]];
+                            });
+                            result = array;
+                            BindData(result);
+                        },
+                        function() {
+                            console.warn("Error calling plugin");
+                        });
+                    }
+                }
+                
+                function BindData(result)
+                {
+                    data = result;
+                    if(eval(data.length) > 0)
+                    {
+                        data = result;
+                        $("#customercode").append(data[0][0]);
+                        $("#customername").text(data[0][1]);
+                        $("#invoicenumber").text(data[0][2]);
+                        $("#invoiceamount").text(eval(data[0][3]).toFixed(decimalplace));
+                        $("#creditdays").text(data[0][4]);
+                        $("#creditstatus").text(data[0][5]);
+                        $("#invoicedate").text(data[0][6]);
+                        $("#totalbalance").text(eval(data[0][7]).toFixed(decimalplace));
+                        $("#pdcbalance").text(eval(data[0][8]).toFixed(decimalplace));
+                        $("#pdcdate").text(data[0][9]);
+                        $("#duedate").text(data[0][10]);
+                    }
+                }
+                
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);		
+                if (sessionStorage.getItem("Language")  != "en") {               
+                    window.lang.change('Invoicedetail'+lan,lan);
+                    window.lang.change('Footer'+lan,lan);
+                    if(lan=="AR")
+                    {                     
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-   a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }		
+                }
+                else
+                {
+                    window.lang.change('en','en');		    
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });   
+            function SetPage()
+            {
+                window.location = "aging_analysis.html";
+            }     
+        </script>
+
+        </div>
+    </body>
+</html>

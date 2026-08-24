@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Page</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1201px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <link rel="stylesheet" type="text/css"
+            href="../css/jquery.mobile.simpledialog.css" />
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.simpledialog.js"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <!--<div data-role="header" class="headerBar">
+		<div class="headerContainer">
+		    <span class="headerText">Customer Selection</span>
+		</div>
+		<div>
+		<span id="langP">EN</span>
+		</div>
+	</div>-->
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="route_sequence.html" id="Back_inner" rel="external"
+                    data-ajax="true"
+                    lang="en">Back</a>
+                <h1 id="lblPageTitle" lang="en">
+                    Customer Selection</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="PageFont">
+                <div class="centerbox1">
+                    <div class="boxContent1">
+                        <div>
+                            <div class="ChkPos">
+                                <!--<input type="checkbox" name="checkbox-1" id="checkbox-1"/>-->
+                                <div
+                                    style="float: left; width: 50px; height: 50px; position: relative"
+                                    onclick="javascript:setToggles('#imgSelect');">
+                                    <img id="imgCheck" src="../images/check.png"
+                                        alt
+                                        style="position: absolute; display: block" />
+                                    <img id="imgSelect"
+                                        src="../images/select.png" alt
+                                        style="position: absolute;
+                                    left: 5px;" />
+                                </div>
+                                <div
+                                    style="float: left; position: relative; top: 10px">
+                                    <label id="lbl"
+                                        style="font-weight: normal; display: block"
+                                        onclick="javascript:setToggles('#imgSelect');"
+                                        lang="en">
+                                        Sequence Only</label>
+                                    <input type="hidden" value="1"
+                                        name="sequence" id="sequence" />
+                                </div>
+                            </div>
+                            <div class="td_com"
+                                style="width: 30%; float: left;">
+                                <input type="text" name="searchtext"
+                                    id="searchtext" value /></div>
+                            <div style="width: 35%; float: right;">
+                                <div class="Option1">
+                                    <div class="Opt1Img">
+                                        <img src="../images/r-btn-1.png"
+                                            id="bt1" alt
+                                            onclick="javascript:setToggle('#bt1');" />
+                                        <input type="hidden" value="code"
+                                            name="search" id="search" />
+                                    </div>
+                                    <div class="Opt1Text">
+                                        <div>
+                                            <a href="#" data-role="none"
+                                                class="OptTextStyle"
+                                                lang="en">Code</a></div>
+                                    </div>
+                                </div>
+                                <div class="Option2">
+                                    <div class="Opt2Img">
+                                        <img src="../images/r-btn-2.png"
+                                            id="bt2" alt
+                                            onclick="javascript:setToggle('#bt2');" />
+                                    </div>
+                                    <div class="Opt2Text">
+                                        <div>
+                                            <a href="#" data-role="none"
+                                                class="OptTextStyle"
+                                                lang="en">Name</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear: both;">
+                        </div>
+                        <div class="tblBox tbltd" id="contentWrapper">
+                            <div class="tblHeader">
+                                <table width="100%" cellpadding="10"
+                                    cellspacing="0" id="tblheader">
+                                    <tr>
+                                        <td lang="en" class="first Cell1Style">
+                                            Customer #
+                                        </td>
+                                        <td lang="en" class="last Cell2Style">
+                                            Customer Name
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="route_table_height pricelist custsele"
+                                id="contentWrapper">
+                                <table border="0" width="100%" cellpadding="10"
+                                    cellspacing="0" id="tbl1"
+                                    data-role="none">
+                                    <tbody class="tblBody">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="textBar">
+                            <table cellpadding="2" cellspacing="2" border="0"
+                                width="100%">
+                                <tr>
+                                    <td lang="en" id="cid" class="rtext"
+                                        colspan=2>
+                                        Address
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan=2 id="txtaddress"
+                                        class="readonly_text"
+                                        style="color:#A7A7A7;background-color:#EBF5FA;">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" id="pid" class="rtext">
+                                        Contact Person
+                                    </td>
+                                    <td lang="en" id="pid" class="rtext">
+                                        Phone No
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="txtcontact" value type="text"
+                                            class="textWidth textFont"
+                                            readonly="readonly" />
+                                    </td>
+                                    <td>
+                                        <input id="txtphone" value type="text"
+                                            class="textWidth textFont"
+                                            readonly="readonly" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="leftbottomMenu">
+                        <div class="menuPadding">
+                            &nbsp;</div>
+                        <a href="#" onclick="redirect()" class="enableText"
+                            id="custselect" rel="external">
+                            <div class="MenuPosition">
+                                <div class="iconPos">
+                                    <img src="../images/yes.png"
+                                        alt="Save" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Yes</div>
+                            </div>
+                        </a>
+                        <div class="menuPadding">
+                            &nbsp;</div>
+                        <a href="route_sequence.html" class="enableText"
+                            rel="external">
+                            <div class="MenuPosition MenuExit">
+                                <div class="iconPos">
+                                    <img src="../images/no.png"
+                                        alt="Exit" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    No</div>
+                            </div>
+                        </a>
+                        <div class="menuPadding">
+                            &nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            <table id="tblOdoMeter" border="0" cellpadding="2" cellspacing="0"
+                width="100%" style="display: none;">
+                <tr>
+                    <th class="tblHeader captionLabel leftAlign" colspan="2"
+                        style="font-weight: bold;
+                    font-size: 18px;" lang="en">
+                        Enter Odometer
+                    </th>
+                </tr>
+                <tr class="popupRow">
+                    <td colspan="2" lang="en"
+                        class=" captionLabel leftAlign textWidth"
+                        style="margin: 10px;">
+                        <div style="width:100%;float:left">
+                            <div style="float:left;">Last Reading : </div><div
+                                style="float:left" id="lastreading"> </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="background-color: #EFF9FE;">
+                    <td colspan="2">
+                        <!--<input id="endodometer" type="text" pattern="[0-9]*" class="textWidthOdo textFont" style="margin: 10px;" />-->
+                        <input id="endodometer" type="number"
+                            class="textWidthOdo textFont"
+                            style="margin: 10px;" />
+                    </td>
+                </tr>
+                <tr style="background-color: #EFF9FE;">
+                    <td style="width: 50%;">
+                        <input id="Button1" lang="en" type="button" value="Ok"
+                            data-role="none" onclick="SaveOdometer();"
+                            lang="en" />
+                    </td>
+                    <td style="width: 50%;">
+                        <input id="Button2" type="button" value="Cancel"
+                            data-role="none" rel="close"
+                            onclick="ClearOdometer();"
+                            lang="en" />
+                    </td>
+                </tr>
+            </table>
+            <!-- /content -->
+            <div data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+
+            <div data-role="footer" style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+            
+            $("#tbl1").click(function() { });
+            $("tr:last td:first").addClass('ui-corner-bl');
+            $("tr:last td:last").addClass('ui-corner-br');
+            function setToggles() {
+                if ($("#imgSelect").css("display") == 'none')
+                {
+                    $("#imgSelect").css("display", "block");
+                    $('#sequence').val('1');
+                    getrecord('','',1);
+                }
+                else
+                {
+                    $("#imgSelect").css("display", "none");
+                    $('#sequence').val('0');
+                    getrecord('','',0);
+                }
+            }
+            function setToggle(id) {
+
+                var sval = $('#search').val();
+
+                if (sval == "code") {
+                    $('#bt2').attr("src", "../images/r-btn-1.png");
+                    $('#bt1').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('desc');
+                }
+                else {
+                    $('#bt1').attr("src", "../images/r-btn-1.png");
+                    $('#bt2').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('code');
+                }
+
+            }
+        </script>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            var cusid = '';
+            var cusname = '';
+             var inputvalue = '';
+            var promptodominput=0;
+            var acode='';
+            $('.Opt1Text').css({ 'float': 'right', 'width': '60%' });
+            $('.Opt1Img').css({ 'float': 'left', 'width': '40%' });
+            $('.Opt2Text').css({ 'float': 'right', 'width': '60%' });
+            $('.Opt2Img').css({ 'float': 'left', 'width': '40%' });
+          	resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 		resizeWindow();                                   
+                  $('#searchtext').keyup(function()
+                                         {
+                                            var type = $('#search').val();
+                                            var value = $('#searchtext').val();
+                                         var sequence=$('#sequence').val();                                              
+                                              
+                                         getrecord(type,value,sequence);                                              
+                                              
+                                         });
+                $(".leftfooter").html(getCurrentDate());
+                              $("#tbl1 tr:odd").addClass('oddRow');
+                              $("#tbl1 tr:even").addClass('evenRow');
+               document.addEventListener("deviceready", getrecord, false);
+                             
+                              //$('#tbl1 tr:first').toggleClass('clicked');
+                            
+                              
+                              var platform= sessionStorage.getItem("platform");
+                              $("#tbl1 tr").live('click', function() {
+                                                
+                                                 $(this).toggleClass('clicked');
+                                                 $(this).siblings().removeClass('clicked');
+                                                 var i = $(this).index();
+                                                if(platform=='iPad')
+                                                {
+                                                 var cusid = inputvalue[i][0];
+                                                 var cusname = inputvalue[i][1];
+                                                 var po = inputvalue[i][2];
+                                                  var address1 = inputvalue[i][5];
+                                                   var address2 = inputvalue[i][6];
+                                                    var phoneno = inputvalue[i][7];
+                                                     var contactname = inputvalue[i][8];
+                                                  var address3 = inputvalue[i][10];
+                                                 }
+                                                 else if(platform=='Android')
+                                                 {
+                                                 var cusid = inputvalue.array[i].customercode;
+                                                 var cusname = inputvalue.array[i].customername;
+                                                 var po = inputvalue.array[i].pobox;
+                                                 var address1 = inputvalue.array[i].customeraddress1;
+                                                   var address2 = inputvalue.array[i].customeraddress2;
+                                                 var address3 = inputvalue.array[i].customeraddress3;
+                                                    var phoneno = inputvalue.array[i].customerphone;
+                                                     var contactname = inputvalue.array[i].contactname;
+                                                 }
+                                                 var address = address1;
+                                                 if(address2 !='')
+                                                 address =address+" , "+address2;
+                                                 if(address3 !='')
+                                                 address =address+" , "+address3;
+                                                 $("#txtaddress").html(address);
+                                                 $("#txtcontact").val(contactname);
+                                                 $("#txtphone").val(phoneno);
+                                                 
+                                                 sessionStorage.setItem("customerid", cusid);
+                                        			sessionStorage.setItem("customername",cusname);
+                                                 if(acode==1)
+                                                 {
+	                                                 if(platform=='iPad')
+	                                                {
+	                                                 sessionStorage.setItem("customercode",inputvalue[i][3]);
+	                                                 
+	                                                 }
+	                                                 else
+	                                                 {
+	                                                  sessionStorage.setItem("customercode",inputvalue.array[i].alternatecode);
+	                                                 
+	                                                 }
+                                                 }
+                                                 else
+                                                 {
+		                                                 if(platform=='iPad')
+			                                                {
+		                                                 sessionStorage.setItem("customercode",inputvalue[i][0]);
+		                                                 
+		                                                 }
+		                                                 else
+		                                                 {
+		                                                  sessionStorage.setItem("customercode",inputvalue.array[i].customercode);
+		                                                 
+		                                                 }
+                                                 }
+                                                 });
+                var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('CustomerSelection'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $("#contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+            });
+            function getPassword()
+            {   
+                var platform= sessionStorage.getItem("platform");
+                console.log("select promptodominput From routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +"");
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {                                             
+                                  
+                                  if (result.length > 0) {
+                                  promptodominput = eval(result[0][0]);
+                                  }
+                                  },
+                                  function(error) {
+                                  alert("Error in getting Password : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  ["select promptodominput From routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +""]);         
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select("select promptodominput From routemaster where routecode = "+ sessionStorage.getItem('RouteCode') +"",function(result)
+                                                         {
+                                                         
+                                                         result = $.map(result.array, function (item, index) {
+                                                                        
+                                                                        return [[item.promptodominput]];
+                                                                        });
+                                                         if (result.length > 0) {
+                                                         if (result.length > 0) {
+                                                         promptodominput = eval(result[0][0]);
+                                                         }
+                                                         }
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                
+            }
+            function redirect() {
+			var mydate = new Date();
+			
+			var thehour = mydate.getHours();
+			var theminut = mydate.getMinutes();
+			var time = thehour+":"+theminut;
+			sessionStorage.setItem("starttime",time);
+                if (sessionStorage.getItem("customerid") == '' || sessionStorage.getItem("customerid") == null) {
+                    getLangText("Please Select Customer");
+                    return false;
+                }
+                else {
+                    if(promptodominput == 1)
+                    {
+                    PopupOdometer('custselect','../customer_opt/cust_opt.html',document.getElementById('tblOdoMeter').innerHTML);
+                    }
+                    else
+                    {
+                        window.location='../customer_opt/cust_opt.html';
+                    }
+                    //document.location.href = "../customer_opt/cust_opt.html";
+                }
+            }
+            function TableDataOffLine(RecSet,flag)
+            {                       
+              
+                var CellCount = $("#tblheader tr:eq(0) td").length;
+                inputvalue=RecSet;
+                var data = RecSet;
+               
+               
+                if (sessionStorage.getItem("customerid")=='')
+                {
+	                if(flag=='ipad')
+	                {
+		                sessionStorage.setItem("customerid", inputvalue[0][0]);
+		                sessionStorage.setItem("customername",inputvalue[0][1]);
+		                $("#txtCustomerNo").val(inputvalue[0][0]);
+		                $("#txtPobox").val(inputvalue[0][2]);
+		               // sessionStorage.setItem("SignEnabled", inputvalue[0][9]);
+	                }
+	                else
+	                {
+	                	sessionStorage.setItem("customerid", inputvalue.array[0].customercode);
+		                sessionStorage.setItem("customername",inputvalue.array[0].customername);
+		                $("#txtCustomerNo").val(inputvalue.array[0].customercode);
+		                $("#txtPobox").val(inputvalue.array[0].pobox);
+		              //  sessionStorage.setItem("SignEnabled", inputvalue.array[0].enablesigcapture);
+	                }
+                }
+                
+                
+               
+                
+               
+               if(flag=='ipad')
+               {
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr>";
+                   
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'Cell1Style first' : 'Cell2Style last';
+                      
+                        if(acode==1)
+                        {
+                            var ccode =data[i][3];
+                        }
+                        else
+                        {
+                            var ccode =data[i][0];
+                        }
+                       
+                        if(j==0)
+                        {
+                        var c = "<td class='" + temp + "'>" + ccode + "</td>";
+                        }
+                        else
+                        {
+                        var c = "<td class='" + temp + "'>" + data[i][j] + "</td>";
+                        }
+                        r += c;
+                    }
+                    r += "</tr>";
+                  
+                    $('#tbl1 tbody').append(r);
+                   // $('#tbl1 tr:first').toggleClass('clicked');
+                }
+                }
+                else
+                {
+                for (i = 0; i < data.array.length; i++) {
+                    var r = "<tr>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'Cell1Style first' : 'Cell2Style last';
+                        if(acode==1)
+                      	data.array[i][0] =data.array[i].alternatecode;
+                      	else                      	
+                        data.array[i][0]=data.array[i].customercode;
+                        
+                        data.array[i][1]=data.array[i].customername;
+                     var c = "<td class='" + temp + "'>" + data.array[i][j] + "</td>";
+                        r += c;
+                    }
+                     r += "</tr>";
+                  
+                    $('#tbl1 tbody').append(r);
+                   // $('#tbl1 tr:first').toggleClass('clicked');
+                }
+                
+                }
+                
+            }
+            function getrecord(code,name,sequence)
+            {
+                $("#lastreading").text(parseInt(localStorage.lastreading));
+                offlinegetrecord();
+                getPassword();
+               
+                var routecode=sessionStorage.getItem("RouteCode");
+              var platform= sessionStorage.getItem("platform");
+                var rp32weeknumber=sessionStorage.getItem("rp32weeknumber");
+                var days=sessionStorage.getItem("days");
+			var calldays=sessionStorage.getItem("calldays");
+                if(name==undefined)
+                name='';
+                if(sequence==undefined)
+                sequence=1;
+                if(code=='code')
+                {
+                   if(acode==1)
+                   var where= " AND alternatecode like '%"+name+"%' ";
+                   else
+                   var where= " AND c.customercode like '%"+name+"%' "; 
+                }
+                else
+                {
+                    if(sessionStorage.getItem("Language")=='en')
+                    var where= " AND customername like '%"+name+"%' ";
+                    else
+                    var where= " AND arbcustomername like '%"+name+"%' ";
+
+                }
+               
+                if(sequence==0)
+                {
+                   
+                    if(sessionStorage.getItem("Language")=='en')
+                    {
+                        if(platform=='iPad')
+                        {
+                            var abc = Cordova.exec(function(result) {
+                                           $("#tbl1  tr").remove();
+                                            TableDataOffLine(result,'ipad');
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            ["select customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c where routecode="+routecode+where]);
+                        }
+                        else if(platform=='Android')
+                        {
+
+                            window.plugins.DataBaseHelper.select("select customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c where routecode=" + routecode + where, function(result)
+                            {
+                                
+                               $("#tbl1  tr").remove();
+                                TableDataOffLine(result,'android');
+                            },
+                            function()
+                            {
+                             console.warn("Error calling plugin");
+                            });
+                        } 
+                    }
+                    else
+                    {
+                        if(platform=='iPad')
+                        {
+                        var abc = Cordova.exec(function(result) {
+                                               $("#tbl1  tr").remove();
+                                                TableDataOffLine(result,'ipad');
+                                                },
+                                                function(error) {
+                                                alert(error);},
+                                                "PluginClass", 
+                                                "GetdataMethod", 
+                                                ["select customercode,arbcustomername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c where routecode="+routecode+where]); 
+
+                        }
+                        else if(platform=='Android')
+                        {
+                 
+
+                         window.plugins.DataBaseHelper.select("select customercode,arbcustomername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c where routecode="+routecode+where,function(result)
+
+                            {
+                                $("#tbl1  tr").remove();
+                                TableDataOffLine(result,'android');
+                            },
+                            function()
+                            {
+                             console.warn("Error calling plugin");
+                            });
+                        } 
+                    }
+                }
+                else
+                {
+                    if(sessionStorage.getItem("Language")=='en')
+                    {
+                        console.log("select c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c join routesequence as r on r.customercode=c.customercode and r.routecode="+routecode+" where c.routecode="+routecode+" and rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1"+where+" order by "+days);
+                        if(platform=='iPad')
+                        {
+                            var abc = Cordova.exec(function(result) {
+                                                    $("#tbl1  tr").remove();
+                                                    TableDataOffLine(result,'ipad');
+                                                    },
+                                                    function(error) {
+                                                    alert(error);},
+                                                    "PluginClass", 
+                                                    "GetdataMethod", 
+                                                    ["select c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c join routesequence as r on r.customercode=c.customercode and r.routecode="+routecode+" where c.routecode="+routecode+" and rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1"+where+" order by "+days]);
+                        }
+                        else if(platform=='Android')
+                        {
+                            
+                            window.plugins.DataBaseHelper.select("select c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c join routesequence as r on r.customercode=c.customercode and r.routecode="+routecode+" where c.routecode="+routecode+" and rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1"+where+" order by "+days, function(result)
+                                                                 {
+                                                                 
+                                                                 $("#tbl1  tr").remove();
+                                                                 TableDataOffLine(result,'android');
+                                                                 },
+                                                                 function()
+                                                                 {
+                                                                 console.warn("Error calling plugin");
+                                                                 });
+                        } 
+                    }
+                    else
+                    {
+                        if(platform=='iPad')
+                        {
+                            var abc = Cordova.exec(function(result) {
+                                                    $("#tbl1  tr").remove();
+                                                    TableDataOffLine(result,'ipad');
+                                                    },
+                                                    function(error) {
+                                                    alert(error);},
+                                                    "PluginClass", 
+                                                    "GetdataMethod", 
+                                                    ["select c.customercode,arbcustomername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c join routesequence as r on r.customercode=c.customercode and r.routecode="+routecode+" where c.routecode="+routecode+" and rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1"+where+" order by "+days]); 
+                            
+                        }
+                        else if(platform=='Android')
+                        {
+                            
+                            
+                            window.plugins.DataBaseHelper.select("select c.customercode,arbcustomername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,contactname,enablesigcapture,customeraddress3 from customermaster c join routesequence as r on r.customercode=c.customercode and r.routecode="+routecode+" where c.routecode="+routecode+" and rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1"+where+" order by "+days,function(result)
+                                                                 
+                                                                 {
+                                                                 $("#tbl1  tr").remove();
+                                                                 TableDataOffLine(result,'android');
+                                                                 },
+                                                                 function()
+                                                                 {
+                                                                 console.warn("Error calling plugin");
+                                                                 });
+                        } 
+                    }
+                }
+                return false;
+            }
+            function offlinegetrecord()
+            {
+                var platform= sessionStorage.getItem("platform");
+                var routecode=sessionStorage.getItem("RouteCode");
+                if(platform=='iPad')
+		    		{
+                var abc = Cordova.exec(function(result) {
+                                        acode=result[0][0];
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select usealternatecodes from routemaster where routecode="+routecode]);
+                
+                }
+                else if(platform=='Android')
+            		{
+             
+		             window.plugins.DataBaseHelper.select("select usealternatecodes from routemaster where routecode="+routecode,function(result)
+						{
+						    acode=result.array[0].usealternatecodes;
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+             		} 
+            }
+            function onlinegetrecord()
+            {
+                
+                var custid=sessionStorage.getItem("customerid");
+                var routecode=sessionStorage.getItem("RouteCode");
+                
+                $.ajax({
+                       type: "post",
+                       url: wsurl+"customer/customermaster/routecode/"+routecode+"/customercode/"+custid,
+                       data: "{}",
+                       dataType: "json",
+                       crossDomain: true,
+                       success: function(data) {
+                       //alert("success :" + data[0].UnitsPerCase);
+                       getcode(data,"online");
+                       },
+                       error: function(qXHR, textStatus, errorThrown) {
+                       alert("failure: " + qXHR.status + ":" + textStatus + errorThrown);
+                       }
+                       });
+            }
+            function getcode(data,flag)
+            {
+                
+                if(flag=='ipad')
+                      acode=data[0][0];
+               else
+                     acode=data.array[0].usealternatecodes;          
+                
+            }
+            function SaveOdometer()
+            {
+                var endodometer = $(".ui-simpledialog-container #endodometer").val();
+                var platform= sessionStorage.getItem("platform");
+                console.log("dfsdf");
+                if(eval(endodometer) > 0)
+                {
+                    if(platform=='iPad')
+                    {
+                        return abc = Cordova.exec(function(result) {
+                                                   if(eval(result[0][0]) > eval(endodometer))
+                                                   {
+                                                   navigator.notification.alert("Enter Odometer Grater Than "+result[0][0]);
+                                                   }
+                                                   else
+                                                   {
+                                                   return abc = Cordova.exec(function(result) {
+                                                                              //alert(result);
+                                                                              window.location = '../customer_opt/cust_opt.html';
+                                                                              },
+                                                                              function(error) {
+                                                                              alert(error);},
+                                                                              "PluginClass", 
+                                                                              "InsertUpdateMethod", 
+                                                                              ["update startendday set routestartodometer='"+endodometer+"' where routekey='"+sessionStorage.getItem("RouteKey")+"'"]);
+                                                   }
+                                                   
+                                                   },
+                                                   function(error) {
+                                                   alert(error);},
+                                                   "PluginClass", 
+                                                   "GetdataMethod", 
+                                                   ["select routestartodometer from startendday where routekey='"+sessionStorage.getItem("RouteKey")+"'"]);
+                    }
+                    else if(platform=='Android')
+                    {
+                        window.plugins.DataBaseHelper.select("select routestartodometer from startendday where routekey='"+sessionStorage.getItem("RouteKey")+"'",function(result)
+                                                             {
+                                                             if(eval(result[0][0]) > eval(endodometer))
+                                                             {
+                                                             navigator.notification.alert("Enter Odometer Grater Than "+result[0][0]);
+                                                             }
+                                                             else
+                                                             {
+                                                             window.plugins.DataBaseHelper.insert("update startendday set routestartodometer='"+endodometer+"' where routekey='"+sessionStorage.getItem("RouteKey")+"'",function(result)
+                                                                                                  {
+                                                                                                  window.location = '../customer_opt/cust_opt.html';
+                                                                                                  },
+                                                                                                  function()
+                                                                                                  {
+                                                                                                  console.warn("Error calling plugin");
+                                                                                                  });
+                                                             }
+                                                             },
+                                                             function()
+                                                             {
+                                                             console.warn("Error calling plugin");
+                                                             });
+                    } 
+                    
+                }
+                else
+                {
+                   	getLangText("Enter Odometer Grater Than Zero.");
+                }
+            }
+        </script>
+
+        </div>
+        <!-- /page -->
+    </body>
+</html>

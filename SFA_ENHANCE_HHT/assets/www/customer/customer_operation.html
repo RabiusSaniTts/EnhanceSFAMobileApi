@@ -1,0 +1,1383 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 03/02/2011
+ '  Description  : This page is used for utilities main screen.  
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Customer Operation</title>
+		<style>
+		.saletarget_table_height {
+
+			height: 450px;
+			overflow: auto;
+			margin-bottom: 10px;
+		}
+	</style>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; 
+	target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1201px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+		<link rel="stylesheet" href="../bs/css/bootstrap.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../icons/font/bootstrap-icons.css" />
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+		<script>
+		if (navigator.userAgent.toLowerCase().match(/android/)) {
+			document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+			document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+		} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+			document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+		}
+	</script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+		<script src="../js/dashboardJS/highcharts.js"></script>
+		<script src="../js/dashboardJS/highcharts-more.js"></script>
+		<script src="../js/dashboardJS/solid-gauge.js"></script>
+		<script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript"
+			lang="en"></script>
+		<link rel="stylesheet" type="text/css"
+			href="../css/jquery.mobile.simpledialog.css" />
+
+		<script type="text/javascript"
+			src="../js/jquery.mobile.simpledialog.js"></script>
+		<!-- <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
+		<script src="../js/exporting.js"></script>
+
+	</head>
+
+	<body>
+		<div data-role="page" data-theme="d">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<a href="../home/home.html" id="Back_inner" rel="external"
+					lang="en">Back</a>
+				<h1 lang="en">Customer Operation</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+
+				<!-- <div class="cstmerscrnchart">
+	        <div data-role="controlgroup" id="customerChart" data-type="horizontal" data-mini="true">
+		        <div>
+		        <input type="radio"  name="radio-orientation" id="dailyTarget" value="dailyTarget"  checked="checked">
+	            <label for="dailyTarget" class="controllgrouppadding">Daily</label>
+	            <input type="radio"  name="radio-orientation" id="progressive" value="progressive">
+	            <label for="progressive" class="controllgrouppadding">Progressive</label>
+	            <input type="radio"  name="radio-orientation" id="asOn" value="asOn">
+	            <label for="asOn" class="controllgrouppadding">As On</label>
+	            <input type="radio"  name="radio-orientation" id="monthlyTarget" value="monthlyTarget" >
+	            <label for="monthlyTarget" class="controllgrouppadding">Monthly</label>
+	            </div>
+	        </div>
+
+		 <div id="targetAchievement" class="target-chart"></div>
+		 <div id="collectionSalesChart" class="collection-chart"></div>
+		 </div> -->
+
+				<div class="border border-info rounded"
+					style="min-height: 87%; max-height: 87%; overflow-x: hidden; overflow-y: auto; !important">
+					<table border="0" width="100%" cellpadding="5" cellspacing="0">
+						<tbody class="tbl_body captionLabel">
+							<tr class="td_com">
+								<td width="50%"><label for="alpha" id="lalpha" lang="en">
+										ROUTE CREDIT LIMIT</label></td>
+								<td width="50%">
+									<div class="addressdiv_bold" id="routelimit"></div>
+								</td>
+
+							</tr>
+							<tr class="td_com">
+								<td width="50%"><label for="alpha" id="lalpha" lang="en">
+										ROUTE CREDIT DAYS</label></td>
+								<td width="50%">
+									<div class="addressdiv_bold" id="routelimitdays"></div>
+								</td>
+
+							</tr>
+						</tbody>
+					</table>
+					<div class="com_div comm captionLabel">
+						<h4 lang="en">Sale V/s Target</h4>
+						<div class="tblBox tbltd" id="contentWrapper">
+							<div>
+								<table class="tblHeader" style="table-layout:fixed;width:100%;"
+									cellpadding="5"
+									cellspacing="0" id="tblHeaderContent">
+									<tbody>
+										<tr>
+											<td width="15%" lang="en">
+												Cust Code
+											</td>
+											<td width="40%" lang="en">
+												Customer Name
+											</td>
+											<td width="15%" lang="en">
+												Target
+											</td>
+											<td width="15%" lang="en">
+												Sale
+											</td>
+											<td width="15%" lang="en">
+												Ach%
+											</td>
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="saletarget_table_height ">
+								<table style="table-layout:fixed;" border="0" width="100%"
+									cellpadding="0"
+									cellspacing="0" id="tbl1" data-role="none">
+									<tbody class="tblBody">
+										<tr>
+											<td width="16%"></td>
+											<td width="48%"></td>
+											<td width="12%"></td>
+											<td width="12%"></td>
+											<td width="12%"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="bottomMenuNew border border-info rounded" style="min-height: 13%; max-height: 13%;width: 100% !important;">
+					<div class="row">
+						<div class="col-4" style="text-align: center;margin-top: 5px;"></div>
+						<div class="col-4" style="text-align: center;margin-top: 5px;"></div>
+						<div class="col-4" style="text-align: center;margin-top: 5px;">
+							<a onclick="CheckLoadMessage('ListCustomers.html',true)" id="custvisit" rel="external">
+								<i class='bi bi-list-columns-reverse' id="ContIcon" Style='font-size: 72px; color: green; text-align: center;'></i>
+								<br>CUSTOMER VISIT
+							</a>
+						</div>
+					</div>
+				</div> -->
+				<div class="bottomMenuNew border border-info rounded"
+					style="min-height: 13%; max-height: 13%;width: 100% !important;">
+					<div class="row">
+						<div class="col-4" style="text-align: center;margin-top: 5px;"></div>
+						<div class="col-4" style="text-align: center;margin-top: 5px;"></div>
+						<div class="col-4" style="text-align: center;margin-top: 5px;">
+							<a onclick="checkPreviousCustomerCheckout()" id="custvisit"
+								rel="external">
+								<i class='bi bi-list-columns-reverse' id="ContIcon"
+									Style='font-size: 72px; color: green; text-align: center;'></i>
+								<br>CUSTOMER VISIT
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div id="MenuListReview">
+
+					<!-- <div class="content-primary">
+					<ul data-role="listview" id="MenuListReview">
+						<li><a onclick="CheckLoadMessage('ListCustomers.html',true)" id="custvisit"
+							rel="external"> <img src="../images/icn-customerlist.png" id="imgvisit"
+								class="HomeIconPosEN cicon" />
+								<h3 id="lblSetup" lang="en">Customer Visit</h3>
+						</a></li>
+					</ul>
+				</div> -->
+					<!-- 				 org line sujee commented not needed  for Enhance 22/08/2019 
+<div class="second-primary">
+					<ul data-role="listview">
+						<li><a href="add_customer.html" rel="external" id="addlink">
+								<img src="../images/small_icn-add.png" id="imgadd"
+								class="HomeIconPosEN cicon" />
+								<h3 id="lblUpdate" lang="en">New Customer</h3>
+						</a></li>
+					</ul>
+				</div>
+			
+			<div class="content-primary">
+					<ul data-role="listview">
+						<li><a href="#" onclick="checkvoid()" rel="external"
+							id="postvoid"> <img src="../images/summary.png" id="imgvoid"
+								class="HomeIconPosEN cicon" />
+								<h3 id="lblpost" lang="en">Post Void</h3>
+						</a></li>
+					</ul>
+				</div> 
+				
+					<div class="content-primary">
+					<ul data-role="listview">
+						<li><a href="#" onclick="voidDisable()" rel="external"
+							id="postvoid"> <img src="../images/summary.png" id="imgvoid"
+								class="HomeIconPosEN cicon" />
+								<h3 id="lblpost" lang="en">Post Void</h3>
+						</a></li>
+					</ul>
+				</div>  -->
+					<div class="second-primary">
+						<div id="piechart" class="piechart"></div>
+					</div>
+					<!-- 				<div class="second-primary"> -->
+					<!-- 					<ul data-role="listview"> -->
+					<!-- 						<li><a href="../home/home.html" rel="external"> <img -->
+					<!-- 								src="../images/info-8.png" /> -->
+					<!-- 								<h3 id="lblMisc" lang="en">Exit</h3> -->
+					<!-- 						</a></li> -->
+					<!-- 					</ul> -->
+
+					<!-- 				</div> -->
+				</div>
+
+			</div>
+
+			<table id="tblPassword" border="0" cellpadding="2" cellspacing="0"
+				width="100%;" style="display: none;">
+				<tr>
+					<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+						lang="en">Password Entry</th>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" class="popupSubTitle" lang="en">Customer Selection</td>
+				</tr>
+				<tr class="popupRow">
+					<td class="popupSubTitle" lang="en">Access Key</td>
+					<td class="popupSubTitle" id="passkey" lang="en"></td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" lang="en" class="popupInfo">Please Enter The Security
+						Password</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2"><input id="txtPassword" type="tel" pattern="[0-9]*" value
+							maxlength="10"
+							class="textWidth textFont passwordCenter" /> <label id="lblMessage"
+							lang="en"
+							style="display: none">Enter Correct Password</label></td>
+				</tr>
+				<tr class="popupRow">
+					<td style="width: 50%;">
+						<!--<input id="btnSubmit" type="button" value="Submit" onclick="VerifyPassword1('btnSubmit','../customer_opt/cust_opt.html',tblPassword.innerHTML);" data-role="none"
+                    lang="en" />--> <input id="btnSubmit" type="button"
+							value="Submit" onclick="CallVerifyPassword();"
+							data-role="none" lang="en" />
+					</td>
+					<td style="width: 50%;"><input id="btnCancel" type="button" rel="close"
+							value="Cancel"
+							onclick="ClearPassword();" data-role="none" lang="en" /></td>
+				</tr>
+			</table>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#" rel="external"
+								id="day" data-icon="custom"
+								lang="en" onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" class="ui-btn-active"
+								rel="external" id="cust"
+								data-icon="custom" lang="en">Customer</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a href="#"
+								rel="external" id="setup"
+								data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" language="javascript">
+		window.lang = new jquery_lang_js();
+		$("#tbl1 tr:odd").addClass('oddRow');
+		$("#tbl1 tr:even").addClass('evenRow');
+		cancelLink = 'customer_operation.html';
+		var bigfont = '', smallfont = '';
+		$(document).ready(function () {
+			$(".leftfooter").html(getCurrentDate());
+			var lan = sessionStorage.getItem("Language");
+			window.lang.run(lan);
+			resizeOrientationWindow();
+
+			//document.addEventListener("deviceready", ondeviceready, false);
+			document.addEventListener("deviceready", getSaleTarget, false);
+
+			if (sessionStorage.getItem("Language") != "en") {
+
+				var lan = sessionStorage.getItem("Language");
+				var val = 'CutomerOpr' + lan;
+				window.lang.change(val, lan);
+				window.lang.change('Footer' + lan, lan);
+				if (lan == "AR") {
+
+					// $("#contentWrapper").attr("dir", "rtl");
+					$(".centerboxInvReq").attr("dir", "rtl");
+					// Set menu icon with text
+					$('#MenuListReview .ui-icon').removeClass('ui-icon-arrow-r');
+					$('#MenuListReview .ui-icon').addClass('ui-icon-arrow-r1');
+					$('#MenuListReview li.ui-btn').removeClass('ui-btn-icon-right');
+					$('#MenuListReview li.ui-btn').addClass('ui-btn-icon-left');
+
+					$('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				}
+
+			}
+			else {
+
+				window.lang.change('en', 'en');
+				//$("#contentWrapper").attr("dir", "ltr");
+				$('#MenuListReview .ui-icon').removeClass('ui-icon-arrow-r1');
+				$('#MenuListReview .ui-icon').addClass('ui-icon-arrow-r');
+				$('#MenuListReview li.ui-btn').removeClass('ui-btn-icon-left');
+				$('#MenuListReview li.ui-btn').addClass('ui-btn-icon-right');
+
+				$('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+
+			}
+		});
+
+
+		function getSaleTarget() {
+
+			resizeWindow();
+			var res = CheckConnection();
+			$.mobile.showPageLoadingMsg();
+
+			var qry = "SELECT alternatecode, customername, target, SALE, CASE WHEN TARGET = 0 THEN 0 ELSE ROUND(SALE/TARGET*100,2) END ACH FROM( select customermaster.alternatecode, customermaster.customername, saletarget.target, ifnull(saletarget.sale,0) + (select IFNULL(sum(totalinvoiceamount),0) from invoiceheader H where H.customercode = customermaster.customercode ) AS SALE, ifnull(saletarget.achievement,0) as achievement from saletarget  inner join customermaster  on customermaster.customercode = saletarget.customercode)A";
+			console.log(qry);
+			if (platform == 'iPad') {
+
+			}
+			else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(qry, function (result) {
+					ClearTable();
+					if (result.array != undefined) {
+
+
+						BindData(result);
+
+					} else {
+
+						$.mobile.hidePageLoadingMsg();
+						ondeviceready();
+
+					}
+
+
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+		}
+
+
+		function BindData(result) {
+
+
+			var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+			data = result;
+			if (platform == 'Android') {
+				var array = $.map(data.array, function (item, index) {
+					return [[item.alternatecode, item.customername, item.target, item.SALE, item.ACH]];
+				});
+
+				data = array;
+			}
+			for (i = 0; i < data.length; i++) {
+				var r = "<tr>";
+
+				for (j = 0; j < CellCount; j++) {
+					var c = '';
+					var temp = '';
+
+					if (j == CellCount - 1)
+						temp += " class = 'last'";
+					switch (j) {
+						case 0:
+							temp += "'width=16%'";
+							break;
+						case 1:
+							temp += "' width=40%'";
+							break;
+						case 2:
+							temp += "' width=12%'";
+							break;
+						case 3:
+							temp += "' width=12%'";
+							break;
+						case 4:
+							temp += "' width=20%'";
+							break;
+
+					}
+					if (j > 1)
+						data[i][j] = data[i][j];
+
+
+					c = "<td " + temp + ">" + data[i][j] + "</td>";
+
+
+
+					r += c;
+				}
+				r += "</tr>";
+
+				$('#tbl1 tbody').append(r);
+
+			}
+
+			$("#tbl1 tr:odd").addClass('oddRow');
+			$("#tbl1 tr:even").addClass('evenRow');
+			$.mobile.hidePageLoadingMsg();
+			ondeviceready();
+		}
+
+		function ClearTable() {
+
+
+			$("#tbl1").find('tr').not(":first").remove();
+		}
+
+		function TableDataOffLine(RecSet, flag) {
+
+			var data = RecSet;
+			if (flag == 'ipad') {
+				var addcust = data[0][0];
+				var postvoid = data[0][1];
+			} else {
+				var addcust = data.array[0].enableaddcustomer;
+				var postvoid = data.array[0].enablepostvoid;
+			}
+			if (addcust == 0) {
+				$('#lblUpdate').addClass('MenuGray');
+				$('#imgadd').attr('src', '../images/small_icn-add-b.png');
+				$('#addlink').attr('href', '');
+
+			}
+			else {
+				$('#lblUpdate').removeClass('MenuGray');
+				$('#imgadd').attr('src', '../images/small_icn-add.png');
+
+
+			}
+			if (postvoid == 0) {
+				$('#lblpost').addClass('MenuGray');
+				$('#imgvoid').attr('src', '../images/summary-b.png');
+				$('#postvoid').attr('onclick', '');
+			}
+			else {
+				$('#lblpost').removeClass('MenuGray');
+				$('#imgvoid').attr('src', '../images/summary.png');
+			}
+			GetFontSize();
+		}
+
+		function ondeviceready() {
+
+			CheckSalesBlock();
+
+			// getPassword();
+		}
+		function offlinegetrecord() {
+			var platform = sessionStorage.getItem("platform");
+			var routecode = sessionStorage.getItem("RouteCode");
+			if (platform == 'iPad') {
+				var abc = Cordova.exec(function (result) {
+					TableDataOffLine(result, "ipad");
+				},
+					function (error) {
+						alert(error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					["select enableaddcustomer,enablepostvoid from routemaster where routecode=" + routecode]);
+			}
+			else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select("select enableaddcustomer,enablepostvoid from routemaster where routecode=" + routecode, function (result) {
+					TableDataOffLine(result, "andoid");
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+		}
+		function getPassword() {
+			var platform = sessionStorage.getItem("platform");
+			console.log("select promptodominput From routemaster where routecode = " + sessionStorage.getItem('RouteCode') + "");
+			if (platform == 'iPad') {
+				Cordova.exec(function (result) {
+
+					if (result.length > 0) {
+						if (eval(result[0][0]) == 1) {
+							$('#custvisit').attr('href', '#');
+						}
+						else {
+							$('#custvisit').attr('href', 'route_sequence.html');
+							$('#custvisit').attr('onclick', '');
+						}
+					}
+				},
+					function (error) {
+						alert("Error in getting Password : " + error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					["select promptodominput From routemaster where routecode = " + sessionStorage.getItem('RouteCode') + ""]);
+			}
+			else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select("select promptodominput From routemaster where routecode = " + sessionStorage.getItem('RouteCode') + "", function (result) {
+
+					result = $.map(result.array, function (item, index) {
+
+						return [[item.promptodominput]];
+					});
+					if (result.length > 0) {
+					}
+
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+
+		}
+
+		function voidDisable() {
+			$('#lblpost').addClass('MenuGray');
+			$('#imgvoid').attr('src', '../images/summary-b.png');
+			$('#postvoid').attr('onclick', '');
+		}
+		function checkvoid() {
+			var platform = sessionStorage.getItem("platform");
+			var qry = "select voidoverride From routemaster where routecode = " + sessionStorage.getItem('RouteCode') + "";
+			if (platform == 'iPad') {
+				Cordova.exec(function (result) {
+
+					if (result.length > 0) {
+						if (eval(result[0][0]) == 1) {
+							var platform = sessionStorage.getItem("platform");
+							var routecode = sessionStorage.getItem("RouteCode");
+							var CompanyCode = parseInt(sessionStorage.getItem("CompanyCode"));
+							console.log(CompanyCode);
+							//				var d = new Date();
+							//				var n = d.getMinutes();
+							//				// var s = d.getSeconds();
+							//				if(n<10)
+							//				    n='0'+n;
+							//				var key = routecode+CompanyCode+n;
+							//				var str = key;
+
+							var customercode = sessionStorage.getItem("RouteCode").toString().slice(-2);
+							var d = new Date();
+							var unixtime = parseInt(d.getTime() / 1000);
+							var randomnumber = Math.floor(Math.random() * 9999999) + 100000;
+							console.log(CompanyCode);
+							var timestamp = unixtime.toString().slice(-7) + customercode;
+							var key = Math.abs(eval(timestamp) - eval(randomnumber));
+							var str = key.toString();
+
+							var a = str.split(''), b = a.length;
+							for (var i = 0; i < b; i++) {
+								a.unshift(a.splice(1 + i, 1).shift())
+							}
+							a.shift();
+							var pass = a.join('');
+							$('#passkey').text(pass);
+							console.log(key);
+
+							popuppasswordgenerator('postvoid', 'void_customer.html', tblPassword.innerHTML, 'void_customer.html');
+						}
+						else {
+							window.location = 'void_customer.html';
+						}
+					}
+					else
+						window.location = 'void_customer.html';
+
+				},
+					function (error) {
+						alert("Error in getting Password : " + error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					[qry]);
+			}
+			else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(qry, function (result) {
+
+					result = $.map(result.array, function (item, index) {
+
+						return [[item.voidoverride]];
+					});
+					if (result.length > 0) {
+						if (eval(result[0][0]) == 1) {
+							var platform = sessionStorage.getItem("platform");
+							var routecode = sessionStorage.getItem("RouteCode");
+							var CompanyCode = parseInt(sessionStorage.getItem("CompanyCode"));
+							console.log(CompanyCode);
+							//							    var d = new Date();
+							//							    var n = d.getMinutes();
+							//							    // var s = d.getSeconds();
+							//							    if(n<10)
+							//								n='0'+n;
+							//							    var key = routecode+CompanyCode+n;
+							//							    var str = key;
+
+							var customercode = sessionStorage.getItem("RouteCode").toString().slice(-2);
+							var d = new Date();
+							var unixtime = parseInt(d.getTime() / 1000);
+							var randomnumber = Math.floor(Math.random() * 9999999) + 100000;
+							console.log(CompanyCode);
+							var timestamp = unixtime.toString().slice(-7) + customercode;
+							var key = Math.abs(eval(timestamp) - eval(randomnumber));
+							var str = key.toString();
+
+
+
+							var a = str.split(''), b = a.length;
+							for (var i = 0; i < b; i++) {
+								a.unshift(a.splice(1 + i, 1).shift())
+							}
+							a.shift();
+							var pass = a.join('');
+							$('#passkey').text(pass);
+							console.log(key);
+							popuppasswordgenerator('postvoid', 'void_customer.html', tblPassword.innerHTML, 'customer_operation.html');
+						}
+						else {
+							window.location = 'void_customer.html';
+						}
+					}
+					else
+						window.location = 'void_customer.html';
+
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+		}
+		function CallVerifyPassword() {
+
+			VerifyPassword1('btnSubmit', 'void_customer.html', tblPassword.innerHTML);
+		}
+		function LoadChart() {
+			google.load("visualization", "1", { packages: ["corechart"] });
+			google.setOnLoadCallback(drawChart);
+
+		}
+		function drawChart() {
+
+			var data = google.visualization.arrayToDataTable([
+				['Task', 'Productivity Per Day'],
+				['Pending Calls', 80],
+				['Productive Calls', 10],
+				['Unproductive Calls', 10]
+
+			]);
+
+			var options = {
+				title: 'Productivity',
+				is3D: true,
+				fontSize: 16,
+				backgroundColor: '#E8F0F3',
+
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+			chart.draw(data, options);
+
+		}
+		function getRP32WeekNumber() {
+
+			var routecode = sessionStorage.getItem("RouteCode");
+
+			var routekey = sessionStorage.getItem("RouteKey");
+			var platform = sessionStorage.getItem("platform");
+			var d = new Date();
+			var n = d.getDay();
+			var array = ['sunseq', 'monseq', 'tueseq', 'wedseq', 'thuseq', 'friseq', 'satseq'];
+			var callarray = ['callrestrictiondays7', 'callrestrictiondays1', 'callrestrictiondays2', 'callrestrictiondays3', 'callrestrictiondays4', 'callrestrictiondays5', 'callrestrictiondays6'];
+			//var array = ['satseq','sunseq','monseq','tueseq','wedseq','thuseq','friseq'];
+			//var callarray=['callrestrictiondays1','callrestrictiondays2','callrestrictiondays3','callrestrictiondays4','callrestrictiondays5','callrestrictiondays6','callrestrictiondays7'];
+
+			var days = array[n];
+			var calldays = callarray[n];
+			sessionStorage.setItem("days", days);
+			sessionStorage.setItem("calldays", calldays);
+
+			var today = new Date();
+
+			var curr_date = today.getDate();
+			var curr_month = today.getMonth();
+			var curr_year = today.getFullYear();
+			curr_month = curr_month + 1;
+
+			if (curr_month < 10)
+				curr_month = "0" + curr_month;
+
+			if (curr_date < 10)
+				curr_date = "0" + curr_date;
+
+			today = curr_year + "-" + curr_month + "-" + curr_date + " 00:00:00";
+
+			window.plugins.DataBaseHelper.select("select rp32weeknumber from salescalender where '" + today + "' BETWEEN weekstartdate AND weekenddate", function (result) {
+				if (result.array != undefined) {
+					sessionStorage.setItem("rp32weeknumber", result.array[0].rp32weeknumber);
+
+
+				}
+				getRouteSequencePlanFlag();
+			},
+				function () {
+					console.warn("Error calling plugin");
+				});
+		}
+
+		function getRouteSequencePlanFlag() {
+
+			var secondqry = "select routesequenceplanflag from setup where setupid=1";
+
+			if (platform == "iPad") {
+				Cordova.exec(function (result) {
+					if (result != '')
+						routeendodometer = result[0][0];
+				},
+					function (error) {
+						navigator.notification.alert(error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					[Qry]);
+			}
+			else if (platform == "Android") {
+				window.plugins.DataBaseHelper.select(secondqry, function (result) {
+					var routesequenceplanflag = result.array[0].routesequenceplanflag;
+					if (eval(routesequenceplanflag) == 1) {
+						sessionStorage.setItem("rp32weeknumber", 9);
+
+					}
+					window.localStorage.setItem("routesequenceplanflag", routesequenceplanflag);
+					offlinegetrecord();
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+
+
+		}
+		function GetFontSize() {
+
+			var width = window.innerWidth;
+			if (width > 320 && width <= 600) {
+
+				bigfont = '20px';
+				smallfont = '18px';
+
+			}
+			else if (width > 600 && width <= 700) {
+
+				bigfont = '24px';
+				smallfont = '22px';
+
+
+			} else if (width > 700 && width <= 800) {
+
+				bigfont = '26px';
+				smallfont = '24px';
+
+			} else if (width >= 1000 && width <= 1200) {
+
+				bigfont = '37px';
+				smallfont = '35px';
+
+			} else if (width > 1200 && width <= 1500) {
+
+				bigfont = '38px';
+				smallfont = '36px';
+
+
+			}
+			getRouteLimit();
+
+
+
+		}
+		function getRouteLimit() {
+
+			var Qry = "select (select ifnull(sum(invoicebalance),0) from customerinvoice where routecode=" + sessionStorage.getItem("RouteCode") + ") creditbalance,ifnull(routecreditlimit,0) routecreditlimit,ifnull(routecreditlimit,0) routecreditlimit,ifnull(routecreditlimitdays,0) routecreditlimitdays from routemaster where routecode=" + sessionStorage.getItem("RouteCode");
+			console.log(Qry);
+			if (platform == "iPad") {
+				Cordova.exec(function (result) {
+					if (result.length > 0)
+						getMTD(result[0][0]);
+				},
+					function (error) {
+						navigator.notification.alert(error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					[Qry]);
+			}
+			else if (platform == "Android") {
+				window.plugins.DataBaseHelper.select(Qry, function (result) {
+					if (result.array != undefined) {
+						var array = $.map(result.array, function (item, index) {
+							return [[item.creditbalance, item.routecreditlimit, item.routecreditlimitdays]];
+						});
+						if (array.length > 0) {
+
+							$("#routelimit").text(eval(array[0][0]).toFixed(sessionStorage.getItem('decimalplace')) + " / " + eval(array[0][1]).toFixed(sessionStorage.getItem('decimalplace')));
+							if (array[0][2] != '' && array[0][2] != undefined && array[0][2] != null) {
+								$("#routelimitdays").text(eval(array[0][2]));
+							} else {
+
+								$("#routelimitdays").text("0");
+							}
+
+
+						}
+
+						// GetTargetGoalsDays();
+						createAchievedTargetChart("dailyTarget");
+						createCollectionAndSalesChart("dailyTarget");
+					} else {
+						// GetTargetGoalsDays();
+						createAchievedTargetChart("dailyTarget");
+						createCollectionAndSalesChart("dailyTarget");
+					}
+
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+
+
+
+		}
+
+		function GetTargetGoalsDays() {
+			var Qry = "SELECT sum(quantity) as total,sum(achievequantity) as achived from routegoal WHERE routecode=" + sessionStorage.getItem("RouteCode");
+			//Query after todays achived value added 
+			//var Qry="SELECT sum(quantity) as total,sum(achievequantity+(select ifnull(sum(amount),0)  as amount from invoicedetail id inner join itemmaster im on id.itemcode=im.actualitemcode where routekey="+ sessionStorage.getItem("RouteKey")+" and im.packagecode=(select packagenumber from routegoal where routecode="+ sessionStorage.getItem("RouteCode")+"))) as achived from routegoal WHERE routecode="+ sessionStorage.getItem("RouteCode");
+
+			console.log(Qry);
+			if (platform == "iPad") {
+				Cordova.exec(function (result) {
+					if (result.length > 0)
+						getMTD(result[0][0]);
+				},
+					function (error) {
+						navigator.notification.alert(error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					[Qry]);
+			}
+			else if (platform == "Android") {
+				window.plugins.DataBaseHelper.select(Qry, function (result) {
+					if (result.array != undefined) {
+						var array = $.map(result.array, function (item, index) {
+							return [[item.total, item.achived]];
+						});
+						if (array.length > 0)
+							loadChart(array[0][1], array[0][0]);
+					}
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+		}
+		function loadChart(actual, target) {
+
+			var gaugeOptions = {
+
+				chart: {
+					type: 'solidgauge'
+
+				},
+
+				title: {
+					text: "TARGET VS ACHIVED</br>" + actual + "/" + target,
+					useHTML: true,
+					style: {
+						fontFamily: 'Raleway',
+						fontSize: bigfont,
+						fontWeight: 'bold',
+						textAlign: 'center'
+					},
+					margin: 50
+				},
+
+				pane: {
+					center: ['50%', '85%'],
+					size: '170%',
+					startAngle: -90,
+					endAngle: 90,
+					background: {
+						backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+						innerRadius: '60%',
+						outerRadius: '100%',
+						shape: 'arc'
+					}
+				},
+
+				tooltip: {
+					enabled: false
+				},
+
+				// the value axis
+				yAxis: {
+					stops: [
+						[0.1, '#DF5353'], // green
+						[0.5, '#DDDF0D'], // yellow
+						[0.9, '#55BF3B'] // red
+					],
+					lineWidth: 0,
+					minorTickInterval: null,
+					tickPixelInterval: 200,
+					startOnTick: true,
+					tickWidth: 0,
+					title: {
+						y: 10,
+						style: {
+							fontFamily: 'Raleway',
+							fontSize: smallfont,
+							textAlign: 'center'
+						}
+					},
+					labels: {
+						y: 25,
+						style: {
+							fontFamily: 'Raleway',
+							fontSize: smallfont,
+							textAlign: 'center'
+						}
+					},
+					plotBands: [{
+						from: 0,
+						to: target / 2.5,
+						color: '#DF5353' // red
+					}, {
+						from: target / 2.5,
+						to: target / 1.68,
+						color: '#DDDF0D' // yellow
+					}, {
+						from: target / 1.68,
+						to: target,
+						color: '#55BF3B' // green
+
+					}]
+				},
+
+				plotOptions: {
+					solidgauge: {
+						dataLabels: {
+							y: 5,
+							borderWidth: 1,
+							useHTML: true
+
+						}
+					}
+				}
+			};
+
+			// The speed gauge
+			$('#container').highcharts(Highcharts.merge(gaugeOptions, {
+				yAxis: {
+					min: 0,
+					max: target,
+					title: {
+						text: 'Target'
+					},
+					endOnTick: false
+				},
+				credits: {
+					enabled: false
+				},
+
+				series: [{
+					animation: true,
+					name: 'Target',
+					data: [0],
+					dataLabels: {
+						format: '<div style="text-align:center" class="captionLabel"><span class="captionLabel" style="color:' +
+							((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+							'<span>ACHIEVED</span></div>',
+						style: {
+							fontWeight: 'bold',
+							fontSize: smallfont
+						}
+					},
+					tooltip: {
+						valueSuffix: 'Actual'
+					}
+				}]
+
+			}));
+
+			var chart = $('#container').highcharts(),
+				point,
+				newVal,
+				inc;
+
+			if (chart) {
+				point = chart.series[0].points[0];
+				point.update(eval(actual));
+			}
+
+		}
+
+		/* function to check sales block if route startday exceeds blocksalesdays */
+		function CheckSalesBlock() {
+			var Qry = "select ifnull(forcesettlementdays,0) as blocksalesdays,(CASE WHEN (SELECT julianday('now') - julianday(routestartdate) FROM startendday where routekey=" + sessionStorage.getItem("RouteKey") + ")>forcesettlementdays THEN 1 ELSE 0 END) AS status from routemaster where routecode=" + sessionStorage.getItem("RouteCode");
+			var platform = sessionStorage.getItem("platform");
+			if (platform == 'iPad') {
+				Cordova.exec(function (result) {
+
+					checkcustomer(result[0][0], url);
+				},
+					function (error) {
+						alert(error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					[Qry]);
+			}
+			else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry, function (result) {
+
+					if (eval(result.array[0].status) == 1 && eval(result.array[0].blocksalesdays) != 0) {
+						//block sales 
+						$('#lblUpdate').addClass('MenuGray');
+						$('#imgadd').attr('src', '../images/small_icn-add-b.png');
+						$('#addlink').attr('href', '');
+
+						$('#lblpost').addClass('MenuGray');
+						$('#imgvoid').attr('src', '../images/summary-b.png');
+						$('#postvoid').attr('onclick', '');
+
+						$('#lblSetup').addClass('MenuGray');
+						$('#imgvisit').attr('src', '../images/summary-b.png');
+						$('#custvisit').attr('onclick', '');
+
+					}
+					getRP32WeekNumber();
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+
+		}
+
+		/*
+		*@method createAchievedTargetChart
+		*function to create chart showing achieved targets
+		*@param{dashBordType}
+		*/
+		function createAchievedTargetChart(dashBordType) {
+
+			var currentDate = new Date().getDay() == 0 ? 7 : new Date().getDay();
+
+			var Qry = "SELECT 'Coverage' targettype, "
+				+ "COALESCE((SELECT COUNT(DISTINCT rs.customercode) FROM routesequence rs WHERE rs.callrestrictiondays" + currentDate + " = 1),0) dailytarget, "
+				+ "COALESCE(rg.quantity,0) monthlytarget, COALESCE(visit.todaysvisit,0) + rg.achievequantity monthlyachieved,"
+				+ " COALESCE(visit.todaysvisit,0) dailyachieved,rg.progressivetarget as progressivetarget,rg.mtdtarget as mtdtarget "
+				+ "FROM routegoal rg "
+				+ "LEFT OUTER JOIN (SELECT coc.routecode, COUNT(DISTINCT coc.customercode) todaysvisit "
+				+ "FROM routesequencecustomerstatus rs "
+				+ "INNER JOIN customeroperationscontrol coc ON coc.routekey = rs.routekey AND"
+				+ " coc.visitstartdate = DATE('now') AND rs.schelduledflag = 1 GROUP BY coc.routecode) visit "
+				+ "ON visit.routecode=rg.routecode "
+				+ "WHERE rg.targettype = 4 "
+
+				+ "UNION "
+
+				+ "SELECT 'Productivity' targettype,"
+				+ "COALESCE((SELECT COUNT(DISTINCT rs.customercode) FROM routesequence rs WHERE rs.callrestrictiondays" + currentDate + " = 1),0) dailytarget,"
+				+ "COALESCE(rg.quantity,0) monthlytarget,"
+				+ "(COALESCE(ih.invoices,0) + rg.achievequantity) monthlyachieved, COALESCE(ih.invoices,0) dailyachieved,rg.progressivetarget as progressivetarget,rg.mtdtarget as mtdtarget "
+				+ "FROM routegoal rg "
+				+ "LEFT OUTER JOIN (SELECT routecode, COUNT(DISTINCT customercode) invoices FROM invoiceheader "
+				+ "WHERE COALESCE(voidflag,0) = 0 AND transactiondate = DATE('now') GROUP BY routecode) ih"
+				+ " ON ih.routecode = rg.routecode"
+				+ " WHERE rg.targettype = 5 "
+
+				+ "UNION "
+
+				+ "SELECT 'D & E' targettype, COALESCE(rg.todaysgoal,0) dailytarget,COALESCE(rg.quantity,0) monthlytarget,"
+				+ "(COALESCE(ach.achieved,0) +rg.achievequantity) monthlyachieved,COALESCE(ach.achieved,0) dailyachieved,rg.progressivetarget as progressivetarget,rg.mtdtarget as mtdtarget "
+				+ "FROM routegoal rg "
+				+ "LEFT OUTER JOIN(SELECT im.packagecode, COALESCE(SUM((ROUND(COALESCE(id.salesqty,0)) * id.salescaseprice) + ((COALESCE(id.salesqty,0) % im.unitspercase) * id.salesprice)),0) target "
+				+ " FROM invoiceheader ih "
+				+ " INNER JOIN invoicedetail id ON id.transactionkey = ih.transactionkey AND COALESCE(ih.voidflag,0) = 0 "
+				+ "INNER JOIN itemmaster im ON im.actualitemcode = id.itemcode "
+				+ "GROUP BY im.packagecode) tar ON tar.packagecode = rg.packagenumber AND rg.targettype = 6 "
+				+ "LEFT OUTER JOIN (SELECT im.packagecode, COALESCE(SUM((ROUND(COALESCE(id.quantity,0)/ im.unitspercase) * im.caseprice) + ((COALESCE(id.quantity,0) % im.unitspercase) * im.defaultsalesprice)),0) achieved "
+				+ "FROM inventorytransactionheader ih "
+				+ "	INNER JOIN inventorytransactiondetail id ON id.detailkey = ih.detailkey AND id.transactiontypecode = 2 "
+				+ "	INNER JOIN retitmreasons rr ON rr.code = id.reasoncode AND rr.hhcdescription <> '' "
+				+ "	INNER JOIN itemmaster im ON im.actualitemcode = id.itemcode "
+				+ "GROUP BY im.packagecode) ach ON ach.packagecode = rg.packagenumber WHERE rg.targettype = 6 "
+
+				+ "UNION "
+
+				+ "SELECT 'MSL' targettype, COALESCE(rg.todaysgoal,0) dailytarget, COALESCE(rg.quantity,0) monthlytarget,"
+				+ " (COALESCE(ach.achieved,0)+rg.achievequantity) monthlyachieved,COALESCE(ach.achieved,0) dailyachieved,rg.progressivetarget as progressivetarget,rg.mtdtarget as mtdtarget "
+				+ " FROM routegoal rg "
+				+ "LEFT OUTER JOIN (SELECT im.packagecode, COUNT(DISTINCT ih.customercode) achieved "
+				+ "FROM invoiceheader ih "
+				+ "INNER JOIN routemaster rm ON rm.routecode = ih.routecode "
+				+ "INNER JOIN invoicedetail id ON id.transactionkey = ih.transactionkey AND COALESCE(ih.voidflag,0) = 0 "
+				+ "INNER JOIN itemmustdetail msl ON msl.itemmustcode = rm.itemmustkey AND msl.itemcode = id.itemcode "
+				+ "INNER JOIN itemmaster im ON im.actualitemcode = msl.itemcode "
+				+ "GROUP BY im.packagecode) ach ON ach.packagecode = rg.packagenumber WHERE rg.targettype = 7 ";
+			console.log(Qry);
+
+			createChart(Qry, 'targetAchievement', dashBordType)
+
+		}
+
+		/*
+		*@method createCollectionAndSalesChart
+		*Function to create the target and goals chart for collection and sales
+		*@param{dashBordType}
+		*/
+		function createCollectionAndSalesChart(dashBordType) {
+			var Qry = "SELECT 'Sales' targettype, COALESCE(rg.todaysgoal,0)dailytarget,COALESCE(rg.quantity,0) monthlytarget,"
+				+ " (COALESCE( ach.achieved,0)+rg.achievequantity) monthlyachieved,COALESCE( ach.achieved,0) dailyachieved,rg.progressivetarget as progressivetarget,rg.mtdtarget as mtdtarget "
+				+ "FROM routegoal rg "
+				+ "LEFT OUTER JOIN (SELECT im.packagecode, COALESCE(SUM(id.amount),0) achieved "
+				+ "FROM invoiceheader ih "
+				+ "INNER JOIN invoicedetail id ON id.transactionkey = ih.transactionkey AND COALESCE(ih.voidflag,0) = 0"
+				+ " AND ih.transactiondate =DATE('now')"
+				+ "INNER JOIN itemmaster im ON im.actualitemcode = id.itemcode "
+				+ "GROUP BY im.packagecode) ach ON ach.packagecode = rg.packagenumber WHERE rg.targettype = 2 "
+
+				+ "UNION "
+
+				+ "SELECT 'Collection' targettype, COALESCE(rg.todaysgoal,0)dailytarget, COALESCE(rg.quantity,0) monthlytarget,"
+				+ " COALESCE(rg.achievequantity,0) + COALESCE(ach.amountpaid,0) monthlyachieved, COALESCE(ach.amountpaid,0) dailyachieved,rg.progressivetarget as progressivetarget,rg.mtdtarget as mtdtarget "
+				+ " FROM routegoal rg "
+				+ "LEFT JOIN (SELECT ah.routecode, SUM(ah.amountpaid) amountpaid "
+				+ "FROM arheader ah GROUP BY ah.routecode) ach ON ach.routecode = rg.routecode "
+				+ "WHERE rg.targettype = 3 "
+
+				+ "UNION "
+
+				+ "SELECT 'Quantity' targettype, COALESCE(rg.todaysgoal,0)dailytarget, COALESCE(rg.quantity,0) monthlytarget,"
+				+ "(COALESCE(ach.achieved,0)+rg.achievequantity) monthlyachieved, "
+				+ "COALESCE(ach.achieved,0) dailyachieved,rg.progressivetarget as progressivetarget,rg.mtdtarget as mtdtarget "
+				+ "FROM routegoal rg "
+				+ "LEFT OUTER JOIN (SELECT im.packagecode, COALESCE(SUM(COALESCE(id.salesqty,0)-COALESCE(id.returnqty,0)),0) achieved "
+				+ "FROM invoiceheader ih "
+				+ "INNER JOIN invoicedetail id ON id.transactionkey = ih.transactionkey AND COALESCE(ih.voidflag,0) = 0"
+				+ " AND ih.transactiondate =DATE('now')"
+				+ "INNER JOIN itemmaster im ON im.actualitemcode = id.itemcode "
+				+ "GROUP BY im.packagecode) ach ON ach.packagecode = rg.packagenumber WHERE rg.targettype = 1 ";
+
+
+			console.log(Qry);
+			createChart(Qry, 'collectionSalesChart', dashBordType);
+
+
+		}
+		/*
+		*@method createChart
+		*function to create chart in the container given as parameter
+		*@param{Qry}
+		*@param{container}
+		*@param{dashBordType}
+		*/
+		function createChart(Qry, container, dashBordType) {
+
+			var categories = [];
+			var targetData = [];
+			var achievedData = [];
+
+			if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry, function (result) {
+					if (!$.isEmptyObject(result)) {
+						$.map(result.array, function (item, index) {
+							categories.push(item.targettype);
+
+							if (dashBordType == "dailyTarget") {
+								targetData.push(eval(item.dailytarget) ? eval(item.dailytarget) : 0);
+								achievedData.push(eval(item.dailyachieved) ? eval(item.dailyachieved) : 0);
+							} else if (dashBordType == "progressive") {
+								targetData.push(eval(item.progressivetarget) ? eval(item.progressivetarget) : 0);
+								achievedData.push(eval(item.dailyachieved) ? eval(item.dailyachieved) : 0);
+							} else if (dashBordType == "monthlyTarget") {
+								targetData.push(eval(item.monthlytarget) ? eval(item.monthlytarget) : 0);
+								achievedData.push(eval(item.monthlyachieved) ? eval(item.monthlyachieved) : 0);
+							} else if (dashBordType == "ason") {
+								targetData.push(eval(item.mtdtarget) ? eval(item.mtdtarget) : 0);
+								achievedData.push(eval(item.monthlyachieved) ? eval(item.monthlyachieved) : 0);
+							}
+						});
+						var collectionsChart = $('#' + container).highcharts({
+							chart: {
+								type: 'bar'
+							},
+							title: {
+								text: "",
+								useHTML: true,
+								style: {
+									fontFamily: 'Raleway',
+									fontWeight: 'bold',
+									textAlign: 'center'
+								}
+							},
+							subtitle: {
+								text: ''
+							},
+							credits: {
+								enabled: false
+							},
+							xAxis: {
+								categories: categories,
+								title: {
+									text: null
+								},
+								plotBands: [
+								]
+							},
+							yAxis: {
+								min: 0,
+								labels: {
+									overflow: 'justify'
+								},
+								title: {
+									text: ''
+								}
+							},
+							plotOptions: {
+								bar: {
+									dataLabels: {
+										enabled: true
+									}
+								}
+							},
+
+							series: [{
+								name: 'Achieved',
+								data: achievedData,
+								color: '#55BF3B'
+							},
+
+							{
+								name: "Target",
+								data: targetData,
+								color: '#DF5353'
+							}],
+							tooltip: {
+								formatter: function () {
+									return '<div class="chartlbl"><b>' + getLangTextdata(this.series.name) + '</b>: ' + this.data.toFixed(1) + ' %</div>';
+								}
+							}
+						},
+
+							function (chart) {
+								if (container == "targetAchievement") {
+									var legend = chart.legend;
+									legend.group.hide();
+									legend.box.hide();
+									legend.display = false;
+								}
+
+							});
+					}
+
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+
+
+			}
+		}
+		$("#dailyTarget").click(function () {
+			createAchievedTargetChart('dailyTarget');
+			createCollectionAndSalesChart('dailyTarget');
+		});
+		$("#monthlyTarget").click(function () {
+			createAchievedTargetChart('monthlyTarget');
+			createCollectionAndSalesChart('monthlyTarget');
+		});
+		$("#progressive").click(function () {
+			createAchievedTargetChart('progressive');
+			createCollectionAndSalesChart('progressive');
+		});
+		$("#asOn").click(function () {
+			createAchievedTargetChart('ason');
+			createCollectionAndSalesChart('ason');
+		});
+	</script>
+
+	</body>
+
+</html>

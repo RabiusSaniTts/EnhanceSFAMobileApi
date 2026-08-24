@@ -1,0 +1,297 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 3/2/2011
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript" src="../js/jquery.validate.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+           //scrollContent = new iScroll('contentWrapper');
+	    scrollContent = new iScroll('contentWrapper', {
+        useTransform: false,
+        onBeforeScrollStart: function (e) {
+            var target = e.target;
+            while (target.nodeType != 1) target = target.parentNode;
+
+            if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
+                e.preventDefault();
+        }
+    });
+
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="customerselection.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Edit Customer</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <form name="editcustomer" id="editcustomer" action>
+                    <div class="tblBox com_div">
+                        <div class="tblHeader info_header" lang="en">
+                            Information</div>
+                        <div class="info" id="contentWrapper">
+                            <table border="0" width="100%" cellpadding="10"
+                                cellspacing="3" id="tbl1" data-role="none">
+                                <tbody class="tbl_body">
+                                    <tr class="td_com">
+                                        <td width="50%">
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Customer Template</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value
+                                                class="required" />
+                                        </td>
+                                        <td>
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Customer #</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value="2332444"
+                                                readonly="readonly" />
+                                        </td>
+                                    </tr>
+                                    <tr class="td_com">
+                                        <td width="50%">
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Alternet Code</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value="246712348"
+                                                class="required" />
+                                        </td>
+                                        <td>
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Phone</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value="2368063"
+                                                class="required" />
+                                        </td>
+                                    </tr>
+                                    <tr class="td_com">
+                                        <td width="50%">
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Customer Name</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value="AL HAMADI"
+                                                class="required" />
+                                        </td>
+                                        <td>
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Arabic Name</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value="AL HAMADI"
+                                                class="required" />
+                                        </td>
+                                    </tr>
+                                    <tr class="td_com">
+                                        <td width="50%">
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                English Address</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value />
+                                        </td>
+                                        <td>
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Arabic Address</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value />
+                                        </td>
+                                    </tr>
+                                    <tr class="td_com">
+                                        <td width="50%">
+                                            <label for="shipping" id="UserName"
+                                                lang="en">
+                                                Contact Person</label>
+                                            <input type="text" name="name"
+                                                id="name-a" value="AL HAMADI" />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="leftbottomMenu com_info_right">
+                        <div class="menuPadding">
+                            &nbsp;</div>
+                        <a href="#" onclick="javascript:submit();"
+                            class="enableText" rel="external">
+                            <div class="MenuPosition">
+                                <div class="MenuTextPos">
+                                    <img src="../images/save.png"
+                                        alt="Save" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Save</div>
+                            </div>
+                        </a>
+                        <div class="menuPadding">
+                            &nbsp;</div>
+                        <a href="customerselection.html" class="enableText"
+                            rel="external">
+                            <div class="MenuPosition MenuExit">
+                                <div class="MenuTextPos">
+                                    <img src="../images/icn-exit.png"
+                                        alt="Exit" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Cancel</div>
+                            </div>
+                        </a>
+                        <div class="menuPadding">
+                            &nbsp;</div>
+                    </div>
+                </form>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+	function submit()
+	{
+	      $('#editcustomer').submit();
+	}
+        resizeOrientationWindow();
+	    $(document).ready(function() {
+	 	resizeWindow();
+        $("#editcustomer").validate();
+        $(".leftfooter").html(getCurrentDate());
+           
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Addcustomer'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                   
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+        
+        </script>
+
+        </div>
+    </body>
+</html>

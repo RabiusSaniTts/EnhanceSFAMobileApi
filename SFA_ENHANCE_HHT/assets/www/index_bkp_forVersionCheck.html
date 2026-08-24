@@ -1,0 +1,1012 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 06/02/2011
+ '  Description  : This page is used for login user.
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta charset='utf-8'>
+<head>
+<title>Login</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=device-dpi, user-scalable=0" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="../css/en.css" lang="en" />
+<link rel="stylesheet" href="css/jquery.mobile-1.0.min.css" />
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
+<script type="text/javascript" src="js/translations.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+
+<script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="cordova-1.5.0.js"><\/script>');
+}
+</script>
+
+
+
+<script type="text/javascript" src="/js/jquery.json-2.3.min.js"></script>
+
+<script src="LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+<script src="LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript" lang="en"></script>
+
+<link rel="stylesheet"
+	media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+	href="css/style_1400.css"/>
+<link rel="stylesheet"
+	media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+	href="css/style_1200.css"/>
+<link rel="stylesheet"
+	media="only screen and (min-width: 700px) and (max-width: 800px)"
+	href="css/style_800.css"/>
+<link rel="stylesheet"
+	media="only screen and (min-width: 601px) and (max-width: 700px)"
+	href="css/style_700.css"/>
+<link rel="stylesheet"
+	media="only screen and (min-width: 490px) and (max-width: 600px)"
+	href="css/style_600.css"/>
+<link rel="stylesheet"
+	media="only screen and (min-width: 320px) and (max-width: 600px)"
+	href="../css/style_600.css"/>
+</head>
+<body onload="onBodyLoad()">
+	
+	<div data-role="page" data-theme="d" id="page">
+		<div>
+			<img title="" alt="" src="images/splash1.png" id="background">
+		</div>
+		<div data-role="header">
+			<span id="lang" class="homeen">AR</span>
+		</div>
+		<div data-role="content">
+			<div class="logo" id="main">
+				<h1 class="label">
+					 
+					 <img class="logo_margin" id="mirnahlogo" src="images/original-Logo.png" />
+				</h1>
+				
+			</div>
+			
+			<form id="frmIndex" action="#" method="post" class="box"
+				data-ajax="false">
+				<fieldset>
+					<div data-role="fieldcontain">
+						<label for="shipping" class="select" id="UserName" lang="en">User Name</label>
+					</div>
+					<div data-role="fieldcontain" style="margin-top: 4px">
+						<input type="text" name="name" id="name" value="" />
+					</div>
+					<div data-role="fieldcontain" style="margin-top: 10px">
+						<label for="shipping" class="select" id="Password" lang="en">Password</label>
+					</div>
+					<div data-role="fieldcontain" style="margin-top: 4px">
+						<input type="password" name="password" id="password" value=""
+							lang="en" />
+					</div>
+					<div data-role="fieldcontain">
+						<div style="float: left; margin-top: 4px;display:none;">
+							<input type="checkbox" name="checkbox-6b"
+								style="padding-bottom: 10px !important;" id="checkbox-6b" /> <label
+								for="checkbox-6b" id="Remember" lang="en">Remember Me</label>
+						</div>
+						<div  style="text-align:center;float: left; margin-top: 30px;font-weight:bold;">Version 3.02</div>
+						<div id="loginbtn" style="float: right; padding-right: 3%;">
+							<input id="btnSubmit" type="button" value="Log In" lang="en"  />
+						</div>
+						<div style='float: left; margin-left: 5px; display: none;'>
+							<input id="btndevice" type="button" value="ID" lang="en" />
+						</div>
+					</div>
+					
+				</fieldset>
+			</form>
+			<!--<h2 id="LostPwd" class="label" lang="en">Lost Your Password ?</h2>-->
+			<!--<div style="width:250px;position:relative;left:40%">
+					    <input type="button" value="Lost Your Password?" lang="en" onclick="javascript:window.location='forgotpassword.html';"/></div>-->
+
+			<div
+				style="width: 250px; position: relative; left: 40%; padding: 15px">
+				<!--<a href="forgotpassword.html" style="text-decoration:underline;" rel="external" lang="en">Lost Your Password ?</a>-->
+			</div>
+			
+		</div>
+		<!-- /content -->
+		<div data-role="footer" class="ui-bar">
+			<div class="footer">
+				<div class="leftfooter">09 November 2011</div>
+				<div class="rightfooter">Mirnah Technology Systems</div>
+			</div>
+		</div>
+		<!-- /footer -->
+	</div>
+    <script type="text/javascript" language="javascript">
+        var nameValue;     
+        var passwordValue; 
+        var remembervalue=0;
+        var dID = 0;
+        var platform='';
+        function onBodyLoad()
+        {		
+            document.addEventListener("deviceready", onDeviceReady, false);
+           // alert("HEIGHT : "+$(window).height() +"\n WIDTH : "+$(window).width());
+        }
+        
+        function getWebURL(){
+        	
+        	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        	
+        	
+        	
+        }
+        function gotFileEntry(fileEntry) {
+            fileEntry.file(gotFile, fail);
+        }
+        function gotFS(fileSystem) {
+            fileSystem.root.getFile("weburl.txt", null, gotFileEntry, fail);
+        }
+        function gotFile(file){
+            
+            readAsText(file);
+        }
+
+        
+
+        function readAsText(file) {
+            var reader = new FileReader();
+            reader.onloadend = function(evt) {
+                console.log("Read as text");
+                wsurl=evt.target.result;
+                window.localStorage.setItem("wsurl",evt.target.result);
+                onDeviceReady();
+            };
+            reader.readAsText(file);
+        }
+
+        function fail(evt) {
+            console.log(evt.target.error.code);
+        }
+        function onDeviceReady()
+        {
+        	$('#main').css("visibility","hidden");
+        	
+        	
+        	if(window.devicePixelRatio > 1.5) {
+     			$("#mirnahlogo").attr('src', 'images/original-Logobig.png');   
+  			}
+        	
+        	$("#name").val(window.localStorage.getItem("username"));
+        	$("#password").val(window.localStorage.getItem("password"));
+        	if(window.localStorage.getItem("version")!='' && window.localStorage.getItem("version")!=null)
+        	{
+	        		var downloadData={};
+	        		downloadData.version=window.localStorage.getItem("version");
+	        		downloadData.url=window.localStorage.getItem("url");
+	        		downloadData.isMsg=true;
+	        		window.plugins.DownloadPlugin.download(downloadData,function(data)
+					{
+							
+					},
+					function()
+					{
+				   	 	console.warn("Error calling plugin");
+					});
+			}
+        	sessionStorage.clear();
+        	
+            dID =  device.uuid;
+            platform = device.platform;
+           
+            
+            window.localStorage.setItem("osversion",device.version);
+            if(platform == "iPad")
+			{    
+				Cordova.exec(function nativePluginResultHandler (result) {
+	                    // alert("SUCCESS: \r\n"+result );
+	                    dID =  result;
+	                    sessionStorage.setItem("DeviceID",dID);
+	                 },
+	                 function nativePluginErrorHandler (error) {
+	                    // alert("ERROR: \r\n"+error );
+	                   // PrintDone();
+	                 },
+	                 "PrintClass",
+	                 "getUDIDforCurrentdevice",
+	                 [[[]]]);
+			}
+	   
+            console.log(dID);
+           // alert(dID);
+            sessionStorage.setItem("DeviceID",dID);
+            sessionStorage.setItem("platform",platform);
+            getsetting();
+           
+            getdata();
+            disablebackkey();
+          
+            if(platform=='Android')
+            {
+	            window.plugins.DataBaseHelper.open("",function(data)
+				{
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+            }
+        }       
+            
+        window.lang = new jquery_lang_js();
+        $(document).ready(function() {
+        window.lang.run();                  
+        $("#password").keypress(function(event)
+        {
+                if(event.which == 13)
+                  $("#btnSubmit").trigger('click');
+              
+              	});
+				$("#name").keypress(function(event){
+	            if(event.which == 13)
+	            $("#btnSubmit").trigger('click');
+	              
+	            });                                          
+				$("#btnSubmit").click(function(){                           
+							nameValue = $("#name").val();
+							passwordValue = $("#password").val();       
+                                 if ($("#checkbox-6b").attr('checked') == 'checked') {
+                                	 	remembervalue= 1;  
+                              
+                                 }     
+                        
+					            if(nameValue != "")
+					            {
+		                              if(passwordValue != "")
+		                              {     
+		                            	  
+		                            	 AlredayLogin();
+		                            	
+                                    
+		                              }
+		                              else
+		                              {
+		                            	getLangText("Please Enter Password");
+		                                return false;
+		                              }
+					            }
+					            else
+					            {
+					            	getLangText("Please Enter User Name");
+					
+					               // alert("Please Enter User Name");
+					                return false;
+					            }
+        });
+         
+        $("#btndevice").click(function(){  navigator.notification.alert(sessionStorage.getItem("DeviceID")); });
+                         
+	    $(".leftfooter").html(getCurrentDate());
+            if ($("#checkbox-6b").attr('checked') == 'checked') {
+                $(".ui-icon").addClass('ui-icon-checkbox-on');
+            }
+            $("#lang").click(function() {
+                if ($("#lang").text() == "AR") {
+                    $("#lang").text("EN");
+                    window.lang.change('IndexAR');
+                    $(".box").attr("dir", "rtl");
+
+                    sessionStorage.setItem("Language", "AR");
+                     $('#lang').removeClass('homeen').addClass('homear');
+                    if ($("#checkbox-6b").attr('checked') == 'checked') {
+                        $(".ui-icon").addClass('ui-icon-checkbox-on');
+                    }
+                }
+                else {
+                    $("#lang").text("AR");
+
+                    window.lang.change('en');
+
+                    $(".box").attr("dir", "ltr");
+
+                    sessionStorage.setItem("Language", "en");                   
+                    $('#lang').removeClass('homear').addClass('homeen');
+                    if ($("#checkbox-6b").attr('checked') == 'checked') {
+                        $(".ui-icon").addClass('ui-icon-checkbox-on');
+                    }
+                }
+            });
+            if (sessionStorage.getItem("Language") == "AR") {
+                $("#lang").trigger('click');
+            }
+        });
+        
+        
+        // Function for getting record from db for offline storage
+       function getRecord()
+        {          
+           if(platform=='iPad')
+           {
+               var abc = Cordova.exec(function(result) {
+
+                   if (result.length > 0) {
+                       sessionStorage.setItem("SalesmanCode", result[0][0]);
+                       sessionStorage.setItem("RouteCode", result[0][1]);
+				       sessionStorage.setItem("CompanyCode",result[0][3]); 
+		               sessionStorage.setItem("RouteName",result[0][4]);
+                       // sessionStorage.setItem("RouteKey",13);
+		       
+		               updatesalesman();
+		               Redirect();
+                   }
+                   else {
+                       $.mobile.hidePageLoadingMsg();
+                       getLangText("Please enter correct user name or password");
+                       return false;
+                   }
+               },
+                                    function(error) {
+                                        alert("error:" + error);
+                                    },
+                                    "PluginClass",
+                                    "GetdataMethod",
+                                    ["select salesman.salesmancode,routemaster.routecode,routemaster.cdat,parentcompany,routename from salesman inner join routemaster on salesman.salesmancode = routemaster.salesmancode Where salesman.username='" + nameValue + "' and salesman.userpassword='" + passwordValue + "'"]);   
+             }
+             else if(platform=='Android')
+            		{
+					// alert(nameValue);
+					// alert(passwordValue);
+                 // var division="TUL OU";
+		             window.plugins.DataBaseHelper.select("select salesman.salesmancode,routemaster.routecode,routemaster.cdat,parentcompany,routename,arbsalesmanname1,arbroutename,routemaster.memo1,salesman.alternatesalesmancode from salesman inner join routemaster on salesman.salesmancode = routemaster.salesmancode Where salesman.username='"+ nameValue +"' and salesman.userpassword='"+ passwordValue +"'",function(result)
+					 {
+		            	  	
+			            	 if(result.array!=undefined)
+			            	 {
+	                                            sessionStorage.setItem("SalesmanCode",result.array[0].salesmancode);                                            
+	                                            sessionStorage.setItem("RouteCode",result.array[0].routecode);
+	                                            sessionStorage.setItem("TourID",result.array[0].memo1);
+	                                            sessionStorage.setItem("CompanyCode",result.array[0].parentcompany);
+	                                            sessionStorage.setItem("RouteName",result.array[0].routename);
+	                                            sessionStorage.setItem("ARBRouteName",result.array[0].arbroutename);  
+	                                            sessionStorage.setItem("ALTSalesmanCode",result.array[0].alternatesalesmancode);
+	                                           // sessionStorage.setItem("Division",division);
+	                                            updatesalesman();
+	                                            Redirect();              
+	                                               
+	                         }
+	                         else 
+	                         {
+	                        	 				CheckDeviceID();
+//					                            $.mobile.hidePageLoadingMsg();
+//					                            navigator.notification.alert("Please Enter Correct User Name or Password");
+//					                            return false;                                            
+	                        }
+					},
+					function()
+					{
+				   	 		console.warn("Error calling plugin");
+					});
+             		}   
+            
+        }
+        
+        function AlredayLogin() {
+            $.mobile.showPageLoadingMsg();
+            if(platform=='iPad')
+            {
+             var abc = Cordova.exec(function(result) {                                         
+                                     
+                                        if(result.length > 0)
+                                        {                                        
+                                            if(result[0][0] == 'true')
+                                            {
+                                                if(sessionStorage.getItem("SalesmanCode") == null) 
+                                                {
+                                                    getRecord();
+                                               
+                                                }                               
+                                                else
+                                                {
+                                                
+                                                	updatesalesman();
+                                                /*
+												 * $("#frmIndex").attr("action","sync.html");
+												 * $("#frmIndex").submit();
+												 */
+                                                	Redirect();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                CheckDeviceID();
+                                            }
+                                        }       
+                                        else
+                                        {
+                                    
+                                            CheckDeviceID();
+                                        }
+                                    },
+                                    function(error) {
+                                        alert("Already login error:" + error);
+                                    },
+                                    "PluginClass", 
+                                    "GetdataMethod",                                    
+                                    ["select isalreadylogin From salesman Where username='"+ nameValue +"' and userpassword='"+ passwordValue +"'"]
+                                    );        
+              }
+            else if(platform=='Android')
+            {
+           
+            
+               window.plugins.DataBaseHelper.select("select salesmancode From salesman Where username='"+ nameValue +"' and userpassword='"+ passwordValue +"'",function(result)
+               {
+							   if(result.array!=undefined)  
+					           {                  
+								      
+                                      if(result.array[0].salesmancode != 'null')
+                                      {
+                                         
+                                            getRecord();
+                                    	
+                                      }
+                                      else
+                                      {
+                                          CheckDeviceID();
+                                      }
+                              }       
+                              else
+                              {
+                            	  CheckDeviceID();
+                              }
+			   },
+			   function()
+			   {
+			       console.warn("Error calling plugin");
+			   });
+            }
+        }
+        function CheckDeviceID()
+        {   
+        	
+            $.ajax({
+                   type: "post",
+                   url: wsurl + "index/companyidbydevice/deviceid/"+ dID +"",
+                   data: "{}",
+                   dataType: "json",
+                   crossDomain: true,
+                   cache: false,
+                    timeout: 10000,
+                   success: function(data) {
+                  
+                   if(data.length > 0)
+                   {
+                   
+                   		if(data[0].url!=undefined)
+                   		{
+                   			
+	                      	window.localStorage.setItem("url", data[0].url); 
+	                        window.localStorage.setItem("version", data[0].ver); 
+	                        var downloadData={};
+	        				downloadData.version=data[0].ver;
+	        				downloadData.url=data[0].url;
+	        				downloadData.isMsg=true;
+	        				window.plugins.DownloadPlugin.download(downloadData,function(data)
+							{
+	        					
+							},
+							function()
+							{
+						   	 	console.warn("Error calling plugin");
+							});             
+						}
+                        LogIN();
+                   
+                   }
+                   else 
+                   {
+                        $.mobile.hidePageLoadingMsg();
+                      
+                        //getLangText("Device not found");
+                        getLangText("Please register your device\n Device id :"+sessionStorage.getItem("DeviceID"));
+                        return false;
+                   }
+                   },
+                   error: function(qXHR, textStatus, errorThrown) {
+                	   $.mobile.hidePageLoadingMsg();
+                	   getLangText("Network Not Available");
+                	   
+                   }
+                   });            
+        }
+        
+        function LogIN()
+        {
+               
+        	
+        	
+        	
+                $.ajax({
+                   type: "post",
+                   url:  wsurl + "index/salesmanlogin/username/"+ nameValue +"/password/" + passwordValue +"/deviceid/"+dID,
+                   data: "{}",
+                   cache: false,
+                   timeout: 10000,
+                   dataType: "json",
+                   crossDomain: true,
+                   success: function(data) 
+                   {   
+                     
+                     
+                       if(data.length > 0)
+                       {
+                    	   var loginstatus = eval(data[0].STATUS);
+                    	  
+                    	   if(loginstatus==1){
+                    		   $.mobile.hidePageLoadingMsg();            
+                               getLangText("Please Enter Correct User Name or password");
+                               return false;
+                    		   
+                    		   
+                    	   }else if(loginstatus==2){
+                    		   $.mobile.hidePageLoadingMsg(); 
+                    		   // sujee addded to displ routecode 
+                    		   // -------- Start -------
+                    		   var routcc= eval(data[0].routecode);
+                    		   if(routcc == null)
+                    			  {
+                    			   routcc = 'Not Assigned';
+                    			  }
+                    
+                    		   //------------End----------
+                               getLangText("User Is Trying To Login From The Wrong Device.Device id :"+sessionStorage.getItem("DeviceID")+" Mapped To Route:"+routcc);
+                               return false;
+                    		   
+                    		   
+                    	   }else if(loginstatus==3){
+                    		   $.mobile.hidePageLoadingMsg();            
+                               getLangText("No Devices Assigened To This User.Device id :"+sessionStorage.getItem("DeviceID"));
+                               return false;
+                    		   
+                    	   }
+                    	   else if(loginstatus==0){
+                    		   
+                    		   sessionStorage.setItem("SalesmanCode",data[0].salesmancode);   
+                    		   sessionStorage.setItem("ALTSalesmanCode",data[0].alternatesalesmancode);
+                               sessionStorage.setItem("RouteCode",data[0].routecode);  
+                               sessionStorage.setItem("TourID",data[0].memo1);     
+                               // sessionStorage.setItem("RouteKey",13);
+                               sessionStorage.setItem("CompanyCode",data[0].parentcompany);
+                                                             
+                               // Update login status in a offline salesman table
+   							   // so when coming next time login not required
+                               if(platform=='iPad')
+                               {
+	   	                            var abc = Cordova.exec(function(result) 
+	   	                            {
+	   	                                  updatesalesman();
+	   					 
+	   	                            },
+	   	                            function(error) {
+	                                       alert("Error updating record in salesman");
+	   	                            },
+	   	                            "PluginClass", 
+	   	                            "InsertUpdateMethod", 
+	   	                            ["Insert Into salesman(salesmancode,salesmanname1,arbsalesmanname1,messagekey,cdat,alternatesalesmancode,type,activestatus,parentcompany,username,userpassword,isalreadylogin) values("+ data[0].salesmancode +",'"+ data[0].salesmanname1 +"','"+ data[0].arbsalesmanname1 +"',"+ data[0].messagekey +",'"+ data[0].cdat +"','"+ data[0].alternatesalesmancode +"',"+ data[0].type +","+ data[0].activestatus +","+ data[0].parentcompany +",'"+ data[0].username +"','"+ data[0].userpassword +"','true')"]);
+                               }
+                               else if(platform=='Android')
+                               {
+	                               	window.plugins.DataBaseHelper.insert("Insert Into salesman(salesmancode,salesmanname1,arbsalesmanname1,messagekey,cdat,alternatesalesmancode,type,activestatus,parentcompany,username,userpassword,isalreadylogin,salesmanname2) values("+ data[0].salesmancode +",'"+ data[0].salesmanname1 +"','"+ data[0].arbsalesmanname1 +"',"+ data[0].messagekey +",'"+ data[0].cdat +"','"+ data[0].alternatesalesmancode +"',"+ data[0].type +","+ data[0].activestatus +","+ data[0].parentcompany +",'"+ data[0].username +"','"+ data[0].userpassword +"','true','"+ data[0].salesmanname2 +"')",function(result)
+	                       			{
+	                               		window.localStorage.setItem("username",nameValue);
+	                               		window.localStorage.setItem("password",passwordValue);
+	                               		updatesalesman();
+	   				    
+	                       			},
+	   								function()
+	   								{
+	   							   	 console.warn("Error calling plugin");
+	   								});
+                               }                       
+                               Redirect();
+                    		   
+                    	   }
+                    	    
+                       }
+                       else {
+                           $.mobile.hidePageLoadingMsg();            
+                            getLangText("Please Enter Correct User Name or password");
+                            return false;
+                       }
+                   },
+                   error: function(qXHR, textStatus, errorThrown) {
+                       alert("Network Not Available");
+                   }
+                   });
+            
+
+        }
+        function updatesalesman()
+        {
+            if(remembervalue==1)
+            {
+                var qry ="update salesman set rememberme=1 where salesmancode="+sessionStorage.getItem("SalesmanCode");
+                if(platform=='iPad')
+                {
+                    var abc = Cordova.exec(function(result) 
+                                            {
+                                           
+                                            },
+                                            function(error) {
+                                            alert("Error updating record in salesman");
+                                            },
+                                            "PluginClass", 
+                                            "InsertUpdateMethod", 
+                                            [qry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.insert(qry,function(result)
+                                                         {
+                                                                                                                 
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }           
+            }
+        }
+        function getsetting()
+        {
+            console.log("select synctimeinterval,tabletsyncmode from setup where setupid=1");
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        var synctimein = result[0][0];
+                                        var syncmode = result[0][1];
+                                        sessionStorage.setItem('synctimeint',synctimein);
+                                        sessionStorage.setItem('syncmode',syncmode);
+                                        },
+                                        function(error) {
+                                        alert("error:" + error);
+                                        },
+                                        "PluginClass",
+                                        "GetdataMethod",
+                                        ["select synctimeinterval,tabletsyncmode from setup where setupid=1"]);   
+            }
+            else if(platform=='Android')
+            {
+                
+                window.plugins.DataBaseHelper.select("select synctimeinterval,tabletsyncmode from setup where setupid=1",function(result)
+                                                     {
+
+                                                    
+                                                     if(result.array != undefined)
+                                                     {
+                                                     var synctimein = result.array[0].synctimeinterval;
+                                                     var syncmode = result.array[0].tabletsyncmode;
+
+                                                     sessionStorage.setItem('synctimeint',synctimein);
+                                                     sessionStorage.setItem('syncmode',syncmode);
+                                                     }
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+		function getdata()
+        {
+           var qry = "select username from salesman where rememberme=1";
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        if(result!='')
+                                        {
+                                        var name = result[0][0];
+                                        $('#name').val(name);  
+                                        }
+                                        },
+                                        function(error) {
+                                        alert("error:" + error);
+                                        },
+                                        "PluginClass",
+                                        "GetdataMethod",
+                                        [qry]);   
+            }
+            else if(platform=='Android')
+            {
+                
+                window.plugins.DataBaseHelper.select(qry,function(result)
+                                                     {
+                                                     
+                                                     
+                                                     if(result.array != undefined)
+                                                     {
+                                                     var name = result.array[0].username;
+                                                     $('#name').val(name);  
+                                                     }
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+		// -------------------
+		function Redirect()
+        {
+            var Qry1 = "SELECT COUNT(*) as cnt FROM startendday";
+            var link = "";
+            if(platform=='iPad')
+            {
+                Cordova.exec(function(result) {
+                    if(eval(result[0][0]) > 0)                        
+                        link = "home/home.html";
+                    else
+                        link = "sync.html";
+                        
+                    $("#frmIndex").attr("action",link);   
+                    $("#frmIndex").submit();
+                },
+                function(error) {
+                    alert("error:" + error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);   
+            }
+            else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(Qry1,function(result)
+                {
+                    if(result.array != undefined)
+                    {
+						
+                        if(eval(result.array[0].cnt) > 0)
+						{
+                        	CheckSendDataDone();
+                            
+						}	
+                        else
+						{
+						
+                          link = "sync.html";
+						  $("#frmIndex").attr("action",link);   
+                          $("#frmIndex").submit();
+                        }   
+                        
+                    }
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+		// -------------------
+        // ----------------Clear the Data
+		 function cleardata()
+        {
+            $.mobile.showPageLoadingMsg();
+            var Tbls = ['routemaster','salesman','customermaster','itemmaster','controlpanel','setup','startingloaddetail','itemgroup','startendday','routesequence','discountkeydetail','discountkeyheader','salescalender','pricingdetail1','promoplandetail','promoplanheader','promokeydetail','promokeyheader','promotionassignmentadvanced','productgroupdetail','productgroupheader','bankmaster','company','customerposlimit','customerposinventory','POSmaster','posinstructions','nonservreasons','expreasons','expiryreturnreasons','retitmreasons','freegoodreasons','voidreasons','customersurveydefinition','customersurveykey','customersurveyplan','customersurveydefassign','customersurveykeyplan','lookupindexdetail','customerpricing1','vanmaster','salesmanmessages','itempackagemaster','cashdesc','inventorylocation','distributionkeydetails','suggestedsalesinvoice','inventorytransactiondetail','customer_foc_balance','customer_foc_detail','journeyplancreditlimit','invoicedetail','invoiceheader','invoicerxddetail','promotiondetail','customerinvoice','salesorderdetail','salesorderheader','batchexpirydetail','arheader','ardetail','cashcheckdetail','inventorytransactionheader','inventorysummarydetail','nonservicedcustomer','surveyauditdetail','posequipmentchangedetail','sigcapturedata','customeroperationscontrol','routesequencecustomerstatus','customerinventorydetail','routegoal','nosalesheader','batchmaster','batchmaster','batchmaster_temp','transactiondetailtemp','warehousestock','orderrxddetail','customerinventorycheck','customerimages','cashdenomination','itemmustheader','itemmustdetail','customeritemmapping','customeritemgrp','tempcustomerinventory','msltemp','tempcustomerinventory','beardetail','bearheader','taxmaster'];
+            if(platform=='iPad')
+            {
+                
+                
+                for(i=0;i<Tbls.length;i++)
+                {
+                    
+                    var Qry = "DELETE FROM " + Tbls[i];
+                    
+                    console.log(Qry);
+                    Cordova.exec(function(result) {
+                                 
+                                 
+                                 
+                                 },
+                                 function(error) {
+                                 alert(error);},
+                                 "PluginClass", 
+                                 "InsertUpdateMethod", 
+                                 [Qry]);
+                    if(i==Tbls.length-1)
+                    clearroute();
+                    
+                }
+                
+                
+                
+                
+            }
+            else if(platform=='Android')
+            {
+                
+                
+                for(i=0;i<Tbls.length;i++)
+                {
+                    
+                    var Qry = "DELETE FROM " + Tbls[i];
+                    
+                    console.log(Qry);
+                    window.plugins.DataBaseHelper.insert(Qry,function(result)
+                                                         {
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                    if(i==Tbls.length-1)
+					{
+						// link = "sync.html";
+						// $("#frmIndex").attr("action",link);
+						// $("#frmIndex").submit();
+                    	$.mobile.hidePageLoadingMsg();
+                    	getLangText("Please login again");
+					}
+                        
+                }
+                
+                
+            }
+        }
+		 
+		function CheckSendDataDone(){
+			 var Qry = "SELECT COUNT(*) as cnt FROM startendday where data = 2";
+	            var link = "";
+	            if(platform=='iPad')
+	            {
+	                Cordova.exec(function(result) {
+	                    if(eval(result[0][0]) > 0)                        
+	                        link = "home/home.html";
+	                    else
+	                        link = "sync.html";
+	                        
+	                    $("#frmIndex").attr("action",link);   
+	                    $("#frmIndex").submit();
+	                },
+	                function(error) {
+	                    alert("error:" + error);
+	                },
+	                "PluginClass",
+	                "GetdataMethod",
+	                [Qry]);   
+	            }
+	            else if(platform=='Android')
+	            {
+	                window.plugins.DataBaseHelper.select(Qry,function(result)
+	                {
+	                    if(result.array != undefined)
+	                    {
+	                        if(eval(result.array[0].cnt) > 0)
+							{
+	                        	
+	                        	navigator.notification.alert("Send data is not done for this route,Please complete senddata before starting a new trip");
+	                        	link = "senddata.html";
+	                        	$("#frmIndex").attr("action",link);   
+	                        	$("#frmIndex").submit(); 
+	                        	
+							}	
+	                        else
+							{
+	                        	Check_Redirect();
+	                        	
+	                        }   
+	                        
+	                    }
+	                },
+	                function()
+	                {
+	                    console.warn("Error calling plugin");
+	                });
+	            }
+			
+			
+			
+			
+			
+		} 
+		// ----------------Clear the all table
+        function Check_Redirect()
+        {
+            var Qry = "SELECT COUNT(*) as cnt FROM startendday where data = 1";
+            var link = "";
+            if(platform=='iPad')
+            {
+                Cordova.exec(function(result) {
+                    if(eval(result[0][0]) > 0)                        
+                        link = "home/home.html";
+                    else
+                        link = "sync.html";
+                        
+                    $("#frmIndex").attr("action",link);   
+                    $("#frmIndex").submit();
+                },
+                function(error) {
+                    alert("error:" + error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);   
+            }
+            else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(Qry,function(result)
+                {
+                    if(result.array != undefined)
+                    {
+                        if(eval(result.array[0].cnt) > 0)
+						{
+                        	navigator.notification.confirm(getLangTextdata("Do you want to start a new trip? If yes previous data will be cleared."),function(action){
+							if(action == 1)
+							{
+								saveEndingodometer(); // sujee added for odometer  validation
+								cleardata(); 
+								
+							}else
+							{
+								 link = "home/home.html";
+								 $("#frmIndex").attr("action",link);   
+                                 $("#frmIndex").submit();
+							}
+						});
+                            
+						}	
+                        else
+						{
+                          link = "home/home.html";
+						  $("#frmIndex").attr("action",link);   
+                          $("#frmIndex").submit();
+                        }   
+                        
+                    }
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+		
+		function saveEndingodometer()
+		{//alert("saveEndingodometer");
+			var Qry="select routestartodometer,routeendodometer from startendday  where routecode="+sessionStorage.getItem("RouteCode");
+			console.log(Qry);
+			//alert(Qry);
+			if(platform=='Android')
+            {
+				window.plugins.DataBaseHelper.select(Qry,function(result)
+		                {
+		                    if(result.array != undefined)
+		                    {
+		                       
+		                    	 var endodometer = result.array[0].routeendodometer;
+		                    	// alert('endodometer'+endodometer);
+		                    	 sessionStorage.setItem("endodometer",endodometer);
+		                    	 localStorage.setItem("endodometer",endodometer);
+		                    }
+		                    else 
+		                    	{
+		                    	 // alert("else");
+		                    	  sessionStorage.setItem("endodometer",0);
+		                    	  localStorage.setItem("endodometer",0);
+		                    	}
+		                },
+		                function()
+		                {
+		                    console.warn("Error calling plugin");
+		                });
+            }
+		}
+    </script>
+</body>
+</html>

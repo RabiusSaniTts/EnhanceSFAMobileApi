@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="jquery.mobile-1.0.min.css" />
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jquery.mobile-1.0.js"></script>
+    <link rel="stylesheet" media="only screen and (min-width: 1200px) and (max-width: 1400px)" href="style_1400.css">
+<link rel="stylesheet" media="only screen and (min-width: 1000px) and (max-width: 1200px)" href="style_1200.css">
+<link rel="stylesheet" media="only screen and (min-width: 700px) and (max-width: 800px)" href="style_800.css">
+<link rel="stylesheet" media="only screen and (min-width: 600px) and (max-width: 700px)" href="style_700.css">
+<link rel="stylesheet" media="only screen and (min-width: 320px) and (max-width: 600px)" href="style_600.css">
+    
+</head>
+<body>
+    <div data-role="page" data-theme="d" data-title="HOME">
+        <div>
+            <img title="" alt="" src="images/bg.png" id="background">
+        </div>
+        <div data-role="header" data-position="inline"  id="bgclheader">
+	<!--<a href="index.html"   id="Back_inner">test</a>-->
+	<a href="customerselection.html" id="Back_inner" data-ajax="false" data-transition="slide" data-direction="reverse">Back</a>
+	<h1>Customer Options</h1>
+	<a href="#" id="lang_inner">EN</a>
+	</div>
+       
+        <div data-role="content" class="centerbox">    
+           <div class="topbox">
+	    <div class="content-primary1">
+		<label class="cus_lable">Customer Name</label>
+	    </div>
+	    <div class="second-primary1">
+		<label class="cus_lable">Customer No.</label>
+		<span class="nobox">123456</span>
+	    </div>
+	    
+	   </div>
+	    <div class="content-primary">	
+               <ul data-role="listview">
+                    <li><a href="">
+		    	    <img src="images/icon-1.png" style="padding:5px"/>
+			    <h3 style="color:#999;">Review Visits</h3>
+			    
+			    </a></li>
+		    <li><a href="orderRequest.html" data-ajax="false" data-transition="slide">
+		            <img src="images/icon-2.png" style="padding:5px"/>
+			    <h3>Orders</h3>
+			   
+		    </a></li>
+		    <li><a href="">
+		    <img src="images/icon-3.png" style="padding:5px"/>
+		    <h3 style="color:#999;">A/R Collection</h3>
+		   
+		    </a></li>
+		    <li><a href="">
+		    <img src="images/icon-4.png" style="padding:5px"/>
+		    <h3 style="color:#999;">Merchandising</h3>
+		   
+		    </a></li>	        
+               </ul>
+            </div>
+	    <div class="second-primary">	
+               <ul data-role="listview">
+                    <li><a href="">
+				        <img src="images/icon-5.png" style="padding:5px"/>
+				        <h3 style="color:#999;">Inventory</h3>
+				       
+			        </a></li>
+			        <li><a href="salesInvoice.html" data-ajax="false" data-transition="slide">
+				        <img src="images/icon-6.png" style="padding:5px"/>
+				        <h3>Invoice</h3>
+				        
+			        </a></li>		
+			        <li style="color:#999;"><a href="">
+				        <img src="images/icon-7.png" style="padding:5px"/>
+				        <h3 style="color:#999;">information</h3>
+				        
+			        </a></li>
+				<li style="color:#999;"><a href="">
+				        <img src="images/icon-8.png" style="padding:5px"/>
+				        <h3 style="color:#999;">Continue</h3>
+				        
+			        </a></li>
+			                
+               </ul>
+            </div>   
+           <!-- <div style="width:50%;float:left;">
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" text-align:center;">Start of Day</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Customer Opt.</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Expense Entry</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Setup</a>              
+            </div>   
+            <div style="width:50%;float:right;">
+                <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" text-align:center;">Inventory</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Settlement</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Information</a>
+            </div>             -->     
+        </div>
+	<div data-role="footer" class="ui-bar">
+	<div class="footer">
+		<div class="leftfooter">09 November 2011</div>
+		<div class="rightfooter">Mirnah Technology Systems</div>
+	</div>
+	</div>
+	<div data-role="footer" style="bottom:0;position:fixed;z-index:5;">
+		<div data-role="navbar" data-iconpos="top" data-grid="f">
+		<ul>
+			<li style="margin-bottom:0 !important;"><a href="#" id="day" data-icon="custom">Start of day</a></li>
+			<li style="margin-bottom:0 !important;"><a href="#" id="inve" data-icon="custom">inventory</a></li>
+			<li style="margin-bottom:0 !important;"><a href="#" id="cust" data-icon="custom" class="ui-btn-active">Customer opt</a></li>
+			<li style="margin-bottom:0 !important;"><a href="#" id="sett" data-icon="custom">Settlement</a></li>
+			<li style="margin-bottom:0 !important;"><a href="#" id="expe" data-icon="custom">Expense Entry</a></li>
+			<li style="margin-bottom:0 !important;"><a href="#" id="info" data-icon="custom">information</a></li>
+			<li style="margin-bottom:0 !important; width:14.5%"><a href="#" id="setup" data-icon="custom">Utilities</a></li>
+		</ul>
+	</div>
+	</div>
+
+    </div>
+</body>
+</html>

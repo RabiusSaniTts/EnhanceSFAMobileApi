@@ -1,0 +1,403 @@
+<!--
+ '  Created By   : nidhi
+ '  Created Date : 06/02/2012
+ '  Description  : This page disaplay a company information and application version.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>About</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+<link rel="stylesheet" href="css/jquery.mobile-1.0.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="../css/en.css" lang="en" />
+<link rel="stylesheet"
+	media="only screen and (min-width: 480px) and (max-width: 600px)"
+	href="css/style_600.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 601px) and (max-width: 700px)"
+	href="css/style_700.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 700px) and (max-width: 800px)"
+	href="css/style_800.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+	href="css/style_1200.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+	href="css/style_1400.css">
+
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script>
+	if (navigator.userAgent.toLowerCase().match(/android/)) {
+		document
+				.write('<script charset="utf-8" src="cordova-2.0.0.js"><\/script>');
+		document
+				.write('<script charset="utf-8" src="directoryListing.js"><\/script>');
+		document
+				.write('<script charset="utf-8" src="js/fakeworker-0.1.js"><\/script>');
+	} else if (navigator.userAgent.toLowerCase().match(/iphone/)
+			|| navigator.userAgent.toLowerCase().match(/ipad/)) {
+		document
+				.write('<script charset="utf-8" src="cordova-1.5.0.js"><\/script>');
+	}
+</script>
+<script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
+
+<script type="text/javascript" src="js/common.js"></script>
+
+<script type="text/javascript" src="js/sync.js"></script>
+<script src="LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+<script src="../LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+<script src="LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript"></script>
+<script src="LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript"></script>
+<script type="text/javascript" src="js/translations.js"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="d">
+		<div>
+			<img title="" alt="" src="images/bg.png" id="background">
+		</div>
+		<div data-role="header" data-position="inline" id="bgclheader">
+			<h1 lang="en">Cloud Sync</h1>
+		</div>
+		<div data-role="content" class="centerboxInvReq">
+			<div class="boxContent">
+
+				<div class="tblBox tbl-Route">
+					<table border="0" cellpadding="2" cellspacing="2" width="100%">
+						<tr>
+							<td style="width: 25%;">&nbsp;</td>
+							<td style="width: 25%;">&nbsp;</td>
+							<td style="width: 25%;">&nbsp;</td>
+							<td style="width: 25%;">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="4" align="center" class="captionLabel">
+								<div class="ui-grid-a">
+									<div class="ui-block-a">
+										<img id="mirnahlogo" src="images/towell-logo5.png"
+											style="height: 80px; margin-top: 6px;" />
+									</div>
+									<!-- 	  <div class="ui-block-b" > <img id="gtrclogo" src="images/GTRCLogo.png" /></div>	     -->
+									<div class="ui-block-b">
+										<img id="gtrclogo" src="" />
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4"></td>
+						</tr>
+						<tr>
+							<td colspan="4" class="captionLabel CheckCaption centerAlign"
+								lang="en">
+								<h3>RoutePro - Sales Force Automation</h3>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4"></td>
+						</tr>
+						<tr>
+							<td colspan="4"></td>
+						</tr>
+						<tr>
+							<td class="captionLabel" colspan=2 style="text-align: center;"
+								id="CurrentVers"></td>
+							<td class="captionLabel" colspan=2 style="text-align: center;"
+								id="CurrentDate"></td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+						<tr>
+							<td align="center" colspan="4"><input type="button"
+								name="sync" style="padding: 5px !important;" lang="en"
+								value="Send Data" id="send" onClick="checkRoutekey()" /></td>
+						</tr>
+						<tr>
+							<td colspan="4">&nbsp;</td>
+						</tr>
+
+						<tr>
+							<td colspan=4 id="connectmsg"></td>
+						</tr>
+						<tr>
+							<td colspan=4><div>
+									<table width="80%" id="dynamicsync" align="center">
+
+									</table>
+								</div></td>
+						</tr>
+						
+						<tr>
+							<td colspan="2">&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div>
+									<div id="pmsg"></div>
+									<div id="progressbar"></div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="leftbottomMenu">
+				<a href="#" id="exitlink" rel="external"
+					style="text-decoration: none; font-weight: normal;">
+					<div class="MenuPositionSCLarge">
+						<div class="MenuTextPos">
+							<img class="bottomicon" src="images/icn-exit-gray.png"
+								id="imgexit" alt="Exit" />
+						</div>
+						<div class="MenuTextPos MenuText MenuGray" id="lblexit" lang="en">
+							Cancel</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div id="f2" data-role="footer" class="ui-bar">
+			<div class="footer">
+				<div class="leftfooter">09 November 2011</div>
+				<div class="rightfooter" lang="en">Mirnah Technology Systems</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" language="javascript">
+		var cnt = 0;
+		var progresstotal = 0;
+		var platform = sessionStorage.getItem("platform");
+		var synctimedata = '';
+		var arraycode = new Array();
+		this.progressBars = function(msg, max) {
+			var persentage = Math.floor(cnt / max * 100);
+			var routeclosed = 0;
+			cnt = cnt + 1;
+
+			$('.ui-loader h1').text("Downloading " + msg + " records");
+			if (cnt == max) {
+				finalsync();
+			}
+		}
+		window.lang = new jquery_lang_js();
+		resizeOrientationWindow();
+		$(document)
+				.ready(
+						function() {
+							resizeWindow();
+							if (window.devicePixelRatio > 1.5) {
+								$("#mirnahlogo").attr('src',
+										'images/towell-logo5.png');
+								$("#gtrclogo").attr('src',
+										'images/GTRCLogobig.png');
+							}
+							document.addEventListener("deviceready",
+									onDeviceReady, false);
+							var platform = sessionStorage.getItem("platform");
+							var startenddayflag = 0;
+							// PhoneGap is ready
+							//
+							var lan = sessionStorage.getItem("Language");
+							window.lang.run(lan);
+							if (sessionStorage.getItem("Language") != "en") {
+
+								window.lang.change('Sync' + lan, lan);
+								window.lang.change('Footer' + lan, lan);
+								if (lan == "AR") {
+									$('#Back_inner')
+											.removeClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#Back_inner')
+											.addClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.removeClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.addClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								}
+
+							} else {
+								window.lang.change('en', 'en');
+
+								$('#Back_inner')
+										.removeClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#Back_inner')
+										.addClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.removeClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.addClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+							}
+							function onDeviceReady() {
+
+								var deviceid = device.uuid;
+
+							}
+
+							$(".leftfooter").html(getCurrentDate());
+							var mydate = new Date();
+							var theyear = mydate.getFullYear();
+							var themonth = mydate.getMonth();
+							var thetoday = mydate.getDate();
+							var thehour = mydate.getHours();
+							var theminut = mydate.getMinutes();
+							var varGlobString = "";
+							if (thetoday < 10) {
+								thetoday = '0' + thetoday;
+							}
+							if (themonth < 10) {
+								themonth = '0' + themonth;
+							}
+							var am = "AM";
+							if (thehour > 11)
+								am = "PM";
+							if (thehour < 10)
+								thehour = '0' + thehour;
+							if (thehour > 12)
+								thehour = thehour - 12;
+							if (thehour == 0)
+								thehour = 12;
+							if (theminut < 10)
+								theminut = '0' + theminut;
+							// var cdate = thetoday+ '-' + themonth + '-' + theyear + ' ' +
+							// thehour + ':' + thesecond;
+							var cdate = getCurrentDate() + " " + thehour + ':'
+									+ theminut + " " + am;
+							$('#CurrentDate').html(cdate);
+							var cver = "Version : "+ sessionStorage.getItem("version");
+							$('#CurrentVers').html(cver);
+						});
+
+		function checkRouteStatus() {
+
+			var selectquery = '';
+
+			selectquery = "select count(*) as cnt from startendday where routeclosed=1 and routekey="
+					+ sessionStorage.getItem("RouteKey") + "";
+
+			if (platform == 'iPad') {
+
+				Cordova.exec(function(result) {
+
+				},
+						function(error) {
+							navigator.notification
+									.alert("Error in bind odometer setting : "
+											+ error);
+						}, "PluginClass", "GetdataMethod", [ selectquery ]);
+			} else if (platform == 'Android') {
+				window.plugins.DataBaseHelper
+						.select(
+								selectquery,
+								function(result) {
+
+									if (result.array != undefined) {
+										result = $.map(result.array, function(
+												item, index) {
+											return [ [ item.cnt ] ];
+										});
+
+										var setting1 = eval(result[0][0]);
+
+										if (setting1 > 0) {
+
+											senddata();
+
+										} else {
+
+											getLangText("Please End Your Trip Before Sending Data");
+										}
+
+									}
+
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+
+		}
+
+		function checkRoutekey() {
+			if (sessionStorage.getItem("RouteKey") == ''
+					|| sessionStorage.getItem("RouteKey") == 0
+					|| sessionStorage.getItem("RouteKey") == null) {
+				getafterRouteKey()
+			} else {
+				checkRouteStatus();
+
+			}
+
+		}
+
+		function getafterRouteKey() {
+			var platform = sessionStorage.getItem("platform");
+
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+									if (result > 0) {
+										sessionStorage.setItem("RouteKey",
+												result[0][0]);
+
+									}
+
+								},
+								function(error) {
+									alert("Error in getting salesman : "
+											+ error);
+								},
+								"PluginClass",
+								"GetdataMethod",
+								[ "select max(routekey) from startendday where routecode = "
+										+ sessionStorage.getItem('RouteCode')
+										+ " and salesmancode = "
+										+ sessionStorage
+												.getItem('SalesmanCode')
+										+ " and routeclosed=0" ]);
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper.select(
+						"select max(routekey) routekey from startendday where routecode = "
+								+ sessionStorage.getItem('RouteCode')
+								+ " and salesmancode = "
+								+ sessionStorage.getItem('SalesmanCode') + "",
+						function(result) {
+							if (result.array != undefined) {
+
+								if (result.array[0].routekey > 0) {
+									sessionStorage.setItem("RouteKey",
+											result.array[0].routekey);
+									checkRouteStatus();
+								}
+
+							}
+
+						}, function() {
+							console.warn("Error calling plugin");
+						});
+
+			}
+		}
+	</script>
+</body>
+</html>

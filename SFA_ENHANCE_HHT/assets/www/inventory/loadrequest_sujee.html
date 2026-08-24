@@ -1,0 +1,2636 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 10/02/2012
+ '  Description  : This page is used for load request screen.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Load Request</title>
+        <meta name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <style>
+            .ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner
+            {
+            
+            background-color: #3d6268;
+            height:35px;
+            
+            }
+			            
+			ul.pagination {
+			    display: inline-block;
+			    padding: 0;
+			    margin: 0;
+			}
+			
+			ul.pagination li {display: inline;}
+			
+			ul.pagination li {
+			    color: black;
+			    float: left;
+			    width:10px;
+			    padding: 8px 16px;
+			    text-decoration: none;
+			    transition: background-color .3s;
+			    border: 1px solid #ddd;
+			    margin: 0 4px;
+			}
+			
+			ul.pagination li.active {
+			    background-color: #4CAF50;
+			    color: white;
+			    border: 1px solid #4CAF50;
+			}
+			
+			ul.pagination li:hover:not(.active) {background-color: #ddd;}
+			.page
+			{
+			   color: black;
+			    float: left;
+			    padding: 8px 16px;
+			    text-decoration: none;
+			    transition: background-color .3s;
+			    border: 1px solid #ddd;
+			    margin: 0 4px;
+			}
+
+            </style>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" onclick="OnCancel();" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Load Request</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <div class="CRow1">
+                        <div style="height:100%;float:left;">
+                            <div class="loadperiod" lang="en">
+                                Request Date
+                            </div>
+                            <div
+                                style="float:left;position:relative;padding-left:5px;top:15%">
+                                <div id="lblReqDate"
+                                    class="ui-corner-all labelBG"></div>
+                                <!--<input id="dpDeliveryDate" name="dpDeliveryDate" type="date" data-role="datebox" width="40px" height="20px"
+                                value="15/03/2012" data-options='{"mode": "flipbox","dateFormat": "dd/MM/YYYY"}'/>-->
+                            </div>
+                        </div>
+                        <div style="float:right;height:100%;display:none;">
+                            <div class="loadperiod" lang="en">
+                                Load Period
+                            </div>
+                            <div
+                                style="float:left;position:relative;top:15%;padding-left:15px;">
+                                <div id="lblReqLoad"
+                                    class="ui-corner-all labelBG"
+                                    style="width:100px;text-align:center"></div>
+                            </div>
+                        </div>
+                        <div style="float:right;height:100%;">
+                            <div
+                                class="showcustomerlist" id="checkDiv"
+                                onclick="javascript:setToggles1('#id_send');"
+                                style="top:15%">
+                                <img id="imgCheck1" src="../images/check.png"
+                                    alt
+                                    style="position: absolute; display: block" />
+                                <img
+                                    id="id_send" src="../images/select.png" alt
+                                    style="position: absolute; display: none; left: 5px;" />
+                            </div>
+                            <div class="ltpadding" style="top:30% !important">
+                                <label id="lbl1" class="loadperiod"
+                                    style="display: block"
+                                    onclick="javascript:setToggles1('#id_send');"
+                                    lang="en">Send Immediately</label> <input
+                                    type="hidden" value="0"
+                                    name="sendload" id="id_send" />
+                            </div>
+                        </div>
+                    </div>
+                    <!--     <div><table cellpadding="1" cellspacing="1" border="0" width="100%">
+                		<tr>
+                            <td lang="en" colspan="2" width="40%" id="group" class="rtext">
+                                Select Item Group
+                            </td>
+                             <td colspan="2" width="60%">
+                                <select style="width:100%" name="select-choice-1" id="itemgroup" >
+                                </select>
+                            </td>
+                        </tr>
+                	</table>
+               	</div>  -->
+
+                    <div class="textBar">
+                        <div class="multiselAlign" style="margin-left: 15px">
+                            <table cellpadding="0"
+                                style="table-layout: initial;" cellspacing="0"
+                                border="0" width="100%">
+                                <tr>
+                                    <td class="captionLabel agency" lang="en"
+                                        style="margin-left: 5px;width: 140px;">Division</td>
+                                    <td class="captionLabel brand" lang="en"
+                                        style="margin-left: 130px;width: 118px;">Agency</td>
+                                    <td class="captionLabel cat" lang="en"
+                                        style="margin-left: 80px;width: 111px;">Category
+                                    </td>
+                                    <td class="captionLabel subcat" lang="en"
+                                        style="margin-left: 120px;">Sub
+                                        Category</td>
+
+                                </table>
+                            </div>
+
+                            <table cellpadding="1" cellspacing="1" border="0"
+                                width="100%">
+                                <tr>
+                                    <!--  <td lang="en" colspan="2" width="35%" id="group" class="rtext">
+                                Select Item Group
+                            </td>
+                             <td colspan="2" width="35%">
+                                <select style="width:50%" name="select-choice-1" id="itemgroup" >
+                                </select>
+                            </td>
+                            <td colspan="2" lang="en"  width="10%" class="rtext">
+                                MSL
+                            </td> -->
+                                    <td colspan="2" width="15%">
+
+                                        <select name="select-option"
+                                            multiple="multiple"
+                                            data-native-menu="true"
+                                            id="companygrpcode">
+
+                                        </select>
+                                    </td>
+                                    <td colspan="2" width="15%">
+
+                                        <select name="select-option"
+                                            multiple="multiple"
+                                            data-native-menu="true" id="major">
+
+                                        </select>
+                                    </td>
+                                    <td colspan="2" width="15%">
+
+                                        <select name="select-option"
+                                            multiple="multiple"
+                                            data-native-menu="true"
+                                            id="submajor">
+                                        </select>
+                                    </td>
+                                    <td colspan="2" width="15%">
+
+                                        <select name="select-option"
+                                            multiple="multiple"
+                                            data-native-menu="true"
+                                            id="select1">
+                                        </select>
+                                    </td>
+
+                                    <td colspan="2" width="18%">
+                                        <div
+                                            style="width: 90%; margin-left: 5%; margin-top: -25px;height:30px;">
+
+                                            <input type="checkbox"
+                                                name="checkbox-1"
+                                                id="checkbox-mini-1" />
+                                            <label class="lbl"
+                                                for="checkbox-mini-1">Reset</label>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+
+                                <tr style="display:none;">
+
+                                    <td colspan="2" lang="en" width="40%"
+                                        class="rtext">
+                                        Item Group Code #
+                                    </td>
+                                    <td colspan="2" lang="en" width="50%"
+                                        class="rtext">
+                                        Alternate Group Code
+                                    </td>
+                                </tr>
+                                <tr style="display:none;">
+                                    <td colspan="2">
+                                        <div class="addressdiv" id="groupcode"
+                                            style="width:80%"></div>
+                                    </td>
+                                    <td colspan="2">
+                                        <div class="addressdiv" id="alcode"
+                                            style="width:80%"></div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div class="tblBox tbltd">
+                            <table id="tblHeaderContent" class="tblHeader"
+                                cellpadding="0" cellspacing="0" border="0"
+                                width="100%">
+                                <tr>
+                                    <th style="width: 12%;" lang="en">
+                                        Item Code
+                                    </th>
+                                    <th style="width: 30%;" class="leftAlign"
+                                        lang="en">
+                                        Item Description
+                                    </th>
+                                    <th style="width: 12%;" lang="en">
+                                        Cases
+                                    </th>
+                                    <th style="width: 12%;" lang="en">
+                                        Units
+                                    </th>
+                                    <th style="width: 12%;display:none"
+                                        lang="en">
+                                        Case Price
+                                    </th>
+                                    <th style="width: 12%;display:none"
+                                        lang="en">
+                                        Unit Price
+                                    </th>
+                                    <th style="width: 12%;" lang="en"
+                                        class="last">
+                                        Van Stock
+                                    </th>
+
+                                </tr>
+                            </table>
+                            <div class="tblSalesHeight">
+                                <table id="tblContent" cellpadding="0"
+                                    cellspacing="0" border="0" width="100%">
+                                    <tr>
+                                        <td style="width: 12%;">
+                                        </td>
+                                        <td style="width: 30%;">
+                                        </td>
+                                        <td style="width: 12%;">
+                                        </td>
+                                        <td style="width: 12%;">
+                                        </td>
+                                        <td style="width: 12%;display:none">
+                                        </td>
+                                        <td style="width: 12%;display:none">
+                                        </td>
+                                        <td style="width: 12%;" class="last">
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+
+                            <ul class="pagination" id="Ulpagin"></ul>
+                            <table cellpadding="2" cellspacing="2" border="0"
+                                width="100%">
+                                <tr>
+                                    <td class="captionLabel"
+                                        lang="en">Price</td>
+                                    <td class="captionLabel" lang="en">UPC</td>
+                                    <td class="captionLabel" lang="en"
+                                        style="display:none;">Available Van
+                                        Quantity</td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 28%">
+                                        <input id="txtItemNo" type="text"
+                                            class="textFont textWidth"
+                                            readonly="readonly" />
+                                    </td>
+                                    <td style="width: 28%;">
+                                        <input id="txtUPC" type="text"
+                                            class="textFont textWidth"
+                                            readonly="readonly" />
+                                    </td>
+                                    <td style="width: 28%;display:none;">
+                                        <div id="AvailQty"
+                                            class="readonly_text rightAlign">0/0</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="leftbottomMenu">
+                        <a href="#" rel="external" id="A1" onclick="OnAdd()"
+                            style="text-decoration:none" data-role="none"> <div
+                                class="MenuPosition">
+                                <div class="MenuTextPos"><img id="imgAdd"
+                                        class="bottomicon"
+                                        src="../images/icn-add.png"
+                                        alt="Add" /></div><div
+                                    class="MenuTextPos MenuText" lang="en"
+                                    id="addbtn">Add</div>
+                            </div></a>
+                        <a href="#" rel="external" style="text-decoration:none"
+                            onclick="OnSummary()" data-role="none"><div
+                                class="MenuPosition">
+                                <div class="MenuTextPos"><img class="bottomicon"
+                                        src="../images/doc.png"
+                                        alt="Option" /></div><div
+                                    class="MenuTextPos MenuText"
+                                    lang="en">Summary</div>
+                            </div></a>
+                        <a href="#" rel="external" style="text-decoration:none"
+                            data-role="none" onclick="OnExit();">
+                            <div class="MenuPosition">
+                                <div class="MenuTextPos">
+                                    <img class="bottomicon"
+                                        src="../images/icn-exit.png"
+                                        alt="Exit" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Done</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div id="f1" data-role="footer" class="ui-bar">
+                    <div class="footer">
+                        <div class="leftfooter">
+                            09 November 2011</div>
+                        <div class="rightfooter">
+                            Mirnah Technology Systems</div>
+                    </div>
+                </div>
+                <div id="f2" data-role="footer"
+                    style="bottom: 0; position: absolute;">
+                    <div data-role="navbar" data-iconpos="top" data-grid="f">
+                        <ul>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="day" data-icon="custom"
+                                    lang="en"
+                                    onclick="RemoveOnQuickAccess();footerredict('../startofday/startofday.html')">Start
+                                    day</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    id="inve" class="ui-btn-active"
+                                    rel="external" data-icon="custom"
+                                    lang="en">Inventory</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="cust" data-icon="custom"
+                                    lang="en"
+                                    onclick="RemoveOnQuickAccess();footerredict('../customer/customer_operation.html')">Customer</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="sett" data-icon="custom"
+                                    lang="en"
+                                    onclick="RemoveOnQuickAccess();footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="info" data-icon="custom"
+                                    lang="en"
+                                    onclick="RemoveOnQuickAccess();footerredict('../information/information.html')">Information</a></li>
+                            <li
+                                style="margin-bottom:0 !important; width:14.0%"><a
+                                    href="#" rel="external" id="setup"
+                                    data-icon="custom" lang="en"
+                                    onclick="RemoveOnQuickAccess();footerredict('../utilities/utilities.html')">Utilities</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+    $("#tblContent").click(function() { });
+        var data = null;
+        var platform = null;
+        var CaseEnabled;
+        var AvailQty;
+        var decimalplace = sessionStorage.getItem("decimalplace"); 
+        var transactiontypecode = 8; // 8 is transactiontypecode for loadrequest
+        var CasePrice = 0;
+        var LoadReqRollupOrder,LoadReqMethod,RouteName;     
+        var PrevLoad;
+		var var_detailkey=0;
+		var isSendAutomatic=0;
+		var itemmustkey=0;
+		 var urgentLoadRequest;
+        var RequestDate,RequestLoad,AllowMsl=0;
+        var dataToInsert=[];
+        
+        var companyid = null;
+		var majorid = null;
+		var submajorid = null;
+		var catid = null;
+		var curPage = 0; 
+		var companyflag =0;
+		var brandflag =0;
+		var categoryflag =0;
+		var subcategoryflag =0;
+		 var filterflag=0;
+		
+		
+        window.lang = new jquery_lang_js();
+        function setToggles1() {
+            if ($("#id_send").css("display") == 'none') {
+            	isSendAutomatic=1;
+                $("#id_send").css("display", "block");
+                
+            }
+            else 
+            {
+            	isSendAutomatic=0;
+                $("#id_send").css("display", "none");
+                
+            }
+          
+        } 
+         resizeOrientationWindow();
+          $(document).ready(function() {
+       		resizeWindow();   
+            RequestDate = sessionStorage.RequestDate; 
+            RequestLoad = sessionStorage.RequestLoad;
+            $("#lblReqDate").text(RequestDate); 
+            $("#lblReqLoad").text(RequestLoad);                 
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {
+            	//$("#A1").attr("onclick","");
+              	//$("#imgAdd").attr("src","../images/icn-add-gray.png");
+            	
+              	urgentLoadRequest=eval(window.localStorage.getItem("urgentAuto"));
+              	if(window.localStorage.getItem("urgentAuto")=='1'){
+              		$("#imgCheck1").trigger('click');
+              	}
+            	if (sessionStorage.getItem("CaseEnabled") == "0" || sessionStorage.getItem("CaseEnabled") == null)
+                    CaseEnabled = false;
+                else if (sessionStorage.getItem("CaseEnabled") == "1")
+                    CaseEnabled = true;
+                    
+                if (!CaseEnabled) {
+                    $("#tblHeaderContent tr th:eq(2)").remove();
+                    $("#tblContent tr td:eq(2)").remove();
+                    $("#tblHeaderContent tr th:eq(3)").remove();
+                    $("#tblContent tr td:eq(3)").remove();
+                   
+                 }   
+				$("#itemgroup").change(function(){ 
+                	
+                	$("#tblContent").find('tr').not(":first").remove();
+                	getRecord();
+    				
+				});
+                platform = sessionStorage.getItem("platform");
+                getItemGroups();
+                
+                
+            	$("#checkbox-mini-1")
+				.click(
+						function() { 
+							/*$("#select1").empty();
+							$("#submajor").empty();
+							$("#major").empty();
+							$("#companygrpcode")
+									.empty();*/
+							window.location.href = '../inventory/loadrequest.html'
+							majorid = null;
+							submajorid = null;
+							companyid = null;
+							catid = null;
+							getRecord();
+						});
+                
+                $("#companygrpcode")
+    			.change(
+    					function() {
+    						
+    						$.mobile
+    								.showPageLoadingMsg();
+    						
+    						var count = $("#companygrpcode :selected").length;
+    						filterflag =1;
+    						
+    						if (count == 0) {
+
+    							$('.agency').css(
+    									'color',
+    									'#52848d');
+    						} else { 
+
+    							$('.agency').css(
+    									'color', 'red');
+    						}
+
+    						
+    						
+    						$("#Ulpagin").empty();
+    						companyid = $("#companygrpcode")
+    								.val();
+    						 $("#companygrpcode").html('');
+    						if (majorid == null) {
+    							majorid = $("#major")
+    									.val();
+    						}
+    						if (submajorid == null) {
+    							submajorid = $(
+    									"#submajor")
+    									.val();
+    						}
+    						if (catid == null) {
+    							catid = $("#select1")
+    									.val();
+    						}
+    						
+    						//getCompanygroupcode(companyid, majorid);
+    						getMajor(companyid, majorid,catid);
+    						getsubMajor(companyid,majorid, submajorid,catid);
+    						getCompanygroupcode(companyid, majorid);
+    						getCategoryList(companyid,majorid,submajorid, catid);
+    						
+    						getRecord();
+
+    						
+    					});
+     			
+     			$("#select1").change(function() {
+    				// Added to chg color -------
+    				var count = $("#select1 :selected").length;
+    				filterflag =1;
+    	
+    				if (count == 0) {
+
+    					$('.subcat').css('color', '#52848d');
+    				} else { 
+
+    					$('.subcat').css('color', 'red');
+    				}
+
+    				// end ----
+    				catid = $("#select1").val();
+    				
+    				$("#Ulpagin").empty();
+    				if (companyid == null) {
+    					companyid = $("#companygrpcode").val();
+    				}
+    				if (majorid == null) {
+    					majorid = $("#major").val();
+    				}
+    				if (submajorid == null) {
+    					submajorid = $("#submajor").val();
+    				}
+    				getMajor(companyid, majorid,catid);
+    				getsubMajor(companyid,majorid, submajorid,catid);
+    				getCompanygroupcode(companyid, majorid);
+    				getCategoryList(companyid,majorid,submajorid, catid);
+    				
+    				getRecord();
+    			});
+    			
+     			$("#submajor")
+    			.change(
+    					function() {
+    						
+    						$.mobile
+    								.showPageLoadingMsg();
+    						
+    						
+    						var count = $("#submajor :selected").length;
+    						filterflag =1;
+    						
+    						if (count == 0) {
+
+    							$('.cat').css('color',
+    									'#52848d');
+    						} else { 
+
+    							$('.cat').css('color',
+    									'red');
+    						}
+
+    					
+    						$("#Ulpagin").empty();
+    						submajorid = $("#submajor")
+    								.val();
+    						$("#submajor").html('');
+    						if (companyid == null) {
+    							companyid = $(
+    									"#companygrpcode")
+    									.val();
+    						}
+    						if (majorid == null) {
+    							majorid = $("#major")
+    									.val();
+    						}
+    						if (catid == null) {
+    							catid = $("#select1")
+    									.val();
+    						}
+    						
+    						getMajor(companyid, majorid,catid);
+    						getsubMajor(companyid,majorid, submajorid,catid);
+    						getCompanygroupcode(companyid, majorid);
+    						getCategoryList(companyid,majorid,submajorid, catid);
+    						
+    						getRecord();
+    						
+    					});
+     			
+    				$("#major").change(function() {
+    				
+    				$.mobile.showPageLoadingMsg();
+    				
+    				var count = $("#major :selected").length;
+    				filterflag =1;
+    				
+    				if (count == 0) {
+
+    					$('.brand').css('color', '#52848d');
+    				} else { 
+
+    					$('.brand').css('color', 'red');
+    				}
+
+    				
+    				majorid = $("#major").val();
+    				
+    				
+    				
+    				$("#Ulpagin").empty();
+    				if (companyid == null) {
+    					companyid = $("#companygrpcode").val();
+    				}
+    				if (submajorid == null) {
+    					submajorid = $("#submajor").val();
+    				}
+    				if (catid == null) {
+    					catid = $("#select1").val();
+    				}
+    				
+    				getMajor(companyid, majorid,catid);
+    				getsubMajor(companyid,majorid, submajorid,catid);
+    				getCompanygroupcode(companyid, majorid);
+    				getCategoryList(companyid,majorid,submajorid, catid);
+    				
+    				getRecord();
+    				
+
+    			});
+    				
+    				
+            }
+            
+            function getItemGroups()
+            {               
+                if(platform=='iPad')
+           		{ 
+                    Cordova.exec(function(result) { 
+                                  
+                                 
+                                  },
+                                  function(error) {
+                                  alert("Error in binding Category : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  ["select customercode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN customername ELSE arbcustomername END as Desc from customermaster WHERE templateindicator IS NOT 1 order by customercode"]);         
+                    
+                }
+             	else if(platform=='Android')
+            	{
+             						window.plugins.DataBaseHelper.select("select itemgroupcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemgroupname ELSE arbitemgroup END as groupname,alternateitemgroupcode from itemgroup order by itemgroupcode",function(result)
+									{		
+                                            var array = $.map(result.array, function (item, index) {               
+                                                               return [[item.itemgroupcode, item.groupname,item.alternateitemgroupcode]];            					
+                                                        });
+                                             
+                                             result = array;
+                                             $("<option />" ,{value:0,text:getLangTextdata("All GROUPS")}).appendTo($("#itemgroup")); 
+                                             for(i=0;i<result.length;i++){                    
+                                            	$("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#itemgroup"));                                           
+                                             }
+                                             $("#itemgroup").selectmenu("refresh");
+                                             getSettings();
+                                             
+                                             getCategoryList();
+                                             getsubMajor();
+                                             getMajor();
+                                             getCompanygroupcode();
+                                             
+                                             
+                                     },
+                                     function()
+                                     {
+                                    	 	console.warn("Error calling plugin");
+                                     });
+            	}
+            }
+            
+            
+            function getCategoryList(companyid, majorid, submajorid, catid) {
+				//alert("getCategoryList");
+			
+			 
+			var cmpid;
+			var majid;
+			var submajid;
+			var ctid;
+			if (companyid != 0 || companyid != null) {
+				cmpid = companyid;
+			} else {
+				cmpid = $("#companygrpcode").val();
+			}
+
+			
+			if (majorid != null) {
+				majid = majorid;
+			} else {
+				majid = $("#major").val();
+			}
+
+			if (submajorid != null) {
+				submajid = submajorid;
+			} else {
+				submajid = $("#submajor").val();
+			}
+			if (catid != null) { 
+				ctid = catid;
+			} else {
+				 
+				ctid = $("#select1").val();
+			}
+
+			/*alert('cmpid' +cmpid);
+			alert('majid' +majid);
+			alert('submajid' +submajid);
+			alert('ctid' +ctid);*/
+			
+			//$("#select1").empty();
+			var Qry = "select distinct itemgroupcode,itemgroupname as itemgroup from itemmaster where 1=1 ";
+
+			
+			if (cmpid != null)
+				Qry =  Qry + " and  companygroupcode in(" + cmpid +")";
+			if (majid != null )
+				Qry =  Qry + " and majorcategorycode in(" + majid +")";
+			if (submajid !=null )
+				Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";
+			/*if( ctid != null)
+				Qry =  Qry + " and itemgroupcode in ("+ctid+")";*/
+			 
+
+			Qry = Qry + " order by itemgroupname";
+				console.log(Qry);
+				// alert(Qry);
+
+			if (platform == 'iPad') {
+
+			} else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					var result = $.map(result.array, function(item, index) {
+						return [ [ item.itemgroupcode, item.itemgroup ] ];
+					});
+					$("#select1").empty();
+					if (result != undefined && result.length > 0) {
+						for (i = 0; i < result.length; i++) {
+
+							$("<option />", {
+								value : result[i][0],
+								text : result[i][1]
+							}).appendTo($("#select1"));
+
+						}
+					}
+                     
+					if (ctid != null) {
+
+						var str = ctid.toString();
+						var arr = str.split(',');
+						
+						for (i = 0; i < str.length; i++) {
+							$("#select1 option[value= " + arr[i] + "]")
+									.attr('selected', true);
+
+						}
+					}
+					subcategoryflag =0;
+
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+			}
+
+		}
+        
+        function getsubMajor(companyid, majorid, submajorid,catid) { //alert("getsubMajor");
+		 	/*alert('companyid' +companyid);
+		 		alert('majorid' +majorid);
+		 		alert('submajorid' +submajorid);
+		 		alert('catid' +catid);*/
+			var cmpid;
+			var majid;
+			var submajid;
+			//var ctid = $("#select1").val();
+			
+			var ctid;
+			
+			if (companyid != 0 || companyid != null) {
+				cmpid = companyid;
+			} else {
+				cmpid = $("#companygrpcode").val();
+			}
+
+			
+			if (majorid != null) {
+				majid = majorid;
+			} else {
+				majid = $("#major").val();
+			}
+
+			if (submajorid != null) {
+				submajid = submajorid;
+			} else {
+				submajid = $("#submajor").val();
+			}
+			
+			if (catid != null) {
+				ctid = catid;
+			} else {
+				ctid = $("#select1").val();
+			}
+			
+			/*alert('cmpid' +cmpid);
+			alert('majid' +majid);
+			alert('submajid' +submajid);
+			alert('ctid' +ctid);*/
+			
+			
+			//$("#submajor").empty();
+			var Qry = "select distinct submajorcategorycode,submajorcategorydesciption from itemmaster where 1=1    ";
+
+			
+
+			if (cmpid != null)
+				Qry =  Qry + " and  companygroupcode in(" + cmpid +")";
+			if (majid != null )
+				Qry =  Qry + " and majorcategorycode in(" + majid +")";
+		/*	if (submajid !=null )
+				Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";*/
+			if( ctid != null)
+				Qry =  Qry + " and itemgroupcode in ("+ctid+")";
+			
+			Qry = Qry + " order by submajorcategorydesciption";
+		
+			console.log(Qry);
+			// alert(Qry);
+
+			if (platform == 'iPad') {
+
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					var result = $.map(result.array, function(item, index) {
+						return [ [ item.submajorcategorycode,
+								item.submajorcategorydesciption ] ];
+					});
+					$("#submajor").empty();
+					if (result != undefined && result.length > 0) {
+						for (i = 0; i < result.length; i++) {
+
+							$("<option />", {
+								value : result[i][0],
+								text : result[i][1]
+							}).appendTo($("#submajor"));
+
+						}
+
+						if (submajid != null) {
+
+							var str = submajid.toString();
+							var arrSubMaj = str.split(',');
+							
+							for (i = 0; i < str.length; i++) {
+								$(
+										"#submajor option[value= "
+												+ arrSubMaj[i] + "]").attr(
+										'selected', true);
+
+							}
+						}
+
+					}
+					 
+					subcategoryflag =0;
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+
+			}
+
+		}
+		
+
+
+		function getMajor(companyid, majorid,catid) {// alert("getMajor");
+			/*alert("getmajor");
+			alert('companyid' +companyid);
+			alert('majorid' +majorid);
+			alert('catid' +catid);*/
+			var cmpid;
+			var majid;
+			var submajid = $("#submajor").val();
+			var ctid = $("#select1").val();
+			 
+		
+			if (companyid != 0 || companyid != null) {
+				cmpid = companyid;
+			} else {
+				cmpid = $("#companygrpcode").val();
+			}
+
+			
+			if (majorid != null) {
+				majid = majorid;
+			} else {
+				majid = $("#major").val();
+			}
+
+			if (submajorid != null) {
+				submajid = submajorid;
+			} else {
+				submajid = $("#submajor").val();
+			}
+			
+			if (catid != null) {
+				ctid = catid;
+			} else {
+				ctid = $("#select1").val();
+			}
+
+			var Qry = "select distinct majorcategorycode,majorcategorydesciption from itemmaster where 1=1 ";
+
+			if (cmpid != null)
+				Qry =  Qry + " and  companygroupcode in(" + cmpid +")";
+		/*	if (majid != null )
+				Qry =  Qry + " and majorcategorycode in(" + majid +")";*/
+			if (submajid !=null )
+				Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";
+			if( ctid != null)
+				Qry =  Qry + " and itemgroupcode in ("+ctid+")";
+
+			Qry = Qry + " order by majorcategorydesciption";
+ 
+			 console.log(Qry);
+			//alert(Qry);
+		
+			if (platform == 'iPad') {
+
+			} else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					var result = $.map(result.array, function(item, index) {
+						return [ [ item.majorcategorycode,
+								item.majorcategorydesciption ] ];
+					});
+					//alert(JSON.stringify(result));
+					//alert(result);
+					//alert(result.length);
+					$("#major").empty();
+					if (result != undefined && result.length > 0) {
+						for (i = 0; i < result.length; i++) {
+							//alert(result[i][0]);
+						//	alert(result[i][1]);
+							$("<option />", {
+								value : result[i][0],
+								text : result[i][1]
+							}).appendTo($("#major"));
+
+						}
+
+						
+						if (majid != null) {
+							majorid = majid;
+							var str = majid.toString();
+							var arr = str.split(',');
+							
+							for (i = 0; i < str.length; i++) {
+								$("#major option[value= " + arr[i] + "]")
+										.attr('selected', true);
+
+							}
+						}
+					}
+					brandflag=0;
+
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+
+			}
+
+		}
+
+		function getCompanygroupcode(companyid, majorid) {// alert("getCompanygroupcode");
+		   
+			
+			var cmpid;
+			var majid;
+			var submajid = $("#submajor").val();
+			var ctid = $("#select1").val();
+			
+			if (companyid != 0 || companyid != null) {
+				cmpid = companyid;
+			} else {
+				cmpid = $("#companygrpcode").val();
+			}
+			//$("#companygrpcode").remove();
+			/*if( $('#companygrpcode').has('option').length > 0 ) { alert("yes");
+				
+			}*/
+			var Qry = "select distinct  companygroupcode as cmpgrpcode,companygroupname as companyname from itemmaster where 1=1 ";
+			//console.log(Qry);
+			
+
+				
+		
+			if (majid != null )
+				Qry =  Qry + " and majorcategorycode in(" + majid +")";
+			if (submajid !=null )
+				Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";
+			if( ctid != null)
+				Qry =  Qry + " and itemgroupcode in ("+ctid+")";
+
+			Qry = Qry + " order by companygroupcode";
+
+			console.log(Qry);
+			// alert(Qry);
+			if (platform == 'iPad') {
+
+			} else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					var result = $.map(result.array, function(item, index) {
+						return [ [ item.cmpgrpcode, item.companyname ] ];
+					});
+				//	$("#companygrpcode").empty();
+					$('#companygrpcode').children('option').remove();
+					if (result != undefined && result.length > 0) {
+						for (i = 0; i < result.length; i++) {
+							
+							$("<option />", {
+								value : result[i][0],
+								text : result[i][1]
+							}).appendTo($("#companygrpcode"));
+							
+						}
+							
+						
+					}
+					if (cmpid != null) {
+						var str = cmpid.toString();
+						var arr = str.split(',');
+
+						for (i = 0; i < str.length; i++) {
+							$("#companygrpcode option[value= "+ arr[i] + "]").attr('selected', true);
+
+						}
+
+					}
+					companyflag=0;
+					
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+
+			}
+
+		}
+		
+		
+		
+            
+            function getSettings()
+            {
+                var Qry = "SELECT loadreqrolluporders,loadreqmethod,routename,itemmustkey FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");            
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            LoadReqRollupOrder = result[0][0];
+                            LoadReqMethod = result[0][1];
+                            RouteName = result[0][2];
+                        }                                 
+                        HasCurrentData();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            LoadReqRollupOrder = result.array[0].loadreqrolluporders;
+                            LoadReqMethod = result.array[0].loadreqmethod;
+                            RouteName = result.array[0].routename;
+                            itemmustkey=result.array[0].itemmustkey;
+                            if(eval(LoadReqRollupOrder)==3){
+                            	$("#A1").attr("onclick","");
+                              	$("#imgAdd").attr("src","../images/icn-add-gray.png");
+                            }
+                            // sujee added if load request is editable disable add button as per vinoth 15/08/2018
+                            if(LoadReqMethod == 1)
+                            {
+                            	//$("#A1").attr("href","#");
+                            	$("#A1").attr("onclick","");
+                            	$("#imgAdd").attr("src","../images/icn-add-gray.png");
+                            	$("#addbtn").addClass('MenuGray');
+                            }
+                            
+                            HasCurrentData();
+                        }
+                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+                       
+            //function to check data is available for current routekey in transactiondetail
+            function HasCurrentData()
+            {
+                var Qry = "SELECT COUNT(*) AS cnt FROM inventorytransactiondetail WHERE transactiontypecode = " + transactiontypecode + " AND istemp = 'true'";                
+                          console.log(Qry);
+                if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result[0][0] == 0) // Not current routekey data available
+                        {
+                            HasPreviousLoadData();
+                        }
+                        else // current routekey data available.
+                        {
+                            CheckRollUp();
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                    	
+                    	if(result.array != undefined)
+                    	{
+                    		
+                        	if(result.array[0].cnt == 0) // Not current routekey data available
+                        	{
+	                            HasPreviousLoadData();
+                        	}
+                        	else
+                        		CheckRollUp();
+                        }
+                        else // current routekey data available.
+                        {
+                            CheckRollUp();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function HasPreviousLoadData()
+            {
+                var Qry = "SELECT COUNT(*) AS cnt,detailkey FROM inventorytransactiondetail WHERE detailkey=(SELECT max(detailkey) FROM inventorytransactionheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontype = 4 AND istemp = 'false' AND issync='0')";
+                if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result[0][0] == 0) //Previous Load Data Not available
+                        {
+                            CheckRollUp();
+                        }
+                        else // Previous Load Data available
+                        {
+                            ConfirmPrevLoad();
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                    	
+                        if(result.array[0].cnt == 0)
+                        {
+                            CheckRollUp();
+							localStorage.dkey=0;
+                        }
+                        else
+                        {
+                            ConfirmPrevLoad(result.array[0].detailkey);
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function ConfirmPrevLoad(key)
+            {
+                navigator.notification.confirm(getLangTextdata("Load Previous Request Details?"),function(Action){
+                    if(Action == 1)
+                    {
+                        PrevLoad = true;
+						var_detailkey =key;
+						localStorage.dkey=var_detailkey;
+						//getRecord();
+                       InsertPreviousLoadData();
+                    }
+                    else
+                    {
+                        PrevLoad = false;
+						localStorage.dkey=0;
+                        CheckRollUp();
+                    }   
+                }); 
+            }
+                          
+            function InsertPreviousLoadData()
+            {
+                var Qry = "INSERT INTO inventorytransactiondetail(itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,istemp,issync) SELECT itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,'true',0 FROM inventorytransactiondetail WHERE detailkey=(SELECT max(detailkey) FROM inventorytransactionheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontype = 4 AND istemp = 'false')";
+                console.log(Qry);
+                if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result) {
+                        getRecord();
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") 
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                        getRecord();
+						//DelInsertPreviousLoadData()
+                    },
+                    function(){
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+			//-----------
+			function DelInsertPreviousLoadData()
+            {
+                var Qry = "Delete From inventorytransactiondetail WHERE detailkey=(SELECT max(detailkey) FROM inventorytransactionheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontype = 4 AND istemp = 'false')";
+                console.log(Qry);
+                if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result) {
+                        getRecord();
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") 
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                        getRecord();
+                    },
+                    function(){
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+			//------------
+			
+            
+            function CheckRollUp()
+            {   
+            	
+                if(LoadReqRollupOrder == 1 && urgentLoadRequest==0)
+                    LoadDefaultData("sales");
+                else if(LoadReqRollupOrder == 2 && urgentLoadRequest==0)
+                    LoadDefaultData("order");
+              
+                else
+                    getRecord();
+            }
+            
+            function LoadDefaultData(type)
+            {
+                if(type == "sales")
+                    var Qry = "SELECT itemcode,(sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0))) AS Qty FROM invoicedetail WHERE routekey= " + sessionStorage.getItem("RouteKey") + " AND istemp = 'false' GROUP BY itemcode";
+		    		//var Qry = "SELECT itemcode,itemqty AS Qty FROM averagesalesqty WHERE routecode= " + sessionStorage.getItem("RouteCode") + " GROUP BY itemcode";
+                else if(type == "order")
+                    var Qry = "SELECT itemcode,(sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0))) AS Qty FROM salesorderdetail sod join salesorderheader soh on sod.transactionkey = soh.transactionkey and strftime('%d-%m-%Y',soh.transactiondate) = '" + RequestDate + "' AND soh.routekey= " + sessionStorage.getItem("RouteKey") + " AND soh.istemp = 'false' GROUP BY itemcode";
+                if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result) {
+                        console.log(Qry);
+                        if(result.length > 0)
+                        {
+                            /*for(i=0;i<result.length;i++)
+                            {                                
+                                var itemcode = result[i][0];
+                                var qty = result[i][1];                                                                                               
+                                CheckTransactionDataCount(itemcode,qty,i,result);
+                            }*/
+                            CheckTransactionDataCount(0,result);
+                        }
+                        else
+                        {
+                            getRecord();
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{
+                        	var array = $.map(result.array, function(item, index) {                        
+	                            return [[item.itemcode, item.Qty]];
+                        	});
+                        	result = array;                        	
+                        	if(result.length > 0)
+                        	{
+	                            /*for(i=0;i<result.length;i++)
+                            	{
+	                                var itemcode = result[i][0];
+                                	var qty = result[i][1];  
+                                	CheckTransactionDataCount(itemcode,qty,i,result);
+                            	}*/
+                            	CheckTransactionDataCount(0,result);
+                        	}
+                        }
+                        else
+                        {
+                            getRecord();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+                        
+            function CheckTransactionDataCount(i,result)
+            {
+		
+            	var itemcode = result[i][0];
+            	var qty = result[i][1];            	
+                var QryInv = "SELECT COUNT(*) AS cnt FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=" + transactiontypecode + " AND istemp = 'true' AND itemcode=" + itemcode;
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result1) {
+                        console.log(QryInv);
+                        if(result1[0][0] == 0)
+                            InsertDataToTransaction(i,result);
+                        else
+                            UpdateDataToTransaction(i,result);
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [QryInv]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(QryInv, function(result1) {
+                        console.log(QryInv);                        
+                        if(eval(qty) > 0)
+                        {
+                        if(result1.array != undefined)
+                        {
+                        	if(result1.array[0].cnt == 0)
+                            	InsertDataToTransaction(i,result);
+                            else
+                            	UpdateDataToTransaction(i,result);
+                        }
+                        else
+                            UpdateDataToTransaction(i,result);
+                        }
+						else
+							CheckTransactionDataCount(i+1,result);
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function InsertDataToTransaction(i,result)
+            {
+            	var itemcode,qty;
+            	itemcode = result[i][0];
+            	qty = result[i][1];
+                var Qry = "INSERT INTO inventorytransactiondetail(itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,istemp,issync) VALUES(" + itemcode + "," + sessionStorage.getItem("RouteKey") + "," + transactiontypecode + "," + qty + ",(SELECT defaultsalesprice FROM itemmaster WHERE actualitemcode=" + itemcode + "),(SELECT caseprice FROM itemmaster WHERE actualitemcode=" + itemcode + "),'true',0)";
+                console.log(Qry);
+                if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result1) {
+                    	if(i+1 < result.length) 	
+                    		CheckTransactionDataCount(i+1,result);
+                    		
+                    	if(i == (result.length - 1))
+                            getRecord();
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") 
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result1) {
+                    	
+			if(i+1 < result.length) 	
+                    		CheckTransactionDataCount(i+1,result);
+                    		
+                    	if(i == (result.length - 1))
+                            getRecord();
+                    },
+                    function(){
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function UpdateDataToTransaction(i,result)
+            {
+            	
+            	var itemcode,qty;
+            	itemcode = result[i][0];
+            	qty = result[i][1];
+                //var Qry = "UPDATE inventorytransactiondetail set quantity=(quantity + " + qty + ") WHERE itemcode = " + itemcode + " AND routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp = 'true'";
+                var Qry = "UPDATE inventorytransactiondetail set quantity= " + qty + " WHERE itemcode = " + itemcode + " AND routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp = 'true'";
+                console.log(Qry);
+                if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result1) {
+                    	if(i+1 < result.length) 	
+                    		CheckTransactionDataCount(i+1,result);
+                    	
+                    	if(i == (result.length - 1))
+                            getRecord();         
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") 
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result1) {
+                    	if(i+1 < result.length) 	
+                    		CheckTransactionDataCount(i+1,result);
+                    		
+                    	if(i == (result.length - 1))
+                            getRecord();
+                    },
+                    function(){
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function getRecord()
+            {
+                var Qry = getQuery();
+               
+                console.log(Qry);
+         
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        TableDataOffLine(result)
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{
+                        	var array = $.map(result.array, function(item, index) {
+                        		if (CaseEnabled)
+                            		return [[item.Code,item.Desc, item.cases,item.units, item.caseprice, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice]];
+                        		else
+                            		return [[item.Code,item.Desc,item.units, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice]];
+                        	});
+                        	result = array;
+                        	TableDataOffLine(result);
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            
+            function getQuery()
+            {
+            	var itemgroupcode = $('#itemgroup').val();
+                var isItemGroup= $('#itemgroup').val()==0?'':"and im.itemgroupcode="+itemgroupcode+"";
+                
+                
+                var cmpid;
+    			var majid;
+    			var submajid;
+    			var ctid;
+    			if (companyid != 0 || companyid == null) {
+    				cmpid = companyid;
+    			} else {
+    				cmpid = $('#companygrpcode').val();
+    			}
+
+    			majid = $('#major').val();
+
+    			if (majid == null && majorid != null) {
+    				majid = majorid;
+    			}
+
+    			submajid = $('#submajor').val();
+
+    			if (submajid == null && submajorid != null) {
+    				submajid = submajorid;
+    			}
+
+    			ctid = $('#select1').val();
+
+    			if (ctid == null && catid != null) {
+    				ctid = catid;
+    			}
+    			
+    			
+                
+            	
+                if(itemmustkey==null  || itemmustkey==undefined || itemmustkey==''){
+                	itemmustkey=0;
+                }
+            	localStorage.transactiontypecode = transactiontypecode;
+                var Qry = "";
+                var salesqty="CASE WHEN (ifnull(saleqty,0)-ifnull(returnqty,0))<0 THEN ifnull(saleqty,0) ELSE (ifnull(saleqty,0)-ifnull(returnqty,0)) END";
+                var availqty="ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0)";
+               
+                
+                if(PrevLoad == true)
+                {
+                	
+                    if (CaseEnabled){
+                        //Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE (quantity/im.unitspercase) END) as cases,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) group by actualitemcode";
+						//Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE (quantity/im.unitspercase) END) as cases,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = "+ var_detailkey+" group by actualitemcode";
+						//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode where imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) ) group by actualitemcode order by actualitemcode";
+                    	//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,case when (ifnull(isd.saleqty,0))>0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE ((ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))/unitspercase) END) END  as cases,case when (ifnull(isd.saleqty,0))>0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN (ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0)) ELSE ((ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))%unitspercase) END) END as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) and isd.istemp='false' group by actualitemcode order by actualitemcode";
+//                     	if(urgentLoadRequest==1){
+//                     		Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode order by seqprint";
+//                     	}else{
+//                     		Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4) group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode =" + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) "+isItemGroup+"  group by actualitemcode order by seqprint";
+//                     	}
+						
+
+                    	if(urgentLoadRequest==1){
+                    		//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode order by seqprint";
+                    		
+                    		//org qry sujee commented 20/06/2018
+                    		//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode =" + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) "+isItemGroup+"  group by actualitemcode order by seqprint";
+                    		
+                    		Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4)  group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode =" + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) ";
+                    	}else{
+                    		if(eval(LoadReqRollupOrder)==3){
+                    		// org qry sujee commented 20/06/2018
+                    		//	Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and  imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode =" + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) "+isItemGroup+"  group by actualitemcode order by seqprint";
+                    			 
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4)  group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and  imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode =" + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4))   group by actualitemcode order by seqprint";
+                    			
+                    		}else if(eval(LoadReqRollupOrder)==0){
+                    		// org qry sujee commented 20/06/2018
+                    		//	Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode order by actualitemcode";
+                    		
+                    			if(filterflag == 1)
+                    			{
+                    			Qry ="SELECT CASE WHEN 'en' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,ifnull((itd.quantity/im.unitspercase),0) as cases,ifnull((itd.quantity%im.unitspercase),0) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN 'alternatecode' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmaster im left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode left join inventorytransactiondetail itd on itd.itemcode=im.actualitemcode ";
+                    			}else { 
+                    			Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) ";
+                    			}
+                    			console.log(Qry);
+                    			//alert(Qry);
+                    		}else{
+                    		  // org qry sujee commented 20/06/2018
+                    			//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) and isd.istemp='false' "+isItemGroup+" group by actualitemcode order by actualitemcode";
+                    			
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)  group by actualitemcode union select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) and isd.istemp='false'  group by actualitemcode order by actualitemcode";
+                    			
+                    		}
+                    		
+                    	}
+                    }	
+                    else{
+						//Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = "+ var_detailkey+" group by actualitemcode";
+                        //Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) group by actualitemcode";
+                    	//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  quantity END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode where imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) ) group by actualitemcode order by actualitemcode";
+                    	//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  quantity END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,case when (ifnull(isd.saleqty,0))=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN (ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0)) ELSE ((ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))) END) END as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) and isd.istemp='false' group by actualitemcode order by actualitemcode";
+                    	if(urgentLoadRequest==1){
+                    		Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  quantity END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and  imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) "+isItemGroup+" group by actualitemcode order by seqprint";
+                    		
+                    	}else{
+                    		if(eval(LoadReqRollupOrder)==3){
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  quantity END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE invd.istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and  imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) "+isItemGroup+" group by actualitemcode order by seqprint";
+                    		}else if(eval(LoadReqRollupOrder)==0){
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  quantity END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode order by actualitemcode"
+                    		}else{
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  quantity END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4) "+isItemGroup+" group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND detailkey = (SELECT max(detailkey) FROM inventorytransactionheader WHERE istemp='false' AND transactiontype=4)) and isd.istemp='false' "+isItemGroup+" group by actualitemcode order by actualitemcode"
+                    			
+                    		}
+                    		
+                    		
+                    	} 
+                    	
+                    	 
+                    }
+                }
+                else
+                {
+                	
+                    if (CaseEnabled){
+                    	//Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE (quantity/im.unitspercase) END) as cases,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode";
+                    	//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode where imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' ) group by actualitemcode order by actualitemcode";
+                    	//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,case when (ifnull(isd.saleqty,0))>0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE ((ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))/unitspercase) END) END  as cases,case when (ifnull(isd.saleqty,0))>0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN (ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0)) ELSE ((ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))) END) END as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' ) and isd.istemp='false' group by actualitemcode order by actualitemcode";
+                    	if(urgentLoadRequest==1){
+//                     		Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND invd.istemp='true' "+isItemGroup+" group by actualitemcode order by seqprint";
+							
+							
+							// orq qry sujee commented 20/06/2018
+                    		//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND invd.istemp='true' "+isItemGroup+"  group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true') "+isItemGroup+" group by actualitemcode order by seqprint";
+							
+							// sujee commented on 15/08/2018 
+                    	//	Qry= "SELECT CASE WHEN 'en' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,ifnull((select case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END from inventorytransactiondetail where transactiontypecode=8 and istemp='true'),0 ) as cases,ifnull((select case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END from inventorytransactiondetail where transactiontypecode=8 and istemp='true'),0) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN 'alternatecode' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmaster im  left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode ";
+                    		
+                    		Qry= "SELECT CASE WHEN 'en' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,ifnull((select case when itd.quantity=0 THEN 0 ELSE (CASE WHEN im.unitspercase=1 THEN 0 ELSE (itd.quantity/im.unitspercase) END) END from inventorytransactiondetail where transactiontypecode=8 and istemp='true'),0 ) as cases,ifnull((select case when itd.quantity=0 THEN 0 ELSE (CASE WHEN im.unitspercase=1 THEN itd.quantity ELSE (itd.quantity % im.unitspercase) END) END from inventorytransactiondetail where transactiontypecode=8 and istemp='true'),0) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN 'alternatecode' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmaster im  left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode left join inventorytransactiondetail itd on itd.itemcode=im.actualitemcode";
+                    		
+                    	}
+                    	else{
+                    		if(eval(LoadReqRollupOrder)==3){
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND invd.istemp='true' "+isItemGroup+"  group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as cases,0 as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true') "+isItemGroup+" group by actualitemcode order by seqprint";	
+                    		}else if(eval(LoadReqRollupOrder)==0){
+                    		// orq qry sujee commented 20/06/2018
+                    			//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode order by actualitemcode"
+                    			
+                    			// sujee commented temp 15/08/2018
+                    		//	Qry= "SELECT CASE WHEN 'en' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,ifnull((select case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END from inventorytransactiondetail where transactiontypecode=8 and istemp='true'),0) as cases,ifnull((select case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END from inventorytransactiondetail where transactiontypecode=8 and istemp='true' ),0) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN 'alternatecode' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmaster im left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode ";
+                    		
+                    			Qry= "SELECT CASE WHEN 'en' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,ifnull((select (itd.quantity/im.unitspercase) from inventorytransactiondetail itd inner join itemmaster im on itd.itemcode=im.actualitemcode where  itd.transactiontypecode=8 and istemp='true'),0) as cases,ifnull((select (itd.quantity%im.unitspercase) from inventorytransactiondetail itd inner join itemmaster im on itd.itemcode=im.actualitemcode where  itd.transactiontypecode=8 and istemp='true'),0) as units,im.caseprice as caseprice,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN 'alternatecode' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmaster im left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode left join inventorytransactiondetail itd on itd.itemcode=im.actualitemcode ";
+                    			
+                    		}else{
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN 0 ELSE (quantity/im.unitspercase) END) END) as cases,(case when quantity=0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN quantity ELSE (quantity % im.unitspercase) END) END) as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' "+isItemGroup+" group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0  as cases,0 as units,im.caseprice as caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' ) and isd.istemp='false' "+isItemGroup+" group by actualitemcode order by actualitemcode";
+                    		}
+                    		
+                    		
+                    	}
+                    	
+                    	
+                    }
+                    else{
+                    	//Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode";
+                    	//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  (quantity) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode where imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' ) group by actualitemcode order by actualitemcode";
+                    	//Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  (quantity) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,case when (ifnull(isd.saleqty,0))>0 THEN 0 ELSE (CASE WHEN unitspercase=1 THEN (ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0)) ELSE ((ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))) END) END as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' )  and isd.istemp='false' group by actualitemcode order by actualitemcode";
+                    	if(urgentLoadRequest==1){//alert("20");
+                    		Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  (quantity % im.unitspercase) END) as units,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND invd.istemp='true' "+isItemGroup+" group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' ) "+isItemGroup+" group by actualitemcode order by seqprint";
+                    		
+                    	}else{//alert("21");
+                    		if(eval(LoadReqRollupOrder)==3){//alert("22");
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  (quantity % im.unitspercase) END) as units,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND invd.istemp='true' "+isItemGroup+" group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,(CAST("+availqty+" AS INT)/unitspercase) || '/' || (CAST("+availqty+" AS INT)%unitspercase) as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice,(CASE im.printsequenceroute WHEN 0 THEN 100000 ELSE im.printsequenceroute END) AS seqprint from itemmustdetail imd inner join itemmaster im on imd.itemcode=im.actualitemcode left outer join inventorysummarydetail isd on im.actualitemcode=isd.itemcode where imd.itemmustcode="+itemmustkey+" and imd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' ) "+isItemGroup+" group by actualitemcode order by seqprint";
+                    		}else if(eval(LoadReqRollupOrder)==0){//alert("23");
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  (quantity) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' "+isItemGroup+" group by actualitemcode order by actualitemcode"
+                    			
+                    		}else{//alert("24");
+                    			Qry="SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN 0 ELSE  (quantity) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' "+isItemGroup+" group by actualitemcode union SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,0 as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode as actualitemcode,im.unitspercase as unitspercase,im.caseprice as caseprice from inventorysummarydetail isd inner join itemmaster im on isd.itemcode=im.actualitemcode where isd.itemcode not in(select distinct itemcode from inventorytransactiondetail  where routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' )  and isd.istemp='false' "+isItemGroup+" group by actualitemcode order by actualitemcode"
+                    			
+                    		}
+                    		
+                    	}
+                    	
+                    	 
+                    } 
+                        
+                }
+                
+                
+                var flagid = 0;
+    			var condition ="";
+    			
+    			var searchtextcondiiton="";
+    			
+    			
+    		
+    			if (cmpid != null || majid != null || submajid != null
+    					|| ctid != null ) {
+    				
+    				condition = " Where ";
+
+    			} 
+    			/*if(filterflag ==1)
+    				
+				{
+				 alert("here");
+				 condition = " AND ";
+				}
+    			
+    			*/
+    			
+    			if (cmpid != null) {
+    				if (flagid > 0)
+    					condition = condition + " and im.companygroupcode in("
+    							+ cmpid + ") ";
+    				else {
+    					condition = condition + "   im.companygroupcode in("
+    							+ cmpid + ") ";
+    					flagid++;
+    				}
+
+    			}
+
+    			if (majid != null) {
+    				if (flagid > 0) {
+
+    					condition = condition + " and im.majorcategorycode in("
+    							+ majid + ")  ";
+    				} else
+
+    				{
+    					condition = condition + "  im.majorcategorycode in("
+    							+ majid + ")  ";
+    					flagid++;
+    				}
+    			}
+
+    			if (submajid != null) {
+    				if (flagid > 0) {
+    					condition = condition + " and im.submajorcategorycode in("
+    							+ submajid + ") ";
+    				} else {
+    					condition = condition + "   im.submajorcategorycode in("
+    							+ submajid + ") ";
+    					flagid++;
+    				}
+    			}
+
+    			if (ctid != null) {
+    				if (flagid > 0) {
+    					condition = condition + " and im.itemgroupcode in(" + ctid
+    							+ ")  ";
+    				} else {
+    					condition = condition + "   im.itemgroupcode in(" + ctid
+    							+ ")  ";
+    					flagid++;
+    				}
+    			}
+    			
+    			Qry = Qry  +  condition + " order by im.actualitemcode  limit 200 offset "+ (curPage-1)*200;
+    			console.log(Qry);
+    			// alert(Qry);
+    			
+    			
+    		     var countqry =" select count(*) as cnt  FROM itemmaster im " +condition;
+    				
+    			 $("#Ulpagin").empty();
+    			  	window.plugins.DataBaseHelper.select(countqry, function(result1) { 
+    					var totRowcount = $.map(result1.array, function(item, index) {
+    						return [ [ item.cnt ] ];
+    					});
+    		
+    					
+    					 var pages = Math.ceil(totRowcount[0][0]/200);
+    					
+    					 var c;
+    					
+    					for (i=1;i<=pages;i++)
+    						{ 
+    						 
+    						 if(curPage >0 && curPage ==i)
+    						 {
+    						 	c = "<li class='active page' >"+ i + "</li>" ;
+    						 }
+    					 else if(curPage == 0 && i==1)
+    						 {
+    						 $("#Ulpagin").empty();
+    						  
+    						 c = "<li class='active page' >"+ i + "</li>" ;
+    							 
+    						 }
+    					 else
+    						 c = "<li class='page' >"+ i + "</li>" ;
+    					     
+    					     
+    					  
+    						 $('.pagination ').append(c);
+    						 
+    						}
+    					curPage=0;
+    					
+    				
+            	
+    					
+    			}, function() {
+    				console.warn("Error calling plugin");
+    			});
+    			
+    			return Qry;
+                console.log(Qry);
+                //alert(Qry);
+    			
+                /*if(LoadReqRollupOrder == 0)
+                {
+                    if (CaseEnabled) 
+                        Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE (quantity/im.unitspercase) END) as cases,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode";
+                    else 
+                        Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when quantity=0 THEN '' ELSE  (quantity % im.unitspercase) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM inventorytransactiondetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = " + transactiontypecode + " AND istemp='true' group by actualitemcode";
+                }
+                else if(LoadReqRollupOrder == 1)
+                {
+                    if (CaseEnabled) 
+                        Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when (sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))=0 THEN '' ELSE ((sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))/im.unitspercase) END) as cases,(case when (sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))=0 THEN '' ELSE  ((sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0))) % im.unitspercase) END) as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM invoicedetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp='false' group by actualitemcode";
+                    else 
+                        Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when (sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))=0 THEN '' ELSE  ((sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0))) % im.unitspercase) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM invoicedetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp='false' group by actualitemcode";
+                }
+                else if(LoadReqRollupOrder == 2)
+                {
+                    if (CaseEnabled) 
+                        Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when (sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))=0 THEN '' ELSE ((sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))/im.unitspercase) END) as cases,(case when (sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))=0 THEN '' ELSE  ((sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0))) % im.unitspercase) END) as units,im.caseprice,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM itemmaster im  JOIN salesorderdetail AS sod ON im.actualitemcode = sod.itemcode join salesorderheader soh on sod.transactionkey = soh.transactionkey and strftime('%Y-%m-%d',soh.transactiondate) = " + $("#lblReqDate").text() + " where sod.routekey=" + sessionStorage.getItem("RouteKey") + " AND sod.istemp='false' group by actualitemcode";
+                    else 
+                        Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(case when (sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0)))=0 THEN '' ELSE  ((sum(ifnull(salesqty,0)) + sum(ifnull(manualfreeqty,0)) - sum(ifnull(returnqty,0))) % im.unitspercase) END) as units,im.defaultsalesprice as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice FROM invoicedetail invd JOIN itemmaster AS im ON im.actualitemcode = invd.itemcode where invd.routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp='false' group by actualitemcode";
+                }
+                return Qry;*/
+            }
+            
+            function TableDataOffLine(result)
+            {// alert("sujeeeeeeeee");
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                var temp;
+                data = result;
+                ClearTable('tblContent');
+                $.mobile.hidePageLoadingMsg();
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        if (CaseEnabled) {
+                            //if (j == 1 || j == 2) For disbale units
+							if (j == 2 || j==3 ) 
+							{
+								if(j==2 && eval(data[i][8])==1){
+                            		temp='';
+                            	}else{
+                                	temp = "class = 'editable'"; 
+                                }                                 
+                                if (data[i][j] != '' && data[i][j] != undefined)
+                                    data[i][j] = parseInt(data[i][j]);
+                                else {
+                                    data[i][j] = '';
+                                }
+                            }
+                            else
+                                temp = '';
+                        }
+                        else {
+                            if (j ==2) {
+                                temp = "class = 'editable'";
+                                if (data[i][j] != '' && data[i][j] != undefined)
+                                    data[i][j] = parseInt(data[i][j]);
+                                else
+                                    data[i][j] = '';
+                            }
+                            else
+                                temp = '';
+                        }
+                        temp += (j == 1) ? 'class = leftAlign' : '';
+                        if (j == CellCount - 1) {
+                            temp += " style='text-align:right;padding:0px 10px 0px 10px;'";
+                            if (data[i][1] == '')
+                                data[i][j] = ''; //Overriding total column to set blank;
+                            else{
+                            	if (data[i][j] != '' && data[i][j] != undefined)
+                                    data[i][j] = data[i][j];
+                        
+                        
+                        	}
+//                                data[i][j] = data[i][1];
+//                                if (CaseEnabled) {
+//                                    // Total = (case * caseprice) + (Units * salesprice)                                                   
+//                                    data[i][j] = eval(data[i][2] * data[i][4]) + eval(data[i][3] * data[i][5])
+//                                }
+//                                else {
+//                                    // Total = (Units * salesprice)                  
+//                                    data[i][j] = eval(data[i][2] * data[i][3])
+//                                }
+//                                if (isNaN(data[i][j]))
+//                                    data[i][j] = 0;
+                            
+                        }
+						if (j == CellCount - 1)
+						temp += " class = 'last'";
+                        if (CaseEnabled) {
+							if (j >= 4 && j <= 5) {
+								temp += " style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+                            }
+                        }
+                        else {
+                            if (j==3)
+			    			{
+								temp += " style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+                                if (data[i][j] != '' && data[i][j] != undefined)
+                                data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+			    			}
+                        }
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tblContent tbody').append(r);
+                    
+                }
+                
+                if(platform == "iPad")
+                {
+                	$("#tblHeaderContent th.last").show()
+                	$("#tblContent td.last").show()
+                }
+                
+                //Click event for each row in table to process row data.
+                $("#tblContent tr").live('click', function() {
+                    $(this).addClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var idx = $(this).index();                             
+                    if (CaseEnabled) {
+                        $('#txtItemNo').val(data[idx - 1][4]+"/"+data[idx - 1][5]);
+                        $('#txtUPC').val(data[idx - 1][8]);
+                        AvailQty = null;
+                        getAvailQty(data[idx - 1][7]);
+                    }
+                    else {
+                        $('#txtItemNo').val(data[idx - 1][3]);
+                        $('#txtUPC').val(data[idx - 1][6]);
+                        AvailQty = null;
+                        getAvailQty(data[idx - 1][5]);
+                    }
+                });
+
+
+                $("#tblContent tr:eq(1)").trigger('click');
+                $("#tblContent tr:odd").addClass('oddRow');
+                $("#tblContent tr:even").addClass('evenRow');
+    
+                // If Edit is enabled allow editing in grid
+                if(LoadReqMethod == 1)
+                {
+                	$('#tblContent td.editable').click(function() {    
+                	if(eval($(this).text()) <= 0)
+                    	$(this).text("");                
+                    var input = $("<input type='tel'/>").attr('value', $(this).text());
+                    var w = $(this).innerWidth();
+                    w = w - 50;
+                    if(window.innerWidth>1000){
+                    	input.css('width', w).css('border', '0').css('height', 60).css('font-size',35);
+                    }else{
+                    	input.css('width', w).css('border', '0').css('height', 30).css('font-size', 16);
+                    }
+                    $(this).empty();                    
+                    $(this).append(input);
+                    input.bind("keyup",function() { return SetNumberMaxLength(this,4) });        
+                    input.focusout(function() {
+                    	var v = parseInt($(input).val(),10);
+                        $(input).val(v); 
+                    	if(ValidateGridCaseUnit(this)) 
+                    	{ 
+                    		UpdateData(this) 
+                    	} 
+                    });
+                    input.focus();
+                    $(this).find('input').live("keypress", function(event) {
+                        if (event.keyCode == 13) {
+                            input.focusout();
+                        }
+                    });
+                });
+                }
+            }
+            
+            // Update Quantity according to changes in grid.
+            function UpdateData(obj) {
+            	localStorage.transactiontypecode = transactiontypecode;
+                console.log('updatedata');
+                var RowIndex = $(obj).parent().parent().index();
+                var ObjIndex = $(obj).parent().index();
+                $(obj).parent().text(parseInt(CheckIsNaN($(obj).val())));
+                var Cases, Units, UnitsPerCase, ItemCode, RouteKey, CurrQty, Price,CasePrice;
+                CasePrice = 0;
+                if (CaseEnabled) {
+                    Cases = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text());
+                    Units = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text());
+					
+					
+                    ItemCode = data[RowIndex - 1][0];
+                    actualitemcode=data[RowIndex - 1][7];
+                    UnitsPerCase = data[RowIndex - 1][8];
+					//-----------
+                    //ItemCode = data[RowIndex - 1][7];
+                    //UnitsPerCase = data[RowIndex - 1][8];
+                    RouteKey = sessionStorage.getItem("RouteKey");
+                    Cases = (Cases == undefined || Cases == '') ? 0 : parseInt(CheckIsNaN(Cases));
+                    Units = (Units == undefined || Units == '') ? 0 : parseInt(CheckIsNaN(Units));
+                    CurrQty = (parseInt(Cases) * UnitsPerCase) + parseInt(Units);                    
+                    Price = eval(data[RowIndex - 1][5]).toFixed(decimalplace);
+                    CasePrice = eval(data[RowIndex - 1][4]).toFixed(decimalplace);
+					
+					if(eval(UnitsPerCase)==1){
+	                    
+                    	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text("0");
+                    	$("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text(parseInt(CurrQty));                  //Calculating Total value ([case * caseprice] + [units * salesprice])
+                   
+                    
+                    }else{
+                    	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text(parseInt(CurrQty / UnitsPerCase));
+                    	$("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text(parseInt(CurrQty % UnitsPerCase));                  //Calculating Total value ([case * caseprice] + [units * salesprice])
+                   
+                    }
+					
+					//Calculating Total value
+                    var Total = CheckIsNaN(eval(Cases * data[RowIndex - 1][4]) + eval(Units * data[RowIndex - 1][5]));
+                    //$("#tblContent tr:eq(" + RowIndex + ") td:eq(6)").text(Total.toFixed(decimalplace));                    
+                    //Over                                                     
+                    HasEntry(ItemCode, RouteKey, CurrQty, Price,CasePrice,actualitemcode);
+                }
+                else {
+                    Units = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text());
+                    ItemCode = data[RowIndex - 1][0];
+                    actualitemcode=data[RowIndex - 1][5];
+                    UnitsPerCase = data[RowIndex - 1][6];
+                    RouteKey = sessionStorage.getItem("RouteKey");
+                    Units = (Units == undefined || Units == '') ? 0 : parseInt(Units);
+                    CurrQty = Units;                    
+                    Price = eval(data[RowIndex - 1][3]).toFixed(decimalplace);
+                    //Calculating Total value
+                    var Total = CheckIsNaN(eval(Units * data[RowIndex - 1][3]));
+                    //$("#tblContent tr:eq(" + RowIndex + ") td:eq(4)").text(Total.toFixed(decimalplace));                    
+                    //Over                                                  
+                    HasEntry(ItemCode, RouteKey, CurrQty, Price,CasePrice,actualitemcode);
+                }
+            }
+            
+            //Check For Entry of quantity in database
+            function HasEntry(ItemCode, RouteKey, CurrQty, Price, CasePrice,actualitemcode) {
+                //alert(ItemCode + " : " + RouteCode)
+                
+            	var Qry = "SELECT COUNT(*) as totalcount FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=" + transactiontypecode + " AND istemp = 'true' AND itemcode=" + actualitemcode;
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        //alert(Qry);
+                        CheckInsert(ItemCode, RouteKey, CurrQty, Price, CasePrice,actualitemcode)
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        var res = $.map(result.array, function(item, index) {
+                            return [[item.totalcount]];
+                        });
+                       
+                        if(res[0][0]>0){
+                        	 CheckInsert(ItemCode, RouteKey, CurrQty, Price, CasePrice,actualitemcode,false);
+                        }else{
+                        	 CheckInsert(ItemCode, RouteKey, CurrQty, Price, CasePrice,actualitemcode,true);
+                        }
+                       
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+
+                }
+            }
+            
+             // Insert/Update Quantity according to result.
+            function CheckInsert(ItemCode, RouteKey, CurrQty, Price, CasePrice,actualitemcode,isInsert) { 
+            	   if(isInsert){
+            		   var Qry="INSERT INTO inventorytransactiondetail(itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,istemp,issync) VALUES(" + actualitemcode + "," + RouteKey + "," + localStorage.transactiontypecode + "," + CurrQty + ","+Price+","+CasePrice+",'true',0)";
+            	   }else{
+            		   var Qry ="UPDATE inventorytransactiondetail SET quantity=" + CurrQty + ",itemprice=" + Price + ",itemcaseprice= " + CasePrice + "  where istemp='true' and itemcode=" + actualitemcode + " and routekey=" + RouteKey + " and transactiontypecode=" + transactiontypecode;
+            	   }
+                  
+                    console.log(Qry);
+                    if (platform == "iPad") {
+                        Cordova.exec(function(result) {
+                            
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [Qry]);
+                    }
+                    else if (platform == "Android") {
+                        window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                            
+                        },
+					    function() {
+					        console.warn("Error calling plugin");
+					    });
+                    }               
+            }
+            
+            $(".leftfooter").html(getCurrentDate());
+            $('.ui-body-d').css({ 'background': '#fff' });
+            $('.ui-input-datebox').css({ 'width': '91%', 'line-height': '4.0' });
+            $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+            $('.ui-input-datebox input').css({ 'width': '76% !important', 'color': '#999' });
+            $('.ui-disabled').css({ 'opacity': '0.8' });
+            
+            var lan = sessionStorage.getItem("Language");
+	    window.lang.run(lan);
+           if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('InventoryLoad'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                	$(".centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+		
+            }
+	    else
+	    {
+			window.lang.change('en','en');
+			$(".centerboxInvReq").attr("dir", "ltr");
+			$('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			$('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			$('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			$('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	    }            
+
+        });
+        
+        // Function for getting Available Qty
+        function getAvailQty(ItemNo) {
+            //navigator.notification.alert(ItemNo);
+            //var Qry = "Select ((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) - ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) +ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))/itemmaster.unitspercase) As LoadQty,(((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) - ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))%itemmaster.unitspercase)) As LoadUnit,itemmaster.unitspercase,itemmaster.defaultsalesprice,(ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0) +ifnull(inventorysummarydetail.beginstockqty,0)+ ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) - ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0)) As AvialableQty,unitspercase from inventorysummarydetail inner join itemmaster on inventorysummarydetail.itemcode = itemmaster.actualitemcode  and inventorysummarydetail.routekey = " + sessionStorage.getItem('RouteKey') + " where itemmaster.actualitemcode = " + ItemNo
+        	 var Qry = "Select CASE WHEN itemmaster.unitspercase=1 THEN 0 ELSE ((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -   ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) +ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))/itemmaster.unitspercase) END As LoadQty,CASE WHEN itemmaster.unitspercase=1 THEN (((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -  ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0)))) ELSE (((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -  ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))%itemmaster.unitspercase)) END  As LoadUnit,itemmaster.unitspercase,itemmaster.defaultsalesprice,(ifnull(inventorysummarydetail.loadqty,0) +ifnull(inventorysummarydetail.loadadjustqty,0)+ ifnull(inventorysummarydetail.loadaddqty,0) +ifnull(inventorysummarydetail.beginstockqty,0)- ifnull(inventorysummarydetail.loadcutqty,0) - ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0)) As AvailableQty from inventorysummarydetail inner join itemmaster on inventorysummarydetail.itemcode = itemmaster.actualitemcode  and inventorysummarydetail.routekey =" + sessionStorage.getItem('RouteKey') + " where itemmaster.actualitemcode = " + ItemNo;
+             
+             console.log(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                    //navigator.notification.alert(result);
+                    if (CaseEnabled)
+                        $("#AvailQty").text(parseInt(result[0][0]) + "/" + parseInt(result[0][1]));
+                    else
+                        $("#AvailQty").text(parseInt(result[0][4]));
+
+                    AvailQty = result[0][4];
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    
+                	if(result.array!=undefined){
+                		
+	                	var res = $.map(result.array, function(item, index) {
+	                        return [[item.LoadQty, item.LoadUnit, item.unitspercase, item.defaultsalesprice, item.AvailableQty]];
+	                    });
+	
+	                    var result = res;
+	                   
+	                    if (CaseEnabled)
+	                        $("#AvailQty").text(parseInt(result[0][0]) + "/" + parseInt(result[0][1]));
+	                    else
+	                        $("#AvailQty").text(parseInt(result[0][4]));
+	                    AvailQty = result[0][4];
+                	}else{
+                		  $("#AvailQty").text("0/0");
+                		  AvailQty =0;
+                	}
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+        
+        //Function When Add Button clicks
+        function OnAdd()
+        {
+            localStorage.transactiontypecode = transactiontypecode;
+            sessionStorage.addmodule = 'inventory';
+            window.location="loadrequest_itementry.html";
+        }
+        
+        function OnSummary()
+        {
+            sessionStorage.RouteName = RouteName;
+            window.location = "requestsummary.html";
+        }
+        
+        function OnCancel()
+        {
+            var Qry = "SELECT COUNT(*) as cnt FROM inventorytransactiondetail WHERE transactiontypecode=" + transactiontypecode + " AND istemp = 'true' AND routekey= " + sessionStorage.getItem("RouteKey");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {                        
+                        if(result[0][0] == 0)
+                        {
+                              window.location = "inventory.html";
+                        }
+                        else
+                        {
+                            ConfirmDiscard();
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);                
+            }
+            else if(platform == "Android")
+            {
+                
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array[0].cnt == 0)
+                        {
+                            window.location = "inventory.html";
+                        }
+                        else
+                        {
+                            ConfirmDiscard();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+            }            
+        }
+        
+        function ConfirmDiscard()
+        {
+            var msg = getLangTextdata("Discard All Changes And Exit?");
+            navigator.notification.confirm(msg,function(action){
+                if(action == 1)
+                {
+                    var Qry = "DELETE FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp='true' AND transactiontypecode = " + transactiontypecode;
+                    if(platform == "iPad")
+                    {
+                        Cordova.exec(function(result) {
+                            window.location = "inventory.html";
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [Qry]);
+                    }
+                    else if(platform == "Android")
+                    {
+                        window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                            window.location = "inventory.html";
+                        },
+                        function() {
+                            console.warn("Error calling plugin");
+                        });
+                    }
+                }
+            });
+        }
+        
+        function RemoveOnQuickAccess()
+        {
+            var Qry = "DELETE FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND istemp='true' AND transactiontypecode = " + transactiontypecode;                    
+            if(platform == "iPad")
+            {
+                console.log(Qry);
+                Cordova.exec(function(result) {                                               
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {                                              
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        function CheckVanstockInsert(){
+        	
+       	 	var total = 0; 
+       	 	var length=$('#tblContent tr').length;
+       	 	
+       	 	dataToInsert=[];
+       	 	if(eval(length)>1){
+       	 			$('#tblContent tr').each(function(i)
+       	            {
+       	                     if($(this).index() > 0)
+       	                     {
+       	                         var index= $(this).index();
+       	                    	 var $tds = $(this).find('td');
+       	                    	 
+       	                    	 
+       	                    	
+       	                    	 var requestdata={};
+       	                    	 requestdata.itemcode=data[index-1][7];
+       	                    	 var cases=eval($tds.eq(2).text());
+       	                    	 var units=eval($tds.eq(3).text());
+       	                    	 
+       	                    	 var UnitsPerCase = data[index - 1][8];
+       	                    	 requestdata.Price = eval(data[index - 1][5]).toFixed(decimalplace);
+       	                    	 requestdata.CasePrice = eval(data[index - 1][4]).toFixed(decimalplace);
+       	                    	 requestdata.currqty=(parseInt(cases) * UnitsPerCase) + parseInt(units);    
+       	                    	 dataToInsert.push(requestdata);
+       	                    	 if(index==length-1){
+       	                    		 	$.mobile.showPageLoadingMsg(); 
+       	                    		 	checkReuqestData();
+       	                    	 }
+       	                    	 
+       	                     }
+       	            });
+       	 	
+       	 	}else{
+       	 		
+       	 		OnExit();
+       	 	
+       	 	}
+            
+       	
+       	
+        }
+        function checkReuqestData(){
+        	
+        	if(dataToInsert.length>0){
+        		var requestitem=dataToInsert.shift();
+	        	var Qry = "SELECT COUNT(*) as totalcount FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=" + transactiontypecode + " AND istemp = 'true' AND itemcode=" + requestitem.itemcode;
+	        	
+	            if (platform == "iPad")
+	            {
+	                Cordova.exec(function(result) {
+	                    //alert(Qry);
+	                    CheckInsert(ItemCode, RouteKey, CurrQty, Price, CasePrice,actualitemcode)
+	                },
+	                function(error) {
+	                    alert(error);
+	                },
+	                "PluginClass",
+	                "GetdataMethod",
+	                [Qry]);
+	            }
+	            else if (platform == "Android") 
+	            {
+	                window.plugins.DataBaseHelper.select(Qry, function(result) {
+	                    var res = $.map(result.array, function(item, index) {
+	                        return [[item.totalcount]];
+	                    });
+	                   
+	                    if(res[0][0]>0){
+	                    	checkRequestInsert(requestitem,false);
+	                    }else{
+	                    	checkRequestInsert(requestitem,true);
+	                    }
+	                   
+	                },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+	
+	            }
+        	
+            }else{
+        		 $.mobile.hidePageLoadingMsg(); 
+        		OnExit();
+        		
+        	}
+        	
+        }
+        
+        function checkRequestInsert(requestitem,isInsert){
+        	if(isInsert){
+     		   var Qry="INSERT INTO inventorytransactiondetail(itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,istemp,issync) VALUES(" + requestitem.itemcode + "," + sessionStorage.getItem("RouteKey") + "," + localStorage.transactiontypecode + "," + requestitem.currqty + ","+ requestitem.Price+","+ requestitem.CasePrice+",'true',0)";
+     	   }else{
+     		   var Qry ="UPDATE inventorytransactiondetail SET quantity=" + requestitem.currqty + ",itemprice=" + requestitem.Price + ",itemcaseprice= " + requestitem.CasePrice + "  where istemp='true' and itemcode=" + requestitem.itemcode + " and routekey=" + sessionStorage.getItem("RouteKey") + " and transactiontypecode=" + transactiontypecode;
+     	   }
+           
+             console.log(Qry);
+             if (platform == "iPad") {
+                 Cordova.exec(function(result) {
+                     
+                 },
+                 function(error) {
+                     navigator.notification.alert(error);
+                 },
+                 "PluginClass",
+                 "InsertUpdateMethod",
+                 [Qry]);
+             }
+             else if (platform == "Android") {
+	                 window.plugins.DataBaseHelper.insert(Qry, function(result) {
+	                	 checkReuqestData();
+	                 },
+				     function() {
+				        console.warn("Error calling plugin");
+				    });
+             }       
+        	
+        	
+        	
+        	
+        }
+        
+        function OnExit()
+        {   
+			/* if(var_detailkey!=0)
+			{
+			var Qry = "SELECT COUNT(*) as cnt,IFNULL(SUM(quantity),0) as quantity FROM inventorytransactiondetail WHERE detailkey = " + var_detailkey;
+			}else
+			{*/
+            	var Qry = "SELECT COUNT(*) as cnt,IFNULL(SUM(quantity),0) as quantity FROM inventorytransactiondetail WHERE transactiontypecode=" + transactiontypecode + " AND istemp = 'true' AND routekey= " + sessionStorage.getItem("RouteKey");
+			 //}
+            var Qry = "SELECT COUNT(*) as cnt,IFNULL(SUM(quantity),0) as quantity FROM inventorytransactiondetail WHERE transactiontypecode=" + transactiontypecode + " AND istemp = 'true' AND routekey= " + sessionStorage.getItem("RouteKey");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {                        
+                        if(result[0][0] == 0 || result[0][1] == 0 )
+                        {
+                            if(result[0][1] == 0)
+                                ConfirmDiscard();
+                            else
+                                window.location = "inventory.html";
+                        }
+                        else
+                        {
+                              localStorage.po ='inventory';
+                              window.location = "printoption_loadrequest.html";
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);                
+            }
+            else if(platform == "Android")
+            {
+                
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array[0].cnt == 0 || result.array[0].quantity == 0)
+                        {
+                            if(result.array[0].quantity == 0)
+                                ConfirmDiscard();
+							else
+                            	window.location = "inventory.html";
+                        }
+                        else
+                        {
+                        	
+                        	window.localStorage.setItem("sendAuto",isSendAutomatic);
+                            localStorage.po ='inventory';
+							/*if(var_detailkey!=0)
+							{
+							localStorage.dkey =var_detailkey;
+							}else
+							{
+							localStorage.dkey =0
+							}*/
+                            window.location = "printoption_loadrequest.html";
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+            }
+        }
+        
+        // Checking Value is Number
+        function CheckIsNaN(val)
+        {
+            if(isNaN(val))
+                return 0;
+            else
+                return val;
+        }
+        
+        function ClearTable() {
+            
+            /*  $('#groupcode').text('');
+              $('#alcode').text('');*/
+              $("#tblContent").find('tr').not(":first").remove();
+          }
+    </script>
+
+        </body>
+    </html>

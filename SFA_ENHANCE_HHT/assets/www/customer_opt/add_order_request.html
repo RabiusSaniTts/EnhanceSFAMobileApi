@@ -1,0 +1,926 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 31/1/2011
+ '  Description  : This page is used for on shelf
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Item Entry</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 701px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript" src="../barcodescanner.js"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en"
+                    onclick="ClearVariables(0)">Back</a>
+                <h1 lang="en">
+                    Order Request</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <!--<div class="tblBox leftItemInv CenterInv">
+                <table border="0" width="100%" cellpadding="10" cellspacing="0" id="tbl1" data-role="none"
+                    align="center">
+                    <thead>
+                        <tr>
+                            <td colspan="3" class="tblHeader" style="padding: 10px; padding-left: 15px" lang="en">
+                                Product Name
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2" style="padding-left: 15px; padding-right: 15px;" lang="en">
+                                Item Number
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div>
+                                    <input type="text" value="" id="itemno" class="textWidth textFont" /></div>
+                            </td>
+                            <td>
+                                 <div>
+                                    <a href="../customer/item_selection.html" rel="external" id="A2" style="text-decoration:none" data-role="none">
+                                    <img src="../images/icn-search.png" alt="" />
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                        </tr>
+                        <tr>
+                            <td class="tblSubHeading" width="33.3%">
+                                <div style="padding-left: 10px; padding-right: 10px" lang="en">
+                                    Warehouse Qty</div>
+                            </td>
+                            <td class="tblSubHeading" width="33.3%">
+                                <div style="padding-left: 10px; padding-right: 10px" lang="en">
+                                    Qty Available</div>
+                            </td>
+                            <td class="tblSubHeading" width="33.3%">
+                                <div style="padding-left: 10px; padding-right: 10px" lang="en">
+                                    Order Request</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center">
+                                <div class="add_order" id="contentWrapper">
+                                    <table cellpadding="5" cellspacing="0" width="100%" style="width: 100%" align="center"
+                                        id="tblSub">
+                                        <tr>
+                                            <td style="padding: 10px" lang="en">
+                                                Cases
+                                            </td>
+                                            <td style="padding: 10px" lang="en">
+                                                Cases
+                                            </td>
+                                            <td style="padding: 10px" lang="en">
+                                                Cases
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" pattern="[0-9]*" value="" id="case1" readonly="readonly" class="textWidth textFont" style="width: 70%" />
+                                            </td>
+                                            <td>
+                                                <input type="text" pattern="[0-9]*" value="" id="case2" readonly="readonly" class="textWidth textFont" style="width: 70%" />
+                                            </td>
+                                            <td>
+                                                
+                                                <input type="number" value="" id="case3" class="textWidth textFont" style="width: 70%" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 10px" lang="en">
+                                                Units
+                                            </td>
+                                            <td style="padding: 10px" lang="en">
+                                                Units
+                                            </td>
+                                            <td style="padding: 10px" lang="en">
+                                                Units
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="text" pattern="[0-9]*" value="" size="11" id="units1" readonly="readonly" class="textWidth textFont" style="width: 70%" />
+                                            </td>
+                                            <td>
+                                                <input type="text" pattern="[0-9]*" value="" size="11" id="units2" readonly="readonly" class="textWidth textFont" style="width: 70%" />
+                                            </td>
+                                            <td>
+                                                
+                                                <input type="number" value="" size="11" id="units3" class="textWidth textFont" style="width: 70%" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>-->
+                <div class="com_div comm captionLabel" id="contentWrapper"
+                    style="position: relative; overflow: auto">
+
+                    <table class="topbox" cellpadding="0">
+                        <tr>
+                            <td style="width:25%">
+                                <table cellpadding="0">
+                                    <tr>
+                                        <td style="width:10%" lang="en">No.</td>
+                                        <td style="width:80%;">
+                                            <!--<a href="../customer/item_selection.html" rel="external" style="text-decoration: none"
+                                            data-role="none"><div class="addressdiv" id="itemno"></div></a> -->
+                                            <input type="text" name="itemno"
+                                                id="itemno"
+                                                class="textWidth textFont"
+                                                value>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:60%;padding-left:40px">
+                                <label class="cus_lable heading" lang="en"
+                                    id="lblDesc">
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table id="tblContent11" cellpadding="5" cellspacing="0"
+                        border="0" width="100%">
+                        <tr>
+                            <td>
+                            </td>
+                            <td lang="en">
+                                Cases
+                            </td>
+                            <td lang="en">
+                                Units
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">
+                                Warehouse Qty
+                            </td>
+                            <td>
+                                <div class="addressdiv" id="case1"
+                                    style="width:80%">0</div>
+
+                            </td>
+                            <td>
+                                <div class="addressdiv" id="units1"
+                                    style="width:80%">0</div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">
+                                Qty Available
+                            </td>
+                            <td>
+                                <div class="addressdiv" id="case2"
+                                    style="width:80%">0</div>
+
+                            </td>
+                            <td>
+                                <div class="addressdiv" id="units2"
+                                    style="width:80%">0</div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">
+                                Order Request
+                            </td>
+                            <td>
+                                <input type="number" id="case3" pattern="[0-9]*"
+                                    class="textWidth textFont" value="0"
+                                    onblur="SetFormat(this)" />
+                            </td>
+                            <td>
+                                <input type="number" pattern="[0-9]*" size="11"
+                                    id="units3" class="textWidth textFont"
+                                    value="0" onblur="SetFormat(this)" />
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="../customer/item_selection.html" class="enableText"
+                        rel="external" data-role="none">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/search.png"
+                                    alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Search</div>
+                        </div>
+                    </a>
+                    <a href="#" class="enableText" rel="external"
+                        data-role="none" id="lnkScan">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/barcode-scan.png"
+                                    alt="Scan" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Scan</div>
+                        </div>
+                    </a>
+                    <a href="#" class="enableText" rel="external"
+                        data-role="none" id="lnkAdd">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/save.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Save</div>
+                        </div>
+                    </a>
+                    <a href="#" class="enableText" rel="external"
+                        onclick="ClearVariables(0)">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = null;
+	window.lang = new jquery_lang_js();      
+        
+        
+       resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+                            
+
+            if(sessionStorage.getItem('CheckCode') =='alternatecode')
+        	{
+        		$('#itemno').clone().attr('type','text').insertAfter('#itemno').prev().remove();
+        	}	
+        	else{
+        		$('#itemno').clone().attr('type','tel').insertAfter('#itemno').prev().remove();
+        	}
+        	$("#itemno").keyup(function(event)
+    	    {
+    			 if($("#itemno").val != "")          
+                     getFillterItemList();       
+                               
+            });
+            var itemno = sessionStorage.getItem("ItemCode"); 
+			if(eval(itemno)>0)	
+            $('#itemno').val(itemno);
+            $('#lblDesc').text(sessionStorage.getItem('ItemDesc'));
+            var platform = '';
+            var AndroidPlatform = "Android";
+            var iPadPlatform = "iPad";
+            var unitspercase,CaseEnabled;
+            
+            $(".leftfooter").html(getCurrentDate());
+            $("#case3").blur(function () { $(this).val(parseFloat($(this).val())) });
+            $("#units3").blur(function () { $(this).val(parseFloat($(this).val())) });          
+            
+            var ActualItemCode = sessionStorage.getItem("itemno");
+           
+             //On Device Ready Event
+            $("#lnkScan").click(function(){ clickScan(); })
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() 
+            {
+                platform = sessionStorage.getItem("platform");
+                $("#lnkAdd").click(function(){ OrderAction(); })
+                
+                //CaseEnabled=eval(sessionStorage.getItem("CaseEnabled"));
+                if(CaseEnabled==undefined || CaseEnabled==null){
+                	CaseEnabled=2;
+                }
+                if(CaseEnabled==2)
+                {
+                	$("#units3").attr('disabled','disabled');
+                	
+                }else if(CaseEnabled==0)
+                {
+                	$("#case3").attr('disabled','disabled');
+                }
+                
+                if (sessionStorage.getItem("CaseEnabled") == "0" || sessionStorage.getItem("CaseEnabled") == null)
+                    CaseEnabled = false;
+                else if (sessionStorage.getItem("CaseEnabled") == "1")
+                    CaseEnabled = true;
+                if(itemno != null)
+                {
+                    getWareHouseQty();
+                }               
+            }
+      
+            function clickScan() 
+            {
+                         
+                window.plugins.barcodeScanner.scan(scannerSuccess, scannerFailure);
+                         
+            }
+                          
+            function scannerSuccess(result) 
+            {
+          
+          
+		          if (result.cancelled)
+		          {
+		        	  getLangText("the user cancelled the scan");
+		          }
+		          else
+		          {
+		          
+		        	  var itemcode = result.text; 
+		        	  itemscan(result.text);
+		          }
+                          
+                          
+            }
+                          
+           function itemscan(itemcode)
+           {                          
+	          	var Qry = "SELECT actualitemcode FROM itemmaster WHERE (barcode1 ='"+itemcode+"'OR barcode2 ='"+itemcode+"'OR barcode3 ='"+itemcode+"'OR barcode4 ='"+itemcode+"'OR barcode5 ='"+itemcode+"' OR barcode6 ='" + itemcode + "'OR barcode7 = '"+itemcode+"' OR barcode8 ='"+itemcode+"' OR barcode9 ='"+itemcode+"' OR barcode10 ='"+itemcode+"')";
+	          	if(platform == "iPad")
+	          	{                          
+	      			Cordova.exec(function(result1) 
+	      			{ 	                           
+	               		if(result1!='')
+	               		{	                           
+	                   		if(result1.length > 0)
+	                   		{
+	                       		sessionStorage.setItem("itemno","");
+	                       		sessionStorage.setItem("itemno",result1[0][0]);
+	                       		$('#itemno').val(result1[0][0]); 
+	                       		getWareHouseQty();
+	               			}
+	               		}
+	               		else
+	               		{
+	                   		alert("Item No found");
+	               		}
+	           		},
+	               	function(error) {
+	               	navigator.notification.alert(error);
+	               	},
+	               	"PluginClass",
+	               	"GetdataMethod",
+	               	[Qry]);
+	           }
+	           else if(platform == "Android")
+       		   {
+	       			window.plugins.DataBaseHelper.select(Qry, function(result){
+	        			if(result.array != undefined)
+	        			{				                     	
+	                  		sessionStorage.setItem("itemno","");
+	                   		sessionStorage.setItem("itemno",result.array[0].actualitemcode);
+	                   		$('#itemno').val(result.array[0].actualitemcode); 
+	                   		getWareHouseQty();				                     	
+	        			}
+	        			else
+	        				getLangText"Item No found");  
+	                },
+	                function()
+	                {
+	                 	console.warn("Error calling plugin");
+	                });
+       		   }
+          }
+                          
+          function scannerFailure(message) {
+        	  console.log("scannerFailure: message: " + message)
+        
+          }
+          function getWareHouseQty()
+          {
+		 
+                var Qry = "SELECT CASE WHEN warehousestock=null THEN 0 ELSE (warehousestock / unitspercase) end as cases,CASE WHEN warehousestock=null THEN 0 ELSE (warehousestock % unitspercase) end as units,warehousestock,unitspercase from itemmaster where actualitemcode = " + sessionStorage.getItem('itemno');
+                console.log(Qry);
+                if (platform == iPadPlatform) {
+                    Cordova.exec(function(result) {                        
+                        if(result.length>0)
+                        {
+                            if(CaseEnabled)
+                            {
+                                $("#case1").text(parseInt(result[0][0]));
+                                $("#units1").text(parseInt(result[0][1]));                                
+                            }
+                            else
+                            {                                
+                                $("#units1").text(parseInt(result[0][2]));
+                            }
+                            unitspercase = result[0][3];
+                        }
+                        getAvailableQty(ActualItemCode);
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+					
+                        if(result.array != undefined)
+                        {
+						
+                           if(CaseEnabled)
+                           {
+                                $("#case1").text(parseInt(result.array[0].cases)); 
+                                $("#units1").text(parseInt(result.array[0].units)); 
+                           }
+                           else
+                           {
+                                $("#units1").text(parseInt(result.array[0].warehousestock));
+                           }
+                           unitspercase = result.array[0].unitspercase;
+                        }
+                        getAvailableQty(ActualItemCode);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                } 
+           }
+		   //For order Warehouse stock.
+           
+		   function getWareHouseOrdQty()
+           {
+		  
+                var Qry = "SELECT CASE WHEN warehousestock=null THEN 0 ELSE (warehousestock / unitspercase) end as cases,CASE WHEN warehousestock=null THEN 0 ELSE (warehousestock % unitspercase) end as units,warehousestock,unitspercase from itemmaster where actualitemcode = " + sessionStorage.getItem('itemno');
+				
+                if (platform == iPadPlatform) {
+                    Cordova.exec(function(result) {                        
+                        if(result.length>0)
+                        {
+                            if(CaseEnabled)
+                            {
+                                $("#case1").text(parseInt(result[0][0]));
+                                $("#units1").text(parseInt(result[0][1]));                                
+                            }
+                            else
+                            {                                
+                                $("#units1").text(parseInt(result[0][2]));
+                            }
+                            unitspercase = result[0][3];
+                        }
+                       // getAvailableQty(ActualItemCode);
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+					
+                        if(result.array != undefined)
+                        {
+						//alert("in");
+                           if(CaseEnabled)
+                           {
+                                $("#case1").text(parseInt(result.array[0].cases)); 
+                                $("#units1").text(parseInt(result.array[0].units)); 
+                           }
+                           else
+                           {
+                                $("#units1").text(parseInt(result.array[0].warehousestock));
+                           }
+                           unitspercase = result.array[0].unitspercase;
+                        }
+                       // getAvailableQty(ActualItemCode);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                } 
+         }
+		 
+        // Function for getting Available Qty
+        function getAvailableQty(ItemNo)
+        {
+                
+            var Qry = "Select ((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -  ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))/itemmaster.unitspercase) As LoadQty,(((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0) +ifnull(inventorysummarydetail.beginstockqty,0)+ ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -  ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))%itemmaster.unitspercase)) As LoadUnit,itemmaster.unitspercase,itemmaster.defaultsalesprice,(ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -  ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) - ifnull(inventorysummarydetail.freesampleqty,0)) As AvialableQty from inventorysummarydetail inner join itemmaster on inventorysummarydetail.itemcode = itemmaster.actualitemcode  and inventorysummarydetail.routekey = " + sessionStorage.getItem('RouteKey') + " where itemmaster.actualitemcode = " + ActualItemCode;
+            console.log(Qry);
+            
+            if (platform == "iPad") 
+            {
+                Cordova.exec(function(result) 
+                {                    
+                    if (CaseEnabled)
+                    {
+                        $("#case2").text(parseInt(result[0][0]));
+                        $("#units2").text(parseInt(result[0][1]));
+                    }
+                    else
+                    {
+                        $("#units2").text(parseInt(result[0][4]));
+                    }
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") 
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                { 
+                    if (CaseEnabled)
+                    {
+                        $("#case2").text(parseInt(result.array[0].LoadQty));
+                        $("#units2").text(parseInt(result.array[0].LoadUnit));
+                    }
+                    else
+                    {
+                        $("#units2").text(parseInt(result.array[0].AvialableQty));
+                    }                    
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+        
+        function OrderAction()
+        {            
+			getWareHouseOrdQty();
+			var ActualItemCode =sessionStorage.getItem('itemno');
+            var Qry = "SELECT COUNT(*) as cnt FROM salesorderdetail where itemcode = " + sessionStorage.getItem('itemno') + " and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+			//alert(Qry);
+            console.log(Qry);
+            if (platform == iPadPlatform) 
+            {
+                    Cordova.exec(function(result) 
+                    {
+                        if(result[0][0]>0)
+                        {
+                            AddOrder(1);
+                        }
+                        else
+                        {
+                            AddOrder(0);
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+            }
+            else if (platform == "Android") 
+            {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) 
+                    {
+					//alert(result.array[0]);
+                        if(result.array[0].cnt > 0)
+                        {
+							//alert("in");
+                            AddOrder(1);
+                        }
+                        else
+                        {
+							//alert("out");
+                            AddOrder(0);
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+            }
+        }
+         
+        function AddOrder(Action)
+        {
+            var CurrQty,Qty,cases,units;
+            if(localStorage.getItem("AddQty") != null)
+            {
+                CurrQty = localStorage.getItem("AddQty"); 
+            }
+            else
+            {
+                CurrQty = "salesqty";
+            }
+            
+            if($("#case3").val() == undefined || $("#case3").val() == "")
+                cases = 0;
+            else
+                cases = $("#case3").val();
+                
+            if($("#units3").val() == undefined || $("#units3").val() == "")
+                units = 0;
+            else
+                units = $("#units3").val();
+				//alert(cases);
+				//alert(unitspercase);
+				//alert(units);
+            
+            Qty  = ((eval(cases) * eval(unitspercase)) + eval(units));
+			//alert(Qty);
+			var ActualItemCode =sessionStorage.getItem('itemno');
+            var selectqry ="select (case when pd.salesprice is not null then pd.salesprice else defaultsalesprice end) as price,CASE  WHEN pd.salescaseprice NOT NULL THEN pd.salescaseprice ELSE im.caseprice END caseprice,CASE  WHEN pd.returncaseprice NOT NULL THEN pd.returncaseprice ELSE im.returncaseprice END returncaseprice,CASE  WHEN pd.returnprice NOT NULL THEN pd.returnprice ELSE im.defaultreturnprice END returnsalesprice FROM itemmaster AS im left join pricingdetail1 pd on pd.itemcode = actualitemcode and customerpricingkey = (select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where actualitemcode="+sessionStorage.getItem('itemno');
+			//alert(selectqry);
+           if(eval(Qty) > 0)
+           {            
+                if (platform == iPadPlatform) 
+                {
+                    Cordova.exec(function(result) {
+                               var salesprice = result[0][0];
+                               var salescaseprice = result[0][1];
+                               var returncaseprice = result[0][2];
+                               var returnprice = result[0][3];
+                               if(Action == 0)
+                               {
+                                    var Qry = "INSERT INTO salesorderdetail(routekey,visitkey,transactionkey,itemcode," + CurrQty + ",istemp,issync,displayitem,salesprice,salescaseprice,returncaseprice,returnprice,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice) VALUES(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("VisitKey") + ",0," + sessionStorage.getItem('itemno') + "," + Qty + ",'true',0,1,"+salesprice+","+salescaseprice+","+returncaseprice+","+returnprice+",(SELECT defaultsalesprice FROM itemmaster WHERE actualitemcode=" + ActualItemCode + "),(SELECT caseprice FROM itemmaster WHERE actualitemcode=" + sessionStorage.getItem('itemno') + "),(SELECT defaultreturnprice FROM itemmaster WHERE actualitemcode=" + sessionStorage.getItem('itemno') + "),(SELECT returncaseprice FROM itemmaster WHERE actualitemcode=" + sessionStorage.getItem('itemno') + "))"; 
+									
+                               }
+                               else if(Action == 1)
+                               {
+                                    var Qry = "UPDATE salesorderdetail set " + CurrQty + "=" + Qty + ",issync=0 WHERE itemcode=" + sessionStorage.getItem('itemno') + " AND routekey = " + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey");
+                               }
+							  
+                               console.log(Qry);
+                               Cordova.exec(function(result1) {                                             
+                                             ClearVariables(1);
+                                             //window.location = "orderRequest.html";
+                               },
+                               function(error) {
+                                navigator.notification.alert(error);
+                               },
+                               "PluginClass",
+                               "InsertUpdateMethod",
+                               [Qry]);
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [selectqry]);                   
+                }
+                else if (platform == "Android") 
+                {
+				//alert("ord");
+                      window.plugins.DataBaseHelper.select(selectqry, function(result) {
+                            result = $.map(result.array, function(item, index) {
+                                return [[item.price,item.caseprice,item.returncaseprice,item.returnsalesprice]];
+                            });
+                            var salesprice = result[0][0];
+	                        var salescaseprice = result[0][1];
+	                        var returncaseprice = result[0][2];
+	                        var returnprice = result[0][3];
+							//alert(Action);
+                            if (Action == 0) {
+                                var Qry = "INSERT INTO salesorderdetail(routekey,visitkey,transactionkey,itemcode," + CurrQty + ",istemp,issync,displayitem,salesprice,salescaseprice,returncaseprice,returnprice,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice) VALUES(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("VisitKey") + ",0," + sessionStorage.getItem('itemno') + "," + Qty + ",'true',0,1," + salesprice + "," + salescaseprice + "," + returncaseprice + "," + returnprice + ",(SELECT defaultsalesprice FROM itemmaster WHERE actualitemcode=" + sessionStorage.getItem('itemno') + "),(SELECT caseprice FROM itemmaster WHERE actualitemcode=" + sessionStorage.getItem('itemno') + "),(SELECT defaultreturnprice FROM itemmaster WHERE actualitemcode=" + sessionStorage.getItem('itemno') + "),(SELECT returncaseprice FROM itemmaster WHERE actualitemcode=" + sessionStorage.getItem('itemno') + "))";
+                            }
+                            else if (Action == 1) {
+                                var Qry = "UPDATE salesorderdetail set " + CurrQty + "=" + Qty + ",issync=0 WHERE itemcode=" + sessionStorage.getItem('itemno') + " AND routekey = " + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey");
+                            }
+							// alert(Qry);
+                            window.plugins.DataBaseHelper.insert(Qry, function(result1) {
+                                ClearVariables(1);                                
+                            },
+                            function() {
+                                console.warn("Error calling plugin");
+                            });
+                      },
+                      function() {
+                          console.warn("Error calling plugin");
+                      });                   
+                }
+            }
+            else
+            {
+            	ClearVariables(1);
+            }
+        }
+        var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+	        if (sessionStorage.getItem("Language")  != "en") 
+	        {
+	               
+	                window.lang.change('addrequest'+lan,lan);
+	                window.lang.change('Footer'+lan,lan);
+					if(lan=="AR")
+			                {
+					    $(".centerbox").attr("dir", "rtl");
+			                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					}
+			
+			}
+			else
+			{
+			    window.lang.change('en','en');
+			    $(".centerbox").attr("dir", "ltr");
+			    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			}
+
+        });
+        function getFillterItemList()
+        {
+            var qry = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster  where Code like '%" + $("#itemno").val() + "%' order by Code";
+		//	alert(qry);
+            if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                if(result1!='')
+                 	{ 
+                        var code = result[0][0];
+                                   var Description = result[0][1];
+                                    var actualitemcode = result[0][2];
+                                    sessionStorage.setItem("ItemCode",code);
+                                    sessionStorage.setItem("ItemDesc",Description);
+                                    sessionStorage.setItem("itemno",actualitemcode);
+                                    $('#lblDesc').text(sessionStorage.getItem('ItemDesc')); 
+                                    getWareHouseQty();
+                        }
+                        else
+                        	getLangText("Item Not Available");
+
+                    },
+                                  function(error) {
+                                      alert("Error in binding fillter Item : " + error);
+                                  },
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  [qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(qry, function(result) {
+                    			if(result.array != undefined)
+                    			{
+                                    var code = result.array[0].Code;
+                                    var Description = result.array[0].Description;
+                                    var actualitemcode = result.array[0].actualitemcode;
+                                    sessionStorage.setItem("ItemCode",code);
+                                    sessionStorage.setItem("ItemDesc",Description);
+                                    sessionStorage.setItem("itemno",actualitemcode);
+									
+                                    $('#lblDesc').text(sessionStorage.getItem('ItemDesc')); 
+                                    getWareHouseQty();
+                                }
+                                else
+                                {
+                                	getLangText("Item Not Available");
+                                }
+                    },
+	                function() {
+	                     console.warn("Error calling plugin");
+	                });
+                }
+        }
+        function ClearVariables(Action)
+        {
+            $("#itemno").val("");
+            $("#lblDesc").text("");
+            $("#case1").text("");
+            $("#units1").text("");
+            $("#case2").text("");
+            $("#units2").text("");
+            $("#case3").val("");
+            $("#units3").val("");
+            sessionStorage.setItem("ItemCode","");
+            sessionStorage.setItem("ItemDesc","");
+            sessionStorage.setItem("itemno","");
+            if(Action == 0)
+            	window.location = "orderRequest.html";
+            /*if(Action == 0)
+            {                
+                if(window.location.toString().indexOf("salesqty") > 0)                
+                    window.location = "orderRequest.html?from=salesqty";
+                else if(window.location.toString().indexOf("returnqty") > 0)                
+                    window.location = "orderRequest.html?from=returnqty";
+                else if(window.location.toString().indexOf("damagedqty") > 0)                
+                    window.location = "orderRequest.html?from=damagedqty";
+                else if(window.location.toString().indexOf("manualfreeqty") > 0)                
+                    window.location = "orderRequest.html?from=manualfreeqty";
+            }*/
+        }
+        function SetFormat(obj)
+        {
+            var Num = new Number($(obj).val());            
+            $(obj).val(parseInt(Num));
+        }
+    </script>
+
+    </body>
+</html>

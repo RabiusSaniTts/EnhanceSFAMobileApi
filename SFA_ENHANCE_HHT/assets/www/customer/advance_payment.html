@@ -1,0 +1,463 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 2/2/2011
+ '  Description  : This page is used for price list
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="../customer_opt/cust_opt.html"
+                    rel="external" lang="en">Back</a>
+                <h1 lang="en">Advance Payment</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <div class="textBar">
+                        <table cellpadding="2" cellspacing="2" border="0"
+                            width="60%">
+                            <tr>
+                                <td lang="en" colspan="2" id="pname">Enter
+                                    Amount</td>
+                                <td colspan="2">
+                                    <!-- 				<input id="txtAmount" type="number"
+								class="textWidth textFont rightAlign" value="" pattern="[0-9]*" /> -->
+
+                                    <input id="txtAmount" type="tel"
+                                        class="textWidth textFont rightAlign" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="tblBox tbltd" id="contentWrapper" style="display:none; !important;">
+
+                        <table class="tblHeader" id="tblHeaderContent"
+                            width="100%"
+                            cellpadding="10" cellspacing="0">
+                            <tr>
+                                <th width="10%"></th>
+                                <th width="30%" lang="en">Invoice#</th>
+                                <th width="30%" lang="en">Invoice Amount</th>
+                                <th width="30%" lang="en">Balance Due</th>
+                            </tr>
+                        </table>
+
+                        <div class="route_table_height tblFixedHeight">
+                            <table border="0" width="100%" cellpadding="0"
+                                cellspacing="0"
+                                id="tbl1" data-role="none">
+                                <tbody>
+                                    <tr>
+                                        <th width="10%"></th>
+                                        <th width="30%"></th>
+                                        <th width="30%"></th>
+                                        <th width="30%"></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">&nbsp;</div>
+                    <a href="advance_payment_comment.html" rel="external"
+                        class="enableText"><div class="MenuPosition"
+                            onclick="return SetAmount()">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/ok.png"
+                                    alt="Save" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Continue</div>
+                        </div></a>
+                    <div class="menuPadding">&nbsp;</div>
+                    <a href="../customer_opt/cust_opt.html" rel="external"
+                        class="enableText">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png" alt="Exit" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">&nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform = '';
+        var AndroidPlatform = "Android";
+        var iPadPlatform = "iPad";
+        var decimalplace = sessionStorage.getItem("decimalplace");
+        var TotalAmount = 0;
+        var data;
+        var DocNos = new Array();
+        var alternatecode = false;
+		$("#tbl1 tr:odd").addClass('oddRow');
+    	$("#tbl1 tr:even").addClass('evenRow');
+		$("#tbl1").click(function() { });
+		$('label').css({ 'background': '#D1ECFD','border':'none' });
+		$('.ui-btn-inner').css({ 'border-top':'none' });
+	
+		resizeOrientationWindow();
+		$(document).ready(function() {
+		resizeWindow();
+	    $(".leftfooter").html(getCurrentDate());
+           
+        document.addEventListener("deviceready",getAlternateCodeSetting, false);
+        
+        function getAlternateCodeSetting()
+        {
+            var Qry = "SELECT status FROM controlpanel where flagid=73";
+            console.log(Qry);
+            if(platform == iPadPlatform)
+            {
+                Cordova.exec(function(result) {
+                    if(result.length>0)
+                    {
+                        if(result[0][0] == 0)
+                            alternatecode = false;
+                        else
+                            alternatecode = true;                        
+                    }
+                    getRecord();
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == AndroidPlatform)
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                        if(result.array[0].status == 0)
+                            alternatecode = false;
+                        else
+                            alternatecode = true;                        
+                    }
+                    var savedDocs=JSON.parse(localStorage.getItem("DocNos"));
+                    if(savedDocs!=undefined && savedDocs.length>0){
+                    	DocNos=savedDocs;
+                    	
+                    }
+                    getRecord();
+                   	
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        
+        function getRecord()
+        {
+            platform = sessionStorage.getItem("platform");
+            var Qry = "SELECT  invoicenumber,CAST(ifnull(totalinvoiceamount,0) AS VARCHAR) as totalinvoiceamount, CAST(invoicebalance AS VARCHAR) as AmountDue,ifnull(erpreferencenumber,0) erpreferencenumber FROM customerinvoice WHERE invoicebalance <> 0 and routecode=" + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " and customercode = " + sessionStorage.getItem("customerid") + " AND invoicenumber NOT IN(SELECT ard.invoicenumber FROM ardetail ard JOIN arheader arh ON ard.transactionkey = arh.transactionkey AND arh.voidflag = 1)";
+            console.log(Qry);
+            if(platform == iPadPlatform)
+            {
+                Cordova.exec(function(result) {                        
+                        BindData(result);
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == AndroidPlatform)
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                	if(result.array != undefined)
+                    	BindData(result);
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+	    
+        function BindData(result)
+        {
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                data = result;
+                if (platform == AndroidPlatform) {                    
+                    var array = $.map(data.array, function(item, index) {
+                        return [[item.invoicenumber, item.totalinvoiceamount,item.AmountDue,item.erpreferencenumber]];
+                    });
+                    data = array;
+                }
+               
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr class='contentFont'>";                    
+                    for (j = 0; j < CellCount; j++) {  
+                        var c = '';
+                        var temp='';
+                        //temp = (j == 3) ? 'class = rightAlign' : '';
+                        if(j == 0)
+                        {
+                        
+                            c = "<td>" + "<img src='../images/check_1.png' height='25' style='display:none;' id = check_"+ (i + 1)  +" />" + "</td>";                           
+                        }
+                        else
+                        {
+                            if(j == 1)    
+                            {
+                                temp += " style = 'text-align:center' ";
+                                data[i][j - 1] = parseInt(data[i][j - 1]);
+                            }
+                           
+                            if(j > 1)
+                            {
+                                data[i][j - 1] = eval(data[i][j - 1]).toFixed(decimalplace);
+                            }
+                            
+                            if(j == 2)
+                                temp += " class = 'rightAlign' ";
+                            
+                            if (j == CellCount - 1)
+                                temp += " class = 'rightAlign last'";
+                            
+                            val=data[i][j - 1];
+                             if(j == 1)
+                        	{
+                        		
+                            	if(alternatecode)
+                            	{
+                            		
+	                                if(data[i][3] == undefined)
+	                                    data[i][3] = data[i][0];
+	                                val = data[i][3]; // erpreferencenumber
+                            	}
+                            	else
+                                	val = data[i][0]; // invoicenumber;
+                        	}
+                           
+                            c = "<td " + temp + ">" + val + "</td>";
+                        }                        
+                        r += c;
+                    }
+                    r += "</tr>";                    
+                    $('#tbl1 tbody').append(r);
+                }
+                
+                if(localStorage.getItem("AdvanceInvoice") != undefined && localStorage.getItem("AdvanceInvoice") != null)
+                {
+                    $("#txtAmount").val(localStorage.getItem("AdvanceInvoice"));
+                }
+                                                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');
+                
+                $("#tbl1 tr").live('click', function() 
+                {
+                        $(this).toggleClass('clicked');
+                        // $(this).siblings().removeClass('clicked');
+                        index = $(this).index();
+                        if ($("#check_" + (index)).css('display') == 'block') 
+                        {
+                            $("#check_" + (index)).css({ "display": "none" });    
+                            TotalAmount -=  eval($(this).children().eq(3).text());
+                            var item = data[index-1][0];
+                            for(i=0;i<DocNos.length;i++)
+                            {
+                                if(DocNos[i] == item)
+                                {
+                                    DocNos.splice(i,1)
+                                }
+                            }                                                                   
+                        }
+                        else 
+                        {
+                            $("#check_" + (index)).css({ "display": "block" });
+                            TotalAmount +=  eval($(this).children().eq(3).text());
+                            DocNos.push(data[index-1][0]);                            
+                        }
+                        $("#txtAmount").val(eval(TotalAmount).toFixed(decimalplace));                                               
+                });
+               
+                 $('#tbl1 tr').each(function(){
+                  		 index = $(this).index();
+                 		 var savedDocs=JSON.parse(localStorage.getItem("DocNos"));
+                 		 if(eval(index)!=0){
+	                 		 var docno=data[index-1][0];
+	                 		 
+	                 		 if(savedDocs.indexOf(docno)!=-1 && docno!=undefined){
+	                 		  	
+	                 		 	 $(this).toggleClass('clicked',true);
+	                 		 	 $("#check_" + (index)).css({ "display": "block" });
+	                 		 }
+                 		 }
+                       
+                                     
+                 });
+                
+                
+            }
+	    $('.ui-body-d').css({ 'background': '#fff' });
+	    $('.ui-input-datebox').css({ 'width': '92%','line-height':'4.0' });
+        $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important'});
+	    $('.ui-input-datebox input').css({ 'width': '76% !important','color':'#999' });
+	  
+           
+        var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+        if (sessionStorage.getItem("Language")  != "en") 
+        {               
+            window.lang.change('advpay'+lan,lan);
+            window.lang.change('Footer'+lan,lan);
+            if(lan=="AR")
+            {
+		    $("#contentWrapper").attr("dir", "rtl");
+            $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }		
+		}
+		else
+		{
+		   window.lang.change('en','en');		   
+		   $("#contentWrapper").attr("dir", "ltr");
+		   $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		   $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		   $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		   $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+        
+        function SetAmount()
+        {
+            if($("#txtAmount").val() == "")
+            {
+                getLangText("Enter Amount.");
+                return false;                
+            }
+            else
+            {
+                var amt = $("#txtAmount").val();
+                amt = eval(amt).toFixed(decimalplace);                
+                localStorage.setItem("AdvanceInvoice",parseFloat(amt));
+              	localStorage.setItem("DocNos",JSON.stringify(DocNos));
+            }
+        }
+        
+        </script>
+
+    </div>
+</body>
+</html>

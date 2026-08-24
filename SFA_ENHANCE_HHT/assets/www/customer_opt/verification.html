@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Customer Survey</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="merchandising.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Transactional Data</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" class="tblHeader"
+                            cellpadding="0" cellspacing="0" border="0"
+                            width="100%">
+                            <tr>
+                                <th style="width:60%" class="leftAlign first"
+                                    lang="en">
+                                    Table Name
+                                </th>
+                                <th style="width:20%" class="last" lang="en">
+                                    From Tablet
+                                </th>
+                                <th style="width:20%" class="last" lang="en">
+                                    From Cloud
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="tblFixedHeight nonserv">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tbody class="tblBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <div class="MenuPosition">
+                        <a href="#" style="text-decoration: none"
+                            onclick="redirect()" rel="external"
+                            data-role="none">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-select.png"
+                                    alt="Print" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Select</div>
+                        </a>
+                    </div>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <div class="MenuPosition MenuExit">
+                        <a href="merchandising.html"
+                            style="text-decoration: none" rel="external"
+                            data-role="none">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Cancel</div>
+                        </a>
+                    </div>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+     $("#tblContent").click(function() { });
+     window.lang = new jquery_lang_js();
+     var platform= sessionStorage.getItem("platform");
+      resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+                          sessionStorage.setItem("surveyplan",'')
+        $(".leftfooter").html(getCurrentDate());
+
+           document.addEventListener("deviceready", getrecord, false);
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');           
+
+            
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('CustomerSurvey'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $(".centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		     $(".centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            function GetElements(xmlDoc) {
+                var PageName = 'orderRequest';
+            }
+                        
+            $("#tblContent tr").live('click', function() {
+                $(this).toggleClass('clicked');
+                $(this).siblings().removeClass('clicked');
+                var i = $(this).index();
+		sessionStorage.setItem("surveyplan", inputvalue[i][1]);
+        sessionStorage.setItem("surveyplanname", inputvalue[i][0]);
+		sessionStorage.setItem("planmandatory", inputvalue[i][2]);
+            });
+        });
+        function redirect() {
+			
+            if (sessionStorage.getItem("surveyplan") == '' || sessionStorage.getItem("surveyplan") == null) {
+                getLangText("Please Select Customer Survey Plan");
+                return false;
+            }
+            else {
+                
+                document.location.href = "viewcustomersurvey.html";
+            }
+        }
+	 function getrecord()
+            {
+	     
+                var custid=sessionStorage.getItem("customerid");
+                var routecode=sessionStorage.getItem("RouteCode");
+                if(sessionStorage.getItem("Language")=='en')
+                {
+                    var qry = "select csp.surveydescription,csp.surveyplankey,csp.surveymandatory from customersurveyplan as csp join customersurveykeyplan as cskp on cskp.surveyplankey=csp.surveyplankey join customersurveykey as csk on cskp.surveykey=csk.surveykey join customermaster as c on c.surveykey=csk.surveykey where c.customercode="+custid+" order by csp.surveysequencenumber";
+              }
+              else
+              {
+                 var qry = "select csp.arbsurveydescription,csp.surveyplankey,csp.surveymandatory from customersurveyplan as csp join customersurveykeyplan as cskp on cskp.surveyplankey=csp.surveyplankey join customersurveykey as csk on cskp.surveykey=csk.surveykey join customermaster as c on c.surveykey=csk.surveykey where c.customercode="+custid+" order by csp.surveysequencenumber";
+               
+              }
+                console.log(qry);
+                if(platform=='iPad')
+                {
+                          Cordova.exec(function(result) {
+                                    TableDataOffLine(result);
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [qry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                       window.plugins.DataBaseHelper.select(qry,function(result)
+                       {
+                              if(result.array != undefined)
+			      {
+                                    result = $.map(result.array, function (item, index) {   
+                                    if(sessionStorage.getItem("Language")=='en')
+                                    {
+                                    return [[item.surveydescription,item.surveyplankey,item.surveymandatory]];
+                                    }
+                                    else
+                                    {
+                                     return [[item.arbsurveydescription,item.surveyplankey,item.surveymandatory]];
+                                    }
+                                   
+            		      });
+                                     TableDataOffLine(result);
+                              }
+                              
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+              }
+	      function TableDataOffLine(RecSet)
+            {
+              var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                
+                inputvalue=RecSet;
+                var data = RecSet;
+                for (i = 0; i < data.length; i++) {
+		 var r = "<tr class='contentFont'>";
+                  
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'leftAlign first' : 'last';                    
+                        var Mendatoryval = data[i][2];
+                        if(j==0)
+                        var c = "<td width='70%' class='" + temp + "'>" + data[i][j] + "</td>";
+                        else
+                        var c = "<td width='30%' class='" + temp + "'>" + Mendatoryval + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                 
+                    $('#tblContent tbody').append(r);
+                    $("#tblContent tr:odd").addClass('oddRow');
+                    $("#tblContent tr:even").addClass('evenRow');
+                   // $('#tbl1 tr:first').toggleClass('clicked');
+                }
+            }
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.0a1.min.css" />
+	
+    <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.0a1.min.js"></script>
+	<link rel="stylesheet" media="only screen and (min-width: 600px) and (max-width: 700px)" href="css/style_600.css">
+	<link rel="stylesheet" media="only screen and (min-width: 700px) and (max-width: 800px)" href="css/style_800.css">
+	<link rel="stylesheet" media="only screen and (min-width: 1000px) and (max-width: 1200px)" href="css/style_1200.css">
+</head> 
+<body> 
+
+<div data-role="page" data-theme="d">
+<div>
+	<img title="" alt="" src="images/bg.png" id="background"> 
+</div>
+	<!--<div data-role="header" class="headerBar">
+		<div class="headerContainer">
+		    <span class="headerText">Customer Selection</span>
+		</div>
+		<div>
+		<span id="langP">EN</span>
+		</div>
+	</div>-->
+	<div data-role="header" data-position="inline"  id="bgclheader">	        
+        <a href="home.html" id="Back_inner" data-ajax="false" data-transition="slide">Back</a>
+        <h1>Customer Selection</h1>
+        <a href="index.html" id="lang_inner">EN</a>
+    </div>  
+	<div data-role="content" class="PageFont">
+		<div class="centerbox1">
+	        <div class="boxContent1">
+	            <div class="CRow1">
+	                <div class="ChkPos">
+                       <input type="checkbox" name="checkbox-1" id="checkbox-1"/>
+                       <label for="checkbox-1" style="font-weight:normal">Sequence Only</label>
+	                </div>
+	                <div class="ChkTextPos">
+	                    <div id="btnCommission" class="ui-corner-all">
+	                        Commission
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="tblBox">
+	                <table border="0" width="100%" cellpadding="10" cellspacing="1">
+	                        <thead>
+	                            <tr>
+	                                <td colspan="2" class="tblHeader">
+	                                    <div>
+	                                        <div class="tblHeading1">
+    	                                        <span style="color:#37B6EA">Customer #</span>
+    	                                    </div>
+    	                                    <div class="tblHeading2">
+    	                                        <span style="color:#37B6EA">Customer Name</span>
+    	                                    </div>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                        </thead>
+	                        <tbody class="tblBody">
+	                        <tr>
+	                            <td class="Cell1Style">11111</td>
+	                            <td class="Cell2Style">Customer 1</td>
+	                        </tr>
+	                        <tr>
+	                            <td>22222</td>
+	                            <td>Customer 2</td>
+	                        </tr>
+	                        <tr>
+	                            <td>33333</td>
+	                            <td>Customer 3</td>
+	                        </tr>
+	                        <tr>
+	                            <td>44444</td>
+	                            <td>Customer 4</td>
+	                        </tr>
+	                        <tr>
+	                            <td>55555</td>
+	                            <td>Customer 5</td>
+	                        </tr>
+	                        </tbody>
+	                    </table>
+	            </div>
+	            <div class="OptionDiv">
+                    <div class="Option1">
+                        <div class="Opt1Img">
+                            <img src="images/r-btn-1.png" alt=""/>
+                        </div>
+                        <div class="Opt1Text">
+                            <div><a href="#" data-role="none" class="OptTextStyle">Sort by Customer Number</a></div>
+                        </div>
+                    </div>
+                    <div class="Option2">
+                        <div class="Opt2Img">
+                            <img src="images/r-btn-2.png" alt=""/>
+                        </div>
+                        <div class="Opt2Text">
+                            <div><a href="#" data-role="none" class="OptTextStyle">Sort by Customer Name</a></div>
+                        </div>
+                    </div>
+	            </div>
+	        </div>
+	        <div class="boxSideMenu">
+	            <div class="Menu1">
+	                <div class="MenuPosition1">
+	                    <div class="MenuIconPos"><img src="images/icn-info-gray.png" alt=""/></div>
+	                    <div class="MenuTextPos1 DisableText">Info</div>
+	                </div>
+	                <div class="MenuPosition1">
+	                    <div class="MenuIconPos"><img src="images/icn-add-gray.png" alt=""/></div>
+	                    <div class="MenuTextPos1 DisableText">Add</div>
+	                </div>
+	                <div class="MenuPosition1">
+	                    <div class="MenuIconPos"><img src="images/icn-nosale-gray.png" alt=""/></div>
+	                    <div class="MenuTextPos1 DisableText" style="padding-top:5px">No Sale</div>
+	                </div>
+	                <div class="MenuForward">
+	                    <div style="padding-top:10px"><img src="images/icn-exit-gray.png" alt=""/><br /></div>
+	                </div>
+	            </div>
+	            <div class="Menu2">
+	                <div class="MenuPosition1">
+	                    <div class="MenuIconPos"><img src="images/icn-scanning-gray.png" alt=""/></div>
+	                    <div class="MenuTextPos1 DisableText">Scan</div>
+	                </div>
+	                <div class="MenuPosition1">
+	                    <div class="MenuIconPos"><img src="images/icn-edit-gray.png" alt=""/></div>
+	                    <div class="MenuTextPos1 DisableText">Edit</div>
+	                </div>
+	                <div class="MenuPosition1">
+	                    <a href="cust_opt.html" data-ajax="false" class="enableText" data-transition="slide"><div class="MenuIconPos"><img src="images/icn-select.png" alt=""/></div>
+	                    <div class="MenuTextPos1" style="font-weight:normal">Select</div></a>
+	                </div>
+	                <div class="MenuExit1">
+	                    <div class="DisableText" style="font-size:22px;padding-top:40px">Exit</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    
+	    
+	</div><!-- /content -->
+	
+	<div data-role="footer" class="ui-bar">
+        <div class="footer">
+            <div class="leftfooter">09 November 2011</div>
+            <div class="rightfooter">Mirnah Technology Systems</div>
+        </div>
+    </div>
+    <div data-role="footer" style="bottom:0;position:absolute;">
+        <div data-role="navbar" data-iconpos="top" data-grid="f">
+		    <ul>
+			    <li style="margin-bottom:0 !important;"><a href="#" id="day" data-icon="custom">Start of day</a></li>
+			    <li style="margin-bottom:0 !important;"><a href="#" id="inve" data-icon="custom">inventory</a></li>
+			    <li style="margin-bottom:0 !important;"><a href="#" id="cust" data-icon="custom" class="ui-btn-active">Customer opt</a></li>
+			    <li style="margin-bottom:0 !important;"><a href="#" id="sett" data-icon="custom">Settlement</a></li>
+			    <li style="margin-bottom:0 !important;"><a href="#" id="expe" data-icon="custom">Expense Entry</a></li>
+			    <li style="margin-bottom:0 !important;"><a href="#" id="info" data-icon="custom">information</a></li>
+			    <li style="margin-bottom:0 !important; width:14.5%"><a href="#" id="setup" data-icon="custom">Utilities</a></li>
+		    </ul>
+        </div>
+    </div>     
+
+</div><!-- /page -->
+<script type="text/javascript">
+    $("tr:odd").addClass('oddRow');
+    $("tr:even").addClass('evenRow');
+    $("tr:last td:first").addClass('ui-corner-bl');
+    $("tr:last td:last").addClass('ui-corner-br');
+    /*$("div#div1 > div").css("border", "solid 1px blue");
+    $("div#div2 > div").css("border", "solid 1px green");*/
+</script>
+</body>
+</html>

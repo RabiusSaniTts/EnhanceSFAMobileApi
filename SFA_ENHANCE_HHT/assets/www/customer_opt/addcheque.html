@@ -1,0 +1,310 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 09/03/2012
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cash Entry</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+        <script type="text/javascript" src="../cordova-1.5.0.js"></script>
+
+        <!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+           //scrollContent = new iScroll('contentWrapper');
+	    scrollContent = new iScroll('contentWrapper', {
+        useTransform: false,
+        onBeforeScrollStart: function (e) {
+            var target = e.target;
+            while (target.nodeType != 1) target = target.parentNode;
+
+            if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
+                e.preventDefault();
+        }
+    });
+
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="cashcollection_mop.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Add Cheque</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="tblBox com_div">
+                    <div class="tblHeader info_header" lang="en">
+                    </div>
+                    <div class="info" id="contentWrapper">
+                        <table border="0" width="100%" cellpadding="10"
+                            cellspacing="0" id="tbl1">
+                            <tbody class="tbl_body">
+                                <tr class="tr_commission td_com">
+                                    <td width="50%" lang="en">
+                                        Cheque #
+                                    </td>
+                                    <td width="50%" lang="en">
+                                        Amount
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <input type="text" name="num"
+                                            id="txtNum" value
+                                            class="required" />
+                                    </td>
+                                    <td width="50%">
+                                        <input type="text" name="amount"
+                                            id="txtAmount" value
+                                            class="required" />
+                                    </td>
+                                </tr>
+                                <tr class="tr_commission td_com">
+                                    <td width="50%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Bank</label>
+                                    </td>
+                                    <td width="50%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Cheque Date</label>
+                                    </td>
+
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <select name="select-choice-1"
+                                            id="txtBank"
+                                            style="display: inline;">
+
+                                        </select>
+
+                                    </td>
+                                    <td width="50%">
+                                        <input name="startdate" type="date"
+                                            id="txtDate" data-role="flipbox"
+                                            readonly="readonly" value
+                                            data-options='{"mode": "datebox"}' />
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu com_info_right">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#"
+                        onclick="InsertCheque('cashcollection_mopcheque.html')"
+                        class="enableText" rel="external">
+                        <div class="MenuPosition cashCollectionCashHeight">
+                            <div class="iconPos">
+                                <img src="../images/yes.png" alt="Ok" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="cashcollection_mopcheque.html" class="enableText"
+                        rel="external">
+                        <div
+                            class="MenuPosition cashCollectionCashHeight MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+
+       resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+
+                              $('.ui-body-d').css({ 'background': '#fff' });
+                              $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+                              $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+                              $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+                              $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+                              document.addEventListener("deviceready", getdata, false);
+
+                $(".leftfooter").html(getCurrentDate());
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+            
+                if (sessionStorage.getItem("Language") != "en") {
+
+                    window.lang.change('CashCollectionMOPCash' + lan, lan);
+                    window.lang.change('Footer' + lan, lan);
+                    if (lan == "AR") {
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+
+                }
+                else {
+                    window.lang.change('en', 'en');
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });
+        function getdata()
+            {
+                
+                Cordova.exec(function(result) { 
+                           
+                              for(i=0;i<result.length;i++){     
+                              
+                              $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#txtBank"));                                           
+                              }
+                              
+                              },
+                              function(error) {
+                              alert(error);},
+                              "PluginClass", 
+                              "GetdataMethod",                
+                              ["select bankcode,bankname from bankmaster"]);   
+            }
+            function InsertCheque(Link)
+            {          
+                              
+               var routekey= sessionStorage.getItem("RouteKey");
+                var visitkey= sessionStorage.getItem("VisitKey");
+                var checknumber = $('#txtNum').val();
+                var amount = $('#txtAmount').val();
+                var checkdate = $('#txtDate').val();
+                var bankcode = $('#txtBank').val();
+                
+               
+                Cordova.exec(function(result) { 
+                            
+                             var base = window.location.toString().substring(0, window.location.toString().lastIndexOf("/")) + "/";
+                            window.location = base + Link;
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "InsertUpdateMethod",                
+                          ["insert into cashcheckdetail ('routekey','visitkey','typecode','checknumber','amount','checkdate','bankcode','istemp','issync') values ('"+routekey+"','"+visitkey+"','1','"+checknumber+"','"+amount+"','"+checkdate+"','"+bankcode+"','true',0)"]);             
+            }
+     </script>
+
+        </div>
+    </body>
+</html>

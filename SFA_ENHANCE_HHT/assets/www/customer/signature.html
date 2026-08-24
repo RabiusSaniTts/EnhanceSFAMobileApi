@@ -1,0 +1,1449 @@
+
+<!--
+	 '  Created By   : Pratik Raval
+	 '  Created Date : 17/02/2012
+	 '  Description  : This page is used for Signature.
+	-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Signature</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi" />
+
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css" />
+		<!--Black P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 700px)"
+			href="../css/style_700.css" />
+		<!--Iphone 4 P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<!--Ipad P-->
+		<!--Black L-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap-grid.css" />
+		<link rel="stylesheet" href="../icons/font/bootstrap-icons.css" />
+
+		<link href="../faws/css/all.css" rel="stylesheet" />
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+	if (navigator.userAgent.toLowerCase().match(/android/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+		document
+				.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+	} else if (navigator.userAgent.toLowerCase().match(/iphone/)
+			|| navigator.userAgent.toLowerCase().match(/ipad/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+	}
+</script>
+		<script type="text/javascript" src="../js/jquery.json-2.3.min.js"></script>
+
+		<!-- Signature CSS and Java Script File  -->
+		<link rel="stylesheet" href="../css/jquery.signaturepad.css" />
+
+		<script src="../js/jquery.signaturepad.min.js"
+			type="text/javascript"></script>
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+		<!--End Signature CSS and Java Script File  -->
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="Order Request"
+			id="myPage" />
+		<div>
+			<img title alt src="../images/bg.png" id="background" />
+		</div>
+		<div data-role="header" data-position="inline" id="bgclheader">
+			<a href="#" id="Back_inner" rel="external" lang="en">Back</a>
+			<h1 lang="en">Signature</h1>
+			<a href="#" id="lang_inner">EN</a>
+		</div>
+		<div data-role="content" class="centerboxInvReq">
+			<div class="border border-info rounded"
+				style="min-height: 87%; max-height: 87%; overflow-x: hidden; overflow-y: auto; !important">
+				<div class="com_div comm captionLabel">
+					<div>
+						<!--<canvas style="border: 1px solid black; background-color: white" id="thecanvas"></canvas>-->
+						<div class="sigPad" style="text-align: center">
+							<canvas class="pad" width="1000" height="700" id="thecanvas"></canvas>
+							<input type="hidden" name="output" class="output"
+								id="hidsignature" />
+						</div>
+						<div style="height: 30px;"></div>
+						<div>
+							<table cellpadding="5" cellspacing="2" border="0" width="100%">
+								<tr>
+									<td colspan="2" class="captionLabel" lang="en">Customer#</td>
+									<td colspan="2" class="captionLabel" lang="en">Customer
+										Name</td>
+								</tr>
+								<tr>
+									<td colspan="2"><input id="txtCustomerNumber" type="text"
+											class="textFont" style="width: 80%" disabled="disabled" /></td>
+									<td colspan="2"><input id="txtCustomerName" type="text"
+											class="textFont" disabled="disabled" style="width: 80%" /></td>
+								</tr>
+								<tr>
+									<td colspan="2" class="captionLabel" lang="en" id="lblOrdNumber">Order
+										Number</td>
+									<td>SALE AMT</td>
+									<td>RET AMT</td>
+								</tr>
+								<tr>
+									<td colspan="2"><input id="txtInvoiceNumber" type="text"
+											size="20" class="textFont" style="width: 80%"
+											disabled="disabled" /></td>
+									<td><input id="txtSaleAmt" type="text" size="20"
+											class="textFont" style="width: 80%" disabled="disabled" /></td>
+									<td><input id="txtRetAmt" type="text" size="11"
+											class="textFont" disabled="disabled"
+											style="width: 80%; text-align: right" /></td>
+								</tr>
+								<tr>
+									<td class="captionLabel" lang="en" id="lblTaxAmt">Promo Amt</td>
+									<td class="captionLabel" id="lblpromoAmt" lang="en">Tax Amt</td>
+									<td class="captionLabel" id="lblAmount" lang="en">Amount
+										Due</td>
+								</tr>
+								<tr>
+									<td><input id="txtPromoAmt" type="text" size="20"
+											class="textFont" style="width: 80%" disabled="disabled" /></td>
+									<td><input id="txtTaxAmt" type="text" size="11"
+											class="textFont" disabled="disabled"
+											style="width: 80%; text-align: right" /></td>
+									<td colspan="2"><input id="txtAmountDue" type="text"
+											size="11" class="textFont" disabled="disabled"
+											style="width: 80%; text-align: right" /></td>
+								</tr>
+
+							</table>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="bottomMenuNew border border-info rounded"
+				style="width: 100%; text-align: center; min-height: 13%; max-height: 13% !important">
+
+				<div class="row">
+					<div class="col-4" style="text-align: center; margin-top: 5px;">
+						<a href="javascript:Clear();" class="clearButton"
+							style="text-decoration: none" rel="external"> <i
+								class="bi bi-x-diamond-fill" id="ContIcon"
+								style='font-size: 72px; color: red; text-align: center;'></i> <br>Clear
+							Sign </a>
+					</div>
+					<div class="col-4" style="text-align: center; margin-top: 5px;">
+						<a id="lnkAccept" href="#" rel="external"
+							style="text-decoration: none" data-role="none"> <i
+								class='bi bi-check-square-fill' id="ContIcon"
+								style='font-size: 72px; color: green; text-align: center;'></i>
+							<br>Accept
+						</a>
+					</div>
+					<div class="col-4" style="text-align: center; margin-top: 5px;">
+						<a id="lnkExit" href="#" rel="external" id="A2"
+							style="text-decoration: none" data-role="none"> <i
+								class='bi bi-x-square-fill' id="ContIcon"
+								style='font-size: 72px; color: red; text-align: center;'></i> <br>Cancel
+						</a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div id="f1" data-role="footer" class="ui-bar">
+			<div class="footer">
+				<div class="leftfooter">09 November 2011</div>
+				<div class="rightfooter">Mirnah Technology Systems</div>
+			</div>
+		</div>
+		<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+			<div data-role="navbar" data-iconpos="top" data-grid="f">
+				<ul>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+							rel="external" id="day" data-icon="custom" lang="en"
+							onclick="footerredict('../startofday/startofday.html')">Start
+							day</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+							rel="external" data-icon="custom" lang="en"
+							onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+							class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+							lang="en">Customer</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+							rel="external" id="sett" data-icon="custom" lang="en"
+							onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+					<li style="margin-bottom:0 !important;"><a href="#"
+							rel="external" id="ordstatus" data-icon="custom"
+							lang="en"
+							onclick="footerredict('../home/orderstatus.html')">Order
+							Status</a></li>
+
+					<li style="margin-bottom: 0 !important;"><a href="#"
+							rel="external" id="info" data-icon="custom" lang="en"
+							onclick="footerredict('../information/information.html')">Information</a></li>
+					<li style="margin-bottom: 0 !important; width: 14.0%"><a
+							href="#" rel="external" id="setup" data-icon="custom" lang="en"
+							onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+		var platform = '';
+		platform = sessionStorage.getItem("platform");
+		//platform == "iPad";
+		window.lang = new jquery_lang_js();
+		var presignature = "";
+		resizeOrientationWindow();
+		$(document)
+				.ready(
+						function() {
+							resizeWindow();
+
+							if (window.devicePixelRatio <= 1.5) {
+
+								var canvas = document
+										.getElementById("thecanvas");
+								canvas.width = 500;
+								canvas.height = 300;
+								Clear();
+							}
+							$(".leftfooter").html(getCurrentDate());
+							$('.sigPad').signaturePad({
+								drawOnly : true
+							});
+							localStorage.setItem("roundredirect", 'signature');
+							document.addEventListener("deviceready", GetCashSetting, false);
+							//document.addEventListener("deviceready", UpdateTotalPM, false);
+							//document.addEventListener("deviceready", UpdateInvoiceTaxDetail, false);
+							/*else if(localStorage.sign == 'promo')
+							{
+							var back = '../customer/promotion_review.html';
+							var exitlink = '../customer/promotion_review.html';
+							}
+							else if(localStorage.sign == 'promo_list')
+							{
+							
+							var back = '../customer/customer_promotion_list.html';    
+							var exitlink = '../customer/customer_promotion_list.html';
+							}
+							else if(localStorage.sign == 'order_promo_list')
+							{
+							
+							var back = '../customer_opt/order_promotion_list.html';    
+							var exitlink = '../customer_opt/order_promotion_list.html';
+							}*/
+
+							//$("#lnkExit").attr("href", exitlink);
+							var lan = sessionStorage.getItem("Language");
+							window.lang.run(lan);
+
+							if (sessionStorage.getItem("Language") != "en") {
+
+								window.lang.change('Signature' + lan, lan);
+								window.lang.change('Footer' + lan, lan);
+								if (lan == "AR") {
+									$(".centerboxInvReq").attr("dir", "rtl");
+									$('#Back_inner')
+											.removeClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#Back_inner')
+											.addClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.removeClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.addClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								}
+
+							} else {
+								window.lang.change('en', 'en');
+								$(".centerboxInvReq").attr("dir", "ltr");
+								$('#Back_inner')
+										.removeClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#Back_inner')
+										.addClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.removeClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.addClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+							}
+						});
+
+		function UpdateInvoiceTaxDetail() {
+			//alert("Test");
+			//var Qry1 = " update invoicedetail set  damageditemgsttax = (  (damagedqty * goodreturnprice) -   ifnull (damagedqty, 0) * 100 / (  ifnull (returnqty, 0) + ifnull (damagedqty, 0)  + ifnull (expiryqty, 0) ) * returnpromoamount / 100  ) * (0.05)	  where itemcode  in (select actualitemcode from itemmaster where itemtaxkey2 = 14) and ifnull(damagedqty,0) > 0 and  visitkey = "+sessionStorage.getItem('VisitKey')+" and routekey = " + sessionStorage.getItem('RouteKey') + "  ";
+
+			//var Qry1 = " update invoicedetail set damageditemgsttax = (  (damagedqty * goodreturnprice) -   ifnull (damagedqty, 0) * 100 / (  ifnull (returnqty, 0) + ifnull (damagedqty, 0)  + ifnull (expiryqty, 0) ) * returnpromoamount / 100  ) * (0.05) , returnitemgsttax = (  (ifnull(returnqty,0) * ifnull(goodreturnprice,0)) -   ifnull (returnqty, 0) * 100 / (  ifnull (returnqty, 0) + ifnull (damagedqty, 0)  + ifnull (expiryqty, 0) ) * ifnull(returnpromoamount,0) / 100  ) * (0.05)	  where itemcode  in (select actualitemcode from itemmaster where itemtaxkey2 = 14) and ifnull(damagedqty,0) > 0 and  visitkey = "+sessionStorage.getItem('VisitKey')+" and routekey = " + sessionStorage.getItem('RouteKey') + "   ";
+
+			//var Qry1 = " update invoicedetail set damageditemgsttax = (  (damagedqty * goodreturnprice) -   ifnull (damagedqty, 0) * 100 / (  ifnull (returnqty, 0) + ifnull (damagedqty, 0)  + ifnull (expiryqty, 0) ) * returnpromoamount / 100  ) * (0.05) ,returnitemgsttax = (  (ifnull(returnqty,0) * ifnull(goodreturnprice,0)) -   ifnull (returnqty, 0) * 100 / (  ifnull (returnqty, 0) + ifnull (damagedqty, 0)  + ifnull (expiryqty, 0) ) * ifnull(returnpromoamount,0) / 100  ) * (0.05), salesitemgsttax = ( select printf('%.3f',((salesqty * salesprice) - promoamount) * 0.05) befvat from invoicedetail  ) where itemcode  in (select actualitemcode from itemmaster where itemtaxkey2 = 14) and ifnull(damagedqty,0) > 0 OR  ifnull(returnqty,0) > 0 OR  ifnull(salesqty,0) > 0 and  visitkey = "+sessionStorage.getItem('VisitKey')+" and routekey = " + sessionStorage.getItem('RouteKey') + "   ";
+
+			var Qry1 = " update invoicedetail set damageditemgsttax = case when ifnull(damagedqty,0) > 0 then (  (damagedqty * goodreturnprice) -   ifnull (damagedqty, 0) * 100 / (  ifnull (returnqty, 0) + ifnull (damagedqty, 0)  + ifnull (expiryqty, 0) ) * ifnull(returnpromoamount,0) / 100  ) * (0.05) else 0 end, returnitemgsttax = case when ifnull(returnqty,0) > 0 then   (  (ifnull(returnqty,0) * ifnull(goodreturnprice,0)) -   ifnull (returnqty, 0) * 100 / (  ifnull (returnqty, 0) + ifnull (damagedqty, 0)  + ifnull (expiryqty, 0) ) * ifnull(returnpromoamount,0) / 100  ) * (0.05) else 0 end, salesitemgsttax = case when ifnull(salesqty,0) > 0 then ( ((salesqty * salesprice) - ifnull(promoamount,0)) * 0.05 ) else 0 end where itemcode  in (select actualitemcode from itemmaster, taxmaster where taxpercentage = '5.0000' and taxcode = itemtaxkey2) and  visitkey = "
+					+ sessionStorage.getItem('VisitKey')
+					+ " and routekey = "
+					+ sessionStorage.getItem('RouteKey') + "   ";
+
+			console.log("Qryreturnitemtest" + Qry1);
+			//alert("Test");
+			if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry1, function(result) {
+
+					updateTotalLineItemTax1();
+
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+			}
+		}
+
+		function updateTotalLineItemTax1() {
+			var decimalplace = sessionStorage.getItem("decimalplace");
+			if (decimalplace == null || decimalplace == undefined) {
+				decimalplace = 3;
+			}
+
+			var Qry = "UPDATE invoiceheader set itemlinetaxamount =ROUND(((Select COALESCE(SUM(ROUND(salesitemexcisetax,"
+					+ decimalplace
+					+ ")),0) +COALESCE(SUM(ROUND(salesitemgsttax,"
+					+ decimalplace
+					+ ")),0)-COALESCE(SUM(ROUND(returnitemexcisetax,"
+					+ decimalplace
+					+ ")),0) -COALESCE(SUM(ROUND(returnitemgsttax,"
+					+ decimalplace
+					+ ")),0) -COALESCE(SUM(ROUND(damageditemexcisetax,"
+					+ decimalplace
+					+ ")),0)-COALESCE(SUM(ROUND(damageditemgsttax,"
+					+ decimalplace
+					+ ")),0) + COALESCE(SUM(ROUND(fgitemexcisetax,"
+					+ decimalplace
+					+ ")),0) +COALESCE(SUM(ROUND(fgitemgsttax,"
+					+ decimalplace
+					+ ")),0) +COALESCE(SUM(ROUND(promoitemexcisetax,"
+					+ decimalplace
+					+ ")),0) +COALESCE(SUM(ROUND(promoitemgsttax,"
+					+ decimalplace
+					+ ")),0) -COALESCE(SUM(ROUND(buybackexcisetax,"
+					+ decimalplace
+					+ ")),0) -COALESCE(SUM(ROUND(buybackgsttax,"
+					+ decimalplace
+					+ ")),0)  from invoicedetail "
+					+ "where invoicedetail.routekey="
+					+ sessionStorage.getItem('RouteKey')
+					+ " and invoicedetail.visitkey="
+					+ sessionStorage.getItem('VisitKey')
+					+ ")),"
+					+ decimalplace
+					+ ")"
+					+ "where routekey="
+					+ sessionStorage.getItem('RouteKey')
+					+ " and visitkey="
+					+ sessionStorage.getItem('VisitKey');
+
+			if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					updateInvoiceLevelTax1();
+
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+			}
+		}
+
+		function updateInvoiceLevelTax1() {
+
+			var Qry = "UPDATE invoiceheader set totaltaxesamount= (select taxAmount from "
+					+ "(select cm.custtaxkey1,tm.taxtype,tm.taxpercentage,case when tm.taxtype=1 then "
+					+ " ( (COALESCE(ih.totalsalesamount,0)-COALESCE(ih.totalpromoamount,0)+COALESCE(ih.itemlinetaxamount,0) +COALESCE(ih.diffround,0))*tm.taxpercentage/100)  else 0 END taxAmount "
+					+ "from customermaster cm inner join taxmaster  tm on cm.custtaxkey1=tm.taxcode "
+					+ "inner join invoiceheader ih on routekey="
+					+ sessionStorage.getItem('RouteKey')
+					+ " and visitkey="
+					+ sessionStorage.getItem('VisitKey')
+					+ " where  cm.customercode="
+					+ sessionStorage.getItem('customerid')
+					+ ") where routekey="
+					+ sessionStorage.getItem('RouteKey')
+					+ " and visitkey="
+					+ sessionStorage.getItem('VisitKey')
+					+ ")";
+
+			if (platform == 'Android') {
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					GetCashSetting();
+					// alert("tax aupdated");
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+			}
+		}
+
+		function UpdateTotalPM() {
+
+			platform = sessionStorage.getItem("platform");
+			var selectQry = "SELECT H.CUSTOMERCODE, D.ITEMCODE , C.promotionkey, D.ITEMCODE ,PK.promotiontypecode FROM INVOICEHEADER H INNER JOIN INVOICEDETAIL D ON H.VISITKEY = D.VISITKEY AND H.VISITKEY = "
+					+ sessionStorage.getItem("VisitKey")
+					+ " INNER JOIN CUSTOMERMASTER C ON H.CUSTOMERCODE = C.CUSTOMERCODE INNER JOIN PROMOKEYDETAIL PK ON PK.PROMOTIONKEY = C.PROMOTIONKEY INNER JOIN PROMOPLANDETAIL PP ON PP.PLANNUMBER = PK.PLANNUMBER INNER JOIN PRODUCTGROUPDETAIL PG ON (PG.GROUPNUMBER = PP.QUALIFICATIONGROUP  AND PG.itemcode = D.ITEMCODE) or  PP.QUALIFICATIONGROUP = 1 ";
+			console.log("selectQry" + selectQry);
+
+			if (platform == "Android") {
+				window.plugins.DataBaseHelper
+						.select(
+								selectQry,
+								function(result) {
+									if (result.array == undefined) {
+										var promoupdate = "update invoiceheader set totalpromoamount = 0 where visitkey = "
+												+ sessionStorage
+														.getItem("VisitKey");
+										console.log("promotionupdate"
+												+ promoupdate);
+
+										window.plugins.DataBaseHelper
+												.select(
+														promoupdate,
+														function(result) {
+
+														},
+														function() {
+															console
+																	.warn("Error calling plugin");
+														});
+
+									}
+
+									GetCashSetting()
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+
+		}
+
+		function GetCashSetting() {
+			$.mobile.showPageLoadingMsg();
+			platform = sessionStorage.getItem("platform");
+			var acceptlink, exitlink;
+			$("#lnkAccept").attr("onclick", "");
+			if (localStorage.signature == 'sales') {
+				if (eval(sessionStorage.getItem("invoicepaymentterms")) != 2)
+					acceptlink = '../customer_opt/cashcollection_mop.html';
+
+				exitlink = '../customer_opt/salesinvoice_option.html';
+				getRoundingline();
+			} else if (localStorage.signature == 'orderrequest') {
+				acceptlink = '../customer_opt/orderdetail.html';
+				//var back = '../customer_opt/orderRequest.html';
+				//var exitlink = '../customer_opt/orderRequest.html';
+				
+				//added by Aswin Suresh to check is FSS module (Sales Order Pricing editing) -- 2025-10-13
+				if(sessionStorage.getItem("enableFSS") == 1){
+					var back = '../customer_opt/orderRequest_fss.html';
+					var exitlink = '../customer_opt/orderRequest_fss.html';
+				} else {
+					var back = '../customer_opt/orderRequest.html';
+					var exitlink = '../customer_opt/orderRequest.html';
+				}
+				
+				getSignature();
+			}
+			$("#lnkAccept").attr("href", "#");
+			$("#lnkExit").attr("href", exitlink);
+			$("#Back_inner").attr("href", exitlink);
+			$("#txtCustomerNumber").val(sessionStorage.getItem("customercode"));
+			$("#txtCustomerName").val(sessionStorage.getItem("customername"));
+
+			//getRoundinginvoice();
+			//getSignature();
+		}
+
+		function getSignature() {
+			$.mobile.hidePageLoadingMsg();
+			//$("#lnkAccept").attr("onclick","CheckSignatueCount()");
+			//Aswin Add For Chechking Sales Limit//
+			if (localStorage.signature == 'sales') {   
+			$("#lnkAccept").attr("onclick", "CheckSaleslimit()");
+			} else {
+			$("#lnkAccept").attr("onclick","CheckSignatueCount()");
+			}
+			var Qry = "SELECT signaturedata FROM sigcapturedata WHERE routekey="
+					+ sessionStorage.getItem("RouteKey")
+					+ " AND visitkey="
+					+ sessionStorage.getItem("VisitKey");
+			if (platform == "iPad") {
+				Cordova.exec(function(result) {
+					if (result.length > 0) {
+						if (result[0][0] != "") {
+							$(".sigPad").signaturePad()
+									.regenerate(result[0][0]);
+							presignature = result[0][0];
+						}
+					}
+					getAmountDue();
+				}, function(error) {
+					alert("Error in binding Bank Name : " + error);
+				}, "PluginClass", "GetdataMethod", [ Qry ]);
+			} else if (platform == "Android") {
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					if (result.array != undefined) {
+						result = $.map(result.array, function(item, index) {
+							return [ [ item.signaturedata ] ];
+						});
+						if (result.length > 0) {
+							if (result[0][0] != "") {
+								$(".sigPad").signaturePad().regenerate(
+										result[0][0]);
+								presignature = result[0][0];
+							}
+						}
+					}
+					getSaleAmount();
+
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+			}
+		}
+
+		//function for checking sales limit
+		function CheckSaleslimit() {
+
+			var Qry = "SELECT saleslimitflag, minsaleslimit, maxsaleslimit FROM CUSTOMERMASTER WHERE customercode = "
+					+ sessionStorage.getItem("customerid");
+
+			console.log(Qry);
+
+			if (platform == "iPad") {
+
+			} else if (platform == "Android") {
+
+				window.plugins.DataBaseHelper
+						.select(
+								Qry,
+								function(result) {
+
+									if (result.array != undefined) {
+										/* var result = $.map(result.array, function(item, index) {
+										    return [[item.saleslimitflag,item.minsaleslimit,item.maxsaleslimit]];
+										}); */
+
+										var saleslimitflag = result.array[0].saleslimitflag;
+										var minsaleslimit = result.array[0].minsaleslimit;
+										var maxsaleslimit = result.array[0].maxsaleslimit;
+
+										if (saleslimitflag == 0) {
+											CheckRouteSaleslimit();
+										}
+										if (saleslimitflag == 1) {
+
+											var selectQry = "select ifnull(totalinvoiceamount,0) as sum from invoiceheader where visitkey = "
+													+ sessionStorage
+															.getItem("VisitKey")
+													+ " and routekey = "
+													+ sessionStorage
+															.getItem("RouteKey");
+											window.plugins.DataBaseHelper
+													.select(
+															selectQry,
+															function(resultdata) {
+
+																if (resultdata.array != undefined) {
+
+																	var total_invoice_amount = resultdata.array[0].sum;
+
+																	if (+total_invoice_amount < +minsaleslimit) {
+
+																		alert("Invoice Amount is Less Than Minimum Customer Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+																	} else {
+																		CheckRouteSaleslimit();
+																	}
+
+																} else {
+																	alert("DATA ERROR!!");
+																}
+
+															},
+															function() {
+																console
+																		.warn("Error calling plugin");
+															});
+
+										}
+										if (saleslimitflag == 2) {
+
+											var selectQry = "select ifnull(totalinvoiceamount,0) as sum from invoiceheader where visitkey = "
+													+ sessionStorage
+															.getItem("VisitKey")
+													+ " and routekey = "
+													+ sessionStorage
+															.getItem("RouteKey");
+											window.plugins.DataBaseHelper
+													.select(
+															selectQry,
+															function(resultdata) {
+
+																if (resultdata.array != undefined) {
+
+																	var total_invoice_amount = resultdata.array[0].sum;
+
+																	if (+total_invoice_amount > +maxsaleslimit) {
+																		alert("Invoice Amount is Greater Than Maximum Customer Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+																	} else {
+																		CheckRouteSaleslimit();
+																	}
+
+																} else {
+																	alert("DATA ERROR!!");
+																}
+
+															},
+															function() {
+																console
+																		.warn("Error calling plugin");
+															});
+
+										}
+										if (saleslimitflag == 3) {
+
+											var selectQry = "select ifnull(totalinvoiceamount,0) as sum from invoiceheader where visitkey = "
+													+ sessionStorage
+															.getItem("VisitKey")
+													+ " and routekey = "
+													+ sessionStorage
+															.getItem("RouteKey");
+											window.plugins.DataBaseHelper
+													.select(
+															selectQry,
+															function(resultdata) {
+
+																if (resultdata.array != undefined) {
+
+																	/* var resultdata = $.map(resultdata.array, function(item, index) {
+																	    return [[item.sum]];
+																	}); */
+
+																	var total_invoice_amount = resultdata.array[0].sum;
+
+																	/* alert("total_invoice_amount "+total_invoice_amount);
+																	alert("minsaleslimit "+minsaleslimit);
+																	alert("minsaleslimit "+maxsaleslimit); */
+
+																	if (+total_invoice_amount < +minsaleslimit) {
+
+																		alert("Invoice Amount is Less Than Minimum Customer Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+
+																	} else if (+total_invoice_amount > +maxsaleslimit) {
+
+																		alert("Invoice Amount is Greater Than Maximum Customer Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+
+																	} else {
+																		CheckRouteSaleslimit();
+																	}
+
+																} else {
+																	alert("DATA ERROR!!");
+																}
+
+															},
+															function() {
+																console
+																		.warn("Error calling plugin");
+															});
+
+										}
+
+									} else {
+										alert("CUSTOMER SALES LIMIT IS NOT DEFINIED. PLEASE CONTACT ADMINISTRATOR");
+									}
+
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+		}
+
+		function CheckRouteSaleslimit() {
+
+			var Qry = "SELECT saleslimitflag, minsaleslimit, maxsaleslimit FROM routemaster WHERE routecode = "
+					+ sessionStorage.getItem("RouteCode");
+
+			console.log(Qry);
+
+			if (platform == "iPad") {
+
+			} else if (platform == "Android") {
+
+				window.plugins.DataBaseHelper
+						.select(
+								Qry,
+								function(result) {
+
+									if (result.array != undefined) {
+
+										var saleslimitflag = result.array[0].saleslimitflag;
+										var minsaleslimit = result.array[0].minsaleslimit;
+										var maxsaleslimit = result.array[0].maxsaleslimit;
+
+										if (saleslimitflag == 0) {
+											CheckSignatueCount();
+										}
+										if (saleslimitflag == 1) {
+
+											var selectQry = "select sum(ifnull(totalinvoiceamount,0)) as sum from invoiceheader where routekey = "
+													+ sessionStorage
+															.getItem("RouteKey");
+											window.plugins.DataBaseHelper
+													.select(
+															selectQry,
+															function(resultdata) {
+
+																if (resultdata.array != undefined) {
+
+																	var route_total_invoice_amount = resultdata.array[0].sum;
+
+																	if (+route_total_invoice_amount < +minsaleslimit) {
+
+																		alert("Invoice Amount is less than Minimum Route Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+
+																	} else {
+																		CheckSignatueCount();
+																	}
+
+																} else {
+																	alert("DATA ERROR!!");
+																}
+
+															},
+															function() {
+																console
+																		.warn("Error calling plugin");
+															});
+
+										}
+										if (saleslimitflag == 2) {
+
+											var selectQry = "select sum(ifnull(totalinvoiceamount,0)) as sum from invoiceheader where routekey = "
+													+ sessionStorage
+															.getItem("RouteKey");
+											window.plugins.DataBaseHelper
+													.select(
+															selectQry,
+															function(resultdata) {
+
+																if (resultdata.array != undefined) {
+
+																	var route_total_invoice_amount = resultdata.array[0].sum;
+
+																	if (+route_total_invoice_amount > +maxsaleslimit) {
+
+																		alert("Invoice Amount Exceeds Maximum Route Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+
+																	} else {
+																		CheckSignatueCount();
+																	}
+
+																} else {
+																	alert("DATA ERROR!!");
+																}
+
+															},
+															function() {
+																console
+																		.warn("Error calling plugin");
+															});
+
+										}
+										if (saleslimitflag == 3) {
+
+											var selectQry = "select sum(ifnull(totalinvoiceamount,0)) as sum from invoiceheader where routekey = "
+													+ sessionStorage
+															.getItem("RouteKey");
+											window.plugins.DataBaseHelper
+													.select(
+															selectQry,
+															function(resultdata) {
+
+																if (resultdata.array != undefined) {
+
+																	var route_total_invoice_amount = resultdata.array[0].sum;
+
+																	if (+route_total_invoice_amount < +minsaleslimit) {
+
+																		alert("Invoice Amount is Less Than Minimum Route Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+
+																	} else if (+route_total_invoice_amount > +maxsaleslimit) {
+
+																		alert("Invoice Amount Exceeds Maximum Route Sales Limit");
+																		window.location = "../customer_opt/salesinvoice.html";
+
+																	} else {
+																		CheckSignatueCount();
+																	}
+
+																} else {
+																	alert("DATA ERROR!!");
+																}
+
+															},
+															function() {
+																console
+																		.warn("Error calling plugin");
+															});
+
+										}
+
+									} else {
+										alert("ROUTE SALES LIMIT IS NOT DEFINIED. PLEASE CONTACT ADMINISTRATOR");
+									}
+
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+		}
+
+		function getSaleAmount() {
+
+			var Qry = "select sum(diffround) as diffrence from invoicedetail where visitkey="
+					+ sessionStorage.getItem("VisitKey")
+					+ " and routekey="
+					+ sessionStorage.getItem("RouteKey");
+
+			console.log(Qry);
+			if (platform == "iPad") {
+				Cordova.exec(function(result) {
+
+				}, function(error) {
+					alert("Error in binding Bank Name : " + error);
+				}, "PluginClass", "GetdataMethod", [ Qry ]);
+			} else if (platform == "Android") {
+				window.plugins.DataBaseHelper.select(Qry, function(result) {
+					if (result.array != undefined) {
+						result = $.map(result.array, function(item, index) {
+							return [ [ item.diffrence ] ];
+						});
+						if (result.length > 0) {
+
+							if (eval(result[0][0]) != 0) {
+
+								$('#lblAmount').text(
+										"Amount due(After Rounding)");
+
+							}
+						}
+						getAmountDue();
+					}
+
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+			}
+
+		}
+		function getAmountDue() { //alert("get due" +sessionStorage.getItem("InvoiceNumber"))  ;
+			var decimalplace = sessionStorage.getItem("decimalplace");
+			var routekey = sessionStorage.getItem("RouteKey");
+			var visitkey = sessionStorage.getItem("VisitKey");
+			var customerid = sessionStorage.getItem("customerid");
+			var Qry;
+			if (localStorage.getItem("signature") == "sales") {
+
+				$('#lblOrdNumber').html(getLangTextdata("Invoice Number"));
+				//   Qry = "select CAST(ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)+ifnull(diffround,0) AS VARCHAR) as amount from invoiceheader where routekey="+routekey+" and visitkey="+visitkey+" and customercode="+customerid+" and istemp='true' group by routekey,visitkey";
+
+				// org qry sujee commented 15/04/2021
+				//Qry = "select CAST(CASE WHEN (ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totaldamagedamount,0)) >0 THEN (CASE WHEN ifnull(totalmanualfree,0)>0 THEN ROUND((ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)),"+decimalplace+")ELSE  (ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)) END) ELSE (CASE WHEN ifnull(totalmanualfree,0)>0 THEN ROUND((ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)),"+decimalplace+")ELSE  ROUND((ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)),"+decimalplace+") END) END AS VARCHAR) as amount,ifnull(itemlinetaxamount,0) as taxamt from invoiceheader where routekey="+routekey+" and visitkey="+visitkey+" and customercode="+customerid+" and istemp='true' group by routekey,visitkey";
+
+				// Qry = "select CAST(CASE WHEN (ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totaldamagedamount,0)) >0 THEN (CASE WHEN ifnull(totalmanualfree,0)>0 THEN ROUND((ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)- ifnull(headerdiscounttaxamt,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)),"
+				// 		+ decimalplace
+				// 		+ ")ELSE  (ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)- ifnull(headerdiscounttaxamt,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)) END) ELSE (CASE WHEN ifnull(totalmanualfree,0)>0 THEN ROUND((ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)- ifnull(headerdiscounttaxamt,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)),"
+				// 		+ decimalplace
+				// 		+ ")ELSE  ROUND((ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)- ifnull(headerdiscounttaxamt,0)-ifnull(totaldamagedamount,0)-ifnull(totaldiscountamount,0)+ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0)),"
+				// 		+ decimalplace
+				// 		+ ") END) END AS VARCHAR) as amount,ifnull(itemlinetaxamount,0)-ifnull(headerdiscounttaxamt,0) as taxamt from invoiceheader where routekey="
+				// 		+ routekey
+				// 		+ " and visitkey="
+				// 		+ visitkey
+				// 		+ " and customercode="
+				// 		+ customerid
+				// 		+ " and istemp='true' group by routekey,visitkey";
+
+				Qry = "select ifnull(totalinvoiceamount,0) as amount, ifnull(totalsalesamount,0) as totsale, ifnull(totalreturnamount,0) + ifnull(totaldamagedamount,0) +ifnull(totalexpiryamount,0) as totret, ifnull(totalpromoamount,0) as totpromo,ifnull(itemlinetaxamount,0)+ifnull(totaltaxesamount,0) as tottax from invoiceheader where routekey="
+						+ routekey
+						+ " and visitkey="
+						+ visitkey
+						+ " and customercode="
+						+ customerid
+						+ " and istemp='true' group by routekey,visitkey";
+				// Qry = "select CAST(ifnull(totalinvoiceamount,0) AS VARCHAR) as amount from invoiceheader where routekey="+routekey+" and visitkey="+visitkey+" and customercode="+customerid+" and istemp='true' group by routekey,visitkey";
+			} else if (localStorage.getItem("signature") == "orderrequest") {
+				// org line sujee commented added tax 
+				/*   
+				$('#lblOrdNumber').html(getLangTextdata("Order Number"));
+				 Qry = "select CAST(ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)"
+				 	+"-ifnull(totaldamagedamount,0)+ifnull(totallineitemtax,0) AS VARCHAR) as amount from salesorderheader where routekey="
+				 	+routekey+" and visitkey="+visitkey+" and customercode="+customerid
+				 	+" and case when "+sessionStorage.getItem("onHoldOrderInvoice")+" >1 then 0=0 else  istemp='true' end "
+				 	+" group by routekey,visitkey";
+				 */
+				$('#lblOrdNumber').html(getLangTextdata("Order Number"));
+				Qry = "select CAST(ROUND((ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)+ifnull(totallineitemtax,0)),"
+						+ decimalplace
+						+ ") AS VARCHAR) as amount,ifnull(totalsalesamount,0) as totsale,ifnull(totalreturnamount,0) as totret, ifnull(totalpromoamount,0) as totpromo,ifnull(totallineitemtax,0) as tottax"
+						+ " from salesorderheader where routekey="
+						+ routekey
+						+ " and visitkey="
+						+ visitkey
+						+ " and customercode="
+						+ customerid
+						+ " and case when "
+						+ sessionStorage.getItem("onHoldOrderInvoice")
+						+ " >1 then 0=0 else  istemp='true' end "
+						+ "group by routekey,visitkey";
+			}
+			console.log("TaxQry" + Qry);
+			// alert(Qry);
+			if (platform == 'iPad') {
+				var abc = Cordova
+						.exec(
+								function(result) {
+									$('#txtAmountDue').val(
+											parseFloat(result[0][0]).toFixed(
+													decimalplace));
+									if (localStorage.getItem("signature") == "sales")
+										$('#txtInvoiceNumber')
+												.val(
+														sessionStorage
+																.getItem("InvoiceNumber"));
+									else if (localStorage.getItem("signature") == "orderrequest")
+										$('#txtInvoiceNumber')
+												.val(
+														sessionStorage
+																.getItem("OrderNumber"));
+									sessionStorage.setItem("amountdue",
+											result[0][0]);
+								}, function(error) {
+									navigator.notification.alert(error);
+								}, "PluginClass", "GetdataMethod", [ Qry ]);
+			} else if (platform == 'Android') {
+				window.plugins.DataBaseHelper
+						.select(
+								Qry,
+								function(result) {
+
+									result = $.map(result.array, function(item,
+											index) {
+										return [ [ item.amount, item.totsale,
+												item.totret, item.totpromo,
+												item.tottax ] ];
+									});
+
+									$('#txtAmountDue').val(
+											parseFloat(result[0][0]).toFixed(
+													decimalplace));
+									$('#txtSaleAmt').val(
+											parseFloat(result[0][1]).toFixed(
+													decimalplace));
+									$('#txtRetAmt').val(
+											parseFloat(result[0][2]).toFixed(
+													decimalplace));
+									$('#txtPromoAmt').val(
+											parseFloat(result[0][3]).toFixed(
+													decimalplace));
+									$('#txtTaxAmt').val(
+											parseFloat(result[0][4]).toFixed(
+													decimalplace));
+
+									if (localStorage.getItem("signature") == "sales")
+										$('#txtInvoiceNumber')
+												.val(
+														sessionStorage
+																.getItem("InvoiceNumber"));
+									else if (localStorage.getItem("signature") == "orderrequest")
+										$('#txtInvoiceNumber')
+												.val(
+														sessionStorage
+																.getItem("OrderNumber"));
+									sessionStorage.setItem("amountdue",
+											result[0][0]);
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+		}
+
+		function CheckSignatueCount() {
+			platform = sessionStorage.getItem("platform");
+			// alert($('#lnkAccept').attr('href'));
+			console
+					.log("select count(customercode) from sigcapturedata where routekey = "
+							+ sessionStorage.getItem('RouteKey')
+							+ " and visitkey = "
+							+ sessionStorage.getItem('VisitKey')
+							+ " and customercode = "
+							+ sessionStorage.getItem('customerid') + "");
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+									if (result.length > 0) {
+
+										if (result[0][0] == 0) {
+											InsertImage();
+										} else {
+											UpdateImage();
+										}
+									}
+								},
+								function(error) {
+									navigator.notification
+											.alert("Error in check signature count : "
+													+ error);
+								},
+								"PluginClass",
+								"GetdataMethod",
+								[ "select count(customercode) from sigcapturedata where routekey = "
+										+ sessionStorage.getItem('RouteKey')
+										+ " and visitkey = "
+										+ sessionStorage.getItem('VisitKey')
+										+ " and customercode = "
+										+ sessionStorage.getItem('customerid')
+										+ "" ]);
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper.select(
+						"select count(customercode) As custcode from sigcapturedata where routekey = "
+								+ sessionStorage.getItem('RouteKey')
+								+ " and visitkey = "
+								+ sessionStorage.getItem('VisitKey')
+								+ " and customercode = "
+								+ sessionStorage.getItem('customerid') + "",
+						function(result) {
+
+							if (result.array != undefined) {
+								if (result.array[0].custcode == 0) {
+									InsertImage();
+								} else {
+									UpdateImage();
+								}
+							}
+						}, function() {
+							console.warn("Error calling plugin");
+						});
+			}
+		}
+
+		/*    org func 
+		   function InsertImage()
+		   {
+		       localStorage.collectionMOP ='signature';
+		       console.log("aa");
+		       var obj = {};
+		       obj.Img = document.getElementById('thecanvas').toDataURL();
+		       
+		      
+		       var signature = $("#hidsignature").val();
+		       signature = presignature + signature;
+		      
+		       var fabricCanvas = document.getElementById('thecanvas');  //real ID here
+		       var scaledCanvas = document.createElement('canvas');    //off-screen canvas
+
+		       
+		       scaledCanvas.width = 400;  //size of new canvas, make sure they are proportional
+		       scaledCanvas.height = 300; //compared to original canvas
+
+		       // scale original image to new canvas
+		       var ctx = scaledCanvas.getContext('2d');
+		       ctx.drawImage(fabricCanvas, 0, 0, scaledCanvas.width, scaledCanvas.height);
+
+		       //extract image
+		     / var data = scaledCanvas.toDataURL("image/jpeg"); //no need to specify PNG as that's the def.
+		  
+		      //alert("Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()),0,'"+ signature +"','true')");
+		        if(platform=='iPad')
+		  		{
+		       Cordova.exec(function(result) 
+		                               {
+		                                   //navigator.notification.alert("Insert record successfully");
+		                                   CheckGCToCash();
+		                               },
+		                               function(error) {
+		                                   navigator.notification.alert("Error insert record in sigcapturedata");
+		                               },
+		                               "PluginClass", 
+		                               "InsertUpdateMethod", 
+		        
+		                               ["Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp,issync) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),time('now', 'localtime'),0,'"+ signature +"','true',0)"]);
+		        }                       
+		   	 else if(platform=='Android')
+		   		{
+		    
+		            window.plugins.DataBaseHelper.insert("Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp,issync) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),time('now', 'localtime'),0,'"+ data +"','true',0)",function(result)
+					{
+					    //navigator.notification.alert("Insert record successfully");
+		                   CheckGCToCash();
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+		    		}   
+		   }
+		 */
+		function InsertImage() {
+			localStorage.collectionMOP = 'signature';
+			// console.log("aa");
+			var obj = {};
+			obj.Img = document.getElementById('thecanvas').toDataURL();
+
+			var signature = $("#hidsignature").val();
+			signature = presignature + signature;
+
+			var fabricCanvas = document.getElementById('thecanvas'); //real ID here
+			var scaledCanvas = document.createElement('canvas'); //off-screen canvas
+
+			// scaledCanvas.width = 400;  //size of new canvas, make sure they are proportional
+			// scaledCanvas.height = 300; //compared to original canvas
+
+			var dpi = 192; //288 
+			scaledCanvas.width = 170; // 400 to 170  //size of new canvas, make sure they are proportional
+			scaledCanvas.height = 100; // 300 to 200//compared to original canvas
+
+			var scaleFactor = dpi / 96;
+
+			scaledCanvas.width = Math.ceil(scaledCanvas.width * scaleFactor);
+			scaledCanvas.height = Math.ceil(scaledCanvas.height * scaleFactor);
+
+			// scale original image to new canvas
+			var ctx = scaledCanvas.getContext('2d');
+			ctx.drawImage(fabricCanvas, 0, 0, scaledCanvas.width,
+					scaledCanvas.height);
+
+			//extract image
+			// var data = scaledCanvas.toDataURL("image/jpeg"); //no need to specify PNG as that's the def.
+
+			var data = scaledCanvas.toDataURL("image/jpeg").replace(
+					"image/png,", " ");
+
+			// var data = scaledCanvas.toDataURL("image/jpeg").replace("image/png,", " ");
+			// var data = scaledCanvas.toDataURL("image/jpeg").replace(/^data:image\/(png);base64,/,' ');
+
+			var sigprefix = "image/png";
+			//var data = scaledCanvas.toDataURL();
+			//  var data = scaledCanvas.toDataURL();
+
+			console.log(data);
+
+			console.log(data);
+			//alert(data);
+			//alert("Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()),0,'"+ signature +"','true')");
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+									//navigator.notification.alert("Insert record successfully");
+									CheckGCToCash();
+								},
+								function(error) {
+									navigator.notification
+											.alert("Error insert record in sigcapturedata");
+								},
+								"PluginClass",
+								"InsertUpdateMethod",
+
+								[ "Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp,issync) values("
+										+ sessionStorage.getItem('RouteKey')
+										+ ","
+										+ sessionStorage.getItem('VisitKey')
+										+ ",0,"
+										+ sessionStorage.getItem('customerid')
+										+ ",0,strftime('%Y-%m-%d',datetime()),time('now', 'localtime'),0,'"
+										+ signature + "','true',0)" ]);
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper
+						.insert(
+								"Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp,issync) values("
+										+ sessionStorage.getItem('RouteKey')
+										+ ","
+										+ sessionStorage.getItem('VisitKey')
+										+ ",0,"
+										+ sessionStorage.getItem('customerid')
+										+ ",0,strftime('%Y-%m-%d',datetime()),time('now', 'localtime'),0,'"
+										+ data + "','true',0)",
+								function(result) {
+									// sujee added to update the convas image to be printed in invoice copy 05/11/2018
+									updateimagedata();
+									CheckGCToCash();
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+		}
+
+		function updateimagedata() {
+			localStorage.collectionMOP = 'signature';
+			// console.log("aa");
+			var obj = {};
+			obj.Img = document.getElementById('thecanvas').toDataURL();
+
+			var signature = $("#hidsignature").val();
+			signature = presignature + signature;
+
+			var fabricCanvas = document.getElementById('thecanvas'); //real ID here
+			var scaledCanvas = document.createElement('canvas'); //off-screen canvas
+
+			// scaledCanvas.width = 400;  //size of new canvas, make sure they are proportional
+			// scaledCanvas.height = 300; //compared to original canvas
+
+			var dpi = 192; //288 
+			scaledCanvas.width = 170; // 400 to 170  //size of new canvas, make sure they are proportional
+			scaledCanvas.height = 100; // 300 to 200//compared to original canvas
+
+			var scaleFactor = dpi / 96;
+
+			scaledCanvas.width = Math.ceil(scaledCanvas.width * scaleFactor);
+			scaledCanvas.height = Math.ceil(scaledCanvas.height * scaleFactor);
+
+			// scale original image to new canvas
+			var ctx = scaledCanvas.getContext('2d');
+			ctx.drawImage(fabricCanvas, 0, 0, scaledCanvas.width,
+					scaledCanvas.height);
+
+			//extract image
+			// var data = scaledCanvas.toDataURL("image/jpeg"); //no need to specify PNG as that's the def.
+
+			var data = scaledCanvas.toDataURL("image/png").replace(
+					"image/png,", " ");
+
+			console.log(data);
+			//alert(data);
+			//alert("Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()),0,'"+ signature +"','true')");
+			if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper
+						.insert(
+								"Update sigcapturedata set documentnumber = 0,transactiondate =  strftime('%Y-%m-%d',datetime()),transactiontime = time('now', 'localtime'),balancedueamount = 0,issync=0,signaturedata = '"
+										+ data
+										+ "' where routekey = "
+										+ sessionStorage.getItem('RouteKey')
+										+ " and visitkey = "
+										+ sessionStorage.getItem('VisitKey')
+										+ " and customercode = "
+										+ sessionStorage.getItem('customerid')
+										+ "", function(result) {
+
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+
+		}
+
+		function UpdateImage() {
+			localStorage.collectionMOP = 'signature';
+
+			var obj = {};
+			obj.Img = document.getElementById('thecanvas').toDataURL();
+			var signature = $("#hidsignature").val();
+			var fabricCanvas = document.getElementById('thecanvas'); //real ID here
+			var scaledCanvas = document.createElement('canvas'); //off-screen canvas
+
+			// org line sujee commented 
+			//  scaledCanvas.width = 400;  //size of new canvas, make sure they are proportional
+			// scaledCanvas.height = 300; //compared to original canvas
+
+			var dpi = 288;
+			scaledCanvas.width = 170; // 400 to 170  //size of new canvas, make sure they are proportional  170
+			scaledCanvas.height = 100; // 300 to 200//compared to original canvas 100
+
+			var scaleFactor = dpi / 96;
+
+			scaledCanvas.width = Math.ceil(scaledCanvas.width * scaleFactor);
+			scaledCanvas.height = Math.ceil(scaledCanvas.height * scaleFactor);
+
+			// scale original image to new canvas
+			var ctx = scaledCanvas.getContext('2d');
+			ctx.drawImage(fabricCanvas, 0, 0, scaledCanvas.width,
+					scaledCanvas.height);
+
+			//extract image
+			// org line sujee commented 
+			//  var data = scaledCanvas.toDataURL("image/jpeg"); //no need to specify PNG as that's the def.
+
+			var data = scaledCanvas.toDataURL("image/png").replace(
+					"image/png,", " ");
+
+			//  console.log("Update sigcapturedata set documentnumber = 0,transactiondate =  strftime('%Y-%m-%d',datetime()),transactiontime = time('now', 'localtime'),balancedueamount = 0,issync=0,signaturedata = '"+ data +"' where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +"");
+			if (platform == 'iPad') {
+				Cordova
+						.exec(
+								function(result) {
+									//navigator.notification.alert("Update record successfully");
+									CheckGCToCash();
+								},
+								function(error) {
+									navigator.notification
+											.alert("Error update record in sigcapturedata");
+								},
+								"PluginClass",
+								"InsertUpdateMethod",
+								[ "Update sigcapturedata set documentnumber = 0,transactiondate =  strftime('%Y-%m-%d',datetime()),transactiontime = time('now', 'localtime'),balancedueamount = 0,issync=0,signaturedata = '"
+										+ signature
+										+ "' where routekey = "
+										+ sessionStorage.getItem('RouteKey')
+										+ " and visitkey = "
+										+ sessionStorage.getItem('VisitKey')
+										+ " and customercode = "
+										+ sessionStorage.getItem('customerid')
+										+ "" ]);
+			} else if (platform == 'Android') {
+
+				window.plugins.DataBaseHelper
+						.insert(
+								"Update sigcapturedata set documentnumber = 0,transactiondate =  strftime('%Y-%m-%d',datetime()),transactiontime = time('now', 'localtime'),balancedueamount = 0,issync=0,signaturedata = '"
+										+ signature
+										+ "' where routekey = "
+										+ sessionStorage.getItem('RouteKey')
+										+ " and visitkey = "
+										+ sessionStorage.getItem('VisitKey')
+										+ " and customercode = "
+										+ sessionStorage.getItem('customerid')
+										+ "", function(result) {
+									//navigator.notification.alert("Update record successfully");
+									CheckGCToCash();
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+		}
+
+		function Clear() {
+			$('.sigPad').signaturePad({
+				drawOnly : true
+			});
+		}
+		function updateinvoice() {
+			console
+					.log("select sum(promoamount) from invoicedetail where routekey = "
+							+ sessionStorage.getItem('RouteKey')
+							+ " and visitkey = "
+							+ sessionStorage.getItem('VisitKey')
+							+ " group by routekey,visitkey");
+			Cordova
+					.exec(
+							function(result) {
+								if (result.length > 0) {
+									//updateheader(result[0][0]);
+								}
+							},
+							function(error) {
+								navigator.notification
+										.alert("Error in check signature count : "
+												+ error);
+							},
+							"PluginClass",
+							"GetdataMethod",
+							[ "select sum(promoamount) from invoicedetail where routekey = "
+									+ sessionStorage.getItem('RouteKey')
+									+ " and visitkey = "
+									+ sessionStorage.getItem('VisitKey')
+									+ " group by routekey,visitkey" ]);
+		}
+		function updateheader(data) {
+
+			console.log("Update invoiceheader set totalpromoamount = " + data
+					+ " where routekey = " + sessionStorage.getItem('RouteKey')
+					+ " and visitkey = " + sessionStorage.getItem('VisitKey')
+					+ " and customercode = "
+					+ sessionStorage.getItem('customerid') + "");
+			Cordova.exec(function(result) {
+
+			}, function(error) {
+				navigator.notification
+						.alert("Error update record in sigcapturedata");
+			}, "PluginClass", "InsertUpdateMethod",
+					[ "Update invoiceheader set totalpromoamount = " + data
+							+ ",issync=0 where routekey = "
+							+ sessionStorage.getItem('RouteKey')
+							+ " and visitkey = "
+							+ sessionStorage.getItem('VisitKey')
+							+ " and customercode = "
+							+ sessionStorage.getItem('customerid') + "" ]);
+
+		}
+
+		function CheckGCToCash() {
+
+			var manualfree = window.localStorage.getItem("manualfree");
+			var isreturn = window.localStorage.getItem("isreturn");
+			if (eval(manualfree) > 0 && eval(isreturn) == 1) {
+				window.location = '../customer_opt/Customer_manualfree.html';
+			} else {
+
+				if (localStorage.signature == "sales") {
+					var lnkaccept = ""
+					var allowgctocash = sessionStorage.getItem("allowgctocash");
+					if (sessionStorage.getItem("invoicepaymentterms") == 2) {
+						if (allowgctocash == 1) {
+							var msg = "Do You Want To Make Payment ?";
+							navigator.notification
+									.confirm(
+											msg,
+											function(action) {
+												if (action == true)
+													window.location = '../customer_opt/cashcollection_mop.html';
+												else
+													window.location = '../review/printoption.html';
+											})
+						} else
+							window.location = '../review/printoption.html';
+					} else
+						window.location = '../customer_opt/cashcollection_mop.html';
+				} else {
+					window.location = '../customer_opt/orderdetail.html';
+				}
+			}
+		}
+	</script>
+	</body>
+</html>

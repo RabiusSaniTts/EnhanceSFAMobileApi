@@ -1,0 +1,1343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Item Entry</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="load.html" id="Back_inner" rel="external">Back</a>-->
+                <a href="#" id="Back_inner" rel="external" lang="en"
+                    onclick="ClearVariables()">Back</a>
+                <h1 lang="en">
+                    Batch Detail</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="boxContent captionLabel">
+                    <table border="0" width="100%" cellpadding="2"
+                        cellspacing="2">
+                        <tr>
+                            <td style="width: 30%">
+                            </td>
+                            <td style="width: 35%">
+                            </td>
+                            <td style="width: 35%">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">
+                                Item
+                            </td>
+                            <td colspan=2>
+                                <select name="select-choice-1" id="itemno"
+                                    style="display: inline;"
+                                    onchange="getrecord()">
+
+                                </select>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td lang="en">
+                                Available Quantity
+                            </td>
+                            <td>
+                                <input type="text" value id="case1"
+                                    class="textWidth textFont"
+                                    style="width: 75%"
+                                    value="0" readonly="readonly" />
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 20%;" class="leftAlign"
+                                    lang="en">
+                                    Batch No
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Cases
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Units
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Expiry
+                                </th>
+                                <th style="width: 20%;" lang="en" class="last">
+                                    Batch Qty
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="batchheight">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 20%;" class="leftAlign">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;" class="last">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu" id="otherdiv">
+                    <a href="#" rel="external" onclick="addnewbatch()" id="add"
+                        style="text-decoration: none" data-role="none">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-add.png" alt="Add"
+                                    id="imgadd" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Add</div>
+                        </div>
+                    </a><a href="#" style="text-decoration: none"
+                        id="linkdelete" onclick="deletes()" rel="external"
+                        data-role="none">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/delete.png" alt="Delete"
+                                    id="imgdelete" /></div>
+                            <div class="MenuTextPos MenuText" lang="en"
+                                id="delete">
+                                Delete</div>
+                        </div>
+                    </a><a id="lnkExit" href="#" class="enableText"
+                        rel="external" onclick="ClearVariables()">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="leftbottomMenu" id="loaddiv"
+                    style="margin-right: -15px;display:none;">
+                    <a id="lnkExit1" href="#" class="enableText" rel="external"
+                        onclick="ClearVariables()">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Exit</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = null;
+       var inputvalue='';
+        var transactiontype = '';
+        var setbatchnumber='';
+        var key='';
+        var platform='';
+        var batchquantity ='';
+        var invoiceqty='';
+        var prequantity='';
+        var allowbatchentry;
+        $("#tblContent").click(function() { });
+        //var inputvalue = [['200', '23], ['200', '23'], ['200', '23'], ['200', '23'], ['200', '23'], ['200', '23']];
+
+        window.lang = new jquery_lang_js();
+      resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+                          
+                          transactiontype = localStorage.batchtranstype;
+                         if(transactiontype==1)
+                          {
+                          $('#loaddiv').css('display','block');
+                          $('#otherdiv').css('display','none');
+                          }
+                          if(transactiontype ==15)
+                          {
+                            batchquantity='salesqty';
+                            invoiceqty='salesqty';
+                          }
+                          else if(transactiontype ==16)
+                          {
+                            batchquantity='freeqty';
+                            invoiceqty='manualfreeqty';
+                          }
+                          else if(transactiontype ==18)
+                          {
+                          batchquantity='returnqty';
+                          invoiceqty='returnqty';
+                          }
+                          else if(transactiontype ==19)
+                          {
+                          batchquantity='buybackqty';
+                          invoiceqty='returnfreeqty';
+                          }
+                          else if(transactiontype ==20)
+                          {
+                          batchquantity='damageqty';
+                          invoiceqty='damagedqty';
+                          }
+                          else if(transactiontype ==21)
+                          {
+                          batchquantity='expiryqty';
+                          invoiceqty='expiryqty';
+                          }
+                          else if(transactiontype ==22)
+                          {
+                          batchquantity='rentalqty';
+                          invoiceqty='fixedrentqty';
+                          }
+                          else if(transactiontype ==17)
+                          {
+                          batchquantity='promoqty';
+                          invoiceqty='freesampleqty';
+                          }
+                          else if(transactiontype ==2)
+                          {
+                          batchquantity='loadcutqty';
+                          invoiceqty='loadcutqty';
+                          }
+                          else if(transactiontype ==3)
+                          {
+                          batchquantity='loadaddqty';
+                          invoiceqty='loadaddqty';
+                          }
+                          else if(transactiontype ==4)
+                          {
+                          batchquantity='damageoutqty';
+                          invoiceqty='damagedcutqty';
+                          }
+                          else if(transactiontype ==5)
+                          {
+                          batchquantity='endinvqty';
+                          invoiceqty='endinvqty';
+                          }
+                          else if(transactiontype ==7)
+                          {
+                          batchquantity='damageunloadqty';
+                          invoiceqty='damageunloadqty';
+                          }
+                          else if(transactiontype ==11)
+                          {
+                          batchquantity='truckdamageunloadqty';
+                          invoiceqty='truckdamageqty';
+                          }
+                          else if(transactiontype ==14)
+                          {
+                          batchquantity='freshunloadqty';
+                          invoiceqty='freshunloadqty';
+                          }
+                          else if(transactiontype ==23)
+                          {
+                          batchquantity='adjustqty';
+                          invoiceqty='loadadjustqty';
+                          }
+                          platform= sessionStorage.getItem("platform");
+                          $(".leftfooter").html(getCurrentDate());
+                          //localStorage.batchtranstype=1;
+                          if(localStorage.batchtranstype==18 || localStorage.batchtranstype==19 || localStorage.batchtranstype==20 || localStorage.batchtranstype==21 || localStorage.batchtranstype==3 || localStorage.batchtranstype==23)
+                          {
+                          $("#imgadd").attr("src", "../images/icn-add.png");
+                          $("#imgdelete").attr("src", "../images/delete.png");
+                          $('#delete').removeClass('MenuGray');
+                          $('#add').removeClass('MenuGray');
+                          $('#add').attr('href','#');
+                          }
+                          else
+                          {
+                          $("#imgadd").attr("src", "../images/icn-add-gray.png");
+                          $("#imgdelete").attr("src", "../images/delete-gray.png");
+                          $('#delete').addClass('MenuGray');
+                          $('#linkdelete').attr('onclick','');
+                          $('#add').addClass('MenuGray');
+                          $('#add').attr('onclick','');
+                         
+                          }
+                   //Bind table record       
+            document.addEventListener("deviceready", getItemList, false);
+
+                        
+            if(transactiontype >= 15 && transactiontype <= 22)
+            {
+                $("#inve").removeClass("ui-btn-active");
+                $("#cust").addClass("ui-btn-active");
+            }
+            else
+            {
+                $("#cust").removeClass("ui-btn-active");
+                $("#inve").addClass("ui-btn-active");
+            }
+
+
+            $("#tblContent tr").live('click', function() {
+                $(this).toggleClass('clicked');
+                $(this).siblings().removeClass('clicked');
+                 var i = $(this).index();
+                    setbatchnumber=inputvalue[i - 1][0];
+                    prequantity =inputvalue[i - 1][1];
+                
+            });
+
+            $("#tblContent tr:eq(1)").trigger('click');
+            
+            if (localStorage.batchid == 'invoiceoption') {
+                var page = '../customer_opt/invoiceoptions.html';
+                $("#cust").removeAttr("onclick");
+            }
+            else if (localStorage.batchid == 'unloadbadreturn') {
+                var page = '../inventory/unload_badreturn.html';
+            }
+            else if (localStorage.batchid == 'unloadtruckdamage') {
+                var page = '../inventory/unload_truckdamage.html';
+            }
+            else if (localStorage.batchid == 'unloadfresh') {
+                  var page = '../inventory/unload_fresh.html';
+            }
+            else if (localStorage.batchid == 'unloadendinv') {
+                var page = '../inventory/unload_endinginv.html';
+            }
+            else if (localStorage.batchid == 'vanstock') {
+                          var page = '../inventory/routeinventory.html';
+            }
+            else if (localStorage.batchid == 'load') {
+                          var page = '../inventory/load.html';
+            }
+            else if (localStorage.batchid == 'loadad') {
+                          var page = '../inventory/adjustload.html';
+            }
+            else {
+                var page = '../inventory/loadtransfer.html';
+            }
+                          
+            $("#Back_inner").attr("href", page);
+            $("#lnkExit").attr("href", page);
+            $("#lnkExit1").attr("href", page);
+ $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+          
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+        if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Batch'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+        if(lan=="AR")
+        {
+            $(".centerbox").attr("dir", "rtl");
+            $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+        }
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerbox").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            
+
+            
+
+           
+        });
+        //Function for bind item list
+        function getItemList()
+        {
+            
+            if(transactiontype==2 || transactiontype==3 || transactiontype==4 || transactiontype==7)
+            {
+            var qry ="select DISTINCT actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc from itemmaster join inventorytransactiondetail on inventorytransactiondetail.itemcode=itemmaster.actualitemcode where routekey="+sessionStorage.getItem("RouteKey")+" and transactiontypecode="+transactiontype+" and istemp='true' order by actualitemcode";
+            }
+            else if(transactiontype==6 || transactiontype==11 || transactiontype==14)
+            {
+                var qry ="select DISTINCT actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc from itemmaster join transactiondetailtemp on transactiondetailtemp.itemcode=itemmaster.actualitemcode where "+invoiceqty+">0 order by actualitemcode";
+            }
+            else if(transactiontype==5)
+            {
+                var qry ="select DISTINCT actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc from itemmaster join transactiondetailtemp on transactiondetailtemp.itemcode=itemmaster.actualitemcode where 1 order by actualitemcode";
+            }
+            else if(transactiontype==25)
+            {
+                var qry ="select DISTINCT actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc from itemmaster join inventorysummarydetail on inventorysummarydetail.itemcode=itemmaster.actualitemcode where routekey="+sessionStorage.getItem("RouteKey")+" order by actualitemcode";
+            }
+            else if(transactiontype==1)
+            {
+                var qry ="select DISTINCT actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc from itemmaster join startingloaddetail on startingloaddetail.itemcode=itemmaster.actualitemcode where loadperiodnumber=" + localStorage.getItem("LoadPeriod") + " and routecode = " + sessionStorage.getItem("RouteCode") + " and strftime('%Y-%m-%d',ddate)=date() order by actualitemcode";
+            }
+            else if(transactiontype==23)
+            {
+                var qry ="select DISTINCT actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc from itemmaster join inventorytransactiondetail on inventorytransactiondetail.itemcode=itemmaster.actualitemcode and inventorytransactiondetail.istemp='true' where routekey="+sessionStorage.getItem("RouteKey")+" and transactiontypecode="+transactiontype+" order by actualitemcode";
+            }
+            else
+            {
+                var qry ="select DISTINCT actualitemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc from itemmaster join invoicedetail on invoicedetail.itemcode=itemmaster.actualitemcode where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+" and istemp='true' and "+invoiceqty+" > 0 order by actualitemcode";
+            }
+            console.log(qry);
+            if(platform=='iPad')
+            { 
+                Cordova.exec(function(result) { 
+                              $("<option />" ,{value:0,text:"Select Item"}).appendTo($("#itemno")); 
+                              for(i=0;i<result.length;i++){                    
+                              $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#itemno"));                                           
+                              }
+                            
+                             if(localStorage.selecteditem !='')
+                              $('#itemno').val(parseInt(localStorage.selecteditem));
+                             
+                              if(sessionStorage.getItem("itemno") != '' && sessionStorage.getItem("itemno") !=null)
+                              $('#itemno').val(sessionStorage.getItem("itemno"));
+                              
+                              $("#itemno").selectmenu("refresh");
+                              getrecord();
+                              },
+                              function(error) {
+                              alert("Error in binding Category : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [qry]);         
+                
+            }
+            else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(qry,function(result)
+                                                     {		
+                                                     var array = $.map(result.array, function (item, index) {               
+                                                                       return [[item.actualitemcode, item.Desc]];            					
+                                                                       });
+                                                     
+                                                     result = array;
+                                                     $("<option />" ,{value:0,text:"Select Item"}).appendTo($("#itemno")); 
+                                                     for(i=0;i<result.length;i++){                    
+                                                     $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#itemno"));                                           
+                                                     }
+                                                     
+                                                     if(localStorage.selecteditem !='')
+                                                     $('#itemno').val(localStorage.selecteditem);
+                                                    
+                                                     if(sessionStorage.getItem("itemno") != '' && sessionStorage.getItem("itemno") !=null)
+                                                     $('#itemno').val(sessionStorage.getItem("itemno"));
+                                                     
+                                                     $("#itemno").selectmenu("refresh");
+                                                     getrecord();
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+            
+        }
+        function TableDataOffLine(RecSet)
+        {                       
+            ClearTable();
+            var platform= sessionStorage.getItem("platform");
+            if(RecSet=='')
+            {
+                 var itemcode=$('#itemno').val();
+                getUnitspercase(itemcode);
+            }
+           if(platform=='Android')
+            {
+            RecSet = $.map(RecSet.array, function (item, index) {
+                           
+                           return [[item.batchnumber, item.quantity,item.expirydate, item.unitspercase,item.invqty,item.avilqty]];
+                           });
+            }
+            var data = RecSet;
+            inputvalue=RecSet;
+            var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+            for (i = 0; i < data.length; i++) {
+               
+                var batchnumber = data[i][0];
+                var quntity = data[i][1];
+                var expirydate = data[i][2];
+                 var unitspercase = data[i][3];
+                sessionStorage.setItem("unitspercase",unitspercase);
+                var loadqty = data[i][4];
+                var availqty = parseInt(data[i][5]);
+                var caseenable = sessionStorage.getItem("CaseEnabled");
+                
+                if(caseenable==1)
+                {
+                var units = quntity%unitspercase;
+                    availqty1 =parseInt(availqty/unitspercase)+"/"+parseInt(availqty%unitspercase);
+                    invqty1 = parseInt(loadqty/unitspercase)+"/"+parseInt(loadqty%unitspercase);
+                }
+                else
+                {
+                var units = quntity;
+                    availqty1=availqty;
+                    invqty1=loadqty;
+                }
+                
+                var case1=quntity/unitspercase;
+                
+                var invcase =loadqty/unitspercase;
+                var invunit =loadqty%unitspercase;
+
+                var r = "<tr class='contentFont'>";
+                for (j = 0; j < CellCount; j++) {
+                    
+                    var temp = (j == 0) ? 'class = leftAlign' : '';
+                    if (j == CellCount - 1)
+                    temp += ' class = "last" ';
+                    if (j == 1 || j==2)
+                    temp += ' class = editable ';
+                    data[i][0]=batchnumber;
+                    data[i][1]=parseInt(case1);
+                    data[i][2]=parseInt(units);
+                    data[i][3]=expirydate;
+                    data[i][4]=availqty1;
+                    var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                    r += c;
+                }
+                r += "</tr>";
+                 $('#tblContent tbody').append(r);
+            }
+               
+                $('#case1').val(invqty1);
+                
+            
+            //var caseenable=0;
+            
+            if(caseenable==0)
+            {
+                
+                $("#tblHeaderContent tr th:eq(1)").hide();
+                $("#tblContent tr td:nth-child(2))").hide();
+            }
+            //Set background for odd and even row.
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+            if(transactiontype==15 || transactiontype==16 || transactiontype==17 || transactiontype==22 || transactiontype==25)
+            {
+            tableedit();
+            }
+            else if(transactiontype==1)
+            {
+                //if(sessionStorage.getItem("CaseEditEnabled") == "1")
+                //grideditable();
+            }
+            else
+            {
+                
+                grideditable();
+            }
+        }
+       
+        function getrecord()
+        {
+            selectbatchdata();
+            
+            ClearTable();
+            var routecode=sessionStorage.getItem("RouteCode");
+            var itemcode=$('#itemno').val();
+            sessionStorage.setItem("itemno",itemcode)
+            checkbatchallow(itemcode);
+            var routekey=sessionStorage.getItem("RouteKey");
+            if(transactiontype<15)
+            var visitkey=0;
+            else
+            var visitkey=sessionStorage.getItem("VisitKey");
+            var platform= sessionStorage.getItem("platform");
+            if(transactiontype==15)
+                var batchqty = "ifnull(b.quantity,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)";
+            else if(transactiontype==16)
+                var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)";
+            else if(transactiontype==18)
+                var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)";
+            else if(transactiontype==19)
+                var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)";
+            else if(transactiontype==20 || transactiontype==21 || transactiontype==6 || transactiontype==7)
+                var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)";
+            else if(transactiontype==22)
+                var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)";
+            else if(transactiontype==2)
+            var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)";
+            else if(transactiontype==3)
+            var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)-ifnull(b.loadcutqty,0)";
+             else if(transactiontype==4)
+            var batchqty="ifnull(b.badquantity,0)";
+            else if(transactiontype==5)
+             var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)-ifnull(b.freshunloadqty,0)-ifnull(b.truckdamageunloadqty,0)";
+            else if(transactiontype==11)
+            var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)-ifnull(b.freshunloadqty,0)";
+            else if(transactiontype==14)
+            var batchqty = "ifnull(b.quantity,0)-ifnull(b.salesqty,0)-ifnull(b.freeqty,0)+ifnull(b.returnqty,0)+ifnull(b.buybackqty,0)-ifnull(b.rentalqty,0)-ifnull(b.promoqty,0)+ifnull(b.loadaddqty,0)-ifnull(b.loadcutqty,0)-ifnull(b.truckdamageunloadqty,0)";
+            else if(transactiontype==25)
+            var batchqty ="ifnull(b.quantity,0)";
+            
+            
+            
+            if(transactiontype==25)
+            {
+                if(sessionStorage.getItem("unloaddone")==1)
+                {
+                    
+                    var availqty="ifnull(isd1.endstockqty,0)+ifnull(isd1.unloadqty,0)";
+                }
+                else
+                {
+                    
+                    var availqty="ifnull(isd1.loadqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0)";
+                }
+                var selectqry ="select b.batchnumber,b.quantity,strftime('%d-%m-%Y',b.expirydate) as expirydate,i.unitspercase,("+availqty+") as invqty,"+batchqty+" as avilqty from itemmaster as i left join batchmaster as b on i.actualitemcode=b.itemcode left join inventorysummarydetail as isd1 on isd1.itemcode=b.itemcode and isd1.routekey="+routekey+" where b.itemcode="+itemcode+" order by b.expirydate";
+            }
+            else if(transactiontype==1)
+            {
+                var selectqry ="select b.batchnumber,CASE WHEN bexd.batchnumber=b.batchnumber then bexd.quantity else 0 END as quantity,strftime('%d-%m-%Y',b.expirydate) as expirydate,i.unitspercase,(ifnull(isd1.loadqty,0)+ifnull(isd1.loadaddqty,0)-ifnull(isd1.loadcutqty,0)-ifnull(isd1.saleqty,0)+ifnull(isd1.returnqty,0)+ifnull(isd1.returnfreeqty,0)-ifnull(isd1.freesampleqty,0)) as invqty,ifnull(b.quantity,0) as avilqty from itemmaster as i left join batchmaster_temp as b on i.actualitemcode=b.itemcode left join inventorysummarydetail as isd1 on isd1.itemcode=b.itemcode and isd1.routekey="+routekey+" left join batchexpirydetail as bexd on bexd.itemcode =b.itemcode and bexd.batchnumber=b.batchnumber and bexd.routekey="+routekey+" and bexd.visitkey=0 and bexd.istemp='true' and bexd.transactiontypecode="+transactiontype+" where b.itemcode="+itemcode+" and b.loadquantity > 0 order by b.expirydate";
+            }
+            else if(transactiontype==23)
+            {
+                var selectqry ="select b.batchnumber,CASE WHEN bexd.batchnumber=b.batchnumber then bexd.quantity else 0 END as quantity,strftime('%d-%m-%Y',b.expirydate) as expirydate,i.unitspercase,(ifnull(isd1.loadqty,0)+ifnull(isd1.loadaddqty,0)-ifnull(isd1.loadcutqty,0)-ifnull(isd1.saleqty,0)+ifnull(isd1.returnqty,0)+ifnull(isd1.returnfreeqty,0)-ifnull(isd1.freesampleqty,0)) as invqty,ifnull(b.quantity,0) as avilqty from itemmaster as i left join batchmaster_temp as b on i.actualitemcode=b.itemcode left join inventorysummarydetail as isd1 on isd1.itemcode=b.itemcode and isd1.routekey="+routekey+" left join batchexpirydetail as bexd on bexd.itemcode =b.itemcode and bexd.batchnumber=b.batchnumber and bexd.routekey="+routekey+" and bexd.visitkey=0 and bexd.istemp='true' and bexd.transactiontypecode="+transactiontype+" where b.itemcode="+itemcode+" order by b.expirydate";
+            }
+            else
+            {
+            var selectqry = "select b.batchnumber,CASE WHEN bexd.batchnumber=b.batchnumber then bexd.quantity else 0 END as quantity,strftime('%d-%m-%Y',b.expirydate) as expirydate,i.unitspercase,(ifnull(isd1.loadqty,0)+ifnull(isd1.loadaddqty,0)-ifnull(isd1.loadcutqty,0)-ifnull(isd1.saleqty,0)+ifnull(isd1.returnqty,0)+ifnull(isd1.returnfreeqty,0)-ifnull(isd1.freesampleqty,0)) as invqty,ifnull("+batchqty+",0) as avilqty from itemmaster as i left join batchmaster_temp as b on i.actualitemcode=b.itemcode left join inventorysummarydetail as isd1 on isd1.itemcode=b.itemcode and isd1.routekey="+routekey+" left join batchexpirydetail as bexd on bexd.itemcode =b.itemcode and bexd.batchnumber=b.batchnumber and bexd.routekey="+routekey+" and bexd.visitkey="+visitkey+" and bexd.istemp='true' and bexd.transactiontypecode="+transactiontype+" where b.itemcode="+itemcode+" order by b.expirydate";
+            }
+            console.log(selectqry);
+            if(platform=='iPad')
+            {
+            var abc = Cordova.exec(function(result) {
+                                    
+                                    TableDataOffLine(result);
+                                    },
+                                    function(error) { 
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    [selectqry]);
+            
+            }
+            else if(platform=='Android')
+           	{
+			           		window.plugins.DataBaseHelper.select(selectqry,function(result)
+							{
+							 		TableDataOffLine(result);
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+           	}
+           
+        }
+        function tableedit()
+        {
+            var platform= sessionStorage.getItem("platform");
+            var customercode = sessionStorage.getItem("customerid");
+           
+            
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        
+                            if(result[0][0]==1)
+                            {
+                                        grideditable();
+                                        }
+                                        },
+                                        function(error) { 
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select enablebatchselection from customermaster where customercode="+customercode]);
+                
+            }
+            else if(platform=='Android')
+           	{
+                window.plugins.DataBaseHelper.select("select enablebatchselection from customermaster where customercode="+customercode,function(result)
+                                                     {
+                                                     if(result.array[0][0]==1)
+                                                     {
+                                                     grideditable();
+                                                     }
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+           	}
+            
+            
+        }
+        function grideditable()
+        {
+           if(allowbatchentry==1)
+            {
+            $('#tblContent td.editable').click(function(){
+                                               var rowindex=$(this).parent().index();
+                                               var prevtext = $(this).text();
+                                                var col = $(this).index();
+                                               var input = $('<input type="number"/>').attr('value',$(this).text());
+                                               var w = $(this).innerWidth();
+                                               w = w - 50 + "px";
+                                               input.css('width',w).css('border','0').css('height',30).css('font-size',16);
+                                               var qty = $("#tblContent tr:eq(" + rowindex + ") td:eq(4)").text();
+                                               qty = qty.split("/");
+                                               cases = qty[0];
+                                               units = qty[1];
+                                               unitspercase = sessionStorage.getItem("unitspercase");
+                                              var availqty =  eval(cases * unitspercase)+eval(units);
+                                               $(this).empty();
+                                               $(this).append(input);
+                                               input.focusout(function(){
+                                                              if(transactiontype==18 || transactiontype==19 || transactiontype==20 || transactiontype==21 || transactiontype==3 || transactiontype==23)
+                                                              {
+                                                              $(this).parent().text($(this).val());
+                                                              
+                                                              save(rowindex);
+                                                              }
+                                                              else
+                                                              {
+                                                              $(this).parent().text($(this).val());
+                                                              entercase = $("#tblContent tr:eq(" + rowindex + ") td:eq(1)").text();
+                                                              enterunits = $("#tblContent tr:eq(" + rowindex + ") td:eq(2)").text();
+                                                              var curavailqty =  eval(entercase * unitspercase)+eval(enterunits);
+                                                             
+                                                              if(eval(availqty) < eval(curavailqty))
+                                                              {
+                                                              
+                                                              $("#tblContent tr:eq(" + rowindex + ") td:eq("+ col +")").text(0);
+                                                              
+                                                              getLangText("Entered Qty Exceeds Batch Qty.");
+                                                              
+                                                              return false;
+                                                              }
+                                                              else{
+                                                              $(this).parent().text($(this).val());
+                                                              
+                                                              save(rowindex);
+                                                              }
+                                                              }
+                                                              });
+                                               input.focus();
+                                               $(this).find('input').live("keypress",function(event) {
+                                                                          if (event.keyCode == 13 ) {
+                                                                          input.focusout();
+                                                                          }
+                                                                          });
+                                               });
+            }
+        }
+        function selectbatchdata()
+        { 
+            
+
+            if(transactiontype > 14)
+            {
+        var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where visitkey="+sessionStorage.getItem('VisitKey')+"";
+            }
+            else if(transactiontype == 2 || transactiontype ==3 || transactiontype ==4)
+            {
+                var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where (transactiontypecode=2 or transactiontypecode=3 or transactiontypecode=4) and istemp='true'";
+            }
+            else if(transactiontype > 4 && transactiontype < 15)
+            {
+                var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where (transactiontypecode > 4 and  transactiontypecode<15) and istemp='true'";
+            }
+            else if(transactiontype==1)
+            {
+                var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where transactiontypecode=1 and istemp='true'";
+            }
+            else if(transactiontype==23)
+            {
+                var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where transactiontypecode=23 and istemp='true'";
+            }
+            else
+            {
+                var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where transactiontypecode=23 and istemp='true'";
+            }
+            if(platform=='iPad')
+		    {
+                return abc = Cordova.exec(function(result) {
+                                           if(result=='')
+                                           key=1;
+                                           else
+                                           key = result[0][0];
+                                           
+                                          
+                                           },
+                                           function(error) {
+                                           alert(error);},
+                                           "PluginClass", 
+                                           "GetdataMethod", 
+                                           [selectqry]);
+        	}
+        	else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                     {
+                                                     
+                                                     result = $.map(result.array, function (item, index) {
+                                                                    
+                                                                    return [[item.batchdetailkey]];
+                                                                    });
+                                                     if(result=='')
+                                                     key=1;
+                                                     else
+                                                     key = result[0][0];
+                                                     
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            } 
+        }
+        function save(index)
+        {
+            var itemcode=$('#itemno').val();
+             var platform= sessionStorage.getItem("platform");
+            var routekey=sessionStorage.getItem("RouteKey");
+            var visitkey=sessionStorage.getItem("VisitKey");
+            if(transactiontype < 15 || transactiontype==23)
+            visitkey=0;
+            var batchnumber = $("#tblContent tr:eq(" + index + ") td:eq(0)").text();
+           
+            var case1 = $("#tblContent tr:eq(" + index + ") td:eq(1)").text();
+            var units = $("#tblContent tr:eq(" + index + ") td:eq(2)").text();
+            var enddate = $("#tblContent tr:eq(" + index + ") td:eq(3)").text();
+            var availqty = $("#tblContent tr:eq(" + index + ") td:eq(4)").text();
+            
+            enddate = enddate.split('-');
+            
+            var enddate = enddate[2] + "-" + enddate[1] + "-" + enddate[0];
+            var unitspercase=sessionStorage.getItem("unitspercase");
+            var avilqty=availqty.split('/');
+            var availcase = avilqty[0];
+            var availunit = avilqty[1];
+            var availableqty = eval(availcase * unitspercase)+eval(availunit);
+            if(sessionStorage.getItem("CaseEnabled")==1)
+            {
+                var qty  = eval(unitspercase * case1) + eval(units);
+            }
+            else
+            {
+                var qty  = units;
+            }
+        
+           
+            console.log("select count(*) as cnt from batchexpirydetail where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode+" and batchnumber='"+batchnumber+"' and transactiontypecode="+transactiontype+" and istemp='true'");
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        
+                                        if(result[0][0] == 0)
+                                        {
+                                        var updateqry ="insert into batchexpirydetail ('batchdetailkey','routekey','batchnumber','itemcode','expirydate','quantity','transactiontypecode','visitkey','istemp','issync') values ('"+key+"','"+routekey+"','"+batchnumber+"','"+itemcode+"','"+enddate+"','"+qty+"',"+transactiontype+",'"+visitkey+"','true',0)";
+                                        }
+                                        else
+                                        {
+                                        var updateqry ="update batchexpirydetail set quantity='"+qty+"' where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode+" and batchnumber='"+batchnumber+"' and transactiontypecode="+transactiontype; 
+                                        }
+                                        console.log(updateqry);
+                                        updateinvoicedetail();
+                                        updatebatchmaster(itemcode,batchnumber,qty,availableqty);
+                                        Cordova.exec(function(result) {
+                                                      // window.location.href='invoiceoptions.html';
+                                                      },
+                                                      function(error) {
+                                                      alert(error);},
+                                                      "PluginClass", 
+                                                      "InsertUpdateMethod", 
+                                                      [updateqry]);
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select count(*) as cnt from batchexpirydetail where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode+" and batchnumber='"+batchnumber+"' and transactiontypecode="+transactiontype+" and istemp='true'"]);
+                
+            }
+            
+            else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select("select count(*) as cnt from batchexpirydetail where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode+" and batchnumber='"+batchnumber+"' and transactiontypecode="+transactiontype+" and istemp='true'",function(result)
+                                                     {
+                                                     if(result.array[0].cnt == 0)
+                                                     {
+                                                     var updateqry ="insert into batchexpirydetail ('batchdetailkey','routekey','batchnumber','itemcode','expirydate','quantity','transactiontypecode','visitkey','istemp','issync') values ('"+key+"','"+routekey+"','"+batchnumber+"','"+itemcode+"','"+enddate+"','"+qty+"',"+transactiontype+",'"+visitkey+"','true',0)";
+                                                     }
+                                                     else
+                                                     {
+                                                     var updateqry ="update batchexpirydetail set quantity='"+qty+"' where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode+" and batchnumber='"+batchnumber+"' and transactiontypecode="+transactiontype; 
+                                                     }
+                                                     updateinvoicedetail();
+                                                     updatebatchmaster(itemcode,batchnumber,qty,availableqty);
+                                                     window.plugins.DataBaseHelper.insert(updateqry,function(result)
+                                                                                          {
+                                                                                          
+                                                                                          },
+                                                                                          function()
+                                                                                          {
+                                                                                          console.warn("Error calling plugin");
+                                                                                          });
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });	
+                
+            }  
+           
+        }
+        function updatebatchmaster(itemcode,batchnumber,quantity,availableqty)
+        {
+            
+            //if(transactiontype==23)
+            //var quantity = eval(quantity)-eval(availableqty);
+            
+            var updateqry = "update batchmaster_temp set "+batchquantity+"="+quantity+" where itemcode="+itemcode+" and batchnumber='"+batchnumber+"'";
+            console.log(updateqry);
+            var platform= sessionStorage.getItem("platform");
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+            
+        }
+        function deletes()
+        {
+            var routekey=sessionStorage.getItem("RouteKey");
+            var visitkey=sessionStorage.getItem("VisitKey");
+             var itemcode=$('#itemno').val();
+            var platform= sessionStorage.getItem("platform");
+            if(transactiontype < 15)
+            visitkey=0;
+            if(setbatchnumber=='')
+            getLangText("Please Select Batch");
+            var qry ="delete from batchexpirydetail where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode+" and batchnumber='"+setbatchnumber+"' and istemp='true' and transactiontypecode="+transactiontype;
+            console.log(qry);
+            if(platform=='iPad')
+            {
+            var abc = Cordova.exec(function(result) {
+                                    deleteupdatebatchmaster();
+                                    
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "InsertUpdateMethod", 
+                                    [qry]);
+        	}
+        	else if(platform=='Android')
+           	{
+			           		window.plugins.DataBaseHelper.insert(qry,function(result)
+							{
+							 		deleteupdatebatchmaster();
+                                                                 
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+           	}
+        
+        }
+        function deleteupdatebatchmaster()
+        {
+            var routekey=sessionStorage.getItem("RouteKey");
+            var visitkey=sessionStorage.getItem("VisitKey");
+            var itemcode=$('#itemno').val();
+            var platform= sessionStorage.getItem("platform");
+            
+            if(transactiontype < 15)
+            visitkey=0;
+            
+            var selectqry = "select count(*) as cnt from batchmaster where itemcode="+itemcode+" and batchnumber='"+setbatchnumber+"'";
+            if(platform=='iPad')
+		    {
+                return abc = Cordova.exec(function(result) {
+                                           if(result[0][0] ==0)
+                                           {
+                                           var updateqry="delete from batchmaster_temp where itemcode="+itemcode+" and batchnumber='"+setbatchnumber+"'";
+                                           }
+                                           else
+                                           {
+                                           var updateqry ="update batchmaster_temp set "+batchquantity+"="+batchquantity+"-"+prequantity+" where itemcode="+itemcode+" and batchnumber='"+setbatchnumber+"'";
+                                           }
+                                           
+                                           var abc = Cordova.exec(function(result) {
+                                                                   getrecord();
+                                                                   updateinvoicedetail();
+                                                                   },
+                                                                   function(error) {
+                                                                   alert(error);},
+                                                                   "PluginClass", 
+                                                                   "InsertUpdateMethod", 
+                                                                   [updateqry]);
+                                           
+                                           },
+                                           function(error) {
+                                           alert(error);},
+                                           "PluginClass", 
+                                           "GetdataMethod", 
+                                           [selectqry]);
+        	}
+        	else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                     {
+                                                     
+                                                     result = $.map(result.array, function (item, index) {
+                                                                    
+                                                                    return [[item.cnt]];
+                                                                    });
+                                                     if(result[0][0] ==0)
+                                                     {
+                                                     var updateqry="delete from batchmaster_temp where itemcode="+itemcode+" and batchnumber='"+setbatchnumber+"'";
+                                                     }
+                                                     else
+                                                     {
+                                                     var updateqry ="update batchmaster_temp set "+batchquantity+"="+batchquantity+"-"+prequantity+" where itemcode="+itemcode+" and batchnumber='"+setbatchnumber+"'";
+                                                     }
+                                                     window.plugins.DataBaseHelper.insert(updateqry,function(result)
+                                                                                          {
+                                                                                          getrecord();
+                                                                                          updateinvoicedetail();
+                                                                                          },
+                                                                                          function()
+                                                                                          {
+                                                                                          console.warn("Error calling plugin");
+                                                                                          });
+                                                     
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            } 
+                        
+          
+            
+        }
+        function updateinvoicedetail()
+        {
+            var qty=0;
+            $('#tblContent tr').each(function(){
+                                     if($(this).index() > 0)
+                                     {
+                                     var index= $(this).index();
+                                     var batchnumber = $(this).find('td:eq(0)').text();
+                                     var case1 = $(this).find('td:eq(1)').text();
+                                     var units = $(this).find('td:eq(2)').text();
+                                     var unitspercase=sessionStorage.getItem("unitspercase");
+                                        if(sessionStorage.getItem("CaseEnabled")==1)
+                                        {
+                                            qty  += eval(unitspercase * case1) + eval(units);
+                                        }
+                                        else
+                                        {
+                                        qty += eval(units);
+                                        }
+                                     }
+                                     });
+        
+            var routekey=sessionStorage.getItem("RouteKey");
+            var visitkey=sessionStorage.getItem("VisitKey");
+            if(transactiontype < 15)
+            visitkey=0;
+            var itemcode=$('#itemno').val();
+            var platform= sessionStorage.getItem("platform");
+           if(transactiontype ==2 || transactiontype==3 || transactiontype==4 || transactiontype==7 || transactiontype==23)
+            {
+                var updateqry="update inventorytransactiondetail set quantity="+qty+" where itemcode="+itemcode+" and routekey="+routekey+" and transactiontypecode=" + transactiontype+" and istemp='true'";
+            }
+            else if(transactiontype == 5 || transactiontype==6 || transactiontype==11 || transactiontype==14)
+            {
+
+                var updateqry="update transactiondetailtemp set "+invoiceqty+"="+qty+" where itemcode="+itemcode;
+            }
+            else{
+            var updateqry = "update invoicedetail set "+invoiceqty+"="+qty+" where itemcode="+itemcode+" and visitkey="+visitkey+" and routekey="+routekey;
+            }
+            console.log(updateqry);
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        return true;
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "InsertUpdateMethod", 
+                                        [updateqry]);
+        	}
+        	else if(platform=='Android')
+           	{
+                window.plugins.DataBaseHelper.insert(updateqry,function(result)
+                                                     {
+                                                     return true;
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                                         }
+        }
+        function addnewbatch()
+        {
+            var itemcode=$('#itemno').val();
+            if(itemcode==0)
+            getLangText("Please Select Item");
+            else
+            window.location='addnewbatch.html';
+        }
+        function ClearVariables()
+        {
+            sessionStorage.setItem("ItemCode","");
+            sessionStorage.setItem("ItemDesc","");
+            sessionStorage.setItem("itemno","");
+        }
+        function ClearTable() {
+           // $("#tblContent tr:eq(1)").remove();
+            $("#tblContent").find('tr').not(":first").remove();
+            var value ='';
+            $('#case1').val(value);
+        }
+        function getUnitspercase(itemcode)
+        {
+            var selectqry = "select unitspercase from itemmaster where actualitemcode="+itemcode;
+            if(platform=='iPad')
+		    {
+                return abc = Cordova.exec(function(result) {
+                                           
+                                           sessionStorage.setItem("unitspercase",result[0][0]);
+                                           
+                                           },
+                                           function(error) {
+                                           alert(error);},
+                                           "PluginClass", 
+                                           "GetdataMethod", 
+                                           [selectqry]);
+        	}
+        	else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                     {
+                                                     
+                                                     result = $.map(result.array, function (item, index) {
+                                                                    
+                                                                    return [[item.unitspercase]];
+                                                                    });
+                                                     
+                                                     sessionStorage.setItem("unitspercase",result[0][0]);
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            } 
+        }
+        function checkbatchallow(itemcode)
+        {
+            var selectqry = "select allowbatchentry from itemmaster where actualitemcode="+itemcode;
+            if(platform=='iPad')
+		    {
+                return abc = Cordova.exec(function(result) {
+                                           allowbatchentry =eval(result[0][0]);
+                                           if(eval(result[0][0]) == 0)
+                                           {
+                                           $("#imgadd").attr("src", "../images/icn-add-gray.png");
+                                           $("#imgdelete").attr("src", "../images/delete-gray.png");
+                                           $('#delete').addClass('MenuGray');
+                                           $('#linkdelete').attr('onclick','');
+                                           $('#add').addClass('MenuGray');
+                                           $('#add').attr('onclick','');
+                                           } else{
+                                                     $("#imgadd").attr("src", "../images/icn-add.png");
+                                                     $("#imgdelete").attr("src", "../images/delete.png");
+                                                     $('#delete').removeClass('MenuGray');
+                                                     $('#linkdelete').attr('onclick','deletes()');
+                                                     $('#add').removeClass('MenuGray');
+                                                     $('#add').attr('onclick','addnewbatch()');
+                                                     }
+                                           
+                                           },
+                                           function(error) {
+                                           alert(error);},
+                                           "PluginClass", 
+                                           "GetdataMethod", 
+                                           [selectqry]);
+        	}
+        	else if(platform=='Android')
+            {
+                window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                     {
+                                                     
+                                                     result = $.map(result.array, function (item, index) {
+                                                                    
+                                                                    return [[item.allowbatchentry]];
+                                                                    });
+                                                     
+                                                     allowbatchentry =eval(result[0][0]);
+                                                     if(eval(result[0][0]) == 0)
+                                                     {
+                                                     $("#imgadd").attr("src", "../images/icn-add-gray.png");
+                                                     $("#imgdelete").attr("src", "../images/delete-gray.png");
+                                                     $('#delete').addClass('MenuGray');
+                                                     $('#linkdelete').attr('onclick','');
+                                                     $('#add').addClass('MenuGray');
+                                                     $('#add').attr('onclick','');
+                                                     }
+                                                      else{
+                                                     $("#imgadd").attr("src", "../images/icn-add.png");
+                                                     $("#imgdelete").attr("src", "../images/delete.png");
+                                                     $('#delete').removeClass('MenuGray');
+                                                     $('#linkdelete').attr('onclick','deletes()');
+                                                     $('#add').removeClass('MenuGray');
+                                                     $('#add').attr('onclick','addnewbatch()');
+                                                     }
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            } 
+        }
+        </script>
+
+    </body>
+</html>

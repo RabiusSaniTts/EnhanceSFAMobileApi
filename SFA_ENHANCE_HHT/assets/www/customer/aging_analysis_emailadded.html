@@ -1,0 +1,752 @@
+<!-- ' Created By : Nidhi Dedania ' Created Date : 2/2/2011 ' Description: This page is used for promotion list -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+        <script type="text/javascript"
+            src="../js/printreportmultiple.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html" id="Back_inner">test</a>-->
+                <a href="#" id="Back_inner" lang="en" rel="external"
+                    onclick="ClearVariables()">Back</a>
+                <h1 lang="en">Aging Analysis</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <div class="textBar">
+                        <table cellpadding="2" cellspacing="2" border="0"
+                            width="80%">
+                            <tr>
+                                <td lang="en" style="width: 25%">Customer</td>
+                                <td style="width: 75%"><select id="ddlCustomer"
+                                        style="display: inline;">
+                                    </select></td>
+                            </tr>
+
+                        </table>
+                        <table style="table-layout:initial" cellpadding="2"
+                            cellspacing="2" border="0" width="80%">
+                            <tr>
+                                <td lang="en" style="width: 25%;">Customer#</td>
+                                <td class="readonly_text" id="ccode"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--<div class="topbox">
+                <div class="content-primary1">
+                    <label class="cus_lable heading" lang="en">
+                        No.</label>
+                    <span class="nobox headbox" id="custid"></span>
+                </div>
+                <div class="second-primary1">
+                    <label class="cus_lable heading" lang="en" id="custname">
+                        </label>
+                </div>
+                </div>-->
+                    <div class="tblBox tbltd" id="contentWrapper">
+                        <div class="tblHeader">
+                            <table width="100%" cellpadding="0" cellspacing="0"
+                                id="tblHeaderContent" class="tblHeader">
+                                <tr>
+                                    <th style="width: 26%;" lang="en"
+                                        class="leftAlign">Transaction Date</th>
+                                    <th style="width: 22%;"
+                                        lang="en">Invoice#</th>
+                                    <th style="width: 14%;" lang="en"
+                                        class="rightAlign">Salesman</th>
+                                    <th style="width: 14%;" lang="en"
+                                        class="rightAlign">Balance</th>
+                                    <th style="width: 10%;display:none;"
+                                        lang="en" class="rightAlign">PDC
+                                        Amount</th>
+                                    <th style="width: 14%;" lang="en"
+                                        class="rightAlign last">Total
+                                        Amount</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="route_table_height tblFixedHeight">
+                            <table border="0" width="100%" cellpadding="0"
+                                cellspacing="0"
+                                id="tbl1">
+                                <tr>
+                                    <td style="width: 26%;"
+                                        class="leftAlign"></td>
+                                    <td style="width: 22%;"
+                                        class="rightAlign"></td>
+                                    <td style="width: 14%;"
+                                        class="rightAlign"></td>
+                                    <td style="width: 14%;"
+                                        class="rightAlign"></td>
+                                    <td style="width: 10%;display:none;"
+                                        class="rightAlign"></td>
+                                    <td style="width: 14%;"
+                                        class="centerAlign last"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!--<div class="textBar">
+                    <table cellpadding="2" cellspacing="2" border="0" width="100%">
+                        <tr>
+                            <td width="15%">
+                            </td>
+                            <td lang="en" id="pname">
+                                Invoice Date
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15%">
+                                <div style="float: left; width: 50px; height: 50px; position: relative" onclick="javascript:setToggle('#imgSelect');">
+                                    <img id="imgCheck" src="../images/check.png" alt="" style="position: absolute;" />
+                                    <img id="imgSelect" src="../images/select.png" alt="" style="position: absolute;
+                                        left: 5px; display: block" />
+                                </div>
+                                <div style="float: left; position: relative; top: 15px;">
+                                    <label id="lbl" style="color: #999; display: block" onclick="javascript:setToggle('#imgSelect');"
+                                        lang="en">
+                                        All</label>
+                                </div>
+                            </td>
+                            <td>
+                                <input name="adate" value="09-08-2012" type="text" id="adate" readonly="readonly" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>-->
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="#" class="enableText" rel="external"
+                        id="lnkDetail">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/detail.png" alt="Option" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Details</div>
+                        </div>
+                    </a><a id="lnkPrint"
+                        class="enableText" rel="external">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/print.png" alt="Add" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Print</div>
+                        </div>
+                    </a>
+                    <a id="lnkEmail"
+                        class="enableText" rel="external">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/info-2.png" alt="Add" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Email</div>
+                        </div>
+                    </a>
+
+                    <a href="#" class="enableText" id="exit" rel="external">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png" alt="Exit" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Done</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">            
+            window.lang = new jquery_lang_js();
+            var custid;
+            $("#tbl1").click(function() { });
+            /*$('label').css({
+                'background': '#D1ECFD',
+                'border': 'none'
+            });*/
+            $('.ui-btn-inner').css({
+                'border-top': 'none'
+            });
+
+            function setToggle() {
+                if ($("#imgSelect").css("display") == 'none') $("#imgSelect").css("display", "block");
+                else $("#imgSelect").css("display", "none");
+            }
+
+            var platform,decimalplace,data,selRow,invoicenumber,customercode;
+            resizeOrientationWindow();
+            $(document).ready(function() 
+            {
+                resizeWindow();
+                var customeraid = sessionStorage.getItem("customercode");
+                var customername = sessionStorage.getItem("customername");
+
+                /*$('#custid').text(customeraid);
+                $('#custname').text(customername);*/
+                platform = sessionStorage.getItem("platform");
+                decimalplace = sessionStorage.getItem("decimalplace");
+                $("#lnkDetail").click(function(){ OnDetail() });
+                $("#ddlCustomer").change(function(){ 
+                    sessionStorage.AgingCustCode = $(this).val();                    
+                    getCustomerCode() 
+                });
+                document.addEventListener("deviceready", FillCustomer, false);                
+                
+                function FillCustomer()
+                {       
+                    $("#ddlCustomer").empty();
+                    var Qry;                
+                    Qry = "SELECT customercode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,alternatecode FROM customermaster cm WHERE cm.templateindicator IS NOT 1 ORDER BY cm.customername";
+                    console.log(Qry);
+                    if(platform=="iPad")
+                    {
+                        Cordova.exec(function(result) 
+                        { 
+                          if(result.length > 0)
+                             $("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#ddlCustomer"));
+                          for(i=0;i<result.length;i++){                    
+                          $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlCustomer"));                                           
+                          }
+                          /*var url = window.location.toString();
+                          custid = url.substring(url.indexOf("=")+1);
+                          if(custid != undefined)
+                                $("#ddlCustomer").val(custid);*/
+                                
+                          if(sessionStorage.AgingCustCode != undefined && sessionStorage.AgingCustCode != "")
+                          {
+                            $("#ddlCustomer").val(sessionStorage.AgingCustCode);
+                             getCustomerCode();
+                          }
+                          $("#ddlCustomer").selectmenu("refresh"); 
+                         
+                        },
+                        function(error) {
+                            navigator.notification.alert("Error in binding Customer : " + error);
+                        },
+                        "PluginClass", 
+                        "GetdataMethod", 
+                        [Qry]);         
+            
+                    }
+                    else if(platform=="Android")
+                    {
+                        window.plugins.DataBaseHelper.select(Qry,function(result)
+                        {
+                        	if(result.array != undefined)
+                        	{
+		                    	result = $.map(result.array, function (item, index) {                
+                					return [[item.customercode, item.customername]];
+            					});
+                        		if(result.length > 0)
+                             		$("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#ddlCustomer"));
+                          		for(i=0;i<result.length;i++){                    
+                          			$("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlCustomer"));                                           
+                          		}
+                          		/*var url = window.location.toString();
+                          		custid = url.substring(url.indexOf("=")+1);
+                          		if(custid != undefined)
+	                                $("#ddlCustomer").val(custid);*/                            
+	                            
+	                            if(sessionStorage.AgingCustCode != undefined && sessionStorage.AgingCustCode != "")
+                          		{
+                            		$("#ddlCustomer").val(sessionStorage.AgingCustCode);
+                            		getCustomerCode();
+                          		}
+                          		$("#ddlCustomer").selectmenu("refresh");                          
+                          		
+                          	}
+                        },
+                        function()
+                        {
+                        console.warn("Error calling plugin");
+                        });
+                    } 
+                }
+                
+                function getCustomerCode()
+                {
+                    
+                    if(localStorage.age == 'cust')
+                    {
+                        $("#ddlCustomer").attr("disabled",true);
+                        customercode = sessionStorage.getItem("customerid");
+                        $("#ddlCustomer").val(customercode);
+                        $("#ddlCustomer").selectmenu("refresh");   
+                    }
+                    else
+                    {
+                        if($("#ddlCustomer").get(0).selectedIndex != 0)
+                            customercode = $("#ddlCustomer").val();
+                        else
+                            customercode = "";
+                    }
+                    getCustomervalue(customercode);
+                   
+                }
+                function getCustomervalue(ccode){
+                
+                	var Qry;                
+                    Qry = "SELECT customercode,customername,alternatecode FROM customermaster WHERE customercode="+ccode;
+                    console.log(Qry);
+                    if(platform=="iPad")
+                    {
+                        Cordova.exec(function(result) 
+                        { 
+                          
+                        },
+                        function(error) {
+                            navigator.notification.alert("Error in binding Customer : " + error);
+                        },
+                        "PluginClass", 
+                        "GetdataMethod", 
+                        [Qry]);         
+            
+                    }
+                    else if(platform=="Android")
+                    {
+                        window.plugins.DataBaseHelper.select(Qry,function(result)
+                        {
+                        	if(result.array != undefined)
+                        	{
+		                    	result = $.map(result.array, function (item, index) {                
+                					return [[item.customercode, item.customername,item.alternatecode]];
+            					});
+                        		if(result.length>0){
+                        			$('#ccode').text("   "+result[0][2]);
+                        			
+                        		}
+                          	}
+                          	getRecord();
+                        },
+                        function()
+                        {
+                        console.warn("Error calling plugin");
+                        });
+                    } 
+                	
+                }
+                function getRecord()
+                { 
+                	ClearTable('tbl1');                   
+                    var Qry; 
+                    if(customercode != "")
+                        Qry = "SELECT invoicenumber,strftime('%d-%m-%Y',transactiondate) transactiondate,totalinvoiceamount,invoicebalance,ifnull(pdcbalance,0) pdcbalance,erpreferencenumber as erpnumber,remarks1 FROM customerinvoice WHERE invoicebalance <> 0  AND voidflag IS NOT 1 AND customercode = " + customercode +" ORDER BY strftime('%Y-%m-%d',duedate),invoicenumber";
+                    else
+                        Qry = "SELECT invoicenumber,strftime('%d-%m-%Y',transactiondate) transactiondate,totalinvoiceamount,invoicebalance,ifnull(pdcbalance,0) pdcbalance,erpreferencenumber as erpnumber,remarks1 FROM customerinvoice WHERE invoicebalance <> 0  AND voidflag IS NOT 1 ORDER BY strftime('%Y-%m-%d',duedate),invoicenumber";
+                    console.log(Qry);
+                    if(platform == "iPad")
+                    {
+                        Cordova.exec(function(result) {                        
+                                BindData(result);
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "GetdataMethod",
+                        [Qry]);
+                    }
+                    else if(platform == "Android")
+                    {
+                        window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        	if(result.array != undefined)
+                        	{
+                        		result = $.map(result.array, function (item, index) {                
+	                        		return [[item.transactiondate,item.erpnumber,item.remarks1,item.invoicebalance,item.pdcbalance,item.totalinvoiceamount,item.invoicenumber]];
+                    			});
+                            	BindData(result);
+                           	}
+                        },
+                        function() {
+                            console.warn("Error calling plugin");
+                        });
+                    }
+                }
+                
+                //Bind table data dynamically
+            function BindData(result) 
+            {   
+                data = result;
+               
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {                        
+                        var temp = (j == 0) ? "class = leftAlign" : "class = rightAlign";
+                        if(j == (CellCount - 1))
+                        {
+                            temp += " last";                            
+                        }
+                        var val;
+                        val=data[i][j];
+                        if(j==4){
+                        	temp += " style='display:none;'";    
+                        	
+                        }
+                        if(j > 2 && j<=5)
+                           val = eval(val).toFixed(decimalplace);
+//                        else if(j == 0)
+//                        	val = data[i][5];
+                        else if(j==5){
+                        	val = data[i][6];
+                        }
+                            
+                           
+                            
+                        if(val == 0)
+                           val = parseInt(val); 
+                        var c = "<td " + temp + ">" + val + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tbl1 tbody').append(r);
+                }
+                
+               
+                
+                $("#tbl1 tr").live('click', function() {                    
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i = $(this).index();
+                  
+                    invoicenumber = data[i-1][1];
+                    if($(this).hasClass("clicked"))
+                        selRow = true;
+                    else
+                        selRow = undefined;
+                });
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');                 
+                $("#tbl1 tr:eq(1)").trigger('click');
+            }
+            
+                function OnDetail()
+                {                    
+                    if(selRow == undefined)
+                    {
+                       	getLangText("Please Select Invoice.");
+                        return false;
+                    }
+                    sessionStorage.AAinvoicenumber = invoicenumber;
+                    //window.location = "invoice_detail.html?custid=" + $("#ddlCustomer").val();
+                    window.location = "invoice_detail.html";
+                }
+                
+                //Clear table 
+                function ClearTable(tbl) {
+                    $("#" + tbl + " tr:gt(0)").remove();
+                    $("#" + tbl + " tr").die('click');
+                    selRow = undefined;
+                }
+                
+                if (localStorage.age == 'cust') {
+                    var page = 'customer_info.html'
+                   //$("#lnkPrint").attr("onclick", "localStorage.po='customer_opt'"); // org line sujee commented  03/07/2018
+                    $("#lnkPrint").attr("onclick", "PrintAnalysis();"); // added 
+                   
+                } 
+                else {                    
+                    var page = '../information/information.html';
+                    $("#lnkPrint").attr("onclick", "PrintAnalysis();");
+                }
+                
+                
+                //jtredit email click function
+                $("#lnkEmail").click(function(){
+                	var tomail ="jyothisht95@gmail.com";
+                	
+                   // alert(customercode);
+                  //  alert("HI");
+                  checkMailId(customercode);
+              //  SendMailFun(customercode,tomail);
+                })
+                
+                	
+                	
+                $("#Back_inner").attr("href", page);
+                $("#exit").attr("href", page);
+                $("#exit").attr("onclick", "sessionStorage.removeItem('AgingCustCode')");
+
+                $('.ui-body-d').css({ 'background': '#fff' });
+                $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+                $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+                $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+                $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#fff' });
+                $('.ui-input-text').css({
+                    'width': '70% !important',
+                    'color': '#fff'
+                });
+                
+                $(".leftfooter").html(getCurrentDate());
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+
+                if (sessionStorage.getItem("Language") != "en") {
+
+                    window.lang.change('Aginganalysis' + lan, lan);
+                    window.lang.change('Footer' + lan, lan);
+                    if (lan == "AR") {
+                        $(".centerbox").attr("dir", "rtl");
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+
+                }
+                else {
+                    window.lang.change('en', 'en');
+                    $("#contentWrapper").attr("dir", "ltr");
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });
+            
+            function ClearVariables()
+            {
+                sessionStorage.removeItem("AgingCustCode");
+                window.location = "customer_info.html";
+            }
+            
+            function PrintAnalysis(){
+            	  var arr=[];
+            	  arr.push({"ReportName" : "AgingAnalysis","customercode":$('#ddlCustomer').val(),"customername":$('#ddlCustomer :selected').text()});
+            	 
+            	  ReportsToPrint(arr,0);
+            }
+            
+            function PrintDone(){
+            	data={};
+            	
+            }
+            
+            //jtr
+            
+         
+            function checkMailId(customercode)
+        {
+       	 //alert(customercode);
+       	
+       	 var Qry="select custemail from customermaster where customercode = " + customercode +"";
+		  console.log(Qry);
+				  console.log(Qry);
+				
+				 if(platform == "Android")
+				{
+				 window.plugins.DataBaseHelper.select(Qry, function(result) {
+      			
+					var tomail ="";
+					//var mailroutekey = sessionStorage.getItem("RouteKey");
+	 			//	var mailvisitkey= sessionStorage.getItem("VisitKey");
+	
+      			if(result.array[0].custemail!=null)
+      				{  
+      				
+      				data["tomail"]=result.array[0].custemail;
+      				tomail = data["tomail"];
+      				
+      				}
+      			else 
+      				{  
+      			
+      				data["tomail"]="";
+      				tomail = data["tomail"];
+      				
+      				} 
+      			
+      			//alert(tomail);
+      		//	alert(customercode);
+      			SendMailFun(customercode,tomail);
+      			
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+				 
+			}
+	 				  
+        }
+            
+      
+            
+            
+            
+            //jtredit send mail function
+           function SendMailFun(customercode,tomail)
+        	{			//  alert("hi from send mail function");
+        	var custSignature = "";
+        	var ordertotal = 0;
+        	var email = {};
+    	            	//var Qry="Select DISTINCT im.alternatecode as Itemcode,im.barcode1 as barcode,sod.freesampleqty as FocQty,im.unitspercase as Upc,CASE WHEN unitspercase ='1' THEN   IFNULL(CAST((salesqty%unitspercase) AS INT),0) ELSE (IFNULL(CAST((salesqty/unitspercase) AS INT),0)) END AS cases,CASE WHEN unitspercase ='1' THEN salesqty else  IFNULL(CAST((salesqty%unitspercase) AS INT),0)  end AS 'units',im.itemshortdescription as ItemDescription,cm.alternatecode as CustomerCode,soh.invoicenumber as OrderNumber,sm.alternatesalesmancode as SalesmanCode,sm.salesmanname1 as SalesmanName,cm.customername as CustomerName,ifnull(oct.outletitemcode,0) as Articalcode,soh.transactiondate as Date,0 as Slno,sod.salescaseprice as Caseprice,sod.salesprice as Unitprice from salesorderdetail sod inner join itemmaster im on sod.itemcode=im.actualitemcode inner join salesorderheader soh on soh.transactionkey=sod.transactionkey inner join customermaster cm on cm.customercode=soh.customercode inner join salesman sm on sm.salesmancode=soh.salesmancode left join outletitemcodes oct on oct.itemcode=sod.itemcode  where sod.routekey="+mailroutekey+" and sod.visitkey="+mailvisitkey+" order by im.printsequencecust";
+    	            	 var Qry = "SELECT erpreferencenumber as invoicenumber,strftime('%d-%m-%Y',transactiondate) transactiondate,totalinvoiceamount,invoicebalance,ifnull(pdcbalance,0) pdcbalance,0 as Slno FROM customerinvoice WHERE invoicebalance <> 0  AND voidflag IS NOT 1 AND customercode = " + customercode +" ORDER BY strftime('%Y-%m-%d',duedate),invoicenumber";
+    	            	
+    	            	//console.log(Qry);
+    	            	
+    	            	window.plugins.DataBaseHelper
+    					.select(
+    							Qry, function(result) {
+    								if (!$.isEmptyObject(result)) {
+    								for (i = 0; i < result.array.length; i++) {
+    									
+    									 email[i] = result.array[i];
+    								}
+
+    								}
+    								email = JSON.stringify(email);
+    								console.log(email);
+    							//alert(email);
+    								
+    								var json = email;
+
+    								var parsed = JSON.parse(json);
+
+    								var arr = [];
+
+    								for(var x in parsed){
+    								  arr.push(parsed[x]);
+    								}
+    								
+    							var excel=JSON.stringify(arr);
+    							console.log(excel);
+    						//	alert(excel);
+    							
+    				                   var successCallback = function() {
+    				       				  console.log('custStmt  success');
+    				       				  // do some stuff here
+    				       				 $.mobile.hidePageLoadingMsg();
+    				       				
+    				       				};
+
+    				       				var errorCallback = function(e) {
+    				       				  console.log('error: ' + e);
+    				       				  $.mobile.hidePageLoadingMsg();
+    				       			
+    				       				};
+    				       			
+    				       				
+    				       				
+    				       				window.plugins.Xls.custStmt(successCallback, errorCallback,excel,tomail);
+    								
+    							}, function() {
+    								console.warn("Error calling plugin");
+    							});
+    	            	
+        	}
+        	
+            
+           
+            
+            
+        </script>
+
+        </div>
+    </body>
+</html>

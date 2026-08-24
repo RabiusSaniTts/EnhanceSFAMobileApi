@@ -1,0 +1,541 @@
+/*iWebKit css 5.04 by Christopher Plieger*/
+
+
+.textfield
+{
+	position: relative;
+	margin-top: 40px;
+	line-height: 40px;
+	margin-left: 15px;
+	color: #039EDC;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.input
+{
+	position: relative;
+	margin-left: 2%;
+	margin-right: 2%;
+	border: none;
+	-webkit-border-radius: 8px; /* Saf3-4, iOS 1-3.2, Android &lte;1.6 */
+	-moz-border-radius: 8px; /* FF1-3.6 */
+	border-radius: 8px;
+	border: 1px thick #ccc;
+	width: 94%;
+	height: 20%;
+	background-color: #B0DAEF;
+	-webkit-box-shadow: 0px 0px 1px 0px #fff;
+	-moz-box-shadow: 0px 0px 1px 0px #fff; /* FF3.5 - 3.6 */
+	box-shadow: 0px 0px 1px 0px #fff;
+}
+.box
+{
+	width: 75%;
+	height: 35%;
+	position: relative;
+	margin: 0 auto;
+	
+border: 1px solid #313233;
+    border-top: 1px solid #313233;
+    border-bottom: 1px solid #313233;
+	-webkit-border-radius: 12px; /* Saf3-4, iOS 1-3.2, Android &lte;1.6 */
+	-moz-border-radius: 12px; /* FF1-3.6 */
+	border-radius: 12px;
+	-webkit-box-shadow: 1px 5px 6px #999; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	-moz-box-shadow: 1px 5px 6px #999; /* FF3.5 - 3.6 */
+	box-shadow: 1px 5px 6px #999;
+}
+.loginbtn
+{
+	float: right;
+	width: 20%;
+	height: 15%;
+	margin-top: 3%;
+	margin-right: 5%;
+	color: #1FA7DE;
+	font-size: 20px;
+	font-weight: bold;
+	border: none;
+	-webkit-border-radius: 5px; /* Saf3-4, iOS 1-3.2, Android &lte;1.6 */
+	-moz-border-radius: 5px; /* FF1-3.6 */
+	border-radius: 5px;
+	background-color: #F1F0EE;
+	-webkit-box-shadow: 1px 5px 6px #999; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+	-moz-box-shadow: 1px 5px 6px #999; /* FF3.5 - 3.6 */
+	box-shadow: 1px 5px 6px #999;
+}
+.remember
+{
+	float: left;
+	width: 60%;
+	margin-top: 3%;
+	color: #039EDC;
+	font-size: 22px;
+	font-weight: bold;
+}
+.check
+{
+	top: 1%;
+	margin-left: 0.5em;
+}
+.lostpass
+{
+	position: relative;
+	font-size: 22px;
+	top: 5%;
+	width: 100% color:#4F4F4F;
+	text-align: center;
+	text-shadow: 1px 1px 1px #FFF;
+	filter: dropshadow(color=#FFF, offx=1, offy=1);
+}
+.footer
+{
+	margin: 0 auto;
+	width: 80%;
+	margin-top: 20px;
+	display: none;
+}
+
+
+#topbar
+{
+	position: relative;
+	left: 0;
+	top: 5%;
+	width: auto;
+	text-align: center;
+	font-size: 80px;
+	font-weight: bold;
+	color: #009DDC;
+	text-shadow: 1px 1px 1px #FFF;
+	font-style: italic;
+	margin-bottom: 7%;
+}
+.content-primary
+{
+	width: 90%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 5%;
+	float: left;
+}
+.second-primary
+{
+	width: 90%;
+	padding-left: 5%;
+	padding-top: 5%;
+	float: left;
+}
+li
+{
+	margin-bottom: 2% !important;
+}
+.topbox
+{
+	width: 92%;
+}
+.content-primary1
+{
+	width: 45%;
+}
+.second-primary1
+{
+	width: 55%;
+}
+.nobox
+{
+	margin-left: 0;
+}
+
+
+
+/*Sales Invoice & Order Request page class*/
+
+.centerboxInvReq
+{
+	padding-bottom: 0px;
+}
+
+.leftbottomMenu
+{
+	position: relative;
+	margin-top: 8%;
+	width: 98%;
+	left: 1%;
+	float: left;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	-moz-border-radius-topleft: 12px;
+	-webkit-border-top-left-radius: 12px;
+	-moz-border-radius-topright: 12px;
+	-webkit-border-top-right-radius: 12px;
+	border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	background-image: linear-gradient(top, rgb(246,246,246) 7%, rgb(246,246,246) 54%, rgb(219,219,219) 77%);
+	background-image: -o-linear-gradient(top, rgb(246,246,246) 7%, rgb(246,246,246) 54%, rgb(219,219,219) 77%);
+	background-image: -moz-linear-gradient(top, rgb(246,246,246) 7%, rgb(246,246,246) 54%, rgb(219,219,219) 77%);
+	background-image: -webkit-linear-gradient(top, rgb(246,246,246) 7%, rgb(246,246,246) 54%, rgb(219,219,219) 77%);
+	background-image: -ms-linear-gradient(top, rgb(246,246,246) 7%, rgb(246,246,246) 54%, rgb(219,219,219) 77%);
+	background-image: -webkit-gradient( 		linear, 		left top, 		left bottom, 		color-stop(0.07, rgb(246,246,246)), 		color-stop(0.54, rgb(246,246,246)), 		color-stop(0.77, rgb(219,219,219)) 	);
+}
+
+.tblHeader
+{
+	/*height:55px !important;*/
+}
+
+.contentFont
+{
+	height: 55px !important;
+}
+.contentFontBlack {
+	height: 55px !important;
+}
+.MenuPosition
+{
+	width: 33%;
+	float: left;
+	height: 100px;
+	text-align: center;
+}
+
+.MenuTextPos
+{
+	position: relative;
+	left: 10%;
+	top: 20%;
+	float: left;
+	text-align: center;
+	color: #095778;
+}
+
+.iconPos
+{
+	position: relative;
+	left: 10%;
+	top: 25%;
+	float: left;
+	text-align: center;
+	color: #095778;
+}
+
+.MenuText
+{
+	position: relative;
+	left: 15%;
+	top: 40%;
+}
+
+.MenuExit
+{
+	position: relative;
+	left: 10%;
+}
+
+.textBar
+{
+	/*margin-top: 60px;*/
+	width: 100%;
+}
+
+.boxContent
+{
+	float: left;
+	width: 98%;
+	position: relative;
+	left: 1%;
+}
+
+/*Over Sales Invoice & Order Request page class*/
+
+/* Start of Day */
+
+.tblSOD
+{
+	width: 100%;
+}
+
+.MenuSODIcon
+{
+	position: relative;
+	left: 10%;
+	top: 20%;
+	float: left;
+	text-align: center;
+	color: #095778;
+}
+
+.MenuSODPos
+{
+	position: relative;
+	left: 15%;
+	top: 36%;
+	float: left;
+	text-align: center;
+	color: #095778;
+}
+/* Over Start of Day */
+
+/* Message */
+.menuPadding
+{
+	width: 10%;
+	float: left;
+	height: 100px;
+	text-align: center;
+}
+/* Over Message */
+
+.com_rightdiv
+{
+	text-align: center;
+	vertical-align: middle;
+	margin-right: 0px;
+	margin-bottom: -15px;
+}
+.com_div
+{
+	width: 100%;
+	min-height: 600px;
+}
+
+.tblPrintLoad
+{
+	width: 100%;
+	height: 600px;
+}
+
+.com_menu_text
+{
+	left: 60%;
+	top: -40px;
+	float: left;
+	position: relative;
+}
+.com_menu_text1
+{
+	left: 60%;
+	top: 20px;
+	float: left;
+	position: relative;
+}
+
+/* Over Start of Day */
+.com_info_div
+{
+	width: 100%;
+}
+.com_info_right
+{
+	margin-right: 0px;
+	margin-bottom: -15px;
+	width: 98%;
+	left: 1%;
+}
+.info_right_icon
+{
+	width: 25% !important;
+	font-size: 13px;
+}
+.book_detail_div
+{
+	width: 100%;
+}
+
+
+
+/* Manage Settlement */
+
+.MenuPositionMS
+{
+	width: 50%;
+	height: 100px;
+	text-align: center;
+	margin-top: 15px;
+	margin-right: 100px;
+	margin-left: 150px;
+	margin-bottom: 0;
+}
+
+.Spacing
+{
+	height: 580px;
+}
+.up_book_div
+{
+	width: 25%;
+}
+/* Over Manage Settlement */
+
+
+/* Manage Checks */
+
+.content-SettleCash
+{
+	width: 95%;
+	padding-top: 30px;
+	padding-right: 15px;
+}
+
+.MenuPositionSC
+{
+	width: 50%;
+	height: 100px;
+	text-align: center;
+	margin-right: 100px;
+	margin-left: 220px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.MenuPositionSCLarge
+{
+	width: 50%;
+	height: 100px;
+	text-align: center;
+	margin-right: 100px;
+	margin-left: 220px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.SpacingCheck
+{
+	height: 480px;
+}
+
+.tblFixedHeight
+{
+	height: 350px;
+	overflow: auto;
+}
+
+.tblReport
+{
+	height: 550px;
+}
+
+.tblPrintDoc
+{
+	height: 480px;
+}
+
+/* Over Manage Checks */
+
+/* Review */
+
+.SpacingReview
+{
+	height: 740px;
+}
+
+.tblMasterDetailHeight
+{
+	height: 200px;
+	overflow: auto;
+}
+
+.tblHeightWithTab
+{
+	height: 300px;
+	overflow: auto;
+}
+
+.tblSalesHeight
+{
+	height: 290px;
+	overflow: auto;
+}
+
+.tblStockFixedHeight
+{
+	height:375px;	
+}
+
+/* Over Review */
+
+/* Utilites */
+
+.HomeIconPosLargeAR
+{	
+	padding-left: 87%;		
+}
+
+.tbl-Route
+{
+	height: 520px;
+}
+
+/* Over Utilites */
+
+.Sum_rightdiv
+{
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-right: 0px;
+	margin-bottom: -15px;
+}
+
+.CenterInv
+{
+	width: 100%;
+}
+
+.bottomInv
+{
+	padding-bottom: 0px;
+}
+
+
+.Tab
+{
+	width: 96px;
+	font-size: 18px !important;
+	white-space: normal;
+}
+.TabPanelEN
+{
+	margin-left: 15px;
+}
+
+.CustDetailBox
+{
+	float: left;
+	width: 100%;
+}
+
+
+.tblInvoice
+{
+	height:580px;
+	overflow:auto;
+}
+
+.tblLoadTransferHeight
+{
+	height: 250px;
+	overflow: auto;	
+}
+
+.item
+{
+	height:400px;
+	position: relative;
+}
+.up_book_div .MenuTextPos
+{
+	width: 40%;
+}
+.up_book_div .MenuTextPos img
+{
+	width: 100%;
+}
+.pricelist
+{
+/* 	height: 275px; */
+	height: 308px;
+}

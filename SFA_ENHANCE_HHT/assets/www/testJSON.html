@@ -1,0 +1,891 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 06/02/2011
+ '  Description  : This page is used for login user.
+-->
+
+<!DOCTYPE> 
+<html> 
+	<head> 	
+	<title>Login</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0;">
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="../css/en.css" lang="en" />
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.min.css" />
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>	
+    <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="cordova-1.5.0.js"><\/script>');
+}
+</script>
+
+    
+    
+    <script type="text/javascript" src="/js/jquery.json-2.3.min.js"></script> 
+	
+	<script src="LangJS/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+	<script src="LangJS/langpack/AR.js" charset="utf-8" type="text/javascript" lang="en"></script>
+	
+	<link rel="stylesheet" media="only screen and (min-width: 1200px) and (max-width: 1400px)" href="css/style_1400.css">
+    <link rel="stylesheet" media="only screen and (min-width: 1000px) and (max-width: 1200px)" href="css/style_1200.css">
+    <link rel="stylesheet" media="only screen and (min-width: 700px) and (max-width: 800px)" href="css/style_800.css">
+    <link rel="stylesheet" media="only screen and (min-width: 601px) and (max-width: 700px)" href="css/style_700.css">
+    <link rel="stylesheet" media="only screen and (min-width: 320px) and (max-width: 600px)" href="css/style_600.css">      
+     
+</head> 
+<body onload="onBodyLoad()"> 
+
+<div data-role="page" data-theme="d">
+<div>    
+	<img title="" alt="" src="images/bg.png" id="background"> 
+</div>
+	<div data-role="header">		
+		<span id="lang" class="homeen">AR</span>		
+	</div>	
+	<div data-role="content">
+		<div class="logo"><h1 class="label log"><br/><br/><img src="images/original-Logo.png" /></h1></div>
+		
+		<form id="frmIndex" action="#" method="post" class="box" data-ajax="false">
+				<fieldset>
+					             
+				</fieldset>
+			</form>
+		<!--<h2 id="LostPwd" class="label" lang="en">Lost Your Password ?</h2>-->
+		<!--<div style="width:250px;position:relative;left:40%">
+					    <input type="button" value="Lost Your Password?" lang="en" onclick="javascript:window.location='forgotpassword.html';"/></div>-->
+        
+        <div style="width:250px;position:relative;left:40%;padding:15px">
+            <!--<a href="forgotpassword.html" style="text-decoration:underline;" rel="external" lang="en">Lost Your Password ?</a>-->
+        </div>
+	</div><!-- /content -->
+    <div data-role="footer" class="ui-bar">
+	<div class="footer">
+		<div class="leftfooter">09 November 2011</div>
+		<div class="rightfooter">Mirnah Technology Systems</div>
+	</div>
+</div>
+<!-- /footer -->
+</div><!-- /page -->
+    <script type="text/javascript" language="javascript">
+        var nameValue;     
+        var passwordValue; 
+        var remembervalue=0;
+        var dID = 0;
+        var platform='';
+        var data = {};
+        //data["data"] = [];
+        function onBodyLoad()
+        {		
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+        
+   
+        function onDeviceReady()
+        {
+            // do your thing!		
+            dID =  device.uuid  ;
+            platform = device.platform; 
+           platform='iPad';
+           
+         //  alert("width="+window.innerWidth);
+         //  alert("width="+window.innerHeight);
+           ////getJSON();           
+           /*getJSONSales('sales');
+           getJSONSales('free');
+           getJSONSales('good');
+           getJSONSales('bad');  */
+           //getJSONCollection();
+           //getJSONDeposit();
+           getSalesReportCash();
+        }  
+        
+            function getCommonData()
+            {
+                data["companyaddress"] = "SILVER OAK STREEET, SOUTH VALES, NY";
+                data["companylogo"] = "/images/logo.jpg";
+                data["addresssetting"] = "1";
+                data["ROUTE"] = "110-NEWMTS";
+                data["SALESMAN"] = "104-NEW MTS SALESMAN";
+                data["DOC DATE"] = "12/03/2012";
+                data["TIME"] = "12:00";
+                data["DOCUMENT NO"] = "1000000021";
+                data["TRIP START DATE"] = "12/03/2012";
+                data["TO ROUTE"] = "105-NEWMTS";
+            }
+        
+             function getJSON()
+            {
+                /*var TransferinQry = "SELECT itemcode,description,(CAST((vanqty - (transferinqty - transferoutqty))/unitspercase AS INT) || '/' || CAST((vanqty -(transferinqty - transferoutqty))%unitspercase AS INT)) AS vanqty, (CAST(transferinqty/unitspercase AS INT) || '/' || CAST(transferinqty%unitspercase AS INT)) transferqty,(CAST((vanqty - (transferinqty - transferoutqty) + transferinqty)/unitspercase AS INT) || '/' || CAST((vanqty -(transferinqty - transferoutqty)+transferinqty)%unitspercase AS INT)) netqty FROM (SELECT itemcode,itemdescription as description,((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))) AS vanqty,IFNULL((SELECT quantity FROM inventorytransactiondetail WHERE detailkey = (SELECT MAX(detailkey) FROM inventorytransactiondetail WHERE transactiontypecode = 3 AND istemp = 'false') AND transactiontypecode = 3 AND istemp = 'false' AND itemcode = invsum.itemcode),0) transferinqty,IFNULL((SELECT quantity FROM inventorytransactiondetail WHERE detailkey = (SELECT MAX(detailkey) FROM inventorytransactiondetail WHERE transactiontypecode = 2 AND istemp = 'false') AND transactiontypecode = 2 AND istemp = 'false' AND itemcode = invsum.itemcode),0) transferoutqty,unitspercase AS 'unitspercase',caseprice,defaultsalesprice FROM inventorysummarydetail invsum JOIN itemmaster im on im.actualitemcode = invsum.itemcode)"; */
+                 var Qryload1 = "SELECT itemcode AS 'item#',itemdescription AS 'description',(IFNULL(CAST((beginstockqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((beginstockqty%unitspercase) AS INT),0)) AS 'openqty',(IFNULL(CAST((loadqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((loadqty%unitspercase) AS INT),0)) AS 'loadqty',(IFNULL(CAST((loadadjustqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((loadadjustqty%unitspercase) AS INT),0)) AS 'adjustqty', (CAST(((IFNULL(beginstockqty,0)+IFNULL(loadqty,0)+IFNULL(loadadjustqty,0))/unitspercase) AS INT) ||  '/' || CAST(((IFNULL(beginstockqty,0)+IFNULL(loadqty,0)+IFNULL(loadadjustqty,0))%unitspercase) AS INT)) AS 'netqty' FROM inventorysummarydetail invsum JOIN itemmaster im ON im.actualitemcode = invsum.itemcode";
+                 var Qryload2 = "SELECT itemcode AS 'item#',itemdescription AS 'description',(IFNULL(CAST((beginstockqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((beginstockqty%unitspercase) AS INT),0)) AS 'Van Qty',(IFNULL(CAST((loadqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((loadqty%unitspercase) AS INT),0)) AS 'loadqty',(CAST(((IFNULL(beginstockqty,0)+IFNULL(loadqty,0)+IFNULL(loadadjustqty,0))/unitspercase) AS INT) ||  '/' || CAST(((IFNULL(beginstockqty,0)+IFNULL(loadqty,0)+IFNULL(loadadjustqty,0))%unitspercase) AS INT)) AS 'netqty' FROM inventorysummarydetail invsum JOIN itemmaster im ON im.actualitemcode = invsum.itemcode";
+                 var Qry = "SELECT itemcode,description,(CAST(vanqty/unitspercase AS INT) || '/' || CAST(vanqty%unitspercase AS INT)) AS truckstockqty,(CAST(freshunloadqty/unitspercase AS INT) || '/' || CAST(freshunloadqty%unitspercase AS INT)) AS freshunloadqty,(CAST(truckdamageqty/unitspercase AS INT) || '/' || CAST(truckdamageqty%unitspercase AS INT)) AS truckdamageqty,(CAST((vanqty-freshunloadqty-truckdamageqty)/unitspercase AS INT) || '/' || CAST((vanqty-freshunloadqty-truckdamageqty)%unitspercase AS INT)) as closingstock,(CAST((vanqty-(freshunloadqty+truckdamageqty+(vanqty-freshunloadqty-truckdamageqty)))/unitspercase AS INT) || '/' || CAST((vanqty-(freshunloadqty+truckdamageqty+(vanqty-freshunloadqty-truckdamageqty)))%unitspercase AS INT)) AS varianceqty FROM (SELECT itemcode,itemdescription AS description,unitspercase,((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))) AS vanqty,IFNULL(freshunloadqty,0) as freshunloadqty,IFNULL(truckdamagedunloadqty,0) as truckdamageqty FROM inventorysummarydetail invsum JOIN itemmaster im ON im.actualitemcode = invsum.itemcode)";
+                console.log(Qry);                
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                        console.log("********* RESULT *******");
+                        var data = {};
+                        var fieldTitle = ["item#","Description","Van Qty","Transfer Qty","Net Qty"];
+                        var newData = [];  
+                        data["companyaddress"] = "SILVER OAK STREEET, SOUTH VALES, NY";
+                        data["companylogo"] = "/images/logo.jpg";
+                        data["addresssetting"] = "1";
+                        data["ROUTE"] = "110-NEWMTS";
+                        data["SALESMAN"] = "104-NEW MTS SALESMAN";
+                        data["DOC DATE"] = "12/03/2012";
+                        data["TIME"] = "12:00";
+                        data["DOCUMENT NO"] = "1000000021";
+                        data["TRIP START DATE"] = "12/03/2012";
+                        data["TO ROUTE"] = "105-NEWMTS";
+                        //data["HEADERS"] = ["Item#","Description","Van Qty","Transfer Qty","Net Qty"];
+                        //data["HEADERS"] = ["Item#","Description","Open Qty","Load Qty","Adjust Qty","Net Qty"];
+                        //data["HEADERS"] = ["Item#","Description","Van Qty","Load Qty","Net Qty"];
+                        data["HEADERS"] = ["Item#","Description","Truck Stock","Fresh Unload","Truck Damage","Closing Stock","Variance Qty"];
+                        /*try
+                        {       
+                            for(i=0;i<result.length;i++)
+                            {
+                                var rec = {};
+                                for(j=0;j<fieldTitle.length;j++)
+                                {   
+                                    if(j == 0)
+                                    {
+                                        result[i][j] = parseInt(result[i][j]);                                       
+                                        result[i][j] = (result[i][j]).toString();
+                                    }
+                                    rec[fieldTitle[j].toString()] = result[i][j];
+                                }
+                                newData.push(rec);
+                            }
+                            data.data = newData;    
+                        }
+                        catch(ex)
+                        {
+                            alert(ex);
+                        }*/
+                        for(i=0;i<result.length;i++)
+                        {                            
+                            for(j=0;j<fieldTitle.length;j++)
+                            {
+                                if(j == 0)
+                                {
+                                    result[i][j] = parseInt(result[i][j]);
+                                    result[i][j] = (result[i][j]).toString();
+                                }                                
+                            }                            
+                        }
+                        data["data"] = result;
+                        //data["TOTAL"] = [{"Van Qty" : "12117/12","Transfer Qty" : "450/0", "Net Qty" : "12567/12"}];
+                        //data["TOTAL"] = [{"Open Qty" : "207/14","Load Qty" : "17041/0", "Adjust Qty" : "0/0", "Net Qty" : "17248/0"}];
+                        //data["TOTAL"] = [{"Van Qty" : "1000/12","Load Qty" : "400/0", "Net Qty" : "1400/12"}];
+                        data["TOTAL"] = [{"Truck Stock" : "207/14","Fresh Unload" : "17041/0", "Truck Damage" : "0/0", "Closing Stock" : "17248/0","Variance Qty" : "155/0"}];
+                        console.log(JSON.stringify(data));                        
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        console.log(result);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }  
+            
+            function getJSONTransferIn()
+            {
+                getCommonData();  
+                data["HEADERS"] = ["Item#","Description","Van Qty","Transfer Qty","Net Qty"];
+                var total = {"Van Qty" : "0/0","Transfer Qty" : "0/0","Net Qty" : "0/0" };
+                var Qry = "SELECT itemcode,description,(CAST((vanqty - (transferinqty - transferoutqty))/unitspercase AS INT) || '/' || CAST((vanqty -(transferinqty - transferoutqty))%unitspercase AS INT)) AS vanqty, (CAST(transferinqty/unitspercase AS INT) || '/' || CAST(transferinqty%unitspercase AS INT)) transferqty,(CAST((vanqty - (transferinqty - transferoutqty) + transferinqty)/unitspercase AS INT) || '/' || CAST((vanqty -(transferinqty - transferoutqty)+transferinqty)%unitspercase AS INT)) netqty FROM (SELECT itemcode,itemdescription as description,((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))) AS vanqty,IFNULL((SELECT quantity FROM inventorytransactiondetail WHERE detailkey = (SELECT MAX(detailkey) FROM inventorytransactiondetail WHERE transactiontypecode = 3 AND istemp = 'false') AND transactiontypecode = 3 AND istemp = 'false' AND itemcode = invsum.itemcode),0) transferinqty,IFNULL((SELECT quantity FROM inventorytransactiondetail WHERE detailkey = (SELECT MAX(detailkey) FROM inventorytransactiondetail WHERE transactiontypecode = 2 AND istemp = 'false') AND transactiontypecode = 2 AND istemp = 'false' AND itemcode = invsum.itemcode),0) transferoutqty,unitspercase AS 'unitspercase',caseprice,defaultsalesprice FROM inventorysummarydetail invsum JOIN itemmaster im on im.actualitemcode = invsum.itemcode) WHERE transferinqty > 0";
+                console.log(Qry);
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                        for(i=0;i<result.length;i++)
+                        {                            
+                            for(j=0;j<result[i].length;j++)
+                            {
+                                if(j == 0)
+                                {
+                                    result[i][j] = parseInt(result[i][j]);
+                                    result[i][j] = (result[i][j]).toString();
+                                }
+                                if(j == 2 || j == 3 || j == 4)
+                                {
+                                    var qtykey = "";
+                                    if(j == 2)
+                                        qtykey = "Van Qty";
+                                    if(j == 3)
+                                        qtykey = "Transfer Qty";
+                                    if(j == 4)
+                                        qtykey = "Net Qty";
+                                    QuantityTotal(total,qtykey,result[i][j]);
+                                }
+                            }                            
+                        }
+                        }
+                        else
+                            result = [];
+                        data["data"] = result;                        
+                        data["TOTAL"] = [total];                                              
+                        console.log(JSON.stringify(data));                        
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        console.log(result);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getJSONEndInventory()
+            {
+                getCommonData();  
+                data["HEADERS"] = ["Item#","Description","Truck Stock","Fresh Unload","Truck Damage","Closing Stock","Variance Qty"];
+                var total = {"Truck Stock" : "0/0","Fresh Unload" : "0/0", "Truck Damage" : "0/0", "Closing Stock" : "0/0","Variance Qty" : "0/0"};
+                var Qry = "SELECT itemcode,description,(CAST(vanqty/unitspercase AS INT) || '/' || CAST(vanqty%unitspercase AS INT)) AS truckstockqty,(CAST(freshunloadqty/unitspercase AS INT) || '/' || CAST(freshunloadqty%unitspercase AS INT)) AS freshunloadqty,(CAST(truckdamageqty/unitspercase AS INT) || '/' || CAST(truckdamageqty%unitspercase AS INT)) AS truckdamageqty,(CAST((vanqty-freshunloadqty-truckdamageqty)/unitspercase AS INT) || '/' || CAST((vanqty-freshunloadqty-truckdamageqty)%unitspercase AS INT)) as closingstock,(CAST((vanqty-(freshunloadqty+truckdamageqty+(vanqty-freshunloadqty-truckdamageqty)))/unitspercase AS INT) || '/' || CAST((vanqty-(freshunloadqty+truckdamageqty+(vanqty-freshunloadqty-truckdamageqty)))%unitspercase AS INT)) AS varianceqty FROM (SELECT itemcode,itemdescription AS description,unitspercase,((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))) AS vanqty,IFNULL(freshunloadqty,0) as freshunloadqty,IFNULL(truckdamagedunloadqty,0) as truckdamageqty FROM inventorysummarydetail invsum JOIN itemmaster im ON im.actualitemcode = invsum.itemcode)";
+                console.log(Qry);
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                        for(i=0;i<result.length;i++)
+                        {                            
+                            for(j=0;j<result[i].length;j++)
+                            {
+                                if(j == 0)
+                                {
+                                    result[i][j] = parseInt(result[i][j]);
+                                    result[i][j] = (result[i][j]).toString();
+                                }
+                                if(j >= 2 && j<=6)
+                                {
+                                    var qtykey = "";
+                                    if(j == 2)
+                                        qtykey = "Truck Stock";
+                                    if(j == 3)
+                                        qtykey = "Fresh Unload";
+                                    if(j == 4)
+                                        qtykey = "Truck Damage";
+                                    if(j == 5)
+                                        qtykey = "Closing Stock";
+                                    if(j == 6)
+                                        qtykey = "Variance Qty";
+                                    QuantityTotal(total,qtykey,result[i][j]);
+                                }
+                            }                            
+                        }
+                        }
+                        else
+                            result = [];
+                        data["data"] = result;                        
+                        data["TOTAL"] = [total];                                              
+                        console.log(JSON.stringify(data));                        
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        console.log(result);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getJSONSales(trans)
+            { 
+                var total = {"Quantity" : "0/0","Discount" : "0","Amount" : "0" }; 
+                var Header = ["Item#","Description","Quantity","Case Price","Unit Price","Discount","Amount"];
+                var HeaderFree = ["Item#","Description","Quantity","Case Price","Unit Price","Amount"]
+                 var QrySales = "SELECT itemcode AS 'Item#',itemdescription AS 'description',(IFNULL(CAST((salesqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((salesqty%unitspercase) AS INT),0)) AS 'quantity',salescaseprice AS caseprice,salesprice AS unitprice,IFNULL(promoamount,0) as discount,((IFNULL(CAST((salesqty/unitspercase) AS INT),0) * salescaseprice) + (IFNULL(CAST((salesqty%unitspercase) AS INT),0)) * salesprice) AS 'amount' FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode and inv.salesqty > 0";
+                 var QryFree = "SELECT itemcode AS 'item#',itemdescription AS 'description',(IFNULL(CAST((manualfreeqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((manualfreeqty%unitspercase) AS INT),0)) AS 'quantity',salescaseprice AS caseprice,salesprice AS unitprice,((IFNULL(CAST((manualfreeqty/unitspercase) AS INT),0) * salescaseprice) + (IFNULL(CAST((manualfreeqty%unitspercase) AS INT),0)) * salesprice) AS 'amount' FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode and inv.manualfreeqty > 0";
+                 var QryGood = "SELECT itemcode AS 'item#',itemdescription AS 'description',(IFNULL(CAST((returnqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((returnqty%unitspercase) AS INT),0)) AS 'quantity',salescaseprice AS caseprice,salesprice AS unitprice,IFNULL(promoamount,0) as discount,((IFNULL(CAST((returnqty/unitspercase) AS INT),0) * salescaseprice) + (IFNULL(CAST((returnqty%unitspercase) AS INT),0)) * salesprice) AS 'amount' FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode and inv.returnqty > 0";
+                 var QryBad = "SELECT itemcode AS 'item#',itemdescription AS 'description',(IFNULL(CAST((damagedqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((damagedqty%unitspercase) AS INT),0)) AS 'quantity',salescaseprice AS caseprice,salesprice AS unitprice,IFNULL(promoamount,0) as discount,((IFNULL(CAST((damagedqty/unitspercase) AS INT),0) * salescaseprice) + (IFNULL(CAST((damagedqty%unitspercase) AS INT),0)) * salesprice) AS 'amount' FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode and inv.damagedqty > 0";
+                 var Qry;
+                if(trans == 'sales')
+                    Qry = QrySales;
+                else if(trans == 'free')
+                {
+                    Qry = QryFree;
+                    Header = HeaderFree;
+                    delete total["Discount"];
+                }
+                else if(trans == 'good')
+                    Qry = QryGood;
+                else if(trans == 'bad')
+                    Qry = QryBad;
+                console.log(Qry);                
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {
+                                    if(j == 0)
+                                    {
+                                        result[i][j] = parseInt(eval(result[i][j]));
+                                        result[i][j] = (result[i][j]).toString();
+                                    }   
+                                                                    
+                                    if(j == 2)
+                                    {
+                                        var qtykey = "Quantity";
+                                        QuantityTotal(total,qtykey,result[i][j]);
+                                    }
+                                    else if(j == 5 && trans != 'free')
+                                        total.Discount = eval(total.Discount) + eval(result[i][j]);
+                                    else if(j == 5 && trans == 'free')
+                                        total.Amount = eval(total.Amount) + eval(result[i][j]);
+                                    else if(j == 6 && trans != 'free')
+                                        total.Amount = eval(total.Amount) + eval(result[i][j]);
+                                    if(j > 2)
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);                                        
+                                }
+                            }
+                        }
+                        else
+                            result = [];
+                        console.log("TOTALQTY : " + total.Quantity);
+                        SetData(trans,result,Header,total);
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        console.log(result);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function QuantityTotal(obj,qtykey,Qty)
+            {                
+                var oldqty = obj[qtykey].toString().split("/");
+                var currqty = Qty.toString().split("/");
+                var newqty = (eval(oldqty[0]) + eval(currqty[0])) + "/" +  (eval(oldqty[1]) + eval(currqty[1]))
+                obj[qtykey] = newqty;
+                /*console.log("showing qty.....");
+                console.log(oldqty[0] + "&" + oldqty[1] + " : " + currqty[0] + "&" + currqty[1] + " : " + newqty); */               
+            }
+            
+            function SetData(trans,result,Header,Total)
+            {       
+                
+                try
+                {   
+                    if(data["data"] == undefined)
+                        data["data"] = [];                    
+                    data["data"].push({"DATA" : result, "HEADER" : Header, "TOTAL" : Total});                
+                    if(trans == 'bad')                    
+                        SetSalesObject();
+                    }
+                catch(ex)
+                {
+                    alert(ex);
+                }
+                
+                /*console.log("********* " + trans);
+                console.log(JSON.stringify(result));*/
+            }
+            
+            function SetSalesObject()
+            {
+                //console.log(data["data"].length);
+                console.log("********* RESULT *******");
+                        data["companyaddress"] = "SILVER OAK STREEET, SOUTH VALES, NY";
+                        data["companylogo"] = "/images/logo.jpg";
+                        data["addresssetting"] = "1";
+                        data["ROUTE"] = "110-NEWMTS";
+                        data["SALESMAN"] = "104-NEW MTS SALESMAN";
+                        data["DATE"] = "12/03/2012";
+                        data["TIME"] = "12:00";
+                        data["INVOICETYPE"] = "CREDIT INVOICE: 1032000044";
+                        data["CUSTOMER"] = "5416-SWITZ MASTER BAKERS (Cr)";
+                        data["ADDRESS"] = "Suite 808, Burjuman Business Tower";
+                        data["SUB TOTAL"] = "100000.00";
+                        data["INVOICE DISCOUNT"] = "195.11";
+                        data["NET SALES"] = "99804.89"
+                        console.log(JSON.stringify(data));
+            }
+            
+            function getJSONCollection()
+            {
+                var customercode = "5419";
+                 var Qry = "SELECT invoicenumber AS 'invoice#', STRFTIME('%d-%m-%Y',transactiondate)  AS invoicedate,totalinvoiceamount, invoicebalance,amountpaid FROM invoiceheader WHERE (IFNULL(amountpaid,0) IS NOT 0) and customercode = " + customercode;
+                console.log(Qry);                
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            try{
+                            console.log("********* RESULT *******");
+                            data["companyaddress"] = "SILVER OAK STREEET, SOUTH VALES, NY";
+                            data["companylogo"] = "/images/logo.jpg";
+                            data["addresssetting"] = "1";
+                            data["ROUTE"] = "110-NEWMTS";
+                            data["SALESMAN"] = "104-NEW MTS SALESMAN";
+                            data["DATE"] = "12/03/2012";
+                            data["TIME"] = "12:00";
+                            data["RECEIPT"] = "1032000044";
+                            data["CUSTOMER"] = "5416-SWITZ MASTER BAKERS (Cr)";
+                            data["ADDRESS"] = "Suite 808, Burjuman Business Tower";
+                            data["HEADERS"] = ["Invoice#","Invoice Date","Invoice Amount","Invoice Balance","Amount Paid"]
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {
+                                    if(j == 0)
+                                    {
+                                        result[i][j] = parseInt(eval(result[i][j]));
+                                        result[i][j] = (result[i][j]).toString();
+                                    }
+                                    if(j > 1)
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);
+                                }
+                            }
+                            data["TOTALS"] = {"Amount Paid" : "1595"};
+                            data["PaymentType"] = "2";
+                            data["Cash"] = {"Amount" : "1000.00"};
+                            data["Cheque"] = [{"Cheque Date" : "10/03/2013","Cheque No" : "85748", "Bank" : "HSBC", "Amount" : "1500.00"},{"Cheque Date" : "12/03/2013","Cheque No" : "35248", "Bank" : "City Bank", "Amount" : "8000.00"}];
+                            data["data"] = result;
+                            console.log(JSON.stringify(data));
+                            }
+                            catch(ex)
+                            {
+                                alert(ex);
+                            }
+                        }                        
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        console.log(result);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getJSONDeposit()
+            {                
+                 /*var QryCash = "SELECT (CASE transactiontype WHEN 1 THEN 'SALES' WHEN 2 THEN (CASE advancepaymentflag WHEN 1 THEN 'ADVANCE' WHEN 0 THEN 'COLLECTION' END) END) AS transactiontype, (CASE transactiontype WHEN 1 THEN invnumber WHEN 2 THEN arnumber END) AS transactionnumber, (CASE transactiontype WHEN 1 THEN invcustcode WHEN 2 THEN arcustcode END) AS customercode, customername,amount FROM(SELECT ccd.transactiontype,arh.invoicenumber AS arnumber,inv.invoicenumber AS invnumber,arh.customercode AS arcustcode,inv.customercode AS invcustcode,customername,ccd.amount,advancepaymentflag,(CASE ccd.transactiontype WHEN 1 THEN 1 WHEN 2 THEN (CASE advancepaymentflag WHEN 0 THEN 2 WHEN 1 THEN 3 END) END) as transactionorder FROM cashcheckdetail ccd LEFT JOIN invoiceheader inv ON inv.visitkey = ccd.hhctransactionkey LEFT JOIN arheader arh ON arh.visitkey = ccd.hhctransactionkey LEFT JOIN customermaster cm ON cm.customercode = inv.customercode OR cm.customercode = arh.customercode WHERE typecode = 0) ORDER BY transactionorder";
+                 var QryCheque = "SELECT (CASE transactiontype WHEN 1 THEN 'SALES' WHEN 2 THEN (CASE advancepaymentflag WHEN 1 THEN 'ADVANCE' WHEN 0 THEN 'COLLECTION' END) END) AS transactiontype, (CASE transactiontype WHEN 1 THEN invnumber WHEN 2 THEN arnumber END) AS transactionnumber, (CASE transactiontype WHEN 1 THEN invcustcode WHEN 2 THEN arcustcode END) AS customercode, customername,checknumber,checkdate,bankname,amount FROM(SELECT ccd.transactiontype,arh.invoicenumber AS arnumber,inv.invoicenumber AS invnumber,arh.customercode AS arcustcode,inv.customercode AS invcustcode,customername,ccd.amount,ccd.checknumber,STRFTIME('%d-%m-%Y',ccd.checkdate) AS checkdate,bm.bankname,advancepaymentflag,(CASE ccd.transactiontype WHEN 1 THEN 1 WHEN 2 THEN (CASE advancepaymentflag WHEN 0 THEN 2 WHEN 1 THEN 3 END) END) as transactionorder FROM cashcheckdetail ccd LEFT JOIN invoiceheader inv ON inv.visitkey = ccd.hhctransactionkey LEFT JOIN arheader arh ON arh.visitkey = ccd.hhctransactionkey LEFT JOIN customermaster cm ON cm.customercode = inv.customercode OR cm.customercode = arh.customercode LEFT JOIN bankmaster bm ON bm.bankcode = ccd.bankcode WHERE typecode = 1) ORDER BY transactionorder";*/
+                 try{
+                 getCashDeposit();
+                 }
+                 catch(ex)
+                 {
+                    alert(ex);
+                 }
+            }
+            
+            function getCashDeposit()
+            {
+                var Qry = "SELECT (CASE transactiontype WHEN 1 THEN invnumber WHEN 2 THEN arnumber END) AS transactionnumber,(CASE transactiontype WHEN 1 THEN invcustcode WHEN 2 THEN arcustcode END) AS customercode, amount FROM(SELECT ccd.transactiontype,arh.invoicenumber AS arnumber,inv.invoicenumber AS invnumber,arh.customercode AS arcustcode,inv.customercode AS invcustcode,customername,ccd.amount,advancepaymentflag,(CASE ccd.transactiontype WHEN 1 THEN 1 WHEN 2 THEN (CASE advancepaymentflag WHEN 0 THEN 2 WHEN 1 THEN 3 END) END) as transactionorder FROM cashcheckdetail ccd LEFT JOIN invoiceheader inv ON inv.visitkey = ccd.hhctransactionkey LEFT JOIN arheader arh ON arh.visitkey = ccd.hhctransactionkey LEFT JOIN customermaster cm ON cm.customercode = inv.customercode OR cm.customercode = arh.customercode WHERE typecode = 0) ORDER BY transactionorder";    
+                console.log(Qry);            
+                var Header = ["Transaction Number","Customer Code","Amount"];
+                var Total = {"Amount" : "0"};                
+                var CashTotal = 0;
+                
+                if (platform == 'iPad') 
+                {
+                    Cordova.exec(function(result) 
+                    {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {                                    
+                                    if(j == 2)
+                                    {
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);
+                                        CashTotal = eval(CashTotal) + eval(result[i][j]);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                            result = [];
+                        Total.Amount = CashTotal.toString();
+                        if(data["data"] == undefined)
+                            data["data"] = [];
+                        data["data"].push({"DATA" : result, "HEADERS" : Header, "TOTAL" : Total});                        
+                        GetChequeDeposit(CashTotal)
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function GetChequeDeposit(CashTotal)
+            {
+                var Qry = "SELECT (CASE transactiontype WHEN 1 THEN invnumber WHEN 2 THEN arnumber END) AS transactionnumber, (CASE transactiontype WHEN 1 THEN invcustcode WHEN 2 THEN arcustcode END) AS customercode, checknumber,checkdate,bankname,amount FROM(SELECT ccd.transactiontype,arh.invoicenumber AS arnumber,inv.invoicenumber AS invnumber,arh.customercode AS arcustcode,inv.customercode AS invcustcode,customername,ccd.amount,ccd.checknumber,STRFTIME('%d-%m-%Y',ccd.checkdate) AS checkdate,bm.bankname,advancepaymentflag,(CASE ccd.transactiontype WHEN 1 THEN 1 WHEN 2 THEN (CASE advancepaymentflag WHEN 0 THEN 2 WHEN 1 THEN 3 END) END) as transactionorder FROM cashcheckdetail ccd LEFT JOIN invoiceheader inv ON inv.visitkey = ccd.hhctransactionkey LEFT JOIN arheader arh ON arh.visitkey = ccd.hhctransactionkey LEFT JOIN customermaster cm ON cm.customercode = inv.customercode OR cm.customercode = arh.customercode LEFT JOIN bankmaster bm ON bm.bankcode = ccd.bankcode WHERE typecode = 1) ORDER BY transactionorder";    
+                console.log(Qry);            
+                var Header = ["Transaction Number","Customer Code","Cheque No","Cheque Date","Bank Name","Cheque Amount"];
+                var Total = {"Cheque Amount" : "0"};
+                
+                    var ChequeTotal = 0;
+                console.log(Qry);
+                if (platform == 'iPad') 
+                {
+                    Cordova.exec(function(result) 
+                    {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {                                    
+                                    if(j == 5)
+                                    {
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);
+                                        ChequeTotal = (eval(ChequeTotal) + eval(result[i][j]));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                            result = [];
+                        Total["Cheque Amount"] = ChequeTotal.toString();
+                        if(data["data"] == undefined)
+                            data["data"] = [];
+                        data["data"].push({"DATA" : result, "HEADERS" : Header, "TOTAL" : Total});
+                        console.log("********* RESULT *******");
+                            data["companyaddress"] = "SILVER OAK STREEET, SOUTH VALES, NY";
+                            data["companylogo"] = "/images/logo.jpg";
+                            data["addresssetting"] = "1";
+                            data["ROUTE"] = "110-NEWMTS";
+                            data["SALESMAN"] = "104-NEW MTS SALESMAN";
+                            data["DOC DATE"] = "12/03/2013";
+                            data["TIME"] = "12:00";
+                            data["TRIP START DATE"] = "13/03/2013";
+                            data["TOTAL DEPOSIT AMOUNT"] = (eval(CashTotal) + eval(ChequeTotal)).toString();
+                            console.log(JSON.stringify(data));
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getSalesReportCash()
+            {
+                var Qry = "SELECT invoicenumber AS transactionnumber,inv.customercode,IFNULL(totalsalesamount,0) AS totalsalesamount,IFNULL(totalreturnamount,0) AS greturnamount,IFNULL(totaldamagedamount,0) AS dreturnamount,IFNULL(totalpromoamount,0) AS invoicediscount,IFNULL(totalinvoiceamount,0) AS totalamount FROM invoiceheader inv JOIN customermaster cm ON cm.customercode = inv.customercode WHERE paymenttype in(0,4) AND invoicepaymentterms not in(3,4)";    
+                console.log(Qry);            
+                var Header = ["Transaction Number","Customer Code","Sales Amount","G.Return Amount","D.Return Amount","Invoice Discount","Total Amount"];
+                var Total = {"Total Amount" : "0"};                
+                var TotalAmount = 0;
+                
+                if (platform == 'iPad') 
+                {
+                    Cordova.exec(function(result) 
+                    {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {                                    
+                                    if(j > 1)                                    
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);                                                                            
+                                    if(j == 6)
+                                        TotalAmount = (eval(TotalAmount) + eval(result[i][j])).toFixed(2);
+                                }
+                            }
+                        }
+                        else
+                            result = [];
+                        Total["Total Amount"] = TotalAmount.toString();
+                        if(data["data"] == undefined)
+                            data["data"] = [];
+                        data["data"].push({"DATA" : result, "HEADERS" : Header, "TOTAL" : Total});                        
+                        getSalesReportCredit()
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getSalesReportCredit()
+            {
+                var Qry = "SELECT invoicenumber AS transactionnumber,inv.customercode,IFNULL(totalsalesamount,0) AS totalsalesamount,IFNULL(totalreturnamount,0) AS greturnamount,IFNULL(totaldamagedamount,0) AS dreturnamount,IFNULL(totalpromoamount,0) AS invoicediscount,IFNULL(totalinvoiceamount,0) AS totalamount FROM invoiceheader inv JOIN customermaster cm ON cm.customercode = inv.customercode WHERE invoicepaymentterms = 2";    
+                console.log(Qry);            
+                var Header = ["Transaction Number","Customer Code","Sales Amount","G.Return Amount","D.Return Amount","Invoice Discount","Total Amount"];
+                var Total = {"Total Amount" : "0"};                
+                var TotalAmount = 0;
+                
+                if (platform == 'iPad') 
+                {
+                    Cordova.exec(function(result) 
+                    {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {                                    
+                                    if(j > 1)                                    
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);                                                                            
+                                    if(j == 6)
+                                        TotalAmount = (eval(TotalAmount) + eval(result[i][j])).toFixed(2);
+                                }
+                            }
+                        }
+                        else
+                            result = [];
+                        Total["Total Amount"] = TotalAmount.toString();
+                        if(data["data"] == undefined)
+                            data["data"] = [];
+                        data["data"].push({"DATA" : result, "HEADERS" : Header, "TOTAL" : Total});                        
+                        getSalesReportTC()
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getSalesReportTC()
+            {
+                var Qry = "SELECT invoicenumber AS transactionnumber,inv.customercode,IFNULL(totalsalesamount,0) AS totalsalesamount,IFNULL(totalreturnamount,0) AS greturnamount,IFNULL(totaldamagedamount,0) AS dreturnamount,IFNULL(totalpromoamount,0) AS invoicediscount,IFNULL(totalinvoiceamount,0) AS totalamount FROM invoiceheader inv JOIN customermaster cm ON cm.customercode = inv.customercode WHERE invoicepaymentterms in(3,4)";    
+                console.log(Qry);            
+                var Header = ["Transaction Number","Customer Code","Sales Amount","G.Return Amount","D.Return Amount","Invoice Discount","Total Amount"];
+                var Total = {"Total Amount" : "0"};                
+                var TotalAmount = 0;
+                
+                if (platform == 'iPad') 
+                {
+                    Cordova.exec(function(result) 
+                    {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {                                    
+                                    if(j > 1)                                    
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);                                                                            
+                                    if(j == 6)
+                                        TotalAmount = (eval(TotalAmount) + eval(result[i][j])).toFixed(2);
+                                }
+                            }
+                        }
+                        else
+                            result = [];
+                        Total["Total Amount"] = TotalAmount.toString();
+                        if(data["data"] == undefined)
+                            data["data"] = [];
+                        data["data"].push({"DATA" : result, "HEADERS" : Header, "TOTAL" : Total});                        
+                        getSalesReportCollection()
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getSalesReportCollection()
+            {
+                var Qry = "SELECT invoicenumber AS transactionnumber,arh.customercode,checknumber,checkdate,bankname,ccd.amount FROM cashcheckdetail ccd JOIN arheader arh ON arh.visitkey = ccd.hhctransactionkey AND arh.advancepaymentflag = 0 Left JOIN bankmaster bm ON bm.bankcode = ccd.bankcode";    
+                console.log(Qry);            
+                var Header = ["Transaction Number","Customer Code","Check Number","Check Date","Bank Name","Total Amount"];
+                var Total = {"Total Amount" : "0"};                
+                var TotalAmount = 0;
+                
+                if (platform == 'iPad') 
+                {
+                    Cordova.exec(function(result) 
+                    {
+                        if(result.length > 0)
+                        {
+                            for(i=0;i<result.length;i++)
+                            {
+                                for(j=0;j<result[i].length;j++)
+                                {                                    
+                                    if(j == 5)
+                                    {
+                                        result[i][j] = (eval(result[i][j])).toFixed(2);
+                                        TotalAmount = (eval(TotalAmount) + eval(result[i][j])).toFixed(2);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                            result = [];
+                        Total["Total Amount"] = TotalAmount.toString();
+                        if(data["data"] == undefined)
+                            data["data"] = [];
+                        data["data"].push({"DATA" : result, "HEADERS" : Header, "TOTAL" : Total});    
+                        console.log("********* RESULT *******");
+                            data["companyaddress"] = "SILVER OAK STREEET, SOUTH VALES, NY";
+                            data["companylogo"] = "/images/logo.jpg";
+                            data["addresssetting"] = "1";
+                            data["ROUTE"] = "110-NEWMTS";
+                            data["SALESMAN"] = "104-NEW MTS SALESMAN";
+                            data["DOC DATE"] = "12/03/2013";
+                            data["TIME"] = "12:00";
+                            data["TRIP START DATE"] = "13/03/2013";                            
+                            console.log(JSON.stringify(data));                         
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            
+              
+        window.lang = new jquery_lang_js();
+        $(document).ready(function() {
+        window.lang.run();                  
+                 
+                         
+	    $(".leftfooter").html(getCurrentDate());
+            if ($("#checkbox-6b").attr('checked') == 'checked') {
+                $(".ui-icon").addClass('ui-icon-checkbox-on');
+            }
+            $("#lang").click(function() {
+                if ($("#lang").text() == "AR") {
+                    $("#lang").text("EN");
+                    window.lang.change('IndexAR');
+                    $(".box").attr("dir", "rtl");
+
+                    sessionStorage.setItem("Language", "AR");
+                     $('#lang').removeClass('homeen').addClass('homear');
+                    if ($("#checkbox-6b").attr('checked') == 'checked') {
+                        $(".ui-icon").addClass('ui-icon-checkbox-on');
+                    }
+                }
+                else {
+                    $("#lang").text("AR");
+
+                    window.lang.change('en');
+
+                    $(".box").attr("dir", "ltr");
+
+                    sessionStorage.setItem("Language", "en");                   
+                    $('#lang').removeClass('homear').addClass('homeen');
+                    if ($("#checkbox-6b").attr('checked') == 'checked') {
+                        $(".ui-icon").addClass('ui-icon-checkbox-on');
+                    }
+                }
+            });
+            if (sessionStorage.getItem("Language") == "AR") {
+                $("#lang").trigger('click');
+            }
+        });
+        
+        
+        
+
+    </script>
+</body>
+</html>

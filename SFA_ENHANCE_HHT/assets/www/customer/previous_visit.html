@@ -1,0 +1,299 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 1/2/2011
+ '  Description  : This page is used for detail of order
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+            scrollContent = new iScroll('contentWrapper');
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="customer_info.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Previous Visited</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="book_detail_div">
+                    <div class="tblBox tbltd">
+                        <div class="tblHeader">
+                            <table width="100%" cellpadding="10"
+                                cellspacing="0">
+                                <tr>
+                                    <td width="33.3%" lang="en">
+                                        Date
+                                    </td>
+                                    <td width="33.3%" lang="en">
+                                        Time
+                                    </td>
+                                    <td width="33.3%" lang="en" class="last">
+                                        Doc
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="route_table_height" id="contentWrapper">
+                            <table border="0" width="100%" cellpadding="10"
+                                height="100%" cellspacing="0" id="tbl1"
+                                data-role="none">
+                                <tbody class="tblBody">
+                                    <tr>
+                                        <td width="33.3%">
+                                            3-6-11
+                                        </td>
+                                        <td width="33.3%">
+                                            16:33
+                                        </td>
+                                        <td width="33.3%" class="last">
+                                            20,535
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            3-6-11
+                                        </td>
+                                        <td>
+                                            16:33
+                                        </td>
+                                        <td class="last">
+                                            20345
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            3-6-11
+                                        </td>
+                                        <td>
+                                            16:33
+                                        </td>
+                                        <td class="last">
+                                            2045
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            3-6-11
+                                        </td>
+                                        <td>
+                                            16:33
+                                        </td>
+                                        <td class="last">
+                                            2067
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            3-6-11
+                                        </td>
+                                        <td>
+                                            16:33
+                                        </td>
+                                        <td class="last">
+                                            2023
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="OptionDiv">
+                        <div class="Option1">
+                            <div class="Opt1Img">
+                                <img src="../images/r-btn-1.png" alt />
+                            </div>
+                            <div class="Opt1Text">
+                                <div>
+                                    <a href="#" data-role="none"
+                                        class="OptTextStyle" lang="en">Create
+                                        New Transaction</a></div>
+                            </div>
+                        </div>
+                        <div class="Option2">
+                            <div class="Opt2Img">
+                                <img src="../images/r-btn-2.png" alt />
+                            </div>
+                            <div class="Opt2Text">
+                                <div>
+                                    <a href="#" data-role="none"
+                                        class="OptTextStyle" lang="en">Void
+                                        Previous Transaction</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu com_info_right">
+                    <a href="pre_sold_order_detail.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/detail.png"
+                                    alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Details</div>
+                        </div>
+                    </a>
+                    <div class="MenuPosition">
+                        <div class="MenuTextPos">
+                            <img src="../images/icn-select.png"
+                                alt="Option" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Ok</div>
+                    </div>
+                    <a href="customer_info.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+	$("#tbl1 tr:odd").addClass('oddRow');
+        $("#tbl1 tr:even").addClass('evenRow');
+       resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+
+        $(".leftfooter").html(getCurrentDate());
+           
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Previousvisit'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $("#contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+        
+        </script>
+
+        </div>
+    </body>
+</html>

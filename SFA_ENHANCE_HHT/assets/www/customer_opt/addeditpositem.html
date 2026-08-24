@@ -1,0 +1,599 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Add/Change POS Item</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="pos.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Add/Change POS</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <table cellpadding="10" cellspacing="0" style="width:100%"
+                        border="0">
+                        <tr>
+                            <td style="width:30%" lang="en">POS Number</td>
+                            <td style="width:50%">
+                                <input type="text" id="txtItemNumber"
+                                    class="textWidth textFont"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">POS Description</td>
+                            <td>
+                                <input type="text" id="txtItemName"
+                                    class="textWidth textFont" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">Quantity</td>
+                            <td>
+                                <input type="text" pattern="[0-9]*" size="11"
+                                    id="txtQuantity"
+                                    class="textWidth textFont" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">Serial Number</td>
+                            <td>
+                                <input type="text" id="txtSerialNumber"
+                                    class="textWidth textFont" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en">Instruction</td>
+                            <td>
+                                <div style="width:93%;text-align:left">
+                                    <select name="select-choice-1" id="reason"
+                                        style="display:inline;">
+
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="select_pos.html" rel="external" id="srlink"
+                        style="text-decoration:none" data-role="none">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/search.png" id="imgsearch"
+                                    alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" id="txtsearch"
+                                lang="en">
+                                Search</div>
+                        </div>
+                    </a>
+                    <a href="#" rel="external" id="simplestring"
+                        style="text-decoration:none" data-role="none"
+                        onclick="save()">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-select.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+
+                    <a href="pos.html" rel="external" id="simplestring"
+                        style="text-decoration:none" data-role="none">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos"><img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+       
+	var platform= sessionStorage.getItem("platform");
+	window.lang = new jquery_lang_js();
+        var action='';
+	$("#tblContent").click(function() { });
+       resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+
+	    $('.ui-select .ui-btn-text').css({ 'text-align': 'left','color':'#999'});
+        $(".leftfooter").html(getCurrentDate());
+            
+            document.addEventListener("deviceready", getdropdowndata, false);
+           
+	    $(".leftfooter").html(getCurrentDate());
+
+                          $("#txtQuantity").ForceNumericOnly();
+            
+             var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('AddEditPosItem'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+		   
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            function GetElements(xmlDoc) {
+                var PageName = 'orderRequest';
+            }
+
+               
+        });
+	function getdropdowndata()
+	    {
+		
+		if (localStorage.itemcode != '') {
+		         action = '2';  
+		    var posdata = sessionStorage.getItem("posdata");
+		    posdata=JSON.parse(posdata);
+		   
+		    $('#txtItemNumber').val(posdata[0]);
+		    $('#txtItemName').val(posdata[1]);
+		    $('#txtQuantity').val(posdata[2]);
+		    $('#txtSerialNumber').val(posdata[3]);
+		    $('#txtItemName').attr('readonly', true);
+		    $('#txtQuantity').attr('readonly', true);
+		    $('#txtSerialNumber').attr('readonly', true);
+		    $('#txtsearch').addClass('MenuGray');
+                    $('#imgsearch').attr('src','../images/search.png');
+                    $('#srlink').attr('href','');
+
+		}
+		else
+		{
+			action ='1';
+			if(sessionStorage.getItem("posno") =='')
+			{
+			getdata();
+			}
+			else
+			{
+			    $('#txtItemNumber').val(sessionStorage.getItem("posno"));
+			    $('#txtItemName').val(sessionStorage.getItem("posname"));
+				$('#txtItemName').attr('readonly', true);
+			}
+		}
+		if(sessionStorage.getItem("Language")=='en')
+                {
+		    var qry = "select posinstructioncode,posinstructionname from posinstructions";
+		}
+		else
+		{
+		    var qry = "select posinstructioncode,arbposinstructionname from posinstructions";
+		}
+		if(platform=='iPad')
+                {
+                          Cordova.exec(function(result) {
+                                    if(result.length > 0)
+                                    {  
+                                    
+                                         for(i=0;i<result.length;i++){   
+                                            $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#reason"));                                           
+                                        }
+                                        $("#reason").selectmenu("refresh");
+                                        $("#reason").val(posdata[4]);
+                                        $("#reason").selectmenu("refresh");
+                                    }
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [qry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                       window.plugins.DataBaseHelper.select(qry,function(result)
+                       {
+                              if(result.array != undefined)
+			      {
+                                    result = $.map(result.array, function (item, index) {   
+                                    if(sessionStorage.getItem("Language")=='en')
+                                    {
+                                    return [[item.posinstructioncode,item.posinstructionname]];
+                                    }
+                                    else
+                                    {
+                                     return [[item.posinstructioncode,item.arbposinstructionname]];
+                                    }
+				    });
+                                    if(result.length > 0)
+                                    {  
+                                     	$("<option />" ,{value:0,text:getLangTextdata("Select instruction")}).appendTo($("#ddlCategory")); 
+                                         for(i=0;i<result.length;i++){   
+                                            $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#reason"));                                           
+                                        }
+                                         $("#reason").selectmenu("refresh");
+                                    }
+                                    $("#reason").val(posdata[4]);
+                                    $("#reason").selectmenu("refresh");
+            		      
+			      }
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+            
+              }
+	    
+	    function getdata()
+	    {
+		var qry = "select max(itemcode)+1 as code from posmaster";
+		if(platform=='iPad')
+                {
+                          Cordova.exec(function(result) {
+                                    code = result[0][0];
+				    $('#txtItemNumber').val(code);
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [qry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                       window.plugins.DataBaseHelper.select(qry,function(result)
+                       {
+                              code = result.array[0].code;
+			      $('#txtItemNumber').val(code);
+                              
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+              }
+	    
+	    function save()
+	    {
+		var code = $('#txtItemNumber').val();
+		var name = $('#txtItemName').val();
+		var qty = $('#txtQuantity').val();
+		var serialno = $('#txtSerialNumber').val();
+		var reson = $('#reason').val();
+            
+		if(qty == '' && serialno=='')
+		{
+				getLangText("Please Enter Quantity Or Serial Number");
+                return false;
+		}
+		if(action==1)
+		{
+		    if(sessionStorage.getItem("posno") =='')
+		    {
+		    var insertqry = "insert into posmaster ('itemcode','itemdescription','itemvalue','inventorytype','created','cdat','modified','mdat','activestatus','issync') values("+code+",'"+name+"',0,2,"+sessionStorage.getItem("SalesmanCode")+",date(),"+sessionStorage.getItem("SalesmanCode")+",date(),1,0)";
+		    }
+		    else
+		    {
+			var insertqry ="update posmaster set itemdescription='"+name+"' , modified="+sessionStorage.getItem("SalesmanCode")+" , mdat=date(),issync=0 where itemcode="+code;
+		    }
+		
+            console.log(insertqry);
+		if(platform=='iPad')
+                {
+                          Cordova.exec(function(result) {
+                               savesecond()
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "InsertUpdateMethod", 
+                          [insertqry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                       window.plugins.DataBaseHelper.insert(insertqry,function(result)
+                       {
+                             savesecond();
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+              }
+	    
+	      else
+		{
+		    savelast();
+		}
+	    }
+	    function savesecond()
+	    {
+		var code = $('#txtItemNumber').val();
+		var name = $('#txtItemName').val();
+		var qty = $('#txtQuantity').val();
+		var serialno = $('#txtSerialNumber').val();
+		var reson = $('#reason').val();
+		if(action==1)
+		{
+		var insertqry = "insert into customerposinventory ('itemcode','customercode','quantity','serialnumber') values("+code+","+sessionStorage.getItem("customerid")+",'"+qty+"','"+serialno+"')";
+		}
+		else
+		{
+		    var insertqry ="update customerposinventory set quantity='"+qty+"' and serialnumber='"+serialno+"' where customercode="+sessionStorage.getItem("customerid")+" and itemcode="+code;
+		}
+		var updatebalace="update customerposlimit set posbalance = posbalance-1 where customercode="+sessionStorage.getItem("customerid");
+            console.log(insertqry);
+		if(platform=='iPad')
+                {
+                          Cordova.exec(function(result) {
+                               if(action==1)
+				{
+				    Cordova.exec(function(result) {
+                              
+					savelast();
+				    },
+				    function(error) {
+				    alert(error);},
+				    "PluginClass", 
+				    "InsertUpdateMethod", 
+				    [updatebalace]);
+				}
+				else
+				{
+				     savelast();
+				}
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "InsertUpdateMethod", 
+                          [insertqry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                       window.plugins.DataBaseHelper.insert(insertqry,function(result)
+                       {
+                             if(action==1)
+				{
+			     window.plugins.DataBaseHelper.insert(updatebalace,function(result)
+				{
+				      savelast();
+				},
+				function()
+				{
+				 console.warn("Error calling plugin");
+				});
+				}
+				else
+				{
+				     savelast();
+				}
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+              }
+	    
+	    function savelast()
+	    {
+		
+		var code = $('#txtItemNumber').val();
+		var name = $('#txtItemName').val();
+		var qty = $('#txtQuantity').val();
+		var serialno = $('#txtSerialNumber').val();
+		var reson = $('#reason').val();
+		var selectqry = "select itemcode from posequipmentchangedetail where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+" and itemcode="+code;
+		
+		var insertqry = "insert into posequipmentchangedetail ('routekey','visitkey','posaction','itemcode','quantity','serialnumber','instructioncode','issync') values ("+sessionStorage.getItem("RouteKey")+","+sessionStorage.getItem("VisitKey")+",'"+action+"',"+code+",'"+qty+"','"+serialno+"','"+reson+"',0)";
+		var updateqry ="update posequipmentchangedetail set quantity='"+qty+"',serialnumber='"+serialno+"',instructioncode='"+reson+"',issync=0 where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+" and itemcode="+code;
+            console.log(selectqry);
+		if(platform=='iPad')
+                {
+		    Cordova.exec(function(result) {
+                                if(result!='')
+				{
+				    qry = updateqry;
+				}
+				else
+				{
+				    qry = insertqry;
+				}
+				Cordova.exec(function(result) {
+				
+                                localStorage.itemcode='';
+				sessionStorage.setItem("posno",'');
+				sessionStorage.setItem("posname",'');
+				window.location="pos.html";
+				
+				},
+				function(error) {
+				alert(error);},
+				"PluginClass", 
+				"InsertUpdateMethod", 
+				[qry]);
+				
+				
+				
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [selectqry]);
+		    
+                          
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                        window.plugins.DataBaseHelper.select(selectqry,function(result)
+                       {
+                              if(!$.isEmptyObject(result))
+				{
+				    qry = updateqry;
+				}
+				else
+				{
+				    qry = insertqry;
+				}
+			      window.plugins.DataBaseHelper.insert(qry,function(result)
+				{
+				       localStorage.itemcode='';
+				       sessionStorage.setItem("posno",'');
+				       sessionStorage.setItem("posname",'');
+				       window.location="pos.html";
+				       
+				},
+				function()
+				{
+				 console.warn("Error calling plugin");
+				});
+			      
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+		       
+                    }
+              }
+	    
+    </script>
+
+    </body>
+</html>

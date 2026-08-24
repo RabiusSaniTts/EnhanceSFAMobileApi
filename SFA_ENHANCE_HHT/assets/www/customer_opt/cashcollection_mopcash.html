@@ -1,0 +1,642 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 09/03/2012
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cash Entry</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+        <link rel="stylesheet" href="../bs/css/bootstrap.css" />
+        <link rel="stylesheet" href="../bs/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../icons/font/bootstrap-icons.css" />
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+        <script type="text/javascript" src="../js/autonueric.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+           //scrollContent = new iScroll('contentWrapper');
+	    scrollContent = new iScroll('contentWrapper', {
+        useTransform: false,
+        onBeforeScrollStart: function (e) {
+            var target = e.target;
+            while (target.nodeType != 1) target = target.parentNode;
+
+            if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA')
+                e.preventDefault();
+        }
+    });
+
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="cashcollection_mop.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Cash Entry</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="border border-info rounded"
+                    style="min-height: 87%; max-height: 87%; overflow-x: hidden; overflow-y: auto; !important">
+                    <div class="com_div comm captionLabel">
+
+                        <div class="info" id="contentWrapper">
+                            <table border="0" width="100%" cellpadding="10"
+                                cellspacing="0" id="tbl1">
+                                <tbody class="tbl_body">
+                                    <tr class="td_com">
+                                        <td width="50%" lang="en" id="lblmindue"
+                                            style="font-weight:normal">
+                                            Minimum Due
+                                        </td>
+                                        <td width="50%" lang="en"
+                                            style="font-weight:normal">
+                                            Amount Due
+                                        </td>
+                                    </tr>
+                                    <tr class="td_com">
+                                        <td id="tdmindue">
+                                            <div
+                                                class="readonly_text rightAlign"
+                                                id="minamount">
+                                                0</div>
+                                        </td>
+                                        <td>
+                                            <div
+                                                class="readonly_text  rightAlign"
+                                                id="amount">
+                                                0</div>
+                                        </td>
+                                    </tr>
+                                    <tr class="td_com">
+                                        <td>
+                                            <label for="shipping" id="UserName"
+                                                lang="en"
+                                                style="font-weight:normal">
+                                                Cash</label>
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr class="td_com">
+                                        <td>
+                                            <input type="tel" name="code"
+                                                value="0" id="txtCash"
+                                                class="required"
+                                                style="width:85%;text-align:right" />
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottomMenuNew border border-info rounded"
+                    style="min-height: 13%; max-height: 13%;width: 100% !important;">
+                    <div class="row">
+                        <div class="col-4" style="text-align: center;">
+                            <a href
+                                onclick="InsertCash('cashcollection_mop.html')"
+                                class="enableText" rel="external">
+                                <i class='bi bi-check-square-fill' id="ContIcon"
+                                    style='font-size: 72px; color: green; text-align: center;'></i>
+                                OK
+                            </a>
+                        </div>
+                        <div class="col-4" style="text-align: center;">
+                            <a href="cashcollection_mop.html" class="enableText"
+                                rel="external" id="lnkexit"
+                                onclick="setAmount()">
+                                <i class='bi bi-x-square-fill' id="ContIcon"
+                                    style='font-size: 72px; color: red; text-align: center;'></i>
+                                Cancel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+			var platform='';
+            var InvoiceNumber;
+            var tcamount = 0;
+            var advAmount=0;
+            //platform = "iPad";
+            var decimalplace = sessionStorage.getItem("decimalplace");
+            var invoicepaymentterms = sessionStorage.getItem("invoicepaymentterms");
+            var objSettle,transactiontype;
+            resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 			resizeWindow();
+            platform= sessionStorage.getItem("platform");
+            decimalplace = sessionStorage.getItem("decimalplace");
+            //$('#minamount').text(eval(sessionStorage.getItem("amountdue")).toFixed(decimalplace));
+            if(localStorage.getItem("collectionMOP") != "autosettle")
+                $('#minamount').text(eval(sessionStorage.getItem("minimumdue")).toFixed(decimalplace));
+            else
+            {
+               $('#minamount').text(eval(sessionStorage.getItem("amountdue")).toFixed(decimalplace));
+            }
+            $('#amount').text(eval(sessionStorage.getItem("amountdue")).toFixed(decimalplace));
+	    
+	    	$('#txtCash').val(eval(sessionStorage.getItem("amountdue")).toFixed(decimalplace));
+	    
+                document.addEventListener("deviceready", onDR, false);
+                          function onDR()
+                          {
+                            getRecord();                            
+                            objSettle = localStorage.getItem("ARDATA");   
+                            if(objSettle)
+                              objSettle = JSON.parse(objSettle); 
+                          }
+                          function getRecord()
+                          {                            
+                             console.log("SELECT amount from cashcheckdetail where typecode = 0 and routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey"));
+                             var Qry = "SELECT amount from cashcheckdetail where typecode = 0 and routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey");
+                             console.log(Qry);
+                             
+                             if(platform == "iPad")
+                             {
+                                Cordova.exec(function(result) {
+                                    if(result.length > 0)
+                                    {
+                                        if(eval(result[0][0]) > 0)
+                                            $("#txtCash").val(eval(result[0][0]).toFixed(decimalplace));
+                                    }
+                                    if(localStorage.po != "collection")
+                                        getTCAmount();
+                                },
+                                    function(error) {
+                                        navigator.notification.alert(error);
+                                    },
+                                    "PluginClass",
+                                    "GetdataMethod",
+                                    [Qry]);
+                             }
+                             else if(platform == "Android")
+                             {
+                                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                    if(result.array != undefined)
+                                    {
+                                        if(eval(result.array[0].amount) > 0)
+                                            $("#txtCash").val(eval(result.array[0].amount).toFixed(decimalplace));
+                                    }
+                                        
+                                    if(localStorage.po != "collection")
+                                        getTCAmount();
+                                },
+                                function() {
+                                    console.warn("Error calling plugin");
+                                });
+                             }
+                          }
+                          
+                          /*function getTCAmount()
+                          {
+                            tcamount = localStorage.getItem("tcallowedamount");
+                            var Qry = "SELECT SUM(promoamount) AS promoamount FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode AND im.tcallowed = 1 WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey");
+                            if(platform == "iPad")
+                            {
+                                Cordova.exec(function(result) {
+                                    tcamount = eval(tcamount) - eval(result[0][0]);                        
+                                },
+                                function(error) {
+                                    navigator.notification.alert(error);
+                                },
+                                "PluginClass",
+                                "GetdataMethod",
+                                [Qry]);
+                            }
+                            else if(platform == "Android")
+                            {
+                                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                    tcamount = eval(tcamount) - eval(result.array[0].promoamount);                        
+                                },
+                                function() {
+                                    console.warn("Error calling plugin");
+                                });
+                            }
+                          }*/
+                              
+                        function getTCAmount()
+                          {
+                            tcamount = localStorage.getItem("tcallowedamount");
+                            var ipt = sessionStorage.getItem("invoicepaymentterms");
+                            if(ipt == 3 || ipt == 4)
+                            {
+                                var Qry = "SELECT IFNULL(SUM(amount),0) amount,IFNULL(SUM(promoamount),0) promoamount FROM invoicedetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode AND im.tcallowed IS 1 WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey");
+                                if(platform == "iPad")
+                                {
+                                    Cordova.exec(function(result) {
+                                        tcamount = eval(result[0][0]) - eval(result[0][1]);                                    
+                                    },
+                                    function(error) {
+                                        navigator.notification.alert(error);
+                                    },
+                                    "PluginClass",
+                                    "GetdataMethod",
+                                    [Qry]);
+                                }
+                                else if(platform == "Android")
+                                {
+                                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                        tcamount = eval(result.array[0].amount) - eval(result.array[0].promoamount);                        
+                                    },
+                                    function() {
+                                        console.warn("Error calling plugin");
+                                    });
+                                }
+                            }
+                            else
+                                tcamount = $('#amount').text();
+                          }
+
+                $(".leftfooter").html(getCurrentDate());
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+            
+                if (sessionStorage.getItem("Language") != "en") {
+
+                    window.lang.change('CashCollectionMOPCash' + lan, lan);
+                    window.lang.change('Footer' + lan, lan);
+                    if(lan == "AR") {
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+
+                }
+                else {
+                    window.lang.change('en', 'en');
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });
+            
+            
+            function InsertCash(Link)
+            {                
+                if(ValidateAmount() == false)
+                    return false;
+                var Qry = "SELECT COUNT(*) cnt FROM cashcheckdetail where routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+                if(platform == "iPad")
+                {
+                Cordova.exec(function(result) {
+                              var QryUpdate;
+                                if(result > 0)
+                                {
+                                HasEntry(Link,1)
+                                }
+                                else
+                                {
+                                HasEntry(Link,0);
+                                }
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+               }
+               else if(platform == "Android")
+               {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            if(result.array[0].cnt > 0)
+                            {
+                            	getEnableExcessPayment(Link,1);
+                              
+                            }
+                            else
+                            {
+                            	getEnableExcessPayment(Link,0);
+                               
+                            }
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+               }
+                         
+            }
+            
+            function ValidateAmount()
+            {
+                if($.trim($("#txtCash").val()) == "")
+                {
+                	getLangText("Please Enter Amount");
+                    return false;
+                }
+                /*else if($("#txtCash").val() < 0)
+                {
+                    navigator.notification.alert("Positive Inputs Only");
+                    return false;
+                }   */             
+                else
+                    return true;
+            }
+            
+            function getEnableExcessPayment(Link,Action){
+            	 var Qry = "SELECT enablemiddaytelecom FROM routemaster where routecode="+sessionStorage.getItem("RouteCode");
+            	 console.log(Qry);
+            	 if(platform == 'iPad')
+            	 {
+	                Cordova.exec(function(result) {
+	                    if(result.length>0)
+	                    {
+	                        if(result[0][0] == 0)
+	                            alternatecode = false;
+	                        else
+	                            alternatecode = true;                        
+	                    }
+	                    getRecord();
+                 },
+                 function(error) {
+                    navigator.notification.alert(error);
+                 },
+                 "PluginClass",
+                 "GetdataMethod",
+                 [Qry]);
+                }
+	            else if(platform == 'Android')
+	            {
+	            	window.plugins.DataBaseHelper.select(Qry, function(result) {
+	                    if(result.array != undefined)
+	                    {
+	                        if(result.array[0].enablemiddaytelecom == 0){
+	                        	
+	                        	HasEntry(Link,Action,false)
+	                        }else{
+	                        	
+	                        	HasEntry(Link,Action,false)
+	                        }
+                                             
+                    	}
+                 
+	                },
+	                function() {
+	                    console.warn("Error calling plugin");
+	                });
+	            }
+           
+            
+            }
+            
+            
+            function HasEntry(Link,Action,isExcess)
+            {
+                var AutoSettle = false;
+                var Amount;
+                if(objSettle)
+                {
+                    transactiontype = 2;
+                    if(eval(objSettle.aramount) > 0)
+                        AutoSettle = true;
+                    else
+                        AutoSettle = false;
+                }                
+                else
+                    transactiontype = 1;
+                
+                
+                
+                if(eval($("#txtCash").val()) == eval(sessionStorage.getItem("amountdue")) || (Math.abs(eval($("#txtCash").val())) >= Math.abs(eval(sessionStorage.getItem("minimumdue"))) && Math.abs(eval($("#txtCash").val())) <= Math.abs(eval(sessionStorage.getItem("amountdue")))) || eval($("#txtCash").val()) == 0 || (AutoSettle == true))
+                {       
+                    if(objSettle)
+                    {
+                    	if(isExcess && eval(objSettle.aramount) > 0){
+                    		 Amount = $('#txtCash').val();
+                    		 //(objSettle && Math.abs(eval($("#txtCash").val())) >= Math.abs(eval(sessionStorage.getItem("amountdue"))))
+                    		 if(eval(Amount)>=eval(objSettle.aramount)){
+                    			 
+                    			 advAmount=eval(Amount)- eval(objSettle.aramount);
+                    		 }else{
+                    			 getLangText("Please enter exact amount or more amount");
+                    			 return false;
+                    		 }
+                    		 
+                    	}else{
+                    		  if(eval($('#txtCash').val()) > eval(objSettle.aramount)){
+                    			  Amount = objSettle.aramount;
+                    		  }
+                              else{
+                            	  Amount = $('#txtCash').val();
+                              }
+                                 
+                    		
+                    		  if(localStorage.getItem("collectionMOP") == "autosettle" )
+                              {
+                                  if(GetAmountPaid() == false)
+                                  {
+                                      return false;
+                                  }                        
+                              }   
+                    		  
+                    	}
+                    	
+                    }
+                    else
+                        Amount = $('#txtCash').val();                    
+                    
+                                    
+                        
+                    var Qry;
+                    if(Action > 0)
+                    Qry = "UPDATE cashcheckdetail set amount=(" + eval(Amount) + "),checknumber=null,typecode=0,bankcode = null,issync=0 WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey")
+                    else if(Action <=0)
+                    Qry = "INSERT INTO cashcheckdetail(routekey,visitkey,typecode,amount,issync,transactiontype,paymenttype,istemp) VALUES(" + sessionStorage.getItem("RouteKey") + "," +sessionStorage.getItem("VisitKey") + ",0," + eval(Amount) + ",0," + transactiontype + "," + 2 + ",'true')";
+                    console.log(Qry);
+                    if(platform=='iPad')
+                    {
+                        Cordova.exec(function(result) 
+                        {
+                            if(localStorage.getItem("collectionMOP") == "autosettle")
+                            {                                
+                                    /*if(eval(localStorage.ARAmount) > 0)
+                                        localStorage.ARAmount = eval(localStorage.ARAmount) + eval($("#txtCash").val());
+                                    else*/
+                                        localStorage.ARAmount = eval($("#txtCash").val());
+                                    window.location = "cashcollection_mop.html";                                
+                            }
+                            else
+                            {
+                                var base = window.location.toString().substring(0, window.location.toString().lastIndexOf("/")) + "/";
+                                window.location = base + Link;
+                            }
+                        },
+                        function(error) {
+                            alert(error);},
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [Qry]);   
+                    }
+                    else if(platform=='Android')
+                    {
+                        window.plugins.DataBaseHelper.insert(Qry,function(result)
+                        {                        
+                            if(localStorage.getItem("collectionMOP") == "autosettle")
+                            {                                    
+                                    localStorage.ARAmount = eval($("#txtCash").val());
+                                    window.location = "cashcollection_mop.html";                             
+                            }
+                            else
+                            {
+                                var base = window.location.toString().substring(0, window.location.toString().lastIndexOf("/")) + "/";
+                                window.location = base + Link;
+                            }	 
+                        },
+                        function()
+                        {
+                            console.warn("Error calling plugin");
+                        });
+                    }
+                }
+                else
+                {
+                	getLangText("Enter Exact Due Amount.");
+                    $("#txtCash").focus();
+                    return false;
+                }  
+            }
+            
+            function GetAmountPaid()
+            {
+                /*if(eval($('#txtCash').val()) > eval(objSettle.aramount))
+                    return eval(objSettle.aramount);
+                else
+                    return eval($('#txtCash').val());*/
+                    
+                if(eval($('#txtCash').val()) != 0)
+                {
+                    if(eval($('#txtCash').val()) != eval(objSettle.aramount))
+                    {
+                    	getLangText("Enter Exact Due Amount.");
+                        return false;
+                    }
+                }
+                else
+                    return true;
+            }
+            
+            function setAmount()
+            {
+                /*if(eval($("#txtCash").val()) != eval(sessionStorage.getItem("amountdue")))
+                    sessionStorage.setItem("cash",0);*/
+            }
+        </script>
+    </body>
+</html>

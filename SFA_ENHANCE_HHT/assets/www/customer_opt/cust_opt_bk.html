@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="#" onclick="insertendtime(1)"
+                    rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Customer Options</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="topbox">
+                    <div class="content-primary1">
+                        <label class="cus_lable heading" lang="en">
+                            No.</label>
+                        <span class="nobox headbox" id="custid"></span>
+                    </div>
+                    <div class="second-primary1">
+                        <label class="cus_lable heading" lang="en"
+                            id="custname">
+                            Customer Name</label>
+                    </div>
+                </div>
+                <div id="MenuListReview">
+                    <div class="content-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../customer/customer_info.html"
+                                    class="enableText" rel="external"
+                                    onclick=localStorage.info='cust'>
+                                    <img src="../images/icn-info.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 lang="en">
+                                        Customer Info</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="#"
+                                    onclick="SetVisitKey('merchandising.html')"
+                                    class="enableText" id="surveylink"
+                                    rel="external">
+                                    <img src="../images/icn-9.png"
+                                        id="imgsurvey" class="HomeIconPosEN" />
+                                    <h3 lang="en" id="survey">
+                                        Merchandizing</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <!--<div class="content-primary">
+                <ul data-role="listview" id="MenuList">
+                    <li><a href="#" rel="external">
+                        <img src="../images/sale-gray.png" class="HomeIconPosEN" />
+                        <h3 lang="en" class="MenuGray">
+                            CPD Options</h3>
+                    </a></li>
+                </ul>
+            </div>-->
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="#" id="adlink" rel="external"
+                                    onclick="rediretAdvance()">
+                                    <img src="../images/info-7.png"
+                                        id="imgadpay" class="HomeIconPosEN" />
+                                    <h3 lang="en" id="adpay">
+                                        Advance Payment</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="content-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="#" rel="external" id="saleslink"
+                                    onclick="sessionStorage.setItem('custreturnvisit','false');sessionStorage.setItem('custinventvisit','false');localStorage.po = 'sales';checksurvey('salesinvoice_option.html')">
+                                    <img src="../images/info-6.png"
+                                        id="imgsales" class="HomeIconPosEN" />
+                                    <h3 lang="en" id="sales">
+                                        Sales</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="#" id="arlink" rel="external"
+                                    onclick="localStorage.po = 'collection';checksurvey('autosettler.html')">
+                                    <img src="../images/collection.png"
+                                        id="imgarcol" class="HomeIconPosEN" />
+                                    <h3 lang="en" id="arcol">
+                                        Collections</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="content-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="#" id="orderlink" rel="external"
+                                    onclick="localStorage.po ='orderrequest';checksurvey('orderRequest.html')">
+                                    <img src="../images/info-5.png" id="imgord"
+                                        class="HomeIconPosEN" />
+                                    <h3 lang="en" id="order">
+                                        Order Request</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li style="color: #999;"><a href="#"
+                                    onclick="insertendtime(1)" rel="external">
+                                    <img src="../images/info-8.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 style lang="en">
+                                        Done</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="f1" data-role="footer" class="ui-bar">
+                    <div class="footer">
+                        <div class="leftfooter">09 November 2011</div>
+                        <div class="rightfooter">Mirnah Technology Systems</div>
+                    </div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+                <table id="tblPassword" border="0" cellpadding="2"
+                    cellspacing="0" width="100%;"
+                    style="display: none;">
+                    <tr>
+                        <th class="tblHeader captionLabel leftAlign popupTitle"
+                            colspan="2" lang="en">
+                            Password Entry
+                        </th>
+                    </tr>
+                    <tr class="popupRow">
+                        <td colspan="2">
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr class="popupRow">
+                        <td colspan="2" class="popupSubTitle" lang="en">
+                            Customer Options
+                        </td>
+                    </tr>
+                    <tr class="popupRow">
+                        <td class="popupSubTitle" lang="en">Password Key</td><td
+                            class="popupSubTitle" id="passkey" lang="en">
+
+                        </td>
+                    </tr>
+                    <tr class="popupRow">
+                        <td colspan="2" lang="en" class="popupInfo">
+                            Please Enter The Security Password
+                        </td>
+                    </tr>
+                    <tr class="popupRow">
+                        <td colspan="2">
+                            <input id="txtPassword" type="number"
+                                pattern="[0-9]*" value maxlength="10"
+                                class="textWidth textFont passwordCenter"
+                                style="margin: 10px 22px;" />
+                            <label id="lblMessage" lang="en"
+                                style="display:none">Enter Correct
+                                Password</label>
+                        </td>
+                    </tr>
+                    <tr class="popupRow">
+                        <td style="width: 50%;">
+                            <input id="btnSubmit" type="button" value="Submit"
+                                onclick="VerifyPassword1('btnSubmit','salesinvoice_option.html',tblPassword.innerHTML);"
+                                data-role="none"
+                                lang="en" />
+                        </td>
+                        <td style="width: 50%;">
+                            <input id="btnCancel" type="button" rel="close"
+                                value="Cancel" onclick="ClearPassword();"
+                                data-role="none" lang="en" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <script type="text/javascript">
+            window.lang = new jquery_lang_js();
+			var latitude='';
+			var longitude='';
+            var billtobill = 0;
+          	resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 		resizeWindow();                              
+			localStorage.promooveride='';
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {
+
+            }
+
+                $(".leftfooter").html(getCurrentDate());
+                document.addEventListener("deviceready", ondeviceready, false);
+                var customeraid = sessionStorage.getItem("customercode");
+                var customername = sessionStorage.getItem("customername");
+
+                $('#custid').text(customeraid);
+                $('#custname').text(customername);
+                /*if (customername.length > 25) {
+                    $('#custname').text(customername.substring(0, 25) + "...");
+                }
+                else {
+                    $('#custname').text(customername);
+                }*/
+
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+
+                if (sessionStorage.getItem("Language") != "en") {
+
+                    window.lang.change('CustOpt' + lan, lan);
+                    window.lang.change('Footer' + lan, lan);
+                    if (lan == "AR") {
+                        $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                        $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                        $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                        $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+
+                }
+                else {
+                    window.lang.change('en', 'en');
+
+                    $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });
+            function ondeviceready()
+            {
+                
+              //  var res=CheckConnection();
+                offlinegetrecord();
+            }
+            function TableDataOffLine1(RecSet)
+            {
+              
+                
+                    var data = RecSet;
+                    var routetype,transactionseqno,enablefreereason;
+                    
+                    
+                        var routetype=data[0][0];
+                        transactionseqno = data[0][1];
+                       enablefreereason = data[0][2];
+                   
+                    
+                    localStorage.setItem("transactionseqno",transactionseqno);
+                    localStorage.setItem("enablefreereason",enablefreereason);
+                   
+                    
+                    $.mobile.hidePageLoadingMsg();
+                    if(routetype==3)
+                    {
+                        $('#order').addClass('MenuGray');
+                        $('#imgord').attr('src','../images/info-5_g.png');
+                        $('#orderlink').attr('onclick','');
+                    }
+                    /*else
+                    {                    
+                        $('#order').removeClass('MenuGray');
+                        $('#imgord').attr('src','../images/info-5.png');
+                        $('#orderlink').attr('onclick',"localStorage.po ='orderrequest';SetVisitKey('orderRequest.html')");
+                    }*/
+                    if(routetype!=2 && sales==1)
+                     {
+                     $('#sales').removeClass('MenuGray');
+                     $('#imgsales').attr('src','../images/info-6.png');
+                     $('#saleslink').attr('href','salesinvoice_option.html');
+                     
+                     }
+                     
+                     
+                     if(routetype==2){
+                     
+                     $('#sales').addClass('MenuGray');
+                     $('#imgsales').attr('src','../images/info-6_g.png');
+                     $('#saleslink').attr('href','');
+                     
+                     }
+                    /* else
+                     {
+                     $('#sales').addClass('MenuGray');
+                     $('#imgsales').attr('src','../images/info-6_g.png');
+                     $('#saleslink').attr('href','');
+                     
+                     }*/
+                    
+                    
+
+            }
+            function TableDataOffLine(RecSet)
+            {
+                //alert("essst");
+                
+                var data = RecSet;
+                var invcomment,enablesalespromotion,enableorderpromotion,transactionseqno,invoiceformatoption,invoicepaymentterms,enablesigcapture,enablefreereason,enablepriceeditinvs,arcustomertype,numoutstandinginv,enableSurvey;
+         
+                        var sales=data[0][0];
+                        var arcoll=data[0][1];
+                        var adpay=data[0][2];
+                        invcomment=data[0][3];
+                        
+                        enablesalespromotion=data[0][4];
+                        enableorderpromotion=data[0][5];
+                       
+                        var invoiceformatoption = data[0][6];
+                        var invoicepaymentterms = data[0][7];
+                        var enablesigcapture = data[0][8];
+                        var enablepriceeditinvs = data[0][9];
+                        var arcustomertype = data[0][10];
+                        var numoutstandinginv = data[0][11];
+                       	var enableSurvey=data[0][12];
+               
+                localStorage.setItem("enableinvoicecomment",invcomment);
+                localStorage.setItem("enablesalespromotion",enablesalespromotion);
+                localStorage.setItem("enableorderpromotion",enableorderpromotion);
+                
+                localStorage.setItem("invoiceformatoption",invoiceformatoption);
+                sessionStorage.setItem("invoicepaymentterms",invoicepaymentterms);
+                sessionStorage.setItem("SignEnabled",enablesigcapture);
+                sessionStorage.setItem("enableadvancepayment",adpay);
+                sessionStorage.setItem("enablepriceedit",enablepriceeditinvs);
+                 sessionStorage.setItem("enablesurvey",enableSurvey);
+                
+                if(sales==0)
+                {
+                    $('#sales').addClass('MenuGray');
+                    $('#imgsales').attr('src', '../images/info-6_g.png');
+                    $('#saleslink').attr('onclick', '');
+                }
+                if(arcoll==0)
+                {
+                    $('#arcol').addClass('MenuGray');
+                    $('#imgarcol').attr('src','../images/collection_g.png');
+                    $('#arlink').attr('onclick','');
+                }
+                /*else
+                {
+                    $('#arcol').removeClass('MenuGray');
+                    $('#imgarcol').attr('src','../images/collection.png');
+                    $('#arlink').attr('onclick',"localStorage.po = 'collection';SetVisitKey('autosettler.html')");
+                }*/
+                
+                if(arcustomertype != 0 && numoutstandinginv != 0)
+                {
+                    billtobill = numoutstandinginv;
+                }
+               
+                /*if(routetype!=2 && sales==1)
+                {
+                    $('#sales').removeClass('MenuGray');
+                    $('#imgsales').attr('src','../images/info-6.png');
+                    $('#saleslink').attr('href','salesinvoice_option.html');
+                    
+                }
+                else
+                {
+                    $('#sales').addClass('MenuGray');
+                    $('#imgsales').attr('src','../images/info-6_g.png');
+                    $('#saleslink').attr('href','');
+                    
+                }*/
+                if(adpay==0)
+                {
+                    $('#adpay').addClass('MenuGray');
+                    $('#imgadpay').attr('src','../images/info-7_g.png');
+                    $('#adlink').attr('onclick','');
+                                      
+                }
+                /*else
+                {
+                    $('#adpay').removeClass('MenuGray');
+                    $('#imgadpay').attr('src','../images/info-7.png');
+                    $('#adlink').attr('onclick',"localStorage.po='advance';SetVisitKey('../customer/advance_payment.html')");
+                    
+                }*/
+                    
+                //Code to check Survey Added by bindal
+                if(eval(enableSurvey)==0)
+                {
+                    $('#survey').addClass('MenuGray');
+                    $('#imgsurvey').attr('src','../images/info-7_g.png');
+                    $('#surveylink').attr('onclick','');
+                                      
+                }
+                
+                    
+                    
+                // Code to check for saved load data available otherwise disable sales option.
+                var Qry = "SELECT count(*) as cnt from inventorysummarydetail where routekey=" + sessionStorage.getItem("RouteKey") + " and istemp='false'";
+                var platform= sessionStorage.getItem("platform");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        
+                        if (result == 0) {
+                            
+                            $('#sales').addClass('MenuGray');
+                            $('#imgsales').attr('src', '../images/info-6_g.png');
+                            $('#saleslink').attr('onclick', '');
+                        }
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                        "PluginClass",
+                        "GetdataMethod",
+                        [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        $.mobile.hidePageLoadingMsg();
+                        if (result.array[0].cnt == 0) {
+                            
+                            $('#sales').addClass('MenuGray');
+                            $('#imgsales').attr('src', '../images/info-6_g.png');
+                            $('#saleslink').attr('onclick', '');
+                        }
+                    },
+							function() {
+							    console.warn("Error calling plugin");
+							});
+                }
+            }
+            function offlinegetrecord()
+            {
+                $.mobile.showPageLoadingMsg();
+                var custid=sessionStorage.getItem("customerid");
+                var routecode=sessionStorage.getItem("RouteCode");
+                var platform= sessionStorage.getItem("platform");
+               var selectqry = "select routemaster.routetype,transactionnoseq,enablefreereason from routemaster where routecode="+routecode;
+                console.log(selectqry);
+                var selectqry1 = "select customermaster.enablesalestrxn,customermaster.enablearcollection,customermaster.enableadvancepayment,enableinvoicecomment,enablepromoeditinvs,enablepromoeditords,invoiceformatoption,invoicepaymentterms,enablesigcapture,enablepriceeditinvs,arcustomertype,numoutstandinginv,enablesurveyaudit from customermaster where customercode="+custid;                
+                console.log(selectqry1);
+                if(platform=='iPad')
+                    {
+                 var abc = Cordova.exec(function(result) {
+                 TableDataOffLine(result);
+                 
+                 
+                  var abc = Cordova.exec(function(result1) {
+                                            TableDataOffLine1(result1);
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            [selectqry]);
+                  
+                  
+                 },
+                 function(error) {
+                 alert(error);},
+                 "PluginClass", 
+                 "GetdataMethod", 
+                 [selectqry1]);
+                 
+                }
+                else if(platform=='Android')
+           			{  		
+			           		window.plugins.DataBaseHelper.select(selectqry1,function(result)
+							{		
+                                    var array = $.map(result.array, function (item, index) {               
+                                      return [[item.enablesalestrxn,item.enablearcollection,item.enableadvancepayment,item.enableinvoicecomment,item.enablepromoeditinvs,item.enablepromoeditords,item.invoiceformatoption,item.invoicepaymentterms,item.enablesigcapture,item.enablepriceeditinvs,item.arcustomertype,item.numoutstandinginv,item.enablesurveyaudit]];
+                                    });
+							 		TableDataOffLine(array);
+                                                                        
+                                                                        
+                                                        window.plugins.DataBaseHelper.select(selectqry,function(result1)
+                                                         {
+                                                         var array = $.map(result1.array, function (item, index) {               
+                                                                           return [[item.routetype,item.transactionnoseq,item.enablefreereason]];
+                                                                           });
+                                                         TableDataOffLine1(array);
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                                                                         
+                                                                         
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+           			}
+                
+            }
+            
+
+             function CheckOutStandingInvoices(url)
+             {                
+                if(sessionStorage.getItem("invoicepaymentterms") == 2)
+                {
+                    if(eval(billtobill) > 0)
+                    {
+                        var Qry = "SELECT COUNT(*) as cnt FROM customerinvoice ci  JOIN invoiceheader ih ON ih.invoicenumber = ci.invoicenumber  WHERE ih.routekey=" + sessionStorage.getItem("RouteKey") + " AND ci.invoicebalance IS NOT 0 AND ci.customercode = " + sessionStorage.getItem("customerid");
+                        console.log(Qry);
+                        if(platform == "iPad")
+                        {
+                            Cordova.exec(function(result) {
+                                if(eval(result[0][0]) >= eval(billtobill))
+                                {
+                                    navigator.notification.alert("Can't Do Credit Invoice.");
+                                    return false;
+                                }
+                                else
+                                    SetVisitKey(url);
+                            },
+                            function(error) {
+                                alert(error);
+                            },
+                            "PluginClass", 
+                            "GetdataMethod", 
+                            [Qry]);                            
+                        }
+                        else if(platform == "Android")
+                        {
+                            window.plugins.DataBaseHelper.select(Qry, function(result) 
+                            {
+                                if(eval(result.array[0].cnt) >= eval(billtobill))
+                                {
+                                    navigator.notification.alert("Can't Do Credit Invoice.");
+                                    return false;
+                                }
+                                else
+                                    SetVisitKey(url);
+                            },
+							function() {
+							    console.warn("Error calling plugin");
+							});
+                        }
+                    }
+                    else
+                        SetVisitKey(url);
+                }
+                else
+                    SetVisitKey(url);
+             }
+             
+              function SetVisitKey(url) {
+                 //localStorage.po = 'sales';                 
+                
+				var selectqry="select ifnull(max(visitkey),0) as VisitKey,totaltransactions,reasoncode from customeroperationscontrol where routekey = " + sessionStorage.getItem("RouteKey");
+                 console.log(selectqry);
+                 var platform= sessionStorage.getItem("platform");
+                 if(platform=='iPad')
+                 {
+                     Cordova.exec(function(result) {
+	                               
+                                      if(eval(result[0][1]) > 0 || eval(result[0][2]) > 0)
+                                        InserVisitKeys(url);
+                                      else
+                                        deletetransaction(url,result[0][0]);   
+                                   
+                                   },
+                                   function(error) {
+                                   alert(error);
+                                   },
+                                   "PluginClass",
+                                   "GetdataMethod",
+                                   [selectqry]);
+                 }
+                 else if(platform=='Android')
+                 {
+                     window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                          {
+                                                          if(eval(result.array[0].totaltransactions) > 0 || eval(result.array[0].reasoncode) > 0)
+                                                          InserVisitKeys(url);
+                                                          else
+                                                          deletetransaction(url,result.array[0].VisitKey);        
+                                                          },
+                                                          function()
+                                                          {
+                                                          console.warn("Error calling plugin");
+                                                          });
+                 }
+                
+             }
+             function deletetransaction(url,VisitKey)
+            {
+                var platform= sessionStorage.getItem("platform");
+                var deleteqry="delete from customeroperationscontrol where routekey = " + sessionStorage.getItem("RouteKey")+" and visitkey="+VisitKey;
+                console.log(deleteqry);
+                if(platform=='iPad')
+                {
+	                Cordova.exec(function(result) {
+                                  var Tbls = ["invoicedetail","promotiondetail","invoicerxddetail","cashcheckdetail","invoiceheader","inventorytransactionheader","inventorytransactiondetail","inventorysummarydetail","batchexpirydetail","salesorderdetail","salesorderdetail","posequipmentchangedetail","surveyauditdetail","arheader","ardetail"];
+                                  for(i=0;i<Tbls.length;i++)
+                                  {
+                                  if(i == 5 || i == 6 || i == 7)
+                                  {
+                                  var Qry = "DELETE FROM " + Tbls[i] + " WHERE istemp='true' and transactiontypecode!=07 and routekey=" + sessionStorage.getItem("RouteKey");
+                                  }
+                                  else if(i == 11 || i == 12)
+                                  {
+                                  var Qry = "DELETE FROM " + Tbls[i] + " WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + VisitKey;
+                                  }
+                                  else
+                                  {            
+                                  var Qry = "DELETE FROM " + Tbls[i] + " WHERE istemp='true' and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + VisitKey;
+                                  }
+                                  console.log(Qry);
+                                  Cordova.exec(function(result) {
+                                               
+                                               
+                                                
+                                                },
+                                                function(error) {
+                                                alert(error);},
+                                                "PluginClass", 
+                                                "InsertUpdateMethod", 
+                                                [Qry]);
+                                  }
+                                  InserVisitKeys(url);
+                                  
+                                  
+                                  },
+                                  function(error) {
+                                  alert(error);
+                                  },
+                                  "PluginClass",
+                                  "InsertUpdateMethod",
+                                  [deleteqry]);
+                }
+                else if(platform=='Android')
+                {
+		      		window.plugins.DataBaseHelper.insert(deleteqry,function(result)
+                                                         {
+                                                         var Tbls = ["invoicedetail","promotiondetail","invoicerxddetail","cashcheckdetail","invoiceheader","inventorytransactionheader","inventorytransactiondetail","inventorysummarydetail","batchexpirydetail","salesorderdetail","salesorderdetail","posequipmentchangedetail","surveyauditdetail","arheader","ardetail"];
+                                                         for(i=0;i<Tbls.length;i++)
+                                                         {
+                                                         if(i == 5 || i == 6 || i == 7)
+                                                         {
+                                                         var Qry = "DELETE FROM " + Tbls[i] + " WHERE istemp='true' and transactiontypecode!=07 and routekey=" + sessionStorage.getItem("RouteKey");
+                                                         }
+                                                         else if(i == 11 || i == 12)
+                                                         {
+                                                         var Qry = "DELETE FROM " + Tbls[i] + " WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + VisitKey;
+                                                         }
+                                                         else
+                                                         {            
+                                                         var Qry = "DELETE FROM " + Tbls[i] + " WHERE istemp='true' and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + VisitKey;
+                                                         }
+                                                         console.log(Qry);
+                                                         window.plugins.DataBaseHelper.insert(Qry,function(result)
+                                                                                              {
+                                                                                              
+                                                                                              },
+                                                                                              function()
+                                                                                              {
+                                                                                              console.warn("Error calling plugin");
+                                                                                              });
+                                                         }
+                                                       InserVisitKeys(url);
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+            function InserVisitKeys(url)
+            {
+                 //localStorage.po = 'sales'; 
+               localStorage.removeItem("tmpargrid");                
+               var Qry = "select (ifnull(max(visitkey),0) + 1) as VisitKey from customeroperationscontrol where routekey = " + sessionStorage.getItem("RouteKey");
+				var platform= sessionStorage.getItem("platform");
+                if(platform=='iPad')
+                {
+	                Cordova.exec(function(result) {
+	                               
+	                     if (result != '')
+                             {
+	                         sessionStorage.setItem("VisitKey", result);
+                                 var visitkey=result;
+                             }
+	                     else
+                             {
+	                         sessionStorage.setItem("VisitKey", 1);
+                                 var visitkey=1;
+                             }          
+	                    insertvisitkey(url,visitkey);    
+                            
+	                },
+	                function(error) {
+	                        alert(error);
+	                },
+	                "PluginClass",
+	                "GetdataMethod",
+	                [Qry]);
+                }
+	        else if(platform=='Android')
+           	{
+		      		window.plugins.DataBaseHelper.select(Qry,function(result)
+				{
+                         		if (result.array[0].VisitKey != undefined)
+			 		{
+							 		
+	                         		sessionStorage.setItem("VisitKey", result.array[0].VisitKey);
+                                                 var visitkey=result.array[0].VisitKey;
+		                        }
+                                        else{
+                                                 sessionStorage.setItem("VisitKey", 1);
+                                                  var visitkey=1;
+	                               }
+                                        insertvisitkey(url,visitkey);               
+				},
+                        	function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+           	}
+             }
+             function onsuccess(position)
+             {
+              latitude = position.coords.latitude;
+              longitude =position.coords.longitude;
+             }
+             function onError()
+             {
+             }
+             function insertvisitkey(url,visitkey)
+             {
+                 //navigator.geolocation.getCurrentPosition(onsuccess, onError);
+                latitude =sessionStorage.getItem("latitude");
+                 longitude =sessionStorage.getItem("longitude");
+                var platform= sessionStorage.getItem("platform");
+                var Odometer= sessionStorage.getItem("Odometer");
+                 var qry = "insert into customeroperationscontrol ('visitkey','routekey','customercode','routecode','salesmancode','visitstartdate','visitstarttime','visitenddate','latitude','longitude','issync','odometerreading') values ('"+visitkey+"','"+sessionStorage.getItem("RouteKey")+"','"+sessionStorage.getItem("customerid")+"','"+sessionStorage.getItem("RouteCode")+"','"+sessionStorage.getItem("SalesmanCode")+"',date(),'"+sessionStorage.getItem("starttime")+"',date(),'"+latitude+"','"+longitude+"',0,"+Odometer+") ";
+                console.log(qry);
+                if(platform=='iPad')
+                {
+	                Cordova.exec(function(result) {
+                                  if(url == 'salesinvoice_option.html')
+                                  deletebatchmaster(); 
+                                  else
+                                  window.location.href=url;
+	                },
+	                function(error) {
+	                        alert(error);
+	                },
+	                "PluginClass",
+	                "InsertUpdateMethod",
+	                [qry]);
+                }
+	        else if(platform=='Android')
+           	{
+		      		window.plugins.DataBaseHelper.insert(qry,function(result)
+				{
+                         		
+                                                         if(url == 'salesinvoice_option.html')
+                                                         deletebatchmaster(); 
+                                                         else
+                                                         window.location.href=url;
+				},
+                        	function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+           	}
+             }
+            function checkenable(url)
+            {
+			//alert(url);
+                
+                var routekey=sessionStorage.getItem("RouteKey");
+                var platform= sessionStorage.getItem("platform");
+                console.log("select sum(invoicebalance) as balance from customerinvoice where routecode="+sessionStorage.getItem("RouteCode")+" and customercode="+sessionStorage.getItem("customerid"));
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                  
+                                  checkcustomer(result[0][0],url);
+                                  },
+                                  function(error) {
+                                  alert(error);
+                                  },
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  ["select sum(invoicebalance) as balance from customerinvoice where routecode="+sessionStorage.getItem("RouteCode")+" and customercode="+sessionStorage.getItem("customerid")]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select("select sum(invoicebalance) as balance from customerinvoice where voidflag = 0 and customercode="+sessionStorage.getItem("customerid"),function(result)
+                                                         {
+                                                         checkcustomer(result.array[0].balance,url);
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+            function checkcustomer(balance,url)
+            {
+                var custid=sessionStorage.getItem("customerid");
+                var platform= sessionStorage.getItem("platform");
+                var routecode=sessionStorage.getItem("RouteCode");
+                var CompanyCode=sessionStorage.getItem("CompanyCode");
+                if(balance=='')
+                balance=0;
+                
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                  
+                                  if(eval(result[0][1]) > 1)
+                                  {
+                                  if(eval(balance) > eval(result[0][0]))
+                                  {
+                                  navigator.notification.alert("Credit Limit Exceeded",onConfirm);
+                                 
+                                  //window.location.href=url;
+                                  }
+                                  else
+                                  {
+                                  window.location.href=url;
+                                  }
+                                  }
+                                  else
+                                  {
+                                  window.location.href=url;
+                                  }
+                                  },
+                                  function(error) {
+                                  alert(error);
+                                  },   
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  ["select creditlimit,invoicepaymentterms from customermaster where customercode="+custid]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select("select creditlimit,invoicepaymentterms from customermaster where customercode="+custid,function(result)
+                                                         {
+														 //if(eval(result[0][1]) > 1)
+                                  
+														// var balance =eval(result.array[0].balance) - eval(balance);
+                                                         if(eval(balance) > eval(result.array[0].creditlimit))
+                                                         {
+                                                        	alert("Credit Limit Exceeded");
+                                                         	SetVisitKey(url);
+                                                         //window.location.href=url;
+                                                         }
+                                                         else
+                                                         {
+                                                        	 //window.location.href=url;
+                                                        	 
+                                                        	 SetVisitKey(url);
+                                                         }
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+            function onConfirm(button)
+            {               
+                if(button == 1)
+                {
+                	
+                    var d = new Date();
+                    var n = d.getMinutes();                                        
+                    //var s = d.getSeconds();
+                    if(n<10)
+                    n='0'+n;
+                    var key = routecode+CompanyCode+n;
+                    var str = key;
+                    var a=str.split(''), b = a.length;
+                    for (var i=0; i<b; i++) {
+                        a.unshift(a.splice(1+i,1).shift())
+                    }
+                    a.shift();
+                    var pass = a.join('');
+                    $('#passkey').text(pass);
+                    console.log(key);
+                                 
+                    
+                    
+                    popuppasswordgenerator('saleslink','cust_opt.html',tblPassword.innerHTML,'cust_opt.html');
+                  
+                    
+                }
+            }
+            
+            function insertendtime(flag)
+            {
+                var platform= sessionStorage.getItem("platform");
+                var starttime = sessionStorage.getItem("starttime");
+                var mydate = new Date();
+                
+                var thehour = mydate.getHours();
+                var theminut = mydate.getMinutes();
+                var time = thehour+":"+theminut;
+                            
+                            
+                if(flag == 1)
+                    nonservice();
+                else
+                    window.location.href="../customer/customer_operation.html";
+              /*  var insertqry = "update customeroperationscontrol set visitendtime='"+time+"',issync=0 where routekey='"+sessionStorage.getItem("RouteKey")+"' and customercode='"+sessionStorage.getItem("customerid")+"' and routecode='"+sessionStorage.getItem("RouteCode")+"' and visitstarttime='"+starttime+"'";
+                console.log(insertqry);
+                if(platform=='iPad')
+                {
+                Cordova.exec(function(result) {                    
+                              if(flag == 1)
+                              nonservice();
+                              else
+                              window.location.href="../customer/customer_operation.html";
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [insertqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.insert(insertqry,function(result)
+                                                         {
+                                                         if(flag == 1)
+                                                         nonservice();
+                                                         else
+                                                         window.location.href="../customer/customer_operation.html";
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }*/
+                
+                
+            }
+            function nonservice()
+            {
+               var platform= sessionStorage.getItem("platform");
+                var starttime = sessionStorage.getItem("starttime");
+                var qry = "select sum(totaltransactions) as totaltrans from customeroperationscontrol where routekey='"+sessionStorage.getItem("RouteKey")+"' and customercode='"+sessionStorage.getItem("customerid")+"' and routecode='"+sessionStorage.getItem("RouteCode")+"' and visitstarttime='"+starttime+"' group by customercode,routecode,visitstarttime";
+                console.log(qry);
+                               
+                
+                
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                  if(result != '')
+                                  {
+                                  if(result[0][0] > 0)
+                                  {
+                                    window.location.href="../customer/customer_operation.html";
+                                  }
+                                  else
+                                  {
+                                    window.location.href="../customer/non_serviced_customer.html";
+                                  }
+                                  }
+                                  else
+                                  {
+                                  window.location.href="../customer/non_serviced_customer.html";
+                                  }
+                                  
+                                  },
+                                  function(error) {
+                                  alert(error);
+                                  },
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  [qry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(qry,function(result)
+                                                         {
+                                                         if(result.array != undefined)
+                                                         {
+                                                         if(result.array[0].totaltrans > 0)
+                                                         {
+                                                         window.location.href="../customer/customer_operation.html";
+                                                         }
+                                                         else
+                                                         {
+                                                         window.location.href="../customer/non_serviced_customer.html";
+                                                         }
+                                                         }
+                                                         else
+                                                         {
+                                                         window.location.href="../customer/non_serviced_customer.html";
+                                                         }
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+           function deletebatchmaster()
+            {
+               var platform= sessionStorage.getItem("platform");
+                var qry ="delete from batchmaster_temp";
+                console.log(qry);
+                if(platform=='iPad')
+                {
+                    return abc = Cordova.exec(function(result) {
+                                               insertbatchmaster();
+                                               },
+                                               function(error) {
+                                               alert(error);},
+                                               "PluginClass", 
+                                               "InsertUpdateMethod", 
+                                               [qry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.insert(qry,function(result)
+                                                         {
+                                                         insertbatchmaster();
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                } 
+            }
+            function insertbatchmaster()
+            {
+               var platform= sessionStorage.getItem("platform");
+                var qry ="insert into batchmaster_temp('quantity','badquantity','itemcode','batchdetailkey','batchnumber','expirydate') select ifnull(quantity,0),ifnull(damagequantity,0),itemcode,batchdetailkey,batchnumber,expirydate from batchmaster where batchnumber IS NOT NULL";
+                console.log(qry);
+                if(platform=='iPad')
+                {
+                    return abc = Cordova.exec(function(result) {
+                                               window.location ='salesinvoice_option.html';
+                                               },
+                                               function(error) {
+                                               alert(error);},
+                                               "PluginClass", 
+                                               "InsertUpdateMethod", 
+                                               [qry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.insert(qry,function(result)
+                                                         {
+                                                         window.location ='salesinvoice_option.html';
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                } 
+            }
+            function checksurvey(url)
+            {
+                var Qry="select count(*) as cnt from customersurveyplan as csp join customersurveykeyplan as cskp on cskp.surveyplankey=csp.surveyplankey join customersurveykey as csk on cskp.surveykey=csk.surveykey join customermaster as c on c.surveykey=csk.surveykey  where c.customercode="+sessionStorage.getItem("customerid")+" and csp.surveymandatory=1 and csp.surveyplankey not in (select surveyplankey from surveyauditdetail where customercode="+sessionStorage.getItem("customerid")+" and routekey='"+sessionStorage.getItem("RouteKey")+"' ) order by csp.surveysequencenumber";
+                console.log(Qry);
+				//alert(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) 
+                                  {
+                                  if(result[0][0] == 0)
+                                  {
+                                  if(url =='salesinvoice_option.html'){
+                                    sessionStorage.setItem("suggestedvisit",0);
+                                    CheckOutStandingInvoices(url);
+                                  }                                  
+                                  else if(url=='orderRequest.html')
+                                  {
+                                  checkenable('orderRequest.html');
+                                  SetVisitKey(url);
+                                  }
+                                  else
+                                  SetVisitKey(url);
+                                  }
+                                  else
+                                  {
+                                  navigator.notification.alert("Please Fill Survey First.");
+                                  }
+                                  }, 
+                                  function(error) {
+                                  alert(error);
+                                  },
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry,function(result)
+                                                         {
+                                                         if(result.array != undefined)
+                                                         {
+                                                         if(result.array[0].cnt== 0)
+                                                         {
+                                                         if(url =='salesinvoice_option.html'){
+                                                            sessionStorage.setItem("suggestedvisit",0);
+                                                             CheckOutStandingInvoices(url);
+                                                         }                                                        
+                                                         else if(url=='orderRequest.html')
+                                                         {
+                                                         sessionStorage.removeItem("OrderDate");		 
+                                                         checkenable('orderRequest.html');
+                                                         
+                                                         }
+                                                         else
+                                                         SetVisitKey(url);
+                                                         }
+                                                         else
+                                                         {
+                                                         navigator.notification.alert("Please Fill Survey First.");
+                                                         }
+                                                         }
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+            function rediretAdvance(){
+             
+             
+             	var Qry = "DELETE FROM arheader WHERE istemp='true'";
+       			if (platform == 'iPad') {
+            
+            
+            	}else{
+            
+            		window.plugins.DataBaseHelper.select(Qry, function(result) {
+                   
+                   			localStorage.removeItem("AdvanceInvoice");
+              
+                			localStorage.removeItem("DocNos");
+            				localStorage.po = 'advance';
+            				checksurvey('../customer/advance_payment.html');
+                	},
+		       		function() {
+		        	
+		           
+		       		});
+            
+            	}
+             
+             }
+            
+            
+        </script>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Page</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1201px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            document.write('<script charset="utf-8" src="../js/Locationagent.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+</script>
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+		<script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript"
+			lang="en"></script>
+		<link rel="stylesheet" type="text/css"
+			href="../css/jquery.mobile.simpledialog.css" />
+		<script type="text/javascript"
+			src="../js/jquery.mobile.simpledialog.js"></script>
+		<script type="text/javascript" src="../barcodescanner.js"></script>
+
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<!--<div data-role="header" class="headerBar">
+		<div class="headerContainer">
+		    <span class="headerText">Nearest Customers</span>
+		</div>
+		<div>
+		<span id="langP">EN</span>
+		</div>
+	</div>-->
+			<div data-role="header" data-tap-toggle="false" data-position="inline"
+				id="bgclheader">
+				<a href="customer_operation.html" id="Back_inner" rel="external"
+					data-ajax="true" lang="en">Back</a>
+				<h1 id="lblPageTitle" lang="en">Select Customer</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerbox" style="overflow:hidden;">
+
+				<div id="navgroup" align="center">
+					<div data-role="controlgroup" data-type="horizontal" data-mini="true">
+						<input type="radio" name="radio-orientation" id="isSequence"
+							value="isSequence" checked="checked">
+						<label for="isSequence" class="controllgrouppadding">SEQUENCE</label>
+						<input type="radio" name="radio-orientation" id="isALL" value="isALL">
+						<label for="isALL" class="controllgrouppadding">ALL</label>
+						<input type="radio" name="radio-orientation" id="isMap" value="isMap">
+						<label for="isMap" class="controllgrouppadding"> ROUTE MAP</label>
+					</div>
+				</div>
+
+				<div class="com_div captionLabel">
+					<div style="text-align: center;" class="searchBox">
+						<label id="lbl1" class="lblCodecust" lang="en">SEARCH :</label>
+						<input type="text" name="searchtext1" id="searchtext1"
+							placeholder="Search By Name/Code"
+							class="textFont" value style="width: 60%;" />
+					</div>
+					<div id="listCustomers" class="listcustomers">
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<table id="tblPassword" border="0" cellpadding="2" cellspacing="0"
+				width="100%;" style="display: none;">
+				<tr>
+					<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+						lang="en">Password Entry</th>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" class="popupSubTitle" lang="en">Customer
+						Selection</td>
+				</tr>
+				<!--  <tr class="popupRow">
+				<td colspan="2" class="popupSubTitle" lang="en">Customer Code</td>
+				<!--  <td class="popupSubTitle" id="pwdcustcode" lang="en"></td>
+			</tr> -->
+				<tr class="popupRow">
+					<td class="popupSubTitle" lang="en">Customer Code</td>
+					<td class="popupSubTitle test" id="pwdcustcode" lang="en"></td>
+				</tr>
+				<tr class="popupRow">
+					<td class="popupSubTitle" lang="en">Access Key</td>
+					<td class="popupSubTitle" id="passkey" lang="en"></td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" lang="en" class="popupInfo">Please Enter The
+						Security Password</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2"><input id="txtPassword" type="number" pattern="[0-9]*"
+							value maxlength="10" class="textWidth textFont passwordCenter" /> <label
+							id="lblMessage" lang="en"
+							style="display: none">Enter Correct Password</label></td>
+				</tr>
+				<tr class="popupRow">
+					<td style="width: 50%;">
+						<!--<input id="btnSubmit" type="button" value="Submit" onclick="VerifyPassword1('btnSubmit','../customer_opt/cust_opt.html',tblPassword.innerHTML);" data-role="none"
+                    lang="en" />--> <input id="btnSubmit" type="button"
+							value="Submit" onclick="CallVerifyPassword();" data-role="none"
+							lang="en" />
+					</td>
+					<td style="width: 50%;"><input id="btnCancel" type="button"
+							rel="close" value="Cancel" onclick="cancelPassword(1);"
+							data-role="none" lang="en" /></td>
+				</tr>
+			</table>
+			<table id="tblEnforcePassword" border="0" cellpadding="2" cellspacing="0"
+				width="100%;"
+				style="display: none;">
+				<tr>
+					<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+						lang="en">
+						Password Entry
+					</th>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">
+						&nbsp;
+					</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" class="popupSubTitle" lang="en">
+						Enforce Check
+					</td>
+				</tr>
+				<tr class="popupRow">
+					<td class="popupSubTitle" lang="en">Password Key</td><td
+						class="popupSubTitle" id="passkey1" lang="en">
+
+					</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" lang="en" class="popupInfo">
+						Please Enter The Security Password
+					</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">
+						<input id="txtPassword1" type="tel" pattern="[0-9]*" value maxlength="10"
+							class="textWidth textFont passwordCenter" />
+						<label id="lblMessage" lang="en" style="display:none">Enter Correct
+							Password</label>
+					</td>
+				</tr>
+				<tr class="popupRow">
+					<td style="width: 50%;">
+						<input id="btnSubmit" type="button" value="Submit"
+							onclick="verifyEnforcePassword('btnSubmit','enforce_check',tblEnforcePassword.innerHTML);"
+							data-role="none"
+							lang="en" />
+					</td>
+					<td style="width: 50%;">
+						<input id="btnCancel" type="button" rel="close" value="Cancel"
+							onclick="cancelPassword(2);"
+							data-role="none" lang="en" />
+					</td>
+				</tr>
+			</table>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+								lang="en">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+				<div class='ui-loader-background'></div>
+			</div>
+			<script type="text/javascript" language="javascript">
+		 window.lang = new jquery_lang_js();
+		 var routesequenceplanflag;
+		 var acode='';
+		 var result=[];
+		 var interval;
+		 // sujee commented for Enhance Grp as 60sec GPS capture time 
+        // var count=10000;
+         var count=60000;
+         var customerlat;
+         var seqnumbers = 0;
+         var customerlon;
+         var chkpwdfor = ""; 
+         var promptodominput="";
+         var enforcecallsequence=0;
+         var updateGpsEnabled=0;
+         var lat = 0;
+		 var lng = 0;
+		 var gpsCustcode='';
+		 $(document).ready(function() 
+		 {
+			 	resizeOrientationWindow();	
+			 	document.addEventListener("deviceready", getSettings, false);
+			 	var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+                
+                $("#searchtext1").keyup(function(){
+                		var SEARCHWORD = this.value;
+		                $("#list li").each(function(){
+		                		if($(this).
+		                              find("p").
+		                              text().toUpperCase().
+		                              indexOf(SEARCHWORD.toUpperCase()) >=0)
+		                       $(this).show();
+		                    else
+		                       $(this).hide();
+		
+		                });
+
+
+                });
+                
+                $('#isALL').click(function() { 
+                	$( "#listCustomers").empty();	
+                	if(eval(enforcecallsequence)==1){
+                		 CustomerEnforceCheck();
+                	}else{
+                		
+                		getrecord('', '', 0);
+                	}
+                	
+                	
+                });
+                $('#isMap').click(function() { 
+                		
+                	 getCustomerSequence(false);
+                	
+                });
+                $('#isSequence').click(function() { 
+                	$( "#listCustomers").empty();	
+               	 	getrecord();
+               	
+               });
+                
+                if (sessionStorage.getItem("Language")  != "en") 
+                {
+               
+	                window.lang.change('CustomerSelection'+lan,lan);
+	                window.lang.change('Footer'+lan,lan);
+	                if(lan=="AR")
+	                {
+	                     $("#contentWrapper").attr("dir", "rtl");
+	                     $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                     $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                     $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                     $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                }
+		
+				}
+				else
+				{
+				    window.lang.change('en','en');
+				    $("#contentWrapper").attr("dir", "ltr");
+				    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				}
+		
+		 });
+		 function getSettings()
+         {
+			 resizeWindow();
+			 var platform= sessionStorage.getItem("platform");                
+             var routecode=sessionStorage.getItem("RouteCode");
+				sessionStorage.setItem("onHoldOrderInvoice",0);
+             var Qry = "SELECT enablescancustomer,enablescanneruse,usealternatecodes,promptodominput,enforcecallsequence FROM routemaster WHERE routecode=" + routecode;                                
+             console.log(Qry);
+             
+             var secondqry ="select routesequenceplanflag from setup where setupid=1";
+             console.log(secondqry);
+            
+             if(platform=='iPad')
+		     {
+				    		var abc = Cordova.exec(function(result) 
+				    		{
+                                     if(result.length > 0)
+                                     {
+                                         routesequenceplanflag = result[0][0];
+                                        
+                                     }
+                                           
+                             },
+                             function(error) {
+                             alert(error);},
+                             "PluginClass", 
+                             "GetdataMethod", 
+                             [secondqry]);
+				    
+				    		var abc = Cordova.exec(function(result) 
+				    		{
+                                             if(result.length > 0)
+                                             {
+                                                 enablescancustomer = result[0][0];
+                                                 enablescanneruse = result[0][1];
+                                                 if(result[0][0] == 0)
+                                                 {
+                                                    
+                                                 }
+                                                 else
+                                                 {                                                       
+                                                   
+                                                 }
+                                             }
+                                           
+                             },
+                             function(error) {
+                             alert(error);},
+                             "PluginClass", 
+                             "GetdataMethod", 
+                             [Qry]);
+             	}
+             	else if(platform=='Android')
+         		{
+             		 	window.plugins.DataBaseHelper.select(secondqry,function(result)
+						{
+                         
+             		 			routesequenceplanflag = result.array[0].routesequenceplanflag;
+                        
+						   
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+			     
+          
+             		 	window.plugins.DataBaseHelper.select(Qry,function(result)
+						{
+	                         enablescancustomer = result.array[0].enablescancustomer;
+	                         enablescanneruse = result.array[0].enablescanneruse;
+	                         acode=result.array[0].usealternatecodes;
+	                         promptodominput=result.array[0].promptodominput;
+	                         enforcecallsequence=result.array[0].enforcecallsequence;
+	                         if(result.array[0].enablescancustomer == 0)
+	                         {
+	                              //Code for enable scan
+	                        	 
+	                        	 
+	                         }
+	                         else
+	                         {
+	                        	 
+	                         }
+	                         
+	                         getrecord();
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+          		} 
+         }
+		 function CustomerEnforceCheck(){
+         	
+         	var routecode=sessionStorage.getItem("RouteCode");
+            var CompanyCode=parseInt(sessionStorage.getItem("CompanyCode"));
+//            var d = new Date();
+//            var n = d.getMinutes();                                        
+//             // var s = d.getSeconds();
+//            if(n<10)
+//            	n='0'+n;
+//            var key = routecode+CompanyCode+n;
+//            var str = key;
+            
+            var customercode=sessionStorage.getItem("RouteCode").toString().slice(-2);
+            var d = new Date();
+            var unixtime = parseInt(d.getTime() / 1000);
+            var randomnumber= Math.floor(Math.random() * 9999999) + 100000;
+            console.log(CompanyCode);
+            var timestamp=unixtime.toString().slice(-7)+customercode;
+            var key =  Math.abs(eval(timestamp)-eval(randomnumber));
+            var str = key.toString();
+			
+            
+            var a=str.split(''), b = a.length;
+            for (var i=0; i<b; i++) {
+                 a.unshift(a.splice(1+i,1).shift())
+            }
+            a.shift();
+            var pass = a.join('');
+            $('#passkey1').text(pass);
+            console.log(key);
+           
+            popupEnforcepasswordgenerator('isALL','ListCustomers.html',tblEnforcePassword.innerHTML,'ListCustomers.html');
+
+         }
+         function showCustomerEnforceList(){
+        	 $(".ui-simpledialog-container #txtPassword").val("");                     
+             $(document).undelegate("isALL","click");
+             $('#isALL').simpledialog('close');  
+             getrecord('', '', 0);
+         	
+         }
+		 
+		 
+		 function getrecord(code,name,sequence)
+         {
+            
+			 $.mobile.showPageLoadingMsg(); 
+             var routecode=sessionStorage.getItem("RouteCode"); 
+             var platform= sessionStorage.getItem("platform");
+             var rp32weeknumber=sessionStorage.getItem("rp32weeknumber");
+             if(routesequenceplanflag==1){
+				    rp32weeknumber=9;
+				    sessionStorage.setItem("rp32weeknumber",rp32weeknumber);
+				}
+             var days=sessionStorage.getItem("days");
+             var calldays=sessionStorage.getItem("calldays");
+             if(name==undefined)
+             name='';
+             if(sequence==undefined)
+             sequence=1;
+             
+             if(code=='code')
+             {
+                if(acode==1)
+                	var where= " AND alternatecode like '%"+name+"%' ";
+                else
+                	var where= " AND c.customercode like '%"+name+"%' "; 
+             }
+             else
+             {
+                 if(sessionStorage.getItem("Language")=='en')
+                	 var where= " AND customername like '%"+name+"%' ";
+                 else
+                	 var where= " AND arbcustomername like '%"+name+"%' ";
+
+             }
+            
+             if(sequence==0)
+             {
+                
+                 if(sessionStorage.getItem("Language")=='en')
+                 {
+                     if(platform=='iPad')
+                     {
+                         	var abc = Cordova.exec(function(result) 
+                         	{
+                                        $("#tbl1  tr").remove();
+                                        ShowCustomerList(result,'ipad');
+                             },
+                             function(error) 
+                             {
+                            	 alert(error);
+                             },
+                             "PluginClass", 
+                             "GetdataMethod", 
+                             ["select DISTINCT c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,customeraddress3,0, fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit, IFNULL(SUM(ROUND(ci.invoicebalance,3)),0) balance, MIN(duedate) duedate,totaltransactions FROM customermaster c LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE 1 AND COALESCE(templateindicator,0) = 0 GROUP BY c.customercode ORDER BY "+custField]);
+                     }
+                     else if(platform=='Android')
+                     { 
+                     		var custField="";
+                    	 	if(acode==1){
+                    	 		custField="c.alternatecode";
+                    	 	}else{
+                    	 		custField="c.customercode";
+                    	 	}
+                        
+                    	 	var cc= "select DISTINCT c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,customeraddress3,0, fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt, 0 as invpromoplan FROM customermaster c LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE 1 AND COALESCE(templateindicator,0) = 0 GROUP BY c.customercode ORDER BY "+custField;
+                    	 	console.log("Cust List : "+cc);
+                    	 	//alert(cc);
+	                         window.plugins.DataBaseHelper.select("select DISTINCT c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,customeraddress3,0, fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt, ifnull(invpromoplan,0) as invpromoplan,ifnull(combopromoplan,0) as combopromoplan FROM customermaster c LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE 1 AND COALESCE(templateindicator,0) = 0 GROUP BY c.customercode ORDER BY "+custField, function(result)
+	                         {
+	                             if(result.array != undefined)
+	                             {
+	                                 
+	                                 ShowCustomerList(result,'android');
+	                                
+	                             }
+	                             else{
+	                             	
+	                             	  $.mobile.hidePageLoadingMsg(); 
+	                             }
+	                                                              
+	                         },
+	                         function()
+	                         {
+	                          console.warn("Error calling plugin");
+	                         });
+                     } 
+                 }
+                 else
+                 { 
+                    
+                     if(platform=='iPad')
+                     {
+                    	 		var abc = Cordova.exec(function(result) 
+                    	 		{
+	                                    $("#tbl1  tr").remove();
+	                                    ShowCustomerList(result,'ipad');
+	                             },
+	                             function(error) {
+	                            	 	alert(error);
+	                             },
+	                             "PluginClass", 
+	                             "GetdataMethod", 
+	                             ["SELECT DISTINCT c.customercode, arbcustomername AS customername, pobox, alternatecode, ancustomercode, arbcustomeraddress3 AS customeraddress1, arbcustomeraddress2 AS customeraddress2, customerphone, invoicepaymentterms, enablesigcapture, arbcustomeraddress1 AS customeraddress3, 0, fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit, IFNULL(SUM(ROUND(ci.invoicebalance,3)),0) balance, MIN(duedate) duedate,totaltransactions FROM customermaster c LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE 1 AND COALESCE(templateindicator,0) = 0 GROUP BY c.customercode ORDER BY "+custField]); 
+
+                     }
+                     else if(platform=='Android')
+                     { 
+                     	
+                     		var custField="";
+                    	 	if(acode==1){
+                    		 custField="c.alternatecode";
+                    	 	}else{
+                    		 custField="c.customercode";
+                    	 	}
+
+                    	 	var pp="SELECT DISTINCT c.customercode, arbcustomername AS customername, pobox, alternatecode, ancustomercode, arbcustomeraddress3 AS customeraddress1, arbcustomeraddress2 AS customeraddress2, customerphone, invoicepaymentterms, enablesigcapture, arbcustomeraddress1 AS customeraddress3, 0, fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt FROM customermaster c LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE 1 AND COALESCE(templateindicator,0) = 0 GROUP BY c.customercode ORDER BY "+custField;
+                    	 	console.log(pp);
+                    	 	//alert(pp);
+                      window.plugins.DataBaseHelper.select("SELECT DISTINCT c.customercode, arbcustomername AS customername, pobox, alternatecode, ancustomercode, arbcustomeraddress3 AS customeraddress1, arbcustomeraddress2 AS customeraddress2, customerphone, invoicepaymentterms, enablesigcapture, arbcustomeraddress1 AS customeraddress3, 0, fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt, ifnull(invpromoplan, 'NO HEADER PROMO') as invpromoplan FROM customermaster c LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE 1 AND COALESCE(templateindicator,0) = 0 GROUP BY c.customercode ORDER BY "+custField,function(result)
+                      {
+                     	  if(result.array != undefined)
+                          {
+                             ShowCustomerList(result,'android');
+                          }else{
+                         	 
+                         	 $.mobile.hidePageLoadingMsg();  
+                          }
+                        },
+                        function()
+                        {
+                        	console.warn("Error calling plugin");
+                        });
+                     } 
+                 }
+             }
+             else
+             { 
+                 if(sessionStorage.getItem("Language")=='en')
+                 {
+                     console.log("select DISTINCT c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,customeraddress3,"+days+",fixedlatitude,fixedlongitude,IFNULL(visitkey,0) as visitkey,ifnull(creditlimitdays,0) creditlimitdays,ifnull(creditlimit,0) creditlimit,ifnull(balance,0) balance from customermaster c left join customeroperationscontrol co on co.customercode = c.customercode and routekey = "+sessionStorage.getItem("RouteKey")+" join routesequence as r on r.customercode=c.customercode where rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1"+where+" group by c.customercode order by "+days);
+                     if(platform=='iPad')
+                     {
+	                         var abc = Cordova.exec(function(result) 
+	                         {
+	                             
+	                             ShowCustomerList(result,'ipad');
+	                         },
+	                         function(error) {
+	                        	 alert(error);
+	                         },
+	                         "PluginClass", 
+	                         "GetdataMethod", 
+	                         ["SELECT DISTINCT c.customercode, customername, pobox, alternatecode, ancustomercode, customeraddress1, customeraddress2, customerphone, invoicepaymentterms, enablesigcapture, customeraddress3, "+days+", fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit, IFNULL(SUM(ROUND(ci.invoicebalance,3)),0) balance, MIN(duedate) duedate,totaltransactions FROM customermaster c JOIN routesequence AS r ON r.customercode=c.customercode LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE rp32weeknumber = "+rp32weeknumber+" AND "+calldays+"=1 "+where+" GROUP BY c.customercode ORDER BY "+days+","+custField]);
+                     }
+                     else if(platform=='Android')
+                     { 
+                     	
+                     		var custField="";
+                    	 	if(acode==1){
+                    	 		custField="c.alternatecode";
+                    	 	}else{
+                    	 		custField="c.customercode";
+                    	 	}
+                         var cp="SELECT DISTINCT c.customercode, customername, pobox, alternatecode, ancustomercode, customeraddress1, customeraddress2, customerphone, invoicepaymentterms, enablesigcapture, customeraddress3, "+days+", fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt,ifnull(invpromoplan,0) invpromoplan, ifnull(combopromoplan,0) combopromoplan FROM customermaster c JOIN routesequence AS r ON r.customercode=c.customercode LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE rp32weeknumber = "+rp32weeknumber+" AND "+calldays+"=1 "+where+" GROUP BY c.customercode ORDER BY "+days+","+custField;
+                         console.log(cp);
+                         //alert(cp);
+                    	 	window.plugins.DataBaseHelper.select("SELECT DISTINCT c.customercode, customername, pobox, alternatecode, ancustomercode, customeraddress1, customeraddress2, customerphone, invoicepaymentterms, enablesigcapture, customeraddress3, "+days+", fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt, ifnull(invpromoplan,0) invpromoplan, ifnull(combopromoplan,0) combopromoplan FROM customermaster c JOIN routesequence AS r ON r.customercode=c.customercode LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE rp32weeknumber = "+rp32weeknumber+" AND "+calldays+"=1 "+where+" GROUP BY c.customercode ORDER BY "+days+","+custField, function(result)
+                            {
+                            	if(result.array != undefined)
+                                {
+                                     
+                                     ShowCustomerList(result,'android');
+                                }else{
+                                	$.mobile.hidePageLoadingMsg();  
+                                }
+		                      },
+		                      function()
+		                      {
+		                      console.warn("Error calling plugin");
+		                      });
+                     } 
+                 }
+                 else
+                 {
+                     if(platform=='iPad')
+                     {
+                         var abc = Cordova.exec(function(result) 
+                         {
+                            
+                             ShowCustomerList(result,'ipad');
+                         },
+                         function(error) {
+                        	 alert(error);
+                         },
+                         "PluginClass", 
+                         "GetdataMethod", 
+                         ["select DISTINCT c.customercode,arbcustomername,pobox,alternatecode,ancustomercode,arbcustomeraddress3 as customeraddress1,arbcustomeraddress2 as customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,arbcustomeraddress1 as customeraddress3, "+days+", fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit, IFNULL(SUM(ROUND(ci.invoicebalance,3)),0) balance, MIN(duedate) duedate,totaltransactions FROM customermaster c JOIN routesequence AS r ON r.customercode=c.customercode LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE rp32weeknumber = "+rp32weeknumber+" AND "+calldays+"=1 "+where+" GROUP BY c.customercode ORDER BY "+days+","+custField]); 
+                         
+                     }
+                     else if(platform=='Android')
+                     {
+                     	var custField="";
+                	 	if(acode==1){
+                	 		custField="c.alternatecode";
+                   	 	}else{
+                   	 		custField="c.customercode";
+                   	 	}
+                        var cc="select DISTINCT c.customercode,arbcustomername,pobox,alternatecode,ancustomercode,arbcustomeraddress3 as customeraddress1,arbcustomeraddress2 as customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,arbcustomeraddress1 as customeraddress3, "+days+", fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt FROM customermaster c JOIN routesequence AS r ON r.customercode=c.customercode LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE rp32weeknumber = "+rp32weeknumber+" AND "+calldays+"=1 "+where+" GROUP BY c.customercode ORDER BY "+days+","+custField;
+                        console.log(cc);
+                       // alert(cc);
+                        window.plugins.DataBaseHelper.select("select DISTINCT c.customercode,arbcustomername,pobox,alternatecode,ancustomercode,arbcustomeraddress3 as customeraddress1,arbcustomeraddress2 as customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,arbcustomeraddress1 as customeraddress3, "+days+", fixedlatitude, fixedlongitude, MAX(IFNULL(visitkey,0)) AS visitkey, IFNULL(creditlimitdays,0) creditlimitdays, IFNULL(creditlimit,0) creditlimit,  (select IFNULL(SUM(ROUND(invoicebalance,3)),0) balance from customerinvoice where customercode=c.customercode) as  balance, MIN(duedate) duedate,totaltransactions,reportprintcontrol,(SELECT  date('now', 'localtime') > date(MIN(duedate),'+'||ifnull(cm.graceperiod,0)||' days','+'||ifnull(cm.creditlimitdays,0)||' days')  FROM customerinvoice ci INNER JOIN customermaster cm ON cm.customercode = ci.customercode WHERE ci.customercode = c.customercode  and ROUND(ci.invoicebalance,5) > 0) as creditdayscnt, ifnull(invpromoplan, 'NO HEADER PROMO') as invpromoplan, combopromoplan FROM customermaster c JOIN routesequence AS r ON r.customercode=c.customercode LEFT JOIN customeroperationscontrol co ON co.customercode = c.customercode LEFT JOIN customerinvoice ci ON ci.customercode = c.customercode AND ROUND(ci.invoicebalance,3) > 0 WHERE rp32weeknumber = "+rp32weeknumber+" AND "+calldays+"=1 "+where+" GROUP BY c.customercode ORDER BY "+days+","+custField, function(result)
+                        {
+                        	   if(result.array != undefined)
+                               {
+                                    
+                                    ShowCustomerList(result,'android');
+                               }else{
+                            	   $.mobile.hidePageLoadingMsg(); 
+                            	   
+                               }
+                         },
+                         function()
+                         {
+                         console.warn("Error calling plugin");
+                         });
+                     } 
+                 }
+             }
+             return false;
+         }
+		 
+		 function pulse() {
+  		    $('.blink').fadeIn(300);
+  		    $('.blink').fadeOut(500);
+  		}
+		 
+		 
+		 function gettotalTransCount(c_custcode,cusomerinfo)
+		 {//alert("gettotalTransCount");
+			 var qry= "select coc.totaltransactions as totaltransactions ,coc.visitkey  as visitkey from customeroperationscontrol coc inner join customermaster cm on coc.customercode=cm.customercode where coc.customercode="+c_custcode
+			 console.log(qry);
+			// alert(qry);
+			 
+			 if(platform=='Android')
+				 { 
+				  window.plugins.DataBaseHelper.select(qry, function(result)
+	                        {
+					
+					  var visited
+	                        	   if(result.array != undefined)
+	                               { 
+	                                   // alert(result.array[0].totaltransactions);
+	                                 //   alert(result.array[0].visitkey);
+	                                 	if(data.array[0].visitkey > 0){
+	                                 		
+	                                 		if(eval(data.array[0].totaltransactions)>0){ 
+	                                 			
+	                                 			var visited="<img class='imgvisited' src='../images/tick.png'/><strong>"+cusomerinfo+"</strong>"
+	                                 		}else{
+	                                 			
+	                                 			var visited="<img class='imgvisited' src='../images/tick-n.png'/><strong>"+cusomerinfo+"</strong>"
+	                                 		}
+	                                 		
+	                                 	
+	                                 	}else{
+	                                 	
+	                                 		var visited="<strong>"+cusomerinfo+"</strong>"
+	                                 	} 
+	                                 
+	                               }else{
+	                            	   $.mobile.hidePageLoadingMsg(); 
+	                            	   
+	                               }
+	                         },
+	                         function()
+	                         {
+	                         console.warn("Error calling plugin");
+	                         });
+				 }
+		 }
+		 
+		 
+		 function ShowCustomerList(data,flag){
+			result=data;
+			console.log(JSON.stringify(data));
+			//alert(JSON.stringify(data));
+			
+		
+			var listCreated = false;
+         	var avaldistance;
+         	$( "#listCustomers").empty();	
+             for (i = 0; i <  data.array.length; i++) {
+             	
+             	if(!listCreated){
+ 					$("#listCustomers").append("<ul id='list' data-theme='z'  data-role='listview' style='list-style-type: none;padding:0px;margin:0px;width:100%' data-inset='true'></ul>");
+ 					listCreated = true;
+ 					
+				}
+             	var listitem="";
+             	var isBold=false;
+
+             	var paymenttypearray = ['CASH','CASH or CHEQUE','CREDIT','TC (CASH or CHEQUE)','TC (CASH Only)'];
+                var type = paymenttypearray[data.array[i].invoicepaymentterms];
+                var address1=data.array[i].customeraddress1;	
+                var address2=data.array[i].customeraddress2;	
+                var address3=data.array[i].customeraddress3;	
+                var address = address1;
+                if(address2 !='')
+                	address =address+" , "+address2;
+                if(address3 !='')
+                     	address =address+" , "+address3;
+                //alert('limit' +eval(data.array[i].creditlimit));
+                //alert('bal' +eval(data.array[i].balance));
+             	var availalelimit=(eval(data.array[i].creditlimit))-(eval(data.array[i].balance)).toFixed(sessionStorage.getItem('decimalplace'));
+                var cusomerinfo=""+data.array[i].alternatecode+","+data.array[i].customername+"";
+                
+                var c_custcode= data.array[i].customercode;
+                var invpromoplan = "INVOICE PROMO PLAN : "+data.array[i].invpromoplan+" , COMBO PLAN : "+ data.array[i].combopromoplan;
+             //  gettotalTransCount(c_custcode,cusomerinfo);
+               
+             	if(data.array[i].visitkey > 0){
+             		
+             		if(eval(data.array[i].totaltransactions)>0){ 
+             			
+             			var visited="<img class='imgvisited' src='../images/tick.png'/><strong>"+cusomerinfo+"</strong>"
+             		}else{
+             			
+             			var visited="<img class='imgvisited' src='../images/tick-n.png'/><strong>"+cusomerinfo+"</strong>"
+             		}
+             		
+             	
+             	}else{
+             	
+             		var visited="<strong>"+cusomerinfo+"</strong>"
+             	} 
+            
+            	/*if(eval(data.array[i].totaltransactions)>0){ 
+         			
+         			var visited="<img class='imgvisited' src='../images/tick.png'/><strong>"+cusomerinfo+"</strong>"
+         		}else{
+         			
+         			var visited="<strong>"+cusomerinfo+"</strong>"
+         		}
+             	*/
+             	var tabletDate=new Date();
+             	var duestr=data.array[i].duedate; 
+             	
+             	var duedate=new Date(data.array[i].duedate);
+             	var creditdays="";
+             // sujee added for checking credit days and display 2018-06-27 check qry 
+             	var countdays = data.array[i].creditdayscnt; 
+             	
+
+             	var custBalance= (eval(data.array[i].balance)).toFixed(sessionStorage.getItem('decimalplace'));
+             	
+             	// org line sujee commnetded  as not to cherck due date check ony credit days 27/06/2018
+             	//if(duestr!='' && duestr!=0 && duestr!=undefined && tabletDate>duedate && eval(data.array[i].invoicepaymentterms)== 2){
+             		
+             	if(countdays>0 && eval(data.array[i].invoicepaymentterms)== 2){
+             		
+             		creditdays="<p class='listlable small'><b><span class ='blink' style='color:#ff0000'>Credit Days Exceeded.</span></b></p>";
+             		
+             		setInterval(pulse, 1000);
+             	}
+             	 
+                listitem="<li data-name="+i+" class='listbg'><p class='headerColor small'>"+visited+"</p><p class='headerColor typecolor small'><strong><b>MOP :</b><mark>"+type+"</mark></strong></p><p class='listlable small'>"+address +"</p><p class='listlable small'> <b><span style='color:#797474'>CREDIT LIMIT DAYS : </span></b>"+data.array[i].creditlimitdays +" DAYS<b>&nbsp;&nbsp;,&nbsp;&nbsp;<span style='color:#797474'>CREDIT LIMIT : </span></b>"+data.array[i].creditlimit+" OMR</p><p class='listlable small'><b><span style='color:#797474'>OUTSTANDING AMOUNT : </span></b>"+custBalance+" OMR</p><p class='listlable small'><b><span style='color:#797474'>AVAILABLE LIMIT : </span></b>"+CheckIsNaN(availalelimit.toFixed(sessionStorage.getItem('decimalplace')))+" OMR</p>"+creditdays+"<p class='listlable small'><b><span style='color:#797474'>"+invpromoplan+"</span></b></p></li>";
+                $("#list").append(listitem);
+             	
+             }
+             $.mobile.hidePageLoadingMsg(); 
+             $('#listCustomers ul').children('li').bind('click', function(e) {
+            	 	
+            	  	var index=eval($(this).attr('data-name'));
+            	    customerlat = result.array[index].fixedlatitude;
+                    customerlon = result.array[index].fixedlongitude;
+                    seqnumbers=0;
+                   // alert(JSON.stringify(result.array[index]));
+                   // alert(acode);
+            	    sessionStorage.setItem("customerid", result.array[index].customercode);
+        			sessionStorage.setItem("customername",result.array[index].customername);
+        			sessionStorage.setItem("reportprintcontrol",result.array[index].reportprintcontrol);
+        			
+        			localStorage.setItem("customerBalanceSync",false); //settings to update customer balance
+        			
+        			localStorage.setItem("latitude", 0);
+					localStorage.setItem("longitude", 0);
+					
+					gpsCustcode = result.array[index].alternatecode;
+
+					
+        			if(acode==1)
+                    {
+                        if(platform=='iPad')
+                        {
+                        	// sessionStorage.setItem("customercode",inputvalue[i][3]);
+                        }
+                        else
+                        {
+                        	sessionStorage.setItem("customercode",result.array[index].alternatecode);
+                        }
+                    }
+                    else
+                    {
+                         if(platform=='iPad')
+                         {
+                            // sessionStorage.setItem("customercode",inputvalue[i][0]);
+                            
+                         }
+                         else
+                         {
+                        	 sessionStorage.setItem("customercode",result.array[index].customercode);
+                    
+                         }
+                    }
+        			redirect();
+             });
+		 }
+		 function CheckIsNaN(val)
+	        {
+	            if(isNaN(val))
+	                return 0;
+	            else
+	                return val;
+	        }
+		 // Function to redirect to next screen
+		 
+		 function redirect() 
+         {
+			    localStorage.setItem("ARDATA",'');
+			    var mydate = new Date();			
+                var thehour = mydate.getHours();
+                var theminut = mydate.getMinutes();
+                var time = thehour+":"+theminut;
+                sessionStorage.setItem("starttime",time);
+                sessionStorage.setItem("custvisittime", null);
+                var platform= sessionStorage.getItem("platform");               
+                isGpsEnable();
+               
+        }
+		function isGpsEnable()
+		{
+					
+					// org qry sujee commented 
+			//var qry ="Select (select enablegps from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting1";
+			
+					// sujee commented  03/07/2018
+			//var qry ="Select (select enablegps from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting1,(Select count(*)  from customeroperationscontrol where customercode="+sessionStorage.getItem("customerid")+" and routekey="+sessionStorage.getItem("RouteKey")+") as cnt";
+			
+					// sujee added to not to check GPS for hold customers 15/08/2018
+			var qry ="Select (select enablegps from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting1,(Select count(*)  from customeroperationscontrol where customercode="+sessionStorage.getItem("customerid")+" ) as cnt,(select count(*) from pendingorderheader where customercode="+sessionStorage.getItem("customerid")+") as holdordercustomer";
+			
+			console.log(qry);
+			//alert(qry);
+		    var platform= sessionStorage.getItem("platform");
+		               
+           
+            if(platform=='iPad')
+            {
+            	// need to develop for ios
+            	
+            	
+            
+            }
+            else if(platform=='Android')
+		    {
+		                	
+            		window.plugins.DataBaseHelper.select(qry,function(result)
+                    {
+                            result = $.map(result.array, function (item, index) {
+                                return [[item.setting1,item.cnt,item.holdordercustomer]];
+                            });
+                           
+                           
+                            //if(eval(result[0][0]) == 1) // sujee commented org line 
+                            if(eval(result[0][0]) == 1 && eval(result[0][1]) == 0 && eval(result[0][2]) == 0) // check order is hold or not 
+                            { 
+                            	showGpsDialog(); 
+                            	
+                            }else{ 
+                            	ConfirmToRedirect();
+                            	
+                            	
+                            }
+                           
+                            
+                    },
+                    function()
+                    {
+                    	 checkcordinate();
+                        console.warn("Error calling plugin");
+                    });
+        	
+                  
+                 
+            }	  
+		              
+				
+		} 
+		
+		
+		this.progressBars = function(msg, max) {
+	      
+	            var cnt = eval(msg/1000);
+	        
+	          //  $('.ui-loader h1').text("Tracing Location..");
+	            
+	            $('.ui-loader h1').text("Please wait for "+cnt+" seconds");
+		        if(cnt == 0)
+		        {
+			          // count=10000;  // sujee changed waiting time to 60sec 21/05/2018
+			           count=60000;
+			 
+			          
+			          /* $.mobile.hidePageLoadingMsg();
+			           clearInterval(interval);*/
+			           
+			           $.mobile.hidePageLoadingMsg();
+			           clearInterval(interval);
+						// sujee added to check for every 5sec 
+						  /*if(checkGPSvalid==0)
+				        {
+							  setInterval(doGPSCheck, 40000); // 5000 chged from 5 to 40 sec 
+				        }*/
+			          
+	          
+	           }
+	    }
+		var gpsFlag = 0;
+		function doGPSCheck() {//alert("doGPSCheck");
+			   console.log("doGPSCheck..................!");
+			   if(checkGPSvalid==0)
+				{
+				   showGpsDialog();
+				}
+			  
+			}
+		
+	               
+	    function receiveMessage()
+	    { 
+	      // progressBars(count,10000);  // sujee chged waiting time to 60sec 21/05/2018
+	       progressBars(count,60000);
+	       count=count-1000;
+	    }
+	    function CallVerifyPassword()
+        {             
+            if(chkpwdfor == 'gps' || chkpwdfor == "")
+                VerifyPassword1('btnSubmit','routesequence_gpscheck',tblPassword.innerHTML);
+            else 
+                VerifyPassword1('btnSubmit','customerselectionscan',tblPassword.innerHTML);
+           
+        }
+	    var checkGPSvalid=0;
+		function showGpsDialog()
+		{
+			 $.mobile.showPageLoadingMsg();
+			 if(checkGPSvalid==0)
+				{
+				 interval=setInterval(receiveMessage, 1000);
+				}
+	       	
+	       	 platform= sessionStorage.getItem("platform");
+	         if(platform=='iPad')
+	         {
+	            navigator.geolocation.getCurrentPosition(onsuccess11,onError, { maximumAge: 3000, timeout: 10000, enableHighAccuracy: true });
+	         }
+	         else
+	         {
+	         		window.plugins.LocationHelper.getLocation("",function(data)
+					{
+					   
+					    console.log(data.state);
+					    console.log(data.lat);
+					    console.log(data.lng);
+					  
+					    if(data.state == false)
+					    {
+						    //alert('Cant Trace Coordinates.');
+						    console.log("Cant Trace Coordinates.");
+						    lat = 0;
+							lng = 0;
+							localStorage.setItem("latitude", lat);
+							localStorage.setItem("longitude", lng);
+							// sujee added 21/05/2018 for Enhance Grp
+							if(checkGPSvalid==0)
+								{
+								showGpsDialog();
+								checkGPSvalid=1;
+							
+								}
+						    
+						    return false;
+					    }
+					    else
+					    {
+						
+							lat = data.lat;
+							lng = data.lng;
+							sessionStorage.setItem("latitude", lat);
+							sessionStorage.setItem("longitude", lng);
+							localStorage.setItem("latitude", lat);
+							localStorage.setItem("longitude", lng);
+						
+					    }
+					 
+					    checkcordinate();
+					
+					},
+					function()
+					{
+						  checkcordinate();
+					});
+			}
+			
+		}
+		 function checkcordinate()
+         { //alert("checkcordinate");
+         	 localStorage.setItem("ARDATA",'');
+             //var qry ="Select (select status from controlpanel where flagid=50) as setting1,(select status from controlpanel where flagid=17) as setting2,(select allowedradius from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting3";
+             
+             // org qry sujee commented 01/10/2018 
+          //   var qry ="Select (select enforcegps from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting1,(select updategps from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting2,(select allowedradius from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting3";
+             
+             // sujee added customerwise GPS radius 
+             var qry ="Select (select enforcegps from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting1,(select updategps from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting2,(select allowedradius from routemaster where routecode="+sessionStorage.getItem("RouteCode")+") as setting3,(select memo2 from customermaster where  customercode=" + sessionStorage.getItem("customerid")+") as setting4";
+             var platform= sessionStorage.getItem("platform");
+             console.log(qry);
+             if(platform=='iPad')
+             {
+                 Cordova.exec(function(result) 
+                 {
+                    if (eval(result[0][0]) == 1 && eval(result[0][1]) == 1)
+					{
+                         
+                    	 if(customerlat == 0 || customerlat == "" || customerlon == 0 || customerlon == "")
+                         {
+                            
+								ConfirmToRedirect();
+                         }
+					     else if(lat == 0 || lan == 0)
+					     {
+							navigator.notification.alert('System Cant Detect Coordinates.');
+							ConfirmToRedirect();
+						
+					     }
+					     else
+						 {
+					    	 var distance = distanceFromCurrent(eval(result[0][2]));
+									
+                             if(eval(distance) > eval(result[0][2]))
+                                 CheckPasswordForGps();
+                             else
+                                     ConfirmToRedirect();
+						 }
+				    
+					}			                      
+                    else if (eval(result[0][0]) == 1)// if gps setting enable
+                    {
+                    	 if(customerlat == 0 || customerlat == "" || customerlon == 0 || customerlon == "")
+                         {
+                             ConfirmToRedirect();
+                         }
+                         else
+                         {
+                             if(chkpwdfor == 'gps' || chkpwdfor == "")
+                                     ConfirmToRedirect();
+                             else                    
+                                     ShowOdoMeter();
+                         }
+			   
+                     }
+                     else if (eval(result[0][1]) == 1)// if allow radius
+														// setting enable
+                     {
+                         var distance = distanceFromCurrent(eval(result[0][2]));
+						
+                         if(eval(distance) > eval(result[0][2]))
+                             CheckPasswordForGps();
+                         else
+                             ConfirmToRedirect();
+                     }
+                     else
+                     {   
+                    	 ConfirmToRedirect();
+                     }
+                 },
+                 function(error) {
+                     alert("Error in getting Password : " + error);
+                 },
+                 "PluginClass",
+                 "GetdataMethod",
+                 [qry]);         
+             }
+             else if(platform=='Android')
+             {
+                 window.plugins.DataBaseHelper.select(qry,function(result)
+                 {
+                     result = $.map(result.array, function (item, index) {
+                         return [[item.setting1,item.setting2,item.setting3,item.setting4]];
+                     });
+                           
+                   //  alert(JSON.stringify(result));
+                 
+                     var custRadius = parseFloat(result[0][3]);
+                    // alert('radius' +custRadius);
+                     updateGpsEnabled= eval(result[0][1]);
+                     
+                     if (eval(result[0][0]) == 1)
+                     { 
+                    	navigator.notification.alert("Current Cordinate \n Latitude :"+localStorage.getItem("latitude")+"\n Longitude :"+localStorage.getItem("longitude"));
+                     
+                    	if(localStorage.getItem("latitude") == 0 || localStorage.getItem("longitude") == 0)
+                    	{  
+	                        // navigator.notification.alert('System Cant Detect Coordinates.');
+	                         CheckPasswordForGps();
+         
+                    	}
+                    	if(customerlat == 0 || customerlat == "" || customerlon == 0 || customerlon == "")
+                    	{
+							
+                    	// sujee commented not to validate if the master lat & long is 0  14/08/2018
+							//CheckPasswordForGps();
+                    	 // sujee added to update and proceed furthur
+                    	    updatemastercordinate();
+                    	 
+                    	}
+				        else
+				        {
+				// org line sujee commented 01/10/2018
+				      //  	var distance = distanceFromCurrent(eval(result[0][2]));
+				        	// -------------------START --------------
+				        	if(custRadius>0)
+				        		{
+				        		  //alert("yes");
+				        			var distance = distanceFromCurrent(eval(custRadius));
+				        		}
+				        	else {
+				        		//alert("here ");
+				        		var distance = distanceFromCurrent(eval(result[0][2]));
+				        	}
+				        	//-------------END -----------------------
+				        
+                             if(eval(distance) > eval(result[0][2]))
+                            	 { 
+                                 CheckPasswordForGps();
+                            	 }
+                             else {
+                                 ConfirmToRedirect();
+                             }
+				        }
+			    
+                     }			                      
+                     else if (eval(result[0][1]) == 1)// if gps setting enable
+					 {
+	                    if(localStorage.getItem("latitude") == 0 || localStorage.getItem("longitude") == 0)
+	                    {
+	                         navigator.notification.alert('System Cant Detect Coordinates.');
+	                         CheckPasswordForGps();
+	         
+	                    }
+                        if(customerlat == 0 || customerlat == "" || customerlon == 0 || customerlon == "")
+                        {
+                        	 updatemastercordinate();
+							
+                        }
+                        else
+                        {
+            			    if(chkpwdfor == 'gps' || chkpwdfor == "")
+            			    	ConfirmToRedirect();
+            			    else                    
+            			    	ShowOdoMeter();
+         			    }
+			   
+                     }
+                     else
+                     {   
+                         ConfirmToRedirect();
+                     }
+                 },
+                 function()
+                 {
+                     console.warn("Error calling plugin");
+                 });
+             }
+         }
+		 function updatemastercordinate()
+         {
+	
+			 if(updateGpsEnabled==1){
+			 
+            var Qry = "UPDATE customermaster SET issync=0,fixedlatitude=" + localStorage.getItem("latitude") + ", fixedlongitude=" + localStorage.getItem("longitude") + " WHERE customercode=" + sessionStorage.getItem("customerid");
+            console.log(Qry);
+             //alert(Qry);
+			if(platform=='iPad')
+			{
+			    Cordova.exec(function(result) {
+			       ConfirmToRedirect();
+			    },
+			    function(error) {
+				alert(error);
+			    },
+			    "PluginClass", 
+			    "InsertUpdateMethod", 
+			    [Qry]); 
+			}
+			else if(platform=='Android')
+			{
+			    window.plugins.DataBaseHelper.insert(Qry,function(result)
+			    {
+			    	ConfirmToRedirect();
+				
+			    },
+			    function()
+			    {
+				console.warn("Error calling plugin");
+			    });
+			} 
+         }else{
+        	 ConfirmToRedirect();
+         }
+         }
+		 function ConfirmToRedirect()
+         {
+             
+             if(chkpwdfor == 'gps')
+             {
+			// //Fow a week change UAE 12th May
+			// $(".ui-simpledialog-container #txtPassword").val("");
+			// $('#listCustomers').simpledialog('close');
+            	 checkcustomermsg();
+             }                
+             else
+                 ShowOdoMeter();
+         }
+         function ShowOdoMeter()
+         {
+             
+             if(chkpwdfor == 'scan')
+             {
+                 $(".ui-simpledialog-container #txtPassword").val("");                     
+                 $(document).undelegate("listCustomers","click");
+                 $('#listCustomers').simpledialog('close');  
+             }
+             console.log("promptodominput : " + promptodominput);
+             if(promptodominput == 2)
+             {                    
+            	 
+            	 PopupOdometer('btntest','../customer_opt/cust_opt.html',tblOdoMeter.innerHTML);
+                 $("#btntest").click();
+             }
+             else
+             {                                                         
+            	
+            	 checkcustomermsg();
+                 
+             }
+         }
+         function CheckPasswordForGps()
+         {      
+        	
+        	 if(gpsFlag==0)
+        		 { 
+        		   gpsFlag=1;
+        		   navigator.notification.alert('Physical Co ordinates Don\'t Match');
+        		 } 
+            // navigator.notification.alert('Physical Co ordinates Don\'t Match');
+             var platform= sessionStorage.getItem("platform");
+             var routecode=sessionStorage.getItem("RouteCode");
+             var CompanyCode=parseInt(sessionStorage.getItem("CompanyCode"));
+             var customeraid = '';
+             console.log(CompanyCode);
+             var customercode=sessionStorage.getItem("RouteCode").toString().slice(-2);
+             var d = new Date();
+             var unixtime = parseInt(d.getTime() / 1000);
+             var randomnumber= Math.floor(Math.random() * 9999999) + 100000;
+             console.log(CompanyCode);
+             var timestamp=unixtime.toString().slice(-7)+customercode;
+             var key =  Math.abs(eval(timestamp)-eval(randomnumber));
+             var str = key.toString();
+				
+             
+             var a=str.split(''), b = a.length;
+             for (var i=0; i<b; i++) {
+                 a.unshift(a.splice(1+i,1).shift())
+             }
+             a.shift();
+             var pass = a.join('');
+             $('#passkey').text(pass);
+             customeraid = sessionStorage.getItem("customercode");
+        	// alert('GOPSc' +gpsCustcode);
+        	 // $('#pwdcustcode').text('');
+            $('.test').text(gpsCustcode);
+         
+             console.log(key);
+             chkpwdfor = 'gps'  
+               // Fow a week change UAE 12th May
+             popuppasswordgenerator('listCustomers','routesequence_gpscheck',tblPassword.innerHTML,'ListCustomers.html');
+         }
+         function checkcustomermsg()
+         {
+             platform= sessionStorage.getItem("platform");
+             var selectquery = "select count(*) as cnt,messageline1,messageline2,messageline3,messageline4 from customermessages inner join customermaster on customermaster.messagekey1 = customermessages.messagekey or customermaster.messagekey2 = customermessages.messagekey where customercode="+ sessionStorage.getItem("customerid")+" and (messageline1 !='' or messageline2 !='' or messageline3 !='' or messageline4!='')"; 
+             console.log(selectquery);
+             if(platform=='iPad')
+             {
+                 
+                 Cordova.exec(function(result) 
+                 {                         
+                               if(result != '')
+                               {
+	                               if(eval(result[0][0]) > 0)
+	                               {
+		                               if(result[0][1] != '' || result[1][1] != '' || result[0][2] != '' || result[1][2] != '' || result[0][3] != '' || result[1][3] != '' || result[0][4] != '' || result[1][4] != '')
+		                            	   msgflag=true;
+		                               else   
+		                            	   msgflag=false;                                         
+		                               
+	                               }
+	                               else
+	                               {
+	                            	   msgflag = false;
+	                               }
+                               }
+                               else
+                               {
+                            	   msgflag = false;
+                               }
+                               insertroutesequence(msgflag);
+                              
+                   },
+                   function(error) {
+                   navigator.notification.alert("Error in binding message list : " + error);
+                   },
+                   "PluginClass", 
+                   "GetdataMethod", 
+                   [selectquery]);         
+             }
+             else if(platform=='Android')
+             {          
+             		window.plugins.DataBaseHelper.select(selectquery,function(result)
+	                {
+             			  var array ;
+		                  if (result.array != undefined)
+		                  {
+		                	  	array = $.map(result.array, function(item, index) {
+		                                
+		                                return [[item.cnt,item.messageline1, item.messageline2, item.messageline3, item.messageline4]];
+		                                });
+		                  }
+		                  result = array;
+		                  if(result != '')
+		                  {
+		                	  if(eval(result[0][0]) > 0)
+		                	  {
+		                		  if(result[0][1] != '' || result[1][1] != '' || result[0][2] != '' || result[1][2] != '' || result[0][3] != '' || result[1][3] != '' || result[0][4] != '' || result[1][4] != '')
+		                			  msgflag=true;
+		                		  else   
+		                			  msgflag=false;                                         
+	                  
+		                	  }
+		                	  else
+		                	  {
+		                		  msgflag = false;
+		                	  }
+		                  }
+		                  else
+		                  {
+		                	  msgflag = false;
+		                  }
+		                  CheckSequenceCustomer(msgflag);
+	                
+	                  },
+	                  function()
+	                  {
+	                  console.warn("Error calling plugin");
+	                  });
+             }  
+         }
+         function CheckSequenceCustomer()
+         {
+    	 	var customercode = sessionStorage.getItem("customerid");
+    	 	var d = new Date();
+            var n = d.getDay();
+        	var array = ['sunseq','monseq','tueseq','wedseq','thuseq','friseq','satseq'];
+            var callarray=['callrestrictiondays7','callrestrictiondays1','callrestrictiondays2','callrestrictiondays3','callrestrictiondays4','callrestrictiondays5','callrestrictiondays6'];
+            var days = array[n];
+            var calldays = callarray[n];
+        	var rp32weeknumber=sessionStorage.getItem("rp32weeknumber");
+            if(routesequenceplanflag==1){
+			    rp32weeknumber=9;
+			    sessionStorage.setItem("rp32weeknumber",rp32weeknumber);
+            }
+            if(platform=='iPad')
+            {
+            	// develop for ios
+            }else{
+            	 var seqQuery="select count(*) as count from routesequence where customercode="+customercode+" and rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1";
+            	 window.plugins.DataBaseHelper.select(seqQuery,function(result)
+                 {
+                	 	
+                         if(eval(result.array[0].count)>0)
+                         {
+                        	
+                        	 insertroutesequence(msgflag,1);
+                         }else
+                         {
+                        	 insertroutesequence(msgflag,0);
+                         }
+                        
+                 },
+                 function()
+                 {
+                	 console.warn("Error calling plugin");
+                 });
+            	
+            } 
+           
+        	 
+         }
+         
+         
+         function getRoutekey()
+         {
+        	 if (platform == 'Android') 
+        		 {
+ 		        window.plugins.DataBaseHelper.select("select max(routekey) routekey from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0", function (result) {
+		            if (result.array != undefined) {
+		                if (result.array[0].routekey > 0) {
+		                    sessionStorage.setItem("RouteKey", result.array[0].routekey);
+		                } else {
+		                	
+		                
+		                }
+		              
+		                
+		            }
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+        		 }
+         }
+      
+	    function insertroutesequence(msgflag,schedulflag)
+	    { 
+	    	
+	    	//alert("insertroutesequence");
+	    
+	    	var customercode = sessionStorage.getItem("customerid");
+            var seqweeknumber = sessionStorage.getItem("rp32weeknumber");
+            var callarray = ['callrestrictiondays7', 'callrestrictiondays1', 'callrestrictiondays2', 'callrestrictiondays3', 'callrestrictiondays4', 'callrestrictiondays5', 'callrestrictiondays6'];
+            var calldays = sessionStorage.getItem("calldays");
+            var index = $.inArray(calldays, callarray);
+            if (index == 0)
+                callindex = 7;
+            else
+                callindex = index;
+            var seqnumber = seqnumbers;
+            if(seqnumber==undefined){
+            	seqnumber=0;
+            }
+            var seduleflag = schedulflag;
+            var servicedflag = 1;
+            var scannedflag = 0;
+            var platform = sessionStorage.getItem("platform");
+	    	if (platform == 'iPad') {
+	    		Cordova.exec(function(result) 
+	    		{
+	    				if (result[0][0] == 0) 
+	    				{
+			                var customercode = sessionStorage.getItem("customerid");
+			                var seqweeknumber = sessionStorage.getItem("rp32weeknumber");
+			                var callarray = ['callrestrictiondays7', 'callrestrictiondays1', 'callrestrictiondays2', 'callrestrictiondays3', 'callrestrictiondays4', 'callrestrictiondays5', 'callrestrictiondays6'];
+			                var calldays = sessionStorage.getItem("calldays");
+			                var index = $.inArray(calldays, callarray);
+			                var currentDate=new Date();
+			                callindex = new Date().getDay() == 0 ? 7 : new Date().getDay();
+			                
+// 			                if (index == 0)
+// 			                    callindex = 7;
+// 			                else
+// 			                    callindex = index;
+			                var seqnumber = seqnumbers;
+			                var seduleflag = schedulflag;
+			                var servicedflag = 1;
+			                var scannedflag = 0;
+			                var platform = sessionStorage.getItem("platform");
+			                
+			                if(sessionStorage.getItem("RouteKey") == null)
+			                	{
+			                	  getRoutekey();
+			                	}
+			                var insertqry = "insert into routesequencecustomerstatus('routekey','seqweeknumber','seqweekday','routecode','customercode','sequencenumber','schelduledflag','servicedflag','scannedflag','issync') values(" + sessionStorage.getItem("RouteKey") + ",'" + seqweeknumber + "','" + callindex + "','" + sessionStorage.getItem("RouteCode") + "','" + customercode + "','" + seqnumber + "','" + seduleflag + "','" + servicedflag + "','" + scannedflag + "',0)";
+			                console.log(insertqry);
+			                
+				                Cordova.exec(function(result) {
+				                    if (msgflag == false)
+				                        window.location = '../customer_opt/cust_opt.html';
+				                    else {
+				                        localStorage.message = 'cust';
+				                        window.location = 'customer_messages.html';
+				                    }
+				                },
+                                function(error) {
+                                     navigator.notification.alert(error);
+                                },
+                                "PluginClass",
+                                "InsertUpdateMethod",
+                                [insertqry]);
+	    				}
+					    else
+					    {
+						if (msgflag == false)
+				                        window.location = '../customer_opt/cust_opt.html';
+				                    else {
+				                        localStorage.message = 'cust';
+				                        window.location = 'customer_messages.html';
+				                    }
+					    }
+	    		},
+	             function(error) {
+	                 alert(error);
+	             },
+	             "PluginClass",
+	             "GetdataMethod",
+	             ["select count(*) as cnt from routesequencecustomerstatus where routekey=" + sessionStorage.getItem("RouteKey") + " and customercode=" + sessionStorage.getItem("customerid")]);
+
+		    }
+		    else if (platform == 'Android') 
+		    {
+		    	var cc="select count(*) as cnt from routesequencecustomerstatus where seqweeknumber=" + seqweeknumber + " and seqweekday="+callindex +" and customercode=" + sessionStorage.getItem("customerid");
+		    	console.log(cc);
+		    //	alert(cc);
+		        window.plugins.DataBaseHelper.select("select count(*) as cnt from routesequencecustomerstatus where seqweeknumber=" + seqweeknumber + " and seqweekday="+callindex +" and customercode=" + sessionStorage.getItem("customerid"), function(result) 
+		        { 
+		        	//alert("ok");
+		        
+		            if (result.array[0].cnt == 0) {
+		                
+		                var insertqry = "insert into routesequencecustomerstatus('routekey','seqweeknumber','seqweekday','routecode','customercode','sequencenumber','schelduledflag','servicedflag','scannedflag','issync') values(" + sessionStorage.getItem("RouteKey") + ",'" + seqweeknumber + "','" + callindex + "','" + sessionStorage.getItem("RouteCode") + "','" + customercode + "','" + seqnumber + "','" + seduleflag + "','" + servicedflag + "','" + scannedflag + "',0)";
+		                console.log(insertqry);
+		               // alert(insertqry);
+		                window.plugins.DataBaseHelper.insert(insertqry, function(result) {
+		                    if (msgflag == false)
+		                    	{
+		                    	
+		                    	 //Query for taking log id for each customer visit.
+		                    	 var Qry = "select (ifnull(max(log_id),0) + 1) as logId from customervisitlog where routekey = " + sessionStorage.getItem("RouteKey");
+			       			     console.log("Qry"+Qry);
+			       			     if(platform=='Android')
+			       		           	{
+			       				      		window.plugins.DataBaseHelper.select(Qry,function(result)
+			       						{
+			       		                         		if (result.array[0].logId != undefined)
+			       					 		            {
+			       			                         		sessionStorage.setItem("logId", result.array[0].logId);
+			       		                                                 var logId=result.array[0].logId;
+			       		                                                 
+			       				                        }
+			       		                                else
+			       		                                {
+			       		                                     sessionStorage.setItem("logId", 1);
+			       		                                     var logId=1;
+			       			                            }
+			       		                         		//function to insert customerlog
+			       		                                insertcustomerlogdata(logId,msgflag);               
+			       						},
+			       		                function()
+			       						{
+			       					   	 console.warn("Error calling plugin");
+			       						});
+			       		           	}
+		                    	
+		                    	 
+		                    	}
+		                       
+		                    else {
+		                        
+		                    	//Query for taking log id for each customer visit.
+		                    	 var Qry = "select (ifnull(max(log_id),0) + 1) as logId from customervisitlog where routekey = " + sessionStorage.getItem("RouteKey");
+			       			     console.log("Qry"+Qry);
+			       			     if(platform=='Android')
+			       		           	{
+			       				      		window.plugins.DataBaseHelper.select(Qry,function(result)
+			       						{
+			       		                         		if (result.array[0].logId != undefined)
+			       					 		            {
+			       			                         		sessionStorage.setItem("logId", result.array[0].logId);
+			       		                                                 var logId=result.array[0].logId;
+			       		                                                 
+			       				                        }
+			       		                                else
+			       		                                {
+			       		                                     sessionStorage.setItem("logId", 1);
+			       		                                     var logId=1;
+			       			                            }
+			       		                         		//function to insert customerlog
+			       		                                insertcustomerlogdata(logId,msgflag);               
+			       						},
+			       		                function()
+			       						{
+			       					   	 console.warn("Error calling plugin");
+			       						});
+			       		           	}
+			       			     
+		                    }
+		                },
+	                   function() {
+	                       console.warn("Error calling plugin");
+	                   });
+		            }
+		            else
+		            {   //alert("else");
+		            
+		            // sujee added 17/07/2017
+		                   var updateqry="Update routesequencecustomerstatus set schelduledflag="+seduleflag+",servicedflag="+servicedflag+",issync=0 where customercode="+customercode;
+		                   console.log(updateqry);
+		                   //alert(updateqry);
+		                   window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+		                	   if (msgflag == false)
+		                		   {
+		                		   
+		                		     //Query for taking log id for each customer visit.
+			                    	 var Qry = "select (ifnull(max(log_id),0) + 1) as logId from customervisitlog where routekey = " + sessionStorage.getItem("RouteKey");
+				       			     console.log("Qry"+Qry);
+				       			     if(platform=='Android')
+				       		           	{
+				       				      		window.plugins.DataBaseHelper.select(Qry,function(result)
+				       						{
+				       		                         		if (result.array[0].logId != undefined)
+				       					 		            {
+				       			                         		sessionStorage.setItem("logId", result.array[0].logId);
+				       		                                                 var logId=result.array[0].logId;
+				       		                                                 
+				       				                        }
+				       		                                else
+				       		                                {
+				       		                                     sessionStorage.setItem("logId", 1);
+				       		                                     var logId=1;
+				       			                            }
+				       		                         		//function to insert customerlog
+				       		                                insertcustomerlogdata(logId,msgflag);               
+				       						},
+				       		                function()
+				       						{
+				       					   	 console.warn("Error calling plugin");
+				       						});
+				       		           	}
+		                		   
+		                		   
+		                		   }
+			                
+			                    else {
+			                        
+			                    	//Query for taking log id for each customer visit.
+			                    	 var Qry = "select (ifnull(max(log_id),0) + 1) as logId from customervisitlog where routekey = " + sessionStorage.getItem("RouteKey");
+				       			     console.log("Qry"+Qry);
+				       			     if(platform=='Android')
+				       		           	{
+				       				      		window.plugins.DataBaseHelper.select(Qry,function(result)
+				       						{
+				       		                         		if (result.array[0].logId != undefined)
+				       					 		            {
+				       			                         		sessionStorage.setItem("logId", result.array[0].logId);
+				       		                                                 var logId=result.array[0].logId;
+				       		                                                 
+				       				                        }
+				       		                                 else
+				       		                                {
+				       		                                     sessionStorage.setItem("logId", 1);
+				       		                                     var logId=1;
+				       			                            }
+				       		                         		//function to insert customerlog
+				       		                                insertcustomerlogdata(logId,msgflag);               
+				       						},
+				       		                function()
+				       						{
+				       					   	 console.warn("Error calling plugin");
+				       						});
+				       		           	}
+				       			     
+			                    }
+			                },
+		                   function() {
+		                       console.warn("Error calling plugin");
+		                   });
+		            		/* Sujee commented org line 
+		            		if (msgflag == false)
+		                        window.location = '../customer_opt/cust_opt.html';
+		                    else {
+		                        localStorage.message = 'cust';
+		                        window.location = 'customer_messages.html';
+		                    }*/
+		            }
+		        },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+		    }
+		}
+	    
+	    function insertcustomerlogdata(logId,msgflag)
+        {
+        	
+				//navigator.geolocation.getCurrentPosition(onsuccess, onError);
+           
+           $.mobile.showPageLoadingMsg(); 
+           var platform= sessionStorage.getItem("platform");
+           
+           
+           var mydate = new Date();			
+           var thehour = mydate.getHours();
+           var theminut = mydate.getMinutes();
+           var visittime = thehour+":"+theminut;
+
+		   const localDateTime = getLocalDateTimeString();
+           
+           sessionStorage.setItem("custvisittime", localDateTime);
+
+		   var qry1 = "select log_id from customervisitlog where customercode = '"+sessionStorage.getItem("customerid")+"' and log_enddate is null ";
+           
+           
+            
+         //   var qry = "insert into customeroperationscontrol ('visitkey','routekey','customercode','routecode','salesmancode','visitstartdate','visitstarttime','visitenddate','latitude','longitude','issync','odometerreading') values ('"+visitkey+"',(select max(routekey) routekey from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + "),'"+sessionStorage.getItem("customerid")+"','"+sessionStorage.getItem("RouteCode")+"','"+sessionStorage.getItem("SalesmanCode")+"',date(),'"+sessionStorage.getItem("starttime")+"',date(),'"+latitude+"','"+longitude+"',0,"+Odometer+") ";
+          // console.log(qry);
+          // alert(qry);
+            if(platform=='Android')
+           	{
+            	
+            	
+				 window.plugins.DataBaseHelper.select(qry1,function(result)
+			     {
+	      			if(result.array != undefined){
+				 		
+				 		//var qry2 = "select count(*) cnt from customervisitlog where log_starttime < datetime('now', 'localtime') and customercode != '"+sessionStorage.getItem("customerid")+"' ";
+				 		var qry2 = "select count(*) cnt from customervisitlog where log_endtime < datetime('now', 'localtime') and customercode != '"+sessionStorage.getItem("customerid")+"'  and log_starttime > (select log_starttime from customervisitlog where log_id = '"+result.array[0].log_id+"')";
+				 		console.log("qry2 "+qry2);
+				 		window.plugins.DataBaseHelper.select(qry2,function(result1)
+							    {
+					      			if(result1.array[0].cnt == 0){
+					      				
+					      				
+					      				//take current log_id;
+					      				sessionStorage.setItem("logId", result.array[0].log_id);
+					      				console.log("logId  "+ result.array[0].log_id);
+					      				
+					      				if (msgflag == false)
+		      		                	{		
+		      			      			     window.location = '../customer_opt/cust_opt.html';
+		      		                	}
+		      			      			else
+		      			      			{
+		      			      				localStorage.message = 'cust';
+		      		                        window.location = 'customer_messages.html';
+		      			      			}
+					      				
+					      			} else {
+					      				
+					      				var qry = "insert into customervisitlog ('log_id','routekey','routecode','salesmancode','customercode','log_startdate','log_starttime') values ('"+logId+"','"+sessionStorage.getItem("RouteKey")+"','"+sessionStorage.getItem("RouteCode")+"','"+sessionStorage.getItem("SalesmanCode")+"','"+sessionStorage.getItem("customerid")+"',date(),'"+localDateTime+"') ";
+					      				
+					      				window.plugins.DataBaseHelper.insert(qry,function(result2)
+					      					    {
+					      			      			if (msgflag == false)
+					      		                	{		
+					      			      			     window.location = '../customer_opt/cust_opt.html';
+					      		                	}
+					      			      			else
+					      			      			{
+					      			      				localStorage.message = 'cust';
+					      		                        window.location = 'customer_messages.html';
+					      			      			}
+					      		                                                   
+					      						},
+					      		                function()
+					      						{
+					      					   	 console.warn("Error calling plugin");
+					      						});
+					      			}
+				                                                   
+								},
+				                function()
+								{
+							   	 console.warn("Error calling plugin");
+								});
+	      			
+	      			
+	      			} else {
+	      				
+	      				var qry = "insert into customervisitlog ('log_id','routekey','routecode','salesmancode','customercode','log_startdate','log_starttime') values ('"+logId+"','"+sessionStorage.getItem("RouteKey")+"','"+sessionStorage.getItem("RouteCode")+"','"+sessionStorage.getItem("SalesmanCode")+"','"+sessionStorage.getItem("customerid")+"',date(),'"+localDateTime+"') ";
+	      				
+	      				window.plugins.DataBaseHelper.insert(qry,function(result3)
+	      					    {
+	      			      			if (msgflag == false)
+	      		                	{		
+	      			      			     window.location = '../customer_opt/cust_opt.html';
+	      		                	}
+	      			      			else
+	      			      			{
+	      			      				localStorage.message = 'cust';
+	      		                        window.location = 'customer_messages.html';
+	      			      			}
+	      		                                                   
+	      						},
+	      		                function()
+	      						{
+	      					   	 console.warn("Error calling plugin");
+	      						});
+	      			}
+                                                   
+				},
+                function()
+				{
+			   	console.warn("Error calling plugin");
+				});  
+	      		
+      	    }
+        }
+	    
+		function getLocalDateTimeString() {
+			const now = new Date();
+			const pad = n => String(n).padStart(2, '0');
+
+			const year = now.getFullYear();
+			const month = pad(now.getMonth() + 1);
+			const day = pad(now.getDate());
+			const hours = pad(now.getHours());
+			const minutes = pad(now.getMinutes());
+			const seconds = pad(now.getSeconds());
+
+			return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+		}
+
+	    function cancelPassword(index){ 
+	    	
+	    	gpsCustcode = '';
+	    	$('#pwdcustcode').text('');
+	    	
+	    	if(eval(index)==2){
+	    		$('#isSequence').attr("checked",true).checkboxradio("refresh");
+	    		$('#isALL').attr("checked",false).checkboxradio("refresh");
+	    	}
+	    	$(".ui-simpledialog-container #txtPassword").val("");                     
+            $(document).undelegate("listCustomers","click");
+            $('#listCustomers').simpledialog('close');  
+         
+            progressBars(0,60000);
+            $.mobile.hidePageLoadingMsg();
+  
+	    	
+	    }
+	    function CustomerSelection()
+        {
+        	var plateform=sessionStorage.getItem("platform");
+        	 var routecode=sessionStorage.getItem("RouteCode");
+        	
+        	if(plateform=='ipad')
+        	{
+        		 
+        		
+        	
+        	}else if(plateform=='Android')
+        	{
+        		window.plugins.DataBaseHelper.select("select enforcecallsequence from routemaster where routecode="+routecode,function(result)
+				{
+				   var acode=result.array[0].enforcecallsequence;
+				   
+                                    if(acode==1)
+                                    {
+                                   		 getCustomerSequence(true);		
+                                    }else
+                                    {
+                                   		 getCustomerSequence(false);		
+                                    }
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+        
+        	}
+        
+        
+        
+        }
+        
+        
+        function getCustomerSequence(isSingleCustomer)
+        {
+        	var Qry='';
+        	
+        	var rp32weeknumber=sessionStorage.getItem("rp32weeknumber");
+	        var days=sessionStorage.getItem("days");
+	        var calldays=sessionStorage.getItem("calldays");
+        	
+        	if(isSingleCustomer)
+        	{
+        		Qry = "select * from customermaster where customercode="+sessionStorage.getItem("customercode");
+            }else
+        	{
+        		
+            	// org qry sujee commented 08/10/2018 
+        //		Qry = "select DISTINCT c.customercode,customername,pobox,alternatecode,ancustomercode,customeraddress1,customeraddress2,customerphone,invoicepaymentterms,enablesigcapture,customeraddress3,"+days+",fixedlatitude,fixedlongitude,IFNULL(visitkey,0) as visitkey from customermaster c left join customeroperationscontrol co on co.customercode = c.customercode and routekey = "+sessionStorage.getItem("RouteKey")+" join routesequence as r on r.customercode=c.customercode where rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1 group by c.customercode order by "+days+" limit 25";
+            	// pass only required data needed to show on map 
+            	Qry = "select DISTINCT c.customercode,customername,alternatecode,ancustomercode,"+days+",fixedlatitude,fixedlongitude,IFNULL(visitkey,0) as visitkey from customermaster c left join customeroperationscontrol co on co.customercode = c.customercode and routekey = "+sessionStorage.getItem("RouteKey")+" join routesequence as r on r.customercode=c.customercode where rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1 group by c.customercode order by "+days+" ";
+        		
+        	}
+        	console.log(Qry);
+        	
+        	
+            if (platform == 'iPad') 
+            {
+                
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                    	
+                    	console.warn("Latlong Squence"+JSON.stringify(result));
+        
+                    	if(result.array.length==1 && (result.array[0].fixedlatitude<1 || result.array[0].fixedlongitude<1))
+                    	{
+                    		getLangText("Invalid Master Coordinates!");
+                    		
+                    	}else
+                    	{
+                    	
+                    		showMap(result);
+                    	}
+                        
+                    }
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        
+        function showMap(data)
+        {
+        	
+        	var platform=sessionStorage.getItem("platform");
+        	if(platform=='Android')
+        	{
+
+        		 window.plugins.MapHelper.getMap(data,function(data)
+        		 {
+        			
+        		 },
+        		 function()
+        		 {
+        				   	 
+        		 });
+        		
+        		
+        		
+        	}else
+        	{
+        		
+        		
+        	}
+        		
+        		
+        	
+        	
+        }
+	    
+		</script>
+		</div>
+
+	</body>
+</html>

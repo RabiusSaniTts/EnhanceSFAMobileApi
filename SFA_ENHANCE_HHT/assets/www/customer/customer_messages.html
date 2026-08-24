@@ -1,0 +1,308 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 1/2/2011
+ '  Description  : This page is used for read messages of perticular customer.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Messages</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../js/mobiscroll-1.5.3.js" type="text/javascript"></script>
+
+        <link href="../css/mobiscroll-1.5.3.css" rel="stylesheet"
+            type="text/css" />
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="customer_info.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Customer Messages</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm">
+                    <div class="topbox" style="width: 100%;">
+                        <div class="content-primary1">
+                            <label class="cus_lable heading" lang="en">
+                                No.</label>
+                            <span class="nobox headbox" id="custid"></span>
+                        </div>
+                        <div class="second-primary1">
+                            <label class="cus_lable heading" lang="en"
+                                id="custname">
+                                Customer Name</label>
+                        </div>
+                    </div>
+
+                    <div class="tblBox">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <td colspan="2" id="name" class="tblHeader"
+                                        style="padding: 3px;"
+                                        lang="en">Customer Messages</td>
+                                </tr>
+                            </thead>
+
+                        </table>
+                        <div id="contentWrapper" class="tblMessageNew">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                width="100%" id="tblContent">
+                                <tr>
+                                    <td style="width: 100%;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="customer_info.html" class="enableText" id="oklink"
+                        rel="external">
+                        <div class="MenuPositionSCLarge">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/yes.png"
+                                    alt="Settlement Complete" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform = '',data = null;
+	 $("#tblContent").click(function() { });
+        resizeOrientationWindow();
+        $(document).ready(function() {
+		resizeWindow();
+        $(".leftfooter").html(getCurrentDate());
+            document.addEventListener("deviceready", getMessageList, false); 
+	    
+                          var customeraid = sessionStorage.getItem("customercode");
+                          var customername = sessionStorage.getItem("customername");
+                          
+                          $('#custid').text(customeraid);
+                          $('#custname').text(customername);
+	   
+                          if(localStorage.message=='info')
+                          {
+                          var page = 'customer_info.html';
+                          var backlink ='customer_info.html';
+                          
+                          }
+                          else if(localStorage.message == 'userseq')
+                          {
+                            page = '../customer_opt/cust_opt.html';
+                            backlink = 'route_sequence_detail.html';
+                          }
+                          else
+                          {
+                          var page = '../customer_opt/cust_opt.html';
+                          var backlink ='customerselection.html';
+                          
+                          }
+                          $("#Back_inner").attr("href", backlink);
+                          $("#oklink").attr("href", page);
+                          
+            $("#tblContent tr:first th:first").addClass('tableBorderTopLeft tableBorderTopRight');
+            $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft tableBorderBottomRight');
+	    $("#tblContent tr").live('click', function() {
+            $(this).toggleClass('clicked');
+            $(this).siblings().removeClass('clicked');           
+        });
+            
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Customermessages'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $("#centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+	    
+        });
+        function BindData(result) {
+            var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+            data=result;
+            for (i = 0; i < data.length; i++) {
+                 for (j = 0; j < 4; j++) {
+                     if(data[i][j] !='')
+                     {
+                         var r = "<tr class='contentFont'>";
+                                                   
+                         var c = "<td class='leftAlign last'>" + data[i][j] + "</td>";
+                         r += c;
+                          r += "</tr>";
+                          $('#tblContent tbody').append(r);
+                     }
+                     
+                 }
+               
+               
+                $("#tblContent tr:odd").addClass('oddRow');
+                $("#tblContent tr:even").addClass('evenRow');
+            }
+            
+        }
+        //Function used for get message list
+        function getMessageList()
+        {      
+            
+             
+            platform= sessionStorage.getItem("platform");
+            
+            var selectquery = "select CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN messageline1 ELSE arbmessageline1 END As message1,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN messageline2 ELSE arbmessageline2 END As message2,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN messageline3 ELSE arbmessageline3 END As message3,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN messageline4 ELSE arbmessageline4 END As message4 from customermessages inner join customermaster on customermaster.messagekey1 = customermessages.messagekey or customermaster.messagekey2 = customermessages.messagekey where customercode="+ sessionStorage.getItem("customerid"); 
+            
+            console.log(selectquery);
+            
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {                         
+                              BindData(result);
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding message list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [selectquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(selectquery,function(result)
+                                                     {
+                                                     var array ;
+                                                     if (result.array != undefined)
+                                                     {
+                                                     array = $.map(result.array, function(item, index) {
+                                                                   
+                                                                   return [[item.message1, item.message2, item.message3, item.message4]];
+                                                                   });
+                                                     }
+                                                     BindData(array);
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }                
+        }
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,699 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 02/02/2012
+ '  Description  : This page is used for quota review.    
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quota Review</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="goals-quota.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Goal Review</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="tblBox tbltd goalheight">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 10%;" lang="en">
+                                    Code
+                                </th>
+                                <th style="width: 20%;" class="leftAlign"
+                                    lang="en">
+                                    Name
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Goal
+                                </th>
+                                <th style="width: 15%;" lang="en">
+                                    Actual
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Balance
+                                </th>
+                                <th style="width: 15%;" lang="en" class="last">
+                                    %
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper"
+                            class="tblMasterDetailReviewHeight">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 10%;">
+                                    </td>
+                                    <td style="width: 20%;" class="leftAlign">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 15%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 15%;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tblBox tbltd goalheight">
+                        <table id="tblDetailHeader" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 20%;" class="leftAlign"
+                                    lang="en">
+                                    &nbsp;
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Goal
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Actual
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Balance
+                                </th>
+                                <th style="width: 20%;" lang="en" class="last">
+                                    % Goal
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="detailContentWrapper"
+                            class="tblMasterDetailReviewHeight">
+                            <table id="tblDetail" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 20%;" class="leftAlign">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;" class="last">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="goals-quota.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Settlement Complete" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Done</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="info"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();        
+        
+        var Qty,data,dataRoute;
+        var platform,decimalplace,PackageCode,targetgoalsdays;
+        
+        $("#tblContent").click(function() { });
+        $("#tblDetail").click(function() { });
+        resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+            
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {                
+                platform = sessionStorage.getItem("platform");
+                decimalplace = sessionStorage.getItem("decimalplace");
+                /*var url = window.location.toString();
+                CustomerCode = url.substring(url.indexOf("=")+1);*/                                 
+                GetTargetGoalsDays();
+            }
+            
+            function GetTargetGoalsDays()
+            {                
+                var Qry = "SELECT salesmantargetdays FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)                            
+                        	targetgoalsdays = result[0][0];
+                    	getRecord();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{                    	
+                        	var array = $.map(result.array, function(item, index) {                           
+                                return [[item.salesmantargetdays]];
+                        	});
+                        	if(array.length > 0)
+	                            targetgoalsdays = array[0][0];
+                            getRecord();
+                        }                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getRecord()
+            {
+                //var OldQry = "SELECT ipm.packagecode Code,ipm.packagedescription Name,sum(rg.quotagoal2) Goal,sum(quotaachieve2) Sales,(sum(quotagoal2)-sum(quotaachieve2)) Balance,(quotaachieve2*100)/quotagoal2 Percentage FROM routegoal rg JOIN itempackagemaster ipm ON rg.packagenumber = ipm.packagecode WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND mmonth = strftime('%m',date()) GROUP BY ipm.packagecode having goal > 0";
+                var Qry = "SELECT ipm.packagecode Code,ipm.packagedescription Name,sum(rg.quantity) Goal,sum(achievequantity) Sales,(sum(quantity)-sum(achievequantity)) Balance,(achievequantity*100)/quantity Percentage FROM routegoal rg JOIN itempackagemaster ipm ON rg.packagenumber = ipm.packagecode WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND '" + getTabletDate() + "' between strftime('%Y-%m-%d',fromdate) and strftime('%Y-%m-%d',todate) GROUP BY ipm.packagecode having Goal > 0";
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        BindData(result)
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {  
+                    	if(result.array != undefined)
+                    	{                  	
+                        	var array = $.map(result.array, function(item, index) {                            
+	                            return [[item.Code,item.Name,item.Goal,item.Sales,item.Balance,item.Percentage]];
+                        	});                        
+                        	BindData(array);
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            //Bind data dynamically
+            function BindData(data) 
+            {
+                ClearTable('tblContent');
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;                
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {                        
+                        var temp = (j == 1) ? 'class = leftAlign' : 'class = rightAlign';
+                        
+                        if(j==5)
+                        {
+                            if(data[i][j] == "")
+                                data[i][j] = 0;
+                        }
+                        
+                        if (j == CellCount - 1)
+                        {
+                            temp += ' last';
+                            data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+                        }
+                        else if(j != 1)
+                            data[i][j] = parseInt(data[i][j]);                            
+                        
+                        //alert("i:" + i + " j:" + j + " data:" + data[i][j])
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tblContent tbody').append(r);
+                }                      
+                
+                $("#tblContent tr").live('click', function() {
+                    var i = $(this).index();                    
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    PackageCode = data[i-1][0];                    
+                    //TodaysGoalQtyDetail();
+                    GoalQtyDetail();
+                });
+                
+                $("#tblContent tr:eq(1)").trigger('click');
+                $("#tblContent tr:odd").addClass('oddRow');
+                $("#tblContent tr:even").addClass('evenRow');
+            }
+            
+            function GoalQtyDetail()
+            {
+                var Qry = "SELECT 'Weekly' AS label,quantity AS GoalQty,achievequantity AS ActualQty,(quantity - achievequantity) AS Balance,((achievequantity * 100)/quantity) AS Percentage FROM routegoal WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND  packagenumber=" + PackageCode + " AND '" + getTabletDate() + "' between strftime('%Y-%m-%d',fromdate) and strftime('%Y-%m-%d',todate)";
+                console.log(Qry);
+                var tmpdata;
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {
+                        	if(targetgoalsdays == 2) //1-WEEKLY,2-MONTHLY
+                        		result[0][0] = 'Monthly';                            
+                            if(dataRoute != undefined)
+                            {                                
+                              //  tmpdata = dataRoute.concat(result);
+                                dataRoute = result;
+                            }
+                            else
+                                dataRoute = result;
+                               // $("#tblDetail tr").remove();
+                            BindGoalQtyData();
+                        }                        
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{
+                        	var array = $.map(result.array, function(item, index) {                           
+                                return [[item.label,item.GoalQty,item.ActualQty,item.Balance,item.Percentage]];
+                        	});
+                        	if(array.length > 0)
+                        	{
+                        		if(targetgoalsdays == 2) //1-WEEKLY,2-MONTHLY
+                        			array[0][0] = 'Monthly';
+	                            if(dataRoute != undefined)
+                            	{
+	                               // tmpdata = dataRoute.concat(array);
+                                	dataRoute = array;
+                            	}
+                            	else
+	                                dataRoute = array;
+	                               // $("#tblDetail tr").remove();
+                                BindGoalQtyData();
+                        	}
+                        }                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function TodaysGoalQtyDetail()
+            {
+                var Qry = "SELECT 'Today' AS label,todaysgoal AS GoalQty,todaysachieve AS ActualQty,(todaysgoal - todaysachieve) AS Balance,((todaysachieve * 100)/todaysgoal) AS Percentage FROM routegoal WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND  packagenumber=" + PackageCode + " AND mmonth = strftime('%m',date())";
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                            dataRoute = result;
+                        WeeklyGoalQtyDetail();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) { 
+                    	if(result.array != undefined)
+                    	{                   	
+                        	var array = $.map(result.array, function(item, index) {                           
+                                return [[item.label,item.GoalQty,item.ActualQty,item.Balance,item.Percentage]];
+                        	});
+                        	if(array.length > 0)
+	                            dataRoute = array;
+	                    }
+                        WeeklyGoalQtyDetail();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function WeeklyGoalQtyDetail()
+            {
+                var Qry = "SELECT 'Weekly' AS label,quotagoal1 AS GoalQty,quotaachieve1 AS ActualQty,(quotagoal1 - quotaachieve1) AS Balance,((quotaachieve1 * 100)/quotagoal1) AS Percentage FROM routegoal WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND  packagenumber=" + PackageCode + " AND mmonth = strftime('%m',date())";
+                console.log(Qry);
+                var tmpdata;
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {                            
+                            if(dataRoute != undefined)
+                            {                                
+                                tmpdata = dataRoute.concat(result);
+                                dataRoute = tmpdata;
+                            }
+                            else
+                                dataRoute = result;
+                        }
+                        MonthlyGoalQtyDetail();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{
+                        	var array = $.map(result.array, function(item, index) {                           
+                                return [[item.label,item.GoalQty,item.ActualQty,item.Balance,item.Percentage]];
+                        	});
+                        	if(array.length > 0)
+                        	{
+	                            if(dataRoute != undefined)
+                            	{
+	                                tmpdata = dataRoute.concat(array);
+                                	dataRoute = tmpdata;
+                            	}
+                            	else
+	                                dataRoute = array;
+                        	}
+                        }
+                        MonthlyGoalQtyDetail();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function MonthlyGoalQtyDetail()
+            {
+                var Qry = "SELECT 'Monthly' AS label,quotagoal2 AS GoalQty,quotaachieve2 AS ActualQty,(quotagoal2 - quotaachieve2) AS Balance,((quotaachieve2 * 100)/quotagoal2) AS Percentage FROM routegoal WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND  packagenumber=" + PackageCode + " AND mmonth = strftime('%m',date())";
+                console.log(Qry);
+                var tmpdata;
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {                            
+                            if(dataRoute != undefined)
+                            {                                
+                                tmpdata = dataRoute.concat(result);
+                                dataRoute = tmpdata;
+                            }
+                            else
+                                dataRoute = result;
+                        }
+                        YearlyGoalQtyDetail();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{
+                        	var array = $.map(result.array, function(item, index) {                           
+                                return [[item.label,item.GoalQty,item.ActualQty,item.Balance,item.Percentage]];
+                        	});
+                        	if(array.length > 0)
+                        	{
+	                            if(dataRoute != undefined)
+                            	{
+	                                tmpdata = dataRoute.concat(array);
+                                	dataRoute = tmpdata;
+                            	}
+                            	else
+	                                dataRoute = array;
+                        	}
+                        }
+                        YearlyGoalQtyDetail();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function YearlyGoalQtyDetail()
+            {
+                var Qry = "SELECT 'Yearly' AS label,quotagoal3 AS GoalQty,quotaachieve3 AS ActualQty,(quotagoal3 - quotaachieve3) AS Balance,((quotaachieve3 * 100)/quotagoal3) AS Percentage FROM routegoal WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND  packagenumber=" + PackageCode + " AND mmonth = strftime('%m',date())";
+                console.log(Qry);
+                var tmpdata;
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {
+                            dataRoute = result;
+                            //if(dataRoute != undefined)
+                            //{                                
+                            //    tmpdata = dataRoute.concat(result);
+                            //    dataRoute = tmpdata;
+                            //}
+                            //else
+                            //    dataRoute = result;
+                        }  
+                        BindGoalQtyData();                      
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{
+                        	var array = $.map(result.array, function(item, index) {                           
+                                return [[item.label,item.GoalQty,item.ActualQty,item.Balance,item.Percentage]];
+                        	});
+                                
+                        	if(array.length > 0)
+                        	{
+                                    dataRoute = array;
+//	                            if(dataRoute != undefined)
+//                            	{
+//	                                tmpdata = dataRoute.concat(array);
+//                                	dataRoute = tmpdata;
+//                            	}
+//                            	else
+//	                                dataRoute = array;
+                                }
+                        }
+                        BindGoalQtyData();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            //Bind data dynamically
+            function BindGoalQtyData() 
+            {    
+              //  ClearTable('tblDetail');
+                $("#tblDetail tr:gt(0)").remove();
+                
+               
+                var CellCount = $("#tblDetailHeader tr:eq(0) th").length;                
+                for (i = 0; i < dataRoute.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'class = leftAlign' : 'class = rightAlign';
+                        
+                        if(j==4)
+                        {
+                            if(dataRoute[i][j] == "")
+                                dataRoute[i][j] = 0;
+                        }
+                        
+                        if (j == CellCount - 1)
+                        {
+                            temp += ' last';
+                            dataRoute[i][j] = eval(dataRoute[i][j]).toFixed(decimalplace);
+                        }
+                        else if(j != 0)
+                            dataRoute[i][j] = parseInt(dataRoute[i][j]);
+                            
+                        //alert("i:" + i + " j:" + j + " data:" + dataRoute[i][j]);
+                        var c = "<td " + temp + ">" + dataRoute[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tblDetail tbody').append(r);
+                }                        
+                
+                $("#tblDetail tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                });
+                
+                $("#tblDetail tr:odd").addClass('oddRow');
+                $("#tblDetail tr:even").addClass('evenRow');
+                $("#tblDetail tr:eq(1)").trigger('click');
+            }
+            
+            //Clear table 
+            function ClearTable(tbl) {
+                $("#" + tbl + " tr:gt(0)").remove();
+                //$("#tblDetail tr").remove();
+                
+                //$("#tblDetail tr").die('click');
+            }
+            
+            
+            /*$("#tblDetail tr:eq(1)").trigger('click');            
+            $("#tblDetail tr:odd").addClass('oddRow');
+            $("#tblDetail tr:even").addClass('evenRow');*/
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('QuotaReview' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".boxContent").attr("dir", "rtl");
+
+                    //Set header align                
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".boxContent").attr("dir", "ltr");
+
+                //Set header align                
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }            
+        });
+    </script>
+
+    </body>
+</html>

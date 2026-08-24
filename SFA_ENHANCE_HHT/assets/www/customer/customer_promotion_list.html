@@ -1,0 +1,580 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 2/2/2011
+ '  Description  : This page is used for promotion list
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>HOME</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+			rel="stylesheet" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 699px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css" />
+
+		<link rel="stylesheet" href="../bs/css/bootstrap.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap-grid.css" />
+		<link rel="stylesheet" href="../icons/font/bootstrap-icons.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../bs/js/bootstrap.min.js"></script>
+
+		<script>
+	if (navigator.userAgent.toLowerCase().match(/android/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+		document
+				.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+	} else if (navigator.userAgent.toLowerCase().match(/iphone/)
+			|| navigator.userAgent.toLowerCase().match(/ipad/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+	}
+</script>
+
+		<script type="text/javascript" src="../js/jquery.json-2.3.min.js"></script>
+
+		<script type="text/javascript"
+			src="../js/jquery.mobile.datebox.min.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+		<link rel="stylesheet" type="text/css"
+			href="../css/jquery.mobile.simpledialog.css" />
+
+		<script type="text/javascript"
+			src="../js/jquery.mobile.simpledialog.js"></script>
+		<script type="text/javascript" src="../js/WizzitIndent.js"></script>
+	</head>
+
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="index.html"   id="Back_inner">test</a>-->
+				<a id="Back_inner" href="../customer_opt/salesinvoice_option.html"
+					rel="external" lang="en" onclick="localStorage.promooveride=0">Back</a>
+				<h1 lang="en">Customer Promotion</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="border border-info rounded"
+					style="min-height: 87%; max-height: 87%; overflow-x: hidden; overflow-y: auto; !important">
+					<div class="com_div comm captionLabel">
+						<div class="card card-info">
+							<div style="width: 30%; display: none;" id="promodiv">
+								<input id="btnSubmit1" type="button" value="Override"
+									onclick="PopupPasswordEntry(this.id,'customer_promotion_list.html',tblPassword.innerHTML,'customer_promotion_list.html');"
+									lang="en" />
+							</div>
+							<div class="tblBoxPromo tbltd" id="contentWrapper">
+							<div class="tblHeader1">
+								<table id="tblHeaderContent" class="table table-bordered"
+									width="100%" cellpadding="10" cellspacing="0">
+									<tr>
+										<th width="15%" class="leftAlign" lang="en">Item</th>
+										<th width="15%" class="leftAlign" lang="en">Amt</th>
+										<th width="15%" class="leftAlign" lang="en">Plan</th>
+										<th width="30%" lang="en" class="leftAlign last">Plan
+											Description</th>
+										<th width="15%" class="leftAlign" lang="en">Promo Amt</th>
+										<th width="10%" class="leftAlign" lang="en">Select</th>
+									</tr>
+								</table>
+							</div>
+							<div class="promotionheight_list1">
+								<table border="0" width="100%" cellpadding="0" cellspacing="0"
+									id="tbl1" data-role="none">
+									<tbody>
+										<tr style="height: 0px;">
+											<td width="20%" style="height: 0px;"></td>
+											<td width="20%" style="height: 0px;"></td>
+											<td width="40%" style="height: 0px;"></td>
+											<td width="20%" style="height: 0px;"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						</div>
+						<div class="card">
+							<div class="=row">
+								<div class="col-lg-4">Free Promotion</div>
+
+							</div>
+						</div>
+						<div class="card card-info">
+							<div class="tblBox tbltd" id="contentWrapper">
+								<div class="tblHeaderFree">
+									<table id="tblHeaderFreeContent" class="table table-bordered"
+										width="100%" cellpadding="10" cellspacing="0">
+										<tr>
+											<th width="10%" class="leftAlign" lang="en">Plan</th>
+											<th width="20%" class="leftAlign" lang="en">Code</th>
+											<th width="30%" class="leftAlign" lang="en">Item</th>
+											<th width="20%" class="leftAlign" lang="en">Select</th>
+											<th width="20%" class="leftAlign" lang="en" style="display: none;">Aval Qty</th>
+										</tr>
+									</table>
+								</div>
+								<div class="promotionheight_list2">
+									<table border="0" width="100%" cellpadding="0" cellspacing="0"
+										id="tbl2" data-role="none">
+										<tbody>
+											<tr style="height: 0px;">
+												<td width="10%" style="height: 0px;"></td>
+												<td width="20%" style="height: 0px;"></td>
+												<td width="30%" style="height: 0px;"></td>
+												<td width="20%" style="height: 0px;"></td>
+												<td width="20%" style="height: 0px; display: none;"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+				<div class="bottomMenuNew border border-info rounded"
+					style="width: 100%; text-align: center; min-height: 13%; max-height: 13% !important">
+					<div class="row">
+						<div class="col-4" style="text-align: center; margin-top: 5px;">
+							<a id="linkDetail" href="#" onclick="checkRecordCount(this.id)"
+								class="clearButton" style="text-decoration: none" rel="external">
+								<i class="bi bi-x-diamond-fill" id="ContIcon"
+									style='font-size: 72px; color: green; text-align: center;'></i>
+								<br>Details
+							</a>
+						</div>
+						<div class="col-4" style="text-align: center; margin-top: 5px;">
+							<a id="linkContinue" href onclick="updatePromo()"
+								rel="external" style="text-decoration: none" data-role="none">
+								<i class='bi bi-check-square-fill' id="ContIcon"
+									style='font-size: 72px; color: green; text-align: center;'></i>
+								<br>Continue
+							</a>
+						</div>
+						<div class="col-4" style="text-align: center; margin-top: 5px;">
+							<a id="exit" href="../customer_opt/salesinvoice_option.html"
+								rel="external" style="text-decoration: none" data-role="none">
+								<i class='bi bi-x-square-fill' id="ContIcon"
+									style='font-size: 72px; color: red; text-align: center;'></i>
+								<br>Cancel
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script>
+			var platform = '';
+			var promotionKey = 0, enablePromotion = 0, promotionKeyplan = 0;
+			window.lang = new jquery_lang_js();
+			resizeOrientationWindow();
+			$(document).ready(function() {
+				resizeWindow();
+				document.addEventListener("deviceready", fillData, false);
+
+			});
+			const freeList = [ [] ];
+			/*function fillData() {
+				//alert('Loading');
+				var totpromoAmt = 0;
+				var chkSts = '';
+				var j = 0;
+				var Qry = " select p.rowid slno,CASE WHEN P.ITEMCODE =0 THEN 'ALL' ELSE i.alternatecode END icode, salesamount,promotionamount,promotiontypecode, promotionamount||' ' || CASE WHEN promotiontypecode =2 THEN '% ON ITEM' WHEN promotiontypecode =1 THEN '$ ON ITEM' WHEN promotiontypecode =6 THEN '% ON INV' WHEN promotiontypecode = 5 THEN '$ ON INV' WHEN promotiontypecode=8 THEN '% ON INV' WHEN promotiontypecode=7 THEN 'FREE' END PROMOTYPE, promotionamount, promotionplannumber, oldpromotionamount, exclusionoption enf from PROMOTIONDETAIL_TEMP p LEFT join itemmaster i on i.actualitemcode = p.itemcode WHERE VISITKEY = "
+						+ sessionStorage.getItem('VisitKey') + "  ";
+				console.log(Qry);
+
+				window.plugins.DataBaseHelper
+						.select(
+								Qry,
+								function(result) {
+
+									if (result.array != undefined) {
+										var result = $
+												.map(
+														result.array,
+														function(item, index) {
+
+															return [ [
+																	item.icode,
+																	item.salesamount,
+																	item.promotionamount,
+																	item.promotiontypecode,
+																	item.promotionplannumber,
+																	item.PROMOTYPE,
+																	item.oldpromotionamount,
+																	item.slno,
+																	item.enf ] ];
+														});
+
+										for (i = 0; i < result.length; i++) {
+
+											if (result[i][8] == 1) {
+												chkSts = 'checked disabled';
+											} else {
+												chkSts = 'checked';
+											}
+											//Make list of Free promotions
+
+											if (result[i][3] == 7) {
+												freeList[j][0] = result[i][4];
+												freeList[j][1] = result[i][2];
+												freeList[j][2] = 0;
+												j++;
+											}
+
+											var r = "<tr class='contentFontTable'>";
+											var c = "<td width='20%'>"
+													+ result[i][4]
+													+ "</td><td width='30%'>"
+													+ result[i][5]
+													+ "</td><td width='20%'>"
+													+ result[i][1]
+													+ "</td><td width='20%'>"
+													+ result[i][6]
+													+ "</td><td width='10%'><input type='checkbox' "+chkSts+" id="+result[i][7]+" name='selectedPromo' value="+result[i][7]+">"
+													+ "</td>";
+											r += c;
+											r += "</tr>";
+											totpromoAmt += parseFloat(result[i][6]);
+											$('#tblHeaderContent tbody')
+													.append(r);
+
+										}
+										var r = "<tr class='contentFontTable'>";
+										var c = "<td colspan= 3 >Total Promo Amt"
+												+ "</td><td width='20%'>"
+												+ totpromoAmt.toFixed(3) + "</td><td>"
+												+ "</td>";
+										r += c;
+										r += "</tr>";
+										$('#tblHeaderContent tbody').append(r);
+										//document.getElementById("totPromoAmt").value = totpromoAmt;
+										fillFreeList();
+									}
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+
+			}*/
+
+			function fillData() {
+				var totpromoAmt = 0;
+				var chkSts = '';
+				var j = 0;
+				var Qry = " select p.rowid slno,CASE WHEN P.ITEMCODE =0 THEN 'ALL' ELSE i.actualitemcode END icode, salesamount,promotionamount,promotiontypecode, promotionamount||' ' || CASE WHEN promotiontypecode =2 THEN '% ON ITEM' WHEN promotiontypecode =1 THEN '$ ON ITEM' WHEN promotiontypecode =6 THEN '% ON INV' WHEN promotiontypecode = 5 THEN '$ ON INV' WHEN promotiontypecode=8 THEN '% ON INV' WHEN promotiontypecode=7 THEN 'FREE' END PROMOTYPE, promotionamount, promotionplannumber, oldpromotionamount, exclusionoption enf from PROMOTIONDETAIL_TEMP p LEFT join itemmaster i on i.actualitemcode = p.itemcode WHERE VISITKEY = "
+						+ sessionStorage.getItem('VisitKey') + "  ";
+				console.log(Qry);
+
+				window.plugins.DataBaseHelper
+						.select(
+								Qry,
+								function(result) {
+
+									if (result.array != undefined) {
+										var result = $
+												.map(
+														result.array,
+														function(item, index) {
+
+															return [ [
+																	item.icode,
+																	item.salesamount,
+																	item.promotionamount,
+																	item.promotiontypecode,
+																	item.promotionplannumber,
+																	item.PROMOTYPE,
+																	item.oldpromotionamount,
+																	item.slno,
+																	item.enf ] ];
+														});
+
+										for (i = 0; i < result.length; i++) {
+
+											if (result[i][8] == 1) {
+												chkSts = 'checked disabled';
+											} else {
+												chkSts = 'checked';
+											}
+											//Make list of Free promotions
+
+											if (result[i][3] == 7) {
+												freeList[j][0] = result[i][4];
+												freeList[j][1] = result[i][2];
+												freeList[j][2] = 0;
+												j++;
+											}
+
+											var r = "<tr class='contentFontTable'>";
+											var c = "<td width='15%'>"
+													+ result[i][0]
+													+ "</td><td width='15%'>"
+													+ result[i][1]
+													+ "</td><td width='15%'>"
+													+ result[i][4]
+													+ "</td><td width='30%'>"
+													+ result[i][5]
+													+ "</td><td width='15%'>"
+													+ result[i][6]
+													+ "</td><td width='10%'><input type='checkbox' "+chkSts+" id="+result[i][7]+" name='selectedPromo' value="+result[i][7]+">"
+													+ "</td>";
+											r += c;
+											r += "</tr>";
+											totpromoAmt += parseFloat(result[i][6]);
+											$('#tblHeaderContent tbody')
+													.append(r);
+
+										}
+										var r = "<tr class='contentFontTable'>";
+										var c = "<td width='15%'>"
+												+ "</td><td width='15%'>"
+												+ "</td><td width='15%'>"
+												+ "</td><td width='30%'>Total Promo Amt"
+												+ "</td><td width='15%'>"
+												+ totpromoAmt + "</td><td>"
+												+ "</td>";
+										r += c;
+										r += "</tr>";
+										$('#tblHeaderContent tbody').append(r);
+										//document.getElementById("totPromoAmt").value = totpromoAmt;
+										fillFreeList();
+									}
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+
+			}
+
+			/*function fillFreeList() {
+
+				//alert(freeList.length);
+				//alert(freeList[0][1]);
+				//Free Promo Data
+				Qry = " select t.promotionplannumber, im.alternatecode, im.itemdescription, t.promotionamount from PROMOTIONDETAIL_TEMP t inner join promoplandetail pd on t.promotionplannumber = pd.plannumber inner join productgroupdetail pgd on pd.assignmentgroup = pgd.groupnumber inner join itemmaster im on im.actualitemcode = pgd.itemcode where t.promotiontypecode = 7 and visitkey = "
+						+ sessionStorage.getItem('VisitKey')
+						+ " order by t.promotionplannumber, im.alternatecode ";
+				console.log("FreeQry " + Qry);
+
+				window.plugins.DataBaseHelper
+						.select(
+								Qry,
+								function(result) {
+
+									if (result.array != undefined) {
+										var result = $
+												.map(
+														result.array,
+														function(item, index) {
+
+															return [ [
+																	item.promotionplannumber,
+																	item.alternatecode,
+																	item.itemdescription ] ];
+														});
+
+										for (i = 0; i < result.length; i++) {
+
+											var r = "<tr class='contentFontTable'>";
+											var c = "<td width='20%'>"
+													+ result[i][0]
+													+ "</td><td width='20%'>"
+													+ result[i][1]
+													+ "</td><td width='40%'>"
+													+ result[i][2]
+													+ "</td><td width='20%'><input type='text' id=qty"+i+" name="+result[i][0]+" style='width:120px' >"
+													+ "</td>";
+											r += c;
+											r += "</tr>";
+
+											$('#tblHeaderFreeContent tbody')
+													.append(r);
+										}
+
+									}
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}*/
+
+			function fillFreeList() {
+
+				//alert(freeList.length);
+				//alert(freeList[0][1]);
+				//Free Promo Data
+				Qry = " select t.promotionplannumber, im.alternatecode, im.itemdescription, t.promotionamount, "
+				    + " ifnull(isd.loadqty,0)+ifnull(isd.loadadjustqty,0)+ifnull(isd.beginstockqty,0)+ifnull(isd.loadaddqty,0)-ifnull(isd.loadcutqty,0)-ifnull(isd.saleqty,0)+ifnull(isd.returnqty,0)+ifnull(isd.returnfreeqty,0)-ifnull(isd.freesampleqty,0) as availqty "
+				    + " from PROMOTIONDETAIL_TEMP t inner join promoplandetail pd on t.promotionplannumber = pd.plannumber inner join productgroupdetail pgd on pd.assignmentgroup = pgd.groupnumber inner join itemmaster im on im.actualitemcode = pgd.itemcode "
+				    + " inner join inventorysummarydetail isd on isd.itemcode = pgd.itemcode where t.promotiontypecode = 7 and visitkey = "
+					+ sessionStorage.getItem('VisitKey')
+					+ " order by t.promotionplannumber, im.alternatecode ";
+				console.log("FreeQry " + Qry);
+
+				window.plugins.DataBaseHelper
+						.select(
+								Qry,
+								function(result) {
+
+									if (result.array != undefined) {
+										var result = $
+												.map(
+														result.array,
+														function(item, index) {
+
+															return [ [
+																	item.promotionplannumber,
+																	item.alternatecode,
+																	item.itemdescription,
+																	item.availqty] ];
+														});
+
+										for (i = 0; i < result.length; i++) {
+
+											var r = "<tr class='contentFontTable'>";
+											var c = "<td width='20%'>"
+													+ result[i][0]
+													+ "</td><td width='10%'>"
+													+ result[i][1]
+													+ "</td><td width='30%'>"
+													+ result[i][2]
+													+ "</td><td width='20%'><input type='text' id=qty"+i+" name="+result[i][0]+" style='width:120px' >"
+													+ "</td><td width='20% ' style='display: none;'>"
+													+ result[i][3]
+													+ "</td>";
+											r += c;
+											r += "</tr>";
+
+											$('#tblHeaderFreeContent tbody')
+													.append(r);
+										}
+
+									}
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+			}
+
+			function updatePromo() {
+				var promoList = '';
+				var checkboxes = document.getElementsByName('selectedPromo');
+				var checkboxesChecked = [];
+				var jsonObj = [];
+				// loop over them all
+				const tableHead = document.getElementById('tblHeaderContent');
+				for (var i = 0, j = 0; i < checkboxes.length; i++) {
+					// And stick the checked ones onto an array...
+					if (checkboxes[i].checked) {
+						//checkboxesChecked.push(checkboxes[i]);
+						checkboxesChecked[j] = tableHead.rows[i + 1].cells[2].textContent;
+						//alert(j);
+						//alert(checkboxesChecked[j]);
+						promoList += checkboxes[i].value + ',';
+						j++;
+					}
+				}
+				for (let k = 0; k < freeList.length; k++) {
+					freeList[k][2] = 0;
+				}
+				promoList = promoList.substring(0, promoList.length - 1);
+
+				const tableMath = document.getElementById('tblHeaderFreeContent');
+
+				for (let line = 1, qtyline = 0; line < tableMath.rows.length; line++, qtyline++) {
+					var qtyid = "qty" + qtyline;
+					var qty = document.getElementById(qtyid).value;
+					if (qty != "") {
+						var p = tableMath.rows[line].cells[0].textContent;
+						var q = document.getElementById(qtyid).value;
+						for (let k = 0; k < freeList.length; k++) {
+							if (freeList[k][0] == p
+									&& checkboxesChecked.includes(p)) {
+								var a = +q;
+								var b = +freeList[k][2]
+								freeList[k][2] = a + b;
+							}
+						}
+					}
+				}
+				var chk = 0;
+				for (let k = 0; k < freeList.length; k++) {
+					//alert("k-" + freeList[k][0]);
+					if (checkboxesChecked.includes(freeList[k][0])) {
+						//alert("Max-" + freeList[k][1]);
+						//alert("Act-" + freeList[k][2]);
+						if (freeList[k][1] != freeList[k][2]) {
+							chk++;
+						}
+					} else {
+						//alert('Not in List');
+					}
+				}
+				//alert("Valid- " + chk);
+
+				if (chk == 0) {
+					$.mobile.showPageLoadingMsg();
+					$('.ui-loader h1').text("Updating Invoice");
+					var visitkey = sessionStorage.getItem("VisitKey");
+
+					for (let line = 1, qtyline = 0; line < tableMath.rows.length; line++, qtyline++) 
+					{
+						var qtyid = "qty" + qtyline;
+						var qty = document.getElementById(qtyid).value;
+						if (qty != "")
+						{
+							var p = tableMath.rows[line].cells[1].textContent; //item code
+							var q = document.getElementById(qtyid).value; // qty
+							item = {}
+					        item ["iCode"] = p;
+					        item ["iQty"] = q;
+
+					        jsonObj.push(item);
+						}
+					}
+					
+					plugins.WizzitIndent.pay(visitkey, promoList, jsonObj);
+					setTimeout(function() {
+						window.location = "signature.html";
+					}, 4000);
+				} else {
+					alert('Qty Not matching for Free Promotion');
+				}
+
+			}
+		</script>
+
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SFA>
+  <login>
+    <UserName>User Name</UserName>
+    <Password>Password</Password>
+    <LogIn>Log In</LogIn>
+    <Remember>Remember Me</Remember>
+    <LostPwd>Lost Your Passwrod ?</LostPwd>
+  </login>
+  <home>
+        <StartOfDay>Start Of Day</StartOfDay>
+        <Inventory>Inventory</Inventory>
+        <CustomerOpt>Customre Opt.</CustomerOpt>
+        <Settlement>Settlement</Settlement>
+        <ExpenseEntry>Expense Entry</ExpenseEntry>
+        <Information>Information</Information>
+        <Setup>Setup</Setup>
+    </home>
+    <customerSelection>
+        <PageTitle>Customer Selection</PageTitle>
+        <ContnetHead1>Customer Info</ContnetHead1>
+        <ContnetHead2>Customer Name</ContnetHead2>
+        <MenuInfo>Info</MenuInfo>
+        <MenuAdd>Add</MenuAdd>
+        <MenuNoSale>No Sale</MenuNoSale>
+        <MenuScanning>Scanning</MenuScanning>
+        <MenuEdit>Edit</MenuEdit>
+        <MenuSelect>Select</MenuSelect>
+        <MenuExit>Exit</MenuExit>
+        <Option1>Sort by Customer Number</Option1>
+        <Option2>Sort by Customer Name</Option2>
+    </customerSelection>
+    <CustomerOption>
+        <PageTitle>Customer Options</PageTitle>
+        <CustomerName>Customer Name</CustomerName>
+        <CustomerNo>Customer No.</CustomerNo>
+        <ReviewVisits>Review Visits</ReviewVisits>
+        <Inventory>Inventory</Inventory>
+        <Orders>Orders</Orders>
+        <Invoice>Invoice</Invoice>
+        <ARCollection>A/R Collection</ARCollection>
+        <Information>Information</Information>
+        <Merchandising>Merchandising</Merchandising>
+        <Continue>Continue</Continue>
+    </CustomerOption>
+    <common>
+        <Footer1>December 2011</Footer1>
+        <Footer2>Miranah Technologies Systems</Footer2>
+    </common>
+</SFA>

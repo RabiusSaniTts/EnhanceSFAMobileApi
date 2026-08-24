@@ -1,0 +1,435 @@
+<!--
+ '  Created By   : Sujeeth Menon
+ '  Created Date : 04/08/2016
+ '  Description  : This page is used to view Order Delivery Status.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Delivery Status</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1201px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+		<link rel="stylesheet" href="../bs/css/bootstrap.css" />
+		<link rel="stylesheet" href="../bs/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../icons/font/bootstrap-icons.css" />
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            document.write('<script charset="utf-8" src="../js/Locationagent.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+</script>
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+		<script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript"
+			lang="en"></script>
+		<link rel="stylesheet" type="text/css"
+			href="../css/jquery.mobile.simpledialog.css" />
+		<script type="text/javascript"
+			src="../js/jquery.mobile.simpledialog.js"></script>
+		<script type="text/javascript" src="../barcodescanner.js"></script>
+
+		<style>
+table{background:#CCC;border:1px solid #000;}
+table td{padding:15px;border:1px solid #DDD;}
+</style>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+
+			<div data-role="header" data-tap-toggle="false" data-position="inline"
+				id="bgclheader">
+				<a href="cust_opt.html" id="Back_inner" rel="external"
+					data-ajax="true" lang="en">Back</a>
+				<h1 id="lblPageTitle" lang="en">Delivery Status</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerbox" style="overflow:hidden;">
+
+				<div class="com_div captionLabel">
+
+					<div style="text-align: center;" class="searchBox">
+						<label id="lbl1" class="lblCodecust" lang="en">SEARCH :</label>
+						<input type="text" name="searchtext1" id="searchtext1"
+							placeholder="Search By Status"
+							class="textFont" value style="width: 60%;" />
+					</div>
+					<div id="listCustomers" class="listorders">
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+								lang="en">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+				<div class='ui-loader-background'></div>
+			</div>
+			<script type="text/javascript" language="javascript">
+		 window.lang = new jquery_lang_js();
+
+		 var decimalplace = sessionStorage.getItem("decimalplace");
+		 var result=[];
+		 var interval;
+         var count=6000;
+		 $(document).ready(function() 
+		 {
+			 	resizeOrientationWindow();	
+			 	document.addEventListener("deviceready", getSettings, false);
+			 	var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+                
+                
+                $("#searchtext1").keyup(function(){
+            		var SEARCHWORD = this.value;
+	                $("#list li").each(function(){
+	                		if($(this).
+	                              find("p").
+	                              text().toUpperCase().
+	                              indexOf(SEARCHWORD.toUpperCase()) >=0)
+	                       $(this).show();
+	                    else
+	                       $(this).hide();
+	
+	                });
+
+
+            });
+            
+                if (sessionStorage.getItem("Language")  != "en") 
+                {
+               
+	                window.lang.change('CustomerSelection'+lan,lan);
+	                window.lang.change('Footer'+lan,lan);
+	                if(lan=="AR")
+	                {
+	                     $("#contentWrapper").attr("dir", "rtl");
+	                     $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                     $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                     $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                     $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	                }
+		
+				}
+				else
+				{
+				    window.lang.change('en','en');
+				    $("#contentWrapper").attr("dir", "ltr");
+				    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				}
+		
+		 });
+		 function getSettings()
+         {
+			 resizeWindow();
+			 var platform= sessionStorage.getItem("platform");                
+             var routecode=sessionStorage.getItem("RouteCode");
+             //getRecord1();
+             getOrderstatus();
+             
+         }
+		
+		 function getOrderstatus()
+		 {
+			 var routecode = sessionStorage.getItem("RouteCode");
+				var userid = sessionStorage.getItem("SalesmanCode");
+				var deviceid = sessionStorage.getItem("DeviceID");
+				var platform = sessionStorage.getItem("platform");
+				$.mobile.showPageLoadingMsg();
+
+				$.ajax({
+					type : "post",
+					url : wsurl + "ws/getorderstatus/routeid/" + routecode
+							+ "/userid/" + userid,
+					data : "{}",
+					cache : false,
+					timeout : 60000,
+					
+					crossDomain : true,
+					success : function(data) {
+						
+
+						if (data.length > 0) {
+							deleteOrderstatus(data);
+							
+						}
+						
+					},
+					error : function(qXHR, textStatus, errorThrown) {
+						$.mobile.hidePageLoadingMsg();
+						alert("No Internet Connection");
+					}
+				});
+		 }
+		 
+		 function deleteOrderstatus(data)
+		 { //alert("deleteOrderstatus");
+			 var Qry = "Delete from orderstatus";
+				
+				if (platform == "iPad") {
+
+				} else if (platform == "Android") {
+					window.plugins.DataBaseHelper.insert(Qry, function(result) {
+						processOrderstatus(data);
+						
+					}, function() {
+						console.warn("Error calling plugin");
+					});
+				}
+			  
+		 }
+		 
+	function processOrderstatus(data) { 
+				
+				data = JSON.parse(data);
+              // alert('data' +JSON.stringify(data));
+				
+				if(data["orderstatus"] == null || data["orderstatus"].length == undefined)
+					{
+					  
+					  $.mobile.hidePageLoadingMsg();
+					}
+				
+				var count  = data["orderstatus"].length;
+				for ( var i = 0; i < count; i++) { //alert('ff'+data["orderstatus"].length);
+					 
+					var Qry = "INSERT INTO orderstatus(routecode,salesmancode,customercode,customername,ordernumber,orderamount,orderdate,invoicenumber,invoiceamount,invoicedate,differenceamount,STATUS,alternatecode,alternateordernumber,alternateinvoicenumber,differencedate) VALUES("
+							+ data["orderstatus"][i].routecode
+							+ ","
+							+ data["orderstatus"][i].salesmancode
+							+ ","
+							+ data["orderstatus"][i].customercode
+							+ ",'"
+							+ data["orderstatus"][i].customername
+							+ "','"
+							+ data["orderstatus"][i].ordernumber
+							+ "',"
+							+ data["orderstatus"][i].orderamount
+							+ ",'"
+							+ data["orderstatus"][i].orderdate
+							+ "','"
+							+ data["orderstatus"][i].invoicenumber
+							+ "',"
+							+ data["orderstatus"][i].invoiceamount
+							+ ",'"
+							+ data["orderstatus"][i].invoicedate
+							+ "',"
+							+ data["orderstatus"][i].differenceamount
+							+ ","
+							+ data["orderstatus"][i].STATUS
+							+ ",'"
+							+ data["orderstatus"][i].alternatecode
+							+ "','"
+							+ data["orderstatus"][i].alternateordernumber
+							+ "','"
+							+ data["orderstatus"][i].alternateinvoicenumber
+							+ "',"
+							+ data["orderstatus"][i].differencedate + ")";
+					
+					console.log(Qry);
+					//alert(Qry);
+					if (platform == "iPad") {
+
+					} else if (platform == "Android") {
+						window.plugins.DataBaseHelper.insert(Qry, function(
+								result) {
+							count -= 1;
+							//alert(count);
+							
+							if(count == 0) 
+		        			 { 
+								 //getRecord1();
+		        				 
+		        			 }
+						
+						
+						}, function() {
+							console.warn("Error calling plugin");
+						});
+						
+					}
+        			
+					
+				}
+				getRecord1();	 
+			
+			}
+		 function getRecord1()
+		 { //alert("getRecord1");
+			 $.mobile.showPageLoadingMsg(); 
+             var routecode=sessionStorage.getItem("RouteCode");
+             var platform= sessionStorage.getItem("platform");
+			 var qry ="SELECT routecode,salesmancode,customercode,customername,ordernumber,orderamount,orderdate,invoicenumber,invoiceamount,invoicedate,differenceamount,status,alternatecode,differencedate from orderstatus";
+			 console.log(qry);
+			 
+			 if(platform=='Android')
+				{
+				  window.plugins.DataBaseHelper.select(qry, function(result)
+	                         { 
+	                             if(result.array != undefined)
+	                             {
+	                            	 ShowOderStatus(result,'android')
+	                             }
+	                             else{
+	                             	
+	                             	  $.mobile.hidePageLoadingMsg(); 
+	                             }
+	                                                              
+	                         },
+	                         function()
+	                         {
+	                          console.warn("Error calling plugin");
+	                         });
+				}
+		 }
+		 
+		 function ShowOderStatus(data,flag){
+			result=data;
+			//alert(JSON.stringify(result));
+			var listCreated = false;
+        
+         	$( "#listCustomers").empty();	
+             for (i = 0; i <  data.array.length; i++) {
+             	
+             	if(!listCreated){
+ 					$("#listCustomers").append("<ul id='list' data-theme='z'  data-role='listview' style='list-style-type: none;padding:0px;margin:0px;width:90%' data-inset='true'></ul>");
+ 					listCreated = true;
+ 					
+				}
+             	var listitem="";
+             	var isBold=false;
+
+             	var custname=""+data.array[i].customername+"";
+             	var custcode=""+data.array[i].customercode+"";
+             	var ordernumber= ""+data.array[i].ordernumber+"";
+             	var orderdate= ""+data.array[i].orderdate+"";
+             	var orderamount= ""+data.array[i].orderamount+"";
+             	var invoicenumber = ""+data.array[i].invoicenumber+"";
+             	var invoicedate = ""+data.array[i].invoicedate+"";
+             	var invoiceamount = ""+data.array[i].invoiceamount+"";
+             	var alternatecode = ""+data.array[i].alternatecode+"";
+             	var differenceamount = ""+data.array[i].differenceamount+"";
+             	var diff  = eval(data.array[i].orderamount - data.array[i].invoiceamount).toFixed(decimalplace); 
+             	var differencedate = ""+data.array[i].differenceamount+"";
+             	var dayscount= ""+data.array[i].differencedate+"";  
+             	
+             	//alert('datedifference' +dayscount);
+         
+             	var status="";
+             	var tempclass ="";
+             	
+             	// var orddate = ""+data.array[i].orderdate+"";
+             	// orddate = orddate.split("-");
+                // var invdate = ""+data.array[i].invoicedate+"";
+                // invdate = invdate.split("-");
+               
+                //var diffdate = orddate[0] - invdate[0] + (orddate[1] - invdate[1]) +(orddate[2] - invdate[2]) ;  //+ "-" + dt[1] + "-" + dt[0];
+             	//alert('diffdate' +diffdate);
+             	//alert('diff' +diff);
+             	if(eval(data.array[i].status)== 0) // Pending 
+             	{
+             		tempclass ="bgcolorred";
+             		status="<li class='listlable1 bgclass'><b><span style='color:white'><p>Credit Stop</p></span></b></li>"; 
+             
+             	}
+             	if(eval(data.array[i].status)== 1) // Invoiced
+             	{
+             		tempclass ="bgcolorgreen"; 
+             		status="<li class='listlable1 bgclassgreen'><b><span style='color:white'><p>Is Invoiced</p></span></b></li>";
+             	}
+             	if(eval(data.array[i].status)== 2) // On hold
+             	{
+             		tempclass ="bgcoloryellow";
+             		status="<li class='listlable1 bgclassyellow'><b><span style='color:black'><p>Pending To Deliver</p></span></b></li>";
+             	}
+         
+                listitem="<li data-name="+i+" class='listnewbg'><table id='tablestyle' cellpadding='0' cellspacing='0'><tr class ='noBorder'><th class ='tableheaderclass'>Customer </th><td class ='tableclass'>" + alternatecode+" - "+" "+custname+"</td><td> </td></tr><br> <tr class ='tableclass'><th class ='tableheaderclass'>Order </th><td class='tableclass'>"+ordernumber+" </td><td class='tableclass' style='width:100px'>"+orderdate+" </td><td class='tableclass'>"+orderamount+" </td></tr><br> <tr class ='tableclass'><th class ='tableheaderclass'>Invoice </th><td class='tableclass'>"+invoicenumber+" </td><td class='tableclass'>"+invoicedate+" </td><td class='tableclass'>"+invoiceamount+" </td></tr><br><tr class ='tableclass'><th class ='tableheaderclass'>Difference </th> <td class='tableclass'> </td><td class='tableclass'>"+dayscount+" </td> <td class='tableclass'>"+diff+" </td></tr><br> <tr class='noBorder' id='checkstatus'><th class ='tableheaderclass'>Status </th><td class="+tempclass+" id='checkstatus'>"+status+" </td><td class="+tempclass+"> </td><td class="+tempclass+"> </td></tr> </table></li>";
+                $("#list").append(listitem);
+               
+             }
+             $.mobile.hidePageLoadingMsg(); 
+         
+		 }
+		 function CheckIsNaN(val)
+	        {
+	            if(isNaN(val))
+	                return 0;
+	            else
+	                return val;
+	        }
+		
+		 
+		
+		</script>
+		</div>
+
+	</body>
+</html>

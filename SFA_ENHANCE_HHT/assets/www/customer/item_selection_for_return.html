@@ -1,0 +1,1813 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 31/1/2011
+ '  Description  : This page is used for detail of item
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HOME</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 700px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+		<script type="text/javascript" src="../js/jquery.json-2.3.min.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript"
+			lang="en"></script>
+
+		<!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+            scrollContent = new iScroll('contentWrapper');
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+		<style>
+ul.pagination {
+			    display: inline-block;
+			    padding: 0;
+			    margin: 0;
+			}
+			
+			ul.pagination li {display: inline;}
+			
+			ul.pagination li {
+			    color: black;
+			    float: left;
+			    width:10px;
+			    padding: 8px 16px;
+			    text-decoration: none;
+			    transition: background-color .3s;
+			    border: 1px solid #ddd;
+			    margin: 0 4px;
+			}
+			
+			ul.pagination li.active {
+			    background-color: #4CAF50;
+			    color: white;
+			    border: 1px solid #4CAF50;
+			}
+			
+			ul.pagination li:hover:not(.active) {background-color: #ddd;}
+			.page
+			{
+			   color: black;
+			    float: left;
+			    padding: 8px 16px;
+			    text-decoration: none;
+			    transition: background-color .3s;
+			    border: 1px solid #ddd;
+			    margin: 0 4px;
+			}
+			
+			.ui-selectmenu .ui-selectmenu-list li .ui-btn-text a {
+			    color: #ffffff !important;
+			}
+			
+			#submajor-menu li .ui-btn-text a,
+			.ui-selectmenu .ui-selectmenu-list li .ui-btn-text a {
+			    color: #ffffff !important;
+			}
+			 
+			 
+			.ui-selectmenu .ui-selectmenu-list li[aria-selected="true"] .ui-btn-text a {
+			    color: #ffe100 !important;
+			}
+			
+			
+			#submajor-menu li[aria-selected="true"] .ui-btn-text a,
+			.ui-selectmenu .ui-selectmenu-list li[aria-selected="true"] .ui-btn-text a {
+			    color: #ffe100 !important;
+			}
+			
+			#select1-menu li .ui-btn-text a,
+			.ui-selectmenu .ui-selectmenu-list li .ui-btn-text a {
+			    color: #ffffff !important;
+			}
+			
+			#select1-menu li[aria-selected="true"] .ui-btn-text a,
+			.ui-selectmenu .ui-selectmenu-list li[aria-selected="true"] .ui-btn-text a {
+			    color: #ffe100 !important;
+			}	
+			
+			#major-menu li .ui-btn-text a,
+			.ui-selectmenu .ui-selectmenu-list li .ui-btn-text a {
+			    color: #ffffff !important;
+			}
+			
+			#major-menu li[aria-selected="true"] .ui-btn-text a,
+			.ui-selectmenu .ui-selectmenu-list li[aria-selected="true"] .ui-btn-text a {
+			    color: #ffe100 !important;
+			}
+
+</style>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="index.html"   id="Back_inner">test</a>-->
+				<a id="Back_inner" href="#" data-rel="back" lang="en" rel="external"
+					onclick="ClearVariables()">Back</a>
+				<h1 lang="en">
+					Item Selection For Return</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="book_detail_div">
+					<div>
+						<!--  <div class="td_com" style="width: 50%; float: left;">
+                        <input type="text" name="txtSearch" id="txtSearch" value="" size="40" onkeypress="getFillterItemList();"/>
+                        </div> -->
+
+						<div style="width: 90%;">
+							<div>
+								<input type="text" name="txtSearch" id="txtSearch" value size="40"
+									placeholder="Search by item code/desc./barcode"
+									style="width:70%;float:left;" />
+								<div>
+									<a href="#" id="searchOrder" rel="external"
+										style="text-decoration: none;">
+										<img src="../images/search.png" style="float:right;"
+											onclick="getFillterItemList();" />
+									</a>
+								</div>
+							</div>
+
+						</div>
+
+						<!--   <div style="width: 45%; float: right;">
+                        <div class="Option1">
+                            <div class="Opt1Img">
+                                <img src="../images/r-btn-1.png" class="option" id="bt1" alt="" onclick="javascript:setToggle('#bt1');" />
+                                <input type="hidden" value="code" name="search" id="search" />
+                            </div>
+                             <div class="Opt1Text">
+                                <div>
+                                    <a href="#" data-role="none" class="OptTextStyle" lang="en"> Code</a></div>
+                            </div> 
+                        </div>  -->
+						<!-- <div class="Option2">
+                            <div class="Opt2Img">
+                                <img src="../images/r-btn-2.png" class="option" id="bt2" alt="" onclick="javascript:setToggle('#bt2');" />
+                            </div>
+                            <div class="Opt2Text">
+                                <div>
+                                    <a href="#" data-role="none" class="OptTextStyle" lang="en"> Desc</a></div>
+                            </div>
+                        </div>
+                    </div> -->
+					</div>
+					<div style="clear: both;">
+					</div>
+					<div class="textBar">
+						<div class="multiselAlign">
+							<table cellpadding="0" style="table-layout: initial;" cellspacing="0"
+								border="0" width="100%">
+								<tr>
+									<td class="captionLabel agency" lang="en"
+										style="width:20%">Agency</td>
+									<td class="captionLabel brand" lang="en"
+										style="width:15%">Brand</td>
+									<td class="captionLabel cat" lang="en"
+										style="width:15%">Category
+									</td>
+									<td class="captionLabel subcat" lang="en"
+										style="width:0%">Sub
+										Category</td>
+
+								</table>
+							</div>
+							<table cellpadding="1" cellspacing="1" border="0" width="100%">
+								<tr>
+									<td colspan="2" width="15%">
+
+										<select name="select-option" multiple="multiple"
+											data-native-menu="false" id="companygrpcode">
+
+										</select>
+									</td>
+									<td colspan="2" width="15%">
+
+										<select name="select-option" multiple="multiple"
+											data-native-menu="false" id="major">
+
+										</select>
+									</td>
+									<td colspan="2" width="15%">
+
+										<select name="select-option" multiple="multiple"
+											data-native-menu="false" id="submajor">
+										</select>
+									</td>
+									<td colspan="2" width="15%">
+
+										<select name="select-option" multiple="multiple"
+											data-native-menu="false" id="select1">
+										</select>
+									</td>
+
+									<td colspan="2" width="18%">
+										<div style="width: 90%; margin-left: 5%; margin-top: 20px;">
+
+											<input type="checkbox" name="checkbox-1" id="checkbox-mini-1" />
+											<div style="posiiton:absolute;background:red;">
+												<label class="lbl " for="checkbox-mini-1" id="reset">Reset</label>
+											</div>
+										</div>
+
+									</td>
+								</tr>
+								<tr>
+
+								</tr>
+							</table>
+
+						</div>
+
+						<div class="tblBox tbltd">
+							<div class="tblHeader">
+								<table id="tblHeaderContent" width="100%" cellpadding="10"
+									cellspacing="0">
+									<tr>
+										<td width="20%" lang="en">
+											Item
+										</td>
+										<td width="80%" lang="en" class="last">
+											Item Description
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="route_table_height item " id="contentWrapper">
+								<table border="0" width="100%" cellpadding="0" cellspacing="0" id="tbl1"
+									data-role="none">
+									<tr>
+										<td width="20%">
+										</td>
+										<td width="80%" class="last">
+										</td>
+
+									</tr>
+
+								</table>
+							</div>
+						</div>
+						<!--  <table border="0" width="100%" cellpadding="0" cellspacing="0" data-role="none">
+                    <tr>
+                        <td width="50%">
+                            <select name="select-choice-1" id="ddlCategory" style="display: inline;" onchange="getItemList()">
+                            </select>
+                        </td>
+                        <td class="itemselectionfont" id="itemval">
+                        </td>
+                    </tr>
+                </table>  -->
+					</div>
+					<ul class="pagination" id="Ulpagin">
+
+					</ul>
+					<div class="leftbottomMenu">
+						<div class="menuPadding">
+							&nbsp;</div>
+						<a href="#" data-rel="back" class="enableText" rel="external">
+							<div class="MenuPosition">
+								<div class="iconPos">
+									<img class="bottomicon" src="../images/ok.png" alt="Save" /></div>
+								<div class="MenuTextPos MenuText" lang="en">
+									Yes</div>
+							</div>
+						</a>
+						<div class="menuPadding">
+							&nbsp;</div>
+						<a href="#" data-rel="back" class="enableText" rel="external"
+							onclick="ClearVariables()">
+							<div class="MenuPosition MenuExit MenuBtn">
+								<div class="iconPos">
+									<img class="bottomicon" src="../images/icn-exit.png"
+										alt="Exit" /></div>
+								<div class="MenuTextPos MenuText" lang="en">
+									Exit</div>
+							</div>
+						</a>
+						<div class="menuPadding">
+							&nbsp;</div>
+					</div>
+				</div>
+				<div id="f1" data-role="footer" class="ui-bar">
+					<div class="footer">
+						<div class="leftfooter">
+							09 November 2011</div>
+						<div class="rightfooter">
+							Mirnah Technology Systems</div>
+					</div>
+				</div>
+				<div id="f2" data-role="footer"
+					style="bottom: 0; position: fixed; z-index: 5;">
+					<div data-role="navbar" data-iconpos="top" data-grid="f">
+						<ul>
+							<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+									id="day" data-icon="custom" lang="en"
+									onclick="footerredict('../startofday/startofday.html')">Start
+									day</a></li>
+							<li style="margin-bottom:0 !important;"><a href="#" id="inve"
+									rel="external" data-icon="custom" lang="en"
+									onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+							<li style="margin-bottom:0 !important;"><a href="#" class="ui-btn-active"
+									rel="external" id="cust" data-icon="custom" lang="en">Customer</a></li>
+							<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+									id="sett" data-icon="custom" lang="en"
+									onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+							<li style="margin-bottom:0 !important;"><a href="#"
+									rel="external" id="ordstatus" data-icon="custom"
+									lang="en"
+									onclick="footerredict('../home/orderstatus.html')">Order
+									Status</a></li>
+
+							<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+									id="info" data-icon="custom" lang="en"
+									onclick="footerredict('../information/information.html')">Information</a></li>
+							<li style="margin-bottom:0 !important; width:14.0%"><a href="#"
+									rel="external" id="setup" data-icon="custom" lang="en"
+									onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            var platform=''; 
+            var itemtype = "";
+            var searchTxt="";
+            var companyid = null;
+			var majorid = null;
+			var submajorid = null;
+			var catid = null;
+			var curPage = 0; 
+			var companyflag =0;
+			var brandflag =0;
+			var categoryflag =0;
+			var subcategoryflag =0;
+			
+            $("#tbl1").click(function() { });
+            $('label').css({ 'background': '#304d51', 'border': 'none' });
+            $('.ui-btn-inner').css({ 'border-top': 'none' });
+            $('.Opt1Text').css({ 'float': 'right', 'width': '75%', 'font-size': '24px' });
+            $('.Opt1Img').css({ 'float': 'left', 'width': '25%' });
+            $('.Opt2Text').css({ 'float': 'right', 'width': '75%', 'font-size': '24px' });
+            $('.Opt2Img').css({ 'float': 'left', 'width': '25%' });
+
+            function setToggle(id) {
+
+                var sval = $('#search').val();
+				//alert(sval);
+                if (sval == "code") {
+				//alert("code");
+		    $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+                    $('#bt2').attr("src", "../images/r-btn-1.png");
+                    $('#bt1').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('desc');
+		    $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+                }
+                else {
+				//alert("desc");
+                    $('#bt1').attr("src", "../images/r-btn-1.png");
+                    $('#bt2').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('code');
+		     if(sessionStorage.getItem('CheckCode') =='alternatecode')
+		    $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+		     else
+		     $('#txtSearch').clone().attr('type','tel').insertAfter('#txtSearch').prev().remove();
+                }
+
+            }   
+            
+            /*if(window.location.toString().indexOf("pg=inventory") != -1)
+            {
+                $("#cust").removeClass("ui-btn-active");
+                $("#inve").addClass("ui-btn-active");
+            }*/
+            
+            var QryFreeContract = "";
+            if(sessionStorage.addmodule == "customer" && localStorage.salesflag == "freegoods")
+            	{
+                //QryFreeContract = " AND itemmaster.actualitemcode IN(SELECT CASE WHEN status = 1 THEN foc.itemcode ELSE itemmaster.actualitemcode END FROM controlpanel left join customer_foc_detail foc WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc_detail WHERE customercode = " + sessionStorage.getItem("customerid") + ") THEN foc.customercode = " + sessionStorage.getItem("customerid") + " ELSE itemmaster.actualitemcode END)";
+            	}if(sessionStorage.addmodule == "customer")
+                itemtype = " itemtype = 1 AND itemmaster.actualitemcode IN(SELECT CASE status WHEN 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN itemmaster.actualitemcode ELSE pg.itemcode END ELSE itemmaster.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ")" + QryFreeContract;
+            else if(sessionStorage.addmodule == "inventory")
+                itemtype = " 1=1 ";
+            
+            var routeCode,data;
+            
+            resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 		resizeWindow(); 
+			//---------
+			     $("#txtSearch").keyup(function(event){
+					
+                               if($("#txtSearch").val != ""){
+                            	   getFillterItemList();
+                               }  else {
+                                	 loadCompanyGroups('initial');
+                                	 
+                                }
+                                            
+                    });
+			//----------
+				//alert("test");
+               if(sessionStorage.getItem('CheckCode') =='alternatecode')
+             $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+            else
+           $('#txtSearch').clone().attr('type','tel').insertAfter('#txtSearch').prev().remove();
+                     platform= sessionStorage.getItem("platform");                      
+                $(".leftfooter").html(getCurrentDate());
+                window.lang.run();
+                
+                document.addEventListener("deviceready", getCategoryList1, false);  
+                              
+                                                           
+                //Route Code seesion set again so remove build time              
+                //sessionStorage.setItem("RouteCode",98);              
+                              
+                routeCode = sessionStorage.getItem("RouteCode");                  
+                    
+                                                   
+               
+                $("#tbl1 tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i = $(this).index();
+                    sessionStorage.setItem("ItemCode",data[i - 1][0]);
+                    sessionStorage.setItem("ItemDesc",data[i - 1][1]);
+                    sessionStorage.setItem("itemno",data[i - 1][2]);
+                    
+                            
+                    $('#itemval').text(data[i - 1][1]);
+                });
+                              
+                                             
+                $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#fff' });
+              
+                 var lan = sessionStorage.getItem("Language");
+                 window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Itemselection'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+		    $('.Opt1Text').css({ 'float': 'left', 'width': '75%', 'font-size': '24px' });
+                              $('.Opt1Img').css({ 'float': 'right', 'width': '25%' });
+                              $('.Opt2Text').css({ 'float': 'left', 'width': '75%', 'font-size': '24px' });
+                              $('.Opt2Img').css({ 'float': 'right', 'width': '25%' });
+		   $(".centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+                
+                              
+               
+			$(".pagination li ").live("click",function(){
+					
+		            $(".pagination li ").removeClass("active");
+		             $(this).addClass("active");
+		             curPage = $(this).html();
+		             getItemList();    
+		        });
+			
+			
+		/*	$("#companygrpcode").click(function() { 
+				if(companyflag==0)
+				{
+					companyflag =1;
+				}
+				  
+				 else {
+				e.preventdefault();
+			}
+				
+				if (companyid == null) {
+					companyid = $("#companygrpcode").val();
+				}
+				if (majorid == null) {
+					majorid = $("#major").val();
+				}
+				
+				
+				if (submajorid == null) {
+					submajorid = $("#submajor").val();
+				
+
+				}
+				if (catid == null) {
+					catid = $("#select1").val();
+
+				}
+				
+				getCompanygroupcode(companyid, majorid);
+				
+			});
+			
+			$("#major").click(function() {
+				
+				if(brandflag==0)
+				{
+					brandflag =1;
+				}
+			   else {
+				e.preventdefault();
+			}
+				 
+				if (majorid == null) {
+					majorid = $("#major").val();
+				}
+
+
+				if (companyid == 0 || companyid == null) {
+					companyid = $("#companygrpcode").val();
+					$("#companygrpcode").html('');
+				}
+
+				
+
+				if (submajorid == null) {
+					submajorid = $("#submajor").val();
+					
+
+				}
+				if (catid == null) {
+					catid = $("#select1").val();
+					
+
+				}
+			
+				 getMajor(companyid, majorid);
+
+			});
+			
+			$("#submajor")
+			.click(
+					function(e) {  
+						if(subcategoryflag==0)
+							{
+							subcategoryflag =1;
+							}
+						else {
+							e.preventdefault();
+						}
+						
+						if (submajorid == null) {
+							submajorid = $(
+									"#submajor")
+									.val();
+						}
+
+						if (companyid == 0
+								|| companyid == null) {
+							companyid = $(
+									"#companygrpcode")
+									.val();
+							$("#companygrpcode")
+									.html('');
+						}
+						if (majorid == null) {
+							majorid = $("#major")
+									.val();
+				
+
+						}
+						if (catid == null) {
+							catid = $("#select1")
+									.val();
+					
+
+						}
+						
+						getsubMajor(companyid,
+								majorid, submajorid);
+
+					});
+			
+			$("#select1").click(function() {
+				
+				
+				if(subcategoryflag==0)
+				{
+					subcategoryflag =1;
+				}
+			   else {
+				e.preventdefault();
+			}
+				
+							 
+								if (catid == null) {
+									$('.subcat').css(
+											'color',
+											'#52848d');
+								} else {
+									$('.subcat').css(
+											'color', 'red');
+								}
+								
+
+								if (catid == null) {
+									catid = $("#select1")
+											.val();
+								}
+								 
+								
+
+								if (companyid == 0
+										|| companyid == null) {
+									companyid = $(
+											"#companygrpcode")
+											.val();
+
+								}
+								if (majorid == null) {
+									majorid = $("#major")
+											.val();
+								}
+								if (submajorid == null) {
+									submajorid = $(
+											"#submajor")
+											.val();
+
+								}
+								getCategoryList(companyid,
+										majorid,
+										submajorid, catid);
+
+							});*/
+			
+							$("#companygrpcode")
+			                .change(
+			                    function () {
+
+			                        $.mobile
+			                            .showPageLoadingMsg();
+
+			                        var count = $("#companygrpcode :selected").length;
+
+
+
+			                        if (count == 0) {
+
+			                            $('.agency').css(
+			                                'color',
+			                                '#52848d');
+			                        } else {
+
+			                            $('.agency').css(
+			                                'color', 'red');
+			                        }
+
+
+
+			                        $("#Ulpagin").empty();
+			                        companyid = $("#companygrpcode")
+			                            .val();
+			                        $("#companygrpcode").html('');
+			                        if (majorid == null) {
+			                            majorid = $("#major")
+			                                .val();
+			                        }
+			                        if (submajorid == null) {
+			                            submajorid = $(
+			                                "#submajor")
+			                                .val();
+			                        }
+			                        if (catid == null) {
+			                            catid = $("#select1")
+			                                .val();
+			                        }
+
+			                        /*getCompanygroupcode(
+			                                companyid, majorid);*/
+			               /*          getMajor(companyid, majorid, catid);
+			                        getsubMajor(companyid, majorid, submajorid, catid);
+			                        getCompanygroupcode(companyid, majorid);
+			                        getCategoryList(companyid, majorid, submajorid, catid); */
+			                        
+			                		//	loadCompanyGroups();
+								    loadMajor('company');
+								    loadSubMajor('company');
+								    loadCategory('company');
+								    
+								    
+			                      
+			                        getItemList();
+			                       
+
+			                    });
+
+		
+							$("#select1").change(function () {
+				                // Added to chg color -------
+
+
+				                var count = $("#select1 :selected").length;
+
+				                //alert('add '+count);
+
+				                if (count == 0) {
+
+				                    $('.subcat').css('color', '#52848d');
+				                } else {
+
+				                    $('.subcat').css('color', 'red');
+				                }
+
+				                // end ----
+				                catid = $("#select1").val();
+				                // $("#select1").html('');
+				                $("#Ulpagin").empty();
+				                if (companyid == null) {
+				                    companyid = $("#companygrpcode").val();
+				                }
+				                if (majorid == null) {
+				                    majorid = $("#major").val();
+				                }
+				                if (submajorid == null) {
+				                    submajorid = $("#submajor").val();
+				                }
+
+				/*                 getMajor(companyid, majorid, catid);
+				                getsubMajor(companyid, majorid, submajorid, catid);
+				                getCompanygroupcode(companyid, majorid);
+				                getCategoryList(companyid, majorid, submajorid, catid); */
+				                
+				        		loadCompanyGroups('company');
+							    loadMajor('company');
+							    loadSubMajor('company');
+							    //loadCategory('company');
+
+				                getItemList();
+				            });
+
+		$("#submajor")
+        .change(
+            function () {
+
+                $.mobile
+                    .showPageLoadingMsg();
+
+                var count = $("#submajor :selected").length;
+
+                if (count == 0) {
+
+                    $('.cat').css('color',
+                        '#52848d');
+                } else {
+
+                    $('.cat').css('color',
+                        'red');
+                }
+
+
+                $("#Ulpagin").empty();
+                submajorid = $("#submajor")
+                    .val();
+                //$("#submajor").html('');
+                if (companyid == null) {
+                    companyid = $(
+                        "#companygrpcode")
+                        .val();
+                }
+                if (majorid == null) {
+                    majorid = $("#major")
+                        .val();
+                }
+                if (catid == null) {
+                    catid = $("#select1")
+                        .val();
+                }
+
+         /*        getMajor(companyid, majorid, catid);
+                getsubMajor(companyid, majorid, submajorid, catid);
+                getCompanygroupcode(companyid, majorid);
+                getCategoryList(companyid, majorid, submajorid, catid); */
+                
+        		loadCompanyGroups('company');
+			    loadMajor('company');
+			    //loadSubMajor('company');
+			    loadCategory('company');
+
+               
+                	getItemList();
+               
+            });
+
+		$("#major").change(function () {
+
+
+
+            $.mobile.showPageLoadingMsg();
+
+            var count = $("#major :selected").length;
+
+            if (count == 0) {
+
+                $('.brand').css('color', '#52848d');
+            } else {
+
+                $('.brand').css('color', 'red');
+            }
+
+
+            majorid = $("#major").val();
+            //$("#major").html('');
+
+
+            $("#Ulpagin").empty();
+            if (companyid == null) {
+                companyid = $("#companygrpcode").val();
+            }
+            if (submajorid == null) {
+                submajorid = $("#submajor").val();
+            }
+            if (catid == null) {
+                catid = $("#select1").val();
+            }
+
+/*                 getMajor(companyid, majorid, catid);
+            getsubMajor(companyid, majorid, submajorid, catid);
+            getCompanygroupcode(companyid, majorid);
+            getCategoryList(companyid, majorid, submajorid, catid); */
+            
+    		loadCompanyGroups('company');
+		    //loadMajor('company');
+		    loadSubMajor('company');
+		    loadCategory('company');
+
+           
+            	getItemList();
+           
+
+        });
+			
+			
+			$("#checkbox-mini-1")
+			.click(
+					function() { 
+						$("#select1").empty();
+						$("#submajor").empty();
+						$("#major").empty();
+						$("#companygrpcode").empty();
+								
+						window.location.href = '../customer/item_selection_for_return.html'
+						majorid = null;
+						submajorid = null;
+						companyid = null;
+						catid = null;
+						getItemList();
+					});
+			
+                      
+                              
+            });
+            
+			$("#txtSearch").keyup(function(event){
+					
+                               if($("#txtSearch").val != ""){
+                            	   //getFillterItemList();
+                            	   loadCompanyGroups('initial');
+                               } else{
+                            	    //loadCompanyGroups('initial');
+                                	getItemList(); 
+                                }
+                                       
+                                      
+                    });
+			
+			function getCategoryList(companyid, majorid, submajorid, catid) {
+
+				
+				 
+				var cmpid;
+				var majid;
+				var submajid;
+				var ctid;
+				if (companyid != 0 || companyid != null) {
+					cmpid = companyid;
+				} else {
+					cmpid = $("#companygrpcode").val();
+				}
+
+				
+				if (majorid != null) {
+					majid = majorid;
+				} else {
+					majid = $("#major").val();
+				}
+
+				if (submajorid != null) {
+					submajid = submajorid;
+				} else {
+					submajid = $("#submajor").val();
+				}
+				if (catid != null) {
+					
+					 
+					ctid = catid;
+				} else {
+					 
+					ctid = $("#select1").val();
+				}
+
+				//$("#select1").empty();
+				var Qry = "select distinct itemgroupcode,itemgroupname as itemgroup from itemmaster where 1=1 ";
+
+				
+				if (cmpid != null)
+					Qry =  Qry + " and  companygroupcode in(" + cmpid +")";
+				if (majid != null )
+					Qry =  Qry + " and majorcategorycode in(" + majid +")";
+				if (submajid !=null )
+					Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";
+				/*if( ctid != null)
+					Qry =  Qry + " and itemgroupcode in ("+ctid+")";*/
+				 
+
+				Qry = Qry + " order by itemgroupname";
+
+				if (platform == 'iPad') {
+
+				} else if (platform == 'Android') {
+					window.plugins.DataBaseHelper.select(Qry, function(result) {
+						var result = $.map(result.array, function(item, index) {
+							return [ [ item.itemgroupcode, item.itemgroup ] ];
+						});
+						$("#select1").empty();
+						if (result != undefined && result.length > 0) {
+							for (i = 0; i < result.length; i++) {
+
+								$("<option />", {
+									value : result[i][0],
+									text : result[i][1]
+								}).appendTo($("#select1"));
+
+							}
+						}
+                         
+						if (ctid != null) {
+
+							var str = ctid.toString();
+							var arr = str.split(',');
+							
+							for (i = 0; i < str.length; i++) {
+								$("#select1 option[value= " + arr[i] + "]")
+										.attr('selected', true);
+
+							}
+						}
+						subcategoryflag =0;
+
+					}, function() {
+						console.warn("Error calling plugin");
+					});
+				}
+
+			}
+ 		 	
+ 		 	function getsubMajor(companyid, majorid, submajorid) { 
+				var cmpid;
+				var majid;
+				var submajid;
+				var ctid = $("#select1").val();
+				
+				if (companyid != 0 || companyid != null) {
+					cmpid = companyid;
+				} else {
+					cmpid = $("#companygrpcode").val();
+				}
+
+				
+				if (majorid != null) {
+					majid = majorid;
+				} else {
+					majid = $("#major").val();
+				}
+
+				if (submajorid != null) {
+					submajid = submajorid;
+				} else {
+					submajid = $("#submajor").val();
+				}
+				
+				//$("#submajor").empty();
+				var Qry = "select distinct submajorcategorycode,submajorcategorydesciption from itemmaster where 1=1    ";
+
+				
+
+				if (cmpid != null)
+					Qry =  Qry + " and  companygroupcode in(" + cmpid +")";
+				if (majid != null )
+					Qry =  Qry + " and majorcategorycode in(" + majid +")";
+			/*	if (submajid !=null )
+					Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";*/
+				if( ctid != null)
+					Qry =  Qry + " and itemgroupcode in ("+ctid+")";
+				
+				Qry = Qry + " order by submajorcategorydesciption";
+			
+				
+
+				if (platform == 'iPad') {
+
+				} else if (platform == 'Android') {
+
+					window.plugins.DataBaseHelper.select(Qry, function(result) {
+						var result = $.map(result.array, function(item, index) {
+							return [ [ item.submajorcategorycode,
+									item.submajorcategorydesciption ] ];
+						});
+						$("#submajor").empty();
+						if (result != undefined && result.length > 0) {
+							for (i = 0; i < result.length; i++) {
+
+								$("<option />", {
+									value : result[i][0],
+									text : result[i][1]
+								}).appendTo($("#submajor"));
+
+							}
+
+							if (submajid != null) {
+
+								var str = submajid.toString();
+								var arrSubMaj = str.split(',');
+								
+								for (i = 0; i < str.length; i++) {
+									$(
+											"#submajor option[value= "
+													+ arrSubMaj[i] + "]").attr(
+											'selected', true);
+
+								}
+							}
+
+						}
+						 
+						subcategoryflag =0;
+					}, function() {
+						console.warn("Error calling plugin");
+					});
+
+				}
+
+			}
+			
+	
+
+			function getMajor(companyid, majorid) {
+				
+				var cmpid;
+				var majid;
+				var submajid = $("#submajor").val();
+				var ctid = $("#select1").val();
+				 
+				if (companyid != 0 || companyid != null) {
+					cmpid = companyid;
+				} else {
+					cmpid = $("#companygrpcode").val();
+				}
+
+				if (majorid != null) {
+					majid = majorid;
+				} else {
+					majid = $("#major").val();
+				}
+
+				var Qry = "select distinct majorcategorycode,majorcategorydesciption from itemmaster where 1=1 ";
+
+				if (cmpid != null)
+					Qry =  Qry + " and  companygroupcode in(" + cmpid +")";
+			/*	if (majid != null )
+					Qry =  Qry + " and majorcategorycode in(" + majid +")";*/
+				if (submajid !=null )
+					Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";
+				if( ctid != null)
+					Qry =  Qry + " and itemgroupcode in ("+ctid+")";
+
+				Qry = Qry + " order by majorcategorydesciption";
+
+			
+				if (platform == 'iPad') {
+
+				} else if (platform == 'Android') {
+					window.plugins.DataBaseHelper.select(Qry, function(result) {
+						var result = $.map(result.array, function(item, index) {
+							return [ [ item.majorcategorycode,
+									item.majorcategorydesciption ] ];
+						});
+						$("#major").empty();
+						if (result != undefined && result.length > 0) {
+							for (i = 0; i < result.length; i++) {
+
+								$("<option />", {
+									value : result[i][0],
+									text : result[i][1]
+								}).appendTo($("#major"));
+
+							}
+
+							
+							if (majid != null) {
+								majorid = majid;
+								var str = majid.toString();
+								var arr = str.split(',');
+								
+								for (i = 0; i < str.length; i++) {
+									$("#major option[value= " + arr[i] + "]")
+											.attr('selected', true);
+
+								}
+							}
+						}
+						brandflag=0;
+
+					}, function() {
+						console.warn("Error calling plugin");
+					});
+
+				}
+
+			}
+
+			function getCompanygroupcode(companyid, majorid) { //alert("getCompanygroupcode");alert('companyid' +companyid);alert('majorid' +majorid);
+			   
+				var cmpid;
+				var majid;
+				var submajid = $("#submajor").val();
+				var ctid = $("#select1").val();
+				
+				if (companyid != 0 || companyid != null) {
+					cmpid = companyid;
+				} else {
+					cmpid = $("#companygrpcode").val();
+				}
+				//$select.selectmenu("refresh", true);
+				//$('#companygrpcode').selectmenu('refresh');
+				//$("#companygrpcode").val('');
+				//$("#companygrpcode").empty();
+				var Qry = "select distinct  companygroupcode as cmpgrpcode,companygroupname as companyname from itemmaster where 1=1 ";
+				console.log(Qry);
+				//alert(Qry);
+	
+
+			
+				if (majid != null )
+					Qry =  Qry + " and majorcategorycode in(" + majid +")";
+				if (submajid !=null )
+					Qry =  Qry + " and  submajorcategorycode in(" + submajid +")";
+				if( ctid != null)
+					Qry =  Qry + " and itemgroupcode in ("+ctid+")";
+
+				Qry = Qry + " order by companygroupcode";
+
+				
+				if (platform == 'iPad') {
+
+				} else if (platform == 'Android') {
+					window.plugins.DataBaseHelper.select(Qry, function(result) {
+						var result = $.map(result.array, function(item, index) {
+							return [ [ item.cmpgrpcode, item.companyname ] ];
+						});
+						//alert(JSON.stringify(result));
+						//alert(result.length);
+						$("#companygrpcode").empty();
+						//$("#companygrpcode").val(0);
+						if (result != undefined && result.length > 0) {
+							for (i = 0; i < result.length; i++) {
+								
+								$("<option />", {
+									value : result[i][0],
+									text : result[i][1]
+								}).appendTo($("#companygrpcode"));
+								 $("#companygrpcode").selectmenu("refresh");
+							}
+
+						}
+						if (cmpid != null) {
+							var str = cmpid.toString();
+							var arr = str.split(',');
+
+							for (i = 0; i < str.length; i++) {
+								$("#companygrpcode option[value= "+ arr[i] + "]").attr('selected', true);
+
+							}
+
+						}
+						companyflag=0;
+
+					}, function() {
+						console.warn("Error calling plugin");
+					});
+
+				}
+
+			}
+			
+			
+            //Function for bind item list
+            function getItemList() {
+            $.mobile.showPageLoadingMsg()
+            
+             
+	           var NRP_RULE = "";
+	          
+                  
+            
+            		NRP_RULE = "(itemmaster.div_nrp_flag = 0 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 0 ) OR (itemmaster.div_nrp_flag = 0 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 1 ) OR (itemmaster.div_nrp_flag = 1 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 0 ) OR (itemmaster.div_nrp_flag = 1 and customermaster.nrp_flag = 0 and itemmaster.nrp_flag = 1 ) OR(itemmaster.div_nrp_flag = 1 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 1 )";
+                       
+                      	
+                       		 
+                       			console.log("res1--"+NRP_RULE);
+                       			
+                                var itemListByGroup = null;
+                                var groupCode = 0;
+                                groupCode = $("#ddlCategory").val();
+                                
+                                var cmpid;
+                				var majid;
+                				var submajid;
+                				var ctid;
+                				//var condition=" and (item_ret = 1 or cust_ret = 1)  ";
+                				var condition = " and (" + NRP_RULE + ") ";
+                				if (companyid != 0 || companyid == null) {
+                					cmpid = companyid;
+                				} else {
+                					cmpid = $('#companygrpcode').val();
+                				}
+
+                				majid = $('#major').val();
+
+                				if (majid == null && majorid != null) {
+                					majid = majorid;
+                				}
+
+                				submajid = $('#submajor').val();
+
+                				if (submajid == null && submajorid != null) {
+                					submajid = submajorid;
+                				}
+
+                				ctid = $('#select1').val();
+
+                				if (ctid == null && catid != null) {
+                					ctid = catid;
+                				}
+                				
+                				if (cmpid != null)
+                             	{
+                             
+                              	  condition = condition + " and companygroupcode in(" + cmpid +") ";
+                             	}
+                             
+                              if(majid !=null)
+                         	   {//alert("3");
+                         
+                         		     condition = condition +   " and majorcategorycode in(" + majid +")  ";
+                         	   }
+                             
+                              if(submajid !=null)
+                         	  {
+                         
+                              	condition = condition +  " and submajorcategorycode in(" + submajid +") ";
+                         	  }
+                         
+                             
+                             if(ctid !=null)
+                         	  {
+                         
+                          	   condition = condition +   " and itemgroupcode in(" + ctid +")  ";
+                         	  } 
+                             
+                             
+                             //itemListByGroup = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster join item_nrp on itemmaster.actualitemcode = item_nrp.actualitemcode join cust_nrp on cust_nrp.customercode = '"+sessionStorage.getItem("customerid")+"' where " + itemtype + " "+condition+"  ";
+                                
+                            itemListByGroup = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster join customermaster where customermaster.customercode = '"+sessionStorage.getItem("customerid")+"' AND " + itemtype + " "+condition+" ";
+                              
+                              itemListByGroup = itemListByGroup  +  " order by Code  limit 200 offset "+ (curPage-1)*200;
+                              
+                              console.log("Res2-- "+itemListByGroup);
+                              //alert(itemListByGroup);
+                              $("#Ulpagin").empty();
+                              var countqry =" select count(*) as cnt  FROM itemmaster join item_nrp on itemmaster.actualitemcode = item_nrp.actualitemcode join cust_nrp on cust_nrp.customercode = '"+sessionStorage.getItem("customerid")+"'  where 1=1 " +condition;
+                             
+                           	  window.plugins.DataBaseHelper.select(countqry, function(result1) { 
+                				var totRowcount = $.map(result1.array, function(item, index) {
+                					return [ [ item.cnt ] ];
+                				});
+                	
+                				
+                				 var pages = Math.ceil(totRowcount[0][0]/200);
+                				
+                				 var c;
+                				
+                				for (i=1;i<=pages;i++)
+                					{ 
+                					 
+                					 if(curPage >0 && curPage ==i)
+                					 {
+                					 	c = "<li class='active page' >"+ i + "</li>" ;
+                					 }
+                				 else if(curPage == 0 && i==1)
+                					 {
+                					 $("#Ulpagin").empty();
+                					  
+                					 c = "<li class='active page' >"+ i + "</li>" ;
+                						 
+                					 }
+                				 else
+                					 c = "<li class='page' >"+ i + "</li>" ;
+                				     
+                				     
+                				  
+                					 $('.pagination ').append(c);
+                					 
+                					}
+                				curPage=0;
+                				
+                			
+                    	
+                				
+                		}, function() {
+                			console.warn("Error calling plugin");
+                		});
+                           	
+                           	
+                           	
+                                if (platform == 'iPad') {
+                                    Cordova.exec(function(result) {
+
+                                        ClearTable();
+                                        BindData(result);
+                                        //getCategoryList();
+                                    },
+                                                  function(error) {
+                                                      alert("Error in binding Item : " + error);
+                                                  },
+                                                  "PluginClass",
+                                                  "GetdataMethod",
+                                                  [itemListByGroup]);
+
+                                }
+                                else if (platform == 'Android') {
+                                    window.plugins.DataBaseHelper.select(itemListByGroup, function(result) {
+                                    	
+                                    	if(result.array != undefined){
+                                    		 ClearTable();
+                                             BindData(result);
+                                             //getCategoryList();
+                                    	} else {
+                                    		alert("Item Is Under NRP");
+                                    		$.mobile.hidePageLoadingMsg();
+                                    		ClearTable();
+                                    	}
+                                       
+                                       
+                                    },
+                                                                         function() {
+                                                                             console.warn("Error calling plugin");
+                                                                         });
+                                }
+   	                     
+                		
+                		
+    	                    
+
+            }
+
+            function getFillterItemList() {
+		       var fillterList = null;
+				
+			    searchTxt=$("#txtSearch").val();
+                var groupCode = 0;
+                groupCode = $("#ddlCategory").val();
+			
+                
+                
+ 	           var NRP_RULE = "";
+ 	          
+                   
+ 	          NRP_RULE = "(itemmaster.div_nrp_flag = 0 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 0 ) OR (itemmaster.div_nrp_flag = 0 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 1 ) OR (itemmaster.div_nrp_flag = 1 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 0 ) OR (itemmaster.div_nrp_flag = 1 and customermaster.nrp_flag = 0 and itemmaster.nrp_flag = 1 ) OR(itemmaster.div_nrp_flag = 1 and customermaster.nrp_flag = 1 and itemmaster.nrp_flag = 1 )";
+                        			
+ 	          console.log("res1--"+NRP_RULE);
+                        			
+                                	var searchCondition=" '' ";
+                	        		if(searchTxt.trim()!=""){
+                	        			
+                	        			 searchCondition=" (itemmaster.itemdescription LIKE '%" + searchTxt + "%' OR itemmaster.alternatecode LIKE '%" +searchTxt+ "%' OR itemmaster.barcode1 LIKE '%" +searchTxt+ "%' OR itemmaster.barcode2 LIKE '%" +searchTxt+ "%' ) ";
+                	        		}
+                	        		
+                	        		fillterList = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster  where  " + searchCondition + " AND " + itemtype + "   order by Code";
+                	        		
+                	        		//fillterList_return = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster join item_nrp on itemmaster.actualitemcode = item_nrp.actualitemcode join cust_nrp on cust_nrp.customercode = '" +sessionStorage.getItem("customerid")+ "' where  " + searchCondition + " AND " + itemtype + " and (cust_ret = 1 or item_ret = 1)  order by Code";
+                				
+                	        		fillterList_return = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster join customermaster where customermaster.customercode = '"+sessionStorage.getItem("customerid")+"'  AND  " + searchCondition + " AND " + itemtype + " and ("+ NRP_RULE +")  order by Code";
+                                  
+                	        		
+                	        		 
+                                console.log("fillterList "+fillterList_return);
+                                console.log("fillterList1 "+fillterList);
+                               // alert(fillterList);
+
+                                if (platform == 'iPad') {
+                                    Cordova.exec(function(result) {
+
+                                        ClearTable();
+                                        BindData(result);
+
+                                    },
+                                                  function(error) {
+                                                      alert("Error in binding fillter Item : " + error);
+                                                  },
+                                                  "PluginClass",
+                                                  "GetdataMethod",
+                                                  [fillterList]);
+                                }
+                                else if (platform == 'Android') {
+                                    window.plugins.DataBaseHelper.select(fillterList, function(result) {
+                                    	//alert(result.array);
+                                    	if(result.array != undefined)
+                                    	{
+                                    		window.plugins.DataBaseHelper.select(fillterList_return, function(result1) 
+                                    		{
+                                    			if(result1.array != undefined)
+                                    				{
+                                    				txtsrch=null;
+                                                    ClearTable();
+                                                    BindData(result1);
+                                    				}
+                                    			else 
+                                    				{
+                                    				alert("Item Is Under NRP");
+                                    				}
+                                    		
+                                    		},
+                                    		function() 
+                                    		{
+                                                console.warn("Error calling plugin");
+                                            });
+                                    	} else 
+                                    		
+                                    		{
+                                    		alert("Item Not Avaliable");
+                                    		}
+                					 
+                                    },
+                                                                         function() {
+                                                                             console.warn("Error calling plugin");
+                                                                         });
+                                }
+                        			
+    	                        
+                       		
+                       		
+           	                  
+				
+
+            }
+
+            //Bind data dynamically
+            function BindData(result) {
+
+                var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+                data = result;
+                if (platform == 'Android') {
+                    var array = $.map(data.array, function(item, index) {
+                        return [[item.Code, item.Description, item.actualitemcode]];
+                    });
+                    data = array;
+                }
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'class = leftAlign' : 'class = leftAlign last';  
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";                       
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tbl1 tbody').append(r);
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');  
+                
+                $('#itemval').text('');
+                
+                sessionStorage.setItem("ItemCode",'');
+                sessionStorage.setItem("ItemDesc",'');
+                sessionStorage.setItem("itemno",0);
+                
+                //Select first row of table when screen load
+                $("#tbl1 tr:eq(1)").trigger('click');
+				$.mobile.hidePageLoadingMsg();
+				
+                
+            }               
+            
+            //Function for bind category list
+            function getCategoryList1()
+            {               
+                 if(platform=='iPad')
+           		{ 
+                 Cordova.exec(function(result) { 
+                                        
+                                        for(i=0;i<result.length;i++){                    
+                                            $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlCategory"));                                           
+                                        }
+                                        getItemList();
+                                        },
+                                        function(error) {
+                                            alert("Error in binding Category : " + error);
+                                        },
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select itemgroupcode,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemgroupname Else arbitemgroup END AS itemgroup from itemgroup order by itemgroupcode"]);         
+                
+                }
+             	else if(platform=='Android')
+            	{
+            			window.plugins.DataBaseHelper.select("select itemgroupcode,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemgroupname Else arbitemgroup END AS itemgroup from itemgroup order by itemgroupcode",function(result)
+						{		
+								var result = $.map(result.array, function (item, index) {               
+                				return [[item.itemgroupcode, item.itemgroup]];            					
+            					});
+            					
+            					/*if(result!=undefined && result.length>0){
+            						 $("<option />" ,{value:0,text:getLangTextdata("All Categories")}).appendTo($("#ddlCategory")); 
+    						    	 for(i=0;i<result.length;i++){    
+    						    		 $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlCategory"));     
+    						    		 if(i==result.length-1){
+    						    			 $('select').selectmenu('refresh'); 
+    						    			 getItemList();
+    						    		 }
+                                     }
+                                    
+    						    	 
+            						
+            					}else{
+            						getItemList();
+            					}
+            					*/
+            					
+								/* getCategoryList();
+ 								getsubMajor();
+ 								getMajor();
+ 								getCompanygroupcode(); */
+ 								
+								loadCompanyGroups('initial');
+                                
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+            	}
+            }
+            
+          //Jyothish Added the changes for  dynamic -
+
+            function loadCompanyGroups(type) {
+     		//	alert('loadCompanyGroups');
+                let majid   = $("#major").val()      || [];
+                let submajid= $("#submajor").val()   || [];
+                let ctid    = $("#select1").val()    || [];
+                let cmpid   = $("#companygrpcode").val() || [];
+
+                let Qry = "select distinct companygroupcode as cmpgrpcode, companygroupname as companyname from itemmaster where 1=1";
+
+                if (cmpid.length)    Qry += " and companygroupcode in("       + cmpid.join(",")    + ")";
+                if (majid.length)    Qry += " and majorcategorycode in("      + majid.join(",")    + ")";
+                if (submajid.length) Qry += " and submajorcategorycode in("   + submajid.join(",") + ")";
+                if (ctid.length)     Qry += " and itemgroupcode in("          + ctid.join(",")     + ")";
+
+                Qry += " order by companygroupcode";
+
+                console.log(Qry);
+
+                window.plugins.DataBaseHelper.select(Qry, function (res) {
+
+                    $("#companygrpcode").empty();
+
+                    $.each(res.array, function(_, item){
+                        $("<option />", { value: item.cmpgrpcode, text: item.companyname,selected: item.isSelected ? true : false  })
+                            .appendTo("#companygrpcode");
+                    });
+
+                    // re-apply previous selection (array for multi-select)
+                    $("#companygrpcode").val(cmpid);
+                    $("#companygrpcode").selectmenu("refresh", true);
+                    console.log("JTR : "+$("#companygrpcode").data("mobile-selectmenu") );
+                    console.log( "JTR  : "+JSON.stringify($("#companygrpcode").data("selectmenu")) )
+                    
+                    console.log("Company Groups Loaded");
+            	if(type == 'initial'){
+            		   loadMajor(type);
+            	}
+                 
+                }, function () {
+                    console.warn("Error loading company groups");
+                });
+            }
+
+
+            function loadMajor(type) {
+
+                let majid   = $("#major").val()      || [];
+                let submajid= $("#submajor").val()   || [];
+                let ctid    = $("#select1").val()    || [];
+                let cmpid   = $("#companygrpcode").val() || [];
+
+                let Qry = "select distinct majorcategorycode, majorcategorydesciption from itemmaster where 1=1";
+
+                if (cmpid.length)    Qry += " and companygroupcode in("       + cmpid.join(",")    + ")";
+                if (majid.length)    Qry += " and majorcategorycode in("      + majid.join(",")    + ")";
+                if (submajid.length) Qry += " and submajorcategorycode in("   + submajid.join(",") + ")";
+                if (ctid.length)     Qry += " and itemgroupcode in("          + ctid.join(",")     + ")";
+
+                Qry += " order by majorcategorydesciption";
+
+                console.log(Qry);
+
+                window.plugins.DataBaseHelper.select(Qry, function (res) {
+
+                    $("#major").empty();
+
+                    $.each(res.array, function(_, item){
+                        $("<option />", { value: item.majorcategorycode, text: item.majorcategorydesciption,  selected: item.isSelected ? true : false  })
+                            .appendTo("#major");
+                    });
+
+                    $("#major").val(majid);
+                    $("#major").selectmenu("refresh", true);
+
+                    console.log("Major Loaded");
+                    if(type == 'initial'){
+                    loadSubMajor(type);
+                    }
+
+                }, function () {
+                    console.warn("Error loading Major");
+                });
+            }
+
+
+            function loadSubMajor(type) {
+
+                let majid   = $("#major").val()      || [];
+                let submajid= $("#submajor").val()   || [];
+                let ctid    = $("#select1").val()    || [];
+                let cmpid   = $("#companygrpcode").val() || [];
+
+                let Qry = "select distinct submajorcategorycode, submajorcategorydesciption from itemmaster where 1=1";
+
+                if (cmpid.length)    Qry += " and companygroupcode in("       + cmpid.join(",")    + ")";
+                if (majid.length)    Qry += " and majorcategorycode in("      + majid.join(",")    + ")";
+                if (submajid.length) Qry += " and submajorcategorycode in("   + submajid.join(",") + ")";
+                if (ctid.length)     Qry += " and itemgroupcode in("          + ctid.join(",")     + ")";
+
+                Qry += " order by submajorcategorydesciption";
+
+                console.log(Qry);
+
+                window.plugins.DataBaseHelper.select(Qry, function (res) {
+
+                    $("#submajor").empty();
+
+                    $.each(res.array, function(_, item){
+                        $("<option />", { value: item.submajorcategorycode, text: item.submajorcategorydesciption ,  selected: item.isSelected ? true : false  })
+                            .appendTo("#submajor");
+                    });
+
+                    $("#submajor").val(submajid);
+                    $("#submajor").selectmenu("refresh", true);
+
+                    console.log("Sub Major Loaded");
+                    if(type == 'initial'){
+                    loadCategory(type);
+                    }
+
+                }, function () {
+                    console.warn("Error loading SubMajor");
+                });
+            }
+
+
+            function loadCategory(type) {
+
+                let majid   = $("#major").val()      || [];
+                let submajid= $("#submajor").val()   || [];
+                let ctid    = $("#select1").val()    || [];
+                let cmpid   = $("#companygrpcode").val() || [];
+
+                let Qry = "select distinct itemgroupcode, itemgroupname as itemgroup from itemmaster where 1=1";
+
+                if (cmpid.length)    Qry += " and companygroupcode in("       + cmpid.join(",")    + ")";
+                if (majid.length)    Qry += " and majorcategorycode in("      + majid.join(",")    + ")";
+                if (submajid.length) Qry += " and submajorcategorycode in("   + submajid.join(",") + ")";
+                if (ctid.length)     Qry += " and itemgroupcode in("          + ctid.join(",")     + ")";
+
+                Qry += " order by itemgroupname";
+
+                console.log(Qry);
+
+                window.plugins.DataBaseHelper.select(Qry, function (res) {
+
+                    $("#select1").empty();
+
+                    $.each(res.array, function(_, item){
+                        $("<option />", { value: item.itemgroupcode, text: item.itemgroup ,  selected: item.isSelected ? true : false  })
+                            .appendTo("#select1");
+                    });
+
+                    $("#select1").val(ctid);
+                    $("#select1").selectmenu("refresh", true);
+                   
+                    
+                    
+                    console.log("Category Loaded");
+                    console.log("All dropdowns fully loaded successfully!");
+
+                }, function () {
+                    console.warn("Error loading Category");
+                });
+            }
+            
+            function ClearTable() {
+                $("#tbl1  tr:gt(0)").remove();
+            }
+            
+            function ClearVariables()
+            {
+                sessionStorage.setItem("ItemCode","");
+                sessionStorage.setItem("ItemDesc","");
+                sessionStorage.setItem("itemno","");
+            }
+        </script>
+
+		</body>
+	</html>

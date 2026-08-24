@@ -1,0 +1,451 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 08/02/2012
+ '  Description  : This page is used for todays unserviced screen.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Today's Unserviced</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="customerlist.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Todays Unserviced</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" class="tblHeader"
+                            cellpadding="0" cellspacing="0" border="0"
+                            width="100%">
+                            <tr>
+                                <th style="width: 20%;" lang="en"
+                                    class="leftAlign">
+                                    Customer
+                                </th>
+                                <th style="width: 60%;" class="leftAlign last"
+                                    lang="en">
+                                    Customer Name
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="tblFixedHeight">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 60%;"
+                                        class="leftAlign last" lang="en">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="../review/printoption.html" class="enableText"
+                        id="cusPrint" rel="external"
+                        onclick="localStorage.po ='information'">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/print.png" alt="Exit"
+                                    id="imgPrint" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Print</div>
+                        </div>
+                    </a><a href="#" rel="external" style="text-decoration: none"
+                        onclick="OnView()">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-review-large.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                View</div>
+                        </div>
+                    </a><a href="customerlist.html" rel="external"
+                        style="text-decoration: none">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="info"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        window.lang = new jquery_lang_js();
+        $("#tblContent").click(function() { });
+        var platform,data;
+        var selRow;
+		 resizeOrientationWindow();
+        	$(document).ready(function() {
+			resizeWindow();
+            $(".leftfooter").html(getCurrentDate());
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {  
+            
+            	 $("#cusPrint").attr("href","");
+         		 $("#imgPrint").attr("src","../images/print-gray.png");   
+                          
+                platform = sessionStorage.getItem("platform");
+                getdata();               
+            }
+            
+            Date.prototype.getWeek = function(start)
+            {
+                //Calcing the starting point
+                start = start || 0;
+                var today = new Date(this.setHours(0, 0, 0, 0));
+           
+                var day = (7+today.getDay()-start)%7;
+                var date = today.getDate() - day;
+            
+                // Grabbing Start/End Dates
+                var StartDate = new Date(today.setDate(date));
+                var EndDate = new Date(StartDate.getTime()+6*24*60*60*1000);
+                //var EndDate = new Date(today.setDate(date + 6));
+                return [StartDate, EndDate];
+            }
+            
+            function formatDate(d)
+            {
+                var curr_date = d.getDate();
+                var curr_month = d.getMonth();
+                var curr_year = d.getFullYear();
+                curr_month =curr_month + 1;
+            
+                if(curr_month<10)
+                    curr_month = "0"+curr_month;
+            
+                if(curr_date<10)
+                    curr_date = "0"+curr_date;
+            
+                return curr_year+ "-" +curr_month+ "-" + curr_date;
+            }
+       
+
+            function getdata()
+            {
+                var platform= sessionStorage.getItem("platform");
+                if(platform=='iPad')
+                {    
+                    var abc = Cordova.exec(function(result) {
+                                   
+                                    var startDay=result;
+                                    
+                                    //startDay=6;
+                                   var today=new Date();
+                                   
+                                 //  var weekStart = new Date(today.getDate() - (7 + today.getDay() - startDay) % 7);
+                                 //   var weekEnd = new Date(today.getDate() + (7 - today.getDay() - startDay) % 7);
+                                    // test code
+                                    var Dates = new Date().getWeek(startDay);
+                                    
+                                  var weekStart = Dates[0].toLocaleDateString();
+                                    var weekEnd =Dates[1].toLocaleDateString();
+                                    console.log(weekEnd);
+                                    var weekStart =formatDate(Dates[0]);
+                                    var weekEnd =formatDate(Dates[1]);
+                                    
+                                    weekStart = weekStart+" 00:00:00";
+                                    weekEnd = weekEnd+" 00:00:00";
+                                    getdate(weekStart,weekEnd);
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    ["select weekstartday from setup where setupid=1"]);
+                }
+                else if(platform=='Android')
+                {
+				           	window.plugins.DataBaseHelper.select("select weekstartday from setup where setupid=1",function(result)
+								{
+								  var startDay=result.array[0].weekstartday;
+                                    
+                                    //startDay=6;
+                                   var today=new Date();
+                                   
+                                 //  var weekStart = new Date(today.getDate() - (7 + today.getDay() - startDay) % 7);
+                                 //   var weekEnd = new Date(today.getDate() + (7 - today.getDay() - startDay) % 7);
+                                    // test code
+                                    var Dates = new Date().getWeek(startDay);
+                                    
+                                  var weekStart = Dates[0].toLocaleDateString();
+                                    var weekEnd =Dates[1].toLocaleDateString();
+                                    
+                                    var weekStart =formatDate(Dates[0]);
+                                    var weekEnd =formatDate(Dates[1]);
+                                    
+                                    weekStart = weekStart+" 00:00:00";
+                                    weekEnd = weekEnd+" 00:00:00";
+                                    getdate(weekStart,weekEnd);
+								},
+								function()
+								{
+							   	 console.warn("Error calling plugin");
+								});
+                }
+            }
+            
+            function getdate(weekStart,weekEnd)
+            {
+                console.log("select rp32weeknumber from salescalender where weekstartdate='"+weekStart+"' and weekenddate='"+weekEnd+"'");
+                var platform= sessionStorage.getItem("platform");
+                if(platform=='iPad')
+                {
+                    var abc = Cordova.exec(function(result) {
+                                     getCustomers(result);
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    ["select rp32weeknumber from salescalender where weekstartdate='"+weekStart+"' and weekenddate='"+weekEnd+"'"]);
+                }
+                else if(platform=='Android')
+                {             
+                    window.plugins.DataBaseHelper.select("select rp32weeknumber from salescalender where weekstartdate='"+weekStart+"' and weekenddate='"+weekEnd+"'",function(result)
+                    {
+                        if(result.array!=undefined)
+                        {
+                            getCustomers(result.array[0].rp32weeknumber);
+                        }                        
+                    },
+                    function()
+                    {
+                        console.warn("Error calling plugin");
+                    });
+                }  
+            }
+            
+            function getCustomers(rp32weeknumber)
+            {
+                var routesequenceplanflag= sessionStorage.getItem("routesequenceplanflag");
+                if(routesequenceplanflag==1)
+                rp32weeknumber=9;
+                
+                var d = new Date();
+                var n = d.getDay();
+                var array = ['sunseq','monseq','tueseq','wedseq','thuseq','friseq','satseq'];
+                var callarray=['callrestrictiondays7','callrestrictiondays1','callrestrictiondays2','callrestrictiondays3','callrestrictiondays4','callrestrictiondays5','callrestrictiondays6'];
+                var days = array[n];
+                var calldays = callarray[n];
+                var Qry = "SELECT cm.customercode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername FROM routesequence rs JOIN customermaster cm ON cm.customercode = rs.customercode WHERE rs.routecode = " + sessionStorage.getItem("RouteCode") + " AND rp32weeknumber = " + rp32weeknumber + " AND " + calldays + "=1 AND rs.customercode NOT IN(SELECT customercode FROM customeroperationscontrol WHERE (totaltransactions > 0 or reasoncode > 0)) ORDER BY " + days;
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            data = result;
+                            BindData();
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                        	var result = $.map(result.array, function(item, index) {
+                            	return [[item.customercode,item.customername]];                        
+                        	});
+                        	data = result;
+                        	BindData();
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function BindData()
+            {                
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;            
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) 
+                    {
+                        var temp = (j == 0) ? 'leftAlign' : 'leftAlign last';                   
+                        var c = "<td class='" + temp + "'>" + data[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tblContent tbody').append(r);
+                }
+                $("#tblContent tr:odd").addClass('oddRow');
+                $("#tblContent tr:even").addClass('evenRow');
+                
+                $("#tblContent tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i = $(this).index();
+                    if($(this).hasClass("clicked"))
+                        selRow = i;
+                    else
+                        selRow = undefined;
+                }); 
+                $("#tblContent tr:eq(1)").trigger('click');               
+            }
+
+            if (sessionStorage.getItem("Language") != "en") {
+
+                window.lang.change('TodaysUnserviced' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+
+                    $(".boxContent").attr("dir", "rtl");
+
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                window.lang.change('en', 'en');
+
+                $(".boxContent").attr("dir", "ltr");
+
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }            
+
+        });
+        
+        function OnView()
+        {   
+            if(selRow != undefined)
+            {                
+                //window.location = "customerdetails.html?custid=" + data[selRow-1][0];
+                
+                sessionStorage.setItem("customerid",data[selRow - 1][0]);
+                localStorage.info = 'todaysunserviced';
+                window.location = "../customer/customer_info.html";
+            }
+            else
+                getLangText("Please Select Customer.");
+        }
+    </script>
+
+    </body>
+</html>

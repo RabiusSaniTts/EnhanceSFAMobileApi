@@ -1,0 +1,318 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 30/1/2011
+ '  Description  : This page is used for detail of route book detail
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="#" rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Route Book</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm">
+                    <div class="tblBox tbltd" id="contentWrapper">
+
+                        <table class="tblHeader" width="100%" cellpadding="10"
+                            cellspacing="0" id="tblHeaderContent">
+                            <tr>
+                                <td width="30%" lang="en">
+                                    Customer #
+                                </td>
+                                <td width="70%" lang="en" class="last">
+                                    Customer Name
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="route_table_height route">
+                            <table border="0" width="100%" cellpadding="10"
+                                cellspacing="0" id="tbl1" data-role="none">
+                                <tbody class="tblBody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="route_book_date.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon" src="../images/doc.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                By Date</div>
+                        </div>
+                    </a><a href="route_book_detail.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/by-item.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                By Item</div>
+                        </div>
+                    </a><a href="#" class="enableText" id="exit" rel="external">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Done</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            var platform='';
+            var inputvalue='';
+            $("#tbl1").click(function() { });
+      resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+                              platform= sessionStorage.getItem("platform");
+                              document.addEventListener("deviceready", getCustomerList, false);
+                             		
+		if(localStorage.root=='cust')
+		{
+		    var page = 'customer_info.html'
+		}
+		else
+		{
+		    var page = '../review/review.html';
+		}
+		$("#Back_inner").attr("href", page);
+        $("#exit").attr("href",page);
+
+                $(".leftfooter").html(getCurrentDate());
+                
+                $('#tbl1 tr:first').toggleClass('clicked');
+                $("#tbl1 tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i = $(this).index();
+                                   localStorage.customerids=inputvalue[i][2];
+                                   localStorage.customername=inputvalue[i][1];
+                                   
+                });
+               
+                var lan = sessionStorage.getItem("Language");
+                              window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Routebooks'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $("#contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+            });
+            //Function for bind customer list
+            function getCustomerList()
+            {            
+            
+            	$("#cusPrint").attr("href","");
+         		$("#imgPrint").attr("src","../images/print-gray.png");         
+                if(platform=='iPad')
+           		{ 
+                    Cordova.exec(function(result) { 
+                                  
+                                   BindData(result); 
+                                  },
+                                  function(error) {
+                                  alert("Error in binding Category : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  ["select CASE WHEN " + sessionStorage.getItem("customer_alternatecode")+" = 1 THEN alternatecode ELSE customercode END as code ,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN customername ELSE arbcustomername END as Desc,customercode from customermaster order by customercode"]);         
+                    
+                }
+             	else if(platform=='Android')
+            	{
+                    window.plugins.DataBaseHelper.select("select CASE WHEN " + sessionStorage.getItem("customer_alternatecode")+" = 1 THEN alternatecode ELSE customercode END as code ,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN customername ELSE arbcustomername END as Desc,customercode from customermaster order by customercode",function(result)
+                                                         {		
+                                                                      BindData(result);                                              
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+            	}
+            }
+            function BindData(result) {
+                
+                var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+                
+                if (platform == 'Android') {                    
+                    var array = $.map(result.array, function(item, index) {
+                                      
+                                      return [[item.code, item.Desc,item.customercode]];
+                                      });
+                    
+                    data = array;
+                }
+                else
+                {
+                    data = result;
+                }
+                
+                inputvalue=data;
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr>";
+                    if(data[i][2] == sessionStorage.getItem("customerid"))
+                    {
+                        var selectval = i;
+                    
+                    }
+                    for (j = 0; j < CellCount; j++) {  
+                        var c = '';
+                        var temp = '';
+                        
+                        if (j == CellCount-1)
+                        temp += " width='70%' class = 'last'";
+                        
+                        
+                        c = "<td " + temp + ">" + data[i][j] + "</td>"; 
+                        
+                        
+                        
+                        r += c;
+                    }
+                    r += "</tr>";
+                    
+                    $('#tbl1 tbody').append(r);                    
+                    
+                }
+                $("#tbl1 tr:eq("+selectval+")").trigger('click');
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');  
+                
+            }
+        </script>
+
+        </div>
+    </body>
+</html>

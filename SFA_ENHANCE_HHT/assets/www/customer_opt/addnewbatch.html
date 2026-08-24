@@ -1,0 +1,662 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 3/2/2011
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add New Batch</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/batch.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="batch.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Add New Batch</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="tblBox com_div">
+                    <div class="tblHeader info_header" lang="en"></div>
+                    <div class="info" id="contentWrapper">
+                        <table border="0" width="100%" cellpadding="10"
+                            cellspacing="2" id="tbl1">
+                            <tbody class="tbl_body">
+
+                                <tr class="td_com">
+                                    <td width="50%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Batch No</label>
+                                        <input type="text" name="batchno"
+                                            id="batchno" value
+                                            class="textWidth textfont" />
+                                    </td>
+                                    <td width="50%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Expiry</label>
+                                        <input name="enddate" type="date"
+                                            data-role="datebox"
+                                            readonly="readonly"
+                                            id="enddate"
+                                            data-options='{"mode": "flipbox","dateFormat": "dd-MM-YYYY"}' />
+
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+
+                                    <td width="50%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Cases</label>
+                                        <!--<input type="text" pattern="[0-9]*" name="cases" id="cases" value="" class="textWidth textfont"/>-->
+                                        <input type="number" name="cases"
+                                            id="cases" value
+                                            class="textWidth textfont" />
+                                    </td>
+                                    <td width="50%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Units</label>
+                                        <!--<input type="text" pattern="[0-9]*" name="units" id="units" value="" class="required" class="textWidth textfont"/>-->
+                                        <input type="number" name="units"
+                                            id="units" value class="required"
+                                            class="textWidth textfont" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" class="enableText" rel="external"
+                        onclick="save()">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon" src="../images/save.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Save</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="batch.html" class="enableText" rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+var transactiontype='';
+            var key;
+        resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+                              $("#units").ForceNumericOnly();
+                              transactiontype = localStorage.batchtranstype;
+                             var cDate = new Date();
+                              
+                              var tDate = ("0" + cDate.getDate()).slice(-2)+'-'+("0" + (cDate.getMonth() + 1)).slice(-2) + '-' + cDate.getFullYear(); //Change after merge js file      
+                              $("#enddate").val(tDate);
+                        
+            if(transactiontype >= 15 && transactiontype <= 22)
+            {
+                $("#inve").removeClass("ui-btn-active");
+                $("#cust").addClass("ui-btn-active");
+            }
+            else
+            {
+                $("#cust").removeClass("ui-btn-active");
+                $("#inve").addClass("ui-btn-active");
+            }
+                                               
+	       $('.ui-body-d').css({ 'background': '#fff' });
+                $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+                $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+                $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+                $(".leftfooter").html(getCurrentDate());
+                
+                 var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('AddNewBatch'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                    
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+            });
+        function save()
+            {
+                selectbatchdata();
+                var routecode=sessionStorage.getItem("RouteCode");
+                var itemcode=sessionStorage.getItem("itemno");
+                var visitkey=sessionStorage.getItem("VisitKey");
+                if(transactiontype < 15 || transactiontype==23)
+                visitkey=0;
+                var routekey=sessionStorage.getItem("RouteKey");
+                var unitspercase=sessionStorage.getItem("unitspercase");
+                var batchno = $('#batchno').val();
+                var cases = $('#cases').val();
+                var units = $('#units').val();
+                if(cases=='')
+                cases =0;
+                if(units=='')
+                units=0;
+                var d = new Date($("#enddate").data("datebox").theDate);
+                
+                var m = d.getMonth()+1; //+1 because getMonth() returns 0 based index
+                var y = d.getFullYear();            
+                d = d.getDate();
+                d = (d<=9 ? "0"+d : d);
+                m = (m<=9 ? "0"+m : m);
+                var enddate = y + "-" + m + "-" + d;
+                console.log("cases="+cases+"units="+units+"uniper="+unitspercase);
+                var qty  = eval(unitspercase * cases) + eval(units);
+                var platform= sessionStorage.getItem("platform");
+                if(batchno == '' || enddate=='')
+                {
+                	getLangText("Please Enter Batch Details.");
+                    return false;
+                }
+                var selectqry ="select count(*) as cnt from batchmaster_temp where batchnumber='"+batchno+"' and strftime('%s',expirydate)=strftime('%s','"+enddate+"') and itemcode="+itemcode;
+                console.log(selectqry);
+                if(platform=='iPad')
+                {
+                    var abc = Cordova.exec(function(result) {
+                                            
+                                            if(eval(result[0][0])==0)
+                                            {
+                                            Cordova.exec(function(result) {
+                                                          //TableDataOffLine(result);
+                                                          updatemain();
+                                                          insertbatchmaster();
+                                                          
+                                                          },
+                                                          function(error) {
+                                                          alert(error);},
+                                                          "PluginClass", 
+                                                          "InsertUpdateMethod", 
+                                                          ["insert into batchexpirydetail ('batchdetailkey','routekey','batchnumber','itemcode','expirydate','quantity','transactiontypecode','visitkey','istemp','issync') values ('"+key+"','"+routekey+"','"+batchno+"','"+itemcode+"','"+enddate+"','"+qty+"',"+transactiontype+",'"+visitkey+"','true',0)"]);
+                                            }
+                                            else
+                                            {
+                                            getLangText("Batch Already Exits.");
+                                            }
+                                            
+                                            },
+                                            function(error) { 
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            [selectqry]);
+                    
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                         {
+                                                         if(eval(result.array[0].cnt)==0)
+                                                         {
+                                                         window.plugins.DataBaseHelper.insert("insert into batchexpirydetail ('batchdetailkey','routekey','batchnumber','itemcode','expirydate','quantity','transactiontypecode','visitkey','istemp','issync') values ('"+key+"','"+routekey+"','"+batchno+"','"+itemcode+"','"+enddate+"','"+qty+"',"+transactiontype+",'"+visitkey+"','true',0)",function(result)
+                                                                                              {
+                                                                                              updatemain();
+                                                                                              insertbatchmaster();
+                                                                                              
+                                                                                              },
+                                                                                              function()
+                                                                                              {
+                                                                                              console.warn("Error calling plugin");
+                                                                                              });
+                                                         }
+                                                         else
+                                                         {
+                                                         getLangText("Batch Already Exits.");
+                                                         }
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                
+            
+            }
+           function insertbatchmaster()
+            {
+                 var itemcode=sessionStorage.getItem("itemno");
+                var platform= sessionStorage.getItem("platform");
+                var unitspercase=sessionStorage.getItem("unitspercase");
+                transactiontype = localStorage.batchtranstype;
+                var batchno = $('#batchno').val();
+                var cases = $('#cases').val();
+                var units = $('#units').val();
+                if(cases=='')
+                cases =0;
+                if(units=='')
+                units=0;
+                var d = new Date($("#enddate").data("datebox").theDate);
+                
+                var m = d.getMonth()+1; //+1 because getMonth() returns 0 based index
+                var y = d.getFullYear();            
+                d = d.getDate();
+                d = (d<=9 ? "0"+d : d);
+                m = (m<=9 ? "0"+m : m);
+                var enddate = y + "-" + m + "-" + d;
+                //var enddate = $('#enddate').val();
+                var qty  = eval(eval(unitspercase) * eval(cases)) + eval(units);
+                if(transactiontype ==18)
+                {
+                    batchquantity='returnqty';
+                    invoiceqty='returnqty';
+                }
+                else if(transactiontype ==19)
+                {
+                    batchquantity='buybackqty';
+                    invoiceqty='returnfreeqty';
+                }
+                else if(transactiontype ==20)
+                {
+                    batchquantity='damageqty';
+                    invoiceqty='damagedqty';
+                }
+                else if(transactiontype ==21)
+                {
+                    batchquantity='expiryqty';
+                    invoiceqty='expiryqty';
+                }else if(transactiontype ==2)
+                {
+                    batchquantity='loadcutqty';
+                    invoiceqty='loadcutqty';
+                }
+                else if(transactiontype ==3)
+                {
+                    batchquantity='loadaddqty';
+                    invoiceqty='loadaddqty';
+                }
+                else if(transactiontype ==4)
+                {
+                    batchquantity='damageoutqty';
+                    invoiceqty='damagedcutqty';
+                }
+                else if(transactiontype ==5)
+                {
+                    batchquantity='endinvqty';
+                    invoiceqty='endinvqty';
+                }
+                else if(transactiontype ==7)
+                {
+                    batchquantity='damageunloadqty';
+                    invoiceqty='damageunloadqty';
+                }
+                else if(transactiontype ==11)
+                {
+                    batchquantity='truckdamageqty';
+                    invoiceqty='truckdamageqty';
+                }
+                else if(transactiontype ==14)
+                {
+                    batchquantity='freshunloadqty';
+                    invoiceqty='freshunloadqty';
+                }
+                else if(transactiontype ==23)
+                {
+                    batchquantity='adjustqty';
+                    invoiceqty='loadadjustqty';
+                }
+               var insertqry="insert into batchmaster_temp('batchdetailkey','batchnumber','itemcode','quantity','expirydate','"+batchquantity+"') values('"+key+"','"+batchno+"','"+itemcode+"','0','"+enddate+"','"+qty+"')";
+                console.log(insertqry);
+                if(platform=='iPad')
+                {
+                    var abc = Cordova.exec(function(result) {
+                                            //TableDataOffLine(result);
+                                            
+                                            window.location.href='batch.html';
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "InsertUpdateMethod", 
+                                            [insertqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.insert(insertqry,function(result)
+                                                         {
+                                                         
+                                                         window.location.href='batch.html';
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                } 
+                
+            }
+            function updatemain()
+            {
+                var itemcode=sessionStorage.getItem("itemno");
+                var platform= sessionStorage.getItem("platform");
+                var unitspercase=sessionStorage.getItem("unitspercase");
+                transactiontype = localStorage.batchtranstype;
+                
+                var routekey=sessionStorage.getItem("RouteKey");
+                var visitkey=sessionStorage.getItem("VisitKey");
+                if(transactiontype ==15)
+                {
+                    batchquantity='salesqty';
+                    invoiceqty='salesqty';
+                }
+                else if(transactiontype ==16)
+                {
+                    batchquantity='freeqty';
+                    invoiceqty='manualfreeqty';
+                }
+                else if(transactiontype ==18)
+                {
+                    batchquantity='returnqty';
+                    invoiceqty='returnqty';
+                }
+                else if(transactiontype ==19)
+                {
+                    batchquantity='buybackqty';
+                    invoiceqty='returnfreeqty';
+                }
+                else if(transactiontype ==20)
+                {
+                    batchquantity='damageqty';
+                    invoiceqty='damagedqty';
+                }
+                else if(transactiontype ==21)
+                {
+                    batchquantity='expiryqty';
+                    invoiceqty='expiryqty';
+                }
+                else if(transactiontype ==22)
+                {
+                    batchquantity='rentalqty';
+                    invoiceqty='fixedrentqty';
+                }
+                else if(transactiontype ==17)
+                {
+                    batchquantity='promoqty';
+                    invoiceqty='freesampleqty';
+                }
+                else if(transactiontype ==2)
+                {
+                    batchquantity='loadcutqty';
+                    invoiceqty='loadcutqty';
+                }
+                else if(transactiontype ==3)
+                {
+                    batchquantity='loadaddqty';
+                    invoiceqty='loadaddqty';
+                }
+                else if(transactiontype ==4)
+                {
+                    batchquantity='damageoutqty';
+                    invoiceqty='damagedcutqty';
+                }
+                else if(transactiontype ==5)
+                {
+                    batchquantity='endinvqty';
+                    invoiceqty='endinvqty';
+                }
+                else if(transactiontype ==7)
+                {
+                    batchquantity='damageunloadqty';
+                    invoiceqty='damageunloadqty';
+                }
+                else if(transactiontype ==11)
+                {
+                    batchquantity='truckdamageqty';
+                    invoiceqty='truckdamageqty';
+                }
+                else if(transactiontype ==14)
+                {
+                    batchquantity='freshunloadqty';
+                    invoiceqty='freshunloadqty';
+                }
+                else if(transactiontype ==23)
+                {
+                    batchquantity='adjustqty';
+                    invoiceqty='loadadjustqty';
+                }
+                if(transactiontype < 15)
+                visitkey=0;
+                if(transactiontype ==2 || transactiontype==3 || transactiontype==4 || transactiontype==23)
+                {
+                    var updateqry="update inventorytransactiondetail set quantity=(select sum(quantity) from batchexpirydetail where routekey="+routekey+" and transactiontypecode=" + transactiontype+" and istemp='true' and itemcode="+itemcode+") where itemcode="+itemcode+" and routekey="+routekey+" and transactiontypecode=" + transactiontype+" and istemp='true'";
+                }
+                else if(transactiontype >4 && transactiontype<15)
+                {
+                    var updateqry="update transactiondetailtemp set "+invoiceqty+"=(select sum(quantity) from batchexpirydetail where routekey="+routekey+" and transactiontypecode=" + transactiontype+" and istemp='true' and itemcode="+itemcode+") where itemcode="+itemcode;
+                }
+                else{
+                    var updateqry = "update invoicedetail set "+invoiceqty+"=(select sum(quantity) from batchexpirydetail where routekey="+routekey+" and transactiontypecode=" + transactiontype+" and istemp='true' and itemcode="+itemcode+") where itemcode="+itemcode+" and visitkey="+visitkey+" and routekey="+routekey;
+                }
+                 console.log(updateqry);
+                if(platform=='iPad')
+                {
+                    var abc = Cordova.exec(function(result) {
+                                            //TableDataOffLine(result);
+                                            return true;
+                                           // window.location.href='batch.html';
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "InsertUpdateMethod", 
+                                            [updateqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.insert(updateqry,function(result)
+                                                         {
+                                                         return true;
+                                                        // window.location.href='batch.html';
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                } 
+            }
+            function selectbatchdata()
+            {
+               if(transactiontype > 14 && transactiontype <23)
+    {
+        var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where visitkey="+sessionStorage.getItem('VisitKey')+"";
+    }
+    else if(transactiontype == 2 || transactiontype==3 || transactiontype==4)
+    {
+    var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where (transactiontypecode=2 or transactiontypecode=3 or transactiontypecode=4) and istemp='true'";
+    }
+    else if(transactiontype >4 && transactiontype <15)
+    {
+    var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where (transactiontypecode > 4 and  transactiontypecode<15) and istemp='true'";
+    }
+    else if(transactiontype==1)
+    {
+        var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where transactiontypecode=1 and istemp='true'";
+    }
+    else
+    {
+        var selectqry = "select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where transactiontypecode=23 and istemp='true'";
+    }
+               
+                console.log(selectqry);
+                if(platform=='iPad')
+                {
+                    return abc = Cordova.exec(function(result) {
+                                               if(result=='' || result[0][0]==0)
+                                               key=1;
+                                               else
+                                               key = result[0][0];
+                                               
+                                               
+                                               },
+                                               function(error) {
+                                               alert(error);},
+                                               "PluginClass", 
+                                               "GetdataMethod", 
+                                               [selectqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                         {
+                                                         
+                                                         result = $.map(result.array, function (item, index) {
+                                                                        
+                                                                        return [[item.batchdetailkey]];
+                                                                        });
+                                                         if(result=='' || result[0][0]==0)
+                                                         key=1;
+                                                         else
+                                                         key = result[0][0];
+                                                         
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                } 
+            }
+        </script>
+
+        </div>
+    </body>
+</html>

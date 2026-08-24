@@ -1,0 +1,420 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 07/02/2012
+ '  Description  : This page is used for information screen.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Information</title>
+        <meta charset="utf-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+			 document.write('<script charset="utf-8" src="../js/Locationagent.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <link rel="stylesheet" type="text/css"
+            href="../css/jquery.mobile.simpledialog.css" />
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.simpledialog.js"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div class="ui-corner-bl ui-corner-br cashtitle">
+                <label lang="en">Cash :</label>
+                <span id="cash">0</span>
+
+            </div>
+            <div class="ui-corner-bl ui-corner-br checktitle">
+
+                <label lang="en">Cheque :</label>
+                <span id="cheque">0</span>
+            </div>
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="../home/home.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Information</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq" id="test1">
+                <div id="MenuListReview" style="margin-top:20px !important;">
+                    <div class="content-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="customerlist.html" rel="external">
+                                    <img src="../images/icn-customerlist.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="lblStartOfDay" lang="en">
+                                        Customer List</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+
+                    <div class="content-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../review/goals-quota.html"
+                                    rel="external">
+                                    <img src="../images/by-customer-name.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="lblReprint" lang="en">
+                                        Target/Goals</h3>
+                                </a></li>
+                        </ul>
+
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../customer/aging_analysis.html"
+                                    rel="external"
+                                    onclick=localStorage.age='info'>
+                                    <img src="../images/icn-analysis.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="lblSettlement" lang="en">
+                                        Analysis</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="content-primary">
+
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../review/todaysummary.html"
+                                    rel="external">
+                                    <img src="../images/icn-TS.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="H5" lang="en">
+                                        Todays Summary</h3>
+                                </a></li>
+                        </ul>
+
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../review/review.html"
+                                    id="simplestring" rel="external"
+                                    style="text-decoration: none"
+                                    data-role="none">
+                                    <img src="../images/icn-review.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="lblInformation" lang="en">
+                                        Review</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="trackorder.html" rel="external">
+                                    <img src="../images/batch.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="lblInventory" lang="en">
+                                        Track Order</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="content-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../review/printdocument.html"
+                                    rel="external">
+                                    <img src="../images/icn-printdoc.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="H1" lang="en">
+                                        Print Transactions</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../review/printreport.html" id="A1"
+                                    style="text-decoration: none"
+                                    rel="external">
+                                    <img src="../images/icn-printreport.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="H2" lang="en">
+                                        Print Reports</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="second-primary">
+                        <ul data-role="listview" id="MenuList">
+                            <li><a href="../home/Dashboard.html" id="A1"
+                                    style="text-decoration: none"
+                                    rel="external">
+                                    <img src="../images/chart.png"
+                                        class="HomeIconPosEN" />
+                                    <h3 id="H2" lang="en">
+                                        Dashboard</h3>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="info"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform;
+        var routekey;
+        var decimalplace = sessionStorage.getItem("decimalplace");
+       resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+            $(".leftfooter").html(getCurrentDate());
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+                          platform= sessionStorage.getItem("platform");
+                        
+                          if (sessionStorage.getItem("RouteKey") =='' || sessionStorage.getItem("RouteKey")==0 || sessionStorage.getItem("RouteKey") == null)
+                          {
+                              
+                          document.addEventListener("deviceready", getafterRouteKey, false);
+                          }else
+                              {
+                              routekey= sessionStorage.getItem("RouteKey");
+                              document.addEventListener("deviceready", getcash, false);
+                              }
+                         // document.addEventListener("deviceready", getcash, false);
+                          
+                          
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('Information' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //$("#content").attr("dir", "rtl");
+
+                    $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                window.lang.change('en', 'en');
+                //$("#content").attr("dir", "ltr");
+                $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+        });
+        //
+        function getafterRouteKey() {
+            platform = sessionStorage.getItem("platform");
+          
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                    if (result>0) {
+                        sessionStorage.setItem("RouteKey", result[0][0]);
+                              
+                    }
+                    
+
+                },
+                          function(error) {
+                              alert("Error in getting salesman : " + error);
+                          },
+                          "PluginClass",
+                          "GetdataMethod",
+                          ["select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0"]);
+            }
+            else if (platform == 'Android') {
+                
+                window.plugins.DataBaseHelper.select("select max(routekey) routekey from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + "", function(result) {
+                    if (result.array != undefined) {        
+                       
+                       
+                        if (result.array[0].routekey>0) {
+                        sessionStorage.setItem("RouteKey", result.array[0].routekey);
+                        routekey= sessionStorage.getItem("RouteKey");
+                        getcash();
+                    }
+                    
+                    }
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        //
+        function getcash()
+        {
+            getcheque();
+            var qry="select sum(ifnull(amount,0)) as amount from cashcheckdetail where istemp = 'false' and typecode=0 AND routekey="+routekey;
+            if(platform=='iPad')
+            {
+                Cordova.exec(function(result) {  
+                              if(result[0][0]=='')
+                              $("#cash").text(0);
+                              else
+                              $("#cash").text(eval(result[0][0]).toFixed(decimalplace));                
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding promotion list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [qry]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(qry,function(result)
+                                                     {
+                                                    
+                                                     if(result.array[0].amount =='')
+                                                     $("#cash").text(0);
+                                                     else
+                                                     $("#cash").text(eval(result.array[0].amount).toFixed(decimalplace)); 
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }    
+        }
+        function getcheque()
+        {
+            var qry="select sum(ifnull(amount,0)) as amount from cashcheckdetail where istemp = 'false' and typecode=1 AND routekey="+routekey;
+            if(platform=='iPad')
+            {
+                Cordova.exec(function(result) {  
+                              if(result[0][0]=='')
+                              $("#cheque").text(0);
+                              else
+                              $("#cheque").text(eval(result[0][0]).toFixed(decimalplace));                
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding promotion list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [qry]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(qry,function(result)
+                                                     {
+                                                     
+                                                     if(result.array[0].amount =='')
+                                                     $("#cheque").text(0);
+                                                     else
+                                                     $("#cheque").text(eval(result.array[0].amount).toFixed(decimalplace)); 
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }    
+        }
+    </script>
+
+    </body>
+</html>

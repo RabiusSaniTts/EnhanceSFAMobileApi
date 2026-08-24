@@ -1,0 +1,1012 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 31/1/2011
+ '  Description  : This page is used for print the settlement report.
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Settlement Report</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1400px)"
+			href="../css/style_1400.css">
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript"
+			lang="en"></script>
+		<script type="text/javascript" src="../js/printreportmultiple.js"></script>
+		<script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="managesettlement.html" id="Back_inner" rel="external" lang="en">Back</a>-->
+				<h1 lang="en">
+					Settlement Report</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="boxContent">
+					<div class="tblBox">
+						<div id="contentWrapper" class="tblReport">
+							<table border="0" cellpadding="4" cellspacing="4" width="100%"
+								id="tblContent">
+								<tr>
+									<td style="width: 5%;">
+										<img id="imgCheck1" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td style="width: 95%" lang="en">
+										Deposit Report
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="imgCheck2" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										SKU Discount Report
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="imgCheck3" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Given Discount Report
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="imgCheck4" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Route Activity Log
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="imgCheck5" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Route Review
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="imgCheck6" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Sales Summary
+									</td>
+								</tr>
+								<!--  <tr>
+                            <td>
+                                <img id="imgCheck7" src="../images/check.png" alt="check" style="vertical-align: middle;" />
+                            </td>
+                            <td lang="en">
+                                Odometer Reading
+                            </td>
+                        </tr>-->
+								<tr>
+									<td>
+										<img id="imgCheck11" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Customer Balance Report
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="imgCheck8" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Route Summary
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="imgCheck9" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Serviced/Unserviced Customers
+									</td>
+								</tr>
+								<!--<tr>
+                                <td>
+                                    <img id="imgCheck10" src="../images/check.png" alt="check" style="vertical-align: middle;" />
+                                </td>
+                                <td lang="en">
+                                    Item Price Change Report
+                                </td>
+                            </tr>-->
+								<tr>
+									<td>
+										<img id="imgCheck10" src="../images/check.png" alt="check"
+											style="vertical-align: middle;" />
+									</td>
+									<td lang="en">
+										Damage/Expiry Report
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="leftbottomMenu">
+					<div class="menuPadding">
+						&nbsp;</div>
+					<!--<a href="settlementcompletion.html" rel="external" style="text-decoration: none;
+                    font-weight: normal;">
+                    <div class="MenuPositionSCLarge settlementReportHeight">
+                        <div class="iconPos">
+                            <img src="../images/print.png" alt="Print" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Print</div>
+                    </div>
+                </a>-->
+					<!-- <a href="#" rel="external" style="text-decoration: none;
+                    font-weight: normal;">
+                    <div class="MenuPosition">
+                        <div class="iconPos">
+                            <img src="../images/print-gray.png" alt="Print" /></div>
+                        <div class="MenuTextPos MenuText MenuGray" lang="en">
+                            Print</div>
+                    </div>
+                </a>-->
+					<div class="menuPadding">
+						&nbsp;</div>
+
+					<a id="btnSave" onclick="PrintSelectedReports()" rel="external"
+						style="text-decoration: none; font-weight: normal;">
+						<div class="MenuPosition ">
+							<div class="iconPos">
+								<img src="../images/ok.png" alt="Save" /></div>
+							<div class="MenuTextPos MenuText" lang="en">
+								Ok</div>
+						</div>
+					</a>
+					<div class="menuPadding">
+						&nbsp;</div>
+				</div>
+			</div>
+			<div data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">
+						09 November 2011</div>
+					<div class="rightfooter">
+						Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+								id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start of
+								day</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+								id="cust" data-icon="custom" lang="en"
+								onclick="footerredict('../customer/customer_operation.html')">Customer
+								opt</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+								id="sett" data-icon="custom" lang="en" class="ui-btn-active"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#" rel="external"
+								id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom:0 !important; width:14.0%"><a href="#"
+								rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+		<script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+	var hideflag1 = 0;
+	var hideflag2 = 0;
+	var hideflag3 = 0;
+	var hideflag4 = 0;
+	var hideflag5 = 0;
+	var hideflag6 = 0;
+	var hideflag7 = 0;
+	var hideflag8 = 0;
+	var hideflag9 = 0;
+	var hideflag10 = 0;
+	var rptflag1 = 0;
+    var rptflag2 = 0;
+    var rptflag3 = 0;
+    var rptflag4 = 0;
+    var rptflag5 = 0;
+    var rptflag6 = 0;
+    var rptflag7 = 0;
+    var rptflag8 = 0;
+    var rptflag9 = 0;
+    var rptflag10 = 0;
+
+        $(document).ready(function() {
+            //Set current date in footer
+            $("#Back_inner").attr("href","");
+		
+		document.addEventListener("deviceready", onDR, false);
+            //Fetch current language and set that language.
+	    $(".leftfooter").html(getCurrentDate());
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('SettlementReport' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+
+                    //Set html right alignment for arbic language
+                    $(".boxContent").attr("dir", "rtl");
+
+                    //Set header align                  
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".boxContent").attr("dir", "ltr");
+
+                //Set header align                
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+            
+
+            //Swapping images on checkbox click
+            function toogleClass(element) {
+                if ($(element).attr("src") == '../images/check.png') {
+                    $(element).attr("src", "../images/check-box.png");
+                }
+                else {
+                    $(element).attr("src", "../images/check.png");
+                }
+            }
+
+        });
+        function onDR()
+	{
+	    
+	    var Qry = "SELECT reqeoddepositreport,reqeodplacementsrpt,reqeodpromosreport,reqeodrteactivreport,reqeodroutereviewrpt,reqeodsalesreport,reqeododomlogreport,reqeodroasummary,reqeodnosalereport,reqeodrtnexchreport FROM routemaster WHERE routecode="+sessionStorage.getItem("RouteCode");    
+		console.log(Qry);            
+		if (platform == 'iPad') 
+		{
+		    Cordova.exec(function(result) 
+		    {
+			
+			 if(result[0][0]==0)
+			    {
+				    $("#imgCheck1").attr('src',"../images/check-gray.png");
+				    $("#imgCheck1").attr("disabled", true);
+				    hideflag1 = 1;
+				
+			    }
+			    else if(result[0][0]==1)
+			    {
+				
+				    $("#imgCheck1").attr('src',"../images/check.png");
+				    $("#imgCheck1").removeAttr("disabled");
+				    hideflag1 = 0;
+				
+			    }
+			    else if(result[0][0]==2)
+			    {
+				
+				    $("#imgCheck1").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck1").attr("disabled", true);
+				    hideflag1 = 1;
+				
+			    }
+			    //////-----------------
+			    if(result[0][1]==0)
+			    {
+				    $("#imgCheck2").attr('src',"../images/check-gray.png");
+				    $("#imgCheck2").attr("disabled", true);
+				     hideflag2 = 1;
+				
+			    }
+			    else if(result[0][1]==1)
+			    {
+				
+				    $("#imgCheck2").attr('src',"../images/check.png");
+				    $("#imgCheck2").removeAttr("disabled");
+				     hideflag2 = 0;
+				
+			    }
+			    else if(result[0][1]==2)
+			    {
+				
+				    $("#imgCheck2").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck2").attr("disabled", true);
+				     hideflag2 = 1;
+				
+			    }
+			    //-----------
+			    if(result[0][2]==0)
+			    {
+				    $("#imgCheck3").attr('src',"../images/check-gray.png");
+				    $("#imgCheck3").attr("disabled", true);
+				     hideflag3 = 1;
+				
+			    }
+			    else if(result[0][2]==1)
+			    {
+				
+				    $("#imgCheck3").attr('src',"../images/check.png");
+				    $("#imgCheck3").removeAttr("disabled");
+				 hideflag3 = 0;
+			    }
+			    else if(result[0][2]==2)
+			    {
+				
+				    $("#imgCheck3").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck3").attr("disabled", true);
+				 hideflag3 = 1;
+			    }
+			    //-----------
+			    if(result[0][3]  ==0)
+			    {
+				    $("#imgCheck4").attr('src',"../images/check-gray.png");
+				    $("#imgCheck4").attr("disabled", true);
+				 hideflag4 = 1;
+				 rptflag4 = 0;
+			    }
+			    else if(result[0][3]==1)
+			    {
+				
+				    $("#imgCheck4").attr('src',"../images/check.png");
+				    $("#imgCheck4").removeAttr("disabled");
+				 hideflag4 = 0;
+				 rptflag4=1;
+			    }
+			    else if(result[0][3]==2)
+			    {
+				
+				    $("#imgCheck4").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck4").attr("disabled", true);
+				 hideflag4 = 1;
+				 rptflag4=2;
+			    }
+			    //------------
+			    if(result[0][4]==0)
+			    {
+				    $("#imgCheck5").attr('src',"../images/check-gray.png");
+				    $("#imgCheck5").attr("disabled", true);
+				 hideflag5 = 1;
+			    }
+			    else if(result[0][4]==1)
+			    {
+				
+				    $("#imgCheck5").attr('src',"../images/check.png");
+				    $("#imgCheck5").removeAttr("disabled");
+				 hideflag5 = 0;
+			    }
+			    else if(result[0][4]==2)
+			    {
+				
+				    $("#imgCheck5").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck5").attr("disabled", true);
+				 hideflag5 = 1;
+			    }
+			    //------------
+			    if(result[0][5]==0)
+			    {
+				    $("#imgCheck6").attr('src',"../images/check-gray.png");
+				    $("#imgCheck6").attr("disabled", true);
+				 hideflag6 = 1;
+				 rptflag6 = 0;
+			    }
+			    else if(result[0][5]==1)
+			    {
+				
+				    $("#imgCheck6").attr('src',"../images/check.png");
+				    $("#imgCheck6").removeAttr("disabled");
+				 hideflag6 = 0;
+				 rptflag6 = 1;
+			    }
+			    else if(result[0][5]==2)
+			    {
+				
+				    $("#imgCheck6").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck6").attr("disabled", true);
+				 hideflag6 = 1;
+				 rptflag6 = 2;
+			    }
+			    //------------
+			    if(result[0][6]==0)
+			    {
+				    $("#imgCheck7").attr('src',"../images/check-gray.png");
+				    $("#imgCheck7").attr("disabled", true);
+				 hideflag7 = 1;
+			    }
+			    else if(result[0][6]==1)
+			    {
+				
+				    $("#imgCheck7").attr('src',"../images/check.png");
+				    $("#imgCheck7").removeAttr("disabled");
+				 hideflag7 = 0;
+			    }
+			    else if(result[0][6]==2)
+			    {
+				
+				    $("#imgCheck7").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck7").attr("disabled", true);
+				 hideflag7 = 1;
+			    }
+			    //------------
+			    //------------
+			    if(result[0][7]==0)
+			    {
+				    $("#imgCheck8").attr('src',"../images/check-gray.png");
+				    $("#imgCheck8").attr("disabled", true);
+				 hideflag8 = 1;
+				 rptflag8 = 0;
+			    }
+			    else if(result[0][7]==1)
+			    {
+				
+				    $("#imgCheck8").attr('src',"../images/check.png");
+				    $("#imgCheck8").removeAttr("disabled");
+				 hideflag8 = 0;
+				 rptflag8 = 1;
+			    }
+			    else if(result[0][7]==2)
+			    {
+				
+				    $("#imgCheck8").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck8").attr("disabled", true);
+				 hideflag8 = 1;
+				 rptflag8 =2;
+			    }
+			    //------------
+			    //------------
+			    if(result[0][8]==0)
+			    {
+				    $("#imgCheck9").attr('src',"../images/check-gray.png");
+				    $("#imgCheck9").attr("disabled", true);
+				 hideflag9 = 1;
+			    }
+			    else if(result[0][8]==1)
+			    {
+				
+				    $("#imgCheck9").attr('src',"../images/check.png");
+				    $("#imgCheck9").removeAttr("disabled");
+				 hideflag9 = 0;
+			    }
+			    else if(result[0][8]==2)
+			    {
+				
+				    $("#imgCheck9").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck9").attr("disabled", true);
+				 hideflag9 = 1;
+			    }
+			    //------------
+			    //------------
+			    if(result[0][9]==0)
+			    {
+				    $("#imgCheck10").attr('src',"../images/check-gray.png");
+				    $("#imgCheck10").attr("disabled", true);
+				 hideflag10 = 1;
+				 rptflag10 = 0;
+			    }
+			    else if(result[0][9]==1)
+			    {
+				
+				    $("#imgCheck10").attr('src',"../images/check.png");
+				    $("#imgCheck10").removeAttr("disabled");
+				 hideflag10 = 0;
+				 rptflag10 = 1;
+			    }
+			    else if(result[0][9]==2)
+			    {
+				
+				    $("#imgCheck10").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck10").attr("disabled", true);
+				 hideflag10 = 1;
+				 rptflag10 = 2;
+			    }
+			    //------------
+			checktoggle();
+		    },
+		    function(error) {
+			alert(error);
+		    },
+		    "PluginClass",
+		    "GetdataMethod",
+		    [Qry]);
+		}
+		else if (platform == 'Android') {
+		    window.plugins.DataBaseHelper.select(Qry, function(result) {
+			if(result.array != undefined)
+			{
+			    result = $.map(result.array, function(item, index) {
+				    return [[item.reqeoddepositreport,item.reqeodplacementsrpt,item.reqeodpromosreport,item.reqeodrteactivreport,item.reqeodroutereviewrpt,item.reqeodsalesreport,item.reqeododomlogreport,item.reqeodroasummary,item.reqeodnosalereport,item.reqeodrtnexchreport]];
+			    });
+			    //alert(result[0][9]);
+			   if(result[0][0]==0)
+			    {
+				    $("#imgCheck1").attr('src',"../images/check-gray.png");
+				    $("#imgCheck1").attr("disabled", true);
+				    hideflag1 = 1;
+				
+			    }
+			    else if(result[0][0]==1)
+			    {
+				
+				    $("#imgCheck1").attr('src',"../images/check.png");
+				    $("#imgCheck1").removeAttr("disabled");
+				    hideflag1 = 0;
+				
+			    }
+			    else if(result[0][0]==2)
+			    {
+				
+				    $("#imgCheck1").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck1").attr("disabled", true);
+				    hideflag1 = 1;
+				
+			    }
+			    //////-----------------
+			    if(result[0][1]==0)
+			    {
+				    $("#imgCheck2").attr('src',"../images/check-gray.png");
+				    $("#imgCheck2").attr("disabled", true);
+				     hideflag2 = 1;
+				
+			    }
+			    else if(result[0][1]==1)
+			    {
+				
+				    $("#imgCheck2").attr('src',"../images/check.png");
+				    $("#imgCheck2").removeAttr("disabled");
+				     hideflag2 = 0;
+				
+			    }
+			    else if(result[0][1]==2)
+			    {
+				
+				    $("#imgCheck2").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck2").attr("disabled", true);
+				     hideflag2 = 1;
+				
+			    }
+			    //-----------
+			    if(result[0][2]==0)
+			    {
+				    $("#imgCheck3").attr('src',"../images/check-gray.png");
+				    $("#imgCheck3").attr("disabled", true);
+				     hideflag3 = 1;
+				
+			    }
+			    else if(result[0][2]==1)
+			    {
+				
+				    $("#imgCheck3").attr('src',"../images/check.png");
+				    $("#imgCheck3").removeAttr("disabled");
+				 hideflag3 = 0;
+			    }
+			    else if(result[0][2]==2)
+			    {
+				
+				    $("#imgCheck3").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck3").attr("disabled", true);
+				 hideflag3 = 1;
+			    }
+			    //-----------
+			    if(result[0][3]==0)
+			    {
+				    $("#imgCheck4").attr('src',"../images/check-gray.png");
+				    $("#imgCheck4").attr("disabled", true);
+				 hideflag4 = 1;
+				 rptflag4 = 0;
+			    }
+			    else if(result[0][3]==1)
+			    {
+				
+				    $("#imgCheck4").attr('src',"../images/check.png");
+				    $("#imgCheck4").removeAttr("disabled");
+				 hideflag4 = 0;
+				 rptflag4 = 1;
+			    }
+			    else if(result[0][3]==2)
+			    {
+				
+				    $("#imgCheck4").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck4").attr("disabled", true);
+				 hideflag4 = 1;
+				 rptflag4 = 2;
+			    }
+			    //------------
+			    if(result[0][4]==0)
+			    {
+				    $("#imgCheck5").attr('src',"../images/check-gray.png");
+				    $("#imgCheck5").attr("disabled", true);
+				 hideflag5 = 1;
+			    }
+			    else if(result[0][4]==1)
+			    {
+				
+				    $("#imgCheck5").attr('src',"../images/check.png");
+				    $("#imgCheck5").removeAttr("disabled");
+				 hideflag5 = 0;
+			    }
+			    else if(result[0][4]==2)
+			    {
+				
+				    $("#imgCheck5").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck5").attr("disabled", true);
+				 hideflag5 = 1;
+			    }
+			    //------------
+			    if(result[0][5]==0)
+			    {
+				    $("#imgCheck6").attr('src',"../images/check-gray.png");
+				    $("#imgCheck6").attr("disabled", true);
+				 hideflag6 = 1;
+				 rptflag6 = 0;
+			    }
+			    else if(result[0][5]==1)
+			    {
+				
+				    $("#imgCheck6").attr('src',"../images/check.png");
+				    $("#imgCheck6").removeAttr("disabled");
+				 hideflag6 = 0;
+				 rptflag6 = 1;
+			    }
+			    else if(result[0][5]==2)
+			    {
+				
+				    $("#imgCheck6").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck6").attr("disabled", true);
+				 hideflag6 = 1;
+				 rptflag6 = 2;
+			    }
+			    //------------
+			    if(result[0][6]==0)
+			    {
+				    $("#imgCheck7").attr('src',"../images/check-gray.png");
+				    $("#imgCheck7").attr("disabled", true);
+				 hideflag7 = 1;
+			    }
+			    else if(result[0][6]==1)
+			    {
+				
+				    $("#imgCheck7").attr('src',"../images/check.png");
+				    $("#imgCheck7").removeAttr("disabled");
+				 hideflag7 = 0;
+			    }
+			    else if(result[0][6]==2)
+			    {
+				
+				    $("#imgCheck7").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck7").attr("disabled", true);
+				 hideflag7 = 1;
+			    }
+			    //------------
+			    //------------
+			    if(result[0][7]==0)
+			    {
+				    $("#imgCheck8").attr('src',"../images/check-gray.png");
+				    $("#imgCheck8").attr("disabled", true);
+				 hideflag8 = 1;
+				 rptflag8 = 0;
+			    }
+			    else if(result[0][7]==1)
+			    {
+				
+				    $("#imgCheck8").attr('src',"../images/check.png");
+				    $("#imgCheck8").removeAttr("disabled");
+				 hideflag8 = 0;
+				 rptflag8 = 1;
+			    }
+			    else if(result[0][7]==2)
+			    {
+				
+				    $("#imgCheck8").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck8").attr("disabled", true);
+				 hideflag8 = 1;
+				 rptflag8 = 2;
+			    }
+			    //------------
+			    //------------
+			    if(result[0][8]==0)
+			    {
+				    $("#imgCheck9").attr('src',"../images/check-gray.png");
+				    $("#imgCheck9").attr("disabled", true);
+				 hideflag9 = 1;
+			    }
+			    else if(result[0][8]==1)
+			    {
+				
+				    $("#imgCheck9").attr('src',"../images/check.png");
+				    $("#imgCheck9").removeAttr("disabled");
+				 hideflag9 = 0;
+			    }
+			    else if(result[0][8]==2)
+			    {
+				
+				    $("#imgCheck9").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck9").attr("disabled", true);
+				 hideflag9 = 1;
+			    }
+			    //------------
+			    //------------
+			    if(result[0][9]==0)
+			    {
+				    $("#imgCheck10").attr('src',"../images/check-gray.png");
+				    $("#imgCheck10").attr("disabled", true);
+				 hideflag10 = 1;
+				 rptflag10 = 0;
+			    }
+			    else if(result[0][9]==1)
+			    {
+				
+				    $("#imgCheck10").attr('src',"../images/check.png");
+				    $("#imgCheck10").removeAttr("disabled");
+				 hideflag10 = 0;
+				 rptflag10 = 1;
+			    }
+			    else if(result[0][9]==2)
+			    {
+				
+				    $("#imgCheck10").attr('src',"../images/check-box-gray.png");
+				    $("#imgCheck10").attr("disabled", true);
+				 hideflag10 = 1;
+				 rptflag10 = 2;
+			    }
+			  //edoCustomer Balance Report
+	               // alert("Request"+result[0][10]);
+	                if(result[0][10]==0)
+	                {
+	                    $("#imgCheck11").attr('src',"../images/check-gray.png");
+	                    $("#imgCheck11").attr("disabled", true);
+	                 hideflag11 = 1;
+	                 rptflag11 = 0;
+	                }
+	                else if(result[0][10]==1)
+	                {
+	                
+	                    $("#imgCheck11").attr('src',"../images/check.png");
+	                    $("#imgCheck11").removeAttr("disabled");
+	                 hideflag11 = 0;
+	                 rptflag11 = 1;
+	                }
+	                else if(result[0][10]==2)
+	                {
+	                
+	                    $("#imgCheck11").attr('src',"../images/check-box-gray.png");
+	                    $("#imgCheck11").attr("disabled", true);
+	                 hideflag11 = 1;
+	                 rptflag11 = 2;
+	                }
+			    //------------
+			}
+			else
+			    result = [];
+			    checktoggle();
+			
+		    },
+		    function() {
+			console.warn("Error calling plugin");
+		    });
+		}
+	}
+      //Made change by mirnah
+        //Swapping images on checkbox click
+                function toogleClass(element) {
+            
+                    if ($(element).attr("src") == '../images/check.png') {
+                        $(element).attr("src", "../images/check-box.png");
+                    }
+                    else {
+                        $(element).attr("src", "../images/check.png");
+                    }
+                }
+	function checktoggle()
+	{
+	    //On Each checkbox click call toogleClass function
+            $("#imgCheck1").click(function() {
+                if(hideflag1 == 0)
+		toogleClass("#imgCheck1");
+            });
+            $("#imgCheck2").click(function() {
+		if(hideflag2 == 0)
+                toogleClass("#imgCheck2");
+            });
+            $("#imgCheck3").click(function() {
+		if(hideflag3 == 0)
+                toogleClass("#imgCheck3");
+            });
+            $("#imgCheck4").click(function() {
+		if(hideflag4 == 0)
+                toogleClass("#imgCheck4");
+            });
+            $("#imgCheck5").click(function() {
+		if(hideflag5 == 0)
+                toogleClass("#imgCheck5");
+            });
+            $("#imgCheck6").click(function() {
+		if(hideflag6 == 0)
+                toogleClass("#imgCheck6");
+            });
+            $("#imgCheck7").click(function() {
+		if(hideflag7 == 0)
+                toogleClass("#imgCheck7");
+            });
+            $("#imgCheck8").click(function() {
+		if(hideflag8 == 0)
+                toogleClass("#imgCheck8");
+            });
+            $("#imgCheck9").click(function() {
+		if(hideflag9 == 0)
+                toogleClass("#imgCheck9");
+            });
+            $("#imgCheck10").click(function() {
+		if(hideflag10 == 0)
+                toogleClass("#imgCheck10");
+            });
+            $("#imgCheck11").click(function() {
+                if(hideflag11 == 0)
+                        toogleClass("#imgCheck11");
+                    });
+	}
+	 //Made change by mirnah for on clicking selected report will print Start 9/1/2014
+    var arr = [];
+    function PrintSelectedReports()
+    {      
+       
+        
+        if(rptflag4 == 2)
+            {        
+           
+            GetReports("RouteActivity");
+                      
+            }else if(rptflag4 == 1)
+            {
+                 GetSelectedReports("#imgCheck4","RouteActivity");
+             }
+        if(rptflag6 == 2)
+            {
+              GetReports("SalesSummary");
+            
+            }else if(rptflag6 == 1)
+            {
+                   GetSelectedReports("#imgCheck6","SalesSummary");
+            }
+        if(rptflag8 == 2)
+        {
+          GetReports("RouteSummary");
+        
+        }else if(rptflag8 == 1)
+        {
+               GetSelectedReports("#imgCheck8","RouteSummary");
+        }
+        if(rptflag10 == 2)
+        {
+          GetReports("UnloadDamage");
+        
+        }else if(rptflag10 == 1)
+        {
+               GetSelectedReports("#imgCheck10","UnloadDamage");
+        }
+         // GetReports("UnloadDamage");
+//Reports For Customer Balance
+        
+        if(rptflag10 == 2)
+        {
+          GetReports("CreditSummary");
+		  GetReports("CreditTempSummary");
+        
+        }else if(rptflag10 == 1)
+        {
+               GetSelectedReports("#imgCheck11","CreditSummary");
+			   GetSelectedReports("#imgCheck11","CreditTempSummary");
+        }
+       
+                 
+        if(arr.length > 0)
+            ReportsToPrint(arr,0);
+    }        
+    function GetSelectedReports(element,ReportName)
+    {
+        if ($(element).attr("src") == '../images/check-box.png') 
+        {
+            arr.push({"ReportName" : ReportName});
+        }
+    }      
+    function GetReports(ReportName)
+    {
+        
+            arr.push({"ReportName" : ReportName});
+        
+    }
+    //------End
+        function PrintSalesSummary()
+        {
+        	try
+        	{        	
+        	var arr = [{"ReportName" : "SalesSummary"}]
+        	ReportsToPrint(arr,0);
+        	}
+        	catch(ex)
+        	{
+        		alert(ex);
+        	}
+        }
+        
+        function PrintDone()
+        {
+        	window.location = '../senddata.html';
+        }
+    </script>
+
+	</body>
+</html>

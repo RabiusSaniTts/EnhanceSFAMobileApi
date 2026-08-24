@@ -1,0 +1,279 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 31/1/2012
+ '  Description  : This page is used for delete check task.    
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Delete Cheques</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="managechecks.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Delete Cheques</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent Spacing">
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" border="0" width="100%"
+                            class="tblHeader">
+                            <tr>
+                                <th style="width: 60%;" class="leftAlign"
+                                    lang="en">
+                                    Cheque Number
+                                </th>
+                                <th style="width: 40%;" lang="en" class="last">
+                                    Amount
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="tblFixedHeight">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 60%;" class="leftAlign">
+                                    </td>
+                                    <td style="width: 40%;" class="last">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <table border="0" cellpadding="4" cellspacing="4"
+                        width="100%">
+                        <tr>
+                            <td class="captionLabel" lang="en"
+                                style="width: 50%;">
+                                Total Cheques
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 50%;">
+                                Total Cash
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="txtTCheque" type="text"
+                                    class="textWidth textFont"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input id="txtTCash" type="text"
+                                    class="textWidth textFont"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <div class="MenuPosition deleteCheckHeight">
+                        <div class="MenuTextPos">
+                            <img src="../images/delete.png"
+                                alt="Delete" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Delete</div>
+                    </div>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="managechecks.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPosition deleteCheckHeight MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en" class="ui-btn-active"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        $("#tblContent").click(function() { });
+        var inputvalue = [['1100.00', '100.00'], ['350.00', '1568.40'], ['450.00', '1568.40'], ['550.00', '1568.40'], ['650.00', '1568.40'], ['750.00', '1568.40'], ['1100.00', '100.00']];
+
+   	  resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            //Bind table record
+            BindData();
+
+            //Table click event
+            $("#tblContent tr").live('click', function() {
+                $(this).toggleClass('clicked');
+                $(this).siblings().removeClass('clicked');
+                var i = $(this).index();
+                $('#txtTCheque').val(inputvalue[i - 1][0]);
+                $('#txtTCash').val(inputvalue[i - 1][1]);
+
+            });
+
+            //Select first row of table when screen load
+            $("#tblContent tr:eq(1)").trigger('click');
+
+            //Set background for odd and even row.
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('DeleteCheck' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    //Set header align               
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".centerboxInvReq").attr("dir", "ltr");
+
+                //Set header align               
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+            //Bind data dynamically
+            function BindData() {
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                var data = [['181529', '1000.00'], ['665756', '100.00'], ['181530', '1000.00'], ['665757', '100.00'], ['181531', '1000.00'], ['665758', '100.00'], ['181532', '1000.00'], ['665759', '100.00'], ['181533', '1000.00'], ['665760', '100.00'], ['181529', '1000.00'], ['665756', '100.00'], ['181529', '1000.00']]
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'class = leftAlign' : 'class = "last"';
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tblContent tbody').append(r);
+                }
+
+            }
+        });
+    </script>
+
+    </body>
+</html>

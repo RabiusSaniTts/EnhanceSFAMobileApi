@@ -1,0 +1,732 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Customer Survey</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 900px) and (max-width: 1100px)"
+            href="../css/style_1100.css">
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <form id="form1">
+            <div data-role="page" data-theme="d" data-title="Order Request"
+                id="page">
+                <div>
+                    <img title alt src="../images/bg.png" id="background">
+                </div>
+                <div data-role="header" data-position="inline" id="bgclheader">
+                    <a href="#" onclick="confirmmsg()" id="Back_inner"
+                        rel="external" lang="en">Back</a>
+                    <h1 lang="en">
+                        Customer Survey</h1>
+                    <a href="#" id="lang_inner">EN</a>
+                </div>
+                <div data-role="content" class="centerboxInvReq">
+                    <div class="tblBox com_div">
+                        <div class="tblHeader info_header" lang="en"
+                            id="headername"></div>
+                        <div class="info" id="contentWrapper">
+                            <table border="0" width="100%" cellpadding="10"
+                                cellspacing="0" id="tbl1">
+                                <tbody class="tbl_body">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="leftbottomMenu">
+                        <a href="#" rel="external" id="A1"
+                            style="text-decoration: none" onclick="save()"
+                            data-role="none">
+                            <div class="MenuPositionFiveIcons">
+                                <div class="MenuTextPos">
+                                    <img src="../images/save.png"
+                                        alt="Add" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Save</div>
+                            </div>
+                        </a><a href="#" style="text-decoration: none"
+                            rel="external" data-role="none"
+                            onclick="resetform()"
+                            rel="external">
+                            <div class="MenuPositionFiveIcons">
+                                <div class="MenuTextPos">
+                                    <img src="../images/icn-refresh.png"
+                                        alt="Option" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Reset</div>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none" rel="external"
+                            data-role="none" onclick="getprev()" id="linkprev">
+                            <div class="MenuPositionFiveIcons">
+                                <div class="MenuTextPos">
+                                    <img src="../images/right.png" id="impre"
+                                        alt="Option" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Prev</div>
+                            </div>
+                        </a>
+                        <a href="#" style="text-decoration: none" rel="external"
+                            data-role="none" onclick="getnext()" id="linknext">
+                            <div class="MenuPositionFiveIcons">
+                                <div class="MenuTextPos">
+                                    <img src="../images/left.png" id="imgnext"
+                                        alt="Exit" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Next</div>
+                            </div>
+                        </a>
+                        <a href="#" onclick="confirmmsg()"
+                            style="text-decoration: none" rel="external"
+                            data-role="none">
+                            <div class="MenuPositionFiveIcons">
+                                <div class="MenuTextPos">
+                                    <img src="../images/icn-exit.png"
+                                        alt="Exit" /></div>
+                                <div class="MenuTextPos MenuText" lang="en">
+                                    Exit</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div data-role="footer" class="ui-bar" id="f2">
+                    <div class="footer">
+                        <div class="leftfooter">
+                            09 November 2011</div>
+                        <div class="rightfooter">
+                            Mirnah Technology Systems</div>
+                    </div>
+                </div>
+                <div data-role="footer" style="bottom: 0; position: absolute;"
+                    id="f1">
+                    <div data-role="navbar" data-iconpos="top" data-grid="f">
+                        <ul>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="day" data-icon="custom"
+                                    lang="en"
+                                    onclick="footerredict('../startofday/startofday.html')">Start
+                                    of day</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    id="inve" rel="external" data-icon="custom"
+                                    lang="en"
+                                    onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    class="ui-btn-active" rel="external"
+                                    id="cust" data-icon="custom"
+                                    lang="en">Customer opt</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="sett" data-icon="custom"
+                                    lang="en"
+                                    onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="ordstatus"
+                                    data-icon="custom"
+                                    lang="en"
+                                    onclick="footerredict('../home/orderstatus.html')">Order
+                                    Status</a></li>
+                            <li style="margin-bottom:0 !important;"><a href="#"
+                                    rel="external" id="info" data-icon="custom"
+                                    lang="en"
+                                    onclick="footerredict('../information/information.html')">Information</a></li>
+                            <li
+                                style="margin-bottom:0 !important; width:14.0%"><a
+                                    href="#" rel="external" id="setup"
+                                    data-icon="custom" lang="en"
+                                    onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <script type="text/javascript">
+        $("#tblContent").click(function() { });
+	window.lang = new jquery_lang_js();
+        var platform= sessionStorage.getItem("platform");
+        var activediv=1;
+        var totaldiv=1;
+        var inputvalue;
+        function resetform()
+        {
+            $('select').selectmenu('refresh', true);
+            $('#form1')[0].reset();
+        }
+       resizeOrientationWindow();
+	   $(document).ready(function() {
+	 	resizeWindow();
+                          
+            var surveyplanname = sessionStorage.getItem("surveyplanname");
+                          $('#headername').text(surveyplanname);         
+                          
+            $(".leftfooter").html(getCurrentDate());
+            $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+            document.addEventListener("deviceready", getrecord, false);
+           $("#impre").attr("src", "../images/right-gray.png");
+           $('.ui-body-d').css({ 'background': '#fff' });
+            $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+            $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+            $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+            $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+             $("#linkprev").attr("onclick","");
+            if (sessionStorage.getItem("Language") == "EN") {
+                $("#tblContent tr:first th:first").addClass('tableBorderTopLeft');
+                $("#tblContent tr:first th:last").addClass('tableBorderTopRight');
+                $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft');
+                $("#tblContent tr:last td:last").addClass('tableBorderBottomRight');
+            }
+            else {
+                $("#tblContent tr:first th:first").addClass('tableBorderTopRight');
+                $("#tblContent tr:first th:last").addClass('tableBorderTopLeft');
+                $("#tblContent tr:last td:first").addClass('tableBorderBottomRight');
+                $("#tblContent tr:last td:last").addClass('tableBorderBottomLeft');
+            }
+
+
+           
+             var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('ViewCustomerSurvey'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $(".centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		     $(".centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            function GetElements(xmlDoc) {
+                var PageName = 'orderRequest';
+            }           
+
+            
+        });
+        function getrecord()
+        {
+	        var surveyplan=sessionStorage.getItem("surveyplan");
+                if(sessionStorage.getItem("Language")=='en')
+                {
+                    var qry = "select csd.surveyprompt,csd.surveyrectype,csd.responselength,csd.responsedecimalpos,csd.lookuptype,csd.lookupindex,CASE WHEN csd.lookuptype=0 THEN (SELECT GROUP_CONCAT(description) FROM lookupindexdetail WHERE transactionkey=csd.lookupindex GROUP BY transactionkey) ELSE CASE WHEN csd.lookuptype=1 THEN (SELECT GROUP_CONCAT(itemdescription) FROM itemmaster) ELSE 0 END END AS description,csd.surveydefkey,csd.surveyindex,surveyresponse from customersurveydefinition as csd LEFT JOIN surveyauditdetail AS sad ON sad.surveydefkey=csd.surveydefkey AND routekey ="+sessionStorage.getItem("RouteKey")+" AND visitkey="+sessionStorage.getItem("VisitKey")+" and sad.surveyplankey="+surveyplan+" join customersurveydefassign as csq on csq.surveydefkey=csd.surveydefkey join customersurveyplan as csp on csp.surveyplankey=csq.surveyplankey where csp.surveyplankey="+surveyplan+" order by csd.surveyindex";
+              }
+              else
+              {
+                 var qry = "select csd.arbsurveyprompt,csd.surveyrectype,csd.responselength,csd.responsedecimalpos,csd.lookuptype,csd.lookupindex,CASE WHEN csd.lookuptype=0 THEN (SELECT GROUP_CONCAT(arbdescription) FROM lookupindexdetail WHERE transactionkey=csd.lookupindex GROUP BY transactionkey) ELSE CASE WHEN csd.lookuptype=1 THEN (SELECT GROUP_CONCAT(arbitemdescription) FROM itemmaster) ELSE 0 END END AS arbdescription,csd.surveydefkey,csd.surveyindex,surveyresponse from customersurveydefinition as csd LEFT JOIN surveyauditdetail AS sad ON sad.surveydefkey=csd.surveydefkey AND routekey ="+sessionStorage.getItem("RouteKey")+" AND visitkey="+sessionStorage.getItem("VisitKey")+" and sad.surveyplankey="+surveyplan+"  join customersurveydefassign as csq on csq.surveydefkey=csd.surveydefkey join customersurveyplan as csp on csp.surveyplankey=csq.surveyplankey where csp.surveyplankey="+surveyplan+" order by csd.surveyindex";
+               
+              }
+            console.log(qry);
+                if(platform=='iPad')
+                {
+                          Cordova.exec(function(result) {
+                                    TableDataOffLine(result);
+                          },
+                          function(error) {
+                          alert(error);},
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [qry]);
+                          
+                }
+                else if(platform=='Android')
+           	{
+			           		
+                       window.plugins.DataBaseHelper.select(qry,function(result)
+                       {
+                              if(result.array != undefined)
+			      {
+                                    result = $.map(result.array, function (item, index) {   
+                                    if(sessionStorage.getItem("Language")=='en')
+                                    {
+                                    return [[item.surveyprompt,item.surveyrectype,item.responselength,item.responsedecimalpos,item.lookuptype,item.lookupindex,item.description,item.surveydefkey,item.surveyindex,item.surveyresponse]];
+                                    }
+                                    else
+                                    {
+                                     return [[item.arbsurveyprompt,item.surveyrectype,item.responselength,item.responsedecimalpos,item.lookuptype,item.lookupindex,item.arbdescription,item.surveydefkey,item.surveyindex,item.surveyresponse]];
+                                    }
+                                   
+            		      });
+                                     TableDataOffLine(result);
+                              }
+                              
+                       },
+                       function()
+                       {
+                        console.warn("Error calling plugin");
+                       });
+                    }
+        }
+        function TableDataOffLine(RecSet)
+        {
+            
+                inputvalue=RecSet;
+                var data = RecSet;
+                var r ='';
+                if(eval(data.length) % 50 == 0)
+                totaldiv = parseInt(eval(data.length)/50);
+                else
+                totaldiv = parseInt(eval(data.length)/50)+1;
+                if(data.length < 51)
+                {
+                    $("#imgnext").attr("src", "../images/left-gray.png");
+                    $("#linknext").attr("onclick","");
+                }
+                for (i = 0; i < data.length; i++) {
+                   
+                    if(i==0)
+                       {
+                            r +='<tr><td><div id="div1" style="display:block;"><table width="100%" cellpadding="10" cellspacing="0">';
+                       }
+                       else
+                       {
+                           
+                            if(eval(i+1) % 50 == 1)
+                            {
+                                var num = parseInt(i/50)+1;
+                               r +='<tr><td><div id="div'+num+'" style="display:none;"><table width="100%" cellpadding="10" cellspacing="0">';
+                            }
+                       }
+                        r += '<tr class="td_com">';
+                        if(data[i][1] == 0)
+                        r +='<td width="100%" colspan=2><label for="shipping" id="Name" style="font-size:22px;font-weight:bold;" lang="en">'+data[i][0]+'</label>';
+                        else if(data[i][1] == 8)
+                        r +='<td width="100%" colspan=2><label for="shipping" id="Name" style="font-size:18px;font-weight:bold;" lang="en">'+data[i][0]+'</label>';
+                        else
+                        r +='<td width="50%"><label for="shipping" id="Name" lang="en">'+data[i][0]+'</label></td><td width="50%">';
+                    if(data[i][1] == 2){
+                    	if(data[i][9]==0){
+                    		data[i][9]='';
+                    	}
+                         r +='<input type="text" name="txtName" id="txt'+data[i][7]+'" value="'+data[i][9]+'" maxlength="'+data[i][2]+'" class="textWidth textFont" />';
+                         
+                    }
+                    else if(data[i][1] == 1)
+                    {
+                    	if(data[i][9]==0){
+                    		data[i][9]='';
+                    	}
+                        if(data[i][9]!='')
+                        data[i][9]=parseInt(data[i][9]);
+                        r +='<input type="tel"  name="txtName" id="txt'+data[i][7]+'" value="'+data[i][9]+'" maxlength="'+data[i][2]+'"  class="textWidth textFont" />';
+                    }                        
+                    else if(data[i][1] == 3)
+                        r +='<input name="date" type="date" data-role="datebox" readonly="readonly" value="'+data[i][9]+'" id="txt'+data[i][7]+'" data-options=\'{"mode": "datebox"}\' />';
+                    else if(data[i][1] == 4)
+                        r +='<input name="date" type="date" data-role="datebox" readonly="readonly" value="'+data[i][9]+'" id="txt'+data[i][7]+'" data-options=\'{"mode": "timebox"}\' />';
+                    else if(data[i][1] == 5)
+                    {
+                        if(data[i][9]==1)
+                        r +='<fieldset data-role="controlgroup" data-type="horizontal"><label for="txt'+data[i][7]+'"><input name="txt'+data[i][7]+'" id="txt'+data[i][7]+'" value="1" checked="checked" type="radio"> Yes</label><label for="txt1'+data[i][7]+'""><input name="txt'+data[i][7]+'" id="txt1'+data[i][7]+'"  value="0" type="radio"> No</label></fieldset>';
+                        else if(data[i][9]==0)
+                        r +='<fieldset data-role="controlgroup" data-type="horizontal"><label for="txt'+data[i][7]+'"><input name="txt'+data[i][7]+'" id="txt'+data[i][7]+'" value="1" type="radio"> Yes</label><label for="txt1'+data[i][7]+'""><input name="txt'+data[i][7]+'" id="txt1'+data[i][7]+'"  value="0" checked="checked" type="radio"> No</label></fieldset>';
+                        else
+                        r +='<fieldset data-role="controlgroup" data-type="horizontal"><label for="txt'+data[i][7]+'"><input name="txt'+data[i][7]+'" id="txt'+data[i][7]+'" value="1" type="radio"> Yes</label><label for="txt1'+data[i][7]+'""><input name="txt'+data[i][7]+'" id="txt1'+data[i][7]+'"  value="0" type="radio"> No</label></fieldset>';
+                    }
+                    else if(data[i][1] == 6)
+                    {
+                        if(data[i][9]==1)
+                        {
+                            r +='<div style="float: left; width: 50px; height: 50px; position: relative" onclick="javascript:setToggles(\'#imgSelect\');"><img id="imgCheck" src="../images/check.png" alt="" style="position: absolute; display: block" /><img id="imgSelect" src="../images/select.png" alt="" style="position: absolute;left: 5px;" /><input type="hidden" name="txtName" id="txt'+data[i][7]+'" value="1" style="width:20px;height:20px;" /></div>';
+                        
+                        }
+                        else
+                        {
+                         r +='<div style="float: left; width: 50px; height: 50px; position: relative" onclick="javascript:setToggles(\''+data[i][7]+'\');"><img id="imgCheck" src="../images/check.png" alt="" style="position: absolute; display: block" /><img id="imgSelect'+data[i][7]+'" src="../images/select.png" alt="" style="position: absolute;left: 5px; display: none;"" /><input type="hidden" name="txtName" id="txt'+data[i][7]+'" value="0" style="width:20px;height:20px;" /></div>';
+                        }
+                    }
+                    else if(data[i][1] == 7)
+                    {
+                       
+                        var opt = data[i][6].split(',');
+                        
+                        r +='<select style="display: inline;" id="txt'+data[i][7]+'" class="textWidth">';
+                        for(j=0;j<opt.length;j++)
+                        {
+                            if(data[i][9]==opt[j])
+                                r +='<option value="'+opt[j]+'" selected="selected">'+opt[j]+'</option>';
+                            else
+                                r +='<option value="'+opt[j]+'">'+opt[j]+'</option>';
+                        }
+                        r +='</select>';
+                    }
+                  r +='</td></tr>';
+                 if(eval(i+1) % 50 == 0)
+                 {
+                    r +='</table></div></td></tr>';
+                 }
+                
+                
+                   // $('#tbl1 tr:first').toggleClass('clicked');
+                }
+                 console.log(r);
+                $('#tbl1 tbody').append(r);
+                $('#page').page('destroy').page();
+            $('input[pattern="[0-9]*"]').keyup(function(e) {
+                                               var val = $(this).val();
+                                               if (isNaN(val)) {
+                                               val = val.replace(/[^0-9\.\-]/g, '');
+                                               if (val.split('.').length > 2)
+                                               val = val.replace(/\.+$/, "");
+                                               }
+                                               $(this).val(val);
+                                               })
+                $('.ui-body-d').css({ 'background': '#fff' });
+            $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+            $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+            $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+            $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+        }
+        //show prev data
+        function getprev()
+        {
+            $('#div'+activediv).css('display','none');
+            activediv = activediv - 1;
+            $('#div'+activediv).css('display','block');
+            if(activediv == 1)
+            {
+                $("#impre").attr("src", "../images/right-gray.png");
+                $("#linkprev").attr("onclick","");
+            }
+            else
+            {
+                $("#impre").attr("src", "../images/right.png");
+                $("#linkprev").attr("onclick","getprev()");
+            }
+            if(activediv == totaldiv)
+            {
+                $("#imgnext").attr("src", "../images/left-gray.png");
+                $("#linknext").attr("onclick","");
+            }
+            else
+            {
+                $("#imgnext").attr("src", "../images/left.png");
+                $("#linknext").attr("onclick","getnext()");
+            }
+        }
+        function setToggles(id) {
+            if ($("#imgSelect"+id).css("display") == 'none')
+            {
+                $("#imgSelect"+id).css("display", "block");
+                $('#txt'+id).val('1');
+                
+            }
+            else
+            {
+                $("#imgSelect"+id).css("display", "none");
+                $('#txt'+id).val('0');
+               
+            }
+        }
+        //show next data
+        function getnext()
+        {
+            $('#div'+activediv).css('display','none');
+            activediv = activediv + 1;
+            $('#div'+activediv).css('display','block');
+            if(activediv == totaldiv)
+            {
+                $("#imgnext").attr("src", "../images/left-gray.png");
+                $("#linknext").attr("onclick","");
+            }
+            else
+            {
+                $("#imgnext").attr("src", "../images/left.png");
+                $("#linknext").attr("onclick","getnext()");
+            }
+             if(activediv == 1)
+            {
+                $("#impre").attr("src", "../images/right-gray.png");
+                $("#linkprev").attr("onclick","");
+            }
+            else
+            {
+                $("#impre").attr("src", "../images/right.png");
+                $("#linkprev").attr("onclick","getprev()");
+            }
+        }
+        function save()
+        {
+            var num=1;
+            var flag = 0;
+            for (i = 0; i < inputvalue.length; i++) {
+              //  console.log(i);
+              //  console.log(inputvalue[i]);
+                var responce='';
+                if(i % 5 == 0)
+                num = num+1;
+                if(inputvalue[i][1]==6 || inputvalue[i][1]==7)
+                {
+                    
+                    var responce = $('#txt'+inputvalue[i][7]).val();
+                }
+                else if(inputvalue[i][1]==5)
+                {
+                   var responce= $("input[name=txt"+inputvalue[i][7]+"]:checked").val();
+                }
+                else if(inputvalue[i][1] <5 && inputvalue[i][1] >0)
+                {
+                var responce = $('#txt'+inputvalue[i][7]).val();
+                }
+                console.log(responce);
+                console.log(inputvalue[i][1]);
+               if(inputvalue[i][1] == 1)
+               {
+                if(responce!='')
+                   responce = eval(responce).toFixed(sessionStorage.getItem('decimalplace'));
+               }
+                
+                if(sessionStorage.getItem('planmandatory')==1)
+                {
+                   
+                    if(responce=='' || responce ==undefined)
+                    {
+                        
+                        if(inputvalue[i][1] < 8 && inputvalue[i][1] > 0)
+                            {
+                            getLangText("All survey are mandatory");
+                                flag=1;
+                            return false;
+                            }
+                    }
+                }
+                if(flag !=1)
+                {
+                if(responce !='' && responce !=undefined)
+                {
+                   
+                    var selectqry = "select count(*) as cnt from surveyauditdetail where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+" and surveydefkey="+inputvalue[i][7]+" and surveyplankey="+sessionStorage.getItem("surveyplan");
+                    var insertqry = "insert into surveyauditdetail ('routekey','visitkey','surveydefkey','surveypage','surveyindex','surveyrectype','lookuptype','surveyresponse','surveyplankey','issync') values ("+sessionStorage.getItem("RouteKey")+","+sessionStorage.getItem("VisitKey")+","+inputvalue[i][7]+","+num+","+inputvalue[i][8]+","+inputvalue[i][1]+","+inputvalue[i][4]+",'"+responce+"',"+sessionStorage.getItem("surveyplan")+",0)";
+                    var updateqry = "update surveyauditdetail set surveypage="+num+",surveyindex="+inputvalue[i][8]+",surveyrectype="+inputvalue[i][1]+",lookuptype="+inputvalue[i][4]+",surveyresponse='"+responce+"',issync=0 where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+" and surveydefkey="+inputvalue[i][7]+" and surveyplankey="+sessionStorage.getItem("surveyplan");
+                    console.log(insertqry);
+                    console.log(updateqry);
+                                        
+                    if(i==(inputvalue.length)-1)
+                    {
+                        
+                    saverecord(selectqry,insertqry,updateqry,1);
+                    }
+                    else
+                    {
+                    saverecord(selectqry,insertqry,updateqry,0);
+                    }
+                    
+                }
+                    else
+                    {
+                        if(i==(inputvalue.length)-1)
+                        {
+                            if(inputvalue[i][1] == 8 || inputvalue[i][1]==0)
+                            window.location="customersurvey.html";
+                            else if(sessionStorage.getItem('planmandatory')==0)
+                            window.location="customersurvey.html";
+                        }
+                    }
+                }
+            }
+            
+        }
+        function saverecord(selectqry,insertqry,updateqry,flag)
+        {
+             var controlqry = "Update customeroperationscontrol set totaltransactions = totaltransactions+1 where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and customercode="+ sessionStorage.getItem('customerid')+" and routecode="+ sessionStorage.getItem('RouteCode');
+             console.log(controlqry);
+            if(platform=='iPad')
+                    {
+                           Cordova.exec(function(result) {
+                                      
+                                      },
+                                      function(error) {
+                                      alert(error);},
+                                      "PluginClass", 
+                                      "InsertUpdateMethod", 
+                                      [controlqry]);
+                          Cordova.exec(function(result) {
+                                    if(result[0][0]==0)
+                                    qry = insertqry;
+                                    else
+                                    qry=updateqry;
+                                    
+                                Cordova.exec(function(result) {
+                                        if(flag==1)
+                                              window.location="customersurvey.html";
+                                },
+                                function(error) {
+                                alert(error);},
+                                "PluginClass", 
+                                "InsertUpdateMethod", 
+                                [qry]);
+                            },
+                            function(error) {
+                            alert(error);},
+                            "PluginClass", 
+                            "GetdataMethod", 
+                            [selectqry]);
+                          
+                    }
+                    else if(platform=='Android')
+                    {
+			   window.plugins.DataBaseHelper.insert(controlqry,function(result)
+                                                             {
+                                                             
+                                                             
+                                                             },
+                                                             function()
+                                                             {
+                                                             console.warn("Error calling plugin");
+                                                             });        		
+                       window.plugins.DataBaseHelper.select(selectqry,function(result)
+                       {
+                              if(result.array[0].cnt==0)
+                                    qry = insertqry;
+                              else
+                                    qry=updateqry;
+                              
+                              window.plugins.DataBaseHelper.insert(qry,function(result)
+                                                                   {
+                                                                    if(flag==1)
+                                                                   window.location="customersurvey.html";
+				       
+                                                                   },
+                                                                   function()
+                                                                   {
+                                                                   console.warn("Error calling plugin");
+                                                                   });
+                            },
+                            function()
+                            {
+                            console.warn("Error calling plugin");
+                            });
+                    }
+        }
+        function confirmmsg()
+        {
+            if(sessionStorage.getItem('planmandatory')==1)
+            {
+                
+                var surveyplan=sessionStorage.getItem("surveyplan");    
+                var qry = "select count(*) as cnt from surveyauditdetail where routekey ="+sessionStorage.getItem("RouteKey")+" AND visitkey="+sessionStorage.getItem("VisitKey")+" and surveyplankey="+surveyplan+"";
+                console.log(qry);
+                
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                  if(result[0][0] == inputvalue.length)
+                                  {
+                                  navigator.notification.confirm("Are You Sure To Exit?",onConfirm);
+                                  
+                                  }
+                                  else
+                                  {
+                                  getLangText("Survey are mandatory");
+                                  return false;
+                                  }
+                                  },
+                                  function(error) {
+                                  alert(error);},
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  [qry]);
+                    
+                }
+                else if(platform=='Android')
+                {
+                    
+                    window.plugins.DataBaseHelper.select(qry,function(result)
+                                                         {
+                                                         if(result.array[0].cnt == inputvalue.length)
+                                                         {
+                                                          navigator.notification.confirm("Are You Sure To Exit?",onConfirm); 
+                                                        
+                                                         }
+                                                         else
+                                                         {
+                                                         getLangText("Survey are mandatory");
+                                                         return false;
+                                                         }
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                
+            }
+            else
+            navigator.notification.confirm("Are You Sure To Exit?",onConfirm); 
+            
+        }
+        function onConfirm(button)
+        {               
+            if(button == 1)
+            {
+                window.location="customersurvey.html";
+            }
+        }
+    </script>
+
+    </body>
+</html>

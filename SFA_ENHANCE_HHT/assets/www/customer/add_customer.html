@@ -1,0 +1,392 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 3/2/2011
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="customer_operation.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    New Customer</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="tblBox com_div">
+                    <div class="tblHeader info_header" lang="en">
+                        Information</div>
+                    <div class="info captionLabel" id="contentWrapper">
+                        <table border="0" width="90%" cellpadding="4"
+                            cellspacing="4" id="tbl1">
+                            <tbody class="tbl_body">
+                                <tr class="td_com">
+                                    <td colspan="2" style="width:90%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Customer Template</label>
+                                        <select name="select-choice-1"
+                                            id="ddlTemplate"
+                                            style="display: inline;width:100%">
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td style="width:45%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Customer #</label>
+                                        <input type="text" name="custid"
+                                            id="custid" readonly="readonly"
+                                            value
+                                            style="text-align:center;width:100%" />
+                                    </td>
+                                    <td style="width:45%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Alternet Code</label>
+                                        <input type="text" name="code" id="code"
+                                            value class="required"
+                                            style="width:100%" />
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td colspan="2" style="width:90%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Customer Name</label>
+                                        <input type="text" name="name" id="name"
+                                            value class="required"
+                                            style="width:100%" />
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td colspan="2" style="width:90%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Address</label>
+                                        <input type="text" name="address"
+                                            id="address" value
+                                            style="width:100%" />
+                                    </td>
+                                </tr>
+                                <tr class="td_com">
+                                    <td width="45%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Contact Person</label>
+                                        <input type="text" name="person"
+                                            id="person" value
+                                            style="width:100%" />
+                                    </td>
+                                    <td style="width:45%">
+                                        <label for="shipping" id="UserName"
+                                            lang="en">
+                                            Phone</label>
+                                        <input type="text" name="phone"
+                                            id="phone" value pattern="[0-9]*"
+                                            style="width:100%" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" class="enableText" rel="external"
+                        onclick="SaveCustomerDetails()">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon" src="../images/save.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Save</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="customer_operation.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform = '';
+        
+		resizeOrientationWindow();
+        $(document).ready(function() {
+			resizeWindow();	
+	   
+        platform = sessionStorage.getItem("platform");
+       document.addEventListener("deviceready", FillTemplate, false);
+
+	    $(".leftfooter").html(getCurrentDate());
+	     var lan = sessionStorage.getItem("Language");
+	     window.lang.run(lan);
+            
+            if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Addcustomer'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                   $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		       $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		      $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		       $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+            }
+	    else
+	    {
+		window.lang.change('en','en');
+		 $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	    }
+        });
+        
+        function FillTemplate()
+        {
+            var Qry = "SELECT customercode,templatename FROM customermaster WHERE templateindicator = 1";
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    if(result.length > 0)
+                         $("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#ddlTemplate"));
+                    for(i=0;i<result.length;i++)
+                    {
+                        $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlTemplate"));                           
+                    }
+                    $("#ddlTemplate").selectmenu("refresh");
+                    getNextCustomerCode();
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry,function(result)
+                {		
+                	if(result.array != undefined)
+                	{			 	
+                    	result = $.map(result.array, function (item, index) {                
+	                        return [[item.customercode,item.templatename]];
+                    	});
+                    	if(result.length > 0)
+	                        $("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#ddlTemplate"));
+                    	for(i=0;i<result.length;i++){
+	                        $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlTemplate"));                                           
+                    	}
+                    	$("#ddlTemplate").selectmenu("refresh");
+                    }
+                    getNextCustomerCode();
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function getNextCustomerCode()
+        {
+           var Qry = "SELECT (max(customercode) + 1) as customercode FROM customermaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    $("#custid").val(result);
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry,function(result)
+                {					 	
+                    $("#custid").val(result.array[0].customercode);
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function SaveCustomerDetails()
+        {
+            if($("#ddlTemplate").get(0).selectedIndex == 0)
+            {
+                getLangText("Please Select Template.");
+                return false;
+            }
+            else if($("#ddlTemplate").val() == null)
+            {
+               getLangText("Templates Not Available.");
+                return false;
+            }
+            var customercode,alternatecode,customerphone,customername,customeraddress1,contactname,templateindicator,routecode;
+            customercode = $("#custid").val();
+            if($("#code").val() !== "")
+            	alternatecode = $("#code").val();
+            else
+            	alternatecode = customercode;
+            customerphone = $("#phone").val();
+            customername = $("#name").val();            
+            customeraddress1 = $("#address").val();            
+            contactname = $("#person").val();
+            routecode = sessionStorage.getItem("RouteCode");
+            templateindicator = 0;
+            var Qry = "insert into customermaster ('customercode','type','headofficecode','routecode','streetcode','districtcode','locationcode','customersequence','customername','customeraddress1','customeraddress2','customerphone','balance','customercategory','pricingkey','promotionkey','authorizeditemgrpkey','messagekey1','messagekey2','invoicepaymentterms','invoiceretailoption','invoicepriceoverride','invoiceretailoverride','invoiceformatoption','invoiceextensionopt','invoicedsdpromptopt','invoicecopies','salesinputoprion','returnsinputoption','invoiceinputstyle','onhandspromptopt','inventoryselectopt','invencontaineropt','queuedreportoption','surveykey','contactname','customertype','callfrequency','routenumber','arbcustomernameshort','arbcustomername','arbcustomeraddress1','arbcustomeraddress2','hhccustomernameshort','hhccustomername','hhccustomeraddress1','hhccustomeraddress2','allowbeyondlimit','tclimit','activecustomer','creditlimitdays','created','cdat','modified','mdat','forcehand','renteddisplay','installedchiller','monthlydepreciation','typeofgiveaway','giveawayflag','lastvisiteddate','memo1','memo2','tcsubtype','rentperc','customeraddress3','customercity','customerstate','customerzip','authorizeditemlistctl','invoicepriceprint','messagekey3','messagekey4','messagekey5','messagekey6','orderformat','enableupcprint','enabledelayprint','printsequence','enablepriceeditinvs','enablesellprevious','enablesuggestsales','enableautofillreturns','enableautofilldamaged','enablesigcapture','enablereturnstrxn','enableexchangetrxn','enabledamagedreturns','enablearcollection','enablesurveyaudit','enabledelivinstruct','enableinvoicecomment','invoicedetailentry','orderdetailentry','forcestockcapture','enablepromotrxn','alternatecode','creditlimit','allowcashoncreditexceed','arbcustomeraddress3','templateindicator','arbcontactname','printlanguageflag','quantumno','lostplacementdelivs','newplacementdelivs','currencycode','histmaxdeliveries','arcustomertype','custtaxkey1','custtaxkey2','custtaxkey3','customertaxid','customertaxidoptions','outletsubtype','volume','enablegovtaxnote','forwardcoverfactor','enablepromoeditinvs','enableaddlpromoinvs','badcreditcustomer','enableduplicateprinting','numoutstandinginv','enablefocprinting','promooptions','groupcode','forceposcheck','ancustomercode','printoutletitemcode','reportprintcontrol','invoicelimiter','exclusiveopmode','returnpromotionkey','invoiceformat','liquorlicprint','enablepromoeditords','enableaddlpromoords','enableaddlpromoinvoices','enableposequipment','enablesalestrxn','printcheckdetails','tcspecialdiscount','spldiscountdays','arabiccustomercity','threshholdlimit','discountkey','enforcepromotion','gpcustcode','cashonlypromo','roundnetamount','partialcollection','transactiontype','enabledraftcopy','enablebuybackfree','enablecpd','enablepaymentsel','gpsdata','fixedlatitude','fixedlongitude','rentkey','startdate','enddate','definitionvalue','runningvalue','rentcontrol','disablebalanceupdate','enablecreditlimit','AutoSettleCollection','enableinvoicecopy','pobox','shoptelephonenumber','shopfaxnumber','ownername','ownerlandlinenumber','ownermobilenumber','contactpersonlandlinenumber','contactpersonmobilenumber','contactpersonemail','purchasemanagername','purchasemanagerlandlinenumber','purchasemanagermobilenumber','purchasemanageremail','warehousemanagername','warehousemanagerlandlinenumber','warehousemanagermobilenumber','warehousemanageremail','expirylimit','exprunningvalue','distributionkey','gpssavecount','graceperiod','reportcustcode','enableadvancepayment','enablerental','templatename','issync') SELECT " + customercode + ",type,headofficecode," + routecode + ",streetcode,districtcode,locationcode,customersequence,'" + customername + "','" +customeraddress1 + "',customeraddress2,'" + customerphone + "',balance,customercategory,pricingkey,promotionkey,authorizeditemgrpkey,messagekey1,messagekey2,invoicepaymentterms,invoiceretailoption,invoicepriceoverride,invoiceretailoverride,invoiceformatoption,invoiceextensionopt,invoicedsdpromptopt,invoicecopies,salesinputoprion,returnsinputoption,invoiceinputstyle,onhandspromptopt,inventoryselectopt,invencontaineropt,queuedreportoption,surveykey,'" + contactname + "',customertype,callfrequency,routenumber,arbcustomernameshort,arbcustomername,arbcustomeraddress1 ,arbcustomeraddress2,hhccustomernameshort,hhccustomername,hhccustomeraddress1,hhccustomeraddress2,allowbeyondlimit,tclimit,activecustomer,creditlimitdays,created,cdat,modified,mdat,forcehand,renteddisplay,installedchiller,monthlydepreciation,typeofgiveaway,giveawayflag,lastvisiteddate,memo1,memo2,tcsubtype,rentperc,customeraddress3,customercity,customerstate,customerzip,authorizeditemlistctl,invoicepriceprint,messagekey3,messagekey4,messagekey5,messagekey6,orderformat,enableupcprint,enabledelayprint,printsequence,enablepriceeditinvs,enablesellprevious,enablesuggestsales,enableautofillreturns,enableautofilldamaged,enablesigcapture,enablereturnstrxn,enableexchangetrxn,enabledamagedreturns,enablearcollection,enablesurveyaudit,enabledelivinstruct,enableinvoicecomment,invoicedetailentry,orderdetailentry,forcestockcapture,enablepromotrxn,'" + alternatecode + "',creditlimit,allowcashoncreditexceed,arbcustomeraddress3," + templateindicator + ",arbcontactname,printlanguageflag,quantumno,lostplacementdelivs,newplacementdelivs,currencycode,histmaxdeliveries,arcustomertype,custtaxkey1,custtaxkey2,custtaxkey3,customertaxid,customertaxidoptions,outletsubtype,volume,enablegovtaxnote,forwardcoverfactor,enablepromoeditinvs,enableaddlpromoinvs,badcreditcustomer,enableduplicateprinting,numoutstandinginv,enablefocprinting,promooptions,groupcode,forceposcheck,ancustomercode,printoutletitemcode,reportprintcontrol,invoicelimiter,exclusiveopmode,returnpromotionkey,invoiceformat,liquorlicprint,enablepromoeditords,enableaddlpromoords,enableaddlpromoinvoices,enableposequipment,enablesalestrxn,printcheckdetails,tcspecialdiscount,spldiscountdays,arabiccustomercity,threshholdlimit,discountkey,enforcepromotion,gpcustcode,cashonlypromo,roundnetamount,partialcollection,transactiontype,enabledraftcopy,enablebuybackfree,enablecpd,enablepaymentsel,gpsdata,fixedlatitude,fixedlongitude,rentkey,startdate,enddate,definitionvalue,runningvalue,rentcontrol,disablebalanceupdate,enablecreditlimit,AutoSettleCollection,enableinvoicecopy,pobox,shoptelephonenumber,shopfaxnumber,ownername,ownerlandlinenumber,ownermobilenumber,contactpersonlandlinenumber,contactpersonmobilenumber,contactpersonemail,purchasemanagername,purchasemanagerlandlinenumber,purchasemanagermobilenumber,purchasemanageremail,warehousemanagername,warehousemanagerlandlinenumber,warehousemanagermobilenumber,warehousemanageremail,expirylimit,exprunningvalue,distributionkey,gpssavecount,graceperiod,reportcustcode,enableadvancepayment,enablerental,templatename,0 FROM customermaster WHERE customercode = " + $("#ddlTemplate").val() + " AND templateindicator = 1"
+            /*var Qry = "INSERT INTO customermaster(customercode,alternatecode,customerphone,customername,arbcustomername,customeraddress1,arbcustomeraddress1,contactname,routecode) VALUES(" + customercode + "," + alternatecode + "," + customerphone + ",'" + customername + "','" + arbcustomername + "','" + customeraddress1 + "','" + arbcustomeraddress1 + "','" + contactname + "'," +  sessionStorage.getItem("RouteCode") + ")";*/
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {                    
+                    window.location = "customer_operation.html";
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                   window.location = "customer_operation.html"; 
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        </script>
+    </body>
+</html>

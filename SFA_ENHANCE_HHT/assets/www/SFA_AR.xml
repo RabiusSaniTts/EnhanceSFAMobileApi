@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SFA>
+  <login>
+    <UserName>اسم المستخدم</UserName>
+    <Password>كلمة السر</Password>
+    <LogIn>سجل في</LogIn>
+    <Remember>تذكرني</Remember>
+    <LostPwd>خسر Passwrod بك؟</LostPwd>
+  </login>
+    <home>
+        <StartOfDay>بداية من اليوم</StartOfDay>
+        <Inventory>جرد</Inventory>
+        <CustomerOpt>العميل الأمثل</CustomerOpt>
+        <Settlement>تسوية</Settlement>
+        <ExpenseEntry>حساب الدخول</ExpenseEntry>
+        <Information>معلومات</Information>
+        <Setup>الإعداد</Setup>
+    </home>
+    <customerSelection>
+        <PageTitle>اختيار العملاء</PageTitle>
+        <ContnetHead1>معلومات العملاء</ContnetHead1>
+        <ContnetHead2>اسم الزبون</ContnetHead2>
+        <MenuInfo>معلومات</MenuInfo>
+        <MenuAdd>إضافة</MenuAdd>
+        <MenuNoSale>لا بيع</MenuNoSale>
+        <MenuScanning>مسح</MenuScanning>
+        <MenuEdit>تحرير</MenuEdit>
+        <MenuSelect>حدد</MenuSelect>
+        <MenuExit>خروج</MenuExit>
+        <Option1>الترتيب حسب عدد العملاء</Option1>
+        <Option2>فرز حسب اسم العميل</Option2>
+    </customerSelection>
+    <CustomerOption>
+        <PageTitle>خيارات العملاء</PageTitle>
+        <CustomerName>اسم الزبون</CustomerName>
+        <CustomerNo>عدد العملاء</CustomerNo>
+        <ReviewVisits>استعراض الزيارات</ReviewVisits>
+        <Inventory>جرد</Inventory>
+        <Orders>أوامر</Orders>
+        <Invoice>فاتورة</Invoice>
+        <ARCollection>جمع A/R</ARCollection>
+        <Information>معلومات</Information>
+        <Merchandising>الترويج</Merchandising>
+        <Continue>تواصل</Continue>
+    </CustomerOption>
+    <common>
+        <Footer1>ديسمبر 2011</Footer1>
+        <Footer2>Mirnah نظام تكنولوجيا</Footer2>
+    </common>
+</SFA>
