@@ -169,7 +169,8 @@ async function getCustomerMaster(
           IFNULL(cm.rebateprintyn, 0) AS rebateprintyn,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
-          CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection
+          CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
+          ABS(cm.alternatecode) AS alternatecode
         FROM customermaster cm
         LEFT JOIN customerdiscountcap dc
           ON dc.customercode = cm.customercode
