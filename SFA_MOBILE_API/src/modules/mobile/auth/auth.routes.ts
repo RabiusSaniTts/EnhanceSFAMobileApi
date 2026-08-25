@@ -37,4 +37,10 @@ export async function authRoutes(app: FastifyInstance): Promise<void> {
     url: '/api/index/updatesyncdate/routeid/:routeid',
     handler: updateSyncDate
   });
+
+  app.route({
+    method: ['GET', 'POST'],
+    url: '/api/index/updatesyncdate/userid/:userid/deviceid/:deviceid/routecode/:routecode/routekey/:routekey/routeclosed/:routeclosed',
+    handler: updateSyncDate
+  });
 }

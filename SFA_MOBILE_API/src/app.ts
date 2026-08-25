@@ -1,4 +1,5 @@
 import cors from '@fastify/cors';
+import multipart from '@fastify/multipart';
 import Fastify from 'fastify';
 import { errorHandler } from './shared/middleware/errorHandler';
 import { registerLegacyBodyParsers } from './shared/middleware/legacyBodyParser';
@@ -15,6 +16,12 @@ export async function buildApp() {
   app.setErrorHandler(errorHandler);
   registerLegacyBodyParsers(app);
   await app.register(cors, { origin: true });
+  await app.register(multipart, {
+    limits: {
+      files: 1,
+      fileSize: 10 * 1024 * 1024
+    }
+  });
   await registerRequestLogger(app);
 
   await app.register(healthRoutes);

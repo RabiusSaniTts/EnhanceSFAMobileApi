@@ -11,6 +11,8 @@ type DeviceIdDbRow = RowDataPacket & { deviceId: string };
 type UseEncryptionDbRow = RowDataPacket & { useencription: 0 | 1 };
 type SalesmanLoginSuccessDbRow = RowDataPacket & SalesmanLoginSuccessResponseItem;
 type RouteVersionDbRow = RowDataPacket & RouteVersionRow;
+type RouteCodeDbRow = RowDataPacket & { routecode: string | number | null };
+type RouteKeyDbRow = RowDataPacket & { routekey: string | number | null };
 
 export async function ensureDeviceRegistered(
   connection: PoolConnection,
@@ -173,4 +175,93 @@ export async function findRouteVersion(
   );
 
   return rows[0] ?? null;
+}
+
+export async function findRouteCodeBySalesman(
+  connection: PoolConnection,
+  userId: string | number
+): Promise<string | number | null> {
+  const [rows] = await connection.execute<RouteCodeDbRow[]>(
+    `
+      SELECT routecode
+      FROM routemaster
+      WHERE salesmancode = :userId
+      LIMIT 1
+    `,
+    { userId }
+  );
+
+  return rows[0]?.routecode ?? null;
+}
+
+export async function insertSyncService(
+  connection: PoolConnection,
+  params: {
+    userId: string | number;
+    deviceId: string;
+    routeCode: string | number;
+    routeKey: string | number | null;
+    routeClosed: string | number;
+  }
+): Promise<void> {
+  await connection.execute(
+    `
+      INSERT INTO tbl_syncservice
+        (userid, deviceid, syncdate, synctime, routecode, synctype, routeclosed, routekey)
+      VALUES
+        (:userId, :deviceId, CURDATE(), CURTIME(), :routeCode, '1', :routeClosed, :routeKey)
+    `,
+    {
+      userId: params.userId,
+      deviceId: params.deviceId,
+      routeCode: params.routeCode,
+      routeClosed: String(params.routeClosed) === '1' ? '1' : '0',
+      routeKey: params.routeKey
+    }
+  );
+}
+
+export async function insertSyncLog(
+  connection: PoolConnection,
+  params: {
+    userId: string | number;
+    routeCode: string | number;
+    routeKey: string | number;
+    routeClosed: string | number;
+    syncType: string | number;
+  }
+): Promise<void> {
+  if (Number(params.userId) === 0 || Number(params.routeKey) === 0) {
+    return;
+  }
+
+  const routeCode = await findRouteCodeBySalesman(connection, params.userId);
+
+  if (routeCode === null) {
+    return;
+  }
+
+  const [routeKeyRows] = await connection.execute<RouteKeyDbRow[]>(
+    `
+      SELECT COALESCE(MAX(routekey), 0) AS routekey
+      FROM startendday
+      WHERE routeclosed = 0
+      AND routecode = :routeCode
+    `,
+    { routeCode }
+  );
+
+  await connection.execute(
+    `
+      INSERT INTO synclog(userid, syncdate, routecode, synctime, synctype, routeclosed, routekey)
+      VALUES(:userId, CURDATE(), :routeCode, CURTIME(), :syncType, :routeClosed, :routeKey)
+    `,
+    {
+      userId: params.userId,
+      routeCode,
+      syncType: params.syncType,
+      routeClosed: String(params.routeClosed) === '1' ? '1' : '0',
+      routeKey: routeKeyRows[0]?.routekey ?? 0
+    }
+  );
 }

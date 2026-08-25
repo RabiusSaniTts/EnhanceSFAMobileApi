@@ -65,3 +65,25 @@ export interface RouteVersionRow {
 export interface SalesmanVersionCheckResponseItem {
   STATUS: 0 | 1;
 }
+
+export interface UpdateSyncDateParams {
+  routeid?: string;
+  userid?: string;
+  deviceid?: string;
+  routecode?: string;
+  routekey?: string;
+  routeclosed?: string;
+}
+
+export interface UpdateSyncDateQuery {
+  routeid?: string;
+  userid?: string;
+  deviceid?: string;
+  routecode?: string;
+  routekey?: string;
+  routeclosed?: string;
+}
+
+export interface UpdateSyncDateResponse {
+  status: 'success';
+}

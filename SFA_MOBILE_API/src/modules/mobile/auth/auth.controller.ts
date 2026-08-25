@@ -1,14 +1,16 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
-import { NotImplementedApiError } from '../../../shared/middleware/errors';
 import {
   checkSalesmanVersion,
   getCompanyIdByDevice,
-  loginSalesman
+  loginSalesman,
+  updateSyncDate as updateSyncDateService
 } from './auth.service';
 import type {
   CompanyIdByDeviceParams,
   SalesmanLoginParams,
-  SalesmanVersionCheckParams
+  SalesmanVersionCheckParams,
+  UpdateSyncDateParams,
+  UpdateSyncDateQuery
 } from './auth.types';
 
 export async function companyIdByDevice(
@@ -42,6 +44,13 @@ export async function salesmanVersionCheck(
   await reply.send(result);
 }
 
-export async function updateSyncDate() {
-  throw new NotImplementedApiError('index/updatesyncdate');
+export async function updateSyncDate(
+  request: FastifyRequest<{
+    Params: UpdateSyncDateParams;
+    Querystring: UpdateSyncDateQuery;
+  }>,
+  reply: FastifyReply
+) {
+  const result = await updateSyncDateService(request);
+  await reply.send(result);
 }

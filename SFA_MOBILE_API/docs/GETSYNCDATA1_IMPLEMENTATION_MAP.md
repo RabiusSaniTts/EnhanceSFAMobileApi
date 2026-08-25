@@ -444,7 +444,7 @@ This procedure is called twice by current PHP `getsyncdata1Action()`. The second
 Current Node status:
 
 - Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
-- Exposed through the single exported repository function `getItemSyncSections()`.
+- Exposed through `getMasterDataSyncSections()`.
 - Replaces `sp_ws_syncicsdata_itemmust` with direct MySQL queries.
 - Node calls the logic once and returns the final effective four keys.
 - Uses separate named functions per dataset for maintainability.
@@ -478,7 +478,7 @@ This procedure returns customer-specific item group headers and item mappings fo
 Current Node status:
 
 - Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
-- Exposed through the single exported repository function `getItemSyncSections()`.
+- Exposed through `getMasterDataSyncSections()`.
 - Replaces `sp_ws_syncicsdata_customeritemgrp` with direct MySQL queries.
 - Uses separate named functions for group headers and mappings.
 - Populates:
@@ -557,7 +557,7 @@ masterData.repository.ts
 transactionData.repository.ts
 ```
 
-`masterData.repository.ts` groups the read-only master/reference sync sections:
+`masterData.repository.ts` groups master/reference sync sections:
 
 ```text
 items
@@ -582,13 +582,13 @@ Item master data, item-must/NRP data, and customer item group data are intention
 src/modules/mobile/masterdatasync/repository/masterData.repository.ts
 ```
 
-That repository exposes one public function:
+That repository exposes one public function for the full master/reference group:
 
 ```ts
 getMasterDataSyncSections()
 ```
 
-It returns all item-related mobile response sections:
+It includes these item-related mobile response sections:
 
 ```text
 itemgroup
@@ -606,13 +606,11 @@ customeritemgrp
 customeritemmap
 ```
 
-## 9. Suggested Implementation Order
+## 9. Current Implementation Layout
 
-Do not implement all result sets at once. Build and compare section by section.
+The current Node implementation is organized into three repository files.
 
-1. Create `getsyncdata1` response shell with all keys returning empty arrays.
-2. Add `synccount` builder.
-3. Implement `setting` group:
+1. `setting.repository.ts`
    - `ControlPanel`
    - `Setup`
    - `companydetail`
@@ -621,7 +619,7 @@ Do not implement all result sets at once. Build and compare section by section.
    - `startendday`
    - `synctime`
    - `CurrencyMaster`
-4. Implement item master and item-must group in `masterData.repository.ts`:
+2. `masterData.repository.ts`
    - `itemgroup`
    - `ItemMaster`
    - `itempackagemaster`
@@ -633,20 +631,27 @@ Do not implement all result sets at once. Build and compare section by section.
    - `itemmustdetail`
    - `itemnrp`
    - `custnrp`
-5. Implement inventory group:
-   - `startingloaddetail`
-   - `inventorysummarydetail`
-6. Implement customer route set helper.
-7. Implement customer group:
+   - `customeritemgrp`
+   - `customeritemmap`
    - `CustomerMaster`
    - `salescalender`
    - `routesequence`
    - `customerinvoice`
-8. Implement promotion/pricing group.
-9. Implement survey/reasons/others reference data.
-10. Implement orders/open stock/FOC group.
-11. Implement `deletemaster`.
-12. Compare full JSON against Zend for a real route.
+   - promotion/pricing keys
+   - survey/POS reference data
+   - reasons
+   - messages and small master tables
+3. `transactionData.repository.ts`
+   - `startingloaddetail`
+   - `inventorysummarydetail`
+   - `salesorderheader`
+   - `salesorderdetail`
+   - `suggestedsalesinvoice`
+   - `inventorytransactiondetail`
+   - FOC and batch expiry sections
+   - `deletemaster`
+
+The remaining validation task is to compare full JSON against Zend for a real route/user/device with production-like data.
 
 ## 10. Performance Plan
 
@@ -684,9 +689,9 @@ For a real route/user/device:
 - `WizzitIndent.java` can parse and insert the response into SQLite.
 - No stored procedures are called by Node.
 
-## 12. Next Action Before Coding
+## 12. Next Validation Action
 
-Before coding `getsyncdata1`, capture one real Zend response for a known route:
+Capture one real Zend response for a known route:
 
 ```text
 /api/index/getsyncdata1/routeid/{realRoute}/userid/-1/deviceid/0/mdate/2024-05-25/table/4
