@@ -9,7 +9,7 @@ import {
   sendData,
   uploadArTransactionDetails,
   uploadInvoiceTransactionDetails
-} from './senddata.service';
+} from './transactions.service';
 
 const CUSTOMER_IMAGE_DIR = path.resolve(process.cwd(), 'public', 'customerimage');
 

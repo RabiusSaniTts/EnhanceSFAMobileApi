@@ -368,6 +368,7 @@ function normalizeDate(value: string): string {
 function readLegacyParams(request: LegacyTransactionRequest): LegacyParams {
   return {
     ...readLegacyBodyParams(request.body),
+    ...((request.params as LegacyParams | undefined) ?? {}),
     ...((request.query as LegacyParams | undefined) ?? {})
   };
 }

@@ -224,7 +224,7 @@ ws/types/startEndDay.types.ts
 transactions/transactions.routes.ts
 transactions/transactions.controller.ts
 transactions/transactions.types.ts
-transactions/senddata.service.ts
+transactions/transactions.service.ts
 transactions/repository/transaction.repository.ts
 transactions/repository/shared.repository.ts
 transactions/repository/routeActivity.repository.ts
@@ -265,7 +265,7 @@ Service responsibility split:
 | `ws/ws.service.ts` | Handles `/api/ws/senddata` start day, `/api/ws/endday`, and `/api/ws/logout`. |
 | `transactions/transactions.routes.ts` | Registers `/api/sync/senddata` and `/api/sync/custseq`. |
 | `transactions/transactions.controller.ts` | Fastify request/reply bridge for sync transaction endpoints. |
-| `transactions/senddata.service.ts` | Handles `POST /api/sync/senddata` batch upload and `POST /api/sync/custseq` customer sequence status. |
+| `transactions/transactions.service.ts` | Handles `POST /api/sync/senddata` batch upload and `POST /api/sync/custseq` customer sequence status. |
 
 Type responsibility split:
 
