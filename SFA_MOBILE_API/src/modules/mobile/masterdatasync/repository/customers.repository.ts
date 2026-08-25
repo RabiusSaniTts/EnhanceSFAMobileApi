@@ -151,7 +151,7 @@ async function getCustomerMaster(
   const division = routeRows[0]?.division ?? 0;
   const defaultItemMustKey = routeRows[0]?.itemmustkey ?? 0;
 
-  const selectedCustomerSql =
+  const customerMasterSql =
     routeCustomerCodes.length > 0
       ? `
         SELECT
@@ -178,43 +178,57 @@ async function getCustomerMaster(
         WHERE cm.customercode IN (${buildInClause(routeCustomerCodes)})
         AND cm.type <= 3
         AND cm.activecustomer = 1
+        UNION
+        SELECT
+          cm.*,
+          cm.itemmustkey AS itemmustkey,
+          cm.tcspecialdiscount AS tcspecialdiscount,
+          IFNULL(cm.visualcode, 0) AS visualcode,
+          IFNULL(cm.distribution_check_id, 0) AS distribution_check_id,
+          0 AS splitfree,
+          IFNULL(CASE WHEN cm.nrp_flag = 'Y' THEN 0 ELSE 1 END, 1) AS nrp_flag,
+          IFNULL(cm.invpromoyn, 0) AS invpromoyn,
+          IFNULL(cm.invpromoplan, 0) AS invpromoplan,
+          IFNULL(cm.combopromoyn, 0) AS combopromoyn,
+          IFNULL(cm.combopromoplan, 0) AS combopromoplan,
+          IFNULL(cm.rebateprintyn, 0) AS rebateprintyn,
+          CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
+          CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
+          CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
+          ABS(cm.alternatecode) AS alternatecode
+        FROM customermaster cm
+        WHERE cm.templateindicator = 1
+        AND cm.activecustomer = 1
       `
-      : '';
-
-  const templateCustomerSql = `
-    SELECT
-      cm.*,
-      cm.itemmustkey AS itemmustkey,
-      cm.tcspecialdiscount AS tcspecialdiscount,
-      IFNULL(cm.visualcode, 0) AS visualcode,
-      IFNULL(cm.distribution_check_id, 0) AS distribution_check_id,
-      0 AS splitfree,
-      IFNULL(CASE WHEN cm.nrp_flag = 'Y' THEN 0 ELSE 1 END, 1) AS nrp_flag,
-      IFNULL(cm.invpromoyn, 0) AS invpromoyn,
-      IFNULL(cm.invpromoplan, 0) AS invpromoplan,
-      IFNULL(cm.combopromoyn, 0) AS combopromoyn,
-      IFNULL(cm.combopromoplan, 0) AS combopromoplan,
-      IFNULL(cm.rebateprintyn, 0) AS rebateprintyn,
-      CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
-      CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
-      CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
-      ABS(cm.alternatecode) AS alternatecode
-    FROM customermaster cm
-    WHERE cm.templateindicator = 1
-    AND cm.activecustomer = 1
-  `;
-
-  const sql =
-    selectedCustomerSql.length > 0
-      ? `${selectedCustomerSql} UNION ${templateCustomerSql}`
-      : templateCustomerSql;
+      : `
+        SELECT
+          cm.*,
+          cm.itemmustkey AS itemmustkey,
+          cm.tcspecialdiscount AS tcspecialdiscount,
+          IFNULL(cm.visualcode, 0) AS visualcode,
+          IFNULL(cm.distribution_check_id, 0) AS distribution_check_id,
+          0 AS splitfree,
+          IFNULL(CASE WHEN cm.nrp_flag = 'Y' THEN 0 ELSE 1 END, 1) AS nrp_flag,
+          IFNULL(cm.invpromoyn, 0) AS invpromoyn,
+          IFNULL(cm.invpromoplan, 0) AS invpromoplan,
+          IFNULL(cm.combopromoyn, 0) AS combopromoyn,
+          IFNULL(cm.combopromoplan, 0) AS combopromoplan,
+          IFNULL(cm.rebateprintyn, 0) AS rebateprintyn,
+          CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
+          CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
+          CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
+          ABS(cm.alternatecode) AS alternatecode
+        FROM customermaster cm
+        WHERE cm.templateindicator = 1
+        AND cm.activecustomer = 1
+      `;
 
   const values =
-    selectedCustomerSql.length > 0
+    routeCustomerCodes.length > 0
       ? [defaultItemMustKey, division, ...routeCustomerCodes]
       : [];
 
-  const [rows] = await connection.query<GenericRow[]>(sql, values);
+  const [rows] = await connection.query<GenericRow[]>(customerMasterSql, values);
   return rows;
 }
 
