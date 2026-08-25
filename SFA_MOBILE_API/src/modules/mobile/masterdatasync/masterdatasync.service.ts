@@ -1,16 +1,8 @@
 import { withTransaction } from "../../../shared/db/transaction";
 import { buildMasterDataSyncResponse } from "./masterdatasync.mapper";
 import { getSettingSyncSections } from "./repository/setting.repository";
-import { getItemSyncSections } from "./repository/items.repository";
-import { getInventorySyncSections } from "./repository/inventory.repository";
-import { getCustomerSyncSections } from "./repository/customers.repository";
-import { getPromotionPricingSyncSections } from "./repository/promotionPricing.repository";
-import { getSurveySyncSections } from "./repository/survey.repository";
-import { getReasonSyncSections } from "./repository/reasons.repository";
-import { getOtherSyncSections } from "./repository/others.repository";
-import { getOrderSyncSections } from "./repository/orders.repository";
-import { getDeleteMasterSyncSections } from "./repository/deleteMaster.repository";
-import { getCustomerItemGroupSyncSections } from "./repository/customerItemGroup.repository";
+import { getMasterDataSyncSections } from "./repository/masterData.repository";
+import { getTransactionDataSyncSections } from "./repository/transactionData.repository";
 import type {
   MasterDataSyncParams,
   MasterDataSyncResponse,
@@ -25,51 +17,33 @@ export async function getMasterDataSync(
     const settingSections = await getSettingSyncSections(connection, {
       routeId,
     });
-    const itemSections = await getItemSyncSections(connection, { routeId });
-    const inventorySections = await getInventorySyncSections(connection, {
+    const masterDataSections = await getMasterDataSyncSections(connection, {
       routeId,
     });
-    const customerSections = await getCustomerSyncSections(connection, {
+    const transactionDataSections = await getTransactionDataSyncSections(connection, {
       routeId,
-    });
-    const promotionPricingSections = await getPromotionPricingSyncSections(
-      connection,
-      { routeId },
-    );
-    const surveySections = await getSurveySyncSections(connection);
-    const reasonSections = await getReasonSyncSections(connection, { routeId });
-    const otherSections = await getOtherSyncSections(connection);
-    const orderSections = await getOrderSyncSections(connection, { routeId });
-    const deleteMasterSections = await getDeleteMasterSyncSections(connection, {
       userId,
       deviceId: params.deviceid,
     });
-    const customerItemGroupSections = await getCustomerItemGroupSyncSections(
-      connection,
-      { routeId },
-    );
-
     const { ControlPanel, Setup, companydetail, SalesmanMaster, RouteMaster, startendday, synctime, CurrencyMaster } = settingSections;
 
-    const { itemmustheader, itemmustdetail, itemgroup, ItemMaster, itempackagemaster, routegoal, avgsalesqty, outletitemcodes, taxmaster, itemnrp, custnrp } = itemSections;
+    const { itemmustheader, itemmustdetail, itemgroup, ItemMaster, itempackagemaster, routegoal, avgsalesqty, outletitemcodes, taxmaster, itemnrp, custnrp, customeritemgrp, customeritemmap } = masterDataSections;
 
-    const { startingloaddetail, inventorysummarydetail } = inventorySections;
+    const { startingloaddetail, inventorysummarydetail } = transactionDataSections;
 
-    const { CustomerMaster, salescalender, routesequence, customerinvoice } = customerSections;
+    const { CustomerMaster, salescalender, routesequence, customerinvoice } = masterDataSections;
 
-    const { discountkeyheader, discountkeydetail, distributionkeydetails, productgroupheader, productgroupdetail, promokeyheader, promokeydetail, promoplanheader, promoplandetail, promotionassignmentadvanced, customerpricing1, pricingdetail1 } = promotionPricingSections;
+    const { discountkeyheader, discountkeydetail, distributionkeydetails, productgroupheader, productgroupdetail, promokeyheader, promokeydetail, promoplanheader, promoplandetail, promotionassignmentadvanced, customerpricing1, pricingdetail1 } = masterDataSections;
 
-    const { POSmaster, customerposinventory, customerposlimit, posinstructions, customersurveyplan, customersurveykeyplan, customersurveykey, customersurveydefinition, customersurveydefassign, lookupindexdetail } = surveySections;
+    const { POSmaster, customerposinventory, customerposlimit, posinstructions, customersurveyplan, customersurveykeyplan, customersurveykey, customersurveydefinition, customersurveydefassign, lookupindexdetail } = masterDataSections;
 
-    const { nonservreasons, expreasons, expiryreturnreasons, retitmreasons, freegoodreasons, voidreasons, routebook, salestrend, tempcustinventory } = reasonSections;
+    const { nonservreasons, expreasons, expiryreturnreasons, retitmreasons, freegoodreasons, voidreasons, routebook, salestrend, tempcustinventory } = masterDataSections;
 
-    const { customermessages, salesmanmessages, vanmaster, bankmaster, cashdesc, inventorylocation } = otherSections;
+    const { customermessages, salesmanmessages, vanmaster, bankmaster, cashdesc, inventorylocation } = masterDataSections;
 
-    const { salesorderheader, salesorderdetail, suggestedsalesinvoice, inventorytransactiondetail, customer_foc_balance, customer_foc_detail, journeyplancreditlimit, batchexpirydetail, customer_foc } = orderSections;
+    const { salesorderheader, salesorderdetail, suggestedsalesinvoice, inventorytransactiondetail, customer_foc_balance, customer_foc_detail, journeyplancreditlimit, batchexpirydetail, customer_foc } = transactionDataSections;
 
-    const { deletemaster } = deleteMasterSections;
-
-    const { customeritemgrp, customeritemmap } = customerItemGroupSections;
+    const { deletemaster } = transactionDataSections;
 
     return buildMasterDataSyncResponse({
       ControlPanel,

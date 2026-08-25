@@ -332,7 +332,7 @@ Node implementation recommendation:
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/promotionPricing.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
 - Replaces `sp_ws_syncicsdata_schemes` with direct MySQL queries.
 - Populates:
   - `discountkeyheader`
@@ -356,7 +356,7 @@ This procedure returns POS and customer survey reference data. It also returns v
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/survey.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
 - Replaces `sp_ws_syncicsdata_survey` with direct MySQL queries.
 - Preserves the current procedure behavior where `var_checkmdate` is forced to `0`, meaning these tables are full-sync datasets in this endpoint.
 - Populates:
@@ -378,7 +378,7 @@ This procedure returns reason/reference tables plus route-specific route book, s
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/reasons.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
 - Replaces `sp_ws_syncicsdata_reasons` with direct MySQL queries.
 - Uses separate named functions per dataset for maintainability.
 - Populates:
@@ -400,7 +400,7 @@ This procedure returns message and miscellaneous reference/master tables used by
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/others.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
 - Replaces `sp_ws_syncicsdata_others` with direct MySQL queries.
 - Uses separate named functions per dataset for maintainability.
 - Preserves the current procedure behavior where `var_checkmdate` is forced to `0`, meaning these tables are full-sync datasets in this endpoint.
@@ -418,7 +418,7 @@ This procedure returns pending deliveries/orders, suggested sales, open stock, F
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/orders.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/transactionData.repository.ts`.
 - Replaces `sp_ws_syncicsdata_orders` with direct MySQL queries.
 - Uses separate named functions per dataset for maintainability.
 - Replaces physical temp tables:
@@ -443,7 +443,7 @@ This procedure is called twice by current PHP `getsyncdata1Action()`. The second
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/items.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
 - Exposed through the single exported repository function `getItemSyncSections()`.
 - Replaces `sp_ws_syncicsdata_itemmust` with direct MySQL queries.
 - Node calls the logic once and returns the final effective four keys.
@@ -462,7 +462,7 @@ This procedure returns delete logs so the mobile app can remove stale SQLite row
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/deleteMaster.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/transactionData.repository.ts`.
 - Replaces `sp_ws_tablet_deletemaster` with direct MySQL queries.
 - Does not call the MySQL `show_pk()` function.
 - Resolves `fieldname` directly from `information_schema.columns`, matching `show_pk()` behavior of returning the first primary key column.
@@ -477,7 +477,8 @@ This procedure returns customer-specific item group headers and item mappings fo
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/customerItemGroup.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
+- Exposed through the single exported repository function `getItemSyncSections()`.
 - Replaces `sp_ws_syncicsdata_customeritemgrp` with direct MySQL queries.
 - Uses separate named functions for group headers and mappings.
 - Populates:
@@ -544,28 +545,47 @@ src/modules/mobile/masterdatasync/
   masterdatasync.types.ts
   repository/
     setting.repository.ts
-    items.repository.ts
-    inventory.repository.ts
-    customers.repository.ts
-    promotionPricing.repository.ts
-    survey.repository.ts
-    reasons.repository.ts
-    others.repository.ts
-    orders.repository.ts
-    deleteMaster.repository.ts
-    customerItemGroup.repository.ts
+    masterData.repository.ts
+    transactionData.repository.ts
 ```
 
-Item master data and item-must/NRP data are intentionally handled together in:
+`masterdatasync.service.ts` uses three top-level repository groups:
 
 ```text
-src/modules/mobile/masterdatasync/repository/items.repository.ts
+setting.repository.ts
+masterData.repository.ts
+transactionData.repository.ts
+```
+
+`masterData.repository.ts` groups the read-only master/reference sync sections:
+
+```text
+items
+customers
+promotion/pricing
+survey/POS
+reasons
+messages and small masters
+```
+
+`transactionData.repository.ts` groups route/user transaction sync sections:
+
+```text
+inventory
+orders / delivery / FOC
+deletemaster
+```
+
+Item master data, item-must/NRP data, and customer item group data are intentionally handled together in:
+
+```text
+src/modules/mobile/masterdatasync/repository/masterData.repository.ts
 ```
 
 That repository exposes one public function:
 
 ```ts
-getItemSyncSections()
+getMasterDataSyncSections()
 ```
 
 It returns all item-related mobile response sections:
@@ -582,6 +602,8 @@ itemmustheader
 itemmustdetail
 itemnrp
 custnrp
+customeritemgrp
+customeritemmap
 ```
 
 ## 9. Suggested Implementation Order
@@ -599,7 +621,7 @@ Do not implement all result sets at once. Build and compare section by section.
    - `startendday`
    - `synctime`
    - `CurrencyMaster`
-4. Implement item master and item-must group in `items.repository.ts`:
+4. Implement item master and item-must group in `masterData.repository.ts`:
    - `itemgroup`
    - `ItemMaster`
    - `itempackagemaster`
@@ -624,8 +646,7 @@ Do not implement all result sets at once. Build and compare section by section.
 9. Implement survey/reasons/others reference data.
 10. Implement orders/open stock/FOC group.
 11. Implement `deletemaster`.
-12. Implement `customeritemgrp` and `customeritemmap`.
-13. Compare full JSON against Zend for a real route.
+12. Compare full JSON against Zend for a real route.
 
 ## 10. Performance Plan
 
