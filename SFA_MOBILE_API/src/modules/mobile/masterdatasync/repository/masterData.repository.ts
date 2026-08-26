@@ -868,6 +868,7 @@ async function getCustomerMaster(
       ? `
         SELECT
           cm.*,
+          '' AS memo1,
           CASE WHEN COALESCE(cm.itemmustkey, 0) > 0 THEN cm.itemmustkey ELSE ? END AS itemmustkey,
           COALESCE(dc.discount, 0) AS tcspecialdiscount,
           IFNULL(cm.visualcode, 0) AS visualcode,
@@ -882,7 +883,7 @@ async function getCustomerMaster(
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
           CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
-          ABS(cm.alternatecode) AS alternatecode
+          cm.alternatecode AS alternatecode
         FROM customermaster cm
         LEFT JOIN customerdiscountcap dc
           ON dc.customercode = cm.customercode
