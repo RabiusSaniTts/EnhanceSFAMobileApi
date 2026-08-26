@@ -1077,6 +1077,12 @@ async function getCustomerInvoice(
       FROM customerinvoice ci
       ${joinClause}
       WHERE ci.customercode IN (${buildInClause(routeCustomerCodes)})
+      AND ci.customercode NOT IN (
+        SELECT customercode
+        FROM customermaster
+        WHERE invoicepaymentterms > 1
+        AND enablearcollection = 0
+      )
       AND ci.transactiontype = 2
       AND ci.voidflag = 0
       AND ci.duedate IS NOT NULL
