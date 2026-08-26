@@ -2006,7 +2006,7 @@ async function getSalesmanMessages(
         messagekey,
         alternatecode,
         messagedescription,
-        message1,
+        REPLACE(message1, '  ', ' ') AS message1,
         message2,
         message3,
         message4,
