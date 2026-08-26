@@ -894,6 +894,7 @@ async function getCustomerMaster(
         UNION
         SELECT
           cm.*,
+          cm.memo1 AS memo1,
           cm.itemmustkey AS itemmustkey,
           cm.tcspecialdiscount AS tcspecialdiscount,
           IFNULL(cm.visualcode, 0) AS visualcode,
@@ -916,6 +917,7 @@ async function getCustomerMaster(
       : `
         SELECT
           cm.*,
+          cm.memo1 AS memo1,
           cm.itemmustkey AS itemmustkey,
           cm.tcspecialdiscount AS tcspecialdiscount,
           IFNULL(cm.visualcode, 0) AS visualcode,
