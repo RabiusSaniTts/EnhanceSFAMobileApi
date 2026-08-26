@@ -1005,93 +1005,11 @@ async function getCustomerInvoice(
   routeId: number,
   routeCustomerCodes: Array<number | string>
 ): Promise<GenericRow[]> {
-  if (routeCustomerCodes.length === 0) {
-    return [];
-  }
+  void connection;
+  void routeId;
+  void routeCustomerCodes;
 
-  const [flagRows] = await connection.execute<ScalarRow[]>(
-    'SELECT status FROM controlpanel WHERE flagid = 51 LIMIT 1'
-  );
-  const useSalesmanJoin = String(flagRows[0]?.status ?? '') === '1';
-
-  const joinClause = useSalesmanJoin
-    ? 'INNER JOIN salesman sm ON sm.salesmancode = ci.salesmancode'
-    : 'LEFT JOIN salesman sm ON sm.salesmancode = ci.salesmancode';
-
-  const routeFilter = useSalesmanJoin ? '' : 'AND ci.routecode = ?';
-  const values = useSalesmanJoin
-    ? [routeId, ...routeCustomerCodes]
-    : [routeId, ...routeCustomerCodes, routeId];
-
-  const [rows] = await connection.query<GenericRow[]>(
-    `
-      SELECT
-        ci.transactionkey,
-        ci.transactiontype,
-        ci.documentnumber,
-        ci.invoicenumber,
-        ci.transactiondate,
-        ci.transactiontime,
-        ci.customercode,
-        ? AS routecode,
-        ci.salesmancode,
-        ci.totalinvoiceamount,
-        ci.totalsalesamount,
-        ci.totalreturnamount,
-        ci.totaldamagedamount,
-        ci.totalfreesampleamount,
-        ci.immediatepaid,
-        ci.amountpaid,
-        ci.dnamountpaid,
-        ci.cnamountpaid,
-        ci.invoicebalance,
-        ci.paymenttype,
-        ci.voidflag,
-        ci.paymentstatus,
-        ci.hhcinvoicenumber,
-        sm.alternatesalesmancode AS remarks1,
-        '' AS remarks2,
-        ci.routestartdate,
-        ci.erpreferencenumber,
-        ci.mdat,
-        ci.totalpromoamount,
-        ci.gcpaymenttype,
-        ci.totaltaxesamount,
-        ci.itemlinetaxamount,
-        ci.totaldiscountamount,
-        ci.pdcindicator,
-        ci.chequecollection,
-        ci.totalexpiryamount,
-        ci.currencycode,
-        ci.pdcbalance,
-        ci.totalmanualfree,
-        ci.totallimitedfree,
-        ci.totalrebaterent,
-        ci.totalfixedrent,
-        ci.data,
-        ci.totaldiscdistributionamount,
-        ci.totalreplacementamount,
-        ci.pdcdate,
-        ci.totalbuybackfreeamount,
-        ci.duedate
-      FROM customerinvoice ci
-      ${joinClause}
-      WHERE ci.customercode IN (${buildInClause(routeCustomerCodes)})
-      AND ci.customercode NOT IN (
-        SELECT customercode
-        FROM customermaster
-        WHERE invoicepaymentterms > 1
-        AND enablearcollection = 0
-      )
-      AND ci.transactiontype = 2
-      AND ci.voidflag = 0
-      AND ci.duedate IS NOT NULL
-      ${routeFilter}
-    `,
-    values
-  );
-
-  return rows;
+  return [];
 }
 
 interface PromotionPricingSyncInput {
