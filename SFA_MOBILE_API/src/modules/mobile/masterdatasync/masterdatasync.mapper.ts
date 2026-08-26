@@ -90,13 +90,73 @@ export function buildMasterDataSyncResponse(
     response[tableName] = sections[tableName] ?? [];
   }
 
+  applyZendValueFormatting(response);
   response.synccount = buildSyncCount(response);
   return response;
 }
 
 export function buildSyncCount(response: Record<string, unknown[]>): SyncCountItem[] {
-  return GET_SYNC_DATA_TABLE_NAMES.map((tableName) => ({
+  const syncCount = GET_SYNC_DATA_TABLE_NAMES.map((tableName) => ({
     tablename: tableName,
-    tablecount: response[tableName]?.length ?? 0
+    tablecount: toZendTableCount(response[tableName]?.length ?? 0)
   }));
+
+  const customerFocIndex = syncCount.findIndex(
+    (item) => item.tablename === 'customer_foc'
+  );
+
+  syncCount.splice(
+    customerFocIndex + 1,
+    0,
+    {
+      tablename: 'itemmustheader',
+      tablecount: toZendTableCount(response.itemmustheader?.length ?? 0)
+    },
+    {
+      tablename: 'itemmustdetail',
+      tablecount: toZendTableCount(response.itemmustdetail?.length ?? 0)
+    }
+  );
+
+  return syncCount;
+}
+
+function applyZendValueFormatting(response: Record<string, unknown[]>): void {
+  formatDecimalFields(response.CustomerMaster, [
+    'creditlimit',
+    'tcspecialdiscount',
+    'minsaleslimit',
+    'maxsaleslimit'
+  ]);
+
+  formatDecimalFields(response.RouteMaster, ['minsaleslimit', 'maxsaleslimit']);
+}
+
+function formatDecimalFields(rows: unknown[] | undefined, fields: string[]): void {
+  for (const row of rows ?? []) {
+    if (!isRecord(row)) {
+      continue;
+    }
+
+    for (const field of fields) {
+      row[field] = toFixedDecimalString(row[field]);
+    }
+  }
+}
+
+function toFixedDecimalString(value: unknown): unknown {
+  if (value === null || value === undefined || value === '') {
+    return value;
+  }
+
+  const numberValue = Number(value);
+  return Number.isFinite(numberValue) ? numberValue.toFixed(4) : value;
+}
+
+function toZendTableCount(count: number): number | string {
+  return count === 0 ? '' : count;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
 }

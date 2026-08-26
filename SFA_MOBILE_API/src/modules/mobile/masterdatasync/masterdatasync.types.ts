@@ -8,7 +8,7 @@ export interface MasterDataSyncParams {
 
 export interface SyncCountItem {
   tablename: string;
-  tablecount: number;
+  tablecount: number | string;
 }
 
 export type MasterDataSyncResponseSections = Partial<Record<string, unknown[]>>;
