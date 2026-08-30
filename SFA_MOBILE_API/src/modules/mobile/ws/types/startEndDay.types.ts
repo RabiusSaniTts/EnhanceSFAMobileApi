@@ -13,14 +13,14 @@ export type StartDayRequestItem = {
 
 export type StartDaySuccessResponseItem = {
   status: 0;
-  routekey: number;
+  routekey: string;
   routestartdate: string | null;
   routestarttime: string | null;
   routestartodometer: string | number | null;
 };
 
 export type StartDayStatusResponseItem = {
-  status: 1 | 2 | 3;
+  status: 1 | 2;
 };
 
 export type StartDayResponseItem = StartDaySuccessResponseItem | StartDayStatusResponseItem;

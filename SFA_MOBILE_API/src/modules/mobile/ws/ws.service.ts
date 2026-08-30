@@ -83,7 +83,13 @@ export async function startDay(
         String(routeVersion?.versionStatus ?? '0') === '1' &&
         String(routeVersion?.versionNo ?? '0') !== String(item.ver)
       ) {
-        startday.push({ status: 3 as const });
+        startday.push({
+          status: 0 as const,
+          routekey: '',
+          routestartdate: null,
+          routestarttime: null,
+          routestartodometer: null
+        });
         continue;
       }
 
@@ -97,7 +103,7 @@ export async function startDay(
 
       startday.push({
         status: 0 as const,
-        routekey: Number(createdStartDay.routekey),
+        routekey: String(createdStartDay.routekey),
         routestartdate: createdStartDay.routestartdate,
         routestarttime: createdStartDay.routestarttime,
         routestartodometer: createdStartDay.routestartodometer
