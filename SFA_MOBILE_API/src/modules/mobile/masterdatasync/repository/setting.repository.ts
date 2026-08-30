@@ -165,7 +165,10 @@ const ROUTE_MASTER_RESPONSE_FIELDS = [
   'minsaleslimit',
   'maxsaleslimit',
   'maxorderholddays',
-  'enforcegeocheckout'
+  'enforcegeocheckout',
+  'enablefss',
+  'enablegpstracking',
+  'enablearcollection'
 ] as const;
 type RouteCodeRow = RowDataPacket & { routecode: number };
 type ScalarRow = RowDataPacket & {
