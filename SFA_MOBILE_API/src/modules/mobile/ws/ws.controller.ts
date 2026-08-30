@@ -38,7 +38,7 @@ export async function endDay(
   reply: FastifyReply
 ): Promise<void> {
   const result = await endDayService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function logout(
@@ -54,7 +54,7 @@ export async function getCustomerInvoice(
   reply: FastifyReply
 ): Promise<void> {
   const result = await getCustomerInvoiceService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function getCustomerBalance(
@@ -62,7 +62,7 @@ export async function getCustomerBalance(
   reply: FastifyReply
 ): Promise<void> {
   const result = await getCustomerBalanceService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function getCustomerItemGroup(
@@ -70,7 +70,7 @@ export async function getCustomerItemGroup(
   reply: FastifyReply
 ): Promise<void> {
   const result = await getCustomerItemGroupService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function customerMaster(
@@ -81,7 +81,7 @@ export async function customerMaster(
   reply: FastifyReply
 ): Promise<void> {
   const result = await getCustomerMasterService(request);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function transactionData(
@@ -92,7 +92,7 @@ export async function transactionData(
   reply: FastifyReply
 ): Promise<void> {
   const result = await getTransactionDataService(request);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function importInventoryCount(
@@ -103,22 +103,22 @@ export async function importInventoryCount(
   reply: FastifyReply
 ): Promise<void> {
   const result = await getImportInventoryCountService(request);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function getDelivery(request: FastifyRequest, reply: FastifyReply): Promise<void> {
   const result = await getDeliveryService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function getOrderStatus(request: FastifyRequest, reply: FastifyReply): Promise<void> {
   const result = await getOrderStatusService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function getVisualData(request: FastifyRequest, reply: FastifyReply): Promise<void> {
   const result = await getVisualDataService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function getWarehouseStock(
@@ -126,12 +126,12 @@ export async function getWarehouseStock(
   reply: FastifyReply
 ): Promise<void> {
   const result = await getWarehouseStockService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function getWhStock(request: FastifyRequest, reply: FastifyReply): Promise<void> {
   const result = await getWhStockService(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function wsSendData(
@@ -139,5 +139,5 @@ export async function wsSendData(
   reply: FastifyReply
 ): Promise<void> {
   const result = await startDay(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }

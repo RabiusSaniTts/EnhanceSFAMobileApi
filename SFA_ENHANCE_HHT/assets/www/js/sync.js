@@ -8,7 +8,9 @@
 
 //var wsurl="https://routepro.enhance-group.com/api/";
 
-var wsurl="https://routeprouat.enhance-group.com/api/";
+//var wsurl="https://routeprouat.enhance-group.com/api/";
+
+var wsurl = "http://towelltake.fortiddns.com:3000/api/"; //tts test server
 
 var platform= sessionStorage.getItem("platform");
 var invoicedetail={};

@@ -15,7 +15,7 @@ const CUSTOMER_IMAGE_DIR = path.resolve(process.cwd(), 'public', 'customerimage'
 
 export async function sendDataAction(request: FastifyRequest, reply: FastifyReply): Promise<void> {
   const result = await sendData(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function customerSequenceAction(
@@ -23,7 +23,7 @@ export async function customerSequenceAction(
   reply: FastifyReply
 ): Promise<void> {
   const result = await customerSequence(request, reply);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function invoiceTransactionDetailAction(
@@ -31,7 +31,7 @@ export async function invoiceTransactionDetailAction(
   reply: FastifyReply
 ): Promise<void> {
   const result = await uploadInvoiceTransactionDetails(request);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function arTransactionDetailAction(
@@ -39,7 +39,7 @@ export async function arTransactionDetailAction(
   reply: FastifyReply
 ): Promise<void> {
   const result = await uploadArTransactionDetails(request);
-  await reply.send(result);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
 export async function uploadImageAction(

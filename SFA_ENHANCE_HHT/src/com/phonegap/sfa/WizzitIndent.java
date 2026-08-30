@@ -113,7 +113,9 @@ public class WizzitIndent extends CordovaPlugin {
 			
 	        //String baseAddr = "http://enomsfa01.westeurope.cloudapp.azure.com:8095/sfa/enhance_uat/";
 			//String baseAddr = "https://routepro.enhance-group.com/";
-			String baseAddr = "https://routeprouat.enhance-group.com/";
+			String baseAddr = "http://towelltake.fortiddns.com:3000/";
+
+ 
 			DBHelper d1 = new DBHelper(cordova.getActivity().getApplicationContext());
 
 			if (action.equals(SYNC)) {
