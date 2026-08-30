@@ -636,6 +636,10 @@ function normalizeRouteMasterRows(rows: GenericRow[]): GenericRow[] {
       normalized[field] = row[field] ?? null;
     }
 
+    normalized.enablefss = row.enablefss ?? 0;
+    normalized.enablegpstracking = row.enablegpstracking ?? 0;
+    normalized.enablearcollection = row.enablearcollection ?? 0;
+
     return normalized;
   });
 }
