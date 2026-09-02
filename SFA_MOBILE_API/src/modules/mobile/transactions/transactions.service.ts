@@ -111,6 +111,8 @@ import type {
   LegacyTransactionRequest
 } from './types/shared.types';
 
+type MutableSendDataResponse = Record<SendDataArrayField, Record<string, unknown>[]>;
+
 export async function sendData(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
@@ -531,7 +533,7 @@ export async function sendData(
       routeclosed: payload.routeclosed
     });
 
-    return response;
+    return pruneEmptySendDataResponse(response);
   });
 }
 
@@ -636,7 +638,7 @@ function parseLegacyRequestArrayField(
 
   try {
     const parsed = JSON.parse(String(value));
-    return Array.isArray(parsed) ? parsed.filter(isPlainObject) : [];
+    return normalizeLegacyRecords(parsed);
   } catch {
     throw new ApiError(400, `Invalid ${field} payload`);
   }
@@ -705,8 +707,8 @@ function createEmptySendDataPayload(): SendDataPayload {
   return payload;
 }
 
-function createEmptySendDataResponse(): SendDataResponse {
-  const response = {} as SendDataResponse;
+function createEmptySendDataResponse(): MutableSendDataResponse {
+  const response = {} as MutableSendDataResponse;
 
   for (const field of SEND_DATA_ARRAY_FIELDS) {
     response[field] = [];
@@ -730,10 +732,28 @@ function parseLegacyArrayField(field: SendDataArrayField, value: unknown): unkno
 
   try {
     const parsed = JSON.parse(value);
-    return Array.isArray(parsed) ? parsed : [];
+    return normalizeLegacyRecords(parsed);
   } catch {
     throw new ApiError(400, `Invalid ${field} payload`);
   }
+}
+
+function pruneEmptySendDataResponse(response: MutableSendDataResponse): SendDataResponse {
+  return Object.fromEntries(
+    Object.entries(response).filter(([, items]) => Array.isArray(items) && items.length > 0)
+  ) as SendDataResponse;
+}
+
+function normalizeLegacyRecords(value: unknown): Record<string, unknown>[] {
+  if (Array.isArray(value)) {
+    return value.filter(isPlainObject);
+  }
+
+  if (isPlainObject(value)) {
+    return Object.values(value).filter(isPlainObject);
+  }
+
+  return [];
 }
 
 function readScalar(value: unknown): string | number | null {

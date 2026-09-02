@@ -48,7 +48,7 @@ export type SendDataPayload = Record<SendDataArrayField, unknown[]> & {
   userid: string | number | null;
 };
 
-export type SendDataResponse = Record<SendDataArrayField, Record<string, unknown>[]>;
+export type SendDataResponse = Partial<Record<SendDataArrayField, Record<string, unknown>[]>>;
 
 export type InvoiceTransactionDetailItem = LegacyUploadItem;
 export type ArTransactionDetailItem = LegacyUploadItem;
