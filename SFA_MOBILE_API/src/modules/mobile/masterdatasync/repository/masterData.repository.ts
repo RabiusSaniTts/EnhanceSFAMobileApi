@@ -236,6 +236,7 @@ const CUSTOMER_MASTER_RESPONSE_FIELDS = [
   "combopromoyn",
   "combopromoplan",
   "rebateprintyn",
+  "customerfacetime",
 ] as const;
 
 interface ItemSyncInput {
@@ -880,6 +881,7 @@ async function getCustomerMaster(
           IFNULL(cm.combopromoyn, 0) AS combopromoyn,
           IFNULL(cm.combopromoplan, 0) AS combopromoplan,
           IFNULL(cm.rebateprintyn, 0) AS rebateprintyn,
+          IFNULL(cm.customerfacetime, 0) AS customerfacetime,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
           CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
@@ -906,6 +908,7 @@ async function getCustomerMaster(
           IFNULL(cm.combopromoyn, 0) AS combopromoyn,
           IFNULL(cm.combopromoplan, 0) AS combopromoplan,
           IFNULL(cm.rebateprintyn, 0) AS rebateprintyn,
+          IFNULL(cm.customerfacetime, 0) AS customerfacetime,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
           CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
@@ -929,6 +932,7 @@ async function getCustomerMaster(
           IFNULL(cm.combopromoyn, 0) AS combopromoyn,
           IFNULL(cm.combopromoplan, 0) AS combopromoplan,
           IFNULL(cm.rebateprintyn, 0) AS rebateprintyn,
+          IFNULL(cm.customerfacetime, 0) AS customerfacetime,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimitdays ELSE 0 END AS creditlimitdays,
           CASE WHEN cm.invoicepaymentterms = 2 THEN cm.creditlimit ELSE 0 END AS creditlimit,
           CASE WHEN cm.invoicepaymentterms > 1 THEN cm.enablearcollection ELSE 0 END AS enablearcollection,
