@@ -332,7 +332,7 @@ const INVENTORY_SUMMARY_COLUMNS = [
 function mapInventorySummaryDetailParams(
   item: InventorySummaryDetailUploadItem
 ): Record<string, string | number | null> {
-  return Object.fromEntries(
+  const params = Object.fromEntries(
     INVENTORY_SUMMARY_COLUMNS.map((column) => [
       column,
       column === 'inventorykey' || column === 'itemcode' || column === 'routekey'
@@ -340,4 +340,10 @@ function mapInventorySummaryDetailParams(
         : nullable(item[column])
     ])
   );
+
+  return {
+    ...params,
+    itemCode: params.itemcode,
+    routeKey: params.routekey
+  };
 }
