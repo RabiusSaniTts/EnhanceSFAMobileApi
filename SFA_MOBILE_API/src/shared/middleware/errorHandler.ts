@@ -6,7 +6,7 @@ export async function errorHandler(
   request: FastifyRequest,
   reply: FastifyReply
 ): Promise<void> {
-  request.log.error({ error }, 'request failed');
+  request.log.error({ err: error }, 'request failed');
 
   if (error instanceof ApiError) {
     await reply.status(error.statusCode).send({
