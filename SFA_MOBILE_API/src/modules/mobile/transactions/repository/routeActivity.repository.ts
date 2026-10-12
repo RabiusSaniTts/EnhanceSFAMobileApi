@@ -8,6 +8,7 @@ import type {
 import type {
   CountRow
 } from './shared.repository';
+import { nullable, required } from './shared.repository';
 
 export async function saveCustomerOperationControl(
   connection: PoolConnection,
@@ -21,8 +22,8 @@ export async function saveCustomerOperationControl(
       AND visitkey = :visitKey
     `,
     {
-      routeKey: item.routekey,
-      visitKey: item.visitkey
+      routeKey: required(item.routekey),
+      visitKey: required(item.visitkey)
     }
   );
 
@@ -51,25 +52,25 @@ export async function saveCustomerOperationControl(
           log_id = :logId
       `,
       {
-        visitKey: item.visitkey,
-        routeKey: item.routekey,
-        customerCode: item.customercode,
-        routeCode: item.routecode,
-        salesmanCode: item.salesmancode,
-        odometerReading: item.odometerreading,
-        visitStartDate: item.visitstartdate,
-        visitStartTime: item.visitstarttime,
-        visitEndDate: item.visitenddate,
-        visitEndTime: item.visitendtime,
-        totalTransactions: item.totaltransactions,
-        addedCustomer: item.addedcustomer,
-        voidFlag: item.voidflag,
-        scannerIndicator: item.scannerindicator,
-        reasonCode: item.reasoncode,
-        latitude: item.latitude,
-        longitude: item.longitude,
-        radius: item.radius,
-        logId: item.log_id
+        visitKey: required(item.visitkey),
+        routeKey: required(item.routekey),
+        customerCode: required(item.customercode),
+        routeCode: required(item.routecode),
+        salesmanCode: nullable(item.salesmancode),
+        odometerReading: nullable(item.odometerreading),
+        visitStartDate: nullable(item.visitstartdate),
+        visitStartTime: nullable(item.visitstarttime),
+        visitEndDate: nullable(item.visitenddate),
+        visitEndTime: nullable(item.visitendtime),
+        totalTransactions: nullable(item.totaltransactions),
+        addedCustomer: nullable(item.addedcustomer),
+        voidFlag: nullable(item.voidflag),
+        scannerIndicator: nullable(item.scannerindicator),
+        reasonCode: nullable(item.reasoncode),
+        latitude: nullable(item.latitude),
+        longitude: nullable(item.longitude),
+        radius: nullable(item.radius),
+        logId: nullable(item.log_id)
       }
     );
   }
@@ -105,15 +106,15 @@ export async function saveCustomerVisitLog(
         mdate = CURRENT_DATE()
     `,
     {
-      logKey: item.log_id,
-      routeKey: item.routekey,
-      customerCode: item.customercode,
-      routeCode: item.routecode,
-      salesmanCode: item.salesmancode,
-      logStartDate: item.log_startdate,
-      logStartTime: item.log_starttime,
-      logEndDate: item.log_enddate,
-      logEndTime: item.log_endtime
+      logKey: required(item.log_id),
+      routeKey: required(item.routekey),
+      customerCode: required(item.customercode),
+      routeCode: required(item.routecode),
+      salesmanCode: nullable(item.salesmancode),
+      logStartDate: nullable(item.log_startdate),
+      logStartTime: nullable(item.log_starttime),
+      logEndDate: nullable(item.log_enddate),
+      logEndTime: nullable(item.log_endtime)
     }
   );
 
@@ -140,15 +141,15 @@ export async function updateRouteMasterFromUpload(
       WHERE routecode = :routeCode
     `,
     {
-      routeCode: item.routecode,
-      hhcOrderSequence: item.hhcordseq,
-      hhcInvoiceSequence: item.hhcinvseq,
-      hhcCashSequence: item.hhccshseq,
-      hhcInventorySequence: item.hhcivtseq,
-      boDocumentSequence: item.bodocseq,
-      routeBalance: item.routebalance,
-      hhcArSequence: item.hhcarseq,
-      hhcLoadSequence: item.hhcloadseq
+      routeCode: required(item.routecode),
+      hhcOrderSequence: nullable(item.hhcordseq),
+      hhcInvoiceSequence: nullable(item.hhcinvseq),
+      hhcCashSequence: nullable(item.hhccshseq),
+      hhcInventorySequence: nullable(item.hhcivtseq),
+      boDocumentSequence: nullable(item.bodocseq),
+      routeBalance: nullable(item.routebalance),
+      hhcArSequence: nullable(item.hhcarseq),
+      hhcLoadSequence: nullable(item.hhcloadseq)
     }
   );
 
@@ -241,14 +242,14 @@ async function customerSequenceExists(
 
 function mapCustomerSequenceParams(item: CustomerSequenceRequestItem) {
   return {
-    routeKey: item.routekey,
-    sequenceWeekNumber: item.seqweeknumber,
-    sequenceWeekDay: item.seqweekday,
-    routeCode: item.routecode,
-    customerCode: item.customercode,
-    sequenceNumber: item.sequencenumber,
-    scheduledFlag: item.schelduledflag,
-    servicedFlag: item.servicedflag,
-    scannedFlag: item.scannedflag
+    routeKey: required(item.routekey),
+    sequenceWeekNumber: required(item.seqweeknumber),
+    sequenceWeekDay: required(item.seqweekday),
+    routeCode: required(item.routecode),
+    customerCode: required(item.customercode),
+    sequenceNumber: nullable(item.sequencenumber),
+    scheduledFlag: nullable(item.schelduledflag),
+    servicedFlag: nullable(item.servicedflag),
+    scannedFlag: nullable(item.scannedflag)
   };
 }
