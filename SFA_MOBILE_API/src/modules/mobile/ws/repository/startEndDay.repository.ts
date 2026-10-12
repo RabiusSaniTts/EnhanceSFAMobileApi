@@ -17,6 +17,7 @@ import type {
   RouteHierarchyRow,
   RouteVersionRow
 } from '../../transactions/repository/shared.repository';
+import { nullable, required } from '../../transactions/repository/shared.repository';
 
 export async function getDatabaseCurrentDate(connection: PoolConnection): Promise<string> {
   const [rows] = await connection.execute<CurrentDateRow[]>(
@@ -199,20 +200,20 @@ export async function updateEndDay(
       WHERE routekey = :routeKey
     `,
     {
-      routeKey: item.routekey,
-      routeEndDate: item.routeenddate,
-      routeEndOdometer: item.routeendodometer,
-      totalDocuments: item.totaldocuments,
-      totalCash: item.totalcash,
-      totalChecks: item.totalchecks,
-      totalOrderAmount: item.totalorderamount,
-      totalInvoiceAmount: item.totalinvoiceamount,
-      totalChargeSales: item.totalchargesales,
-      totalCashSales: item.totalcashsales,
-      totalAccountsReceivable: item.totalacctsreceivable,
-      totalExpenses: item.totalexpenses,
-      inventoryVariance: item.inventoryvariance,
-      cashVariance: item.cashvariance
+      routeKey: required(item.routekey),
+      routeEndDate: required(item.routeenddate),
+      routeEndOdometer: required(item.routeendodometer),
+      totalDocuments: zeroWhenMissing(item.totaldocuments),
+      totalCash: zeroWhenMissing(item.totalcash),
+      totalChecks: zeroWhenMissing(item.totalchecks),
+      totalOrderAmount: zeroWhenMissing(item.totalorderamount),
+      totalInvoiceAmount: zeroWhenMissing(item.totalinvoiceamount),
+      totalChargeSales: zeroWhenMissing(item.totalchargesales),
+      totalCashSales: zeroWhenMissing(item.totalcashsales),
+      totalAccountsReceivable: zeroWhenMissing(item.totalacctsreceivable),
+      totalExpenses: zeroWhenMissing(item.totalexpenses),
+      inventoryVariance: zeroWhenMissing(item.inventoryvariance),
+      cashVariance: zeroWhenMissing(item.cashvariance)
     }
   );
 
@@ -227,7 +228,7 @@ export async function updateEndDay(
       `,
       {
         routeCode,
-        routeEndOdometer: item.routeendodometer
+        routeEndOdometer: required(item.routeendodometer)
       }
     );
   }
@@ -238,10 +239,14 @@ export async function updateEndDay(
       FROM startendday
       WHERE routekey = :routeKey
     `,
-    { routeKey: item.routekey }
+    { routeKey: required(item.routekey) }
   );
 
   return rows[0] ?? null;
+}
+
+function zeroWhenMissing(value: unknown): string | number {
+  return nullable(value) ?? 0;
 }
 
 export async function resolveLogoutRouteKey(
