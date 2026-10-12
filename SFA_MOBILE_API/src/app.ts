@@ -10,7 +10,8 @@ import { registerMobileRoutes } from './modules/mobile/mobile.routes';
 export async function buildApp() {
   const app = Fastify({
     logger: true,
-    disableRequestLogging: true
+    disableRequestLogging: true,
+    bodyLimit: 50 * 1024 * 1024
   });
 
   app.setErrorHandler(errorHandler);
