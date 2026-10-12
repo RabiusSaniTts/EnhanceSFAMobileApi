@@ -45,14 +45,32 @@ export async function registerMobileRoutes(app: FastifyInstance): Promise<void> 
   });
 
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/index/salesmanverchk/routecode/:routecode/verno/:verno',
     handler: salesmanVersionCheck
   });
 
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/index/getsyncdata1/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate/table/:table',
+    handler: masterDataSyncAction
+  });
+
+  app.route({
+    method: ['GET', 'POST'],
+    url: '/api/index/getsyncdata1/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate',
+    handler: masterDataSyncAction
+  });
+
+  app.route({
+    method: ['GET', 'POST'],
+    url: '/api/index/getsyncdata/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate/table/:table',
+    handler: masterDataSyncAction
+  });
+
+  app.route({
+    method: ['GET', 'POST'],
+    url: '/api/index/getsyncdata/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate',
     handler: masterDataSyncAction
   });
 
@@ -98,42 +116,42 @@ export async function registerMobileRoutes(app: FastifyInstance): Promise<void> 
   app.route({ method: 'GET', url: '/api/ws/senddata', handler: wsSendData });
   app.route({ method: 'GET', url: '/api/ws/endday', handler: endDay });
   app.route({ method: 'GET', url: '/api/ws/logout', handler: logout });
-  app.route({ method: 'POST', url: '/api/ws/getcustinv', handler: getCustomerInvoice });
+  app.route({ method: ['GET', 'POST'], url: '/api/ws/getcustinv', handler: getCustomerInvoice });
   app.route({
     method: 'GET',
     url: '/api/ws/getcustomerbalance',
     handler: getCustomerBalance
   });
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/ws/getcustomeritemgrp',
     handler: getCustomerItemGroup
   });
   app.route({ method: 'GET', url: '/api/ws/getdelivery', handler: getDelivery });
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/ws/getcustomeritemgrp/routeid/:routeid/userid/:userid',
     handler: getCustomerItemGroup
   });
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/ws/getorderstatus/routeid/:routeid/userid/:userid',
     handler: getOrderStatus
   });
-  app.route({ method: 'POST', url: '/api/ws/getorderstatus', handler: getOrderStatus });
+  app.route({ method: ['GET', 'POST'], url: '/api/ws/getorderstatus', handler: getOrderStatus });
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/ws/getvisualdata/routeid/:routeid/userid/:userid',
     handler: getVisualData
   });
-  app.route({ method: 'POST', url: '/api/ws/getvisualdata', handler: getVisualData });
+  app.route({ method: ['GET', 'POST'], url: '/api/ws/getvisualdata', handler: getVisualData });
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/ws/getwarehousestock/routeid/:routeid/userid/:userid',
     handler: getWarehouseStock
   });
   app.route({
-    method: 'POST',
+    method: ['GET', 'POST'],
     url: '/api/ws/getwarehousestock',
     handler: getWarehouseStock
   });

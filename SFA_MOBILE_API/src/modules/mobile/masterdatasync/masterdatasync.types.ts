@@ -3,7 +3,7 @@ export interface MasterDataSyncParams {
   userid: string;
   deviceid: string;
   mdate: string;
-  table: string;
+  table?: string;
 }
 
 export interface SyncCountItem {
