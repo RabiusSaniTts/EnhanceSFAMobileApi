@@ -1,0 +1,519 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 03/02/2012
+ '  Description  : This page is used for utilities main screen.  
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<meta charset='utf-8'>
+	<meta name="format-detection" content="telephone=no">
+	<head>
+		<title>More Options</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+		<link rel="stylesheet" type="text/css"
+			href="../css/jquery.mobile.simpledialog.css" />
+
+		<script type="text/javascript"
+			src="../js/jquery.mobile.simpledialog.js"></script>
+		<script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+
+		<style>
+       .content-primary{
+       
+    }
+    
+   
+  
+    
+		.centerboxInvReq li a {
+		 background-image:-webkit-gradient(linear, left top, left bottom, color-stop(1%, #52848d),
+				color-stop(50%, #2d494d), color-stop(100%, #2d494d));
+		 border-radius: 15px;
+		}
+		
+		
+		 #popupDialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+		#overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        #popupSubmit {
+            background-color: #33cc33;
+            
+        }
+        
+        #popupClose {
+            background-color: #ff3300;
+        }
+
+    </style>
+		<link rel="stylesheet" type="text/css" href="../pushbar/milligram.css">
+		<link rel="stylesheet" type="text/css" href="../pushbar/normalize.css">
+		<link rel="stylesheet" type="text/css" href="../pushbar/pushbar.css">
+		<link rel="stylesheet" type="text/css" href="../pushbar/demo.css">
+		<script type="text/javascript" src="../pushbar/pushbar.js"></script>
+
+	</head>
+	<body>
+		<div data-role="page" data-theme="d">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+
+				<main class="pushbar_main_content">
+					<div class="wrapper">
+						<div class="card_content">
+							<div>
+								<!-- 				<button data-pushbar-target="left"  src="../images/icons8-menu-50.png" >Left pushbar</button> -->
+								<img title alt data-pushbar-target="left"
+									src="../images/icons8-menu-50.png" id="setting" />
+							</div>
+						</div>
+					</div>
+				</main>
+				<a href="../home/home.html" id="Back_inner" rel="external"
+					lang="en">Back</a>
+				<h1 lang="en">More Options</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+
+			<div data-role="content" class="centerboxInvReq">
+				<div id="MenuListReview">
+					<div class="content-primary">
+						<ul data-role="listview">
+							<li><a href="#" id="lnkRouteSetup" rel="external"
+									onclick="checkdata2();">
+									<img src="../images/debug.png" class="HomeIconPosEN" />
+									<h3 id="lblReprint" lang="en">Bug Fix</h3>
+								</a></li>
+						</ul>
+					</div>
+
+					<!-- <div class="second-primary">
+					<ul data-role="listview">
+						<li><a href="gpsinfo.html" onclick=localStorage.gps=
+							'utili' rel="external"> <img src="../images/info-4.png"
+								class="HomeIconPosEN" />
+								<h3 id="H3" lang="en">GPS Info</h3>
+						</a></li>
+					</ul>
+				</div> -->
+
+				</div>
+			</div>
+
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">
+						09 November 2011</div>
+					<div class="rightfooter">
+						Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<!--    <div data-role="navbar" data-iconpos="top" data-grid="f">
+                 <ul>
+                    <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="day" data-icon="custom" lang="en" onclick="footerredict('../startofday/startofday.html')">Start day</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" id="inve" rel="external" data-icon="custom" lang="en" onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="cust" data-icon="custom" lang="en" onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="sett" data-icon="custom" lang="en" onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+			        
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="info" data-icon="custom" lang="en" onclick="footerredict('../information/information.html')">Information</a></li>
+			        <li style="margin-bottom:0 !important; width:14.0%"><a href="#"  rel="external" id="setup" data-icon="custom" lang="en" class="ui-btn-active" onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                </ul>
+            </div> -->
+				<aside data-pushbar-id="left" class="pushbar from_left">
+					<div class="title"><span data-pushbar-close
+							class="close push_right"></span>
+						<span id="txtroute"></span>
+					</div>
+
+					<ul class="menu">
+
+					</ul>
+
+				</aside>
+			</div>
+		</div>
+		<table id="tblPassword" border="0" cellpadding="2" cellspacing="0"
+			width="100%;" style="display: none;">
+			<tr>
+				<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+					lang="en">Password Entry</th>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2" id="tblSubTitle" colspan="2" class="popupSubTitle"
+					lang="en">Route Setup</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2" lang="en" class="popupInfo">Please Enter The
+					Security Password</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2"><input id="txtPassword" type="tel" pattern="[0-9]*" value
+						maxlength="10" class="textWidth textFont passwordCenter" /></td>
+			</tr>
+			<tr class="popupRow">
+				<td style="width: 50%;"><input id="btnSubmit" type="button"
+						value="Submit" onclick="VerifyPassword();" data-role="none"
+						lang="en" /></td>
+				<td style="width: 50%;"><input id="btnCancel" type="button"
+						rel="close" value="Cancel" onclick="ClearPassword();"
+						data-role="none" lang="en" /></td>
+			</tr>
+		</table>
+		<table id="tblPassword1" border="0" cellpadding="2" cellspacing="0"
+			width="100%;" style="display: none;">
+			<tr>
+				<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+					lang="en">Password Entry</th>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2" colspan="2" class="popupSubTitle" lang="en">
+					Clear Data</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2" lang="en" class="popupInfo">Please Enter The
+					Security Password</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2"><input id="txtPassword" type="tel" pattern="[0-9]*" value
+						maxlength="10" class="textWidth textFont passwordCenter" /> <label
+						id="lblMessage" lang="en"
+						style="display: none">Enter Correct Password</label></td>
+			</tr>
+			<tr class="popupRow">
+				<td style="width: 50%;"><input id="btnSubmit" type="button"
+						value="Submit"
+						onclick="VerifyPassword('btnSubmit','miscellaneous.html','');"
+						data-role="none" lang="en" /></td>
+				<td style="width: 50%;"><input id="btnCancel" type="button"
+						rel="close" value="Cancel" onclick="ClearPassword();"
+						data-role="none" lang="en" /></td>
+			</tr>
+		</table>
+		<table id="tblPassword2" border="0" cellpadding="2" cellspacing="0"
+			width="100%;" style="display: none;">
+			<tr>
+				<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+					lang="en">Password Entry</th>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2" colspan="2" class="popupSubTitle" lang="en">
+					Archive Data</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2" lang="en" class="popupInfo">Please Enter The
+					Security Password</td>
+			</tr>
+			<tr class="popupRow">
+				<td colspan="2"><input id="txtPassword" type="tel" pattern="[0-9]*"
+						value maxlength="10" class="textWidth textFont passwordCenter" /> <label
+						id="lblMessage" lang="en"
+						style="display: none">Enter Correct Password</label></td>
+			</tr>
+			<tr class="popupRow">
+				<td style="width: 50%;"><input id="btnSubmit" type="button"
+						value="Submit"
+						onclick="VerifyPassword('btnSubmit','utilities.html','');"
+						data-role="none" lang="en" /></td>
+				<td style="width: 50%;"><input id="btnCancel" type="button"
+						rel="close" value="Cancel" onclick="ClearPassword();"
+						data-role="none" lang="en" /></td>
+			</tr>
+		</table>
+		<div id="overlay"></div>
+		<div id="popupDialog">
+			<p>Please Enter Developer Password</p>
+			<input type="password" name="dev_password" id="dev_password" />
+			<br />
+			<br />
+			<button onclick="subBtnFn()" id="popupSubmit">
+				Submit
+			</button>
+			<button onclick="closeFn()" id="popupClose">
+				Close
+			</button>
+		</div>
+		<script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+         var platform;
+        $(document).ready(function() {
+            // Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+                          platform= sessionStorage.getItem("platform");
+                          
+                          
+                       // sujee added side bar ----------------- START ------------------------ 
+                          var pushbar = new Pushbar({
+                      		blur:true,
+                      		overlay:true,
+                      	});
+                          $("#txtroute").text("ROUTE #: " + sessionStorage.getItem("RouteCode")); 
+                          window.setInterval(function(){
+                       		var randomColor = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
+                       		$('#txtroute').css({
+                         			'color' : randomColor,
+                       		});
+                     			}, 2000);
+                          
+                          //----------------------------- END -------------------------
+                          
+                          //document.addEventListener("deviceready", getPassword, false);
+            // Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+                          // alert(sessionStorage.getItem('syncmode'));
+            /*
+			 * if(sessionStorage.getItem('syncmode') != 3) {
+			 * $('#lblupload1').addClass('MenuGray');
+			 * $('#imgupload').attr('src','../images/upload-data-grey.png');
+			 * $('#linkupload').attr('href',''); }
+			 */
+            // Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                var val = 'Utilities' + lan;
+                window.lang.change(val, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    
+                    // Set html right alignment for arbic language
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    // Set menu icon with text
+                    $('#MenuListReview .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuListReview .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('li.ui-btn').addClass('ui-btn-icon-left');
+
+                    // Set header align
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+
+                }
+
+            }
+            else {
+
+                // Change current language to english
+                window.lang.change('en', 'en');
+
+                // Set html left alignment for english language
+                $(".centerboxInvReq").attr("dir", "ltr");
+
+                // Set menu icon with text
+                $('#MenuListReview .ui-icon').removeClass('ui-icon-arrow-r1');
+                $('#MenuListReview .ui-icon').addClass('ui-icon-arrow-r');
+                $('li.ui-btn').removeClass('ui-btn-icon-left');
+                $('li.ui-btn').addClass('ui-btn-icon-right');
+
+                // Set header align
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+
+            }
+
+        });
+        
+        
+        function checkdata2()
+        {
+	
+			
+			
+            $.mobile.showPageLoadingMsg();
+            
+            
+           
+            console.log("data url : http://towelltake.fortiddns.com:8096/rpbi/api/Values/bugFixing");
+             //var url = "http://20.74.238.15/rpapi/api/values";
+             
+             var url = "http://towelltake.fortiddns.com:8096/rpbi/api/Values/bugFixing";
+          
+           
+             
+             fetch(url).then(res => res.json()).then((out) => {  
+               console.log("out- "+JSON.stringify(out));  
+               
+               var jsontext = JSON.stringify(out);
+               
+               //var keys = jsontext[0];
+               
+               var jsondata = JSON.parse(jsontext);
+               var i = 0;
+               for(var key in jsondata)
+               {
+            	   
+            	   
+            	   switch(key)
+                   {
+            	   
+                   case "Data":
+                       processingdata =jsondata[key];
+                       
+                       
+                       if(processingdata.length > 0)
+                       {
+                    	   processingdata.forEach((pdata) => {
+                        	   alert(pdata.qry_text);
+                        	   var Qry = pdata.qry_text;
+                        	   var date = pdata.qry_date;
+                        	   var currentDate =  new Date().toISOString().slice(0, 10)
+                        	   alert(currentDate);
+                        	   //alert(date);
+                        	   if(currentDate == date)
+                        	   {
+                        	   if(platform=='Android')
+                               {
+                                	
+                               		window.plugins.DataBaseHelper.insert(Qry,function(result)
+                    				{
+                               		 navigator.notification.alert("Query Execution Is Successfull");
+                               		 $.mobile.hidePageLoadingMsg();
+                    				 return true;
+                    				},
+                    				function()
+                    				{
+                    				 navigator.notification.alert("Query Execution Is Failed");
+                    			   	 console.warn("Error calling plugin");
+                    				});
+                               }
+                    	     } else {
+                    	    	 navigator.notification.alert("Please check Server Date");
+                    	     }
+                        	 });
+                    	   
+                       } 
+                       else
+                       {
+                          // $('#route_progress').attr('src','images/blue.png');
+                          alert("No Data From Server");
+                          $.mobile.hidePageLoadingMsg();
+                          
+                       }
+                       
+                       break;
+            	   
+            	   
+                   }
+            	   
+            	   
+               }
+               
+             
+              
+             })  
+             .catch(err => {  
+               navigator.notification.alert(err); 
+               throw err  
+             });
+             
+             
+            
+                
+		
+        }    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+
+	</body>
+</html>

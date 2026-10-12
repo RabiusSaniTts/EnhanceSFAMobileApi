@@ -1,0 +1,263 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 09/02/2012
+ '  Description  : This page is used for print Customer Transaction
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Customer Transaction</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="finalizetransaction.html" id="Back_inner"
+                    rel="external">Back</a>
+                <h1 lang="en">
+                    Customer Transaction</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="tblBox tblReport">
+                        <table border="0" cellpadding="4" cellspacing="4"
+                            width="100%" id="tblContent">
+                            <tr>
+                                <td style="width: 5%;">
+                                    <img id="imgCheck1"
+                                        src="../images/check.png" alt="check"
+                                        style="vertical-align: middle;" />
+                                </td>
+                                <td style="width: 95%" lang="en">
+                                    Customer Inventory
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img id="imgCheck2"
+                                        src="../images/check.png" alt="check"
+                                        style="vertical-align: middle;" />
+                                </td>
+                                <td lang="en">
+                                    Pick List
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img id="imgCheck3"
+                                        src="../images/check.png" alt="check"
+                                        style="vertical-align: middle;" />
+                                </td>
+                                <td lang="en">
+                                    Draft Invoice
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img id="imgCheck4"
+                                        src="../images/check.png" alt="check"
+                                        style="vertical-align: middle;" />
+                                </td>
+                                <td lang="en">
+                                    Draft Order
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img id="imgCheck5"
+                                        src="../images/check.png" alt="check"
+                                        style="vertical-align: middle;" />
+                                </td>
+                                <td lang="en">
+                                    Draft A/R Receipt
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img id="imgCheck6"
+                                        src="../images/check.png" alt="check"
+                                        style="vertical-align: middle;" />
+                                </td>
+                                <td lang="en">
+                                    Account Balance Report
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="../review/printoption.html" class="enableText"
+                        rel="external"
+                        onclick="localStorage.po ='customer_opt'">
+                        <div class="MenuPositionSCLarge">
+
+                            <div class="MenuTextPos">
+                                <img src="../images/print.png"
+                                    alt="Print" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Print</div>
+
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+            $(".leftfooter").html(getCurrentDate());           
+           
+             var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('CustomerTransaction'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            $("#imgCheck1").click(function() {
+                toogleClass("#imgCheck1");
+            });
+            $("#imgCheck2").click(function() {
+            toogleClass("#imgCheck2");
+            });
+            $("#imgCheck3").click(function() {
+              toogleClass("#imgCheck3");
+            });
+            $("#imgCheck4").click(function() {
+                toogleClass("#imgCheck4");
+            });
+            $("#imgCheck5").click(function() {
+                toogleClass("#imgCheck5");
+            });
+            $("#imgCheck6").click(function() {
+                toogleClass("#imgCheck6");
+            });
+            $("#imgCheck7").click(function() {
+                toogleClass("#imgCheck7");
+            });
+            $("#imgCheck8").click(function() {
+                toogleClass("#imgCheck8");
+            });
+            $("#imgCheck9").click(function() {
+                toogleClass("#imgCheck9");
+            });
+            $("#imgCheck10").click(function() {
+                toogleClass("#imgCheck10");
+            });     
+
+            function toogleClass(element) {
+                if ($(element).attr("src") == '../images/check.png') {
+                    $(element).attr("src", "../images/check-box.png");
+                }
+                else {
+                    $(element).attr("src", "../images/check.png");
+                }
+            }
+
+        });
+    </script>
+
+    </body>
+</html>

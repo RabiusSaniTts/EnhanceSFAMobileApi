@@ -1,0 +1,466 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 06/02/2012
+ '  Description  : This page is used for item discount.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Item Discount</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="invoiceoptions.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Item Discount</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent Spacing">
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 40%;" class="leftAlign"
+                                    lang="en">
+                                    Item Description
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Min Disc
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Max Disc
+                                </th>
+                                <th style="width: 20%;" lang="en" class="last">
+                                    Disc%
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="tblFixedHeight">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 40%;" class="leftAlign">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;" class="last">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <table border="0" cellpadding="4" cellspacing="4"
+                        width="100%">
+                        <tr>
+                            <td class="captionLabel" lang="en"
+                                style="width: 34%;">
+                                Item Number
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 33%;">
+                                Old Price
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 33%;">
+                                New Price
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="txtItemNumber" type="text"
+                                    class="textWidth textFont"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input id="txtOldPrice" type="text"
+                                    class="textWidth textFont"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input id="txtNewPrice" type="text"
+                                    class="textWidth textFont"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" rel="external" style="text-decoration: none;
+                    font-weight: normal;" onclick="save()"><div
+                            class="MenuPosition itemDiscountHeight">
+                            <div class="iconPos">
+                                <img src="../images/accept.png"
+                                    alt="Apply" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Apply</div>
+                        </div></a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="invoiceoptions.html" rel="external"
+                        style="text-decoration: none;
+                    font-weight: normal;">
+                        <div class="MenuPosition itemDiscountHeight MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        $("#tblContent").click(function() { });
+        var inputvalue = '';
+      resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+                        
+            $(".leftfooter").html(getCurrentDate());
+                          document.addEventListener("deviceready", offlinegetrecord, false);
+                          	                        
+           
+           $("#tblContent tr").live('click', function() {
+                $(this).toggleClass('clicked');
+                $(this).siblings().removeClass('clicked');
+                var i = $(this).index();
+                var dis=$(this).find("td:last").text();
+                                     
+                                     
+                $('#txtItemNumber').val(inputvalue[i-1][4]);
+                                    var qty = inputvalue[i-1][7];
+                                    var upc= inputvalue[i-1][8];
+                                    
+                                    var cases = eval(inputvalue[i-1][7])/eval(inputvalue[i-1][8]);
+                                    var units = eval(inputvalue[i-1][7])%eval(inputvalue[i-1][8]);
+                                    var caseprice = eval(inputvalue[i-1][5]);
+                                    var unitprice = eval(inputvalue[i-1][6]);
+                                    var amount = eval(cases * inputvalue[i-1][5]) + eval(units*inputvalue[i-1][6]);
+
+                $('#txtOldPrice').val(eval(caseprice).toFixed(sessionStorage.getItem('decimalplace'))+"/"+eval(unitprice).toFixed(sessionStorage.getItem('decimalplace')));
+                                    
+                                    var discaseprice = (dis*caseprice)/100;
+                                    var disunitprice = (dis*unitprice)/100;
+                                    
+                                    discaseprice = eval(caseprice)-eval(discaseprice);
+                                    disunitprice = eval(unitprice)-eval(disunitprice);
+                                    
+                                    var newamount = eval(amount)-eval(disamount);
+                $('#txtNewPrice').val(eval(discaseprice).toFixed(sessionStorage.getItem('decimalplace'))+"/"+eval(disunitprice).toFixed(sessionStorage.getItem('decimalplace')));
+            });
+                          
+            $("#tblContent tr:first").trigger('click');
+
+            //Set background for odd and even row.
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('ItemDiscount'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                       $(".boxContent").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		      $(".boxContent").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            
+
+        });
+        function TableDataOffLine(RecSet)
+        {                       
+            
+            var data = RecSet;
+             var platform= sessionStorage.getItem("platform");
+            if(platform=='Android')
+            {
+            data = $.map(data.array, function (item, index) {               
+                              return [[item.itemdescription, item.mindiscount, item.maxdiscount, item.discountpercentage, item.actualitemcode, item.caseprice, item.salesprice],item.qty,item.unitspercase];            					
+                              });
+            }
+            inputvalue=data;
+            var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+           // var data = [['Brumisateur 30X50 ML', '0'], ['Evian Rebir th 2X75m ML', '0'], ['Apple 1X40G ML', '0'], ['Dora Cro Cocoa 6X50 G', '0'], ['Dora Cro Custar 6X50 G', '0']]
+            for (i = 0; i < data.length; i++) {
+                var r = "<tr class='contentFont'>";
+                for (j = 0; j < CellCount; j++) {
+                    var temp = (j == 0) ? 'class = leftAlign' : '';
+                    if(j==3)
+                    temp +='class = "last"';
+                    if(data[i][j]=='')
+                    data[i][j]=0;
+                    var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                    r += c;
+                }
+                r += "</tr>";
+                $('#tblContent tbody').append(r);
+            }
+            $('#tblContent td.last').click(function(){
+                                          var rowindex=$(this).parent().index();
+                                           var val = $(this).text();
+                                      var input = $('<input type="number"/>').attr('value',$(this).text());
+                                      var w = $(this).innerWidth();
+                                           w=w-20;
+                                           input.css('width',w).css('border','0').css('height',30).css('font-size',16);
+                                           
+                                    
+                                      $(this).empty();
+                                      $(this).append(input);
+                                      input.focusout(function(){
+                                                     if($(this).val() > inputvalue[rowindex-1][2] || $(this).val() < inputvalue[rowindex-1][1] )
+                                                     {
+                                                        alert("Discount % Not In Range");
+                                                            $(this).parent().text(val);
+                                                     }
+                                                     else
+                                                     {
+                                                     $(this).parent().text($(this).val());
+                                                     var dis=$(this).val();
+                                                     var qty = inputvalue[i-1][7];
+                                                     var upc= inputvalue[i-1][8];
+                                                     
+                                                     var cases = eval(inputvalue[i-1][7])/eval(inputvalue[i-1][8]);
+                                                     var units = eval(inputvalue[i-1][7])%eval(inputvalue[i-1][8]);
+                                                     
+                                                     var amount = eval(cases * inputvalue[i-1][5]) + eval(units*inputvalue[i-1][6]);
+                                                     var caseprice = eval(inputvalue[i-1][5]);
+                                                     var unitprice = eval(inputvalue[i-1][6]);
+                                                     
+                                                     var discaseprice = (dis*caseprice)/100;
+                                                     var disunitprice = (dis*unitprice)/100;
+                                                     
+                                                     discaseprice = eval(caseprice)-eval(discaseprice);
+                                                     disunitprice = eval(unitprice)-eval(disunitprice);
+                                                     
+                                                     var disamount = eval(cases * discaseprice) + eval(units*disunitprice);
+                                                     var newamount = eval(amount)-eval(disamount);
+                                                     $('#txtNewPrice').val(eval(discaseprice).toFixed(sessionStorage.getItem('decimalplace'))+"/"+eval(disunitprice).toFixed(sessionStorage.getItem('decimalplace')));
+                                                     }
+                                                     });
+                                                      $(this).find('input').live("keypress",function(event) {
+		                                               	if (event.keyCode == 13 ) {
+		                                               	input.focusout();
+		                                               	}
+                                               });
+                                      input.focus();
+                                      });
+        }
+        
+        function offlinegetrecord()
+        {
+            
+            var custid=sessionStorage.getItem("customerid");
+            var routecode=sessionStorage.getItem("RouteCode");
+             var routekey=sessionStorage.getItem("RouteKey");
+             var visitkey=sessionStorage.getItem("VisitKey");
+            var platform= sessionStorage.getItem("platform");
+            if(localStorage.invoice =='sales')
+            {
+                salesqty ='ids.salesqty';
+            }
+            else{
+                salesqty ='ids.returnqty';
+            }
+            var qry ="SELECT i.itemdescription,d.mindiscount,d.maxdiscount,ids.discountpercentage,i.actualitemcode,ids.salescaseprice,ids.salesprice,"+salesqty+" as qty,i.unitspercase FROM itemmaster AS i join discountkeydetail AS d on d.actualitemcode=i.actualitemcode JOIN customermaster AS c ON c.discountkey=d.discountkey join invoicedetail as ids on ids.itemcode=d.actualitemcode and ids.routekey="+routekey+" and ids.visitkey="+visitkey+" WHERE c.customercode="+custid+" AND CASE WHEN d.actualitemcode = 0 THEN 1 ELSE i.actualitemcode=d.actualitemcode END and "+salesqty+" > 0";
+            console.log(qry);
+		    if(platform=='iPad')
+		    {
+            	var abc = Cordova.exec(function(result) {
+                                    TableDataOffLine(result);
+                                    },
+                                    function(error) {
+                                    alert(error);},
+                                    "PluginClass", 
+                                    "GetdataMethod", 
+                                    [qry]);
+            }
+            else if(platform=='Android')
+           							{
+						           		window.plugins.DataBaseHelper.select(qry,function(result)
+										{
+										 		TableDataOffLine(result);
+										},
+										function()
+										{
+									   	 console.warn("Error calling plugin");
+										});
+           							}  
+        }
+        function save()
+        {
+            var routekey=sessionStorage.getItem("RouteKey");
+            var visitkey=sessionStorage.getItem("VisitKey");
+            $('#tblContent tr').each(function(){
+                                     if($(this).index() > 0)
+                                     {
+                                     var index= $(this).index();
+                                     var dis = $(this).find('td:last').text();
+                                     var itemcode = inputvalue[index-1][4];
+                                     var qty = inputvalue[index-1][7];
+                                     var upc= inputvalue[index-1][8];
+                                     
+                                     var cases = eval(inputvalue[index-1][7])/eval(inputvalue[index-1][8]);
+                                     var units = eval(inputvalue[index-1][7])%eval(inputvalue[index-1][8]);
+                                    
+                                     var amount = eval(cases * inputvalue[index-1][5]) + eval(units*inputvalue[index-1][6]);
+                                     
+                                     var caseprice = eval(inputvalue[index-1][5]);
+                                     var unitprice = eval(inputvalue[index-1][6]);
+                                     
+                                     var discaseprice = (dis*caseprice)/100;
+                                     var disunitprice = (dis*unitprice)/100;
+                                     var disamount = eval(cases * discaseprice) + eval(units*disunitprice);
+                                     
+                                     discaseprice = eval(caseprice)-eval(discaseprice);
+                                     disunitprice = eval(unitprice)-eval(disunitprice);
+                                     var newamount = eval(amount)-eval(disamount);
+                                     
+                                      var platform= sessionStorage.getItem("platform");
+						            if(platform=='iPad')
+						            {
+                                     var abc = Cordova.exec(function(result) {
+                                                             window.location.href='invoiceoptions.html';
+                                                             },
+                                                             function(error) {
+                                                             alert(error);},
+                                                             "PluginClass", 
+                                                             "InsertUpdateMethod", 
+                                                             ["update invoicedetail set discountpercentage='"+dis+"',discountamount='"+disamount+"',salesprice='"+disunitprice+"',salescaseprice='"+discaseprice+"',issync=0 where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode]);
+                                     }
+                                      else if(platform=='Android')
+           							{
+									           		window.plugins.DataBaseHelper.insert("update invoicedetail set discountpercentage='"+dis+"',discountamount='"+disamount+"',salesprice='"+disunitprice+"',salescaseprice='"+discaseprice+"',issync=0 where routekey="+routekey+" and visitkey="+visitkey+" and itemcode="+itemcode,function(result)
+													{
+													 		window.location.href='invoiceoptions.html';
+													},
+													function()
+													{
+												   	 console.warn("Error calling plugin");
+													});
+           							} 
+                                     }
+                                     });
+        }
+    </script>
+
+    </body>
+</html>

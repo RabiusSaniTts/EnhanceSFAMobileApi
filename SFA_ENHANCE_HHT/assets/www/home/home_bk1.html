@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+<link rel="stylesheet" href="../css/en.css" lang="en" />
+<link rel="stylesheet"
+	media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+	href="../css/style_1400.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+	href="../css/style_1200.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 700px) and (max-width: 800px)"
+	href="../css/style_800.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 600px) and (max-width: 700px)"
+	href="../css/style_700.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 320px) and (max-width: 600px)"
+	href="../css/style_600.css">
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+
+<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+<script type="text/javascript" src="../js/common.js"></script>
+
+<script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            document.write('<script charset="utf-8" src="../js/Locationagent.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+
+<script type="text/javascript" src="../js/jquery.json-2.3.min.js"></script>
+
+<script src="../LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+
+<script src="../LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript" lang="en"></script>
+<link rel="stylesheet" type="text/css"
+	href="../css/jquery.mobile.simpledialog.css" />
+
+<script type="text/javascript" src="../js/jquery.mobile.simpledialog.js"></script>
+
+</head>
+<body>
+	<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+		<div>
+			<img title="" alt="" src="../images/bg.png" id="background">
+		</div>
+		<div data-role="header" data-position="fixed">
+			<div id="txtcompany" class="container">
+<!-- 				<img id="GtrcLogo" src="../images/GTRCLogo.png" /> -->
+			</div>
+			<!-- 				<img class="container" id="routepro" src="../images/for-tab.png"> -->
+			<span style="display: inline;" id="lang" class="homeen">AR</span>
+		</div>
+		<div class="logo">
+			<!--             <h1 class="label log" style="margin-top:30px;"><br/></h1> -->
+			<!-- 			<div id="txtcompany" style="margin-top: 60px !important;" -->
+			<!-- 				class="sublogoHeader label"></div> -->
+			<div id="txtroutename" class="sublogo label"></div>
+		</div>
+		<div data-role="content" class="centerbox" id="test1">
+			
+		
+			<div class="square">
+			   <div class="content">
+			        <div class="table">
+			            <div class="table-cell" lang="en">
+			                <img class="rs" src="../images/icn-1.png"/>
+			                 Responsive image.
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			
+			<div class="square">
+			   <div class="content">
+			        <div class="table">
+			            <div class="table-cell" lang="en">
+			                <img class="rs" src="../images/icn-1.png"/>
+			                 Responsive image.
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="square">
+			   <div class="content">
+			        <div class="table">
+			            <div class="table-cell" lang="en">
+			                <img class="rs" src="../images/icn-1.png"/>
+			                 Responsive image.
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="square">
+			   <div class="content">
+			        <div class="table">
+			            <div class="table-cell" lang="en">
+			                <img class="rs" src="../images/icn-1.png"/>
+			                 Responsive image.
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			<div class="square">
+			   <div class="content">
+			        <div class="table">
+			            <div class="table-cell" lang="en">
+			                <img class="rs" src="../images/icn-1.png"/>
+			                 Responsive image.
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+			
+			<table id="tblPassword" border="0" cellpadding="2" cellspacing="0"
+				width="100%;" style="display: none;">
+				<tr>
+					<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+						lang="en">Password Entry</th>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" colspan="2" class="popupSubTitle" lang="en">
+						Start of Day</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" lang="en" class="popupInfo">Please Enter The Security Password</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2"><input id="txtPassword" type="tel"
+						pattern="[0-9]*" value="" maxlength="10"
+						class="textWidth textFont passwordCenter" /> <label
+						id="lblMessage" lang="en" style="display: none">Enter Correct Password</label></td>
+				</tr>
+				<tr class="popupRow">
+					<td style="width: 50%;"><input id="btnSubmit" type="button"
+						value="Submit"
+						onclick="VerifyPassword('btnSubmit','startofday.html',tblPassword.innerHTML);"
+						data-role="none" lang="en" /></td>
+					<td style="width: 50%;"><input id="btnCancel" type="button"
+						rel="close" value="Cancel" onclick="ClearPassword();"
+						data-role="none" lang="en" /></td>
+				</tr>
+			</table>
+			<table id="tblSettlementPassword" border="0" cellpadding="2"
+				cellspacing="0" width="100%;" style="display: none;">
+				<tr>
+					<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+						lang="en">Password Entry</th>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" colspan="2" class="popupSubTitle" lang="en">
+						Settlement</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" lang="en" class="popupInfo">Please Enter The Security Password</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2"><input id="txtPassword" type="tel"
+						pattern="[0-9]*" value="" maxlength="10"
+						class="textWidth textFont passwordCenter" /> <label
+						id="lblMessage" lang="en" style="display: none">Enter Correct Password</label></td>
+				</tr>
+				<tr class="popupRow">
+					<td style="width: 50%;"><input id="btn1" type="button"
+						value="Submit"
+						onclick="VerifyPassword('btn1','../settlement/managesettlement.html',tblOdoMeter.innerHTML);"
+						data-role="none" lang="en" /></td>
+					<td style="width: 50%;"><input id="btn2" type="button"
+						rel="close" value="Cancel" onclick="ClearPassword();"
+						data-role="none" lang="en" /></td>
+				</tr>
+			</table>
+			<table id="tblOdoMeter" border="0" cellpadding="2" cellspacing="0"
+				width="100%;" style="display: none;">
+				<tr>
+					<th class="tblHeader captionLabel leftAlign" colspan="2"
+						style="font-weight: bold; font-size: 18px;" lang="en">Enter Odometer</th>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" lang="en" class=" captionLabel leftAlign textWidth"
+						style="margin: 10px;">
+						<div style="width: 100%; float: left">
+							<div style="float: left;" lang="en">Last Reading:</div>
+							<div style="float: left" id="lastreading"></div>
+						</div>
+					</td>
+				</tr>
+				<tr style="background-color: #EFF9FE;">
+					<td colspan="2">
+						<!--<input id="endodometer" type="text" pattern="[0-9]*" maxlength="10" class="textWidthOdo textFont" style="margin: 10px;" />-->
+						<input id="endodometer" type="tel" maxlength="10"
+						class="textWidthOdo textFont passwordCenter" />
+					</td>
+				</tr>
+				<tr style="background-color: #EFF9FE;">
+					<td style="width: 50%;"><input id="Button1" lang="en"
+						type="button" value="Ok" data-role="none"
+						onclick="SaveOdometer();" lang="en" /></td>
+					<td style="width: 50%;"><input id="Button2" type="button"
+						value="Cancel" data-role="none" rel="close"
+						onclick="ClearOdometer('home.html');" lang="en" /></td>
+				</tr>
+			</table>
+			<!-- <div style="width:50%;float:left;">
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" text-align:center;">Start of Day</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Customer Opt.</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Expense Entry</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Setup</a>              
+            </div>   
+            <div style="width:50%;float:right;">
+                <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" text-align:center;">Inventory</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Settlement</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Information</a>
+            </div>             -->
+		</div>
+
+		<div data-role="footer" class="ui-bar homefooter">
+			<div class="footer">
+				<div class="leftfooter"></div>
+				<div class="rightfooter">Mirnah Technology Systems</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" language="javascript">
+        var keycount = 0;
+		var platform = '';
+		var autoload;
+		window.lang = new jquery_lang_js();
+		$(document).ready(function () {
+		    var routecode = sessionStorage.getItem("RouteCode");
+		   	
+		    
+		  
+		    if (!sessionStorage.getItem("Language")) {
+		        sessionStorage.setItem("Language", "en");
+		    }
+		
+		    function animateDivers() {
+		        $('#lnkLoad').animate({
+		            'margin-top': '90px'
+		        }, 6000).animate({
+		            'margin-top': '40px'
+		        }, 6000, animateDivers);
+		    }
+		    document.addEventListener("deviceready", getTourID, false);
+		
+		    window.lang.run();
+		    /// /animateDivers();
+	    $(".leftfooter").html(getCurrentDate());
+		    $("#lang").click(function () {
+		        if ($("#lang").text() == "AR") {
+		            $("#lang").text("EN");
+		            window.lang.change('HomeAR', 'AR');
+		            $("#content").attr("dir", "rtl");
+		            sessionStorage.setItem("Language", "AR");
+		            $('#lang').removeClass('homeen').addClass('homear');
+		            $('.ui-icon').removeClass('ui-icon-arrow-r').addClass('ui-icon-arrow-r1');
+		            $('.ui-btn').removeClass('ui-btn-icon-right').addClass('ui-btn-icon-left');
+		            /// /
+						// $('img.HomeIconPosEN').removeClass('HomeIconPosEN').addClass('HomeIconPosAR');
+	            /// /
+						// $('#lang').removeClass('homeen').addClass('homear');
+	            /// /$('h3').css({ 'text-align': 'right',
+						// 'padding-right': '70px', 'float': 'right' });
+				/// /Set salesman name
+	            document.addEventListener("deviceready", getTourID, false);
+		        } else {
+		            $("#lang").text("AR");
+		            window.lang.change('en', 'en');
+		            $("#content").attr("dir", "ltr");
+		            sessionStorage.setItem("Language", "en");
+		            $('#lang').removeClass('homear').addClass('homeen');
+		            $('.ui-icon').removeClass('ui-icon-arrow-r1').addClass('ui-icon-arrow-r');
+		            $('.ui-btn').removeClass('ui-btn-icon-left').addClass('ui-btn-icon-right');
+		            /// /
+						// $('img.HomeIconPosAR').removeClass('HomeIconPosAR').addClass('HomeIconPosEN');
+	            /// /
+						// $('#lang').removeClass('homear').addClass('homeen');
+	            /// / $('h3').css({ 'text-align': 'left', 'padding-left':
+						// '0px', 'float': 'left', 'padding-right': '0px' });
+	
+		            /// /Set salesman name
+	            getTourID();
+		        }
+		    });
+		    if (sessionStorage.getItem("Language") == "AR") {
+		        $("#lang").trigger('click');
+		    }
+		
+		
+		});
+		
+		function onsuccess11(position) {
+		
+		    $.mobile.hidePageLoadingMsg();
+		
+		    latitude = position.coords.latitude;
+		    longitude = position.coords.longitude;
+		    /// /alert(latitude);
+	    /// / alert(longitude);
+	    sessionStorage.setItem("latitude", latitude);
+		    sessionStorage.setItem("longitude", longitude);
+		
+		}
+		
+		function onError(error) {
+		    $.mobile.hidePageLoadingMsg();
+		    alert('Cant Trace Coordinates.');
+		    /// / alert('code: ' + error.code + '\n' + 'message: ' +
+				// error.message + '\n');
+	}
+		function getTourID(){
+			 var oldQry="select memo1 from routemaster Where routecode='"+ sessionStorage.getItem("RouteCode") +"'";
+			 var Qry="Select (select routecode from routemaster Where routecode='" + sessionStorage.getItem('RouteCode') + "') setting1,(select strftime('%d/%m/%Y',routestartdate) from startendday where routekey=(select max(routekey) routekey from startendday where routecode = '" + sessionStorage.getItem('RouteCode') + "' and salesmancode = '" + sessionStorage.getItem('SalesmanCode') + "')) setting2"	
+			 window.plugins.DataBaseHelper.select(Qry,function(result)
+			 {
+			 		if(result.array!=undefined)
+	            	 {
+				 		 var result = $.map(result.array, function(item, index) {
+									return [[ item.setting1,item.setting2]];
+						 });
+	            	 
+                         var tourId=result[0][0];
+                         sessionStorage.setItem("TourID",tourId);
+                         sessionStorage.setItem("TripDate",result[0][1]);
+                         
+                         $('#txtroutename').text("ROUTE CODE : " + tourId);  
+                                 
+                     }
+                     
+                      getCompanyAddress(); 
+	        },
+			function()
+			{
+		   	 		console.warn("Error calling plugin");
+			});
+		
+		
+		}
+		function getCompanyAddress()
+		{
+			var qry = "select name,address,telephone,fax,zipcode,city,countryname from company";
+			if (platform == 'iPad') {
+					Cordova.exec(function(result) {
+						
+					}, function(error) {
+						alert(error);
+					}, "PluginClass", "GetdataMethod", [ qry ]);
+			} else if (platform == 'Android') {
+					window.plugins.DataBaseHelper.select(qry, function(result) {
+						if (result.array != undefined) {
+							result = $.map(result.array, function(item, index) {
+								return [ [ item.name,item.address,item.telephone,item.fax,item.zipcode,item.city,item.countryname] ];
+							});
+							
+							var footeraddress1 = "Tel : "+result[0][2]+"    Fax : "+result[0][3]+"";
+							var footeraddress2 = "PO.BOX "+result[0][4]+","+result[0][6];
+							sessionStorage.setItem("footeraddress1",footeraddress1);
+							sessionStorage.setItem("footeraddress2",footeraddress2);
+							
+						}
+					  
+					 getSalesmanSettings();
+					}, function() {
+						console.warn("Error calling plugin");
+					});
+			}
+	
+		}
+		
+		
+		
+		function checkGps() {
+		    getlastOdometer();
+		    window.plugins.LocationHelper.getLocation("", function (data) {
+		
+		
+		        console.log(data.state);
+		        console.log(data.lat);
+		        console.log(data.lng);
+		
+		        /// / checkcordinate();
+	        if (data.state == false) {
+		
+		            alert('Cant Trace Coordinates.');
+		        } else {
+		
+		            lat = data.lat;
+		            lng = data.lng;
+		
+		            sessionStorage.setItem("latitude", lat);
+		            sessionStorage.setItem("longitude", lng);
+		
+		            /// /navigator.notification.alert("Current Cordinate
+						// :"+lat+","+lng);
+	        }
+		
+		        /// /$.mobile.hidePageLoadingMsg();
+	
+		    },
+		
+		    function () {
+		
+		    });
+		
+		
+		
+		}
+		
+		function getSalesmanSettings(){
+		
+			if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		
+		            sessionStorage.setItem("SalesmanName", result[0][0]);
+		            sessionStorage.setItem("CompanyName", result[0][1]);
+		            sessionStorage.setItem("CompanyAddress", result[0][2]);
+		            sessionStorage.setItem("ContactInfo", result[0][3]);
+		            $('#txtcompany').text(result[0][1]);
+		            getCountRouteKey();
+		            getOfflineSetting();
+		            getSetup();
+		            checkinventorymenu();
+		            /// /checkunload();
+	            getControlpanelSetting();
+		            getstartdayPassword();
+		        },
+		
+		        function (error) {
+		            alert("Error in getting salesman : " + error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", ["select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN salesmanname1 ELSE arbsalesmanname1 END As Salesman,c.name,c.address,c.telephone,memo1,memo2 from salesman left join company as c on c.cmpycode=salesman.parentcompany  where salesmancode =" + sessionStorage.getItem("SalesmanCode") + ""]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.select("select CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN salesmanname1 ELSE arbsalesmanname1 END As Salesman,salesman.salesmanname2 AS contactno,salesman.arbsalesmanname1 AS arbsalesmanname1,c.name,c.address,c.telephone,c.arbcompanyname,salesman.memo1,salesman.memo2 from salesman left join company as c on c.cmpycode=salesman.parentcompany where salesmancode =" + sessionStorage.getItem("SalesmanCode") + "", function (result) {
+		            /// /alert(result.array[0].contactno);
+	            sessionStorage.setItem("contactno", result.array[0].contactno);
+		            sessionStorage.setItem("SalesmanName", result.array[0].Salesman);
+		            sessionStorage.setItem("ArbSalesmanName", result.array[0].arbsalesmanname1);
+		            sessionStorage.setItem("CompanyName", result.array[0].name);
+		            sessionStorage.setItem("ARBCompanyName", result.array[0].arbcompanyname);
+		            sessionStorage.setItem("CompanyAddress", result.array[0].address);
+		            sessionStorage.setItem("ContactInfo", result.array[0].telephone);
+		            sessionStorage.setItem("supervisorname", result.array[0].memo1);
+		            sessionStorage.setItem("supervisorphone", result.array[0].memo2);
+		           	$('#txtcompany').text(result.array[0].name);
+		           	getSalesman();
+		            /// /getOfflineSetting();
+				
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		
+		
+		}
+		
+		/// /Function is used for set salesman name
+	function getSalesman() {
+		    if (window.devicePixelRatio > 1.5) {
+		        $("#routepro").attr('src', '../images/for-tabbig.png');
+		    }
+		
+		    var qry = "Select (select status from controlpanel where flagid=50) as setting1,(select status from controlpanel where flagid=17) as setting2,(select allowedradius from routemaster where routecode=" + sessionStorage.getItem("RouteCode") + ") as setting3,(select status from controlpanel where flagid=73) as setting4";
+		
+		    $.mobile.showPageLoadingMsg();
+		    if (platform == 'iPad') {
+		        navigator.geolocation.getCurrentPosition(onsuccess11, onError, {
+		            maximumAge: 3000,
+		            timeout: 10000,
+		            enableHighAccuracy: true
+		        });
+		    } else {
+		
+		        window.plugins.DataBaseHelper.select(qry, function (result) {
+		            result = $.map(result.array, function (item, index) {
+		                return [[item.setting1, item.setting2, item.setting3, item.setting4]];
+		            });
+		            window.localStorage.setItem("alternatepending", result[0][3]);
+		            if ((eval(result[0][0]) == 1 && eval(result[0][1]) == 1)) {
+		
+		                checkGps();
+		
+		            } else if ((eval(result[0][0]) == 1 || eval(result[0][1]) == 1)) {
+		                checkGps();
+		
+		            }
+		
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		
+		
+		    }
+		    platform = sessionStorage.getItem("platform");
+		    getsetting();
+		    
+		    
+		}
+		
+		function checkunload() {
+		    var qry = "SELECT count(*) as key from inventorytransactionheader WHERE routecode = " + sessionStorage.getItem("RouteCode") + " and routekey=" + sessionStorage.getItem("RouteKey") + " and transactiontype=3";
+		    console.log(qry);
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            if (result[0][0] != 0) {
+		                $("#customerlink").attr("href", "#");
+		                $("#customerlink").attr("onclick", "");
+		                $("#customerlink img").attr("src", "../images/icn-2.png");
+		                $("#customerlink h3").addClass('MenuGray');
+		            }
+		
+		        },
+		
+		        function (error) {
+		            alert("Error in getting setup : " + error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [qry]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.select(qry, function (result) {
+		            if (result.array[0].key != 0) {
+		                $("#customerlink").attr("href", "#");
+		                $("#customerlink").attr("onclick", "");
+		                $("#customerlink img").attr("src", "../images/icn-2.png");
+		                $("#customerlink h3").addClass('MenuGray');
+		            }
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function checkinventorymenu() {
+		
+		
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            if (result[0][0] == 2) {
+		                $("#inventorylink").attr("href", "#");
+		                $("#inventorylink").attr("onclick", "");
+		                $("#inventorylink img").attr("src", "../images/icon-5.png");
+		                $("#inventorylink h3").addClass('MenuGray');
+		            }
+		
+		        },
+		
+		        function (error) {
+		            alert("Error in getting setup : " + error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", ["select routetype from routemaster where routecode=" + sessionStorage.getItem("RouteCode")]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.select("select routetype from routemaster where routecode=" + sessionStorage.getItem("RouteCode"), function (result) {
+		
+		            sessionStorage.setItem("rtype", result.array[0].routetype);
+		
+		            if (result.array[0].routetype == 2) {
+		                $("#inventorylink").attr("href", "#");
+		                $("#inventorylink").attr("onclick", "");
+		                $("#inventorylink img").attr("src", "../images/icon-5.png");
+		                $("#inventorylink h3").addClass('MenuGray');
+		            }
+		            getOfflineSetting();
+		            
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function getControlpanelSetting() {
+		
+		    /// /get setting for disable balance update
+	    var Qry = "SELECT status FROM controlpanel WHERE flagid=36";
+		    var anotherqry = "select status from controlpanel where flagid = 1";
+		    console.log(Qry);
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            sessionStorage.setItem("disablebalanceupdate", result[0][0]);
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [Qry]);
+		
+		        Cordova.exec(function (result) {
+		            sessionStorage.setItem("batchsetting", result[0][0]);
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [anotherqry]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.select(Qry, function (result) {
+		            sessionStorage.setItem("disablebalanceupdate", result.array[0].status);
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		
+		        window.plugins.DataBaseHelper.select(anotherqry, function (result) {
+		            sessionStorage.setItem("batchsetting", result.array[0].status);
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		    $.mobile.hidePageLoadingMsg();
+		}
+		
+		function getCountRouteKey() {
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            if (result > 0) {
+		                sessionStorage.setItem("RouteKey", result[0][0]);
+		                checkunload();
+		            } else {
+		
+		                $("#inventorylink").attr("href", "#");
+		                $("#inventorylink").attr("onclick", "");
+		                $("#inventorylink img").attr("src", "../images/icon-5.png");
+		                $("#inventorylink h3").addClass('MenuGray');
+		
+		                $("#customerlink").attr("href", "#");
+		                $("#customerlink").attr("onclick", "");
+		                $("#customerlink img").attr("src", "../images/icn-2.png");
+		                $("#customerlink h3").addClass('MenuGray');
+		
+		                $("#settlementlink").attr("href", "#");
+		                $("#settlementlink").attr("onclick", "");
+		                $("#settlementlink img").attr("src", "../images/settlement.png");
+		                $("#settlementlink h3").addClass('MenuGray');
+		
+		                $("#expencelink").attr("href", "#");
+		                $("#expencelink").attr("onclick", "");
+		                $("#expencelink img").attr("src", "../images/icn-3.png");
+		                $("#expencelink h3").addClass('MenuGray');
+		
+		                //*
+							 * *$("#informationlink").attr("href","#");
+							 * $("#informationlink").attr("onclick","");
+							 * $("#informationlink
+							 * img").attr("src","../images/icon-7.png");
+							 * $("#informationlink h3").addClass('MenuGray');
+							 * 
+							 * $("#setuplink").attr("href","#");
+							 * $("#setuplink").attr("onclick",""); $("#setuplink
+							 * img").attr("src","../images/icn-4.png");
+							 * $("#setuplink h3").addClass('MenuGray');*/
+							 */
+		            }
+		
+		        },
+		
+		        function (error) {
+		            alert("Error in getting salesman : " + error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", ["select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0"]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.select("select max(routekey) routekey from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0", function (result) {
+		            if (result.array != undefined) {
+		                if (result.array[0].routekey > 0) {
+		                    sessionStorage.setItem("RouteKey", result.array[0].routekey);
+		                    checkunload();
+		                } else {
+		
+		                    $("#inventorylink").attr("href", "#");
+		                    $("#inventorylink").attr("onclick", "");
+		                    $("#inventorylink img").attr("src", "../images/icon-5.png");
+		                    $("#inventorylink h3").addClass('MenuGray');
+		
+		                    $("#customerlink").attr("href", "#");
+		                    $("#customerlink").attr("onclick", "");
+		                    $("#customerlink img").attr("src", "../images/icn-2.png");
+		                    $("#customerlink h3").addClass('MenuGray');
+		
+		                    $("#settlementlink").attr("href", "#");
+		                    $("#settlementlink").attr("onclick", "");
+		                    $("#settlementlink img").attr("src", "../images/settlement.png");
+		                    $("#settlementlink h3").addClass('MenuGray');
+		
+		                    $("#expencelink").attr("href", "#");
+		                    $("#expencelink").attr("onclick", "");
+		                    $("#expencelink img").attr("src", "../images/icn-3.png");
+		                    $("#expencelink h3").addClass('MenuGray');
+		
+		                    //*
+								 * *$("#informationlink").attr("href","#");
+								 * $("#informationlink").attr("onclick","");
+								 * $("#informationlink
+								 * img").attr("src","../images/icon-7.png");
+								 * $("#informationlink
+								 * h3").addClass('MenuGray');
+								 * 
+								 * $("#setuplink").attr("href","#");
+								 * $("#setuplink").attr("onclick","");
+								 * $("#setuplink
+								 * img").attr("src","../images/icn-4.png");
+								 * $("#setuplink h3").addClass('MenuGray');*/
+								 */
+		                }
+		                getSetup();
+		                
+		            }
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function InsertRouteKey() {
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            /// /alert("Insert record successfully : " + result);
+	        },
+		
+		        function (error) {
+		            alert("Error inserting record in start end day");
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", ["Insert Into startendday(routekey,routecode,salesmancode,routestartdate,routestarttime,routeenddate,routeendtime) values(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("RouteCode") + "," + sessionStorage.getItem("SalesmanCode") + ",strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()),strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()))"]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.insert("Insert Into startendday(routekey,routecode,salesmancode,routestartdate,routestarttime,routeenddate,routeendtime) values(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("RouteCode") + "," + sessionStorage.getItem("SalesmanCode") + ",strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()),strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()))", function (result) {
+		            /// /alert("Insert record successfully : " + result);
+	        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		
+		function getOfflineSetting() {
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            if (result.length > 0) {
+		
+		                if (result[0][0] == 1) {
+		                    sessionStorage.setItem("CheckCode", "alternatecode");
+		                } else {
+		                    sessionStorage.setItem("CheckCode", "ancode");
+		                }
+		                sessionStorage.setItem("CaseEnabled", result[0][1]);
+		                sessionStorage.setItem("CaseEditEnabled", result[0][2]);
+		
+		                if (result[0][3] == 0) {
+		                    $("#expencelink").attr("href", "#");
+		                    $("#expencelink").attr("onclick", "");
+		                    $("#expencelink img").attr("src", "../images/icn-3gray.png");
+		                    $("#expencelink h3").addClass('MenuGray');
+		                }
+		
+		                sessionStorage.setItem("pdcthreshold", result[0][4]);
+		                sessionStorage.setItem("allowgctocash", result[0][5]);
+		                sessionStorage.setItem("cashonlydiscount", result[0][6]);
+		                sessionStorage.setItem("invoversell", result[0][7]);
+		                autoload = result[0][8];
+		                sessionStorage.setItem("RouteName", result[0][9]);
+		            }
+		        },
+		
+		        function (error) {
+		            alert("Error in getting offline setting : " + error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", ["select itemcodedisplay,inventorycaseinput,loadoutadjustments,enableeodexpenses,ifnull(pdcthreshold,0) pdcthreshold,ifnull(allowgctocash,0) allowgctocash,enablecashonlydiscount,invenoversell,autocalculateloadin,routename from routemaster where routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode=" + sessionStorage.getItem("SalesmanCode")]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.select("select itemcodedisplay,inventorycaseinput,loadoutadjustments,enableeodexpenses,ifnull(pdcthreshold,0) pdcthreshold,ifnull(allowgctocash,0) allowgctocash,enablecashonlydiscount,invenoversell,autocalculateloadin,routename,arbroutename from routemaster where routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode=" + sessionStorage.getItem("SalesmanCode"), function (result) {
+		            result = $.map(result.array, function (item, index) {
+		                return [[item.itemcodedisplay, item.inventorycaseinput, item.loadoutadjustments, item.enableeodexpenses, item.pdcthreshold, item.allowgctocash, item.enablecashonlydiscount, item.invenoversell, item.autocalculateloadin, item.routename, item.arbroutename]];
+		            });
+		            if (result.length > 0) {
+		
+		                if (result[0][0] == 1) {
+		                    sessionStorage.setItem("CheckCode", "alternatecode");
+		                } else {
+		                    sessionStorage.setItem("CheckCode", "ancode");
+		                }
+		                sessionStorage.setItem("CaseEnabled", result[0][1]);
+		                sessionStorage.setItem("CaseEditEnabled", result[0][2]);
+		
+		                if (result[0][3] == 0) {
+		                    $("#expencelink").attr("href", "#");
+		                    $("#expencelink").attr("onclick", "");
+		                    $("#expencelink img").attr("src", "../images/icn-3gray.png");
+		                    $("#expencelink h3").addClass('MenuGray');
+		                }
+		
+		                sessionStorage.setItem("pdcthreshold", result[0][4]);
+		                sessionStorage.setItem("allowgctocash", result[0][5]);
+		                sessionStorage.setItem("cashonlydiscount", result[0][6]);
+		                sessionStorage.setItem("invoversell", result[0][7]);
+		                autoload = result[0][8];
+		                sessionStorage.setItem("RouteName", result[0][9]);
+		                sessionStorage.setItem("ARBRouteName", result[0][10]);
+		               
+		                
+		            }
+		             getControlpanelSetting();
+		             getstartdayPassword();
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		
+		}
+		
+		function getSetup() {
+		    if (localStorage.lastreading == '') localStorage.lastreading = 0;
+		    $("#lastreading").text(parseInt(localStorage.lastreading));
+		    var qry = "SELECT currencymaster.decimalplaces,routemaster.routeprinter FROM routemaster INNER JOIN currencymaster ON routemaster.amountdecimaldigits = currencymaster.currencycode WHERE routemaster.routecode = " + sessionStorage.getItem("RouteCode");
+		
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            if (result.length > 0) {
+		                sessionStorage.setItem("decimalplace", result[0][0]);
+		                sessionStorage.setItem("printerval", result[0][1]); /// /ADded
+																				// for
+																				// printer
+																				// value
+																				// by
+																				// mirnah
+	            } else {
+		                sessionStorage.setItem("decimalplace", 0);
+		                sessionStorage.setItem("printerval", 0); /// /ADded
+																	// for
+																	// printer
+																	// value by
+																	// mirnah
+	            }
+		        },
+		
+		        function (error) {
+		            alert("Error in getting setup : " + error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [qry]);
+		    } else if (platform == 'Android') {
+		        window.plugins.DataBaseHelper.select(qry, function (result) {
+		
+		            if (result.array != undefined) {
+		
+		                sessionStorage.setItem("decimalplace", result.array[0].decimalplaces);
+		                sessionStorage.setItem("printerval", result.array[0].routeprinter); /// /ADded
+																								// for
+																								// printer
+																								// value
+																								// by
+																								// mirnah
+	                window.localStorage.setItem("decimal", result.array[0].decimalplaces);
+		            } else {
+		                sessionStorage.setItem("decimalplace", 0);
+		                sessionStorage.setItem("printerval", 0); /// /ADded
+																	// for
+																	// printer
+																	// value by
+																	// mirnah
+	                window.localStorage.setItem("decimal", 3)
+		            }
+		             checkinventorymenu();
+		             /// /checkunload();
+	             
+		            
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		/// /-------Save ODO Meter
+	function SaveOdometer() {
+		    var endodometer = $(".ui-simpledialog-container #endodometer").val();
+		
+		
+		    if (eval(endodometer) > 0) {
+		        if (platform == 'iPad') {
+		            console.log("select routestartodometer from startendday where routekey='" + sessionStorage.getItem("RouteKey") + "'");
+		            return abc = Cordova.exec(function (result) {
+		                if (eval(result[0][0]) > eval(endodometer)) {
+		                    navigator.notification.alert("Enter Odometer Greater Than " + parseInt(result[0][0]));
+		                    return false;
+		                } else {
+		                    updatetransactiondetail();
+		                    console.log("update startendday set routeendodometer='" + endodometer + "' where routekey='" + sessionStorage.getItem("RouteKey") + "'");
+		                    return abc = Cordova.exec(function (result) {
+		                        /// /alert(result);
+	                        /// /
+									// deletebatchmaster('unload_option.html');
+	                    },
+		
+		                    function (error) {
+		                        alert(error);
+		                    },
+		                        "PluginClass",
+		                        "InsertUpdateMethod", ["update startendday set routeendodometer='" + endodometer + "' where routekey='" + routekey + "'"]);
+		                }
+		
+		            },
+		
+		            function (error) {
+		                alert(error);
+		            },
+		                "PluginClass",
+		                "GetdataMethod", ["select routestartodometer from startendday where routekey='" + sessionStorage.getItem("RouteKey") + "'"]);
+		        } else if (platform == 'Android') {
+		            window.plugins.DataBaseHelper.select("select routestartodometer from startendday where routekey='" + sessionStorage.getItem("RouteKey") + "'", function (result) {
+		                console.log(result.array[0].routestartodometer);
+		                if (parseInt(result.array[0].routestartodometer) > parseInt(endodometer)) {
+		                    navigator.notification.alert("Enter Odometer Grater Than " + parseInt(result.array[0].routestartodometer));
+		                } else {
+		
+		                    /// / updatetransactiondetail();
+	                    window.plugins.DataBaseHelper.insert("update startendday set routeendodometer='" + endodometer + "' where routekey='" + sessionStorage.getItem("RouteKey") + "'", function (result) {
+		
+		                        CheckUnloadDone();
+		                    },
+		
+		                    function () {
+		                        console.warn("Error calling plugin");
+		                    });
+		                }
+		            },
+		
+		            function () {
+		                console.warn("Error calling plugin");
+		            });
+		        }
+		
+		    } else {
+		        getLangText("Enter Odometer Greater Than Zero.");
+		        return false;
+		    }
+		}
+		/// /
+	function CheckUnloadDone() {
+		
+		
+		    if (localStorage.getItem("settlementpass") != "" && localStorage.getItem("settlementpass") != 0) {
+		        $(".ui-simpledialog-container #txtPassword").val("");
+		        $("#settlementlink").simpledialog('close');
+		    }
+		    /// /Getting Count for unload
+	    var requireloadin;
+		    var unloaddone;
+		    var Qry = "SELECT COUNT(*) AS cnt,(SELECT requireloadin FROM routemaster WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND routetype IS NOT 2) requireloadin FROM inventorytransactiondetail itd JOIN inventorytransactionheader ith ON ith.detailkey = itd.detailkey AND ith.routekey = itd.routekey AND ith.routecode = " + sessionStorage.getItem("RouteCode") + " AND ith.salesmancode = " + sessionStorage.getItem("SalesmanCode") + " WHERE itd.routekey = " + sessionStorage.getItem("RouteKey") + " AND itd.transactiontypecode IN(5,6,7)";
+		    console.log(Qry);
+		    if (platform == 'iPad') {
+		        Cordova.exec(function (result) {
+		            if (eval(result[0][0]) > 0) unloaddone = true;
+		            else unloaddone = false;
+		
+		            if (unloaddone == false) {
+		                requireloadin = result[0][1];
+		                ConirmSettlement(requireloadin);
+		            } else window.location = "../settlement/managesettlement.html";
+		
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.select(Qry, function (result) {
+		            /// /alert(result.array);
+	            /// /alert(result.array[0].cnt);
+	            /// /alert(result.array[0].reuqireloadin);
+	            if (eval(result.array[0].cnt) > 0) unloaddone = true;
+		            else unloaddone = false;
+		
+		            if (unloaddone == false) {
+		                requireloadin = result.array[0].requireloadin;
+		                ConirmSettlement(requireloadin);
+		            } else window.location = "../settlement/managesettlement.html";
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function ConirmSettlement(requireloadin) {
+		    var msg = "";
+		    if (requireloadin == 0) {
+		        msg = "Are You Sure To Do Settlement?";
+		        navigator.notification.confirm(msg, function (action) {
+		            if (action == 1) {
+		                if (sessionStorage.getItem("rtype") == 2) {
+		                    window.location = "../settlement/managesettlement.html";
+		                } else {
+		                    GetDocumentNumber();
+		                }
+		                /// /window.location =
+							// "../settlement/managesettlement.html";
+	            }
+		        });
+		    } else if (requireloadin == 1) {
+		        msg = "Unload Not Done. Are You Sure To Do Settlement?";
+		        navigator.notification.confirm(msg, function (action) {
+		            if (action == 1) {
+		                GetDocumentNumber();
+		                /// /window.location =
+							// "../settlement/managesettlement.html";
+	            }
+		        });
+		    } else if (requireloadin == 2) {
+		        getLangText("Unload Not Done. Cant Do Settlement.");
+		        return false;
+		    }
+		}
+		
+		
+		function GetDocumentNumber() {
+		    var Qry = "SELECT CASE WHEN MAX(bodocseq) IS NULL OR MAX(bodocseq) <=0 OR MAX(bodocseq) = '' OR MAX(bodocseq) = 'null' THEN 0 ELSE bodocseq END AS documentnumber FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+		    console.log(Qry);
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            if (result.length > 0) {
+		                var DocPrefix = sessionStorage.getItem("RouteCode").toString();
+		                DocumentNumber = DocPrefix.toString() + (eval(result[0][0]) + 1).toString().lpad("0", 7);
+		                GetHHCDocumentNumber();
+		            }
+		        },
+		
+		        function (error) {
+		            alert(error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.select(Qry, function (result) {
+		            var DocPrefix = sessionStorage.getItem("RouteCode").toString();
+		            DocumentNumber = DocPrefix.toString() + (eval(result.array[0].documentnumber) + 1).toString().lpad("0", 6);
+		            GetHHCDocumentNumber();
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function GetHHCDocumentNumber() {
+		    var Qry = "SELECT CASE WHEN MAX(hhcivtseq) IS NULL OR MAX(hhcivtseq) <=0 OR MAX(hhcivtseq) = '' OR MAX(hhcivtseq) = 'null' THEN 0 ELSE hhcivtseq END AS documentnumber FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+		    if (platform == "iPad") {
+		        console.log(Qry);
+		        Cordova.exec(function (result) {
+		            if (result.length > 0) {
+		                var InvoicePrefix = sessionStorage.getItem("RouteCode").toString() + '4'; /// / 1
+																									// is
+																									// the
+																									// prefix
+																									// for
+																									// order
+	                InvoiceNumber = InvoicePrefix.toString() + (eval(result[0][0]) + 1).toString().lpad("0", 6);
+		                SaveEndStockInventoryHeader();
+		            }
+		        },
+		
+		        function (error) {
+		            alert(error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.select(Qry, function (result) {
+		            if (result.array != undefined) {
+		                var InvoicePrefix = sessionStorage.getItem("RouteCode").toString() + '4'; /// / 1
+																									// is
+																									// the
+																									// prefix
+																									// for
+																									// order
+	                InvoiceNumber = InvoicePrefix.toString() + (eval(result.array[0].documentnumber) + 1).toString().lpad("0", 5);
+		                SaveEndStockInventoryHeader();
+		            }
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function SaveEndStockInventoryHeader() {
+		    var transactiontype = 3; /// / Type 5 is unloadendinventory
+	    var Qry = "INSERT INTO inventorytransactionheader(inventorykey,routekey,transactiontype,routecode,salesmancode,transactiondate,transactiontime,documentnumber,odometerreading,transferlocationcode,referencenumber,securitycode,transmitindicator,voidflag,hhcdocumentnumber,loadnumber,refdocumentnumber,currencycode,actualtransactiondate,inventorynumber,data,issync,istemp) VALUES(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("RouteKey") + "," + transactiontype + "," + sessionStorage.getItem("RouteCode") + "," + sessionStorage.getItem("SalesmanCode") + ",date('now', 'localtime'),time('now', 'localtime')," + DocumentNumber + ",0,0,0,0,0,0," + InvoiceNumber + ",0,0,0,date('now', 'localtime'),0,0,0,'false')";
+		    console.log(Qry);
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            UnloadEndStockTransacitonDetail();
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {
+		            UnloadEndStockTransacitonDetail();
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function UnloadEndStockTransacitonDetail() {
+		    var transactiontypecode;
+		    if (autoload == 3 || autoload == 4) transactiontypecode = 5;
+		    else transactiontypecode = 6;
+		    var Qry = "INSERT INTO inventorytransactiondetail(itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,istemp,issync,detailkey) SELECT itemcode," + sessionStorage.getItem("RouteKey") + "," + transactiontypecode + ",(ifnull(loadqty,0) +ifnull(loadadjustqty,0)+ ifnull(loadaddqty,0) +ifnull(beginstockqty,0)- ifnull(loadcutqty,0) -   ifnull(saleqty,0) + ifnull(returnqty,0) +ifnull(returnfreeqty,0) - ifnull(freesampleqty,0)),defaultsalesprice,caseprice,'false',0,(SELECT MAX(detailkey) FROM inventorytransactionheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + ") FROM inventorysummarydetail JOIN itemmaster ON itemmaster.actualitemcode = inventorysummarydetail.itemcode";
+		    console.log(Qry);
+		    /// /navigator.notification.alert(qry);
+	    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            GetUnloadEndStockData();
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {
+		            GetUnloadEndStockData();
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function GetUnloadEndStockData() {
+		    var routekey = sessionStorage.getItem("RouteKey");
+		    var Qry = "SELECT itemcode,quantity FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = 5";
+		    console.log(Qry);
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            if (result.length > 0) {
+		                var ObjData = {};
+		                for (i = 0; i < result.length; i++) {
+		                    ObjData.itemcode = result[i][0];
+		                    ObjData.quantity = result[i][1];
+		                    UpdateEndStockSummaryDetail(ObjData);
+		                    if (i == (result.length - 1)) UpdateDocumentNumber();
+		                }
+		            }
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.select(Qry, function (result) {
+		            if (result.array != undefined) {
+		                var ObjData = {};
+		                for (i = 0; i < result.array.length; i++) {
+		                    ObjData.itemcode = result.array[i].itemcode;
+		                    ObjData.quantity = result.array[i].quantity;
+		                    UpdateEndStockSummaryDetail(ObjData);
+		                    if (i == (result.array.length - 1)) UpdateDocumentNumber();
+		                }
+		            }
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function UpdateEndStockSummaryDetail(obj) {
+		    var field;
+		    if (autoload == 3 || autoload == 4) field = "endstockqty";
+		    else field = "unloadqty";
+		    var Qry = "UPDATE inventorysummarydetail SET " + field + " = ifnull(" + field + ",0)+" + obj.quantity + ",issync=0 WHERE routekey = " + sessionStorage.getItem("RouteKey") + " AND itemcode = " + obj.itemcode;
+		    console.log(Qry);
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {},
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {},
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function UpdateDocumentNumber() {
+		    var Qry = "UPDATE routemaster SET bodocseq = (ifnull(bodocseq,0) + 1),hhcivtseq = (ifnull(hhcivtseq,0) + 1) WHERE routecode=" + sessionStorage.getItem("RouteCode");
+		    console.log(Qry);
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            //*
+						 * *if(str == 'endstock') GetDocumentNumber('damage');
+						 * else if(str == 'damage') window.location =
+						 * "../settlement/managesettlement.html";*/
+						 */
+		            UnloadDamageTransacitonDetail();
+		        },
+		
+		        function (error) {
+		            alert(error);
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {
+		            //*
+						 * *if(str == 'endstock') GetDocumentNumber('damage');
+						 * else if(str == 'damage') window.location =
+						 * "../settlement/managesettlement.html";*/
+						 */
+		            UnloadDamageTransacitonDetail();
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function UnloadDamageTransacitonDetail() {
+		    var Qry = "INSERT INTO inventorytransactiondetail(itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,istemp,issync,detailkey) SELECT itemcode," + sessionStorage.getItem("RouteKey") + ",7,ifnull(damageqty,0),defaultsalesprice,caseprice,'false',0,(SELECT MAX(detailkey) FROM inventorytransactionheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + ") FROM inventorysummarydetail JOIN itemmaster ON itemmaster.actualitemcode = inventorysummarydetail.itemcode";
+		    console.log(Qry);
+		    /// /navigator.notification.alert(qry);
+	    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            GetUnloadDamageData();
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {
+		            GetUnloadDamageData();
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function GetUnloadDamageData() {
+		    var routekey = sessionStorage.getItem("RouteKey");
+		    var Qry = "SELECT itemcode,quantity FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND transactiontypecode = 7";
+		    console.log(Qry);
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            if (result.length > 0) {
+		                var ObjData = {};
+		                for (i = 0; i < result.length; i++) {
+		                    ObjData.itemcode = result[i][0];
+		                    ObjData.quantity = result[i][1];
+		                    UpdateDamageSummaryDetail(ObjData);
+		                    if (i == (result.length - 1)) window.location = "../settlement/managesettlement.html";
+		                }
+		            } else window.location = "../settlement/managesettlement.html";
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.select(Qry, function (result) {
+		            if (result.array != undefined) {
+		                var ObjData = {};
+		                for (i = 0; i < result.array.length; i++) {
+		                    ObjData.itemcode = result.array[i].itemcode;
+		                    ObjData.quantity = result.array[i].quantity;
+		                    UpdateDamageSummaryDetail(ObjData);
+		                    if (i == (result.array.length - 1)) window.location = "../settlement/managesettlement.html";
+		                }
+		            } else window.location = "../settlement/managesettlement.html";
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function UpdateDamageSummaryDetail(obj) {
+		    var Qry = "UPDATE inventorysummarydetail SET damagedunloadqty = ifnull(endstockqty,0)+" + obj.quantity + ",issync=0 WHERE routekey = " + sessionStorage.getItem("RouteKey") + " AND itemcode = " + obj.itemcode;
+		    console.log(Qry);
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {},
+		
+		        function (error) {
+		            navigator.notification.alert(error);
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {},
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		
+		function getsetting() {
+		    console.log("select synctimeinterval,tabletsyncmode from setup where setupid=1");
+		    if (platform == 'iPad') {
+		        var abc = Cordova.exec(function (result) {
+		            var synctimein = result[0][0];
+		            var syncmode = result[0][1];
+		            var routesequenceplanflag = result[0][2];
+		            sessionStorage.setItem('synctimeint', synctimein);
+		            sessionStorage.setItem('syncmode', syncmode);
+		            sessionStorage.setItem('routesequenceplanflag', routesequenceplanflag);
+		            var startdate = new Date();
+		            var syncinvtime = sessionStorage.getItem('synctimeint');
+		            var settime = Math.abs(startdate.getTime()) + (eval(syncinvtime) * 60);
+		            sessionStorage.setItem('batchtime', settime);
+		        },
+		
+		        function (error) {
+		            alert("error:" + error);
+		        },
+		            "PluginClass",
+		            "GetdataMethod", ["select synctimeinterval,tabletsyncmode,routesequenceplanflag from setup where setupid=1"]);
+		    } else if (platform == 'Android') {
+		
+		        window.plugins.DataBaseHelper.select("select synctimeinterval,tabletsyncmode,routesequenceplanflag from setup where setupid=1", function (result) {
+		            var synctimein = result.array[0].synctimeinterval;
+		            var syncmode = result.array[0].tabletsyncmode;
+		            var routesequenceplanflag = result.array[0].routesequenceplanflag;
+		            sessionStorage.setItem('synctimeint', synctimein);
+		            sessionStorage.setItem('syncmode', syncmode);
+		            sessionStorage.setItem('routesequenceplanflag', routesequenceplanflag);
+		            var startdate = new Date();
+		            var syncinvtime = sessionStorage.getItem('synctimeint');
+		            var settime = Math.abs(startdate.getTime()) + (eval(syncinvtime) * 60);
+		            sessionStorage.setItem('batchtime', settime);
+		            getCountRouteKey();
+		            
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		/// /-----------------------
+	function Updateinventoryheadersyncstatus(obj) {
+		
+		    var Qry = "UPDATE inventorytransactionheader SET issync = 0 where detailkey in (select Distinct detailkey from inventorytransactiondetail where issync=0)";
+		    console.log(Qry);
+		
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {
+		            /// /navigator.notification.alert("Save invoice rxd
+						// detail record successfully");
+	
+		        },
+		
+		        function (error) {
+		            navigator.notification.alert("Error save invoice rxd detail record");
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {
+		            PasswordRequired(obj)
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		}
+		/// /-----------------------
+	
+		function PasswordRequired(obj) {
+		
+			
+		    //*
+				 * *if(localStorage.getItem("settlementpass") != "" &&
+				 * localStorage.getItem("settlementpass") != 0)
+				 * PopupPasswordEntry($(obj).attr("id"),'../settlement/managesettlement.html',$("#tblSettlementPassword").html(),'home.html');
+				 * else
+				 * PopupOdometer($(obj).attr("id"),'../settlement/managesettlement.html',tblOdoMeter.innerHTML); //
+				 * CheckUnloadDone(obj); */
+				 */
+		
+		    var Qry = "Select 1,(select count(*) from invoiceheader where issync=0 and istemp='false') as invoice,(select count(*) from salesorderheader where issync=0 and istemp='false') as ord,(select count(*) from arheader where issync=0 and istemp='false') as collection";
+		    console.log(Qry);
+		
+		    /// / if(platform == "Android")
+	    {
+		        window.plugins.DataBaseHelper.select(Qry, function (result) {
+		            var inv = "";
+		            var ord = "";
+		            var collection = "";
+		            if (result.array[0].invoice > 0) {
+		                inv = result.array[0].invoice + " Invoice(s)";
+		            }
+		            if (result.array[0].ord > 0) {
+		                if (inv != "") {
+		                    ord = "\n" + result.array[0].ord + " Order(s)";
+		                } else {
+		                    ord = result.array[0].ord + " Order(s)";
+		                }
+		
+		            }
+		            if (result.array[0].collection > 0) {
+		                if (inv != "" || ord != "") {
+		                    collection = "\n" + result.array[0].collection + " Collection(s)";
+		                } else {
+		                    collection = result.array[0].collection + " Collection(s)";
+		                }
+		
+		
+		            }
+		            /// /--------
+	            if (inv != "" || ord != "" || collection != "") {
+		                var msg = "Below Transactions Are Not Uploaded.Please Upload \n" + inv + "" + ord + "" + collection;
+		                navigator.notification.confirm(msg, function (action) {
+		                    if (action == 1) {
+		                        /// /GetDocumentNumber();
+	                        window.location = "../utilities/uploaddata.html";
+		                    } else {
+		                        if (localStorage.getItem("settlementpass") != "" && localStorage.getItem("settlementpass") != 0) {
+		                            PopupPasswordEntry($(obj).attr("id"), '../settlement/managesettlement.html', $("#tblSettlementPassword").html(), 'home.html');
+		                        } else {
+		                            /// /PopupStartdayOdometer($(obj).attr("id"),
+										// '../settlement/managesettlement.html',
+										// tblOdoMeter.innerHTML);
+	                             CheckUnloadDone();
+		                        }
+		                    }
+		                });
+		
+		            } else {
+		
+		                if (localStorage.getItem("settlementpass") != "" && localStorage.getItem("settlementpass") != 0) {
+		                    PopupPasswordEntry($(obj).attr("id"), '../settlement/managesettlement.html', $("#tblSettlementPassword").html(), 'home.html');
+		                } else {
+							CheckUnloadDone();
+		                    /// /PopupStartdayOdometer($(obj).attr("id"),
+								// '../settlement/managesettlement.html',
+								// tblOdoMeter.innerHTML);
+	                }
+		            }
+		            /// /--------
+	
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		
+		    }
+		}
+		
+		function getLoadCount1(id) {
+		    var routetype = eval(sessionStorage.getItem("rtype"));
+		
+		    if (routetype == 2) {
+		        PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		
+		    } else {
+		        var Qry = "Select (select COUNT(*) From startingloaddetail where routecode=" + sessionStorage.getItem("RouteCode") + " and strftime('%Y-%m-%d',ddate) = '" + getTabletDate() + "' order by loadperiodnumber) as loadcount,(SELECT COUNT(*) FROM inventorytransactiondetail WHERE transactiontypecode = 5) as opening,(SELECT COUNT(*) FROM startendday WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") as beginday";
+		        if (platform == "iPad") {
+		            Cordova.exec(function (result) {
+		                if (result[0][1] == 0) {
+		
+		                    if (result[0][0] == 0) {
+		                        var msg = "There is no new load and opening.Do you want to continue?";
+		                        navigator.notification.confirm(msg, function (action) {
+		                            if (action == 1) {
+		                                PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		                            }
+		                        });
+		                    } else PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		                } else PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		
+		
+		            },
+		
+		            function (error) {
+		                navigator.notification.alert(error);
+		            },
+		                "PluginClass",
+		                "GetdataMethod", [Qry]);
+		        } else if (platform == "Android") {
+		            window.plugins.DataBaseHelper.select(Qry, function (result) {
+		                if (result.array[0].beginday == 0) {
+		                    if (result.array[0].opening == 0) {
+		                        if (result.array[0].loadcount == 0) {
+		                            var msg = "There is no new load and opening.Do you want to continue?";
+		                            navigator.notification.confirm(msg, function (action) {
+		                                if (action == 1) {
+		                                    PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		                                }
+		                            });
+		                        } else PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		                    } else PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		                } else PopupPasswordEntry(id, 'startofday.html', tblPassword.innerHTML, 'home.html');
+		
+		            },
+		
+		            function () {
+		                console.warn("Error calling plugin");
+		            });
+		        }
+		    }
+		}
+		
+		function logout() {
+		    var Qry = "UPDATE Salesman SET isalreadylogin = 'false' where isalreadylogin='true'";
+		    console.log(Qry);
+		
+		    if (platform == "iPad") {
+		        Cordova.exec(function (result) {},
+		
+		        function (error) {
+		            navigator.notification.alert("Error save invoice rxd detail record");
+		        },
+		            "PluginClass",
+		            "InsertUpdateMethod", [Qry]);
+		    } else if (platform == "Android") {
+		
+		        window.plugins.DataBaseHelper.insert(Qry, function (result) {
+		            sessionStorage.clear();
+		            localStorage.clear();
+		            window.location = "../index.html";
+		             
+		        },
+		
+		        function () {
+		            console.warn("Error calling plugin");
+		        });
+		    }
+		
+		}
+		
+		function checkexpire(url) {
+		    window.location = url;
+		    //*
+				 * *var tdate = getTabletDate(); var cDate = new
+				 * Date("2013-11-03"); var expiredate = cDate.getFullYear() +
+				 * '-' + ("0" + (cDate.getMonth() + 1)).slice(-2) + '-' + ("0" +
+				 * cDate.getDate()).slice(-2);
+				 * 
+				 * if(tdate>=expiredate) { alert("Trial Period Expired.");
+				 * logout(); } else window.location=url;*/
+				 */
+		
+		}
+    </script>
+
+</body>
+</html>

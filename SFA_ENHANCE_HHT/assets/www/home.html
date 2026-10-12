@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/jquery.mobile-1.0.min.css" />
+<link rel="stylesheet" href="css/en.css" lang="en" />
+<link rel="stylesheet"
+	media="only screen and (min-width: 1200px) and (max-width: 1400px)"
+	href="css/style_1400.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+	href="css/style_1200.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 700px) and (max-width: 800px)"
+	href="css/style_800.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 600px) and (max-width: 700px)"
+	href="css/style_700.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 320px) and (max-width: 600px)"
+	href="css/style_600.css">
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<script src="LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+<script src="LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript" lang="en"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+		<div>
+			<img title="" alt="" src="images/bg.png" id="background">
+		</div>
+		<div data-role="header">
+			<span id="lang" class="homeen">AR</span>
+		</div>
+		<div class="logo">
+			<h1 class="label">RoutePro</h1>
+		</div>
+		<div data-role="content" class="centerbox" id="test1">
+			<div class="content-primary">
+				<ul data-role="listview">
+					<li><a href="#" id="lnkLoad" rel="external"
+						onclick="PopupPasswordEntry(this.id,'startofday.html',tblPassword.innerHTML,'home.html');">
+							<img src="images/icn-1.png" class="HomeIconPosEN" />
+							<h3 id="lblStartOfDay" lang="en">Start of Day</h3>
+					</a></li>
+				</ul>
+			</div>
+			<div class="second-primary">
+				<ul data-role="listview">
+					<li><a href="inventory/inventory.html" rel="external"> <img
+							src="images/icon-5.png" class="HomeIconPosEN" />
+							<h3 id="lblInventory" lang="en">Inventory</h3>
+					</a></li>
+
+				</ul>
+			</div>
+			<div class="content-primary">
+				<ul data-role="listview">
+					<li><a href="customer/customer_operation.html" rel="external">
+							<img src="images/icn-2.png" class="HomeIconPosEN" />
+							<h3 id="lblCustomerOpt" lang="en">Customer Opt.</h3>
+					</a></li>
+
+				</ul>
+			</div>
+			<div class="second-primary">
+				<ul data-role="listview">
+					<li><a href="settlement/managesettlement.html" rel="external">
+							<img src="images/icon-3.png" class="HomeIconPosEN" />
+							<h3 id="lblSettlement" lang="en">Settlement</h3>
+					</a></li>
+
+				</ul>
+			</div>
+			<div class="content-primary">
+				<ul data-role="listview">
+					<li><a href="settlement/expenseentry.html" rel="external">
+							<img src="images/icn-3.png" class="HomeIconPosEN" />
+							<h3 id="lblExpenseEntry" lang="en">Expense Entry</h3>
+					</a></li>
+
+				</ul>
+			</div>
+			<div class="second-primary">
+				<ul data-role="listview">
+					<li><a href="information/information.html" rel="external">
+							<img src="images/icon-7.png" class="HomeIconPosEN" />
+							<h3 id="lblInformation" lang="en">Information</h3>
+					</a></li>
+
+				</ul>
+			</div>
+			<div class="content-primary">
+				<ul data-role="listview">
+					<li><a href="utilities/utilities.html" rel="external"> <img
+							src="images/icn-4.png" class="HomeIconPosEN" />
+							<h3 id="lblSetUp" lang="en">Setup</h3>
+					</a></li>
+
+				</ul>
+			</div>
+			<table id="tblPassword" border="0" cellpadding="2" cellspacing="0"
+				width="100%;" style="display: none;">
+				<tr>
+					<th class="tblHeader captionLabel leftAlign popupTitle" colspan="2"
+						lang="en">Password Entry</th>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2">&nbsp;</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" colspan="2" class="popupSubTitle" lang="en">
+						Start of Day</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2" lang="en" class="popupInfo">Please Enter The
+						Security Password</td>
+				</tr>
+				<tr class="popupRow">
+					<td colspan="2"><input id="txtPassword" type="password"
+						pattern="\d*" value="" maxlength="10" class="textWidth textFont"
+						style="margin: 10px;" /> <label id="lblMessage" lang="en"
+						style="display: none">Enter Correct Password</label></td>
+				</tr>
+				<tr class="popupRow">
+					<td style="width: 50%;"><input id="btnSubmit" type="button"
+						value="Submit"
+						onclick="VerifyPassword('btnSubmit','startofday.html',tblPassword.innerHTML);"
+						data-role="none" lang="en" /></td>
+					<td style="width: 50%;"><input id="btnCancel" type="button"
+						rel="close" value="Cancel" onclick="ClearPassword();"
+						data-role="none" lang="en" /></td>
+				</tr>
+			</table>
+			<!-- <div style="width:50%;float:left;">
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" text-align:center;">Start of Day</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Customer Opt.</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Expense Entry</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Setup</a>              
+            </div>   
+            <div style="width:50%;float:right;">
+                <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right" text-align:center;">Inventory</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Settlement</a>
+               <a href="index.html" data-role="button" data-icon="arrow-r" data-iconpos="right">Information</a>
+            </div>             -->
+		</div>
+		<div data-role="footer" class="ui-bar">
+			<div class="footer">
+				<div class="leftfooter"></div>
+				<div class="rightfooter">Mirnah Technology Systems</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" language="javascript">
+		window.lang = new jquery_lang_js();
+		$(document).ready(
+				function() {
+					window.lang.run();
+					$(".leftfooter").html(getCurrentDate());
+					$("#lang").click(
+							function() {
+								if ($("#lang").text() == "AR") {
+									$("#lang").text("EN");
+									window.lang.change('HomeAR', 'AR');
+									$("#content").attr("dir", "rtl");
+									sessionStorage.setItem("Language", "AR");
+									$('.ui-icon')
+											.removeClass('ui-icon-arrow-r')
+											.addClass('ui-icon-arrow-r1');
+									$('.ui-btn').removeClass(
+											'ui-btn-icon-right').addClass(
+											'ui-btn-icon-left');
+									// $('img.HomeIconPosEN').removeClass('HomeIconPosEN').addClass('HomeIconPosAR');
+									//  $('#lang').removeClass('homeen').addClass('homear');
+									//$('h3').css({ 'text-align': 'right', 'padding-right': '70px', 'float': 'right' });
+								} else {
+									$("#lang").text("AR");
+									window.lang.change('en', 'en');
+									$("#content").attr("dir", "ltr");
+									sessionStorage.setItem("Language", "en");
+									$('.ui-icon').removeClass(
+											'ui-icon-arrow-r1').addClass(
+											'ui-icon-arrow-r');
+									$('.ui-btn')
+											.removeClass('ui-btn-icon-left')
+											.addClass('ui-btn-icon-right');
+									// $('img.HomeIconPosAR').removeClass('HomeIconPosAR').addClass('HomeIconPosEN');
+									// $('#lang').removeClass('homear').addClass('homeen');
+									// $('h3').css({ 'text-align': 'left', 'padding-left': '0px', 'float': 'left', 'padding-right': '0px' });
+								}
+							});
+					if (sessionStorage.getItem("Language") == "AR") {
+						$("#lang").trigger('click');
+					}
+
+				});
+	</script>
+</body>
+</html>

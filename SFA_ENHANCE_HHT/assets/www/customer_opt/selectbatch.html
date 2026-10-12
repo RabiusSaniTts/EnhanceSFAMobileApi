@@ -1,0 +1,316 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 3/2/2011
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add New Batch</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="batch.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Select Batch</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+
+                <div class="tblBox tbltd">
+                    <div class="tblHeader">
+                        <table id="tblHeaderContent" width="100%"
+                            cellpadding="10" cellspacing="0">
+                            <tr>
+                                <td lang="en" class="last">
+                                    Batch Number
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="route_table_height item" id="contentWrapper">
+                        <table border="0" width="100%" cellpadding="0"
+                            cellspacing="0" id="tbl1"
+                            data-role="none">
+                            <tr>
+
+                                <td class="last">
+                                </td>
+
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="leftbottomMenu com_info_right">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" class="enableText" rel="external"
+                        onclick="save()">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img src="../images/save.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Save</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="batch.html" class="enableText" rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+			var transactiontype='';
+             resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 			resizeWindow();
+                              $("#units").ForceNumericOnly();
+                              transactiontype = localStorage.batchtranstype;
+	       $('.ui-body-d').css({ 'background': '#fff' });
+                $('.ui-input-datebox').css({ 'width': '92%', 'line-height': '4.0' });
+                $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important' });
+                $('.ui-input-datebox input').css({ 'width': '70% !important', 'color': '#999' });
+                $(".leftfooter").html(getCurrentDate());
+                
+                 var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('AddNewBatch'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                    
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+            });
+        function save()
+            {
+                
+                var routecode=sessionStorage.getItem("RouteCode");
+                var itemcode=sessionStorage.getItem("itemno");
+                var visitkey=sessionStorage.getItem("VisitKey");
+                var routekey=sessionStorage.getItem("RouteKey");
+                var unitspercase=sessionStorage.getItem("unitspercase");
+                var batchno = $('#batchno').val();
+                var cases = $('#cases').val();
+                var units = $('#units').val();
+                var enddate = $('#enddate').val();
+                var qty  = (unitspercase * cases) + units;
+                var platform= sessionStorage.getItem("platform");
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                                        //TableDataOffLine(result);
+                                        window.location.href='batch.html';
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "InsertUpdateMethod", 
+                                        ["insert into batchexpirydetail ('routekey','batchnumber','itemcode','expirydate','quantity','transactiontypecode','visitkey') values ('"+routekey+"','"+batchno+"','"+itemcode+"','"+enddate+"','"+qty+"',"+transactiontype+",'"+visitkey+"')"]);
+               }
+               else if(platform=='Android')
+           	{
+			           		window.plugins.DataBaseHelper.insert("insert into batchexpirydetail ('routekey','batchnumber','itemcode','expirydate','quantity','transactiontypecode','visitkey') values ('"+routekey+"','"+batchno+"','"+itemcode+"','"+enddate+"','"+qty+"',"+transactiontype+",'"+visitkey+"')",function(result)
+							{
+							 		window.location.href='batch.html';
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+           	} 
+            }
+            //Function for bind item list
+            function getItemList() {
+              var itemcode=sessionStorage.getItem("itemno");
+                var qry="select batchnumber,expirydate,quantity from batchmaster where itemcode="+itemcode;
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                                 
+                                  BindData(result);
+                                  
+                                  },
+                                  function(error) {
+                                  alert("Error in binding Item : " + error);
+                                  },
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  [qry]);
+                    
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(qry, function(result) {
+                                                         
+                                                         BindData(result);
+                                                        
+                                                         },
+                                                         function() {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+            //Bind data dynamically
+            function BindData(result) {
+                
+                var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+                data = result;
+                if (platform == 'Android') {
+                    var array = $.map(data.array, function(item, index) {
+                                      return [[item.batchnumber,item.expirydate,item.quantity]];
+                                      });
+                    data = array;
+                }
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'class = leftAlign' : 'class = leftAlign last';  
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";                       
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tbl1 tbody').append(r);
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');                  
+                         
+                //Select first row of table when screen load
+                $("#tbl1 tr:eq(1)").trigger('click');
+                
+                
+            }    
+        </script>
+
+        </div>
+    </body>
+</html>

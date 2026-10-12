@@ -1,0 +1,957 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 08/02/2012
+ '  Description  : This page is used for merchandising.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Capture</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--<link rel="stylesheet" type="text/css" href="../css/jquery.mobile.simpledialog.css" />-->
+        <style rel="stylesheet" type="text/css">
+        .ui-simpledialog-header h4 { margin-top: 5px; margin-bottom: 5px; text-align: center;font-size:22px !important;}
+        .ui-simpledialog-container { border: 5px solid #111 !important; width:410px;}
+        .ui-simpledialog-screen { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; }
+        .ui-simpledialog-hidden { display: none; }
+        .ui-simpledialog-input { width: 85% !important; display: block !important; margin-left: auto; margin-right: auto;font-weight:bold;}
+        .ui-simpledialog-screen-modal { background-color: transparent; -moz-opacity: 0.8; opacity:.80; filter: alpha(opacity=80); }
+        .ui-simpledialog-subtitle { text-align: center; }
+        .ui-simpledialog-controls .buttons-separator {min-height: .6em;}
+        .ui-simpledialog-controls .button-hidden { display:none; }
+        .ui-dialog .ui-simpledialog-container { border: none !important; }
+        .ui-dialog-simpledialog .ui-content { padding: 5px !important;}
+        
+        .imgcapture
+        {
+            width:40px;
+            height:40px;
+        }
+    </style>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.simpledialog.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-cache="never">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en"
+                    onclick="checkImageCaptured()">Back</a>
+                <h1 lang="en">Image Capture</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div>
+                        <table cellpadding="10" cellspacing="5" align="center">
+                            <tr>
+                                <td lang="en">Image 1</td>
+                                <td>
+                                    <img src="../images/image-cap.png"
+                                        id="imgcapture1" class="imgcapture"
+                                        onclick="CaptureImage(this.id,'delete1',1)" />
+                                </td>
+                                <td>
+                                    <img src="../images/image-preview.png"
+                                        class="imgcapture" id="imgpreview1"
+                                        class="imgcapture"
+                                        onclick="ViewImage(1)" />
+                                </td>
+                                <td>
+                                    <img src="../images/no.png" id="imgdelete1"
+                                        class="imgcapture"
+                                        onclick="deleteimage(1)" />
+                                </td>
+                                <td>
+                                    <span id='lblimg1'></span>
+                                    <td>
+                                    </tr>
+                                    <tr>
+                                        <td lang="en">Image 2</td>
+                                        <td>
+                                            <img src="../images/image-cap.png"
+                                                id="imgcapture2"
+                                                class="imgcapture"
+                                                onclick="CaptureImage(this.id,'imgdelete2',2)" />
+                                        </td>
+                                        <td>
+                                            <img
+                                                src="../images/image-preview.png"
+                                                class="imgcapture"
+                                                id="imgpreview2"
+                                                class="imgcapture"
+                                                onclick="ViewImage(2)" />
+                                        </td>
+                                        <td>
+                                            <img src="../images/no.png"
+                                                id="imgdelete2"
+                                                class="imgcapture"
+                                                onclick="deleteimage(2)" />
+                                        </td>
+                                        <td>
+                                            <span id='lblimg2'></span>
+                                            <td>
+                                            </tr>
+                                            <tr>
+                                                <td lang="en">Image 3</td>
+                                                <td>
+                                                    <img
+                                                        src="../images/image-cap.png"
+                                                        id="imgcapture3"
+                                                        class="imgcapture"
+                                                        onclick="CaptureImage(this.id,'imgdelete3',3)" />
+                                                </td>
+                                                <td>
+                                                    <img
+                                                        src="../images/image-preview.png"
+                                                        class="imgcapture"
+                                                        id="imgpreview3"
+                                                        class="imgcapture"
+                                                        onclick="ViewImage(3)" />
+                                                </td>
+                                                <td>
+                                                    <img src="../images/no.png"
+                                                        id="imgdelete3"
+                                                        class="imgcapture"
+                                                        onclick="deleteimage(3)" />
+                                                </td>
+                                                <td>
+                                                    <span id='lblimg3'></span>
+                                                    <td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td lang="en">Image
+                                                            4</td>
+                                                        <td>
+                                                            <img
+                                                                src="../images/image-cap.png"
+                                                                id="imgcapture4"
+                                                                class="imgcapture"
+                                                                onclick="CaptureImage(this.id,'imgdelete4',4)" />
+                                                        </td>
+                                                        <td>
+                                                            <img
+                                                                src="../images/image-preview.png"
+                                                                class="imgcapture"
+                                                                id="imgpreview4"
+                                                                class="imgcapture"
+                                                                onclick="ViewImage(4)" />
+                                                        </td>
+                                                        <td>
+                                                            <img
+                                                                src="../images/no.png"
+                                                                id="imgdelete4"
+                                                                class="imgcapture"
+                                                                onclick="deleteimage(4)" />
+                                                        </td>
+                                                        <td>
+                                                            <span
+                                                                id='lblimg4'></span>
+                                                            <td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td
+                                                                    lang="en">Image
+                                                                    5</td>
+                                                                <td>
+                                                                    <img
+                                                                        src="../images/image-cap.png"
+                                                                        id="imgcapture5"
+                                                                        class="imgcapture"
+                                                                        onclick="CaptureImage(this.id,'imgdelete5',5)" />
+                                                                </td>
+                                                                <td>
+                                                                    <img
+                                                                        src="../images/image-preview.png"
+                                                                        width="52px"
+                                                                        height="50px"
+                                                                        id="imgpreview5"
+                                                                        class="imgcapture"
+                                                                        onclick="ViewImage(5)" />
+                                                                </td>
+                                                                <td>
+                                                                    <img
+                                                                        src="../images/no.png"
+                                                                        id="imgdelete5"
+                                                                        class="imgcapture"
+                                                                        onclick="deleteimage(5)" />
+                                                                </td>
+                                                                <td>
+                                                                    <span
+                                                                        id='lblimg5'></span>
+                                                                    <td>
+                                                                    </tr>
+
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="leftbottomMenu">
+
+                                                            <div
+                                                                class="menuPadding">
+                                                                &nbsp;</div>
+                                                            <a href="#"
+                                                                rel="external"
+                                                                class="enableText"><div
+                                                                    class="MenuPosition"
+                                                                    onclick="SaveImage()">
+                                                                    <div
+                                                                        class="MenuTextPos">
+                                                                        <img
+                                                                            class="bottomicon"
+                                                                            src="../images/save.png"
+                                                                            alt="Save" /></div>
+                                                                    <div
+                                                                        class="MenuTextPos MenuText"
+                                                                        lang="en">Save</div>
+                                                                </div></a>
+                                                            <div
+                                                                class="menuPadding">
+                                                                &nbsp;</div>
+                                                            <a href="#"
+                                                                rel="external"
+                                                                class="enableText"
+                                                                onclick="checkImageCaptured()">
+                                                                <div
+                                                                    class="MenuPosition MenuExit">
+                                                                    <div
+                                                                        class="MenuTextPos">
+                                                                        <img
+                                                                            class="bottomicon"
+                                                                            src="../images/icn-exit.png"
+                                                                            alt="Exit" /></div>
+                                                                    <div
+                                                                        class="MenuTextPos MenuText"
+                                                                        lang="en">Done</div>
+                                                                </div>
+                                                            </a>
+                                                            <div
+                                                                class="menuPadding">
+                                                                &nbsp;</div>
+                                                        </div>
+                                                        <table cellpadding="2"
+                                                            cellspacing="2"
+                                                            width="430px"
+                                                            id="tblPreview"
+                                                            style="display:none"
+                                                            align="center">
+                                                            <tr>
+                                                                <td>
+                                                                    <img src
+                                                                        id="imgpreview"
+                                                                        width="400px"
+                                                                        height="400px" />
+                                                                    <td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <input
+                                                                                id="btncancel"
+                                                                                type="button"
+                                                                                value="Cancel"
+                                                                                rel="close"
+                                                                                data-role="none"
+                                                                                width="150px" />
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div id="f1"
+                                                                data-role="footer"
+                                                                class="ui-bar">
+                                                                <div
+                                                                    class="footer">
+                                                                    <div
+                                                                        class="leftfooter">
+                                                                        09
+                                                                        November
+                                                                        2011</div>
+                                                                    <div
+                                                                        class="rightfooter">
+                                                                        Mirnah
+                                                                        Technology
+                                                                        Systems</div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="f2"
+                                                                data-role="footer"
+                                                                style="bottom: 0; position: absolute;">
+                                                                <div
+                                                                    data-role="navbar"
+                                                                    data-iconpos="top"
+                                                                    data-grid="f">
+                                                                    <ul>
+                                                                        <li
+                                                                            style="margin-bottom:0 !important;"><a
+                                                                                href="#"
+                                                                                rel="external"
+                                                                                id="day"
+                                                                                data-icon="custom"
+                                                                                lang="en"
+                                                                                onclick="footerredict('../startofday/startofday.html')">Start
+                                                                                day</a></li>
+                                                                        <li
+                                                                            style="margin-bottom:0 !important;"><a
+                                                                                href="#"
+                                                                                id="inve"
+                                                                                rel="external"
+                                                                                data-icon="custom"
+                                                                                lang="en"
+                                                                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                                                                        <li
+                                                                            style="margin-bottom:0 !important;"><a
+                                                                                href="#"
+                                                                                class="ui-btn-active"
+                                                                                rel="external"
+                                                                                id="cust"
+                                                                                data-icon="custom"
+                                                                                lang="en">Customer</a></li>
+                                                                        <li
+                                                                            style="margin-bottom:0 !important;"><a
+                                                                                href="#"
+                                                                                rel="external"
+                                                                                id="sett"
+                                                                                data-icon="custom"
+                                                                                lang="en"
+                                                                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+
+                                                                        <li
+                                                                            style="margin-bottom:0 !important;"><a
+                                                                                href="#"
+                                                                                rel="external"
+                                                                                id="info"
+                                                                                data-icon="custom"
+                                                                                lang="en"
+                                                                                onclick="footerredict('../information/information.html')">Information</a></li>
+                                                                        <li
+                                                                            style="margin-bottom:0 !important; width:14.0%"><a
+                                                                                href="#"
+                                                                                rel="external"
+                                                                                id="setup"
+                                                                                data-icon="custom"
+                                                                                lang="en"
+                                                                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <script
+                                                            type="text/javascript"
+                                                            language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform= sessionStorage.getItem("platform");
+        var currimg,currdel,currimgno;
+        var imagedata;
+        var imgarr = [];
+        var filename;
+        var currentry;
+        var imagenum;
+        var delobjidx;
+        var isInvoiceImageCapture=false;
+        resizeOrientationWindow();
+	   $(document).ready(function() {
+	 	resizeWindow();
+            $(".leftfooter").html(getCurrentDate());
+             var customeraid = sessionStorage.getItem("customercode");
+             var customername = sessionStorage.getItem("customername");
+                          
+             $('#customerid').text(customeraid);
+             $('#customername').text(customername);
+             document.addEventListener("deviceready", ondeviceready, false);
+             var lan = sessionStorage.getItem("Language");
+			window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('ImageCapture'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                      $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+                     $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+        });
+        function ondeviceready()
+        {
+        	checkInvoiceHeader();
+        	
+            try{
+            pictureSource=navigator.camera.PictureSourceType;
+            destinationType=navigator.camera.DestinationType;
+            
+            getDetails();
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }   
+        /*
+        *@method checkInvoiceHeader
+        *Function to check whether current visit key is in invoiceheader
+        */
+        function checkInvoiceHeader(){
+        	var Qry="SELECT COUNT(*) as cnt from invoiceheader where visitkey="+sessionStorage.getItem("VisitKey");
+        	
+        	if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result)
+                {
+                    if(result.array)
+                    {
+                      if(result.array[0].cnt>0){
+                    	  isInvoiceImageCapture=true;
+                    	  checkForBottomBar();
+                      }
+                    }
+                    
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+            	
+        }
+        
+        
+        function getDetails()
+        {
+            var Qry = "SELECT imageno,imagepath,imagename FROM customerimages WHERE visitkey=" + sessionStorage.getItem("VisitKey") + " AND routekey=" + sessionStorage.getItem("RouteKey") + " AND routecode=" + sessionStorage.getItem("RouteCode") + " AND customercode=" + sessionStorage.getItem("customerid");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    if(result.length > 0)
+                    {
+                        imagedata = result;
+                        
+                        if(imagedata.length != undefined)
+                        {
+                            for(i=0;i<imagedata.length;i++)
+                            {
+                                var obj = new Object();
+                                obj.imageno = imagedata[i][0];
+                                obj.imagepath = imagedata[i][1];
+                                obj.imagename = imagedata[i][2];
+                                imgarr.push(obj);
+                                $("#lblimg" + obj.imageno).text(obj.imagename);
+                                $("#imgcapture" + (imagedata[i][0])).hide();
+                            }
+                        }
+                    }
+                },
+                function(error) {
+                    alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result)
+                {
+                    if(result.array != undefined)
+                    {
+                        var array = $.map(result.array, function(item, index) {                        
+                            return [[item.imageno, item.imagepath, item.imagename]];
+                        });
+                        imagedata = array;
+                        
+                        if(imagedata.length != undefined)
+                        {
+                            for(i=0;i<imagedata.length;i++)
+                            {
+                                var obj = new Object();
+                                obj.imageno = imagedata[i][0];
+                                obj.imagepath = imagedata[i][1];
+                                obj.imagename = imagedata[i][2];
+                                imgarr.push(obj);
+                                $("#lblimg" + obj.imageno).text(obj.imagename);
+                                $("#imgcapture" + (imagedata[i][0])).hide();
+                            }
+                        }
+                    }
+                    
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function CaptureImage(imgid,deliconid,imgno) {
+            try
+            {
+                currimg = imgid;
+                currdel = deliconid;
+                currimgno = imgno;
+                navigator.camera.getPicture(onPhotoURISuccessCapture, function(){navigator.notification.alert('No Image Selected.')}, { quality: 100, correctOrientation: true,
+                destinationType: destinationType.FILE_URI,
+                //saveToPhotoAlbum: true,      	 
+                targetWidth: 600,
+                targetHeight: 600
+                });
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+        
+        function onPhotoURISuccessCapture(imageURI)
+        {
+            try
+            {
+                var routekey = parseInt(sessionStorage.getItem("RouteKey"));
+                var visitkey = parseInt(sessionStorage.getItem("VisitKey"));
+                var customerid = parseInt(sessionStorage.getItem("customerid"));
+                var randnum = Math.floor(Math.random() * 90) + 10;
+                
+                filename = routekey + "_" + visitkey + "_" + customerid + "_" + currimgno + "_" + randnum + ".jpg";
+                console.log("Old Path : " + imageURI);
+                $("#lblimg" + currimgno).text(filename);
+                window.resolveLocalFileSystemURI(imageURI, resOnSuccess, onFail);
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+        
+        function resOnSuccess(entry){
+            try
+            {            
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0,
+                                     function(fileSys) 
+                                     {
+                                        fileSys.root.getDirectory("sfa", {create:true, exclusive: false},
+                                            function(directory) {
+                                            	if(platform == "iPad")
+                                            		entry.moveTo(directory,filename,MoveSuccess,onFail);
+                                            	else if(platform == "Android")
+                                                	entry.copyTo(directory,filename,MoveSuccess,onFail);
+                                            }, onFail);
+                                     }, onFail);
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+       
+
+        function MoveSuccess(entry)
+        {
+            try{
+                var imageURI = entry.fullPath;
+                console.log("FullPath : " + imageURI);
+                var len = Object.keys(imgarr).length;
+                var obj = new Object();
+                obj.imageno = currimgno;
+                obj.imagepath = imageURI;
+                obj.imagename = filename;
+                if(len != undefined && len > 0)
+                {
+                    var editobj = 0;
+                    for(i=0;i<len;i++)
+                    {
+                        console.log("currentimageno : " + currimgno);
+                        console.log("imgarr.imgno : " + imgarr[i].imageno);
+                        if(imgarr[i].imageno == currimgno)
+                        {
+                            imgarr[i].imagepath = imageURI;
+                            imgarr[i].imagename = filename;
+                            editobj = 1;
+                        }
+                    }
+                    if(editobj == 0)
+                        imgarr.push(obj);
+                }
+                else                                    
+                    imgarr.push(obj);
+                    
+                CaptureControl();
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+        
+        function onFail(message) {
+            alert(message);
+        }
+        
+        function CaptureControl()
+        {
+            var len = Object.keys(imgarr).length;
+            if(len != undefined && len > 0)
+            {
+                for(i=0;i<len;i++)
+                {
+                    $("#imgcapture" + (imgarr[i].imageno)).hide();
+                }
+            }
+        }
+        
+        function deleteimage(imgno)
+        {
+            imagenum = imgno;
+            var url = "";
+            var imagename = ""
+            try{
+                for(i=0;i<Object.keys(imgarr).length;i++)
+                {
+                    if(imgarr[i].imageno == imgno)
+                    {                    	
+                        url = imgarr[i].imagepath;
+                        if(platform == "Android")
+                        {
+                        	url = url.toString().substr(7); //Substring for removing 'file://'
+                        } 
+                        delobjidx = i;
+                        break;
+                    }
+                }
+                if(url != "")
+                {
+                	console.log("GETDELETEURL : " + url);
+                    window.requestFileSystem(LocalFileSystem.PERSISTENT,0,
+                        function(fileSys)
+                        {                        	
+                            fileSys.root.getFile(url,{create : false, exclusive : false}, ongetdeletesuccess,onFail);
+                        },
+                        onFail
+                    );
+                }
+                else
+                {
+                    getLangText("Image Not Available");
+                    return false;
+                }
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+        
+        function ongetdeletesuccess(entry)
+        {   
+            $("#lblimg" + imagenum).text('');
+            try{
+            	console.log("DELETE PATH : " + entry.fullPath);
+                entry.remove(function(){ navigator.notification.alert("Image Deleted Successfully.");                
+                    var QryUpdate = "Delete from customerimages WHERE imageno=" + imagenum + " AND routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey") + " AND customercode= " + sessionStorage.getItem("customerid");
+                    if(platform == "iPad")
+                    {                
+                        Cordova.exec(function(result) {
+                            imgarr.splice(delobjidx,1);
+                            $(document).undelegate("#imgpreview" + imagenum,"click");
+                            $("#imgcapture" + imagenum).show();
+                        },
+                        function(error) {
+                            alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [QryUpdate]);                
+                    }
+                    else if(platform == "Android")
+                    {
+                    	window.plugins.DataBaseHelper.insert(QryUpdate, function(result) {
+                         	imgarr.splice(delobjidx,1);
+                            $(document).undelegate("#imgpreview" + imagenum,"click");
+                            $("#imgcapture" + imagenum).show();
+                         },
+                         function() {
+                         console.warn("Error calling plugin");
+                         });
+                    }
+                },onFail);
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+        
+        function SaveImage()
+        {  
+            try
+            {
+                if(Object.keys(imgarr).length > 0 && Object.keys(imgarr).length != undefined)
+                    CheckImageExist(0);
+                else
+                {
+                    getLangText("Please Capture Image.");
+                    return false;
+                }
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+        
+        function CheckImageExist(i)
+        {   
+            var routekey = sessionStorage.getItem("RouteKey");
+            var visitkey = sessionStorage.getItem("VisitKey");
+            var routecode = sessionStorage.getItem("RouteCode");
+            var customercode = sessionStorage.getItem("customerid");
+            var imageno = imgarr[i].imageno;
+            var imagepath = imgarr[i].imagepath;
+            var imagename = imgarr[i].imagename;
+            var QrySelect = "SELECT COUNT(*) as cnt FROM customerimages WHERE imageno = " + imageno + " AND routekey = " + routekey + " AND visitkey = " + visitkey + " AND customercode = " + customercode;
+            var QryInsert = "INSERT INTO customerimages(customercode,imageno,imagepath,routecode,routekey,visitkey,transactiondate,transactiontime,imagename,issync) VALUES(" + customercode + "," + imageno + ",'" + imagepath + "'," + routecode + "," +  routekey + "," + visitkey + ",date(),time('now', 'localtime'),'" + imagename + "',0)"
+            var QryUpdate = "UPDATE customerimages SET imagepath='" + imagepath + "',imagename='" + imagename + "' WHERE imageno=" + imageno + " AND routekey=" + routekey + " AND visitkey=" + visitkey + " AND customercode= " + customercode;
+            console.log(QrySelect);
+            var QryNew;
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    if(result[0][0] > 0)
+                        QryNew = QryUpdate;
+                    else
+                        QryNew = QryInsert;
+                    
+                    console.log(QryNew);
+                    Cordova.exec(function(result) {
+                        if(i+1 < imgarr.length)
+                            CheckImageExist(i+1);
+                            
+                        if(i == (imgarr.length - 1))
+							savecustomercontrol();                            
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [QryNew]);
+                },
+                function(error) {
+                    alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [QrySelect]);
+            }
+            else if(platform == "Android")
+            {
+            	window.plugins.DataBaseHelper.select(QrySelect, function(result) {
+                 	if(result.array != undefined)
+                 	{
+                 		if(result.array[0].cnt > 0)
+                 			QryNew = QryUpdate;
+                    	else
+                        	QryNew = QryInsert;
+                        	
+                        console.log(QryNew);
+                        window.plugins.DataBaseHelper.insert(QryNew, function(result) {
+	                     	if(i+1 < imgarr.length)
+                            	CheckImageExist(i+1);
+                            
+                        	if(i == (imgarr.length - 1))
+                        		savecustomercontrol();  
+	                    },
+	                    function() {
+	                    	console.warn("Error calling plugin");
+	                    });
+                 	}
+                 },
+                 function() {
+                 console.warn("Error calling plugin");
+                 });
+            }
+        }
+        
+        function ViewImage(imgno)
+        {
+            var imgdata = imagedata;
+            var imgpath = "";
+            try
+            {
+                if(Object.keys(imgarr).length != undefined && Object.keys(imgarr).length > 0)
+                {
+                    for(i=0;i<Object.keys(imgarr).length;i++)
+                    {
+                        if(imgarr[i].imageno == imgno)
+                        {
+                            imgpath = imgarr[i].imagepath;  
+                            console.log("ViewImagePath : " + imgpath);           
+                            $("#testimg").attr("src",imgpath);
+                            $("#imgpreview").attr("src",imgpath);
+                            $(".ui-simpledialog-container #imgpreview").attr("src",imgpath);
+                            PopupImage($("#imgpreview" + imgno).attr("id"),$("#tblPreview").html());
+                            $(".ui-simpledialog-container #imgpreview").attr("src",imgpath);
+                            break;
+                        }
+                    }
+                    if(imgpath == "")
+                    {
+                       getLangText("Image Not Available");
+                        return false;
+                    }
+                }
+                else
+                {
+                    getLangText("Image Not Available");
+                    return false;
+                }
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+
+	  function savecustomercontrol()
+        {
+           
+            var Qry = "Update customeroperationscontrol set totaltransactions = totaltransactions+1 where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and customercode="+ sessionStorage.getItem('customerid')+" and routecode="+ sessionStorage.getItem('RouteCode');
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              	window.location = "merchandising.html";
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error save promtion detail record");
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                                                     	window.location = "merchandising.html";
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+	  
+	  /*
+	  *@method checkImageCaptured
+	  *Function to check whether image is captured
+	  */
+	  
+	  function checkImageCaptured(url){
+		  
+		  if(isInvoiceImageCapture){
+		  
+		  var routekey = sessionStorage.getItem("RouteKey");
+          var visitkey = sessionStorage.getItem("VisitKey");
+          var routecode = sessionStorage.getItem("RouteCode");
+          var customercode = sessionStorage.getItem("customerid");
+          var QrySelect = "SELECT COUNT(*) as cnt FROM customerimages WHERE routekey = " + routekey + " AND visitkey = " + visitkey + " AND customercode = " + customercode;
+          if(platform == "Android")
+          {
+          	window.plugins.DataBaseHelper.select(QrySelect, function(result) {
+               	if(result.array != undefined)
+               	{
+               		if(result.array[0].cnt <= 0)
+               		 getLangText("Please Capture Image.");
+               	}else{
+               	 window.location="merchandising.html";
+               	}
+               },
+               function() {
+               console.warn("Error calling plugin");
+               });
+          }
+		  }else{
+			  window.location="merchandising.html";
+		  }
+
+	  }
+	  
+	  function checkForBottomBar(){
+		  if(sessionStorage.getItem("reportprintcontrol")>0){
+			  if(sessionStorage.getItem("rtype")==1 || sessionStorage.getItem("rtype")==3){
+				  disableBottomNavBar();
+			  }
+		  }
+	  }
+
+    </script>
+
+                                                    </body>
+                                                </html>

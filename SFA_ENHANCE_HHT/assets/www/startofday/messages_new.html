@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Messages</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="startofday.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Salesman Message</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent Spacing">
+
+                    <table border="0" cellpadding="2" cellspacing="2"
+                        width="100%"
+                        class="ManageCheckHeader" style="display:none;">
+                        <tr>
+                            <td class="CheckCaption leftAlign"
+                                style="width: 82%" id="td2"
+                                lang="en">Salesman #</td>
+
+                        </tr>
+                        <tr>
+                            <td class="leftAlign" style="width: 82%">
+                                <div class="label_text ui-corner-all"
+                                    style="width: 90%"
+                                    id="lblRouteCode"></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="leftAlign" style="width: 82%">
+                                <div class="label_text ui-corner-all"
+                                    style="width: 90%"
+                                    id="divSalesmanCode"></div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="tblBox">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0"
+                            width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 100%;" class="leftAlign">
+                                    <div id="txtSalesmanName">&nbsp;</div>
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="tblMessageNew">
+                            <table border="0" cellpadding="0" cellspacing="0"
+                                width="100%"
+                                id="tblContent">
+                                <tr>
+                                    <td style="width: 100%;"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a id="hlinkok" href="startofday.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/yes.png"
+                                    alt="Ok" />
+                            </div>
+                            <div id="divmenutext" class="MenuTextPos MenuText"
+                                lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div data-role="footer" id="f1" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" id="f2"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="day"
+                                data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        var platform = '',data = null;
+        window.lang = new jquery_lang_js();
+        $("#tblContent").click(function() { });
+        $(document).ready(function() {
+		$("#txtSalesmanName").text(sessionStorage.getItem("SalesmanName"));
+            
+            resizeOrientationWindow();
+       
+            document.addEventListener("deviceready",  checksetting, false);    
+                          
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            //Table click event and set selected row
+            $("#tblContent tr").live('click', function() {
+                $(this).toggleClass('clicked');
+                $(this).siblings().removeClass('clicked');
+            });
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                var val = 'Messages' + lan;
+                window.lang.change(val, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".boxContent").attr("dir", "rtl");
+
+                    //Set header align                 
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".boxContent").attr("dir", "ltr");
+
+                //Set header align
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+            
+        });
+        function checksetting()
+        {
+            platform= sessionStorage.getItem("platform");
+            if (platform == 'iPad') {
+                console.log("select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeenddate IS NULL");
+                Cordova.exec(function(result) {
+                              if (result!='') {
+                              
+                              }
+                              else
+                              {
+                              $("#day").attr("onclick","");                                                       
+                              $("#day").addClass('MenuGray');
+                              
+                              $("#inve").attr("onclick","");                                                       
+                              $("#inve").addClass('MenuGray');
+                              
+                              $("#cust").attr("onclick","");                                                       
+                              $("#cust").addClass('MenuGray');
+                              
+                              $("#sett").attr("onclick","");                                                       
+                              $("#sett").addClass('MenuGray');
+                              
+                              $("#expe").attr("onclick","");                                                       
+                              $("#expe").addClass('MenuGray');
+                              
+                              $("#info").attr("onclick","");                                                       
+                              $("#info").addClass('MenuGray');
+                              
+                              $("#setup").attr("onclick","");                                                       
+                              $("#setup").addClass('MenuGray');
+                              
+                              
+                              }
+                              
+                              },
+                              function(error) {
+                              alert("Error in getting salesman : " + error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              ["select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeenddate IS NULL"]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select("select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeenddate IS NULL", function(result) {
+                                                     if (result!='') {
+                                                     
+                                                     }
+                                                     else
+                                                     {
+                                                     $("#day").attr("onclick","");                                                       
+                                                     $("#day").addClass('MenuGray');
+                                                     
+                                                     $("#inve").attr("onclick","");                                                       
+                                                     $("#inve").addClass('MenuGray');
+                                                     
+                                                     $("#cust").attr("onclick","");                                                       
+                                                     $("#cust").addClass('MenuGray');
+                                                     
+                                                     $("#sett").attr("onclick","");                                                       
+                                                     $("#sett").addClass('MenuGray');
+                                                     
+                                                     $("#expe").attr("onclick","");                                                       
+                                                     $("#expe").addClass('MenuGray');
+                                                     
+                                                     $("#info").attr("onclick","");                                                       
+                                                     $("#info").addClass('MenuGray');
+                                                     
+                                                     $("#setup").attr("onclick","");                                                       
+                                                     $("#setup").addClass('MenuGray');
+                                                     
+                                                     
+                                                     }
+                                                      getMessageList();
+                                                     });
+            }
+        }
+        //Function used for get message list
+        function getMessageList()
+        {      
+            resizeWindow();  
+            $("#lblRouteCode").text(sessionStorage.getItem("RouteCode"));
+            $("#divSalesmanCode").html(sessionStorage.getItem("SalesmanCode"));
+           
+            platform= sessionStorage.getItem("platform");
+            
+            var selectquery = "select CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message1 ELSE arbmessageline1 END As message1,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message2 ELSE arbmessageline2 END As message2,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message3 ELSE arbmessageline3 END As message3,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN message4 ELSE arbmessageline4 END As message4 from salesmanmessages inner join salesman on salesman.messagekey = salesmanmessages.messagekey"; 
+            
+            
+            
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {                         
+                                BindData(result);
+                                getOdometerSetting();
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding message list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              [selectquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.select(selectquery,function(result)
+                                                     {
+                                                     var array ;
+                                                     if (result.array != undefined)
+                                                     {
+                                                        array = $.map(result.array, function(item, index) {
+                                                                   
+                                                                   return [[item.message1, item.message2, item.message3, item.message4]];
+                                                                   });
+                                                     }
+                                                     BindData(array);
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }                
+        }
+        
+       
+        //Bind data dynamic in a table
+        function BindData(result) {         
+            
+            data = result;     
+            
+            if(data.length > 0)
+            {    
+            for (j = 0; j < 4; j++) {
+                var r = "<tr class='contentFont'>";                    
+                var temp = "class = 'leftAlign'";
+                var c = "<td " + temp + ">" + data[0][j] + "</td>";
+                r += c;
+                r += "</tr>";       
+                $('#tblContent tbody').append(r);
+            } 
+            
+            //For select first row of table when screen load
+            $("#tblContent tr:eq(1)").trigger('click');
+            
+            //Set background for odd and even row.
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+                
+            $("#hlinkok").click(function(){localStorage.MessageFlag=1});
+                
+            }
+            else 
+            {               
+                $("#hlinkok").attr("href","#");
+                $("#hlinkok").click(function() { return false });
+                $("#hlinkok").css('cursor', 'text');
+                $("#divmenutext").addClass('MenuGray');
+                
+                localStorage.MessageFlag=0;
+            }
+            
+        }
+
+    </script>
+
+    </body>
+</html>

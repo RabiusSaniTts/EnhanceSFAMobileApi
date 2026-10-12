@@ -1,0 +1,490 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 08/02/2012
+ '  Description  : This page is used for merchandising.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Capture</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1400px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--<link rel="stylesheet" type="text/css" href="../css/jquery.mobile.simpledialog.css" />-->
+        <style rel="stylesheet" type="text/css">
+        .ui-simpledialog-header h4 { margin-top: 5px; margin-bottom: 5px; text-align: center;font-size:22px !important;}
+        .ui-simpledialog-container { border: 5px solid #111 !important; width:500px;}
+        .ui-simpledialog-screen { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; }
+        .ui-simpledialog-hidden { display: none; }
+        .ui-simpledialog-input { width: 85% !important; display: block !important; margin-left: auto; margin-right: auto;font-weight:bold;}
+        .ui-simpledialog-screen-modal { background-color: transparent; -moz-opacity: 0.8; opacity:.80; filter: alpha(opacity=80); }
+        .ui-simpledialog-subtitle { text-align: center; }
+        .ui-simpledialog-controls .buttons-separator {min-height: .6em;}
+        .ui-simpledialog-controls .button-hidden { display:none; }
+        .ui-dialog .ui-simpledialog-container { border: none !important; }
+        .ui-dialog-simpledialog .ui-content { padding: 5px !important;}
+        
+        .imgcapture
+        {
+            width:80px;
+            height:80px;
+        }
+        
+     
+    </style>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.simpledialog.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <div data-role="page" id="visualpage" data-theme="d" data-cache="never">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="merchandising.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Planogram</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="tblBox com_div">
+                    <div id="contentWrapper">
+                        <table cellpadding="10" cellspacing="5" align="center"
+                            id="tbl11">
+
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <!--<a href="#" rel="external" style="text-decoration: none; font-weight: normal;" onclick="SaveImage();">
+                    <div class="MenuPosition">
+                        <div class="iconpos">
+                            <img src="../images/icn-exit.png" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Save</div>
+                    </div>
+                </a>
+                <a href="merchandising.html" rel="external" style="text-decoration: none; font-weight: normal;">
+                    <div class="MenuPosition">
+                        <div class="iconpos">
+                            <img src="../images/icn-exit.png" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Save</div>
+                    </div>
+                </a>-->
+
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" rel="external" class="enableText"><div
+                            class="MenuPosition" onclick="Save()">
+                            <div class="MenuTextPos">
+                                <img src="../images/save.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Save</div>
+                        </div></a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" onclick="savecustomercontrol()" rel="external"
+                        class="enableText">
+                        <div class="MenuPosition MenuExit">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Done</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+                <table cellpadding="2" cellspacing="2" width="430px"
+                    id="tblPreview" style="display:none" align="center">
+                    <tr>
+                        <td>
+                            <img src id="imgpreview" width="400px"
+                                height="600px" />
+                            <td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="btncancel" type="button"
+                                        value="Cancel" rel="close"
+                                        data-role="none" width="150px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div data-role="footer" class="ui-bar" id="f1">
+                        <div class="footer">
+                            <div class="leftfooter">
+                                09 November 2011</div>
+                            <div class="rightfooter">
+                                Mirnah Technology Systems</div>
+                        </div>
+                    </div>
+                    <div data-role="footer"
+                        style="bottom: 0; position: absolute;" id="f2">
+                        <div data-role="navbar" data-iconpos="top"
+                            data-grid="f">
+                            <ul>
+                                <li style="margin-bottom:0 !important;"><a
+                                        href="#" rel="external" id="day"
+                                        data-icon="custom" lang="en"
+                                        onclick="footerredict('../startofday/startofday.html')">Start
+                                        day</a></li>
+                                <li style="margin-bottom:0 !important;"><a
+                                        href="#" id="inve" rel="external"
+                                        data-icon="custom" lang="en"
+                                        onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                                <li style="margin-bottom:0 !important;"><a
+                                        href="#" class="ui-btn-active"
+                                        rel="external" id="cust"
+                                        data-icon="custom"
+                                        lang="en">Customer</a></li>
+                                <li style="margin-bottom:0 !important;"><a
+                                        href="#" rel="external" id="sett"
+                                        data-icon="custom" lang="en"
+                                        onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+
+                                <li style="margin-bottom:0 !important;"><a
+                                        href="#" rel="external" id="info"
+                                        data-icon="custom" lang="en"
+                                        onclick="footerredict('../information/information.html')">Information</a></li>
+                                <li
+                                    style="margin-bottom:0 !important; width:14.0%"><a
+                                        href="#" rel="external" id="setup"
+                                        data-icon="custom" lang="en"
+                                        onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform= sessionStorage.getItem("platform");
+        var currimg,currdel,currimgno;
+        var imagedata;
+        var imgarr = [];
+        var filename;
+        var currentry;
+        var imagenum;
+        var delobjidx;
+        resizeOrientationWindow();
+        $(document).ready(function() {
+        	resizeWindow();
+            $(".leftfooter").html(getCurrentDate());
+             var customeraid = sessionStorage.getItem("customercode");
+             var customername = sessionStorage.getItem("customername");
+             
+             
+                          
+             $('#customerid').text(customeraid);
+             $('#customername').text(customername);
+             document.addEventListener("deviceready", ondeviceready, false);
+             var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('ImageCapture'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                      $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+                     $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+                
+                
+               
+                
+
+        });
+        function ondeviceready()
+        {
+            
+        	 
+            
+            try{
+            	
+            
+            getDetails();
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }  
+        
+       
+        
+        function getDetails()
+        {
+            var Qry = "SELECT visualdetail.visualcode,visualdetail.visualdetail_id,imagepath,imagename,visualsfeedback.remarks,imagedescription FROM visualdetail join visualheader on visualheader.visualcode =visualdetail.visualcode join customermaster on customermaster.visualcode=visualheader.visualcode left join visualsfeedback on visualsfeedback.visualdetail_id =visualdetail.visualdetail_id and visitkey=" + sessionStorage.getItem("VisitKey") + " AND routekey=" + sessionStorage.getItem("RouteKey") + " AND visualsfeedback.customercode=" + sessionStorage.getItem("customerid")+" WHERE customermaster.customercode=" + sessionStorage.getItem("customerid");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    if(result.length > 0)
+                    {
+                        imagedata = result;
+                        
+                        Binddata(imagedata);
+                    }
+                },
+                function(error) {
+                    alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result)
+                {
+                    if(result.array != undefined)
+                    {
+                        var array = $.map(result.array, function(item, index) {                        
+                            return [[item.visualcode, item.visualdetail_id, item.imagepath,item.imagename,item.remarks,item.imagedescription]];
+                        });
+                        imagedata = array;
+                        
+                        if(imagedata.length != undefined)
+                        {
+                            Binddata(imagedata);
+                        }
+                    }
+                    
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        
+        function Binddata(data)
+        {
+            for (i = 0; i < data.length; i++) 
+                {
+                 //  var name =  "file:///mnt/sdcard/"+data[i][3];
+                 var name =  data[i][2];
+                    var r = "<tr>";
+                    var j = i+1;
+                    r += "<td>"+data[i][5]+".</td>";
+                    r += "<td><img src='"+data[i][2]+"' id='imgpreview"+data[i][1]+"' onclick='ViewImage(\""+data[i][1]+"\",\""+name+"\")' class='imgcapture '/></td>";
+                    //r += "<td><img src='../images/image-preview.png' width='100px' height='100px' id='imgpreview"+data[i][1]+"' class='imgcapture' onclick='ViewImage(\""+data[i][1]+"\",\""+name+"\")'/></td>";
+                    r += "<td><input type='text' name='remark"+data[i][1]+"' class='textWidth textFont' id='remark"+data[i][1]+"' value='"+data[i][4]+"'><td>";
+                    
+                    r += "</tr>";
+                    
+                    $('#tbl11').append(r);                    
+                    
+                }
+               $('#visualpage').trigger('pagecreate');
+        }
+        
+      
+        function ViewImage(imgno,imgpath)
+        {
+           
+        	
+           
+            try
+            {
+                            console.log("ViewImagePath : " + imgpath);           
+                            $("#testimg").attr("src",imgpath);
+                            $("#imgpreview").attr("src",imgpath);
+                            $(".ui-simpledialog-container #imgpreview").attr("src",imgpath);
+                            PopupImage($("#imgpreview" + imgno).attr("id"),$("#tblPreview").html());
+                            $(".ui-simpledialog-container #imgpreview").attr("src",imgpath);
+                         
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }
+
+	 function Save()
+         {
+             for (j = 0; j < imagedata.length; j++) 
+                {
+                   
+                    var comment = $("#remark"+imagedata[j][1]).val();
+                    
+                    var Qry="select count(*) as cnt from visualsfeedback where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+" and visualdetail_id="+imagedata[j][1];
+                     var insertqry = "insert into visualsfeedback ('routekey','visitkey','customercode','visualdetail_id','visualcode','remarks','issync') values ("+sessionStorage.getItem("RouteKey")+","+sessionStorage.getItem("VisitKey")+"," + sessionStorage.getItem("customerid")+","+imagedata[j][1]+","+imagedata[j][0]+",'"+comment+"',0)";
+                   console.log(insertqry);
+                   
+                   var updateqry ="Update visualsfeedback set remarks='"+comment+"' where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+" and visualdetail_id="+imagedata[j][1];
+                    
+                    if(j==(imagedata.length)-1)
+                    flag=true;
+                    else
+                    flag=false;
+                    
+                    saverecord(Qry,insertqry,updateqry,flag);
+            
+            
+           
+                    
+                    
+            }
+                
+               
+         }
+function saverecord(Qry,insertqry,updateqry,flag)
+{
+    
+     if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                            if(result[0][0]==0)
+                                    qry1 = insertqry;
+                              else
+                                    qry1=updateqry;
+                       Cordova.exec(function(result) {
+                                        if(flag==true){
+                                                   savecustomercontrol();
+                                                   }
+                                },
+                                function(error) {
+                                alert(error);},
+                                "PluginClass", 
+                                "InsertUpdateMethod", 
+                                [qry1]);
+                  
+                },
+                function(error) {
+                    alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                 window.plugins.DataBaseHelper.select(Qry, function(result)
+                {
+                   
+                     if(result.array[0].cnt==0)
+                                    qry1 = insertqry;
+                              else
+                                    qry1=updateqry;
+                    window.plugins.DataBaseHelper.insert(qry1,function(result)
+                                                  {
+                                                    
+                                                   
+                                                   if(flag==true){
+                                                    savecustomercontrol();
+                                                   }
+                      
+                                                  },
+                                                  function()
+                                                  {
+                                                  console.warn("Error calling plugin");
+                                                  });
+                     
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+               
+            }
+}
+ function savecustomercontrol()
+        {
+           
+            var Qry = "Update customeroperationscontrol set totaltransactions = totaltransactions+1 where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and customercode="+ sessionStorage.getItem('customerid')+" and routecode="+ sessionStorage.getItem('RouteCode');
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              	window.location = "merchandising.html";
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error save promtion detail record");
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                                                     	window.location = "merchandising.html";
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+</script>
+            </body>
+        </html>

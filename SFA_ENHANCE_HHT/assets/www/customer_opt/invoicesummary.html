@@ -1,0 +1,760 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <meta charset="utf-8">
+    <head>
+        <title>Invoice Summary</title>
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--<script type="application/javascript" src="../js/iscroll.js"></script>
+
+    <script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+            scrollContent = new iScroll('contentWrapper');
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="salesinvoice_option.html" id="Back_inner"
+                    rel="external" lang="en">Back</a>
+                <h1 lang="en" id="lblTitle">Invoice Summary</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel" id="contentWrapper">
+                    <table id="tblContent11" cellpadding="2" cellspacing="0"
+                        border="0" width="100%">
+                        <tr>
+                            <td lang="en" style="font-weight:bold">Customer
+                                #</td>
+                            <td>
+                                <label id="lblCustomerNo"
+                                    style="font-weight:bold">
+                                </label>
+                                <!--<div style="float:left"><input type="button" id="btnSearch" value="Go" data-role="none"/></div>-->
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td width="25%" lang="en"
+                                style="font-weight:bold">Customer Name</td>
+                            <td width="75%" colspan="3"
+                                style="font-weight:bold">
+                                <label id="lblDesc">
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" width="25%">
+                                Invoice
+                            </td>
+                            <td lang="en" width="25%">
+                                Cases
+                            </td>
+                            <td lang="en" width="25%">
+                                Units
+                            </td>
+                            <td lang="en" width="25%">
+                                Amount
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" id="tdShelf">Outlet Inventory</td>
+                            <td>
+                                <input type="text" id="txtOnShelfCase"
+                                    class="textWidth textFont"
+                                    style="width: 10%" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtOnShelfUnit"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtOnShelfAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00" readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" id="tdSales">Sales</td>
+                            <td>
+                                <input type="text" id="txtSalesCase"
+                                    class="textWidth textFont"
+                                    style="width: 10%" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtSalesUnit"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtSalesAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00" readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" id="tdFree">Freegoods</td>
+                            <td>
+                                <input type="text" id="txtFreegoodsCase"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtFreegoodsUnit"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtFreeGoodsAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00" readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" id="tdGoodReturns">Good Returns</td>
+                            <td>
+                                <input type="text" id="txtgoodCase"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtgoodUnit"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtgoodAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00" readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" id="tdBuyBack">Buyback free</td>
+                            <td>
+                                <input type="text" id="txtBuybackFreeCase"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtBuybackFreeUnit"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtBuybackFreeAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" id="tdBadReturns">Bad Returns</td>
+                            <td>
+                                <input type="text" id="txtReturnsCase"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtReturnsUnit"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtReturnsAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00" readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" id="tdRental">Rental</td>
+                            <td>
+                                <input type="text" id="txtRentalCase"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtRentalUnit"
+                                    class="textWidth textFont" value="0"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" id="txtRentalAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00" readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td lang="en" style="font-weight: bold;">Invoice
+                                Total</td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <input type="text" id="txtInvTotalAmt"
+                                    class="textWidth textFont amountright"
+                                    value="0.00" readonly="readonly" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="salesinvoice_option.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/yes.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom"
+                                lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = null;
+	 window.lang = new jquery_lang_js();
+       resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+
+            $(".leftfooter").html(getCurrentDate());
+            document.addEventListener("deviceready", getrecord, false);
+                          
+            if (window.location.toString().indexOf("pg") != -1) {
+                $("#lblTitle").text("Free Goods");
+            }
+				var customercode = sessionStorage.getItem("customercode");
+                var customername = sessionStorage.getItem("customername");
+                $("#lblCustomerNo").text(customercode);
+           		$("#lblDesc").text(customername);
+           		getLanguageData();
+            function GetElements(xmlDoc) {
+                var PageName = 'orderRequest';
+            }
+
+            
+
+        });
+        function TableDataOffLine(RecSet,flag)
+        {                       
+            var data = RecSet;
+            var salesamount=0;
+            var damageamount=0;
+            var returnamount=0;
+            var returnfreeamount=0;
+            var manualfreeamount=0;
+            var fixedrentamount=0;
+            
+            var salesunit=0;
+            var salescase=0;
+            var damagedunit=0;
+            var damagecase=0;
+            var returnunit=0;
+            var returncase=0;
+            var returnfreeunit=0;
+            var returnfreecase=0;
+            var manualfreeunit=0;
+            var manualfreecase=0;
+            var fixedrentunit=0;
+            var fixedrentcase=0;
+            if(flag=='ipad')
+            var datas = data.length;
+            else
+            var datas = data.array.length;
+            
+            
+            for (i = 0; i < datas; i++)
+	        {
+            if(flag=='ipad')
+            {
+	            
+	                var salesqty = data[i][0];
+	                var damagedqty = data[i][1];
+	                var retrunqty = data[i][2];
+	                var returnfreeqty = data[i][3];
+	                var manualfreeqty = data[i][4];
+	                var fixedrentqty = data[i][5];
+	                var itemcode = data[i][6];
+	                var unitspercase = data[i][7];
+	                var salesprice = eval(data[i][8]).toFixed(sessionStorage.getItem('decimalplace'));
+	                var caseprice = eval(data[i][9]).toFixed(sessionStorage.getItem('decimalplace'));
+	                var returncaseprice = eval(data[i][10]).toFixed(sessionStorage.getItem('decimalplace'));
+	                var returnprice = eval(data[i][11]).toFixed(sessionStorage.getItem('decimalplace'));
+                    var goodreturncaseprice = eval(data[i][12]).toFixed(sessionStorage.getItem('decimalplace'));
+                    var goodreturnprice = eval(data[i][13]).toFixed(sessionStorage.getItem('decimalplace'));
+             }
+             else
+             {
+             	
+	                var salesqty = data.array[i].salesqty;
+	                var damagedqty = data.array[i].damagedqty;
+	                var retrunqty = data.array[i].returnqty;
+	                var returnfreeqty = data.array[i].returnfreeqty;
+	                var manualfreeqty = data.array[i].manualfreeqty;
+	                var fixedrentqty = data.array[i].fixedrentqty;
+	                var itemcode = data.array[i].itemcode;
+	                var unitspercase = data.array[i].unitspercase;
+	                var salesprice = eval(data.array[i].salesprice).toFixed(sessionStorage.getItem('decimalplace'));
+	                var caseprice = eval(data.array[i].caseprice).toFixed(sessionStorage.getItem('decimalplace'));
+	                var returncaseprice = eval(data.array[i].returncaseprice).toFixed(sessionStorage.getItem('decimalplace'));
+	                var returnprice = eval(data.array[i].returnsalesprice).toFixed(sessionStorage.getItem('decimalplace'));
+                 var goodreturncaseprice = eval(data.array[i].goodreturncaseprice).toFixed(sessionStorage.getItem('decimalplace'));
+                 var goodreturnprice = eval(data.array[i].goodreturnsalesprice).toFixed(sessionStorage.getItem('decimalplace'));
+             }
+              
+                
+                if(salesqty != '')
+                {
+                	
+                	if(unitspercase==1){
+                		salesunits =parseInt(salesqty);
+    	                salescases =0;
+                		
+                	}else{
+                		
+                		salesunits =parseInt(salesqty%unitspercase);
+    	                salescases =parseInt(salesqty/unitspercase);
+                		
+                	}
+	                
+	                salesamount = salesamount + ((salescases * caseprice) + ((salesunits) * salesprice));
+	                salesunit += salesunits;
+	                salescase += salescases;
+               
+                }
+                
+                if(damagedqty !='')
+                {
+                	
+                	if(unitspercase==1){
+                		damagedunits = parseInt(damagedqty);
+     	                damagecases = 0;
+                		
+                	}else{
+                		
+                		damagedunits = parseInt(damagedqty%unitspercase);
+     	                damagecases = parseInt(damagedqty/unitspercase);
+                		
+                	}
+	               
+	                damageamount += ((damagecases * returncaseprice) + ((damagedunits) * returnprice));
+                    damagecase +=damagecases;
+                    damagedunit +=damagedunits;
+                }
+               
+                if(retrunqty !='')
+                {
+                	if(unitspercase==1){
+                		 returnunits = parseInt(retrunqty);
+     	                 returncases =0;
+                	}
+                	else{
+                		returnunits = parseInt(retrunqty%unitspercase);
+     	                returncases = parseInt(retrunqty/unitspercase);
+                		
+                	}
+                	    
+	                returnamount += ((returncases * goodreturncaseprice) + ((returnunits) * goodreturnprice));
+                   
+                    
+                    returnunit +=returnunits;
+                    returncase +=returncases;
+                }
+                
+                if(returnfreeqty !='')
+                {
+                	if(unitspercase==1){
+                		returnfreeunits = parseInt(returnfreeqty);
+     	                returnfreecases = 0;
+	               	}
+	               	else{
+	               		returnfreeunits = parseInt(returnfreeqty%unitspercase);
+		                returnfreecases = parseInt(returnfreeqty/unitspercase);
+	               		
+	               	}
+                	
+	              
+	                
+	                returnfreeamount += ((returnfreecases * goodreturncaseprice) + ((returnfreeunits) * goodreturnprice));
+                    returnfreeunit +=returnfreeunits;
+                    returnfreecase +=returnfreecases;
+                }
+                if(manualfreeqty !='')
+                {
+                	
+                	if(unitspercase==1){
+                		manualfreeunits = parseInt(manualfreeqty);
+     	                manualfreecases = 0;
+	               	}
+	               	else{
+	               	    manualfreeunits =parseInt(manualfreeqty%unitspercase);
+		                manualfreecases = parseInt(manualfreeqty/unitspercase);
+	               		
+	               	}
+	               
+	                //var free =((manualfreecases * caseprice) + ((manualfreeunits) * salesprice));
+	                //console.log(free);
+	               // manualfreeamount = manualfreeamount + ((manualfreecases * caseprice) + ((manualfreeunits) * salesprice));
+	                manualfreeunit +=manualfreeunits;
+	                manualfreecase +=manualfreecases;
+                
+                }
+                
+                if(fixedrentqty !='')
+                {
+                	if(unitspercase==1){
+                		fixedrentunits = parseInt(fixedrentqty);
+                        fixedrentcases = 0;
+	               	}
+	               	else{
+	               		fixedrentunits = parseInt(fixedrentqty%unitspercase);
+	                    fixedrentcases = parseInt(fixedrentqty/unitspercase);
+	               		
+	               	}
+                
+                    fixedrentamount += ((fixedrentcase * caseprice) + ((fixedrentunit) * salesprice));
+                    fixedrentunit +=fixedrentunits;
+                    fixedrentcase +=fixedrentcases;
+                    
+                }
+                 
+            }
+            
+            $("#txtSalesCase").val(Math.round(salescase));
+            $("#txtSalesUnit").val(Math.round(salesunit));
+            $("#txtSalesAmt").val(eval(salesamount).toFixed(sessionStorage.getItem('decimalplace')));
+            
+            $("#txtFreegoodsCase").val(Math.round(manualfreecase));
+            $("#txtFreegoodsUnit").val(Math.round(manualfreeunit));
+            $("#txtFreegoodsAmt").val(eval(manualfreeamount).toFixed(sessionStorage.getItem('decimalplace')));
+            
+            $("#txtgoodCase").val(Math.round(returncase));
+            $("#txtgoodUnit").val(Math.round(returnunit));
+            $("#txtgoodAmt").val(eval(returnamount).toFixed(sessionStorage.getItem('decimalplace')));
+            
+            $("#txtBuybackFreeCase").val(Math.round(returnfreecase));
+            $("#txtBuybackFreeUnit").val(Math.round(returnfreeunit));
+            $("#txtBuybackFreeAmt").val(eval(returnfreeamount).toFixed(sessionStorage.getItem('decimalplace')));
+            
+            $("#txtReturnsCase").val(Math.round(damagecase));
+            $("#txtReturnsUnit").val(Math.round(damagedunit));
+            $("#txtReturnsAmt").val(eval(damageamount).toFixed(sessionStorage.getItem('decimalplace')));
+            
+            $("#txtRentalCase").val(Math.round(fixedrentcase));
+            $("#txtRentalUnit").val(Math.round(fixedrentunit));
+            $("#txtRentalAmt").val(eval(fixedrentamount).toFixed(sessionStorage.getItem('decimalplace')));
+            var InvTotalAmt = salesamount-returnamount-damageamount;
+            $("#txtInvTotalAmt").val(eval(InvTotalAmt).toFixed(sessionStorage.getItem('decimalplace')));
+
+            // Set Detaillink for detail view of summary
+            if (Math.round(salescase) != 0 || Math.round(salesunit) != 0){
+            	
+            	 $("#tdSales").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('sales') lang='en'>"+getLangTextdata('Sales')+"</a>");
+            }
+            
+               
+            
+            if(Math.round(manualfreecase) != 0 || Math.round(manualfreeunit) != 0){
+                $("#tdFree").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('free')>"+getLangTextdata('Freegoods')+"</a>");
+            }
+            else
+            {
+            	$("#tdFree").html(getLangTextdata("Freegoods"));
+            }
+                
+                
+            if (Math.round(returncase) != 0 || Math.round(returnunit) != 0){
+            	$("#tdGoodReturns").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('goodreturns')>"+getLangTextdata('Good Returns')+"</a>");
+            }
+            else{
+        	   $("#tdGoodReturns").html(getLangTextdata("Good Returns"));
+            }
+               
+            if (Math.round(returnfreecase) != 0 || Math.round(returnfreeunit) != 0){
+            	 $("#tdBuyBack").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('buyback')>"+getLangTextdata('Buyback Free')+"</a>");
+            }
+            else{
+        	   $("#tdBuyBack").html(getLangTextdata("Buyback Free"));
+            }
+            if (Math.round(damagecase) != 0 || Math.round(damagedunit) != 0){
+            	 $("#tdBadReturns").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('badreturns')>"+getLangTextdata('Bad Returns')+"</a>");
+            }
+            else{
+            	$("#tdBadReturns").html(getLangTextdata("Bad Returns"));
+            }
+                
+                
+            if (Math.round(fixedrentcase) != 0 || Math.round(fixedrentunit) != 0){
+            	$("#tdRental").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('rental')>"+getLangTextdata('Rental')+"</a>");
+            }
+            else{
+            	 $("#tdRental").html(getLangTextdata("Rental"));
+            }
+            
+            getOnShelfQty();
+        }
+        
+        function getOnShelfQty()
+        {
+            //var Qry = "SELECT CASE WHEN unitspercase=1 THEN 0 ELSE IFNULL(SUM(qtyloc1each/unitspercase),0) END AS qtyloc1case,CASE WHEN unitspercase=1 THEN 0 ELSE IFNULL(SUM(qtyloc2each/unitspercase),0) END AS qtyloc2case,CASE WHEN unitspercase=1 THEN 0 ELSE IFNULL(SUM(qtyloc3each/unitspercase),0) END AS qtyloc3case,CASE WHEN unitspercase=1 THEN IFNULL(SUM(qtyloc1each),0) ELSE IFNULL(SUM(qtyloc1each%unitspercase),0) END AS qtyloc1units,CASE WHEN unitspercase=1 THEN IFNULL(SUM(qtyloc2each),0) ELSE IFNULL(SUM(qtyloc2each%unitspercase),0) END AS qtyloc2units,CASE WHEN unitspercase=1 THEN IFNULL(SUM(qtyloc3each),0) ELSE IFNULL(SUM(qtyloc3each%unitspercase),0) END AS qtyloc3units,IFNULL(sum(((ifnull(qtyloc1each,0)/unitspercase) * caseprice) + ((ifnull(qtyloc1each,0)%unitspercase) * defaultsalesprice)),0) qtyloc1amount,IFNULL(sum( ((ifnull(qtyloc2each,0)/unitspercase) * caseprice) + ((ifnull(qtyloc2each,0)%unitspercase) * defaultsalesprice)),0) qtyloc2amount,IFNULL(sum( ((ifnull(qtyloc3each,0)/unitspercase) * caseprice) + ((ifnull(qtyloc3each,0)%unitspercase) * defaultsalesprice)),0) qtyloc3amount FROM customerinventorydetail cid JOIN itemmaster im ON im.actualitemcode = cid.itemcode WHERE cid.routekey=" + sessionStorage.getItem("RouteKey") + "  AND cid.visitkey=" + sessionStorage.getItem("VisitKey");
+            console.log(Qry);
+            var Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,CASE WHEN im.unitspercase=1 THEN 0 ELSE IFNULL((qtyloc1each/unitspercase),0) + IFNULL((qtyloc2each/unitspercase),0) +IFNULL((qtyloc3each/unitspercase),0) END AS cases,CASE WHEN im.unitspercase=1 THEN IFNULL((qtyloc1each),0) + IFNULL((qtyloc2each),0) + IFNULL((qtyloc3each),0) ELSE IFNULL((qtyloc1each%unitspercase),0) + IFNULL((qtyloc2each%unitspercase),0) + IFNULL((qtyloc3each%unitspercase),0) END AS units,im.caseprice as caseprice,im.defaultsalesprice as salesprice FROM customerinventorydetail cid JOIN itemmaster im ON im.actualitemcode = cid.itemcode WHERE cid.routekey=" + sessionStorage.getItem("RouteKey") + "  AND cid.visitkey=" + sessionStorage.getItem("VisitKey")+" group by actualitemcode";
+            
+            
+            if(sessionStorage.getItem("platform") == "iPad") 
+            {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            var onshelfcases = eval(result[0][0]) + eval(result[0][1]) + eval(result[0][2]);
+                            var onshelfunits = eval(result[0][3]) + eval(result[0][4]) + eval(result[0][5]);
+                            var onshelfamount = eval(result[0][6]) + eval(result[0][7]) + eval(result[0][8]); 
+                            var totalamount = $("#txtInvTotalAmt").val();
+                            
+                            $("#txtOnShelfCase").val(Math.round(onshelfcases));
+                            $("#txtOnShelfUnit").val(Math.round(onshelfunits));
+                            $("#txtOnShelfAmt").val(eval(onshelfamount).toFixed(sessionStorage.getItem('decimalplace')));
+            
+				            if (Math.round(onshelfcases) != 0 || Math.round(onshelfunits) != 0)
+				            $("#tdShelf").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('self')>Inventory</a>");
+				            else
+				            $("#tdShelf").html("Inventory");
+                            //$("#txtInvTotalAmt").val(eval(totalamount) + eval(onshelfamount));
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+            }
+            else if(sessionStorage.getItem("platform") == "Android") 
+            {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                    	
+                        if(result.array!=undefined && result.array.length > 0)
+                        {
+                        	 var onshelfcases=0,onshelfunits=0,onshelfamount=0;
+                        	 var length=result.array.length;
+                        	 var data=result.array;
+                        	
+                        	 for(i=0;i< data.length;i++){
+                        		 onshelfcases = eval(onshelfcases) + eval(data[i].cases);
+                                 onshelfunits = eval(onshelfunits)+ eval(data[i].units);
+                                 onshelfamount =eval(onshelfamount) + eval(data[i].cases*data[i].caseprice) + eval(data[i].units*data[i].salesprice);
+                                
+	                          
+	                            
+                                 if(i==length-1){
+                                	
+                                	 var totalamount = $("#txtInvTotalAmt").val();                            
+                                     $("#txtOnShelfCase").val(Math.round(onshelfcases));
+                                     $("#txtOnShelfUnit").val(Math.round(onshelfunits));
+                                     $("#txtOnShelfAmt").val(eval(onshelfamount).toFixed(sessionStorage.getItem('decimalplace')));
+                                     $("#txtInvTotalAmt").val(eval(totalamount).toFixed(sessionStorage.getItem('decimalplace')));
+                                     
+         				            if (Math.round(onshelfcases) != 0 || Math.round(onshelfunits) != 0)
+         				            	$("#tdShelf").html("<a href='#' rel='external' style='color:#3cb3e3;font-weight:bold' onclick=SetLocalStorage('self')>"+getLangTextdata("Outlet Inventory")+"</a>");
+         				            else
+         				            	$("#tdShelf").html(getLangTextdata("Outlet Inventory"));
+                                	 
+                                	 
+                                 }
+                        		 
+                        	 }
+                        	 
+                        	
+                        }                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+            }            
+        }
+        
+        function SetLocalStorage(Qty)
+        {
+            localStorage.Qty = Qty;
+            window.location = 'invoicesummarydetail.html';
+        }
+        function getrecord()
+        {
+            var routecode=sessionStorage.getItem("RouteCode");
+            var routekey=sessionStorage.getItem("RouteKey");
+            var visitkey=sessionStorage.getItem("VisitKey");
+           	var platform= sessionStorage.getItem("platform");
+            console.log("select ids.salesqty,damagedqty,returnqty,returnfreeqty,manualfreeqty,fixedrentqty,ids.itemcode,i.unitspercase,ifnull(ids.salesprice,0) as salesprice,ifnull(ids.salescaseprice,0) caseprice,ifnull(ids.returncaseprice,0) as returncaseprice,ifnull(ids.returnprice,0) as returnsalesprice,ifnull(ids.goodreturncaseprice,0) as goodreturncaseprice,ifnull(ids.goodreturnprice,0) as  goodreturnsalesprice from invoicedetail as ids join itemmaster as i on i.actualitemcode=ids.itemcode and i.itemtype = 1 left join pricingdetail1 p on p.itemcode = actualitemcode and customerpricingkey = (select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where routekey="+routekey+" and visitkey="+visitkey);
+            if(platform=='iPad')
+            {
+                var abc = Cordova.exec(function(result) {
+                						 if(result.length > 0)
+                                        	TableDataOffLine(result,'ipad');
+                                         else
+                                         	getOnShelfQty();
+                                        },
+                                        function(error) {
+                                        alert(error);},
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select ids.salesqty,damagedqty,returnqty,returnfreeqty,manualfreeqty,fixedrentqty,ids.itemcode,i.unitspercase,ifnull(ids.salesprice,0) as salesprice,ifnull(ids.salescaseprice,0) caseprice,ifnull(ids.returncaseprice,0) as returncaseprice,ifnull(ids.returnprice,0) as returnsalesprice,ifnull(ids.goodreturncaseprice,0) as goodreturncaseprice,ifnull(ids.goodreturnprice,0) as goodreturnsalesprice from invoicedetail as ids join itemmaster as i on i.actualitemcode=ids.itemcode and i.itemtype = 1 left join pricingdetail1 p on p.itemcode = actualitemcode and customerpricingkey = (select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where routekey="+routekey+" and visitkey="+visitkey]);
+           }
+           else if(platform=='Android')
+           	{
+           		var Qry = "select ids.salesqty,damagedqty,returnqty,returnfreeqty,manualfreeqty,fixedrentqty,ids.itemcode,i.unitspercase,ifnull(ids.salesprice,0) as salesprice,ifnull(ids.salescaseprice,0) caseprice,ifnull(ids.returncaseprice,0) as returncaseprice,ifnull(ids.returnprice,0) as returnsalesprice,ifnull(ids.goodreturncaseprice,0) as goodreturncaseprice,ifnull(ids.goodreturnprice,0) as goodreturnsalesprice from invoicedetail as ids join itemmaster as i on i.actualitemcode=ids.itemcode and i.itemtype = 1 left join pricingdetail1 p on p.itemcode = actualitemcode and customerpricingkey = (select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where routekey="+routekey+" and visitkey="+visitkey;
+			           		window.plugins.DataBaseHelper.select(Qry,function(result)
+							{
+								if(result.array != undefined)								
+							 		TableDataOffLine(result,'android');							 	
+							 	else
+							 		getOnShelfQty();
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+           	} 
+                   
+            return false;
+        }
+        function getLanguageData(){
+        	 var lan = sessionStorage.getItem("Language");
+				window.lang.run(lan);
+		
+             if (sessionStorage.getItem("Language")  != "en") {
+            
+	                window.lang.change('InvoiceSummary'+lan,lan);
+	                window.lang.change('Footer'+lan,lan);
+					if(lan=="AR")
+	                {
+	                      $(".centerboxInvReq").attr("dir", "rtl");
+	                      $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					      $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					      $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					      $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					}
+		
+				}
+				else
+				{
+			   		 window.lang.change('en','en');
+			     	 $(".centerboxInvReq").attr("dir", "ltr");
+			    	$('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			    	$('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			    	$('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			    	$('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				}
+        	
+        	
+        	
+        }
+    </script>
+
+    </body>
+</html>

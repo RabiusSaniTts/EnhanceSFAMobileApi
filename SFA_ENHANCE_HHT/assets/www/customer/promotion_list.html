@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HOME</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+			rel="stylesheet" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 699px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 599px)"
+			href="../css/style_600.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script type="text/javascript"
+			src="../js/jquery.mobile.datebox.min.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+		<script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="index.html"   id="Back_inner">test</a>-->
+				<a id="Back_inner" href="#" rel="external" lang="en">Back</a>
+				<h1 lang="en">Promotion List</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="com_div comm captionLabel">
+					<div class="textBar">
+						<table cellpadding="2" cellspacing="2" border="0" width="100%">
+							<tr>
+								<td width="50%" id="customer" class="rtext" lang="en">
+									Customer</td>
+								<td class="rtext" width="50%" lang="en">Promotions For</td>
+							</tr>
+							<tr>
+								<td width="50%"><select style="width: 100%"
+										name="select-choice-1" id="custname" disabled="true"
+										onchange="getPromotionList()">
+
+									</select></td>
+								<td width="50%"><input name="startdate" value="23-01-2011"
+										type="date" readonly="readonly" data-role="datebox"
+										id="startdate"
+										data-options='{"mode": "datebox","dateFormat": "dd-MM-YYYY"}'
+										onchange="getPromotionList()" /></td>
+
+							</tr>
+
+						</table>
+					</div>
+					<div class="tblBox tbltd" id="contentWrapper">
+
+						<table class="tblHeader" width="100%" cellpadding="10"
+							cellspacing="0" id="tblHeaderContent">
+							<tr>
+								<td width="30%" lang="en" class="first">Promo Key</td>
+								<td width="70%" lang="en" class="last">Promo Description</td>
+							</tr>
+						</table>
+
+						<div class="route_table_height item">
+							<table border="0" width="100%" cellpadding="10" cellspacing="0"
+								id="tbl1" data-role="none">
+								<tbody class="tblBody">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="leftbottomMenu">
+					<div class="menuPadding">
+						&nbsp;</div>
+					<a href="promotion_detail_cust.html" class="enableText"
+						rel="external" onclick=localStorage.prodetail='promo'>
+						<div class="MenuPosition">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/detail.png" alt="Option" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Details</div>
+						</div>
+					</a>
+					<div class="menuPadding">
+						&nbsp;</div>
+					<a href="#" id="exit" class="enableText" rel="external">
+						<div class="MenuPosition MenuExit">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/icn-exit.png" alt="Exit" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Done</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+								lang="en">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+            var platform='';
+	$("#tbl1 tr:odd").addClass('oddRow');
+        $("#tbl1 tr:even").addClass('evenRow');
+	 $("#tbl1").click(function() { });
+	$('label').css({ 'background': '#D1ECFD','border':'none' });
+	$('.ui-btn-inner').css({ 'border-top':'none' });
+	
+	
+      	resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 		resizeWindow();                          
+                          if(sessionStorage.getItem('promodate'))
+                          {
+                          
+                         // $("#startdate").val(sessionStorage.getItem('promodate'));
+                          $("#startdate").trigger('datebox',{'method':'set','value':sessionStorage.getItem('promodate'),'date':new Date(sessionStorage.getItem('promodate'))})
+                          $("#startdate").datebox("refresh");
+                          }
+                          else
+                          {
+                          
+                          var cDate = new Date();
+                          
+                          var tDate = ("0" + cDate.getDate()).slice(-2)+'-'+("0" + (cDate.getMonth() + 1)).slice(-2) + '-' + cDate.getFullYear(); //Change after merge js file      
+                          $("#startdate").val(tDate);
+                          sessionStorage.setItem('promodate',tDate);
+                          }
+        platform= sessionStorage.getItem("platform");
+       document.addEventListener("deviceready", getCustomerList, false);
+        if(localStorage.promo=='cust')
+		{
+		    var page = 'customer_info.html'
+		    $("#lnkPrint").attr("onclick", "localStorage.po='customer_opt'");
+                          $('#custname').selectmenu("disable");
+		}
+		else
+		{
+		   // var page = '../information/information.html';
+                     var page = '../review/review.html';
+		    $("#lnkPrint").attr("onclick", "localStorage.po='information'");
+                          $('#custname').selectmenu("enable");
+                          $('#custname').selectmenu("refresh");
+		}
+		$("#Back_inner").attr("href", page);
+		$("#exit").attr("href", page);
+	    
+	  $("#tbl1 tr").live('click', function() {	   
+	    $(this).toggleClass('clicked');
+	    $(this).siblings().removeClass('clicked');
+	     var i=$(this).index();
+	    });
+        $(".leftfooter").html(getCurrentDate());
+           
+	     $('.ui-body-d').css({ 'background': '#fff' });
+	    $('.ui-input-datebox').css({ 'width': '92%','line-height':'4.0' });
+	   $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important'});
+	    $('.ui-input-datebox input').css({ 'width': '76% !important','color':'#999' });
+           $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#fff' });
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Promolist'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#contentWrapper").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $("#contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+        function getPromotionList()
+        {
+            
+             sessionStorage.setItem('promodate',$("#startdate").val());
+            var startdate =  FormatDate();
+            var customerid = $('#custname').val(); 
+             sessionStorage.setItem('promocust',customerid);
+           sessionStorage.setItem('promodate1',startdate);
+            console.log("select promokeydetail.plannumber,Case When '"+ sessionStorage.getItem('Language') +"' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc from promokeyheader inner join customermaster on promokeyheader.promotionkey =  customermaster.promotionkey inner join promokeydetail on promokeydetail.promotionkey = promokeyheader.promotionkey inner join promoplanheader  on promoplanheader.plannumber = promokeydetail.plannumber where customermaster.customercode = "+ customerid +" and ('"+startdate+"' between promokeydetail.startdate and promokeydetail.enddate)");
+            if(platform=='iPad')
+            {
+                Cordova.exec(function(result) {                           
+                              ClearTable();
+                              if(result.length > 0)
+                              {
+                              BindData(result);   
+                              
+                              
+                              }
+                                                                
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in binding promotion list : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              ["select promokeydetail.plannumber,Case When '"+ sessionStorage.getItem('Language') +"' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc from promokeyheader inner join customermaster on promokeyheader.promotionkey =  customermaster.promotionkey inner join promokeydetail on promokeydetail.promotionkey = promokeyheader.promotionkey inner join promoplanheader  on promoplanheader.plannumber = promokeydetail.plannumber where customermaster.customercode = "+ customerid +" and ('"+startdate+"' between promokeydetail.startdate and promokeydetail.enddate)"]);         
+            }
+            else if(platform=='Android')
+            {        
+            
+            	   console.log("select promokeydetail.plannumber,Case When '"+ sessionStorage.getItem('Language') +"' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc from promokeyheader inner join customermaster on promokeyheader.promotionkey =  customermaster.promotionkey inner join promokeydetail on promokeydetail.promotionkey = promokeyheader.promotionkey inner join promoplanheader  on promoplanheader.plannumber = promokeydetail.plannumber where customermaster.customercode = "+ customerid +""); 
+                window.plugins.DataBaseHelper.select("select promokeydetail.plannumber,Case When '"+ sessionStorage.getItem('Language') +"' = 'en' Then promoplanheader.plandescription Else promoplanheader.arbplandescription End As plandesc from promokeyheader inner join customermaster on promokeyheader.promotionkey =  customermaster.promotionkey inner join promokeydetail on promokeydetail.promotionkey = promokeyheader.promotionkey inner join promoplanheader  on promoplanheader.plannumber = promokeydetail.plannumber where customermaster.customercode = "+ customerid +"",function(result)
+                                                     {
+                                                    ClearTable();
+                                                     if(result.array!=undefined)
+                                                     {     
+                                                     BindData(result); 
+                                                    
+                                                     }
+                                                              
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }           
+        
+        }
+            function BindData(result) {
+                ClearTable();
+                var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+                data = result;
+                if (platform == 'Android') {                    
+                    var array = $.map(data.array, function(item, index) {
+                                      
+                                      return [[item.plannumber, item.plandesc]];
+                                      });
+                    
+                    data = array;
+                }
+                for (i = 0; i < data.length; i++) 
+                {
+                    var r = "<tr>";
+                    
+                    for (j = 0; j < CellCount; j++) {  
+                        var c = '';
+                        var temp = '';
+                        
+                            if (j == CellCount-1)
+                            temp += " class = 'last' width='70%'";
+                        else
+                        temp +=" class = 'first' width='30%'";
+                            
+                            
+                            c = "<td " + temp + ">" + data[i][j] + "</td>"; 
+                            
+                            
+                        
+                        r += c;
+                    }
+                    r += "</tr>";
+                    
+                    $('#tbl1 tbody').append(r);                    
+                    
+                }
+                $("#tbl1 tr:eq(0)").trigger('click');
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');  
+                
+            }
+            function ClearTable() {
+                $("#tbl1 tr").remove();
+            }
+            function FormatDate()
+            {
+               
+                var d = new Date($("#startdate").data("datebox").theDate);
+                
+                var m = d.getMonth()+1; //+1 because getMonth() returns 0 based index
+                var y = d.getFullYear();            
+                d = d.getDate();
+                d = (d<=9 ? "0"+d : d);
+                m = (m<=9 ? "0"+m : m);
+               return y + "-" + m + "-" + d;
+            }
+            //Function for bind customer list
+            function getCustomerList()
+            {           
+            
+            	$("#cusPrint").attr("href","");
+         		$("#imgPrint").attr("src","../images/print-gray.png");           
+                if(platform=='iPad')
+           		{ 
+                    Cordova.exec(function(result) { 
+                                  
+                                  for(i=0;i<result.length;i++){    
+                                  
+                                  $("<option />" ,{value:result[i][0],text:result[i][0]+" "+result[i][1]}).appendTo($("#custname"));   
+                                  
+                                  }
+                                  if (localStorage.promo == 'cust') {
+                                  var custid = sessionStorage.getItem("customerid");
+                                  
+                                  $("#custname").val(custid);         
+                                  }
+                                  $("#custname").selectmenu("refresh");
+                                  getPromotionList();
+                                  },
+                                  function(error) {
+                                  alert("Error in binding Category : " + error);
+                                  },
+                                  "PluginClass", 
+                                  "GetdataMethod", 
+                                  ["select customercode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN customername ELSE arbcustomername END as Desc from customermaster WHERE templateindicator IS NOT 1 order by customercode"]);         
+                    
+                }
+             	else if(platform=='Android')
+            	{
+                    window.plugins.DataBaseHelper.select("select customercode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN customername ELSE arbcustomername END as Desc from customermaster WHERE templateindicator IS NOT 1  order by customercode",function(result)
+                                                         {		
+                                                         var array = $.map(result.array, function (item, index) {               
+                                                                           return [[item.customercode, item.Desc]];            					
+                                                                           });
+                                                         
+                                                         result = array;
+                                                         
+                                                         for(i=0;i<result.length;i++){                    
+                                                        	 $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#custname"));                                           
+                                                         }
+                                                        if (localStorage.promo == 'cust') {
+                                                            
+                                  var custid = sessionStorage.getItem("customerid");
+                                  
+                                  $("#custname").val(custid);         
+                                  }
+                                  $("#custname").selectmenu("refresh");
+                                  getPromotionList();
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+            	}
+            }
+        </script>
+
+		</div>
+	</body>
+</html>

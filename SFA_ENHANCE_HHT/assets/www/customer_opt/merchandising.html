@@ -1,0 +1,758 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 08/02/2012
+ '  Description  : This page is used for merchandising.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Merchandising</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a onclick="savecustomercontrol();" id="Back_inner"
+                    rel="external" lang="en">Back</a>
+                <h1 lang="en">Merchandizing</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="topbox">
+                    <div class="content-primary1">
+                        <label class="cus_lable heading" lang="en">
+                            No.</label>
+                        <span class="nobox headbox" id="customerid"></span>
+                    </div>
+                    <div class="second-primary1">
+                        <label class="cus_lable heading" lang="en"
+                            id="customername"></label>
+                    </div>
+                </div>
+                <div style="margin-bottom:5px;"></div>
+                <div class="divhr">
+                </div>
+                <div class="content-primary ">
+                    <ul data-role="listview" id="MenuList">
+
+                        <li><a href="imagecapture.html" rel="external">
+                                <img src="../images/image-cap.png"
+                                    class="HomeIconPosEN" />
+                                <h3 id="lblExpenseEntry" lang="en">
+                                    Capture Image</h3>
+                            </a></li>
+                    </ul></div>
+                <div class="second-primary Merchant-Menu">
+                    <ul data-role="listview" id="MenuList">
+                        <li><a href="inventory_check.html" rel="external"
+                                id="linkinventory">
+                                <img src="../images/shelf.png"
+                                    class="HomeIconPosEN" id="imginventory" />
+                                <h3 id="lblinventorycheck" lang="en">
+                                    Distribution Check</h3>
+                            </a></li>
+                    </ul></div>
+                <div class="content-primary Merchant-Menu"
+                    style="display:none;">
+                    <ul data-role="listview" id="MenuList">
+                        <li><a href="distribution_check.html" rel="external"
+                                id="linkdistribution">
+                                <img src="../images/Distributioncheck.png"
+                                    class="HomeIconPosEN"
+                                    id="imgdistribution" />
+                                <h3 id="lbldistribution" lang="en">
+                                    Distribution Check</h3>
+                            </a></li>
+                    </ul></div>
+                <div class="second-primary Merchant-Menu1">
+                    <ul data-role="listview" id="MenuList">
+                        <li><a href="pos.html" rel="external" id="linkpos">
+                                <img src="../images/POS.png" id="imgpos"
+                                    class="HomeIconPosEN" />
+                                <h3 id="lblPos" lang="en">POS/ Assets</h3>
+                            </a></li>
+                    </ul></div>
+                <div class="content-primary Merchant-Menu1">
+                    <ul data-role="listview" id="MenuList">
+                        <li><a href="customersurvey.html" id="linksurvey"
+                                rel="external">
+                                <img src="../images/icn-review.png"
+                                    id="imgsurvey" class="HomeIconPosEN" />
+                                <h3 id="lblSurvey" lang="en">
+                                    Survey</h3>
+                            </a></li>
+                    </ul></div>
+                <div class="second-primary Merchant-Menu3">
+                    <ul data-role="listview" id="MenuList">
+                        <li><a href="visual_detail.html" rel="external">
+                                <img src="../images/visuals.png"
+                                    class="HomeIconPosEN" />
+                                <h3 id="lblVisuals" lang="en">
+                                    Planogram</h3>
+                            </a></li>
+                    </ul></div>
+                <div class="content-primary Merchant-Menu1">
+                    <ul data-role="listview" id="MenuList">
+                        <li><a onclick="savecustomercontrol();" id="linkexit"
+                                rel="external">
+                                <img src="../images/info-8.png" id="imgexit1"
+                                    class="HomeIconPosEN" />
+                                <h3 id="lblexit" lang="en">
+                                    Done</h3>
+                            </a></li>
+                    </ul></div>
+
+            </div>
+            <div data-role="footer" class="ui-bar" id="f1">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" style="bottom: 0; position: absolute;"
+                id="f2">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform= sessionStorage.getItem("platform");
+        resizeOrientationWindow();
+	   $(document).ready(function() {
+	 	resizeWindow();
+            $(".leftfooter").html(getCurrentDate());
+             var customeraid = sessionStorage.getItem("customercode");
+             var customername = sessionStorage.getItem("customername");
+                          
+             $('#customerid').text(customeraid);
+             $('#customername').text(customername);
+             document.addEventListener("deviceready", ondeviceready, false);
+             var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Merchandising'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                      $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-left');
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+                     $('#MenuList .ui-icon').removeClass('ui-icon-arrow-r1');
+                    $('#MenuList .ui-icon').addClass('ui-icon-arrow-r');
+                    $('#MenuList li.ui-btn').removeClass('ui-btn-icon-left');
+                    $('#MenuList li.ui-btn').addClass('ui-btn-icon-right');
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+        });
+        function ondeviceready()
+        {
+             var custid=sessionStorage.getItem("customerid");
+             var sCountc = sessionStorage.getItem("settingcount");
+            
+             
+             if(platform=='iPad')
+             {
+                   
+                   var abc1 = Cordova.exec(function(result1) {
+                     TableDataOffLine1(result1);
+                     },
+                     function(error) {
+                     alert(error);},
+                     "PluginClass", 
+                     "GetdataMethod", 
+                     ["SELECT status FROM controlpanel WHERE flagid IN (83,84) ORDER BY flagid"]);
+                   
+                     var abc = Cordova.exec(function(result) {
+                     TableDataOffLine(result);
+                     },
+                     function(error) {
+                     alert(error);},
+                     "PluginClass", 
+                     "GetdataMethod", 
+                     ["select enablesurveyaudit,enableposequipment from customermaster where customercode="+custid]);
+                     
+             }
+             else if(platform=='Android')
+             {
+                                                    
+                      window.plugins.DataBaseHelper.select("SELECT status FROM controlpanel WHERE flagid IN (83,84) ORDER BY flagid",function(result1)
+                               {
+                                   if(result1.array != undefined)
+                                   {
+                                       result1 = $.map(result.array, function (item, index) {   
+                                       
+                                        return [[item.status]];
+                                       
+                                     
+                                   });
+                                                             TableDataOffLine1(result1);
+                                                            }
+                                   
+                               },
+                               function()
+                               {
+                                console.warn("Error calling plugin");
+                               });
+                      
+                      
+                       window.plugins.DataBaseHelper.select("select enablesurveyaudit,enableposequipment from customermaster where customercode="+custid,function(result)
+                               {
+                                   if(result.array != undefined)
+                                   {
+                                       result = $.map(result.array, function (item, index) {   
+                                       
+                                        return [[item.enablesurveyaudit,item.enableposequipment]];
+                                       
+                                     
+                                   });
+                                                             TableDataOffLine(result);
+                                                            }
+                                   
+                               },
+                               function()
+                               {
+                                console.warn("Error calling plugin");
+                               });
+             }
+        }
+        function TableDataOffLine(RecSet)
+        {
+            var data = RecSet;
+            var survey=data[0][0];
+	    	var pos=data[0][1];
+            if(survey==0)
+            {
+                    $('#lblSurvey').addClass('MenuGray');
+                    $('#imgsurvey').attr('src',"../images/grey-icn-review.png");
+                    $('#linksurvey').attr('href','');
+                    
+            }
+            else
+            {
+                    $('#lblSurvey').removeClass('MenuGray');
+                    $('#imgsurvey').attr('src',"../images/icn-review.png");
+                    $('#linksurvey').attr('href','customersurvey.html');
+            }
+            if(pos==0)
+            {
+                    $('#lblPos').addClass('MenuGray');
+                    $('#imgpos').attr('src',"../images/grey-POS.png");
+                    $('#linkpos').attr('href','');
+                    
+            }
+            else
+            {
+                    $('#lblPos').removeClass('MenuGray');
+                    $('#imgpos').attr('src',"../images/POS.png");
+                    $('#linkpos').attr('href','pos.html');
+            }
+            
+            // sujee added based on force check flag enable distribution check
+            checkCustomersetting();
+            getVisualdata(); // sujee added to get planogram image 
+        }
+        
+        function getVisualdata()
+		 {
+        	var downloadcount=sessionStorage.getItem("downloadimage");
+        	
+        	
+			 var routecode = sessionStorage.getItem("RouteCode");
+				var userid = sessionStorage.getItem("SalesmanCode");
+				var deviceid = sessionStorage.getItem("DeviceID");
+				var platform = sessionStorage.getItem("platform");
+				
+
+				if(downloadcount == 0) {
+					$.mobile.showPageLoadingMsg();
+				
+					$('.ui-loader h1').text("Downloading Planagram Images! Please Wait... ");
+				$.ajax({
+					type : "post",
+					url : wsurl + "ws/getvisualdata/routeid/" + routecode
+							+ "/userid/" + userid,
+					data : "{}",
+					cache : false,
+					timeout : 30000,
+					
+					crossDomain : true,
+					success : function(data) {
+						
+
+						if (data.length > 0) {
+							deleteVisualdata(data);
+							
+						}
+						
+					},
+					error : function(qXHR, textStatus, errorThrown) {
+						$.mobile.hidePageLoadingMsg();
+						alert("No Internet Connection. Failed to download  Planogram Image");
+					}
+				});
+				}
+		 }
+		 
+		 function deleteVisualdata(data)
+		 { 
+			 var Qry = "Delete from visualheader";
+				
+				if (platform == "iPad") {
+
+				} else if (platform == "Android") {
+					window.plugins.DataBaseHelper.insert(Qry, function(result) {
+						processVisualdata(data);
+						
+					}, function() {
+						console.warn("Error calling plugin");
+					});
+				}
+			  
+		 }
+		 
+	function processVisualdata(data) { 
+				
+				data = JSON.parse(data);
+              
+				
+				if(data["visualheader"] == null || data["visualheader"].length == undefined)
+					{
+					 
+					  $.mobile.hidePageLoadingMsg();
+					}
+				
+				var count  = data["visualheader"].length;
+				
+				if(count >0 ){
+					for ( var i = 0; i < count; i++) { 
+						 
+						var Qry = "INSERT INTO visualheader(visualcode,visualdescription,remarks,arbvisualdescription) VALUES("
+								+ data["visualheader"][i].visualcode
+								+ ",'"
+								+ data["visualheader"][i].visualdescription
+								+ "','"
+								+ data["visualheader"][i].remarks
+								+ "','"
+								+ data["visualheader"][i].arbvisualdescription + "')";
+						
+						console.log(Qry);
+						//alert(Qry);
+						if (platform == "iPad") {
+
+						} else if (platform == "Android") {
+							window.plugins.DataBaseHelper.insert(Qry, function(
+									result) {
+								count-= 1;
+								
+								if(count==0) 
+									{
+									    deletevisualdetail(data);
+									  // $.mobile.hidePageLoadingMsg();
+									}
+							
+							}, function() {
+								console.warn("Error calling plugin");
+							});
+							
+						}
+		    			
+						
+					}
+					}
+					 
+			
+			}
+	
+	function deletevisualdetail(data)
+	{
+		 var Qry = "Delete from visualdetail";
+			
+			if (platform == "iPad") {
+
+			} else if (platform == "Android") {
+				window.plugins.DataBaseHelper.insert(Qry, function(result) {
+					processVisualdetail(data);
+					//downloadplanogramimage(data);
+					
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+			}
+	}
+	
+	
+	  function downloadplanogramimage(data,i)
+	  {
+		  var ua = navigator.userAgent;
+		    if( ua.indexOf("Android") >= 0 )
+		    {
+		      var androidversion = parseFloat(ua.slice(ua.indexOf("Android")+8)); 
+		      //alert('androidversion' +androidversion);
+		      if(androidversion > 4)
+		    	  {
+		    	      var nturl ="file:///storage/emulated/0";
+		    	  } else {
+		    		  var nturl ="file:///storage/sdcard0"; 
+		    	  }
+		    }
+		    
+		 // var nturl ="file:///storage/sdcard0";
+		// var nturl ="file:///storage/emulated/0";
+		  
+		  var fileName =  data["visualdetail"][i].imagename;
+		
+		  var fileTransfer = new FileTransfer();
+		  cacheFolderSubPath = "Android/data/com.phonegap.sfa/visualimage/";
+	       
+	        var finalurl = nturl+cacheFolderSubPath;
+	       
+	      
+	      
+	        var uri = encodeURI(data["visualdetail"][i].imagepath+data["visualdetail"][i].imagename);
+		
+	        console.log(uri);
+	       
+	        var filePath = nturl + "/" +fileName;
+	       
+		   
+		   fileTransfer.download(
+	                uri,
+	                filePath,
+	                function(entry) {
+	                   
+	                  
+	                    console.log("download complete: " + entry.fullPath);
+	                    //alert("download complete: " + entry.fullPath);
+	                    insertVisualdetail(data,entry.fullPath,fileName,i);
+	                  
+	                },
+	                function(error) {
+	                
+	                    
+	                 console.log("download error source/target/code " + error.source+" / "+error.target+" / "+error.code);
+	                //alert("download error source/target/code:\n" + error.source +" \n||| "+error.target+" \n||| "+error.code);
+	                 insertVisualdetail(data,'',fileName,i);
+	                },true
+	            ); 
+	  }
+	function processVisualdetail(data,path)
+	{ 
+	
+	if(data["visualdetail"] == null || data["visualdetail"].length == undefined)
+	{
+	 
+	  $.mobile.hidePageLoadingMsg();
+	}
+	
+		var count  = data["visualdetail"].length;
+		for ( var i = 0; i < count; i++) {
+			downloadplanogramimage(data,i);
+			
+			/*var Qry = "INSERT INTO visualdetail(visualdetail_id,visualcode,imagename,imagepath,imagedescription) VALUES("
+					+ data["visualdetail"][i].visualdetail_id
+					+ ","
+					+ data["visualdetail"][i].visualcode
+					+ ",'"
+					+ data["visualdetail"][i].imagename
+					+ "','"
+					+ path
+					+ "','"
+					+ data["visualdetail"][i].imagedescription + "')";
+			
+			console.log(Qry);
+			//alert(Qry);
+			if (platform == "iPad") {
+
+			} else if (platform == "Android") {
+				window.plugins.DataBaseHelper.insert(Qry, function(
+						result) {
+					count-= 1;
+					
+						if(count==0) 
+        			 { 
+						 sessionStorage.setItem("downloadimage",1);
+						 $.mobile.hidePageLoadingMsg();
+        			 }
+				
+				
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+				
+			}
+			*/
+			
+		}
+	}
+	
+	
+	function insertVisualdetail(data,path,imagename,i)
+	{ 
+	
+	if(data["visualdetail"] == null || data["visualdetail"].length == undefined)
+	{
+	 
+	  $.mobile.hidePageLoadingMsg();
+	}
+	
+		var count  = data["visualdetail"].length;
+		
+			
+			var Qry = "INSERT INTO visualdetail(visualdetail_id,visualcode,imagename,imagepath,imagedescription) VALUES("
+					+ data["visualdetail"][i].visualdetail_id
+					+ ","
+					+ data["visualdetail"][i].visualcode
+					+ ",'"
+					+ imagename
+					+ "','"
+					+ path
+					+ "','"
+					+ data["visualdetail"][i].imagedescription + "')";
+			
+			console.log(Qry);
+		//	alert(Qry);
+			if (platform == "iPad") {
+
+			} else if (platform == "Android") {
+				window.plugins.DataBaseHelper.insert(Qry, function(
+						result) {
+					count-= 1;
+					
+					//	if(count==0) 
+        			 //{ 
+						 sessionStorage.setItem("downloadimage",1);
+						 $.mobile.hidePageLoadingMsg();
+        			// }
+				
+				
+				}, function() {
+					console.warn("Error calling plugin");
+				});
+				
+			}
+	}
+	
+	
+	
+	
+        function checkCustomersetting()
+        {
+        	
+        	var qry = "select forcestockcapture  from customermaster where customercode="+sessionStorage.getItem("customerid")+"";
+        	console.log(qry);
+        	//alert(qry);
+        	 if (platform == "iPad") {
+                 
+             }
+             else if (platform == "Android") {
+                 window.plugins.DataBaseHelper.select(qry, function(result) {
+                   /*  var res = $.map(result.array, function(item, index) {
+                         return [[item.forcestockcapture]];
+                     });
+                     */
+                   
+ 		            if (result.array[0].forcestockcapture == 0) {
+ 		            	$('#lblinventorycheck').addClass('MenuGray');
+ 	                    $('#imginventory').attr('src',"../images/shelf-gray.png");
+ 	                    $('#linkinventory').attr('href','');
+		            }
+                     
+                   
+                 },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+             }
+        }
+        
+        function TableDataOffLine1(RecSet)
+        {
+            var data = RecSet;
+            var disstatus=data[0][0];
+	   var invstatus=data[1][0];
+            
+            if(invstatus==0)
+            {
+                    $('#lblinventorycheck').addClass('MenuGray');
+                    $('#imginventory').attr('src',"../images/shelf-gray.png");
+                    $('#linkinventory').attr('href','');
+                    
+            }
+            else
+            {
+                    $('#lblinventorycheck').removeClass('MenuGray');
+                    $('#imginventory').attr('src',"../images/shelf.png");
+                    $('#linkinventory').attr('href','inventory_check.html');
+            }
+            if(disstatus==0)
+            {
+                    $('#lbldistribution').addClass('MenuGray');
+                    $('#imgdistribution').attr('src',"../images/Distributioncheck-disable.png");
+                    $('#linkdistribution').attr('href','');
+                    
+            }
+            else
+            {
+                    $('#lbldistribution').removeClass('MenuGray');
+                    $('#imgdistribution').attr('src',"../images/Distributioncheck.png");
+                    $('#linkdistribution').attr('href','distribution_check.html');
+            }
+        }
+        
+        function savecustomercontrol()
+        {
+      		var mydate = new Date();
+             
+            var thehour = mydate.getHours();
+            var theminut = mydate.getMinutes();
+            var theseconds = mydate.getSeconds();
+            var time = thehour+":"+theminut+":"+theseconds; 
+            var Qry = "Update customeroperationscontrol set visitendtime='"+time+"',issync=0 where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and customercode="+ sessionStorage.getItem('customerid')+" and routecode="+ sessionStorage.getItem('RouteCode');
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              	window.location = "merchandising.html";
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error save promtion detail record");
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                										//$.mobile.showPageLoadingMsg();
+                										//getImages("cust_opt.html","img");
+                										checkImageCaptured();
+                                                     	
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        
+        function checkImageCaptured(){
+        	var routekey = sessionStorage.getItem("RouteKey");
+            var visitkey = sessionStorage.getItem("VisitKey");
+            var routecode = sessionStorage.getItem("RouteCode");
+            var customercode = sessionStorage.getItem("customerid");
+        	 var QrySelect = "SELECT COUNT(*) as cnt FROM customerimages WHERE routekey = " + routekey + " AND visitkey = " + visitkey + " AND customercode = " + customercode;
+        	 if(platform == "Android")
+             {
+                 window.plugins.DataBaseHelper.select(QrySelect, function(result) {
+                 										$.mobile.showPageLoadingMsg();
+                 										//getImages("cust_opt.html","img");
+                 										if(result.array[0].cnt > 0)
+                 										getImages("cust_opt.html","img");
+                 										else
+                 											window.location = "cust_opt.html";
+                                                      	
+                                                      },
+                                                      function() {
+                                                      console.warn("Error calling plugin");
+                                                      });
+             }
+        }
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script type="text/javascript" src="../barcodescanner.js"></script>
+        <script>
+            if (navigator.userAgent.toLowerCase().match(/android/)) {
+                document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+                document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+                document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+            }
+            </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en"
+                    onclick="ClearVariables(1);">Back</a>
+                <h1 lang="en">Distribution Check</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <table class="topbox" cellpadding="0">
+                        <tr>
+                            <td style="width:25%">
+                                <table cellpadding="0">
+                                    <tr>
+                                        <td style="width:10%" lang="en">No.</td>
+                                        <td style="width:80%;">
+
+                                            <input type="tel" name="itemno"
+                                                id="itemno"
+                                                class="textWidth textFont"
+                                                value>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:60%;padding-left:40px">
+                                <label class="cus_lable heading" lang="en"
+                                    id="lblDesc">
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="10" cellspacing="2" border="0"
+                        width="100%" align="center">
+
+                        <tr>
+                            <td style="width: 10%;"></td>
+                            <td class="captionLabel" id="tdCaseLabel" lang="en"
+                                style="width: 15%;">
+                                Cases
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 15%;">
+                                Units
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 60%;">
+                                Expiry Date
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="captionLabel" lang="en"
+                                style="width: 10%;">
+                                Qty.
+                            </td>
+                            <td>
+                                <!--<input id="txtCase" type="text" pattern="[0-9]*" size="11" class="textWidth textFont" onblur="SetFormat(this)"/>-->
+                                <input id="txtCase" type="tel" size="11"
+                                    class="textWidth textFont"
+                                    onblur="SetFormat(this)" />
+                            </td>
+                            <td>
+                                <!--<input id="txtUnits" type="text" pattern="[0-9]*" size="11" class="textWidth textFont" onblur="SetFormat(this)"/>-->
+                                <input id="txtUnits" type="tel" size="11"
+                                    class="textWidth textFont"
+                                    onblur="SetFormat(this)" />
+                            </td>
+                            <td style="width: 60%;">
+                                <!--<input id="txtUnits" type="text" pattern="[0-9]*" size="11" class="textWidth textFont" onblur="SetFormat(this)"/>-->
+                                <input id="txtDate" type="date"
+                                    class="textWidth textFont"
+                                    data-role="datebox"
+                                    data-options='{"mode": "datebox","dateFormat": "dd-MM-YYYY"}'
+                                    style="width: 80%;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="../customer/item_selection.html" rel="external"
+                        id="A1" style="text-decoration: none"
+                        data-role="none">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/search.png"
+                                    alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Find</div>
+                        </div>
+                    </a>
+                    <!--  <a href="#" class="enableText" rel="external" data-role="none">
+                    <div class="MenuPositionFourIcons">
+                        <div class="MenuTextPos">
+                            <img src="../images/barcode-scan.png" alt="Scan" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Scan</div>
+                    </div>
+                </a> -->
+
+                    <a href="#" class="enableText" rel="external"
+                        data-role="none"
+                        id="lnkScan" onclick="clickScan()">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/barcode-scan.png"
+                                    alt="Scan" />
+                            </div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Scan</div>
+                        </div>
+                    </a>
+                    <a href="#" rel="external" id="simplestring"
+                        style="text-decoration:none" data-role="none"
+                        onclick="return Validate();">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos"><img
+                                    src="../images/save.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Save</div>
+                        </div>
+                    </a>
+                    <a href="#" class="enableText" rel="external"
+                        onclick="ClearVariables(1)">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos"><img
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Done</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div data-role="footer" class="ui-bar" id="f1">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" style="bottom: 0; position: absolute;"
+                id="f2">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Info</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = null; 
+        var ArrPrice;
+        var dataInventory = null;
+        var index = 0;
+        var caseprice = 0;
+        var platform='';         
+        var Qty;
+        var UPC;
+        var itemno;
+         
+        window.lang = new jquery_lang_js();        
+         resizeOrientationWindow();
+	   $(document).ready(function() {
+	 	resizeWindow();
+	    if(sessionStorage.getItem('CheckCode') =='alternatecode')
+             $('#itemno').clone().attr('type','text').insertAfter('#itemno').prev().remove();
+            else
+             $('#itemno').clone().attr('type','tel').insertAfter('#itemno').prev().remove();
+        $(".leftfooter").html(getCurrentDate());
+        platform= sessionStorage.getItem("platform");  
+        itemno = sessionStorage.getItem("itemno");
+         $('#lblDesc').text(sessionStorage.getItem('ItemDesc')); 
+         $("#itemno").val(sessionStorage.getItem('ItemCode'));
+        Qty = localStorage.addshelf1;
+	
+        $("#itemno").keyup(function(event){
+                             
+                                if($("#itemno").val != "")          
+                                    getFillterItemList();
+                                
+                    });
+        document.addEventListener("deviceready", GetUPC, false);
+            
+               var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {               
+                    window.lang.change('Onshelf'+lan,lan);
+                    window.lang.change('Footer'+lan,lan);
+                    if(lan=="AR")
+                    {
+                        $("#centerboxInvReq").attr("dir", "rtl");
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+                
+                }
+                else
+                {
+                    window.lang.change('en','en');
+                    $(".centerboxInvReq").attr("dir", "ltr");
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            
+        });
+        
+        $("#txtCase").blur(function () { $(this).val(parseFloat($(this).val())) });
+        $("#txtUnits").blur(function () { $(this).val(parseFloat($(this).val())) }); 
+        
+        //Function for bind invoice list
+        function getInvoiceList()
+        {   
+            try{
+            /*var Qry = "SELECT CASE WHEN " + Qty + " > 0 THEN (" + Qty + "/im.unitspercase) ELSE 0 END AS cases, CASE WHEN " + Qty + " > 0 THEN (" + Qty + "%im.unitspercase) ELSE 0 END AS units FROM customerinventorydetail cid JOIN itemmaster im ON im.actualitemcode = cid.itemcode WHERE routekey = " + sessionStorage.getItem("RouteKey") + " AND visitkey = " + sessionStorage.getItem("VisitKey") + " AND itemcode = " + itemno;*/
+            var Qry = "SELECT IFNULL((SELECT CASE WHEN qtyloc1each > 0 THEN (qtyloc1each/im.unitspercase) ELSE 0 END FROM customerinventorycheck cid WHERE cid.routekey = " + sessionStorage.getItem("RouteKey") + " and cid.visitkey = " +  sessionStorage.getItem("VisitKey")+ " AND itemcode = im.actualitemcode and expiry_date=date()),0) AS cases, IFNULL((SELECT CASE WHEN qtyloc1each > 0 THEN (qtyloc1each%im.unitspercase) ELSE 0 END FROM customerinventorycheck cid WHERE cid.routekey = " + sessionStorage.getItem("RouteKey") + " and cid.visitkey = " + sessionStorage.getItem("VisitKey") + " and itemcode = im.actualitemcode and expiry_date=date()),0) AS units,IFNULL((SELECT expiry_date FROM customerinventorycheck cid WHERE cid.routekey = " + sessionStorage.getItem("RouteKey") + " and cid.visitkey = " + sessionStorage.getItem("VisitKey") + " and itemcode = im.actualitemcode and expiry_date=date()),'') AS expiry_date,im.unitspercase as UPC FROM itemmaster im WHERE actualitemcode = " + itemno+" and expiry_date=date()";
+            console.log(Qry);
+            if(platform=='iPad')
+		    {
+                Cordova.exec(function(result) 
+                {
+                    if(result.length > 0)
+                    {
+                        $("#txtCase").val(CheckIsNaN(parseInt(result[0][0])));
+                        $("#txtUnits").val(CheckIsNaN(parseInt(result[0][1])));
+						$("#txtDate").val(result[0][2]);
+                    }    
+                },
+                function(error) {
+                    navigator.notification.alert("Error in binding Invoice Detail : " + error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform=='Android')
+           	{
+                window.plugins.DataBaseHelper.select(Qry,function(result)
+				{					 	
+		            if(result.array != undefined)
+                    {
+                    
+                    	if(eval(result.array[0].UPC)==1){
+	                    	$("#txtCase").val(0);
+	                        $("#txtUnits").val(parseInt(result.array[0].cases));
+                    	}else{
+                    		$("#txtCase").val(parseInt(result.array[0].cases));
+	                        $("#txtUnits").val(parseInt(result.array[0].units));
+                    	}
+                    	$("#txtDate").val(result.array[0].expiry_date);
+                    } 
+				},
+				function()
+				{
+                    console.warn("Error calling plugin");
+				});
+           	} 
+            }
+            catch(ex)
+            {
+                alert(ex);
+            }
+        }      
+        
+        function clickScan() {
+            //alert("test");
+            //result="";
+            window.plugins.barcodeScanner.scan(scannerSuccess, scannerFailure);
+        }
+        
+        function scannerSuccess(result) {
+            
+            
+            if (result.cancelled)
+            {
+                alert("the user cancelled the scan");
+            }
+            else
+            {
+                //alert("we got a barcode: " + result.text)
+                var itemcode = result.text; 
+                // alert(itemcode);
+                itemscan(result.text);
+            }
+                      
+            
+        }
+        
+        function itemscan(itemcode)
+    	{   
+            var Qry = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,itemdescription FROM itemmaster   WHERE (barcode1 ='"+itemcode+"'OR barcode2 ='"+itemcode+"'OR barcode3 ='"+itemcode+"'OR barcode4 ='"+itemcode+"'OR barcode5 ='"+itemcode+"' OR barcode6 ='" + itemcode + "'OR barcode7 = '"+itemcode+"' OR barcode8 ='"+itemcode+"' OR barcode9 ='"+itemcode+"' OR barcode10 ='"+itemcode+"')";
+            console.log(Qry);  
+            if(platform == "iPad")
+            {          
+            	Cordova.exec(function(result1) 
+            	{            	
+                	if(result1!='')
+                 	{                 		
+                 		if(result1.length > 0)
+                 		{
+                 			sessionStorage.setItem("itemno","");
+                 			sessionStorage.setItem("itemno",result1[0][0]);
+                 			$('#itemno').val(result1[0][0]);
+                 			$('#lblDesc').text(result1[0][1]); 
+                 			getSettings();
+                 		}
+             		}
+                 	else
+                 	{
+                 		alert("Item No found");
+             		}
+             	},
+                function(error) {
+                 	navigator.notification.alert(error);
+             	},
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+            	window.plugins.DataBaseHelper.select(Qry, function(result1){
+        			if(result1.array != undefined)
+        			{				                     	
+                  		sessionStorage.setItem("itemno","");
+             			sessionStorage.setItem("itemno",result1.array[0].actualitemcode);
+             			$('#itemno').val(result1.array[0].actualitemcode);
+             			$('#lblDesc').text(result1.array[0].itemdescription); 
+             			getSettings();				                     	
+        			}
+        			else
+        				navigator.notification.alert("Item No found");  
+                },
+                function()
+                {
+                 	console.warn("Error calling plugin");
+                });
+            }
+    	}
+        
+        function scannerFailure(message) {
+            console.log("scannerFailure: message: " + message)
+            //resultSpan.innerText = "failure: " + JSON.stringify(message)
+        }
+        function Validate()
+        {
+            try{
+            if(itemno == "" || itemno == null)
+            {
+                getLangText("Please Select Item.");
+                return false;
+            }   
+            
+            if($.trim($("#txtCase").val()) == "" && $.trim($("#txtUnits").val()) == "")
+            {
+                getLangText("Please Enter Quantity");
+                return false;
+            }
+		    else if($.trim($("#txtDate").val()) == "")
+		    {
+					getLangText("Please Enter Expiry Date.");
+	                return false;
+		    }
+            else
+                CheckInvoiceDetailItemCount();
+                }
+                catch(ex)
+                {
+                    alert(ex);
+                }
+        }
+        
+        
+        function CheckInvoiceDetailItemCount()
+        {
+	    
+	    var edate = $("#txtDate").val();
+            if(platform=='iPad')
+		    {
+            Cordova.exec(function(result) {
+                            if(result.length > 0)
+                            {
+                                UPC = result[0][1];                                
+                                if(result[0][0] == 0)
+                                {   
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    InsertInvoiceDetail();
+                                }
+                                else
+                                {   
+                                    UPC = result[0][1];                                    
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    UpdateInvoiceDetail();
+                                }
+                            }
+                          },
+                          function(error) {
+                            navigator.notification.alert("Error in check invoice detail item count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["Select Count(routekey) as routekey,(SELECT unitspercase FROM itemmaster WHERE actualitemcode = " + itemno + ") unitspercase From customerinventorycheck where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and istemp = 'false' and itemcode = "+ itemno +" and expiry_date='"+edate+"'"]);    
+       		}
+       		else if(platform=='Android')
+           	{
+	           		window.plugins.DataBaseHelper.select("Select Count(routekey) as routekey,(SELECT unitspercase FROM itemmaster WHERE actualitemcode = " + itemno + ") unitspercase From customerinventorycheck where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and istemp = 'false' and itemcode = "+ itemno +" and expiry_date='"+edate+"'",function(result)
+					{
+						if(result.array != undefined)
+						{
+		                    result = $.map(result.array, function (item, index) {
+                				return [[item.routekey,item.unitspercase]];
+            				});
+		                  	if(result.length > 0)
+                            {
+                                UPC = result[0][1];                                
+                                if(result[0][0] == 0)
+                                {   
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    InsertInvoiceDetail();
+                                }
+                                else
+                                {   
+                                    UPC = result[0][1];                                    
+                                    if($("#txtCase").val() == '')
+                                        $("#txtCase").val(0);
+                                    if($("#txtUnits").val() == '')
+                                        $("#txtUnits").val(0);
+                                    UpdateInvoiceDetail();
+                                }
+                            }
+                         }                
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	} 
+        }
+        
+
+        function InsertInvoiceDetail()
+        {       alert('1');
+            var cases = parseInt(CheckIsNaN($("#txtCase").val()));
+            var units = parseInt(CheckIsNaN($("#txtUnits").val()));
+	        var edate = $("#txtDate").val();
+	        edate = edate.split("-");
+            
+            var expiry = edate[2] + "-" + edate[1] + "-" + edate[0];
+            var currqty = eval((cases * UPC)) + eval(units);
+            var Qry = "Insert Into customerinventorycheck(routekey,visitkey,itemcode," + Qty + ",issync,istemp,expiry_date) values(" + sessionStorage.getItem('RouteKey') + "," + sessionStorage.getItem('VisitKey') + "," + itemno  + "," + currqty + ",0,'false','"+expiry+"')";
+            console.log(Qry);
+           
+            if(platform=='iPad')
+		    {                
+                Cordova.exec(function(result)
+                {
+                    ClearVariables(0);
+                },
+                function(error) {
+                    navigator.notification.alert("Error inserting record in a invoice detail");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform=='Android')
+           	{
+                window.plugins.DataBaseHelper.insert(Qry, function(result)
+                {
+                	
+                    ClearVariables(0);
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            } 
+        }
+        
+       function UpdateInvoiceDetail()
+        {      
+                var cases = parseInt(CheckIsNaN($("#txtCase").val()));
+                var units = parseInt(CheckIsNaN($("#txtUnits").val()));
+                var currqty = eval((cases * UPC)) + eval(units);
+		        var edate = $("#txtDate").val();
+		        edate = edate.split("-");
+	            
+	            var expiry = edate[2] + "-" + edate[1] + "-" + edate[0];
+                var Qry = "Update customerinventorycheck set " + Qty  + " = " + currqty + ",issync=0,istemp='false',expiry_date='"+expiry+"' where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and itemcode = " + itemno+" and expiry_date='"+edate+"'";
+                console.log(Qry);
+                
+                if(platform=='iPad')
+		    	{                   
+                	Cordova.exec(function(result)
+                    {
+                        ClearVariables(0);
+                    },
+                    function(error) {
+                        navigator.notification.alert("Error updating record in a invoice detail");
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);                              
+            	}
+            	else if(platform=='Android')
+           	  	{
+           	  	    window.plugins.DataBaseHelper.insert(Qry, function(result)
+					{
+           	  	        
+                        ClearVariables(0);
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	}
+        }
+        
+        function ClearVariables(act)
+        {
+            $("#itemno").val("");
+            $("#txtCase").val("");
+            $("#txtUnits").val("");
+	        $("#txtDate").val("");
+            $("#lblDesc").text("");           
+            sessionStorage.setItem("ItemCode","");
+            sessionStorage.setItem("ItemDesc","");
+            sessionStorage.setItem("itemno","");
+            //localStorage.removeItem("addshelf");
+            if(act == 1)
+                window.location = "inventory_check.html";
+        }  
+         function getFillterItemList()
+        {
+        	
+            var qry = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster  where (barcode1 ='"+$.trim($("#itemno").val())+"' OR barcode2 ='"+$.trim($("#itemno").val())+"' OR barcode3 ='"+$.trim($("#itemno").val())+"' OR barcode4 ='"+$.trim($("#itemno").val())+"'OR barcode5 ='"+$.trim($("#itemno").val())+"' OR barcode6 ='" + $.trim($("#itemno").val()) + "'OR barcode7 = '"+$.trim($("#itemno").val())+"' OR barcode8 ='"+$.trim($("#itemno").val())+"' OR barcode9 ='"+$.trim($("#itemno").val())+"' OR barcode10 ='"+$.trim($("#itemno").val())+"' OR Code like '%" + $("#itemno").val() + "%') order by Code";
+            if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+                if(result1!='')
+                 	{ 
+                        var code = result[0][0];
+                                   var Description = result[0][1];
+                                    var actualitemcode = result[0][2];
+                                    sessionStorage.setItem("ItemCode",code);
+                                    sessionStorage.setItem("ItemDesc",Description);
+                                    sessionStorage.setItem("itemno",actualitemcode);
+                                    $('#lblDesc').text(sessionStorage.getItem('ItemDesc'));
+				    				itemno = actualitemcode;
+                                    getInvoiceList();
+                        }
+                        else
+                        alert("Item Not Available");
+
+                    },
+                          function(error) {
+                              alert("Error in binding fillter Item : " + error);
+                          },
+                          "PluginClass",
+                          "GetdataMethod",
+                          [qry]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(qry, function(result) {
+                        if(result.array != undefined)
+        			{
+                                  var code = result.array[0].Code;
+                                   var Description = result.array[0].Description;
+                                    var actualitemcode = result.array[0].actualitemcode;
+                                    sessionStorage.setItem("ItemCode",code);
+                                    sessionStorage.setItem("ItemDesc",Description);
+                                    sessionStorage.setItem("itemno",actualitemcode);
+                                    $('#lblDesc').text(sessionStorage.getItem('ItemDesc'));
+				    				itemno = actualitemcode;
+                                    GetUPC();
+                                }
+                                else
+                                {
+                                    alert("Item Not Available");
+                                }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+        }
+        function GetUPC()
+        {
+            var Qry = "SELECT unitspercase FROM itemmaster WHERE actualitemcode = " + sessionStorage.getItem("itemno");
+            console.log(Qry);
+            if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        UPC = result[0][0];
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+            }
+            else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	UPC = result.array[0].unitspercase;
+                    	if(eval(UPC)==1){
+                    		    $("#txtCase").textinput("disable");
+                    		   
+                    		   
+                    		   
+                    	}else{
+	                    		$("#txtCase").textinput("enable");
+	                		   
+	                		    
+                    	}      
+                    	getInvoiceList();
+                    },
+				    function() {
+				        console.warn("Error calling plugin");
+				    });
+            }
+        }
+        
+        
+        function CheckIsNaN(val)
+        {
+            if(isNaN(val))
+            return 0;
+            else
+            return val;
+        }  
+        
+        function SetFormat(obj)
+        {
+            var Num = new Number($(obj).val());            
+            $(obj).val(parseInt(Num));
+        }
+        
+    </script>
+
+    </body>
+</html>

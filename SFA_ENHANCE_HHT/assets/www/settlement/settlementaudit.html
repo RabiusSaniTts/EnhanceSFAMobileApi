@@ -1,0 +1,987 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Customer Survey</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<!--Black P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<!--Iphone 4 P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<!--Ipad P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<!--Ipad L-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script type="text/javascript" src="../js/upload.js"></script>
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript"
+			lang="en"></script>
+		<script type="text/javascript" src="../js/WizzitIndent.js"></script>
+		<script>
+		if (navigator.userAgent.toLowerCase().match(/android/)) {
+			document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+			document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+		} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+			document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+		}
+	</script>
+	</head>
+
+	<body>
+		<div data-role="page" data-theme="d" data-title="Order Request">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<a href="../home/home.html" id="Back_inner" rel="external"
+					lang="en">Back</a>
+				<h1 lang="en">Audit</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="boxContent">
+					<div class="tblBox tbltd">
+						<table id="tblHeaderContent" class="tblHeader" cellpadding="5"
+							cellspacing="5" border="0"
+							width="100%">
+							<tr>
+								<th style="width: 40%" class="leftAlign first" lang="en">Table Name</th>
+								<th style="width: 20%" class="second" lang="en">From Tablet</th>
+								<th style="width: 20%" class="last" lang="en">From Cloud</th>
+								<th style="width: 20%" class="end" lang="en">Upload</th>
+							</tr>
+						</table>
+						<div id="contentWrapper" class="tblFixedHeight nonserv">
+							<table id="tblContent" cellpadding="10" cellspacing="10" border="0"
+								width="100%">
+								<tbody class="tblBody">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div style="margin: 10px 5px 0px 5px; display: none;" id="msglbl">
+						<label id="UserName" lang="en" style="font-size: large;">Record mismatch
+							found</label>
+					</div>
+				</div>
+
+				<div class="leftbottomMenu">
+					<a href="../settlement/managesettlement.html" id="exitlink" rel="external"
+						style="text-decoration: none; font-weight: normal;">
+						<div class="MenuPositionSCLarge">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/icn-exit.png" id="imgexit"
+									alt="Exit" />
+							</div>
+							<div class="MenuTextPos MenuText" id="lblexit" lang="en">
+								Exit</div>
+						</div>
+					</a>
+
+				</div>
+			</div>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#" rel="external"
+								id="day" data-icon="custom"
+								lang="en" onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" class="ui-btn-active"
+								rel="external" id="cust"
+								data-icon="custom" lang="en">Customer</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a href="#"
+								rel="external" id="setup"
+								data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+		var arrToupload = [];
+		var customervisitlog = {};
+		var invoicedetail = {};
+		var ardetail = {};
+		var invoiceheader = {};
+		var customeroperationscontrol = {};
+
+		$("#tblContent").click(function () { });
+		window.lang = new jquery_lang_js();
+		var platform = sessionStorage.getItem("platform");
+
+		resizeOrientationWindow();
+		$(document).ready(function () {
+			resizeWindow();
+			sessionStorage.setItem("surveyplan", '')
+			$(".leftfooter").html(getCurrentDate());
+
+			document.addEventListener("deviceready", getrecord, false);
+			$("#tblContent tr:odd").addClass('oddRow');
+			$("#tblContent tr:even").addClass('evenRow');
+
+
+			var lan = sessionStorage.getItem("Language");
+			window.lang.run(lan);
+
+			if (sessionStorage.getItem("Language") != "en") {
+
+				window.lang.change('CustomerSurvey' + lan, lan);
+				window.lang.change('Footer' + lan, lan);
+				if (lan == "AR") {
+					$(".centerboxInvReq").attr("dir", "rtl");
+					$('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				}
+
+			}
+			else {
+				window.lang.change('en', 'en');
+				$(".centerboxInvReq").attr("dir", "ltr");
+				$('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			}
+
+			function GetElements(xmlDoc) {
+				var PageName = 'orderRequest';
+			}
+
+			$("#tblContent tr").live('click', function () {
+				$(this).toggleClass('clicked');
+				$(this).siblings().removeClass('clicked');
+				var i = $(this).index();
+				sessionStorage.setItem("surveyplan", inputvalue[i][1]);
+				sessionStorage.setItem("surveyplanname", inputvalue[i][0]);
+				sessionStorage.setItem("planmandatory", inputvalue[i][2]);
+			});
+		});
+
+		function getrecord() {
+			var routekey = sessionStorage.getItem("RouteKey");
+			var transData = sessionStorage.getItem("CloudData");
+
+			 //alert(JSON.stringify(transData));
+
+			TableDataOffLine(transData);
+
+		}
+
+
+		function TableDataOffLine(RecSet) {
+			$('#lblexit').addClass('MenuGray');
+			$('#imgexit').attr('src', '../images/icn-exit-gray.png');
+			$('#exitlink').attr('href', '');
+
+			// $("#tblContent").find("tr:eq(0)").remove();
+			// $("#tblContent").find("tr:gt(0)").remove();
+			$("#tblContent tr").remove();
+			// alert("RectSet"+RecSet);
+			var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+			var data = JSON.parse(RecSet);
+			console.log("data "+data);
+			// alert(data);
+			// alert(data.length);
+			var isVarince = false;
+			for (i = 0; i < data.length; i++) {
+				var r = "<tr class='contentFont' id='row" + i + "'>";
+				//alert(JSON.stringify(data[i]));
+				for (j = 0; j < CellCount; j++) {
+					if (j == 0) {
+						var c = "<td width='40%' class='leftAlign first popupSubTitle' id='first" + i + "'>" + data[i].type + "</td>";
+					}
+					else if (j == 1) {
+						var c = "<td width='20%' class='second popupSubTitle'  id='second" + i + "'>" + data[i].tabletcount + "</td>";
+					}
+					else if (j == 2) {
+						var c = "<td width='20%' class='last popupSubTitle' id='last" + i + "'>" + data[i].cloudcount + "</td>";
+					}
+					else if (j == 3) {
+						var c = "<td width='20%' class='end popupSubTitle' id='end" + i + "'><input id='btn" + i + "' class='btnaudit'  onclick='uploadData(" + i + ");' type='button' value='Upload' lang='en' disabled/></td>";
+					}
+					r += c;
+				}
+				r += "</tr>";
+
+				$('#tblContent tbody').append(r);
+				$("#tblContent tr:odd").addClass('oddRow');
+				$("#tblContent tr:even").addClass('evenRow');
+				if (eval(data[i].tabletcount) != eval(data[i].cloudcount)) {
+					isVarince = true;
+					document.getElementById("row" + i).style.color = "red";
+					$('#btn' + i).removeAttr('disabled');
+				} else {
+
+					document.getElementById("row" + i).style.color = "gray";
+				}
+				// $('#tbl1 tr:first').toggleClass('clicked');
+			}
+
+			if (!isVarince) {
+
+				$('#lblexit').removeClass('MenuGray');
+				$('#imgexit').attr('src', '../images/icn-exit.png');
+				$('#exitlink').attr('href', '../settlement/managesettlement.html');
+
+
+			}
+		}
+		function uploadData(i) {
+			
+			$('#btn' + i).attr('disabled', 'disabled');
+			var selectquery = '';
+			var dataRoutekey = new Array();
+			var dataTranskey = new Array();
+			var dataVisitkey = new Array();
+
+			switch ("" + i) {
+
+				
+
+				case "0":
+					selectquery = "select 0 as customercode,routekey,inventorykey as transactionkey,detailkey as visitkey from inventorytransactionheader where issync=0";
+
+					break;
+				case "1":
+					selectquery = "";
+					uploadRouteSeq();
+					break;
+				
+				case "2":
+					selectquery = "";
+					uploadRouteSeq();
+					break;
+				case "3":
+					selectquery = "";
+					uploadCustomerVisitlog();
+					break;
+				case "4":
+					//selectquery = "select invoiceheader.customercode,routekey,transactionkey,visitkey,customername from invoiceheader join customermaster on customermaster.customercode=invoiceheader.customercode where invoiceheader.istemp='false'";
+					selectquery = "";
+					uploadInvoiceheader();
+					break;
+				case "5":
+					selectquery = "";
+					uploadInvoicedetail();
+					break;
+
+				case "6":
+					selectquery = "select salesorderheader.customercode,routekey,transactionkey,visitkey from salesorderheader join customermaster on customermaster.customercode=salesorderheader.customercode where salesorderheader.issync=0 and salesorderheader.istemp='false' and salesorderheader.confirmorder = 1";
+
+					break;
+
+				case "7":
+					selectquery = "select arheader.customercode,routekey,transactionkey,visitkey from arheader join customermaster on customermaster.customercode=arheader.customercode where arheader.issync=0 and advancepaymentflag = 0";
+
+					break;
+				case "8":
+					selectquery = "";
+					uploadardetail();
+					break;
+				case "9":
+					selectquery = "select routekey,visitkey,typecode,checknumber,amount,updateindicator,checkdate,bankcode,checkstatus,branchcode,drawercode,chequestatusindicator,sapchequestatusindicator,currencycode,hhctransactionkey,paymenttype,checktype,transactiontype from cashcheckdetail where  istemp='false' ";
+					break;
+				case "10":
+					selectquery = "";
+					uploadCustomerOperations();
+					break;
+				
+				
+				
+
+			}
+			console.log(selectquery);
+			// alert(selectquery);
+			if (platform == 'iPad') {
+
+				Cordova.exec(function (result) {
+
+				},
+					function (error) {
+						navigator.notification.alert("Error in binding transaction list : " + error);
+					},
+					"PluginClass",
+					"GetdataMethod",
+					[selectquery]);
+			}
+			else if (platform == 'Android') {
+
+				if(selectquery != ""){
+				window.plugins.DataBaseHelper.select(selectquery, function (result) {
+					// alert(JSON.stringify(result));
+					var array = $.map(result.array, function (item, index) {
+						return [[item.customercode, item.routekey, item.transactionkey, item.visitkey]];
+					});
+
+					for (j = 0; j < array.length; j++) {
+						dataRoutekey.push(array[j][1]);
+						dataTranskey.push(array[j][2]);
+						dataVisitkey.push(array[j][3]);
+
+					}
+					dataRoutekey = $.unique(dataRoutekey);
+					var dataRouteString = dataRoutekey.toString();
+					var dataTransString = dataTranskey.toString();
+					var datavisitString = dataVisitkey.toString();
+
+					var dataRouteString = dataRoutekey.toString();
+					var transkey = dataTransString.split(",");
+					var visitkey = datavisitString.split(",");
+					// alert(dataRouteString);
+					// alert(transkey);
+					// alert(visitkey);
+					switch ("" + i) {
+
+						case "0":
+							SimulateFunction(dataRouteString, transkey, visitkey, 'inv');
+							break;
+						case "1":
+							SimulateFunction(dataRouteString, transkey, visitkey, 'sale');
+							break;
+						case "2":
+							SimulateFunction(dataRouteString, transkey, visitkey, 'sale');
+							break;
+						case "3":
+							SimulateFunction(dataRouteString, transkey, visitkey, 'sale');
+							break;
+						case "4":
+							SimulateFunction(dataRouteString, transkey, visitkey, 'sale');
+							break;
+						case "9":
+							SimulateFunction(dataRouteString, transkey, visitkey, 'sale');
+							break;
+						
+					}
+
+				},
+					function () {
+						console.warn("Error calling plugin");
+					});
+			}
+			}
+
+		}
+		function getServerData() {
+
+			$.mobile.showPageLoadingMsg();
+
+			$.ajax({
+				type: "GET",
+				url: wsurl + "transaction/trandata/routekey/" + sessionStorage.getItem("RouteKey") + "",
+				dataType: 'json',
+				error: function () {
+					$.mobile.hidePageLoadingMsg();
+					alert('Error in request or check your network connection');
+				},
+				success: function (data) {
+
+
+					$.mobile.hidePageLoadingMsg();
+					var trandata = data;
+
+					var sessionData = JSON.parse(sessionStorage.getItem("CloudData"));
+					//alert("Session Data"+JSON.stringify(trandata));
+					for (i = 0; i < trandata.length; i++) {
+
+						switch ("" + trandata[i].TYPE) {
+							case "IVTH":
+								sessionData[0].cloudcount = trandata[i].CloudCount;
+								break;
+							case "RSCS":
+								sessionData[1].cloudcount = trandata[i].CloudCount;
+                                break;	
+							case "RSCC":
+								sessionData[2].cloudcount = trandata[i].CloudCount;
+                                break;
+							case "CVLG":
+								sessionData[3].cloudcount = trandata[i].CloudCount;
+                                break;
+
+							case "INVH":
+								sessionData[4].cloudcount = trandata[i].CloudCount;
+								break;
+							case "INVD":
+								sessionData[5].cloudcount = trandata[i].CloudCount;
+                                break;
+
+							case "SAOH":
+								sessionData[6].cloudcount = trandata[i].CloudCount;
+								break;
+							case "ARHR":
+								sessionData[7].cloudcount = trandata[i].CloudCount;
+								break;
+							case "ARDL":
+								sessionData[8].cloudcount = trandata[i].CloudCount;
+                                break;
+							case "CCDS":
+								sessionData[9].cloudcount = trandata[i].CloudCount;
+								break;
+							case "CUOC":
+								sessionData[10].cloudcount = trandata[i].CloudCount;
+								break;
+
+							
+						}
+
+					}
+					// alert(JSON.stringify(sessionData));
+					sessionData = JSON.stringify(sessionData);
+					TableDataOffLine(sessionData);
+				}
+			});
+
+		}
+		function refreshTable() {
+			getServerData();
+
+		}
+
+		function uploadRouteSeq()
+		{
+			$.mobile.showPageLoadingMsg();
+			var jsonObj = [];
+			plugins.WizzitIndent.upload(1, 1, jsonObj);
+					setTimeout(function() 
+					{						
+						getServerData();
+						//window.location = "signature.html";
+					}, 4000);
+		}
+		
+		function uploadInvoiceheader(){
+			invoiceheader = {};
+			$.mobile.showPageLoadingMsg();
+			var invQry = "select transactionkey,routekey,visitkey,documentnumber,invoicenumber,transactiondate,transactiontime,dsdnumber,ponumber,customercode,routecode,salesmancode,presoldordernumber,presalesmancode,presalesroutecode,orderdeliverydate,orderdeliveryroutecode,CAST(totalinvoiceamount AS VARCHAR) as totalinvoiceamount,CAST(totalsalesamount AS VARCHAR) as totalsalesamount,totalreturnamount,totaldamagedamount,totalfreesampleamount,CAST(immediatepaid AS VARCHAR) as immediatepaid,CAST(amountpaid AS VARCHAR) as amountpaid,CAST(invoicebalance AS VARCHAR) as invoicebalance,dexflag,dexg86signature,paymenttype,splittransaction,voidflag,transmitindicator,paymentstatus,hhcinvoicenumber,totalpromoamount,gcpaymenttype,hhcdocumentnumber,inventorykey,totaltaxesamount,itemlinetaxamount,totaldiscountamount,voidreasoncode,totalexpiryamount,currencycode,totalmanualfree,totallimitedfree,totalrebaterent,totalfixedrent,actualtransactiondate,boentry,hhctransactionkey,data,comments,totaldiscdistributionamount,totalreplacementamount,comments2,totalbuybackfreeamount,diffround,roundtotalsalesamount,headerdiscounttaxamt from invoiceheader where  istemp='false'";
+			console.log("invQry"+invQry);
+			window.plugins.DataBaseHelper.select(invQry,function(result)
+		            {
+		                        if(!$.isEmptyObject(result))
+		                        {
+		                                for(i=0;i<result.array.length;i++)
+		                                {
+		                                	invoiceheader[i] = result.array[i];
+		                                }
+		                            
+		                            
+		                        }
+		                        invoiceheader=JSON.stringify(invoiceheader);  
+		                        uploadaduitdata();
+		                     
+		            },
+		            function()
+		            {
+		            console.warn("Error calling plugin");
+		            });
+		
+		}
+		
+		function uploadCustomerVisitlog(){
+			customervisitlog = {};
+			$.mobile.showPageLoadingMsg();
+			var logQry = "SELECT log_id, routekey, routecode, salesmancode, customercode, log_startdate, log_starttime, log_enddate, log_endtime FROM customervisitlog WHERE log_enddate != ''";
+            console.log("logQry"+logQry);
+            window.plugins.DataBaseHelper.select(logQry,function(result)
+            {
+                        if(!$.isEmptyObject(result))
+                        {
+                                for(i=0;i<result.array.length;i++)
+                                {
+                                	customervisitlog[i] = result.array[i];
+                                }
+                            
+                            
+                        }
+                        customervisitlog=JSON.stringify(customervisitlog);  
+                        uploadaduitdata();
+                     
+            },
+            function()
+            {
+            console.warn("Error calling plugin");
+            });
+			
+		}
+
+		function uploadaduitdata()
+		{ 
+		   
+		    var routecode= sessionStorage.getItem("RouteCode");
+		    var userid= sessionStorage.getItem("SalesmanCode");
+		    var deviceid= sessionStorage.getItem("DeviceID");
+		    var routekey=sessionStorage.getItem("RouteKey");
+		  
+		    if(routekey=='')
+		    routekey=0;
+		    if(routeclosed=='' || routeclosed==undefined)
+		    routeclosed=0;
+		   
+		   
+		    var uploadddata={customervisitlog:customervisitlog,routekey:routekey,invoiceheader:invoiceheader};
+		    console.log("uploadddata : " + uploadddata);
+		    
+		   
+		            $.ajax({
+		                   type: "post",
+		                   url:wsurl+"sync/senddata",
+		                   cache: false,
+		                    timeout: 60000,
+		                    data:{customervisitlog:customervisitlog,routekey:routekey,invoiceheader:invoiceheader},
+		               
+		                    success: function(data) { 
+		                   
+		                    console.log("data : " + data);
+		                    data = JSON.parse(data);
+		                     
+		                   
+			                   var customervisitlogdata = data.customervisitlog;
+			                   var invoiceheaderdata = data.invoiceheader;
+		                 
+		               
+		                   if(customervisitlogdata!= null && customervisitlogdata.length!=0)
+						   {
+								for(i=0;i<customervisitlogdata.length;i++)
+							   {
+									updatecustomervisitlog(customervisitlogdata,i);
+							   }
+						   }
+		                   
+		                   if (invoiceheaderdata != null
+									&& invoiceheaderdata.length != 0) {
+								for (j = 0; j < invoiceheaderdata.length; j++) {
+									updateinvoiceheader(invoiceheaderdata, j);
+								}
+							}
+		                   
+						  
+							
+							
+		                   $.mobile.hidePageLoadingMsg();
+		                   navigator.notification.alert("Data Uploaded Successfully");	
+		                   getServerData();
+		                   },
+		                   error: function(qXHR, textStatus, errorThrown) {
+		                    $.mobile.hidePageLoadingMsg();
+		                   
+		                    navigator.notification.alert("Acknowledgement Error");	
+		                    
+		                    
+		                   }
+		                   });
+		                
+		}
+		
+		function updateinvoiceheader(invoiceheaderdata, i) {
+			if (platform == 'iPad') {
+				
+			} else if (platform == 'Android') {
+				window.plugins.DataBaseHelper.insert(
+						"update invoiceheader set issync=1 where routekey='"
+								+ invoiceheaderdata[i].routekey + "' and visitkey='"
+								+ invoiceheaderdata[i].visitkey + "'",
+						function(result) {
+							return true;
+						}, function() {
+							console.warn("Error calling plugin");
+						});
+			}
+		}
+
+		function updatecustomervisitlog(customervisitlogdata,i)
+		{
+		    
+		   
+		    console.log("update customervisitlog set issync=1 where routekey='"+customervisitlogdata[i].routekey+"' and log_id='"+customervisitlogdata[i].log_id+"' and customercode="+customervisitlogdata[i].customercode);
+		    
+			    if(platform=='iPad')
+			    {
+			    }
+		        else if(platform=='Android')
+		            {
+		                                                                    window.plugins.DataBaseHelper.insert("update customervisitlog set issync=1 where routekey='"+customervisitlogdata[i].routekey+"' and log_id='"+customervisitlogdata[i].log_id+"' and customercode="+customervisitlogdata[i].customercode,function(result)
+		                                                                                    {
+		                                                                                     return true;
+		                                                                                    },
+		                                                                                    function()
+		                                                                                    {
+		                                                                                     console.warn("Error calling plugin");
+		                                                                                    });
+		            }
+		}
+		
+		function uploadInvoicedetail(){
+			invoicedetail = {};
+			$.mobile.showPageLoadingMsg();
+			var logQry = "select routekey,visitkey,transactionkey,itemcode,salesqty,returnqty,damagedqty,freesampleqty,salesprice,returnprice,stdsalesprice,stdreturnprice,promoqty,salesitemexcisetax,salesitemgsttax,returnitemexcisetax,returnitemgsttax,damageditemexcisetax,damageditemgsttax,fgitemexcisetax,fgitemgsttax,promoitemexcisetax,promoitemgsttax,coopid,batchdetailkey,salescaseprice,returncaseprice,stdsalescaseprice,stdreturncaseprice,goodreturnprice,goodreturncaseprice,stdgoodreturncaseprice,stdgoodreturnprice,expiryqty,currencycode,returnfreeqty,manualfreeqty,limitedfreeqty,rebaterentqty,fixedrentqty,pricechgindicator,discountamount,discountpercentage,promoamount,replacementqty,replacementprice,replacementcaseprice,promovalue,mdat,returnpromovalue,returnpromoamount,diffround,roundsalesamount,amount from invoicedetail where  istemp='false'";
+            console.log("logQry"+logQry);
+            window.plugins.DataBaseHelper.select(logQry,function(result)
+            {
+                        if(!$.isEmptyObject(result))
+                        {
+                                for(i=0;i<result.array.length;i++)
+                                {
+                                	invoicedetail[i] = result.array[i];
+                                }
+                            
+                            
+                        }
+                        invoicedetail=JSON.stringify(invoicedetail);  
+                        uploadinvoiceaduitdata();
+                     
+            },
+            function()
+            {
+            console.warn("Error calling plugin");
+            });
+		}
+
+		function uploadinvoiceaduitdata()
+		{ 
+		   
+		    var routecode= sessionStorage.getItem("RouteCode");
+		    var userid= sessionStorage.getItem("SalesmanCode");
+		    var deviceid= sessionStorage.getItem("DeviceID");
+		    var routekey=sessionStorage.getItem("RouteKey");
+		  
+		    if(routekey=='')
+		    routekey=0;
+		    if(routeclosed=='' || routeclosed==undefined)
+		    routeclosed=0;
+		   
+		   
+		    var uploadddata={invoicedetail:invoicedetail};
+		    console.log("uploadddata : " + uploadddata);
+		    
+		   
+		            $.ajax({
+		                   type: "post",
+		                   url:wsurl+"sync/invtxndetail",
+		                   cache: false,
+		                    timeout: 60000,
+		                    data:{invoicedetail:invoicedetail},
+		               
+		                    success: function(data) { 
+		                   //  alert(data);
+		                     console.log("data : " + data);
+		                     data = JSON.parse(data);
+		                     console.log("data : " + data);
+		                   
+		                     var invoicedetaildata = data.invoicedetail;
+		                 
+		               
+		                     if(invoicedetaildata!= null && invoicedetaildata.length!=0)
+		  				   {
+		  						for(i=0;i<invoicedetaildata.length;i++)
+		  					   {
+		  							updateinvoicedetail(invoicedetaildata,i);
+		  					   }
+		  				   }
+		                   
+						  
+							
+							
+		                   $.mobile.hidePageLoadingMsg();
+		                   navigator.notification.alert("Data Uploaded Successfully");	
+		                   getServerData();
+		                   },
+		                   error: function(qXHR, textStatus, errorThrown) {
+		                    $.mobile.hidePageLoadingMsg();
+		                   
+		                    navigator.notification.alert("Acknowledgement Error");	
+		                    
+		                    
+		                   }
+		                   });
+		                
+		}
+		
+		function updateinvoicedetail(invoicedetaildata,i)
+		{
+		    
+		   
+		    console.log("update invoicedetail set issync=1 where routekey='"+invoicedetaildata[i].routekey+"' and visitkey='"+invoicedetaildata[i].visitkey+"' and itemcode="+invoicedetaildata[i].itemcode);
+				    if(platform=='iPad')
+					    {
+				    	
+				        }
+		            else if(platform=='Android')
+		            {
+		                                                                    window.plugins.DataBaseHelper.insert("update invoicedetail set issync=1 where routekey='"+invoicedetaildata[i].routekey+"' and visitkey='"+invoicedetaildata[i].visitkey+"' and itemcode="+invoicedetaildata[i].itemcode,function(result)
+		                                                                                    {
+		                                                                                     return true;
+		                                                                                    },
+		                                                                                    function()
+		                                                                                    {
+		                                                                                     console.warn("Error calling plugin");
+		                                                                                    });
+		            }
+		}
+		
+		function uploadardetail(){
+			ardetail = {};
+			$.mobile.showPageLoadingMsg();
+			var logQry = "select routekey,visitkey,transactionkey,invoicenumber,invoicedate,CAST(totalinvoiceamount AS VARCHAR) as totalinvoiceamount,onacctreasoncode,CAST(amountpaid AS VARCHAR) as amountpaid,CAST(invoicebalance AS VARCHAR) as invoicebalance,arcollectiontype,chequestatusindicator,sapchequestatusindicator,currencycode,pdcbalance,alternateinvoicenumber,deductionamount from ardetail where  istemp='false'";
+            console.log("logQry"+logQry);
+            window.plugins.DataBaseHelper.select(logQry,function(result)
+            {
+                        if(!$.isEmptyObject(result))
+                        {
+                                for(i=0;i<result.array.length;i++)
+                                {
+                                	ardetail[i] = result.array[i];
+                                }
+                            
+                            
+                        }
+                        ardetail=JSON.stringify(ardetail);  
+                        uploadardetailaduitdata();
+                     
+            },
+            function()
+            {
+            console.warn("Error calling plugin");
+            });
+		}
+		
+		function uploadardetailaduitdata()
+		{ 
+		   
+		    var routecode= sessionStorage.getItem("RouteCode");
+		    var userid= sessionStorage.getItem("SalesmanCode");
+		    var deviceid= sessionStorage.getItem("DeviceID");
+		    var routekey=sessionStorage.getItem("RouteKey");
+		  
+		    if(routekey=='')
+		    routekey=0;
+		    if(routeclosed=='' || routeclosed==undefined)
+		    routeclosed=0;
+		   
+		   
+		    var uploadddata={ardetail:ardetail};
+		    console.log("uploadddata : " + uploadddata);
+		    
+		   
+		            $.ajax({
+		                   type: "post",
+		                   url:wsurl+"sync/artxndetail",
+		                   cache: false,
+		                    timeout: 60000,
+		                    data:{ardetail:ardetail},
+		               
+		                    success: function(data) { 
+		                   //  alert(data);
+		                     console.log("data : " + data);
+		                     data = JSON.parse(data);
+		                     console.log("data : " + data);
+		                   
+		                     var ardetaildata = data.ardetail;
+		                 
+		               
+		                     if(ardetaildata!= null && ardetaildata.length!=0)
+		   				  {
+		   					   for(g=0;g<ardetaildata.length;g++)
+		   					   {
+		   							updateardetail(ardetaildata,g);
+		   					   }
+		   				   }
+		                   
+						  
+							
+							
+		                   $.mobile.hidePageLoadingMsg();
+		                   navigator.notification.alert("Data Uploaded Successfully");	
+		                   getServerData();
+		                   },
+		                   error: function(qXHR, textStatus, errorThrown) {
+		                    $.mobile.hidePageLoadingMsg();
+		                   
+		                    navigator.notification.alert("Acknowledgement Error");	
+		                    
+		                    
+		                   }
+		                   });
+		                
+		}
+		function updateardetail(ardetaildata,i)
+		{
+		    if(platform=='iPad')
+			    {
+		          
+			    }
+		            else if(platform=='Android')
+		            {
+		                                                                    window.plugins.DataBaseHelper.insert("update ardetail set issync=1 where routekey='"+ardetaildata[i].routekey+"' and visitkey='"+ardetaildata[i].visitkey+"' and transactionkey='"+ardetaildata[i].transactionkey+"'",function(result)
+		                                                                                    {
+		                                                                                     return true;
+		                                                                                    },
+		                                                                                    function()
+		                                                                                    {
+		                                                                                     console.warn("Error calling plugin");
+		                                                                                    });
+		            }
+		}
+		
+		function uploadCustomerOperations()
+		{
+			
+		
+			customeroperationscontrol = {};
+			$.mobile.showPageLoadingMsg();
+			var Qry = "select visitkey,routekey,customercode,routecode,salesmancode,odometerreading,visitstartdate,visitstarttime,visitenddate,visitendtime,totaltransactions,addedcustomer,voidflag,scannerindicator,reasoncode,CAST(latitude AS VARCHAR) as latitude,CAST(longitude AS VARCHAR) as longitude,radius,log_id from customeroperationscontrol";
+            console.log("logQry"+Qry);
+            window.plugins.DataBaseHelper.select(Qry,function(result)
+            {
+                        if(!$.isEmptyObject(result))
+                        {
+                                for(i=0;i<result.array.length;i++)
+                                {
+                                	customeroperationscontrol[i] = result.array[i];
+                                }
+                            
+                            
+                        }
+                        customeroperationscontrol=JSON.stringify(customeroperationscontrol);  
+                        uploadcustomeroperationsaduitdata();
+                     
+            },
+            function()
+            {
+            console.warn("Error calling plugin");
+            });
+		
+		
+		}
+		
+		function uploadcustomeroperationsaduitdata(){
+			var routecode= sessionStorage.getItem("RouteCode");
+		    var userid= sessionStorage.getItem("SalesmanCode");
+		    var deviceid= sessionStorage.getItem("DeviceID");
+		    var routekey=sessionStorage.getItem("RouteKey");
+		  
+		    if(routekey=='')
+		    routekey=0;
+		    if(routeclosed=='' || routeclosed==undefined)
+		    routeclosed=0;
+		   
+		   
+		    var uploadddata={customeroperationscontrol:customeroperationscontrol,routecode:routecode,userid:userid,routekey:routekey};
+		    console.log("uploadddata : " + uploadddata);
+		    
+		   
+		            $.ajax({
+		                   type: "post",
+		                   url:wsurl+"sync/senddata",
+		                   cache: false,
+		                    timeout: 60000,
+		                    data:{customeroperationscontrol:customeroperationscontrol,routecode:routecode,userid:userid,routekey:routekey},
+		               
+		                    success: function(data) { 
+		                   //  alert(data);
+		                     console.log("data : " + data);
+		                     data = JSON.parse(data);
+		                     console.log("data : " + data);
+		                   
+		                     var customeroperationscontroldata = data.customeroperationscontrol;
+		                 
+		               
+		                     if(customeroperationscontroldata!= null && customeroperationscontroldata.length!=0)
+		   				  {
+		   					   for(g=0;g<customeroperationscontroldata.length;g++)
+		   					   {
+		   							updatecustomeroperationscontrol(customeroperationscontroldata,g);
+		   					   }
+		   				   }
+		                   
+		                   $.mobile.hidePageLoadingMsg();
+		                   navigator.notification.alert("Data Uploaded Successfully");	
+		                   getServerData();
+		                   },
+		                   error: function(qXHR, textStatus, errorThrown) {
+		                    $.mobile.hidePageLoadingMsg();
+		                   
+		                    navigator.notification.alert("Acknowledgement Error");	
+		                    
+		                    
+		                   }
+		                   });
+		}
+		
+		
+		function updatecustomeroperationscontrol(customeroperationscontroldata,i)
+		{
+		    if(platform=='iPad')
+			    {
+		          
+			    }
+		            else if(platform=='Android')
+		            {
+		                   window.plugins.DataBaseHelper.insert("update customeroperationscontrol set issync=1 where routekey='"+customeroperationscontroldata[i].routekey+"' and visitkey='"+customeroperationscontroldata[i].visitkey+"'",function(result)
+		                        {
+		                           return true;
+		                        },
+		                        function()
+		                        {
+		                           console.warn("Error calling plugin");
+		                        });
+		            }
+		}
+		
+	</script>
+
+</body>
+
+</html>

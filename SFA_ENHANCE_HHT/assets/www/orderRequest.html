@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Request</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.0.min.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 480px) and (max-width: 600px)"
+        href="css/style_600.css">
+    <!--Black P-->
+    <link rel="stylesheet" media="only screen and (min-width: 600px) and (max-width: 700px)"
+        href="css/style_700.css">
+    <!--Iphone 4 P-->
+    <link rel="stylesheet" media="only screen and (min-width: 700px) and (max-width: 800px) and  (min-height:1004px)"
+        href="css/style_800.css">
+    <!--Ipad P-->
+    <link rel="stylesheet" media="only screen and (min-width: 900px) and (max-width: 1100px) and  (max-height:640px)"
+        href="css/style_1100.css">
+    <!--Black L-->
+    <link rel="stylesheet" media="only screen and (min-width: 1000px) and (max-width: 1200px) and (min-height:768px)"
+        href="css/style_1200.css">
+    <!--Ipad L-->
+    <!--<link rel="stylesheet" media="only screen and (min-width: 1200px) and (max-width: 1400px)" href="style_invoice_1400.css">-->
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <script type="text/javascript" src="js/jquery.mobile-1.0.js"></script>
+
+    <script type="text/javascript" src="js/common.js"></script>
+
+</head>
+<body>
+    <div data-role="page" data-theme="d" data-title="Order Request">
+        <div>
+            <img title="" alt="" src="images/bg.png" id="background">
+        </div>
+        <div data-role="header" data-position="inline" id="bgclheader">
+            <a href="cust_opt.html" id="Back_inner" rel="external">Back</a>
+            <h1>
+                Order Request</h1>
+            <a href="#" id="lang_inner">EN</a>
+        </div>
+        <div data-role="content" class="centerboxInvReq">
+            <div class="boxContent">
+                <div class="tblBox">
+                    <table id="tblContent" cellpadding="0" cellspacing="1" border="0" width="100%">
+                        <tr class="tblHeader">
+                            <th style="width: 30%;" class="leftAlign">
+                                Item Description
+                            </th>
+                            <th style="width: 15%;">
+                                Cases
+                            </th>
+                            <th style="width: 15%;">
+                                Units
+                            </th>
+                            <th style="width: 20%;">
+                                Unit Price
+                            </th>
+                            <th style="width: 20%;">
+                                Total
+                            </th>
+                        </tr>
+                        <tr class="contentFont">
+                            <td class="leftAlign">
+                                LBN FF 200 ML
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                20
+                            </td>
+                            <td>
+                                100
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                        </tr>
+                        <tr class="contentFont">
+                            <td class="leftAlign">
+                                LBN FF 200 ML
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                20
+                            </td>
+                            <td>
+                                100
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                        </tr>
+                        <tr class="contentFont">
+                            <td class="leftAlign">
+                                LBN FF 200 ML
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                20
+                            </td>
+                            <td>
+                                100
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                        </tr>
+                        <tr class="contentFont">
+                            <td class="leftAlign">
+                                LBN FF 200 ML
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                20
+                            </td>
+                            <td>
+                                100
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                        </tr>
+                        <tr class="contentFont">
+                            <td class="leftAlign">
+                                LBN FF 200 ML
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                20
+                            </td>
+                            <td>
+                                100
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                        </tr>
+                        <tr class="contentFont">
+                            <td class="leftAlign">
+                                LBN FF 200 ML
+                            </td>
+                            <td>
+                                15
+                            </td>
+                            <td>
+                                20
+                            </td>
+                            <td>
+                                100
+                            </td>
+                            <td>
+                                2000
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tabedBar">
+                    <div class="paging" id="paging">
+                        <img id="imgRight" src="images/right-gray.png" />
+                        <img id="img1" src="images/left-gray.png" />
+                    </div>
+                    <div data-role="navbar" class="navigationTab" id="navigationTab">
+                        <ul style="width: 45%;">
+                            <li><a href="#" class="ui-btn-active tabSIActive tableBorderBottomLeft tableBorderBottomRight">
+                                Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="textBar">
+                    <table cellpadding="2" cellspacing="2" border="0" width="100%">
+                        <tr>
+                            <td class="captionLabel">
+                                Item No.
+                            </td>
+                            <td class="captionLabel">
+                                List Price
+                            </td>
+                            <td class="captionLabel">
+                                Total
+                            </td>
+                            <td class="captionLabel">
+                                Totals
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="txtItemNo" type="text" class="textWidth textFont" />
+                            </td>
+                            <td>
+                                <input id="txtPriceList" type="text" class="textWidth textFont" />
+                            </td>
+                            <td>
+                                <input id="txtSubTotal" type="text" class="textWidth textFont" />
+                            </td>
+                            <td>
+                                <input id="txtTotal" type="text" class="textWidth textFont" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="leftbottomMenu">
+                <div class="MenuPosition">
+                    <div class="MenuTextPos">
+                        <img src="images/icn-add-gray.png" alt="Add" /></div>
+                    <div class="MenuTextPos MenuText MenuGray">
+                        Add</div>
+                </div>
+                <div class="MenuPosition">
+                    <div class="MenuTextPos">
+                        <img src="images/option-icon-gray.png" alt="Option" /></div>
+                    <div class="MenuTextPos MenuText MenuGray">
+                        Options</div>
+                </div>
+                <div class="MenuPosition MenuExit">
+                    <div class="MenuTextPos">
+                        <img src="images/icn-exit.png" alt="Exit" /></div>
+                    <div class="MenuTextPos MenuText">
+                        Exit</div>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" class="ui-bar">
+            <div class="footer">
+                <div class="leftfooter">
+                    09 November 2011</div>
+                <div class="rightfooter">
+                    Mirnah Technology System</div>
+            </div>
+        </div>
+        <div data-role="footer" style="bottom: 0; position: absolute;">
+            <div data-role="navbar" data-iconpos="top" data-grid="f">
+                <ul>
+                    <li style="margin-bottom: 0 !important;"><a href="#" id="day" data-icon="custom">Start
+                        of day</a></li>
+                    <li style="margin-bottom: 0 !important;"><a href="#" id="inve" data-icon="custom">inventory</a></li>
+                    <li style="margin-bottom: 0 !important;"><a href="#" id="cust" data-icon="custom"
+                        class="ui-btn-active">Customer opt</a></li>
+                    <li style="margin-bottom: 0 !important;"><a href="#" id="sett" data-icon="custom">Settlement</a></li>
+                    <li style="margin-bottom: 0 !important;"><a href="#" id="expe" data-icon="custom">Expense
+                        Entry</a></li>
+                    <li style="margin-bottom: 0 !important;"><a href="#" id="info" data-icon="custom">information</a></li>
+                    <li style="margin-bottom: 0 !important; width: 14.0%"><a href="#" id="setup" data-icon="custom">
+                        Utilities</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+            if (sessionStorage.getItem("Language") == "EN") {
+                $("#tblContent tr:first th:first").addClass('tableBorderTopLeft');
+                $("#tblContent tr:first th:last").addClass('tableBorderTopRight');
+                $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft');
+                $("#tblContent tr:last td:last").addClass('tableBorderBottomRight');
+            }
+            else {
+                $("#tblContent tr:first th:first").addClass('tableBorderTopRight');
+                $("#tblContent tr:first th:last").addClass('tableBorderTopLeft');
+                $("#tblContent tr:last td:first").addClass('tableBorderBottomRight');
+                $("#tblContent tr:last td:last").addClass('tableBorderBottomLeft');
+            }
+
+            $("#lang_inner").click(function() {
+                if ($("#lang_inner").text() == "EN") {
+
+                    $("#lang_inner").text("AR");
+
+                    xmlDoc = loadXMLDoc("SFA_AR.xml");
+                    GetElements(xmlDoc);
+
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    $("#paging").removeClass("paging");
+                    $("#navigationTab").removeClass("navigationTab");
+
+                    $("#paging").addClass("pagingArbic");
+                    $("#navigationTab").addClass("navigationTabArbic");
+
+                    sessionStorage.setItem("Language", "AR");
+
+                    ChangeTableRadius();
+                }
+                else {
+
+                    $("#lang_inner").text("EN");
+
+                    xmlDoc = loadXMLDoc("SFA_EN.xml");
+                    GetElements(xmlDoc);
+
+                    $(".centerboxInvReq").attr("dir", "ltr");
+
+                    $("#paging").removeClass("pagingArbic");
+                    $("#navigationTab").removeClass("navigationTabArbic");
+
+
+                    $("#paging").addClass("paging");
+                    $("#navigationTab").addClass("navigationTab");
+
+                    
+                    sessionStorage.setItem("Language", "EN");
+
+                    ChangeTableRadius();
+                }
+            });
+            if (sessionStorage.getItem("Language") == "AR") {
+                $("#lang_inner").trigger('click');
+            }
+
+            function GetElements(xmlDoc) {
+                var PageName = 'orderRequest';
+            }
+
+            function ChangeTableRadius() {
+                if (sessionStorage.getItem("Language") == "EN") {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomRight');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomLeft');
+                }
+                else {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomLeft');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomRight');
+
+                }
+            }
+
+        });
+    </script>
+
+</body>
+</html>

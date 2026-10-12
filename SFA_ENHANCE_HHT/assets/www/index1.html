@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>PhoneGap</title>
+<script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="directoryListing.js"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+ document.addEventListener("deviceready", onDeviceReady, false);
+ 
+ function onDeviceReady() 
+{
+	alert("tes");
+   window.plugins.DataBaseHelper.copy("",function(data)
+	{
+    
+	},
+	function()
+	{
+   	 console.warn("Error calling plugin");
+	});
+
+}
+</script>		
+</head>
+<body >
+    <input disabled id="list-sdcard" type="button" value="List SDCard Contents"  />
+    <hr>
+    <div id="result"></div>
+    <input type="button" value="check" onclick="onDeviceReady();">
+    <hr>
+</body>
+</html>

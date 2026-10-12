@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, App!</string>
+    <string name="app_name">SFA</string>
+    <string name="share_name">TODO</string>
+    <string name="version">8.1.2</string>
+    <string name="strPrint">TEXT 0 2 0 %1$s %2$s</string>
+	<string name="strPrintBold">TEXT 5 0 0 %1$s %2$s</string>
+	<string name="strPrintHeader">CENTER\nTEXT 7 2 0 %1$s %2$s</string>
+	<string name="strPrintTitle">CENTER\nTEXT 5 0 0 %1$s %2$s</string>
+	<string name="strPrintLeftBold">LEFT\nTEXT 5 0 0 %1$s %2$s</string>    
+	<string name="strFormatUnderLine">\nUNDERLINE ON\nTEXT 0 2 0 %1$s %2$s\nUNDERLINE OFF\n</string>    
+</resources>

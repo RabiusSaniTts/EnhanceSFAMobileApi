@@ -1,0 +1,252 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 10/02/2012
+ '  Description  : This page is used for load summary screen.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Load Summary</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="adjustload.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Adjust Load Summary</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="boxContent">
+                    <div class="tblBox tblPrintLoad">
+                        <table border="0" width="100%" cellpadding="10"
+                            cellspacing="0" id="tblContent" data-role="none">
+                            <thead>
+                                <tr>
+                                    <td width="50%" id="SalesmanCode"
+                                        class="tblHeader" style="padding: 10px;"
+                                        lang="en">
+                                    </td>
+                                    <td id="SalesmanName" class="tblHeader"
+                                        style="padding: 10px;" lang="en">
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td align="center" colspan=2>
+                                        <table id="Table1" cellpadding="5"
+                                            cellspacing="1" border="0"
+                                            width="80%">
+                                            <tr>
+                                                <td lang="en">
+                                                    Route
+                                                </td>
+                                                <td>
+                                                    <div id="divRouteValue"
+                                                        class="readonly_text rightAlign">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td lang="en">
+                                                    Adjust Load Date
+                                                </td>
+
+                                                <td>
+                                                    <div id="divLoadDateValue"
+                                                        class="readonly_text">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td lang="en">
+                                                    Adjust Load Quantity
+                                                </td>
+
+                                                <td>
+                                                    <div
+                                                        id="divLoadQuantityValue"
+                                                        class="readonly_text rightAlign">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td lang="en">
+                                                    Adjust Load Value
+                                                </td>
+                                                <td>
+                                                    <div id="divLoadValue"
+                                                        class="readonly_text rightAlign">
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="#" data-rel="back" class="enableText">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" class="ui-btn-active" rel="external"
+                                data-icon="custom" lang="en">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            resizeOrientationWindow();
+       		$(document).ready(function() {
+       		resizeWindow();
+                $(".leftfooter").html(getCurrentDate());
+                              
+                
+                //Binding salemanname ,route code dynamically set in a index page
+                //Call java script function for disaply current formatted date
+                              
+                $("#SalesmanCode").html(sessionStorage.getItem("SalesmanCode"));
+                $("#SalesmanName").html(sessionStorage.getItem("SalesmanName"));
+                $("#divRouteValue").html(sessionStorage.getItem("RouteCode"));
+                $("#divLoadDateValue").html(longDate_Day());
+                $("#divLoadPeriodValue").html(localStorage.LoadPeriod);
+                $("#divLoadQuantityValue").html(localStorage.LoadQty);
+                $("#divLoadValue").html(eval(localStorage.LoadValue).toFixed(sessionStorage.getItem('decimalplace')));
+               
+
+                var lan = sessionStorage.getItem("Language");
+	    window.lang.run(lan);
+           if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('LoadSummary'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                    $(".centerbox").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+            }
+	    else
+	    {
+		window.lang.change('en','en');
+		$('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		$('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		$('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		$('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	    }
+
+            });
+        
+        </script>
+
+        </div>
+    </body>
+</html>

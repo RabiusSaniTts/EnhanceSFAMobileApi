@@ -1,0 +1,799 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 2/2/2011
+ '  Description  : This page is used for price list
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_600.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="#" rel="external" lang="en"
+                    onclick="ClearVariables()">Back</a>
+                <h1 lang="en">
+                    Settle Cheques</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <div class="tblBox tbltd">
+                        <div>
+                            <table width="100%" cellpadding="0" cellspacing="0"
+                                id="tblHeaderContent" class="tblHeader">
+                                <tr>
+                                    <th style="width:10%" lang="en">
+                                        Type
+                                    </th>
+                                    <th style="width:25%" lang="en">
+                                        Cheque#
+                                    </th>
+                                    <th style="width:17%" lang="en">
+                                        Date
+                                    </th>
+                                    <th style="width:18%" lang="en">
+                                        Amount
+                                    </th>
+                                    <th style="width:25%" lang="en">
+                                        Bank Name
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="tblSalesHeight" id="contentWrapper">
+                            <table border="0" width="100%" cellpadding="0"
+                                cellspacing="0" id="tbl1"
+                                data-role="none">
+                                <tbody>
+                                    <tr>
+                                        <td style="width:10%">
+                                        </td>
+                                        <td style="width:25%">
+                                        </td>
+                                        <td style="width:17%">
+                                        </td>
+                                        <td style="width:18%">
+                                        </td>
+                                        <td style="width:25%">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tabedBar">
+                        <div id="TabPanel" class="TabPanelEN">
+                            <div id="TabNew" class="Tab TabFirst TabActive"
+                                style="display:block" db="TQ"
+                                lang="en">New</div>
+                            <div id="TabTransaction"
+                                class="Tab TabLast TabActive" db="TL" lang="en"
+                                style="display:block;white-space:nowrap">Transaction</div>
+                        </div>
+                    </div>
+                    <div
+                        style="float:right;padding-top:0px;margin-top:0px;width:45%">
+                        <table width="100%">
+                            <tr>
+                                <td lang="en" id="pname" class="rtext"
+                                    style="width:40%">
+                                    Invoice#
+                                </td>
+                                <td style="width:60%">
+                                    <div class="addressdiv textWidth"
+                                        id="txtInvoiceNo"
+                                        style="float:right;width:100%"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="textBar">
+                        <table cellpadding="2" cellspacing="2" border="0"
+                            width="100%">
+                            <tr>
+                                <td lang="en" id="pname" class="rtext">
+                                    Customer#
+                                </td>
+                                <td lang="en" id="pname" class="rtext">
+                                    Customer Name
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:30%;">
+                                    <!--<input id="txtInvoiceNo" type="text" class="textWidth textFont"  readonly="readonly" />-->
+                                    <div class="addressdiv textWidth"
+                                        id="txtCustomerCode"></div>
+                                </td>
+                                <td style="width:60%;margin-left:5px;">
+                                    <!--<input id="txtCustomerName" type="text" class="textWidth textFont" readonly="readonly" />-->
+                                    <div class="addressdiv" id="txtCustomerName"
+                                        style="width:95%"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="addcheck.html" class="enableText" rel="external"
+                        data-role="none" id="lnkAdd">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-add.png" alt="Add"
+                                    id="imgAdd" /></div>
+                            <div class="MenuTextPos MenuText" lang="en"
+                                id="divAdd">
+                                Add</div>
+                        </div>
+                    </a>
+                    <a href="#" class="enableText" rel="external"
+                        id="btnChange">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/option-icon.png"
+                                    alt="Option" id="imgChange" /></div>
+                            <div class="MenuTextPos MenuText" lang="en"
+                                id="divChange">
+                                Change</div>
+                        </div>
+                    </a>
+                    <a href="#" class="enableText" rel="external"
+                        id="btnDelete">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/delete.png" alt="Exit"
+                                    id="imgDelete" /></div>
+                            <div class="MenuTextPos MenuText" lang="en"
+                                id="divDelete">
+                                Delete</div>
+                        </div>
+                    </a>
+                    <a href="#" rel="external" class="enableText"
+                        onclick="ClearVariables()">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+	
+        $("#tbl1").click(function() { });
+        $('label').css({ 'background': '#D1ECFD','border':'none' });
+        $('.ui-btn-inner').css({ 'border-top':'none' });
+        
+        var platform;
+	    var data=[];
+        var selRow;
+        var decimalplace = sessionStorage.getItem("decimalplace");
+        var ActiveIndex = 0;
+        var EnableEODAdjChecks,EnableEODAddChecks;
+		resizeOrientationWindow();
+        $(document).ready(function() {
+		 	resizeWindow();
+        
+            platform = sessionStorage.getItem("platform");
+            document.addEventListener("deviceready", getSettings, false);
+            
+            $("#TabPanel div").click(function() {                
+                    $("#TabPanel div").removeClass("TabActive");
+                    $(this).removeClass("TabInactive").addClass("TabActive"); 
+                    var index = $("#TabPanel div").index(this);
+                    ActiveIndex = index;                          
+                    getData();
+            });
+            /*$("#btnChange").bind("click", function(){ OnChange(); });
+            $("#btnDelete").bind("click", function(){ OnDelete(); });*/
+            //$("#btnDelete").click(function(){ OnDelete(); });
+            //$("#btnDelete").bind("click", function(){ OnDelete(); });
+            
+            
+            function getSettings()
+            {
+                var Qry = "SELECT enableeodadjchecks,enableeodaddchecks FROM routemaster WHERE routecode = " + sessionStorage.getItem("RouteCode");                
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            EnableEODAdjChecks = result[0][0];
+                            EnableEODAddChecks = result[0][1];
+                        }
+                        SetDefaultTab();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            EnableEODAdjChecks = result.array[0].enableeodadjchecks;
+                            EnableEODAddChecks = result.array[0].enableeodaddchecks;
+                        }
+                        SetDefaultTab();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function SetDefaultTab()
+            {
+                /*if(window.location.toString().indexOf("currtab=0") > 0)
+                {                
+                    $("#TabPanel div:eq(0)").click();
+                }
+                else if(window.location.toString().indexOf("currtab=1") > 0)
+                {                
+                    $("#TabPanel div:eq(1)").trigger("click");
+                }
+                else
+                    $("#TabPanel div:eq(0)").trigger("click");*/
+                if(sessionStorage.currtab == 0)
+                {                
+                    $("#TabPanel div:eq(0)").click();
+                }
+                else if(sessionStorage.currtab == 1)
+                {                
+                    $("#TabPanel div:eq(1)").trigger("click");
+                }
+                else
+                    $("#TabPanel div:eq(0)").trigger("click");
+            }
+            
+            function getData()
+            {                
+                data = undefined;
+                selRow = undefined;
+                $('#txtInvoiceNo').text("");
+                $('#txtCustomerName').text("");
+                $('#txtCustomerCode').text("");
+                ClearTable('tbl1'); 
+                EnableDisableAction(); 
+                
+                if(ActiveIndex == 0 && EnableEODAddChecks == 1)
+                    getNewCheques();
+                else
+                    getSalesCheques();
+                    
+                if(data == undefined)
+                {
+                    data = [];
+                    $("#lnkYes").attr("href","#");
+                    $("#lnkYes").attr("onclick","");
+                    $("#imgYes").attr("src","../images/yes-gray.png");
+                    $("#divYes").addClass('MenuGray');
+                }
+                else
+                {
+                    $("#lnkYes").attr("onclick","ShowVoidDetail()");
+                    $("#imgYes").attr("src","../images/yes.png");
+                    $("#divYes").removeClass('MenuGray');
+                }
+            }
+            
+            function EnableDisableAction()
+            {   
+                if(ActiveIndex == 0)
+                {
+                    if(EnableEODAddChecks == 1)
+                    {
+                        $("#lnkAdd").attr("href","addcheck.html");
+                        $("#imgAdd").attr("src","../images/icn-add.png");
+                        $("#divAdd").removeClass('MenuGray');        
+                        
+                        $("#btnDelete").bind("click",function(){ OnDelete(); });
+                        $("#imgDelete").attr("src","../images/delete.png");
+                        $("#divDelete").removeClass('MenuGray');
+                    }
+                    else
+                    {
+                        $("#lnkAdd").attr("href","#");
+                        $("#imgAdd").attr("src","../images/icn-add-gray.png");
+                        $("#divAdd").addClass('MenuGray'); 
+                        
+                        $("#btnDelete").unbind("click");
+                        $("#imgDelete").attr("src","../images/delete-gray.png");
+                        $("#divDelete").addClass('MenuGray');
+                    }
+                    
+                    if(EnableEODAddChecks == 1)
+                    {
+                        $("#btnChange").bind("click",function(){ OnChange(); });
+                        $("#imgChange").attr("src","../images/option-icon.png");
+                        $("#divChange").removeClass('MenuGray');                     
+                    }
+                    else
+                    {
+                        $("#TabPanel div:eq(0)").hide();
+                        //$("#TabPanel div:eq(1)").trigger("click");
+                        
+                        $("#btnChange").unbind("click");
+                        $("#imgChange").attr("src","../images/option-icon-gray-large.png");
+                        $("#divChange").addClass('MenuGray');
+                    }
+                }               
+                else
+                {
+                    $("#lnkAdd").attr("href","#");
+                    $("#imgAdd").attr("src","../images/icn-add-gray.png");
+                    $("#divAdd").addClass('MenuGray'); 
+                    
+                    $("#btnChange").unbind("click");
+                    $("#imgChange").attr("src","../images/option-icon-gray-large.png");
+                    $("#divChange").addClass('MenuGray');
+                    
+                    $("#btnDelete").unbind("click");
+                    $("#imgDelete").attr("src","../images/delete-gray.png");
+                    $("#divDelete").addClass('MenuGray'); 
+                }
+            }
+            
+            function getNewCheques()
+            {
+                var Qry = "SELECT 'New' AS label,checknumber,checkdate,amount,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN bankname ELSE arbbankname END AS bankname,ar.invoicenumber,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,ccd.routekey,ccd.visitkey,(SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode = " + sessionStorage.getItem("RouteCode") + ") AS customercode FROM cashcheckdetail ccd JOIN arheader ar ON ar.routekey = ccd.routekey AND ar.visitkey = ccd.visitkey AND ar.voidflag IS NOT 1 JOIN customermaster cm ON cm.customercode=ar.customercode JOIN bankmaster bm ON bm.bankcode = ccd.bankcode WHERE ccd.typecode = 1 AND ccd.checktype = 1";
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {
+                            data = result;
+                            BindData();
+                        }
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var result = $.map(result.array, function(item, index) {
+                                return [[item.label,item.checknumber,item.checkdate,item.amount,item.bankname,item.invoicenumber,item.customername,item.routekey,item.visitkey,item.customercode]];
+                            });
+                            data = result;
+                            BindData();
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+
+            function getSalesCheques()
+            {
+                var Qry = "SELECT 'SA' AS label,checknumber,checkdate,amount,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN bankname ELSE arbbankname END AS bankname,inv.invoicenumber,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,ccd.routekey,ccd.visitkey,(SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode = " + sessionStorage.getItem("RouteCode") + ") AS customercode FROM cashcheckdetail ccd JOIN invoiceheader inv ON inv.routekey = ccd.routekey AND inv.visitkey = ccd.visitkey AND inv.voidflag IS NOT 1 AND inv.istemp = 'false' JOIN customermaster cm ON cm.customercode=inv.customercode JOIN bankmaster bm ON bm.bankcode = ccd.bankcode WHERE ccd.istemp = 'false' AND ccd.typecode = 1";
+                console.log(Qry);
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                            data = result;
+                        getCollectionCheques();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var result = $.map(result.array, function(item, index) {
+                                return [[item.label,item.checknumber,item.checkdate,item.amount,item.bankname,item.invoicenumber,item.customername,item.routekey,item.visitkey,item.customercode]];
+                            });
+                            data = result;
+                        }
+                        getCollectionCheques();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            
+            function getCollectionCheques()
+            {
+                var Qry = "SELECT 'CO' as label,checknumber,checkdate,amount,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN bankname ELSE arbbankname END AS bankname,ar.invoicenumber,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,ccd.routekey,ccd.visitkey,(SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode = " + sessionStorage.getItem("RouteCode") + ") AS customercode FROM cashcheckdetail ccd JOIN arheader ar ON ar.routekey = ccd.routekey AND ar.visitkey = ccd.visitkey AND ar.voidflag IS NOT 1 AND ar.istemp = 'false' AND ar.advancepaymentflag = 0 JOIN customermaster cm ON cm.customercode=ar.customercode JOIN bankmaster bm ON bm.bankcode = ccd.bankcode WHERE ccd.istemp = 'false' AND ccd.typecode = 1";
+                console.log(Qry);
+                var tmpdata=[];
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {
+                            if(data != undefined && eval(data.length) > 0)
+                            {
+                                tmpdata = data.concat(result);
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                        }                                              
+                        getAdvanceCheques();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var result = $.map(result.array, function(item, index) {
+                                return [[item.label,item.checknumber,item.checkdate,item.amount,item.bankname,item.invoicenumber,item.customername,item.routekey,item.visitkey,item.customercode]];
+                            });
+                            if(data != undefined)
+                            {
+                                tmpdata = data.concat(result);                           
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                        }
+                        getAdvanceCheques();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function getAdvanceCheques()
+            {
+                var Qry = "SELECT 'AD' as label,checknumber,checkdate,amount,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN bankname ELSE arbbankname END AS bankname,ar.invoicenumber,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername,ccd.routekey,ccd.visitkey,(SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode = " + sessionStorage.getItem("RouteCode") + ") AS customercode FROM cashcheckdetail ccd JOIN arheader ar ON ar.routekey = ccd.routekey AND ar.visitkey = ccd.visitkey AND ar.voidflag IS NOT 1 AND ar.istemp = 'false' AND ar.advancepaymentflag = 1 JOIN customermaster cm ON cm.customercode=ar.customercode JOIN bankmaster bm ON bm.bankcode = ccd.bankcode WHERE ccd.istemp = 'false' AND ccd.typecode = 1";
+                console.log(Qry);
+                var tmpdata=[];
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {
+                            if(data != undefined && eval(data.length) > 0)
+                            {
+                                tmpdata = data.concat(result);
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                        }
+                        BindData();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var result = $.map(result.array, function(item, index) {
+                                return [[item.label,item.checknumber,item.checkdate,item.amount,item.bankname,item.invoicenumber,item.customername,item.routekey,item.visitkey,item.customercode]];
+                            });
+                            if(data != undefined)
+                            {
+                                tmpdata = data.concat(result);
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                        }
+                        BindData();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function BindData()
+            {                
+                
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                    
+                for(var i=0;i<data.length;i++)
+                {
+                    var r = "<tr class='contentFont'>";
+                    for(j=0;j<CellCount;j++)
+                    {          
+                    	            
+                        var c = '';
+                        var temp = '';                        
+                        temp = (j == 0 || j == (CellCount-1)) ? "class = 'leftAlign'" : "class = 'rightAlign'";                        
+                        if(j == 1)                        
+                            data[i][j] = parseInt(data[i][j]);
+                        
+                        if(j == 3)
+                            data[i][j] = eval(data[i][j]).toFixed(decimalplace);                        
+                        
+                        c = "<td " + temp + ">" + data[i][j] + "</td>";
+                        r += c;
+                    }                    
+                    r += "</tr>";
+                  
+                    $('#tbl1 tbody').append(r);
+                }                
+                
+                if(ActiveIndex == 0)
+                {
+                    $("#tblHeaderContent tr th:eq(0)").hide();
+                    $("#tbl1 td:nth-child(1)").hide();
+                }
+                else
+                {
+                    $("#tblHeaderContent tr th:eq(0)").show();
+                    $("#tbl1 td:nth-child(1)").show();
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');
+                
+                $("#tbl1 tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i=$(this).index();
+                    $("#txtInvoiceNo").text(data[i-1][5]);
+                    $("#txtCustomerName").text(data[i-1][6]);
+                    $("#txtCustomerCode").text(data[i-1][9]);
+                    
+                    if($(this).hasClass("clicked"))
+                        selRow = i;
+                    else
+                        selRow = undefined;
+                });
+                $("#tbl1 tr:eq(1)").trigger('click');
+            }
+            
+            
+                if(ActiveIndex == 0)
+                {
+                    $("#tblHeaderContent tr th:eq(0)").hide();
+                    $("#tbl1 td:nth-child(1)").hide();
+                }
+                else
+                {
+                    $("#tblHeaderContent tr th:eq(0)").show();
+                    $("#tbl1 td:nth-child(1)").show();
+                }
+            
+            function OnChange()
+            {
+                if(selRow == undefined)
+                {
+                    getLangText("Please Select Cheque");
+                    return false;
+                }
+                var obj = {};
+                obj.routekey = data[selRow - 1][7];
+                obj.visitkey = data[selRow - 1][8];
+                obj.checktype = (ActiveIndex == 0) ? 1 : 0;
+                localStorage.setItem("ChangeCheque",JSON.stringify(obj));
+                var fromtab = (ActiveIndex == 0) ? 0 : 1;
+                sessionStorage.currtab = fromtab;
+                window.location = "changecheck.html";
+            }
+        
+            function OnDelete()
+            {
+                if(selRow == undefined)
+                {
+                    getLangText("Please Select Cheque");
+                    return false;
+                }
+                navigator.notification.confirm(getLangTextdata("Are You Sure To Delete Cheque ?"),function(Action){
+                    if(Action == 1)
+                    {   
+                        var routekey,visitkey,Qry;
+                        routekey = data[selRow - 1][7];
+                        visitkey = data[selRow - 1][8];
+                        if(ActiveIndex == 0)
+                        {
+                            Qry = "DELETE FROM cashcheckdetail WHERE routekey = " + routekey + " AND    visitkey = " + visitkey;
+                            Qry += " ; DELETE FROM arheader WHERE routekey=" + routekey + " AND visitkey = " + visitkey;
+                        }
+                        else
+                            Qry = "DELETE FROM cashcheckdetail WHERE routekey = " + routekey + " AND visitkey = " + visitkey;
+                        console.log(Qry);
+                        if(platform=='iPad')
+                        {   
+                            Cordova.exec(function(result) {
+                                selRow = undefined;
+                                getData();
+                            },
+                            function(error) {
+                                alert(error);},
+                            "PluginClass", 
+                            "InsertUpdateMethod",                
+                            [Qry]);  
+                        }
+                        else if(platform=='Android')
+                        {
+                            window.plugins.DataBaseHelper.insert(Qry,function(result)
+                            {  
+                            	selRow = undefined;         
+                                getData();
+                            },
+                            function()
+                            {
+                            console.warn("Error calling plugin");
+                            });
+                        }
+                    }
+                });
+            }
+        
+            $(".leftfooter").html(getCurrentDate());                       
+            $('.ui-body-d').css({ 'background': '#fff' });
+            $('.ui-input-datebox').css({ 'width': '92%','line-height':'4.0' });
+            $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important'});
+            $('.ui-input-datebox input').css({ 'width': '76% !important','color':'#999' });	  
+           var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+           if (sessionStorage.getItem("Language")  != "en") {               
+                window.lang.change('VoidInv'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                    $(".contentWrapper").attr("dir", "rtl");                   
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }		
+            }
+            else
+            {
+                window.lang.change('en','en');
+                $(".contentWrapper").attr("dir", "ltr");               
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+            
+            function ClearTable(TBL) {                
+                $("#" + TBL + " tr:gt(0)").remove();
+                $("#" + TBL + " tr").die('click');
+            }
+        });
+        
+        function ClearVariables()
+        {
+            sessionStorage.removeItem("currtab");
+            window.location = "managesettlement.html";
+        }
+        
+        </script>
+
+        </div>
+    </body>
+</html>

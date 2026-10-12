@@ -1,0 +1,276 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 24/02/2011
+ '  Description  : This page is used for order comment.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Order Comment</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="advance_payment.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">Advance Payment Comment</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm Spacing">
+                    <div class="tblBox">
+                        <table border="0" cellpadding="5" cellspacing="5"
+                            width="100%" id="tbl1">
+                            <tr>
+                                <td style="width: 100%" class="captionLabel"
+                                    lang="en">
+                                    Comments / Remarks
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100%">
+                                    <textarea id="txtComment"
+                                        class="textFont textareaheight"
+                                        name="txtComment" style="height: 200px;"
+                                        value>                                                                   
+                                </textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="#" rel="external" style="text-decoration: none; 
+                    font-weight: normal;" onclick id="btnOk">
+                        <div class="MenuPositionSCLarge">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/yes.png"
+                                    alt="Ok" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Ok</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                    </div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var res;
+		resizeOrientationWindow();
+        $(document).ready(function() {
+        resizeWindow(); 
+            $('#txtComment').focus();
+            $(".leftfooter").html(getCurrentDate());
+           
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            
+            var platform = '';
+            var AndroidPlatform = "Android";
+            var iPadPlatform = "iPad";            
+            
+            $("#btnOk").click(function(){ SaveComment(); });
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {               
+                platform = sessionStorage.getItem("platform");
+                getRecord();               
+            }           
+            
+            
+            function getRecord()
+            {                
+                var Qry = "SELECT comments FROM arheader WHERE customercode=" + sessionStorage.getItem("customerid") + " and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+                console.log(Qry);
+                if(platform == iPadPlatform)
+                {
+                Cordova.exec(function(result) {
+                            if(result.length>0)
+                            {
+                                //alert(result[0][0]);
+                                res = 1;
+                                $("#txtComment").val(result[0][0]);
+                            }
+                            else {
+                                res = 0;
+                                $("#txtComment").val('');
+                            }
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "GetdataMethod",
+                        [Qry]);
+                }
+                else if(platform == AndroidPlatform)
+                {
+                        window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                if(result.array != undefined)
+                                {
+                                    res = 1;
+                                    $("#txtComment").val(result.array[0].comments);
+                                }
+                                else 
+                                {
+                                    res = 0;
+                                    $("#txtComment").val('');
+                                }
+                        },
+                        function() {
+                            console.warn("Error calling plugin");
+                        });
+                }
+            }
+            
+            function SaveComment()
+            {
+                localStorage.collectionMOP ='settercomment';
+                var comments;
+                //alert(($("#txtComment").val()));                
+                    comments = $.trim($("#txtComment").val());                                
+                    if(res == 0)                    
+                        var Qry = "INSERT INTO arheader(routekey,visitkey,transactiondate,transactiontime,customercode,routecode,salesmancode,voidflag,comments,issync,istemp) VALUES( " + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("VisitKey") + ",date('now', 'localtime'),time('now', 'localtime')," + sessionStorage.getItem("customerid") + "," + sessionStorage.getItem("RouteCode") + "," + sessionStorage.getItem("SalesmanCode") + ",0,'" + comments + "',0,'true')";
+                     else if(res == 1)
+                        var Qry = "UPDATE arheader SET comments = '" + comments + "',issync=0 WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey");
+                    console.log(Qry);
+                    if(platform == iPadPlatform)
+                    {
+                        Cordova.exec(function(result) {
+                            window.location = "../customer/cashcollection_mopadvance.html";
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [Qry]);
+                    }
+                    else if(platform == AndroidPlatform)
+                    {
+                        window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                            window.location = "../customer/cashcollection_mopadvance.html";
+                        },
+                        function() {
+                            console.warn("Error calling plugin");
+                        });
+                    }                
+            }		
+		
+            if (sessionStorage.getItem("Language")  != "en") 
+            {                
+                    window.lang.change('AdPayComment'+lan,lan);
+                    window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                    $("#centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }		
+            }
+            else
+            {
+                window.lang.change('en','en');
+                $("#centerboxInvReq").attr("dir", "ltr");
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+        });
+    </script>
+
+    </body>
+</html>

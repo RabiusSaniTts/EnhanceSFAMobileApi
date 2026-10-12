@@ -1,0 +1,675 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 2/2/2011
+ '  Description  : This page is used for price list
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 699px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 599px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="customer_operation.html" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Post Void</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="com_div comm captionLabel">
+                    <table style="width:50%">
+                        <tr>
+                            <td style="width:20%" lang="en">Filter By</td>
+                            <td style="width:80%">
+                                <div>
+                                    <select name="select-choice-1"
+                                        id="ddlTransaction"
+                                        style="display: inline;">
+                                        <option>--ALL--</option>
+                                        <option value="si">Sales (SI)</option>
+                                        <option value="cn">Return (CN)</option>
+                                        <option value="or">Order (OR)</option>
+                                        <option value="co">Collection
+                                            (CO)</option>
+                                        <option value="ad">Advance Payment
+                                            (AD)</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="tblBox tbltd">
+                        <div>
+                            <table width="100%" id="tblHeaderContent"
+                                cellpadding="0" cellspacing="0"
+                                class="tblHeader">
+                                <!--<tr>
+                                <td lang="en" class="last">
+                                    Select Customer
+                                </td>
+                            </tr>-->
+                                <tr>
+                                    <th
+                                        style="width:25%;text-align:left;padding-left:10px"
+                                        lang="en">
+                                        Customer #
+                                    </th>
+                                    <th style="width:35%;display: none;"
+                                        lang="en">
+                                        Customer Name
+                                    </th>
+                                    <th style="width:25%" lang="en">
+                                        Transaction #
+                                    </th>
+                                    <th style="width:25%" lang="en">
+                                        Amount
+                                    </th>
+                                    <th style="width:25%" lang="en">
+                                        Type
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="route_table_height tblFixedHeight"
+                            id="contentWrapper">
+                            <table border="0" width="100%" cellpadding="0"
+                                cellspacing="0" id="tbl1">
+                                <tr>
+                                    <td style="width:25%">
+                                    </td>
+                                    <td style="width:35%;display: none;">
+                                    </td>
+                                    <td style="width:25%;">
+                                    </td>
+                                    <td style="width:25%">
+                                    </td>
+                                    <td style="width:25%">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" class="enableText" rel="external" id="lnkYes"
+                        onclick="ShowVoidDetail();">
+                        <div class="MenuPosition">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/yes.png"
+                                    id="imgYes" alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en"
+                                id="divYes">
+                                Yes</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="customer_operation.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/no.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                No</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        
+        $("#tbl1").click(function() { });
+        $('label').css({ 'background': '#D1ECFD','border':'none' });
+        $('.ui-btn-inner').css({ 'border-top':'none' });
+	 	var isCollectionVoid=false;
+        var platform; 
+        var data;
+        var selRow,issync;;
+         var decimalplace = sessionStorage.getItem("decimalplace");
+         var directbind = false;
+	    resizeOrientationWindow();
+	 	 $(document).ready(function() {
+	 	resizeWindow();            
+	 	platform = sessionStorage.getItem("platform");
+        document.addEventListener("deviceready", getPostVoidSetting, false);
+        $("#ddlTransaction").change(function(){ ChangeTransaction(this) });
+            
+             function getPostVoidSetting(){
+            	 var Qry = "SELECT enablemiddaytelecom FROM routemaster where routecode="+sessionStorage.getItem("RouteCode");
+            	 console.log(Qry);
+            	 if(platform == 'iPad')
+            	 {
+	                Cordova.exec(function(result) {
+	                    if(result.length>0)
+	                    {
+	                                              
+	                    }
+	                   
+                 },
+                 function(error) {
+                    navigator.notification.alert(error);
+                 },
+                 "PluginClass",
+                 "GetdataMethod",
+                 [Qry]);
+                }
+	            else if(platform == 'Android')
+	            {
+	            	window.plugins.DataBaseHelper.select(Qry, function(result) {
+	                    if(result.array != undefined)
+	                    {
+	                        if(result.array[0].enablemiddaytelecom == 0){
+	                        	isCollectionVoid=true;
+	                        	PopulateOptions(0);
+	                        }else{
+	                        	isCollectionVoid=false;
+	                        	PopulateOptions(2);
+	                        }
+                                             
+                    	}
+                 
+	                },
+	                function() {
+	                    console.warn("Error calling plugin");
+	                });
+	            }
+           
+            
+            }
+            function PopulateOptions(void_setting){
+            	
+            
+            	var optionwc = '<option>--ALL--</option> <option value="si">Sales (SI)</option><option value="cn">Sales (CN)</option> <option value="or">Order (OR)</option><option value="co">Collection (CO)</option> <option value="ad">Advance Payment (AD)</option>';
+            	var optionwoc = '<option>--ALL--</option> <option value="si">Sales (SI)</option><option value="cn">Sales (CN)</option> <option value="or">Order (OR)</option><option value="ad">Advance Payment (AD)</option>';
+            	
+            	var myselect = $('#ddlTransaction');
+            	if(eval(void_setting)==2){
+		            	myselect.html(optionwc); 
+						myselect[0].selectedIndex = 0; 
+						myselect.selectmenu('refresh', true);
+            	}else{
+            	
+            			myselect.html(optionwoc); 
+						myselect[0].selectedIndex = 0; 
+						myselect.selectmenu('refresh', true);
+            	
+            	}
+            	getSalesSI();
+            }
+            
+            function getSalesSI()
+            {
+                var Qry = "SELECT (SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,customername,invoicenumber,ifnull(invh.totalinvoiceamount,0) as amount,'SI' as lbl1,'Sales' as lbl2,invh.issync FROM customermaster cm JOIN invoiceheader invh on cm.customercode = invh.customercode and invh.routekey = " + sessionStorage.getItem("RouteKey") + " WHERE istemp = 'false' and dexflag=0 AND voidflag IS NOT 1 order by documentnumber";
+                console.log(Qry);                
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                            data = result;
+                            
+                        if(!directbind)
+                            getOrder();
+                        else
+                            BindData();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var result = $.map(result.array, function(item, index) {
+                                return [[item.customercode,item.customername,item.invoicenumber,item.amount,item.lbl1,item.lbl2,item.issync]];
+                            });
+                            data = result;
+                        }
+                        if(!directbind)
+                            getSalesCN();
+                        else
+                            BindData();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            function getSalesCN()
+            {
+                var Qry = "SELECT (SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,customername,invoicenumber,ifnull(invh.totalinvoiceamount,0) as amount,'CN' as lbl1,'Sales' as lbl2,invh.issync FROM customermaster cm JOIN invoiceheader invh on cm.customercode = invh.customercode and invh.routekey = " + sessionStorage.getItem("RouteKey") + " WHERE istemp = 'false' and dexflag=1 AND voidflag IS NOT 1 order by documentnumber";
+                console.log(Qry);                
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                            data = result;
+                            
+                        if(!directbind)
+                            getOrder();
+                        else
+                            BindData();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var result = $.map(result.array, function(item, index) {
+                                return [[item.customercode,item.customername,item.invoicenumber,item.amount,item.lbl1,item.lbl2,item.issync]];
+                            });
+                            if(data != undefined)
+                            {
+                                tmpdata = data.concat(result);                           
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                            
+                        }
+                        if(!directbind)
+                            getOrder();
+                        else
+                            BindData();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function getOrder()
+            {
+                var Qry = "SELECT (SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,customername,invoicenumber,(ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0)) as amount,'OR' as lbl1,'Order' as lbl2,ordh.issync FROM customermaster cm JOIN salesorderheader ordh on cm.customercode = ordh.customercode and ordh.routekey = " + sessionStorage.getItem("RouteKey") + " WHERE istemp = 'false' AND voidflag IS NOT 1 order by documentnumber";                
+                var tmpdata;
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {
+                            if(data != undefined)
+                            {
+                                tmpdata = data.concat(result);                           
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                        }   
+                        
+                        if(!directbind)
+                            getAR("any");
+                        else
+                            BindData();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            var result = $.map(result.array, function(item, index) {
+                                return [[item.customercode,item.customername,item.invoicenumber,item.amount,item.lbl1,item.lbl2,item.issync]];
+                            });
+                            if(data != undefined)
+                            {
+                                tmpdata = data.concat(result);                           
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                        }
+                        
+                        if(!directbind)
+                        {
+                        	if(isCollectionVoid){
+                        		 getAR("ad");
+                        	}else
+                        	{
+                        		 getAR("any");
+                        	}
+                           
+                        }
+                        else
+                            BindData();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function getAR(type)
+            {            	
+                if(type == "any")
+                    var Qry = "SELECT (SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,customername,invoicenumber,ifnull(arh.amountpaid,0) as amount,(CASE WHEN advancepaymentflag = 1 THEN 'AD' ELSE 'CO' END) as lbl1,'Collection' as lbl2,arh.issync FROM customermaster cm JOIN arheader arh on cm.customercode = arh.customercode and arh.routekey = " + sessionStorage.getItem("RouteKey") + " WHERE amountpaid <> 0 AND voidflag IS NOT 1 order by documentnumber";
+                else if(type == "co")
+                    var Qry = "SELECT (SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,customername,invoicenumber,ifnull(arh.amountpaid,0) as amount,'CO' AS lbl1,'Collection' as lbl2,arh.issync FROM customermaster cm JOIN arheader arh on cm.customercode = arh.customercode and arh.routekey = " + sessionStorage.getItem("RouteKey") + " WHERE amountpaid <> 0 AND voidflag IS NOT 1 AND advancepaymentflag is not 1 order by documentnumber";
+                else if(type == "ad")
+                    var Qry = "SELECT (SELECT CASE usealternatecodes WHEN 1 THEN cm.alternatecode ELSE cm.customercode END FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode") + ") AS customercode,customername,invoicenumber,ifnull(arh.amountpaid,0) as amount,'AD' as lbl1,'Collection' as lbl2,arh.issync FROM customermaster cm JOIN arheader arh on cm.customercode = arh.customercode and arh.routekey = " + sessionStorage.getItem("RouteKey") + " WHERE amountpaid <> 0 AND voidflag IS NOT 1 AND advancepaymentflag = 1 order by documentnumber";
+                console.log(Qry);
+                var tmpdata;
+                if(platform == "iPad")
+                {
+                    Cordova.exec(function(result) {                        
+                        if(result.length > 0)
+                        {
+                            if(data != undefined)
+                            {
+                                tmpdata = data.concat(result);
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;                            
+                        }                                              
+                        BindData();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {                    	
+                        if(result.array != undefined)
+                        {
+                            result = $.map(result.array, function(item, index) {
+                                return [[item.customercode,item.customername,item.invoicenumber,item.amount,item.lbl1,item.lbl2,item.issync]];
+                            });                            
+                            if(data != undefined)
+                            {
+                                tmpdata = data.concat(result);                           
+                                data = tmpdata;
+                            }
+                            else
+                                data = result;
+                        }
+                        BindData();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            
+            function BindData()
+            {
+                if(data == undefined)
+                {
+                    data = "";
+                    $("#lnkYes").attr("href","#");
+                    $("#lnkYes").attr("onclick","");
+                    $("#imgYes").attr("src","../images/yes-gray.png");
+                    $("#divYes").addClass('MenuGray');
+                }
+                else
+                {
+                    $("#lnkYes").attr("onclick","ShowVoidDetail()");
+                    $("#imgYes").attr("src","../images/yes.png");
+                    $("#divYes").removeClass('MenuGray');
+                }
+                ClearTable("tbl1");
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;                
+                for(var i=0;i<data.length;i++)
+                {
+                    var r = "<tr class='contentFont'>";
+                    for(j=0;j<CellCount;j++)
+                    {                        
+                        var c = '';
+                        var temp;
+                        temp = "padding-left:10px;"
+                        if(j==1)
+                        {
+                            temp += "display:none;"
+                        }
+                        if(j==3)
+                        {
+                            data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+                            temp += "text-align:right;padding-right:10px;";
+                        }
+                        c = "<td style='" + temp + "'>" + data[i][j] + "</td>";
+                        r += c;
+                        temp = '';
+                    }                    
+                    r += "</tr>";
+                    $('#tbl1 tbody').append(r);
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');
+                $("#tbl1 tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i=$(this).index();
+                    if($(this).hasClass("clicked"))
+                    {
+                        selRow = i;
+                        issync = data[i - 1][6];                        
+                    }
+                    else
+                        selRow = undefined;
+                });
+                $("#tbl1 tr:eq(1)").trigger('click');                
+            }
+            
+            function ChangeTransaction(obj)
+            {
+                if($(obj).get(0).selectedIndex != 0)
+                {
+                    data = undefined;
+                    if($(obj).val() == "si")
+                    {
+                        directbind = true;
+                        getSalesSI();
+                    }
+                    else if($(obj).val() == "cn")
+                    {
+                        directbind = true;
+                        getSalesCN();
+                    }
+                    else if($(obj).val() == "or")
+                    {
+                        directbind = true;
+                        getOrder();
+                    }
+                    else if($(obj).val() == "co")
+                    {
+                        directbind = true;
+                        getAR("co");
+                    }
+                    else if($(obj).val() == "ad")
+                    {
+                        directbind = true;
+                        getAR("ad");
+                    }
+                }
+                else
+                {
+                    data = undefined;
+                    directbind = false;
+                    getSalesSI(directbind);
+                }
+            }
+            
+            function ClearTable(TBL) {
+                $("#" + TBL + " tr:gt(0)").remove();
+                $("#" + TBL + " tr").die('click');
+            }
+            
+            $(".leftfooter").html(getCurrentDate());
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            $('.ui-body-d').css({ 'background': '#fff' });
+            $('.ui-input-datebox').css({ 'width': '92%','line-height':'4.0' });
+            $('.ui-btn-icon-notext').css({ 'margin-top': '19px !important'});
+            $('.ui-input-datebox input').css({ 'width': '76% !important','color':'#999' });	  
+           
+            if (sessionStorage.getItem("Language")  != "en") {               
+                window.lang.change('VoidCust'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                    $(".contentWrapper").attr("dir", "rtl");                   
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }		
+            }
+            else
+            {
+                window.lang.change('en','en');
+                $(".contentWrapper").attr("dir", "ltr");               
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+        });
+        
+        function ShowVoidDetail()
+        {
+            
+            if(selRow != undefined)
+            {
+                /*if(issync == 1)
+                {
+                    navigator.notification.alert("Transaction Already Synced With Cloud. Can't Void.");
+                    return false;
+                }*/
+                localStorage.PVInvoice = data[selRow - 1][2];
+                localStorage.PVTrans = data[selRow - 1][5];
+                window.location = "post_void_detail.html";
+            }
+            else
+                getLangText("Please Select Invoice.");
+        }        
+        
+        </script>
+
+        </div>
+    </body>
+</html>

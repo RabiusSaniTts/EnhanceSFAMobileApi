@@ -1,0 +1,414 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 13/02/2012
+ '  Description  : This page is used for request selection screen.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Request Selection</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/en.css" lang="en" />
+<link rel="stylesheet"
+	media="only screen and (min-width: 320px) and (max-width: 600px)"
+	href="../css/style_600.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 600px) and (max-width: 700px)"
+	href="../css/style_700.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 700px) and (max-width: 800px)"
+	href="../css/style_800.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+	href="../css/style_1200.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+	href="../css/style_1400.css">
+<link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+	rel="stylesheet" />
+<script>
+	if (navigator.userAgent.toLowerCase().match(/android/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+		document
+				.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+	} else if (navigator.userAgent.toLowerCase().match(/iphone/)
+			|| navigator.userAgent.toLowerCase().match(/ipad/)) {
+		document
+				.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+	}
+</script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+
+<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+<script type="text/javascript" src="../js/common.js"></script>
+
+<script type="text/javascript" src="../js/jquery.mobile.datebox.min.js"></script>
+
+<script src="../LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+
+<script src="../LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript" lang="en"></script>
+
+</head>
+<body>
+	<div data-role="page" data-theme="d">
+		<div>
+			<img title alt src="../images/bg.png" id="background">
+		</div>
+		<div data-role="header" data-position="inline" id="bgclheader">
+			<a href="inventory.html" id="Back_inner" rel="external" lang="en">Back</a>
+			<h1 lang="en">Request Selection</h1>
+			<a href="#" id="lang_inner">EN</a>
+		</div>
+		<div data-role="content" class="centerboxInvReq">
+			<div class="com_div comm captionLabel">
+				<table border="0" cellpadding="10" cellspacing="2" class="tblSOD"
+					width="100%" align="center">
+					<tr>
+						<td align="center" style="width: 100%">
+							<table border="0" cellpadding="2" cellspacing="0" width="100%">
+								<tr>
+
+								</tr>
+								<tr>
+									<td class="captionLabel" style lang="en">Request Date</td>
+									<td>
+										<div>
+											<!--<input type="text" name="date1" id="date1" class=" textFont" style=""/>-->
+											<!--                                     <input id="dpDeliveryDate" name="dpDeliveryDate" type="date" data-role="datebox"  -->
+											<!--                                         height="20px" readonly="readonly" value="" data-options='{"mode": "datebox","dateFormat": "dd-MM-YYYY"}' /> -->
+											<input name="dpDeliveryDate" id="dpDeliveryDate" type="date"
+												data-role="datebox"
+												data-options='{"mode": "datebox","dateFormat": "dd-MM-YYYY", "useNewStyle":true}' />
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td style="height: 20px" colspan="2"></td>
+								</tr>
+								<tr>
+
+								</tr>
+								<tr>
+									<td class="captionLabel" lang="en">Load Period</td>
+									<td>
+										<!--select name="select-choice-1" id="ddlLoad" style="display: inline;">
+                                    </select>-->
+										<div class="readonly_text centerAlign" style="width: 65%"
+											id="lblLoadPeriod">1</div>
+									</td>
+								</tr>
+								<tr>
+									<td style="height: 20px" colspan="2"></td>
+								</tr>
+								<tr>
+
+								</tr>
+								<tr>
+									<td><div style="float: left; height: 100%;">
+											<div class="showcustomerlist"
+												onclick="javascript:setToggles1('#id_send');"
+												style="top: 25%">
+												<img id="imgCheck1" src="../images/check.png" alt
+													style="position: absolute; display: block" /> <img
+													id="id_send" src="../images/select.png" alt
+													style="position: absolute; display: none; left: 10px;" />
+											</div>
+											<div class="ltpadding">
+												<label id="lbl1" style="font-weight: bold; display: block"
+													onclick="javascript:setToggles1('#id_send');" lang="en">URGENT
+													REQUEST</label> <input type="hidden" value="0" name="urgentload"
+													id="id_send" />
+											</div>
+										</div></td>
+									<td></td>
+								</tr>
+
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="leftbottomMenu">
+				<div class="menuPadding">&nbsp;</div>
+				<a href="#" rel="external" onclick="SetPage()"
+					style="text-decoration: none; font-weight: normal;">
+					<div class="MenuPosition">
+						<div class="iconPos">
+							<img class="bottomicon" src="../images/yes.png" alt="Yes" />
+						</div>
+						<div class="MenuTextPos MenuText" lang="en">Yes</div>
+					</div>
+				</a>
+				<div class="menuPadding">&nbsp;</div>
+				<a href="inventory.html" rel="external"
+					style="text-decoration: none; font-weight: normal;">
+					<div class="MenuPosition MenuExit">
+						<div class="iconPos">
+							<img class="bottomicon" src="../images/no.png" alt="No" />
+						</div>
+						<div class="MenuTextPos MenuText" lang="en">No</div>
+					</div>
+				</a>
+				<div class="menuPadding">&nbsp;</div>
+			</div>
+		</div>
+		<div id="f1" data-role="footer" class="ui-bar">
+			<div class="footer">
+				<div class="leftfooter">09 November 2011</div>
+				<div class="rightfooter">Mirnah Technology Systems</div>
+			</div>
+		</div>
+		<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+			<div data-role="navbar" data-iconpos="top" data-grid="f">
+				<ul>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="day" data-icon="custom" lang="en"
+						onclick="footerredict('../startofday/startofday.html')">Start
+							day</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+						class="ui-btn-active" rel="external" data-icon="custom" lang="en">Inventory</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="cust" data-icon="custom" lang="en"
+						onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="sett" data-icon="custom" lang="en"
+						onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="ordstatus" data-icon="custom" lang="en"
+						onclick="footerredict('../home/orderstatus.html')">Order
+							Status</a></li>
+					<li style="margin-bottom: 0 !important;"><a href="#"
+						rel="external" id="info" data-icon="custom" lang="en"
+						onclick="footerredict('../information/information.html')">Information</a></li>
+					<li style="margin-bottom: 0 !important; width: 14.0%"><a
+						href="#" rel="external" id="setup" data-icon="custom" lang="en"
+						onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" language="javascript">
+		window.lang = new jquery_lang_js();
+		resizeOrientationWindow();
+		var defaultdate = '';
+		$(document)
+				.ready(
+						function() {
+							resizeWindow();
+
+							document.addEventListener("deviceready",
+									getrequestdate, false);
+							$(".leftfooter").html(getCurrentDate());
+							$('.ui-body-d').css({
+								'background' : '#fff'
+							});
+							$('.ui-input-datebox').css({
+								'width' : '91%',
+								'line-height' : '4.0'
+							});
+							$('.ui-btn-icon-notext').css({
+								'margin-top' : '19px !important'
+							});
+							$('.ui-input-datebox input').css({
+								'width' : '76% !important',
+								'color' : '#999'
+							});
+							$('.ui-disabled').css({
+								'opacity' : '0.8'
+							});
+							$('.ui-select .ui-btn-text').css({
+								'text-align' : 'left',
+								'color' : '#999'
+							});
+							$(".ui-slider").remove();
+
+							var lan = sessionStorage.getItem("Language");
+							window.lang.run(lan);
+							if (sessionStorage.getItem("Language") != "en") {
+
+								window.lang.change('RequestSelection' + lan,
+										lan);
+								window.lang.change('Footer' + lan, lan);
+								if (lan == "AR") {
+									$(".centerboxInvReq").attr("dir", "rtl");
+									$('#Back_inner')
+											.removeClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#Back_inner')
+											.addClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.removeClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.addClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								}
+
+							} else {
+								window.lang.change('en', 'en');
+								$(".centerboxInvReq").attr("dir", "ltr");
+								$('#Back_inner')
+										.removeClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#Back_inner')
+										.addClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.removeClass(
+												'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								$('#lang_inner')
+										.addClass(
+												'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+							}
+							// Date with external button
+							$('#date1').scroller();
+							var t = 'android';
+							var m = 'scroller';
+
+							$('#date1').scroller('destroy').scroller({
+								theme : t,
+								mode : m
+							});
+
+						});
+		var isUrgentSelection = 0;
+		function setToggles1() {
+
+			if ($("#id_send").css("display") == 'none') {
+				isUrgentSelection = 1;
+				$("#id_send").css("display", "block");
+
+			} else {
+				isUrgentSelection = 0;
+				$("#id_send").css("display", "none");
+
+			}
+
+		}
+		/*
+		 * function PopulateSelect() { var el =
+		 * document.getElementById("ddlLoad"); for (i = 0; i < 100; i++) {
+		 * el.options[el.options.length] = new Option(i, i); } }
+		 * PopulateSelect();
+		 */
+
+		function FormatDate1() {
+			var d = new Date($("#dpDeliveryDate").data("datebox").theDate);
+			var m = d.getMonth() + 1; // +1 because getMonth() returns 0 based
+			// index
+			var y = d.getFullYear();
+			d.setTime(d.getTime() + 86400 * 1000 * 1); // Setting Next Date By
+			// Default for text box
+			d = d.getDate();
+			d = (d <= 9 ? "0" + d : d);
+			m = (m <= 9 ? "0" + m : m);
+			$("#dpDeliveryDate").val(d + "-" + m + "-" + y);
+		}
+		function addDays(date, days) {
+
+			var result = new Date(date);
+			result.setDate(date.getDate() + days);
+
+			return result;
+		}
+		function formatDate(date) {
+			return date.getDate() + '-' + (date.getMonth() + 1) + '-'
+					+ date.getFullYear();
+		}
+
+		function getrequestdate() {
+			var platform = sessionStorage.getItem("platform");
+
+			var qry = "select defaultrequestdays from routemaster where routecode='"
+					+ sessionStorage.getItem("RouteCode") + "'";
+			console.log(qry);
+			if (platform == 'iPad') {
+				Cordova.exec(function(result) {
+					if (result != '') {
+						var days = parseInt(result[0][0]);
+						var d = new Date(
+								$("#dpDeliveryDate").data("datebox").theDate);
+						var correctDate = formatDate(addDays(d, days));
+						$("#dpDeliveryDate").val(correctDate);
+					} else {
+
+					}
+
+				}, function(error) {
+					alert(error);
+				}, "PluginClass", "GetdataMethod", [ qry ]);
+			} else if (platform == 'Android') {
+				window.plugins.DataBaseHelper
+						.select(
+								qry,
+								function(result) {
+									if (result.array != undefined) {
+										var days = parseInt(result.array[0].defaultrequestdays);
+										var d = new Date($("#dpDeliveryDate")
+												.data("datebox").theDate);
+										var correctDate = formatDate(addDays(d,
+												days));
+
+										defaultdate = formatDate(addDays(d,
+												eval(days + 1)));
+
+										$("#dpDeliveryDate").val(correctDate);
+
+									}
+								}, function() {
+									console.warn("Error calling plugin");
+								});
+
+			}
+		}
+		function SetPage() {
+
+			var deliverydate = parseDate(defaultdate);
+			var cDate = new Date();
+			var currentdate = new Date(cDate.getFullYear(), ("" + cDate
+					.getMonth()).slice(-2), ("" + cDate.getDate()).slice(-2));
+
+			var enterdate = parseDate($("#dpDeliveryDate").val());
+			var d = $("#dpDeliveryDate").val();
+
+			var diffDays = daydiff(enterdate, currentdate);
+
+			if (diffDays >= 0 && enterdate >= currentdate
+					&& enterdate <= deliverydate) {
+
+				window.localStorage.setItem("urgentAuto", isUrgentSelection);
+				sessionStorage.RequestDate = d;
+				sessionStorage.RequestLoad = $("#lblLoadPeriod").text();
+				window.location = "loadrequest.html";
+			} else {
+
+				getLangText("Please Enter Valid Date");
+			}
+
+		}
+		function daydiff(first, second) {
+			var oneDay = 24 * 60 * 60 * 1000;
+			return (first - second) / (1000 * 60 * 60 * 24);
+		}
+		function parseDate(str) {
+			var mdy = str.split('-')
+			var year = mdy[2];
+			var month = parseInt(mdy[1], 10) - 1;
+			var day = parseInt(mdy[0], 10);
+
+			return new Date(year, month, day);
+		}
+	</script>
+
+</body>
+</html>

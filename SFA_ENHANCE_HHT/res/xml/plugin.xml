@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugins>
+
+    <plugin
+        name="App"
+        value="com.phonegap.App" />
+    <plugin
+        name="Geolocation"
+        value="com.phonegap.GeoBroker" />
+    <plugin
+        name="Device"
+        value="com.phonegap.Device" />
+    <plugin
+        name="Accelerometer"
+        value="com.phonegap.AccelListener" />
+    <plugin
+        name="Compass"
+        value="com.phonegap.CompassListener" />
+    <plugin
+        name="Media"
+        value="com.phonegap.AudioHandler" />
+    <plugin
+        name="Camera"
+        value="com.phonegap.CameraLauncher" />
+    <plugin
+        name="Contacts"
+        value="com.phonegap.ContactManager" />
+    <plugin
+        name="Crypto"
+        value="com.phonegap.CryptoHandler" />
+    <plugin
+        name="File"
+        value="com.phonegap.FileUtils" />
+    <plugin
+        name="Network Status"
+        value="com.phonegap.NetworkManager" />
+    <plugin
+        name="Notification"
+        value="com.phonegap.Notification" />
+    <plugin
+        name="Storage"
+        value="com.phonegap.Storage" />
+    <plugin
+        name="Temperature"
+        value="com.phonegap.TempListener" />
+    <plugin
+        name="FileTransfer"
+        value="com.phonegap.FileTransfer" />
+    <plugin
+        name="Capture"
+        value="com.phonegap.Capture" />
+    <plugin
+        name="DataBaseHelper"
+        value="com.phonegap.sfa.plugin.db.DataBaseHelper" />
+    <plugin
+        name="PrinterHelper"
+        value="com.phonegap.sfa.PrinterHelper" />
+    <plugin
+        name="BarcodeScanner"
+        value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    <plugin
+        name="ZebraHelper"
+        value="com.phonegap.sfa.ZebraHelper" />
+    <plugin
+        name="LocationHelper"
+        value="com.phonegap.sfa.LocationHelper" />
+    <plugin
+        name="DotmatHelper"
+        value="com.phonegap.sfa.DotmatHelper" />
+    <plugin
+        name="BluetoothHelper"
+        value="com.phonegap.sfa.BluetoothHelper" />
+    <plugin
+        name="DownloadPlugin"
+        value="com.phonegap.sfa.DownloadPlugin" />
+    <plugin
+        name="MapHelper"
+        value="com.phonegap.sfa.MapHelper" />
+    <plugin
+        name="ChartHelper"
+        value="com.phonegap.sfa.ChartHelper" />
+    <plugin
+        name="LocationTrackHelper"
+        value="com.phonegap.sfa.LocationTrackHelper" />
+	<plugin
+            name="PB51Helper"
+            value="com.phonegap.sfa.PB51Helper" />
+	 <plugin
+        name="ScreenLocker"
+        value="com.phonegap.sfa.ScreenLocker" />
+	 <plugin name="File" value="org.apache.cordova.FileUtils" />
+     <plugin name="FileTransfer" value="org.apache.cordova.FileTransfer" />
+     <plugin name="PushPlugin" value="com.plugin.push.PushPlugin" />
+     
+      <plugin
+        name="Xls"
+        value="com.phonegap.sfa.Xls" />
+      
+     <plugin
+        name="EndInvoice"
+        value="com.phonegap.sfa.EndInvoice" />
+     <plugin
+        	name="WizzitIndent"
+        	value="com.phonegap.sfa.WizzitIndent" />
+     <plugin
+        	name="Permissions"
+        	value="com.android.plugins.Permissions" />
+     
+    
+     
+     
+</plugins>

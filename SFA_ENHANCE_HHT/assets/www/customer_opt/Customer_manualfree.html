@@ -1,0 +1,1782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Customer Manual Free</title>
+        <meta name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/batch.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+        <link rel="stylesheet" type="text/css"
+            href="../css/jquery.mobile.simpledialog.css" />
+        <script type="text/javascript"
+            src="../js/jquery.mobile.simpledialog.js"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div><img title alt src="../images/bg.png" id="background"></div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Manual Discount</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="topbox">
+                        <div class="content-primary1">
+                            <label class="cus_lable heading" lang="en">
+                                No.</label>
+                            <span class="nobox headbox" id="custid"></span>
+                        </div>
+                        <div class="second-primary1">
+                            <label class="cus_lable heading" lang="en"
+                                id="custname">
+                                Customer Name</label>
+                        </div>
+                    </div>
+                    <div class="textBar">
+                        <div class="captionLabel" id="dicosuntlbl">
+                            * Maximum discount Allowed
+                        </div>
+                        <table cellpadding="2" style="table-layout:fixed;"
+                            cellspacing="2" border="0" width="100%">
+                            <tr>
+                                <td class="captionLabel" lang="en">
+                                    Total Sales Amount
+                                </td>
+                                <td style="width:25%">
+                                    <input id="txtSalesAmount" type="text"
+                                        class="textWidth textFont"
+                                        readonly="readonly" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="captionLabel" lang="en" id="lblUPC">
+                                    Given Discount (in %)
+                                </td>
+                                <td style="width:25%">
+                                    <input id="txtdgiven" type="tel" size="3"
+                                        value="0.000"
+                                        class="textWidth textFont" />
+                                </td>
+                                <td style="width:20%">
+                                    <input placeholder="MAX discount"
+                                        id="txtMAX" type="tel" size="3"
+                                        class="textWidth textFont" />
+                                </td>
+                                <td style="width:20%">
+                                    <input id="txtFOC" type="tel" size="3"
+                                        class="textWidth textFont" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="captionLabel" lang="en" id="lblUPC1">
+                                    Given Free Value
+                                </td>
+                                <td style="width:20%">
+                                    <input id="txtFREE" type="tel" size="3"
+                                        class="textWidth textFont" />
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="captionLabel" lang="en">
+                                    New Sales Amount
+                                </td>
+                                <td style="width:25%">
+                                    <input id="txtNewSalesAmount" type="text"
+                                        class="textWidth textFont"
+                                        readonly="readonly" />
+                                </td>
+
+                            </tr>
+                        </table></div>
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 14%;" lang="en">Item Code</th>
+                                <th style="width: 30%;" class="leftAlign"
+                                    lang="en">
+                                    Item Description
+                                </th>
+                                <th style="width: 10%;" lang="en">
+                                    Cases
+                                </th>
+                                <th style="width: 10%;" lang="en">
+                                    Units
+                                </th>
+                                <th style="width: 12%;display:none" lang="en">
+                                    Case Price
+                                </th>
+                                <th style="width: 12%;display:none" lang="en"
+                                    class="last">
+                                    Unit Price
+                                </th>
+                                <th style="width: 14%;display:none" lang="en">
+                                    Total
+                                </th>
+
+                            </tr>
+                        </table>
+                        <div class="tblMfreeHeight">
+                            <table id="tblContent" style="table-layout:initial;"
+                                cellpadding="10" cellspacing="0" border="0"
+                                width="100%">
+                                <tr>
+                                    <td style="width: 14%;">
+                                    </td>
+                                    <td style="width: 30%;">
+                                    </td>
+                                    <td style="width: 10%;">
+                                    </td>
+                                    <td style="width: 10%;">
+                                    </td>
+                                    <td style="width: 12%;display:none">
+                                    </td>
+                                    <td style="width: 12%;display:none"
+                                        class="last">
+                                    </td>
+                                    <td style="width: 14%;display:none">
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div id="divReason" style="display:none;">
+                        <table cellpadding="2" cellspacing="2" border="0"
+                            width="100%">
+                            <tr>
+                                <td class="captionLabel" lang="en">
+                                    Select a reason
+                                </td>
+                                <td style="width:25%">
+                                    <select id="ddlReason"
+                                        style="display: inline;">
+                                    </select>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" onclick="CheckfreeAvailQty();" rel="external"
+                        id="A1" style="text-decoration: none"
+                        data-role="none">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon" src="../images/ok.png"
+                                    alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Done</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding printReportHeight">
+                        &nbsp;</div>
+                    <a href="#" id="lnkExit" onclick="#" rel="external" id="A3"
+                        style="text-decoration: none"
+                        data-role="none">
+
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                <li style="margin-bottom:0 !important; width:14.0%"><a
+                        href="#" rel="external" id="setup"
+                        data-icon="custom" lang="en"
+                        onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+       window.lang = new jquery_lang_js();
+    	
+    	var CaseEnabled;
+    	var ArrReasonItems = [];
+        var selRowIndex,selRowItemCode,selRowQty,selColIndex,selectedQty;
+        var AvailQty;
+        var Qty;
+        var ArrPrice;
+        var totalDiscount=0;
+        var GiveDiscount=0;
+        var GivenFree=0;
+        var AllowedPrecentage=0;
+        var manualfree;
+        var decimalplace ;
+        var EnableFreeReason;
+        var exitlink;
+        var transactiontype = 3;
+        var givenPercentage=0;
+        var isEditing=false;
+        resizeOrientationWindow();
+        $(document).ready(function() {
+        	resizeWindow();
+        	getLanagugSetting();   
+        	if (sessionStorage.getItem("CaseEnabled") == "0" || sessionStorage.getItem("CaseEnabled") == null)
+                 CaseEnabled = false;
+            else if (sessionStorage.getItem("CaseEnabled") == "1")
+                 CaseEnabled = true;
+        	// set redirection
+        	exitlink = '../customer_opt/salesinvoice_option.html';
+    	    $("#lnkExit").attr("href", exitlink);
+            $("#Back_inner").attr("href", exitlink);
+            $("#txtFREE").textinput("disable");
+            $("#txtdgiven").textinput("disable");
+            $('#txtMAX').textinput("disable");
+            // get Enable Free reason setting
+            if(localStorage.getItem("enablefreereason") == 1)
+                EnableFreeReason = true;
+            else
+                EnableFreeReason = false; 
+        	
+            Qty = 'manualfreeqty';
+            ArrReasonItems = [];
+            document.addEventListener("deviceready",  showHideFreeReasons, false);
+        		
+        });
+        
+        function showHideFreeReasons(){
+        	
+        	$("#ddlReason").change(function(){                 
+                if(selRowItemCode != undefined){
+                	
+                	 ChkInvoiceRXDetailCount(selectedQty,selRowItemCode);
+                }
+                   
+            });
+	    	if(ShowFreeReason())
+	        {   
+	    		 $("#divReason").show();                        
+	        }else{
+	        	 $("#divReason").hide();          
+	        	 
+	        }
+             FillReason(); 
+        
+        }
+        function FillReason()
+        {       
+            $("#ddlReason").empty(); 
+            var Qry = "select reason_code as code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN reason_desc Else reason_arb_desc END AS description from freegoodreasons order by reason_code";
+        	if(platform == "iPad")
+            {
+                Cordova.exec(function(result) { 
+                      if(result.length > 0)
+                          $("<option />" ,{value:"0",text:getLangTextdata("-- SELECT --")}).appendTo($("#ddlReason"));
+	                      for(i=0;i<result.length;i++){                    
+	                      $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlReason"));                                           
+	                      }
+	                      $("#ddlReason").selectmenu("refresh");                          
+                      },
+                      function(error) {
+                      navigator.notification.alert("Error in binding Reason : " + error);
+                      },
+                      "PluginClass", 
+                      "GetdataMethod", 
+                      [Qry]);         
+        
+            }
+            else 
+            {
+           		window.plugins.DataBaseHelper.select(Qry,function(result)
+				{	
+					if(result.array != undefined)
+					{				 	
+                    	result = $.map(result.array, function (item, index) {                
+            				return [[item.code, item.description]];
+    					});
+                    	if(result.length > 0)
+                            $("<option />" ,{value:"0",text:getLangTextdata("-- SELECT --")}).appendTo($("#ddlReason"));
+	                  	for(i=0;i<result.length;i++){                    
+                      		$("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlReason"));                                           
+                      	}
+                      	$("#ddlReason").selectmenu("refresh");
+                  	}  
+					getCustomerDetails();
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+            } 
+        }
+        function getCustomerDetails(){
+        	 decimalplace =sessionStorage.getItem("decimalplace")
+        	 var customeraid =  sessionStorage.getItem("customercode");
+             var customername = sessionStorage.getItem("customername");
+             manualfree=window.localStorage.getItem("manualfree");
+             
+             $('#custid').text(customeraid);
+             $('#custname').text(customername);
+             $('#txtFOC').keyup(function(event){
+			  		if(event.keyCode == 13){
+			  			if(!isNumber($('#txtFOC').val())){
+			  				alert(getLangTextdata("Please enter numeric inputs only"));
+			  				return;
+			  			}
+			  			var toproceed=false;
+			  			AllowedPrecentage=eval(manualfree);
+			  			GivenFree=eval(GivenFree);
+			  			if(GivenFree!='' && GivenFree!=undefined && GivenFree>eval(totalDiscount)){
+			  				$('#txtFOC').val(0);
+			  				toproceed=false;
+			  				getLangText("Discount Exceeded Allowed Limit. Please Adjust Discount/ Free Quantity");
+			  				return;
+			  			}else{
+			  				var freelessdiscount=eval(GivenFree)*eval(manualfree)/totalDiscount;
+			  				AllowedPrecentage=AllowedPrecentage-freelessdiscount;
+			  				toproceed=true;
+			  			}
+			  			if(eval($('#txtFOC').val())>=0 && eval($('#txtFOC').val()) <= eval(AllowedPrecentage) && toproceed){
+			  				var totalsalesamount=eval($('#txtSalesAmount').val());
+			  				var discountAmount=eval($('#txtFOC').val())*totalsalesamount/100;
+			  				GiveDiscount=discountAmount;
+			  				GiveDiscount=eval(GiveDiscount).toFixed(decimalplace);
+			  				$('#txtNewSalesAmount').val(eval(totalsalesamount-discountAmount).toFixed(decimalplace));
+			  				$("#txtdgiven").val(eval(GiveDiscount).toFixed(decimalplace));
+			  				givenPercentage=eval($('#txtFOC').val());
+			  			}
+			  			else{
+			  				getLangText("Discount Exceeded Allowed Limit. Please Adjust Discount/ Free Quantity");
+			  				return false;
+			  			}
+					}     
+                       
+             });
+         	 getInvoiceAmount();
+        }
+        function isNumber(n) {
+        	  return !isNaN(parseFloat(n)) && isFinite(n);
+        }
+        function getInvoiceAmount(){
+         	
+        	var Qry="select CAST(totalsalesamount AS VARCHAR) totalsalesamount from invoiceheader where routekey="+sessionStorage.getItem("RouteKey")+" and visitkey="+sessionStorage.getItem("VisitKey")+"";
+        	var platform= sessionStorage.getItem("platform");
+        	if(platform == "iPad")
+            {
+        
+        	}else{
+        	
+        		window.plugins.DataBaseHelper.select(Qry,function(result)
+                {
+                	var result = $.map(result.array, function (item, index) {
+                        return [[item.totalsalesamount]];
+               	 	});
+               	 	var totalsalesamount=result[0][0];
+               	 	$('#txtSalesAmount').val(eval(totalsalesamount).toFixed(decimalplace));
+               	 	$('#txtNewSalesAmount').val(eval(totalsalesamount).toFixed(decimalplace));
+	               	
+	                 if(manualfree!='' && manualfree!=undefined && manualfree>0){
+	                	 
+	                	 totalDiscount = eval(manualfree)*totalsalesamount/100;
+	                	 totalDiscount= eval(totalDiscount).toFixed(decimalplace);
+	                 }else{
+	                	 totalDiscount=0;
+	                	 
+	                 }
+	                $('#dicosuntlbl').text(getLangTextdata("*Maximum Discount Allowed ")+manualfree+"% -"+getLangTextdata("In Amount ")+eval(totalDiscount).toFixed(decimalplace)+"");
+               	 	getPrices();
+               	 	
+                },
+                 function()
+                 {
+                 	console.warn("Error calling plugin");
+                 });
+        	
+        	}
+         
+        }
+        function getLanagugSetting(){
+        
+        	var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            if(sessionStorage.getItem("Language") != "en") {
+
+                window.lang.change('ManualFree' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+                if (lan == "AR") {
+                    $(".centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+
+            }
+            else {
+                window.lang.change('en', 'en');
+                $(".centerboxInvReq").attr("dir", "ltr");
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+         
+        
+        }
+        // Function to fetch Items for sales from the database.
+        function getFreeRecord() {
+        	
+        		var batchqty='freeqty';
+        		var transactiontype = 3;
+                $.mobile.showPageLoadingMsg(); 
+                var ReasonField = "";
+                if(ShowFreeReason())
+                    ReasonField =  ",(select reasoncode from invoicerxddetail where itemcode = im.actualitemcode and itemtransactiontype=" + transactiontype + " and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" +  sessionStorage.getItem("VisitKey") + ") as reason "
+                    
+                if (CaseEnabled) {
+                    
+                   // var Qry="SELECT * FROM ( SELECT '*' || CASE WHEN '" +
+					// sessionStorage.getItem("Language") + "' = 'en' THEN
+					// itemDescription ELSE arbitemDescription END AS Desc,
+					// (SELECT CASE WHEN " + Qty + "=0 OR im.unitspercase =1
+					// THEN '' ELSE (" + Qty + "/im.unitspercase) END FROM
+					// invoicedetail invd WHERE istemp='true' AND invd.itemCode
+					// = im.actualitemcode AND routekey=" +
+					// sessionStorage.getItem("RouteKey") + " AND visitkey=" +
+					// sessionStorage.getItem("VisitKey") + ") AS cases, (SELECT
+					// CASE WHEN " + Qty + "=0 THEN '' ELSE (CASE WHEN
+					// im.unitspercase = 1 THEN " + Qty + " ELSE (" + Qty + " %
+					// im.unitspercase) END) END FROM invoicedetail invd WHERE
+					// istemp='true' AND invd.itemCode = im.actualitemcode AND
+					// routekey=" + sessionStorage.getItem("RouteKey") + " AND
+					// visitkey=" + sessionStorage.getItem("VisitKey") + ") AS
+					// units, CASE WHEN invoicedetail.salescaseprice NOT NULL
+					// AND invoicedetail.salescaseprice > 0 THEN
+					// invoicedetail.salescaseprice WHEN dkd.distributionkey NOT
+					// NULL THEN dkd.value ELSE (CASE WHEN pd.salescaseprice NOT
+					// NULL AND pd.salescaseprice > 0 THEN pd.salescaseprice
+					// ELSE im.caseprice END) END AS caseprice, CASE WHEN
+					// invoicedetail.salesprice NOT NULL AND
+					// invoicedetail.salesprice > 0 THEN
+					// invoicedetail.salesprice ELSE (CASE WHEN pd.salesprice IS
+					// NOT NULL AND pd.salesprice > 0 THEN pd.salesprice ELSE
+					// defaultsalesprice END) END AS price, NULL AS total, CASE
+					// WHEN '" + sessionStorage.getItem("CheckCode") + "' =
+					// 'alternateCode' THEN im.alternateCode ELSE
+					// im.actualitemcode END AS Code, im.actualitemcode,
+					// im.unitspercase, im.caseprice " + ReasonField + ",
+					// IFNULL(discountpercentage,0) discountpercentage,
+					// IFNULL(discountamount,0) discountamount, 1 AS sortf ,
+					// printsequencecust FROM itemmaster AS im JOIN
+					// inventorysummarydetail invs ON invs.itemCode =
+					// im.actualitemcode AND (IFNULL(invs.loadqty,0) +
+					// IFNULL(invs.loadadjustqty,0) + IFNULL(invs.loadaddqty,0)
+					// +IFNULL(invs.beginstockqty,0)- IFNULL(invs.loadcutqty,0)
+					// - IFNULL(invs.saleqty,0) + IFNULL(invs.returnqty,0) +
+					// IFNULL(invs.returnfreeqty,0) -
+					// IFNULL(invs.freesampleqty,0)) > 0 LEFT JOIN
+					// startingloaddetail sld ON sld.itemCode = actualitemcode
+					// AND strftime('%Y-%m-%d',sld.ddate)=DATE() AND sld.status
+					// = 1 AND sld.routeCode = " +
+					// sessionStorage.getItem("RouteCode") + " AND salesmanCode
+					// = " + sessionStorage.getItem("SalesmanCode") + " JOIN
+					// itemmustdetail imd ON imd.itemCode = invs.itemCode AND
+					// imd.itemmustCode =(SELECT itemmustCode FROM
+					// itemmustheader imh JOIN customermaster cm ON
+					// cm.itemmustkey =imh.itemmustCode AND customerCode = " +
+					// sessionStorage.getItem("customerid") + ") LEFT JOIN
+					// invoicedetail ON invoicedetail.itemCode =
+					// im.actualitemcode AND invoicedetail.routekey=" +
+					// sessionStorage.getItem("RouteKey") + " AND
+					// invoicedetail.visitkey=" +
+					// sessionStorage.getItem("VisitKey") + " LEFT JOIN
+					// customermaster cm ON customerCode = " +
+					// sessionStorage.getItem("customerid") + " LEFT JOIN
+					// distributionkeydetails dkd ON cm.distributionkey =
+					// dkd.distributionkey AND dkd.item = im.actualitemcode LEFT
+					// JOIN pricingdetail1 pd ON pd.itemCode = actualitemcode
+					// AND pd.customerpricingkey = (SELECT
+					// IFNULL(customerpricing1.customerpricingkey,0) FROM
+					// customerpricing1 JOIN customermaster ON
+					// customerpricing1.pricingplankey =
+					// customermaster.pricingkey AND customerCode = " +
+					// sessionStorage.getItem("customerid") + ") WHERE
+					// im.itemtype=1 AND (printsequencecust > 0 OR
+					// displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN
+					// STATUS = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN
+					// im.actualitemcode ELSE pg.itemCode END ELSE
+					// im.actualitemcode END FROM customermaster cm LEFT JOIN
+					// productgroupdetail pg ON pg.groupnumber =
+					// cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid
+					// = 30 WHERE customerCode = " +
+					// sessionStorage.getItem("customerid") + ") AND
+					// im.actualitemcode IN(SELECT CASE WHEN STATUS = 1 AND '" +
+					// Qty + "' = 'manualfreeqty' THEN foc.itemCode ELSE
+					// im.actualitemcode END FROM controlpanel LEFT JOIN
+					// customer_foc_detail foc WHERE flagid = 2 AND CASE WHEN
+					// EXISTS(SELECT customerCode FROM customer_foc_detail WHERE
+					// customerCode = " + sessionStorage.getItem("customerid") +
+					// ") THEN foc.customerCode = " +
+					// sessionStorage.getItem("customerid") + " ELSE
+					// im.actualitemcode END) GROUP BY actualitemcode UNION
+					// SELECT CASE WHEN '" + sessionStorage.getItem("Language")
+					// + "' = 'en' THEN itemDescription ELSE arbitemDescription
+					// END AS Desc, (SELECT CASE WHEN " + Qty + "=0 OR
+					// im.unitspercase =1 THEN '' ELSE (" + Qty +
+					// "/im.unitspercase) END FROM invoicedetail invd WHERE
+					// istemp='true' AND invd.itemCode = im.actualitemcode AND
+					// routekey=" + sessionStorage.getItem("RouteKey") + " AND
+					// visitkey=" + sessionStorage.getItem("VisitKey") + ") AS
+					// cases, (SELECT CASE WHEN " + Qty + "=0 THEN '' ELSE (CASE
+					// WHEN im.unitspercase=1 THEN " + Qty + " ELSE (" + Qty + "
+					// % im.unitspercase) END) END FROM invoicedetail invd WHERE
+					// istemp='true' AND invd.itemCode = im.actualitemcode AND
+					// routekey=" + sessionStorage.getItem("RouteKey") + " AND
+					// visitkey=" + sessionStorage.getItem("VisitKey") + ") AS
+					// units,CASE WHEN invoicedetail.salescaseprice NOT NULL AND
+					// invoicedetail.salescaseprice > 0 THEN
+					// invoicedetail.salescaseprice WHEN dkd.distributionkey NOT
+					// NULL THEN dkd.value ELSE (CASE WHEN pd.salescaseprice NOT
+					// NULL AND pd.salescaseprice > 0 THEN pd.salescaseprice
+					// ELSE im.caseprice END) END AS caseprice,CASE WHEN
+					// invoicedetail.salesprice NOT NULL AND
+					// invoicedetail.salesprice > 0 THEN
+					// invoicedetail.salesprice ELSE (CASE WHEN pd.salesprice IS
+					// NOT NULL AND pd.salesprice > 0 THEN pd.salesprice ELSE
+					// defaultsalesprice END) END AS price,NULL AS total,CASE
+					// WHEN '" + sessionStorage.getItem("CheckCode") + "' =
+					// 'alternateCode' THEN im.alternateCode ELSE
+					// im.actualitemcode END AS
+					// Code,im.actualitemcode,im.unitspercase,im.caseprice " +
+					// ReasonField + ",IFNULL(discountpercentage,0)
+					// discountpercentage,IFNULL(discountamount,0)
+					// discountamount,2 AS sortf ,printsequencecust FROM
+					// itemmaster AS im JOIN inventorysummarydetail invs ON
+					// invs.itemCode = im.actualitemcode AND
+					// (IFNULL(invs.loadqty,0) + IFNULL(invs.loadadjustqty,0) +
+					// IFNULL(invs.loadaddqty,0) +IFNULL(invs.beginstockqty,0)-
+					// IFNULL(invs.loadcutqty,0) - IFNULL(invs.saleqty,0) +
+					// IFNULL(invs.returnqty,0) + IFNULL(invs.returnfreeqty,0) -
+					// IFNULL(invs.freesampleqty,0)) > 0 LEFT JOIN
+					// startingloaddetail sld ON sld.itemCode = actualitemcode
+					// AND strftime('%Y-%m-%d',sld.ddate)=DATE() AND sld.status
+					// = 1 AND sld.routeCode = " +
+					// sessionStorage.getItem("RouteCode") + " AND salesmanCode
+					// = " + sessionStorage.getItem("SalesmanCode") + " LEFT
+					// JOIN invoicedetail ON invoicedetail.itemCode =
+					// im.actualitemcode AND invoicedetail.routekey=" +
+					// sessionStorage.getItem("RouteKey") + " AND
+					// invoicedetail.visitkey=" +
+					// sessionStorage.getItem("VisitKey") + " LEFT JOIN
+					// customermaster cm ON customerCode = " +
+					// sessionStorage.getItem("customerid") + " LEFT JOIN
+					// distributionkeydetails dkd ON cm.distributionkey =
+					// dkd.distributionkey AND dkd.item = im.actualitemcode LEFT
+					// JOIN pricingdetail1 pd ON pd.itemCode = actualitemcode
+					// AND pd.customerpricingkey =(SELECT
+					// IFNULL(customerpricing1.customerpricingkey,0) FROM
+					// customerpricing1 JOIN customermaster ON
+					// customerpricing1.pricingplankey =
+					// customermaster.pricingkey AND customerCode = " +
+					// sessionStorage.getItem("customerid") + ") WHERE
+					// im.itemtype=1 AND (printsequencecust > 0 OR
+					// displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN
+					// STATUS = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN
+					// im.actualitemcode ELSE pg.itemCode END ELSE
+					// im.actualitemcode END FROM customermaster cm LEFT JOIN
+					// productgroupdetail pg ON pg.groupnumber =
+					// cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid
+					// = 30 WHERE customerCode = " +
+					// sessionStorage.getItem("customerid") + ") AND
+					// im.actualitemcode IN(SELECT CASE WHEN EXISTS(SELECT
+					// customerCode FROM customer_foc WHERE customerCode = " +
+					// sessionStorage.getItem("customerid") + " AND '" +
+					// getTabletDate() + "' BETWEEN
+					// strftime('%Y-%m-%d',startdate) AND
+					// strftime('%Y-%m-%d',enddate)) AND STATUS = 1 AND '" + Qty
+					// + "' = 'manualfreeqty' THEN foc.itemCode ELSE
+					// im.actualitemcode END FROM controlpanel LEFT JOIN
+					// customer_foc_detail foc LEFT JOIN customer_foc f ON
+					// foc.contractid=f.contractid WHERE flagid = 2 AND CASE
+					// WHEN EXISTS(SELECT customerCode FROM customer_foc WHERE
+					// customerCode =" + sessionStorage.getItem("customerid") +
+					// " AND '" + getTabletDate() + "' BETWEEN
+					// strftime('%Y-%m-%d',startdate) AND
+					// strftime('%Y-%m-%d',enddate)) THEN foc.customerCode =" +
+					// sessionStorage.getItem("customerid") + " AND '" +
+					// getTabletDate() + "' BETWEEN
+					// strftime('%Y-%m-%d',startdate) AND
+					// strftime('%Y-%m-%d',enddate) ELSE im.actualitemcode END)
+					// GROUP BY actualitemcode) tb1 GROUP BY tb1.actualitemcode
+					// ORDER BY MIN(tb1.sortf), CASE tb1.printsequencecust WHEN
+					// 0 THEN 100000 ELSE tb1.printsequencecust END";
+                   var Qry="select * from (SELECT '*' || CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(SELECT case when " + Qty + "=0 THEN '' ELSE (CASE WHEN im.unitspercase=1 THEN 0 ELSE (" + Qty + "/im.unitspercase) END) END from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as cases,(SELECT case when " + Qty + "=0 THEN '' ELSE (CASE WHEN im.unitspercase=1 THEN " + Qty + " ELSE (" + Qty + " % im.unitspercase) END) END from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as units, CASE WHEN IFNULL(pd.salescaseprice,0) > 0 THEN pd.salescaseprice WHEN IFNULL(dkd.distributionkey,0) > 0 THEN IFNULL(dkd.value,0) ELSE im.caseprice END AS caseprice, CASE WHEN IFNULL(pd.salesprice,0) > 0 THEN pd.salesprice ELSE im.defaultsalesprice END AS price,NULL as total, CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice " + ReasonField + ",ifnull(discountpercentage,0) discountpercentage,ifnull(discountamount,0) discountamount,1 as sortf ,printsequencecust FROM itemmaster AS im JOIN inventorysummarydetail invs on invs.itemcode = im.actualitemcode AND (ifnull(invs.loadqty,0) +  ifnull(invs.loadadjustqty,0) + ifnull(invs.loadaddqty,0) +ifnull(invs.beginstockqty,0)- ifnull(invs.loadcutqty,0) - ifnull(invs.saleqty,0) + ifnull(invs.returnqty,0) + ifnull(invs.returnfreeqty,0) - ifnull(invs.freesampleqty,0)) > 0 join itemmustdetail imd on imd.itemcode = invs.itemcode and imd.itemmustcode =(select itemmustcode from itemmustheader imh join customermaster cm on cm.itemmustkey =imh.itemmustcode and customercode = " + sessionStorage.getItem("customerid") + ") left join invoicedetail on invoicedetail.itemcode = im.actualitemcode and invoicedetail.routekey=" + sessionStorage.getItem("RouteKey") + " and invoicedetail.visitkey=" + sessionStorage.getItem("VisitKey") + " left join customermaster cm on customercode = " + sessionStorage.getItem("customerid") + " left join distributionkeydetails dkd on cm.distributionkey = dkd.distributionkey and dkd.item = im.actualitemcode  left join pricingdetail1 pd on pd.itemcode = actualitemcode and pd.customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where im.itemtype=1 and (printsequencecust > 0 or displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN status = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN im.actualitemcode ELSE pg.itemcode END ELSE im.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ") AND im.actualitemcode IN(SELECT CASE WHEN status = 1 AND '" + Qty + "' = 'manualfreeqty' THEN foc.itemcode ELSE im.actualitemcode END FROM controlpanel left join customer_foc_detail foc WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc_detail WHERE customercode = " + sessionStorage.getItem("customerid") + ") THEN foc.customercode = " + sessionStorage.getItem("customerid") + " ELSE im.actualitemcode END) group by actualitemcode UNION SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(SELECT case when " + Qty + "=0 THEN '' ELSE (CASE WHEN im.unitspercase=1 THEN 0 ELSE (" + Qty + "/im.unitspercase) END) END from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as cases,(SELECT case when " + Qty + "=0 THEN '' ELSE (CASE WHEN im.unitspercase=1 THEN " + Qty + " ELSE (" + Qty + " % im.unitspercase) END) END from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as units,CASE WHEN invoicedetail.salescaseprice NOT NULL AND invoicedetail.salescaseprice > 0 THEN invoicedetail.salescaseprice WHEN dkd.distributionkey NOT NULL THEN dkd.value ELSE (case when pd.salescaseprice NOT NULL AND pd.salescaseprice > 0 THEN pd.salescaseprice else im.caseprice end) END as caseprice,CASE WHEN invoicedetail.salesprice NOT NULL AND invoicedetail.salesprice > 0 THEN invoicedetail.salesprice ELSE (case when pd.salesprice is not null and pd.salesprice > 0 then pd.salesprice else defaultsalesprice end) END as price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice " + ReasonField + ",ifnull(discountpercentage,0) discountpercentage,ifnull(discountamount,0) discountamount,2 as sortf ,printsequencecust FROM itemmaster AS im JOIN inventorysummarydetail invs on invs.itemcode = im.actualitemcode AND (ifnull(invs.loadqty,0) +  ifnull(invs.loadadjustqty,0) + ifnull(invs.loadaddqty,0) +ifnull(invs.beginstockqty,0)- ifnull(invs.loadcutqty,0) - ifnull(invs.saleqty,0) + ifnull(invs.returnqty,0) + ifnull(invs.returnfreeqty,0) - ifnull(invs.freesampleqty,0)) > 0 LEFT JOIN startingloaddetail sld on sld.itemcode = actualitemcode AND strftime('%Y-%m-%d',sld.ddate)=date() and sld.status = 1 and sld.routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " left join invoicedetail on invoicedetail.itemcode = im.actualitemcode and invoicedetail.routekey=" + sessionStorage.getItem("RouteKey") + " and invoicedetail.visitkey=" + sessionStorage.getItem("VisitKey") + " left join customermaster cm on customercode = " + sessionStorage.getItem("customerid") + " left join distributionkeydetails dkd on cm.distributionkey = dkd.distributionkey and dkd.item = im.actualitemcode  left join pricingdetail1 pd on pd.itemcode = actualitemcode and pd.customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where im.itemtype=1 and (printsequencecust > 0 or displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN status = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN im.actualitemcode ELSE pg.itemcode END ELSE im.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ") AND im.actualitemcode IN(SELECT CASE WHEN EXISTS(SELECT customercode FROM customer_foc WHERE customercode = " + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate)) and status = 1 AND '" + Qty + "' = 'manualfreeqty' THEN foc.itemcode ELSE im.actualitemcode END FROM controlpanel left join customer_foc_detail foc left join customer_foc f on foc.contractid=f.contractid WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc WHERE customercode =" + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate)) THEN foc.customercode =" + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate) ELSE im.actualitemcode END) group by actualitemcode) tb1 group by tb1.actualitemcode order by min(tb1.sortf), CASE tb1.printsequencecust WHEN 0 THEN 100000 ELSE tb1.printsequencecust END";
+                }
+                else {
+                    var Qry = "select * from (SELECT '*' || CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(SELECT CASE WHEN " + Qty + "=0 THEN 'NULL' ELSE " + Qty + " END  from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as units,(case when pd.salesprice is not null and pd.salesprice > 0 then pd.salesprice else defaultsalesprice end) price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice " + ReasonField + ",ifnull(discountpercentage,0) discountpercentage,ifnull(discountamount,0) discountamount,1 as sortf ,printsequencecust FROM itemmaster AS im JOIN inventorysummarydetail invs on invs.itemcode = im.actualitemcode AND (ifnull(invs.loadqty,0) + ifnull(invs.loadadjustqty,0) + ifnull(invs.loadaddqty,0) +ifnull(invs.beginstockqty,0)- ifnull(invs.loadcutqty,0) - ifnull(invs.saleqty,0) + ifnull(invs.returnqty,0) + ifnull(invs.returnfreeqty,0) - ifnull(invs.freesampleqty,0)) > 0 LEFT JOIN startingloaddetail sld on sld.itemcode = actualitemcode AND strftime('%Y-%m-%d',sld.ddate)=date() and sld.status = 1 and sld.routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " join itemmustdetail imd on imd.itemcode = invs.itemcode and imd.itemmustcode =(select itemmustcode from itemmustheader imh join customermaster cm on cm.itemmustkey =imh.itemmustcode and customercode = " + sessionStorage.getItem("customerid") + ") left join invoicedetail on invoicedetail.itemcode = im.actualitemcode and invoicedetail.routekey=" + sessionStorage.getItem("RouteKey") + " and invoicedetail.visitkey=" + sessionStorage.getItem("VisitKey") + " left join customermaster cm on customercode = " + sessionStorage.getItem("customerid") + " left join distributionkeydetails dkd on cm.distributionkey = dkd.distributionkey and dkd.item = im.actualitemcode left join pricingdetail1 pd on pd.itemcode = actualitemcode and pd.customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where im.itemtype=1 and (printsequencecust > 0 or displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN status = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN im.actualitemcode ELSE pg.itemcode END ELSE im.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ") AND im.actualitemcode IN(SELECT CASE WHEN status = 1 AND '" + Qty + "' = 'manualfreeqty' THEN foc.itemcode ELSE im.actualitemcode END FROM controlpanel left join customer_foc_detail foc WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc_detail WHERE customercode = " + sessionStorage.getItem("customerid") + ") THEN foc.customercode = " + sessionStorage.getItem("customerid") + " ELSE im.actualitemcode END) group by actualitemcode UNION SELECT CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,(SELECT CASE WHEN " + Qty + "=0 THEN 'NULL' ELSE " + Qty + " END  from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as units,(case when pd.salesprice is not null and pd.salesprice > 0 then pd.salesprice else defaultsalesprice end) price,NULL as total,CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as Code,im.actualitemcode,im.unitspercase,im.caseprice " + ReasonField + ",ifnull(discountpercentage,0) discountpercentage,ifnull(discountamount,0) discountamount,2 as sortf ,printsequencecust FROM itemmaster AS im JOIN inventorysummarydetail invs on invs.itemcode = im.actualitemcode AND (ifnull(invs.loadqty,0) + ifnull(invs.loadadjustqty,0) + ifnull(invs.loadaddqty,0) +ifnull(invs.beginstockqty,0)- ifnull(invs.loadcutqty,0) - ifnull(invs.saleqty,0) + ifnull(invs.returnqty,0) + ifnull(invs.returnfreeqty,0) - ifnull(invs.freesampleqty,0)) > 0 LEFT JOIN startingloaddetail sld on sld.itemcode = actualitemcode AND strftime('%Y-%m-%d',sld.ddate)=date() and sld.status = 1 and sld.routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " left join invoicedetail on invoicedetail.itemcode = im.actualitemcode and invoicedetail.routekey=" + sessionStorage.getItem("RouteKey") + " and invoicedetail.visitkey=" + sessionStorage.getItem("VisitKey") + " left join customermaster cm on customercode = " + sessionStorage.getItem("customerid") + " left join distributionkeydetails dkd on cm.distributionkey = dkd.distributionkey and dkd.item = im.actualitemcode left join pricingdetail1 pd on pd.itemcode = actualitemcode and pd.customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where im.itemtype=1 and (printsequencecust > 0 or displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN status = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN im.actualitemcode ELSE pg.itemcode END ELSE im.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ") AND im.actualitemcode IN(SELECT CASE WHEN EXISTS(SELECT customercode FROM customer_foc WHERE customercode = " + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate)) and status = 1 AND '" + Qty + "' = 'manualfreeqty' THEN foc.itemcode ELSE im.actualitemcode END FROM controlpanel left join customer_foc_detail foc left join customer_foc f on foc.contractid=f.contractid WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc WHERE customercode =" + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate)) THEN foc.customercode =" + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate) ELSE im.actualitemcode END) group by actualitemcode) tb1 group by tb1.actualitemcode order by min(tb1.sortf), CASE tb1.printsequencecust WHEN 0 THEN 100000 ELSE tb1.printsequencecust END";
+                }
+                console.log(Qry);
+                if(platform == "iPad"){
+                    Cordova.exec(function(result) {
+                        TableDataOffLine(result)
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else  {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                        	TableDataOffLine(result);
+                        else
+                        $.mobile.hidePageLoadingMsg();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+        }	
+        
+        // Salesinvoice grid data bind.
+        function TableDataOffLine(RecSet) {
+        	var platform= sessionStorage.getItem("platform");
+            var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+            var temp;
+            data = RecSet;                
+            if (platform == "Android") {
+                var array = $.map(data.array, function(item, index) {
+                	if (CaseEnabled)
+                    {
+                        if(ShowFreeReason())
+                            return [[item.Code,item.Desc, item.cases, item.units, item.caseprice, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice, item.reason,item.discountpercentage,item.discountamount]];
+                        else
+                            return [[item.Code,item.Desc, item.cases, item.units, item.caseprice, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice]];
+                    }
+                    else
+                    {
+                        if(ShowFreeReason())
+                            return [[item.Code,item.Desc, item.units, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice,item.reason]];
+                        else
+                            return [[item.Code,item.Desc, item.units, item.price, item.total, item.actualitemcode, item.unitspercase, item.caseprice]];
+                    }
+                });                    
+                data = array;
+                RecSet = array;                    
+            }
+            for (i = 0; i < data.length; i++) {
+                var r = "<tr class='contentFont'>";
+                for (j = 0; j < CellCount; j++) {                    	
+                    if (CaseEnabled) 
+                    {
+                    	
+                        if (j == 2 || j == 3) { // cases and units
+                        	if(j==2 && eval(data[i][8])==1){
+                        		temp='';
+                        	}else{
+                            	temp = "class = 'editable'"; 
+                            }                                
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                                data[i][j] = parseInt(data[i][j]);
+                            else 
+                            {
+                                data[i][j] = 0;
+                            }
+                        }
+                        else
+                            temp = '';
+                       
+                    }
+                    else {
+                        if (j == 2) // units
+                        {
+                           
+                          
+                            temp = "class = 'editable'";
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                                data[i][j] = parseInt(data[i][j]);
+                            else
+                                data[i][j] = '';
+                        }
+                        else
+                            temp = '';
+                       
+                    }
+                    
+                    if(j==1){
+                    	
+                    	if(data[i][j].charAt(0)=='*'){
+                    		 temp +=  'class = leftAlignMustStock';
+                    	}else{
+                    		temp +=  'class = leftAlign';
+                    	}
+                    }else{
+                    	 temp +=  '';
+                    }
+                    if (j == CellCount - 1) {
+                        temp += " style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+                        if (data[i][2] == '')
+                        { 
+                            data[i][j] = ''; // Overriding total column to
+												// set blank;
+                        }
+                        else
+                            data[i][j] = data[i][2];
+                        
+                        if (CaseEnabled) {
+                            // Total = (case * caseprice) + (Units * salesprice)
+                            data[i][j] = eval(data[i][2] * data[i][4]) + eval(data[i][3] * data[i][5])
+                        }
+                        else {
+                            // Total = (Units * salesprice)
+                            data[i][j] = eval(data[i][2] * data[i][3])
+                        }
+                        if (isNaN(data[i][j]))
+                            data[i][j] = 0;
+                            
+                        
+                    }
+                    if (CaseEnabled) {
+                        if (j >= 4 && j <= 6) {
+                            temp += "style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                                data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+                               // data[i][j] = eval(data[i][j]);
+								
+                        }
+                    }
+                    else 
+                    {
+                        if (j >= 3 && j <= 4)
+                            if (data[i][j] != '' && data[i][j] != undefined)
+                            data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+                    }
+                    
+                    var c = "<td " + temp + " id='c" + i + "_" +  j + "'>" + data[i][j] + "</td>";                        
+                    console.log(c);
+                    r += c;                        
+                }
+                r += "</tr>";
+                $('#tblContent tbody').append(r);
+                var reason;                    
+                if(CaseEnabled)
+                {
+                    if(data[i][10] != "")
+                        reason = data[i][10];
+                    else
+                        reason = 0;
+                    ArrReasonItems.push([data[i][7],reason]);
+                }
+                else
+                {
+                    if(data[i][8] != "")
+                        reason = data[i][8];
+                    else
+                        reason = 0;
+                    ArrReasonItems.push([data[i][5],reason]);
+                }  
+                                 
+            }
+            
+            if(platform == "iPad")
+            {
+            	$("#tblHeaderContent th.last").show()
+            	$("#tblContent td.last").show()
+            }
+
+            // Click event for each row in table to process row data.
+            $("#tblContent tr").live('click', function() {
+            	 $(this).addClass('clicked');
+                 $(this).siblings().removeClass('clicked');
+                 var idx = $(this).index();
+                 selRowIndex = idx; 
+                 
+                 if (CaseEnabled) {
+                	 var cases = $(this).children().eq(2).text();
+                     var units = $(this).children().eq(3).text();
+                     var UnitsPerCase = RecSet[idx - 1][8];
+                     selectedQty = (parseInt(cases) * UnitsPerCase) + parseInt(units);
+	                 AvailQty = null;
+	                 var rownum = idx - 1;
+	                 getAvailQty(RecSet[idx - 1][7],rownum,0);
+	                 
+	                 if(ShowFreeReason())
+                     {
+                         if(data[idx-1][10] != "")                                                  
+                             $("#ddlReason").val(parseInt(data[idx - 1][10]));
+                         else
+                             $("#ddlReason").get(0).selectedIndex = 0;                        
+                         $("#ddlReason").selectmenu("refresh");
+                     }
+	                 
+	                 if(cases != '' && units != '')
+                         selRowItemCode =  data[idx - 1][7];
+                 }else{
+                	 
+                     var units = $(this).children().eq(2).text();
+                     selectedQty = parseInt(units);
+                     if(ShowFreeReason())
+                     {
+                         if(data[idx-1][8] != "")                                                   
+                             $("#ddlReason").val(parseInt(data[idx - 1][8]));
+                         else
+                             $("#ddlReason").get(0).selectedIndex = 0;
+                         $("#ddlReason").selectmenu("refresh");
+                     }
+                	 if(units != '')
+                         selRowItemCode =  data[idx - 1][5];
+
+                     AvailQty = null;
+                     var rownum = idx - 1;
+                     getAvailQty(RecSet[idx - 1][5],rownum,0);
+                	 
+                 }
+            });
+
+            // If Edit is enabled allow editing in grid
+            $('#tblContent td.editable').click(function() 
+            {
+            	anytimetabclick = false;
+            	var index = $(this).index();
+            	selColIndex = index;   
+            	 if(eval($(this).text()) <= 0)
+                 	$(this).text("");
+	             var input = $("<input type='tel'/>").attr('value', $(this).text());
+	             var w = $(this).innerWidth();
+	             w = w - 50 + "px";
+	            	if(window.innerWidth>1000){ 
+	             	input.css('width', w).css('border', '0').css('height', 60).css('font-size',35);
+	             }else{
+	             	input.css('width', w).css('border', '0').css('height', 30).css('font-size', 16);
+	             }
+	             
+	             $(this).empty();
+	             $(this).append(input);
+	             input.bind("keyup",function() { return SetNumberMaxLength(this,4) });
+                 input.focusout(function() { 
+                 	var v = parseInt($(input).val(),10);
+                 	$(input).val(v); 
+                 	if(ValidateGridCaseUnit(this)) 
+                 	{ 
+                 		isEditing=true;
+                 		UpdateData(this) 
+                 	} 
+                 });
+                 $(this).find('input').live("keypress", function(event) {                                     	
+                     if (event.which == 13) {
+                         input.focusout();
+                     }
+                 });
+                 input.focus(); 
+                    
+            });
+            getTotalFreeGiven();
+  			$("#tblContent tr:eq(1)").trigger('click');
+  			$("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+            $.mobile.hidePageLoadingMsg();
+           
+        }
+        
+        function getTotalFreeGiven(){
+        	
+        	 var total = 0; 
+             $('#tblContent tr').each(function()
+             {
+                      if($(this).index() > 0)
+                      {
+                          var index= $(this).index();
+                          total += eval($(this).find('td:last').text());
+                          
+                      
+                      }
+             });
+        	 GivenFree=total;
+        	 $('#txtFREE').val(eval(GivenFree).toFixed(decimalplace));
+        	 $('#txtMAX').val(eval(totalDiscount-GivenFree).toFixed(decimalplace));
+        }
+        
+        // Calculating Total Amount in grid.
+        function GetTotalAmount(obj) {
+        	var RowIndex = $(obj).parent().parent().index();
+            var ObjIndex = $(obj).parent().index();
+            var T;
+            var Total = 0;
+            for (i = 0; i < data.length; i++) {
+               
+                if (CaseEnabled) {
+                    // Total = (case * caseprice) + (Units * salesprice)
+                     T = eval(eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(2)").text()) * data[RowIndex - 1][4]) + eval(eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(3)").text()) * data[RowIndex - 1][5]);
+                }
+                else {
+                    // Total = (Units * salesprice)
+                    T = eval(eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(2)").text()) * data[RowIndex - 1][3]);
+                    
+                }
+                alert(T);
+                if (T == undefined)
+                    T = 0;
+                else
+                    Total = Total + T;
+            }
+            return Total.toFixed(decimalplace);
+        }
+        function getAvailQty(ItemNo,i,flag)
+        {
+            // navigator.notification.alert(ItemNo);
+            var Qry = "Select ((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -   ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) +ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))/itemmaster.unitspercase) As LoadQty,(((ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0) + ifnull(inventorysummarydetail.loadaddqty,0) - ifnull(inventorysummarydetail.loadcutqty,0) -  ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0))%itemmaster.unitspercase)) As LoadUnit,itemmaster.unitspercase,itemmaster.defaultsalesprice,(ifnull(inventorysummarydetail.loadqty,0) +ifnull(inventorysummarydetail.loadadjustqty,0)+ ifnull(inventorysummarydetail.loadaddqty,0) +ifnull(inventorysummarydetail.beginstockqty,0)- ifnull(inventorysummarydetail.loadcutqty,0) - ifnull(inventorysummarydetail.saleqty,0) + ifnull(inventorysummarydetail.returnqty,0) + ifnull(inventorysummarydetail.returnfreeqty,0) - ifnull(inventorysummarydetail.freesampleqty,0)) As AvailableQty from inventorysummarydetail inner join itemmaster on inventorysummarydetail.itemcode = itemmaster.actualitemcode  and inventorysummarydetail.routekey = " + sessionStorage.getItem('RouteKey') + " where itemmaster.actualitemcode = " + ItemNo
+            console.log(Qry);
+            if (platform == "ipad") {
+                Cordova.exec(function(result) {
+                    
+
+                    AvailQty = result[0][4];
+                    if(AvailQty > 0)
+                    getSuggestedQty(ItemNo,i,flag,AvailQty);
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else 
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {                      	      	
+                   
+                    AvailQty = result.array[0].AvailableQty;
+                    
+                    
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+        // Update Quantity according to changes in grid.
+        function UpdateData(obj) {
+		
+            var RowIndex = $(obj).parent().parent().index();
+            var ObjIndex = $(obj).parent().index(); // Cell Index
+            if(CaseEnabled)
+            {
+                if(ObjIndex == 2 || ObjIndex == 3)
+                    $(obj).parent().text(parseInt(CheckIsNaN($(obj).val())));
+                else if(ObjIndex == 4 || ObjIndex == 5)
+                    $(obj).parent().text(eval($(obj).val()).toFixed(decimalplace));
+            }
+            else
+            {
+                if(ObjIndex == 2)
+                    $(obj).parent().text(parseInt(CheckIsNaN($(obj).val())));
+                else if(ObjIndex == 3)
+                    $(obj).parent().text(eval($(obj).val()).toFixed(decimalplace));
+            }
+            var Cases, Units, UnitsPerCase, ItemCode, RouteCode, CurrQty, Price,CasePrice;
+            CasePrice = 0; 
+            if (CaseEnabled) 
+            {                    
+                Cases = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text());
+                Units = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text());
+                ItemCode = data[RowIndex - 1][7];
+                UnitsPerCase = data[RowIndex - 1][8];
+                RouteKey = sessionStorage.getItem("RouteKey");                                   
+                Cases = (Cases == undefined || Cases == '') ? 0 : parseInt(CheckIsNaN(Cases));
+                Units = (Units == undefined || Units == '') ? 0 : parseInt(CheckIsNaN(Units));                    
+                CurrQty = (parseInt(Cases) * UnitsPerCase) + parseInt(Units);
+                selectedQty = CurrQty;
+                
+                if(ObjIndex == 2 || ObjIndex == 3)
+                {
+// if(sessionStorage.getItem("invoversell") != 1) //Inventory Over Sale
+// {
+                        if (CurrQty > AvailQty) 
+                        {
+                        	isEditing=false;
+                        	getLangText("Qty not available");
+                            $("#tblContent tr:eq(" + RowIndex + ") td:eq(" + ObjIndex + ")").text(0);
+                            return false;
+                        }
+// }
+                }
+              
+                Price = data[RowIndex - 1][5];
+                CasePrice = data[RowIndex - 1][4];                    
+                
+                if(eval(UnitsPerCase)==1){
+                    
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text("0");
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text(parseInt(CurrQty));                  // Calculating
+																												// Total
+																												// value
+																												// ([case
+																												// *
+																												// caseprice]
+																												// +
+																												// [units
+																												// *
+																												// salesprice])
+               
+                
+                }else{
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text(parseInt(CurrQty / UnitsPerCase));
+                	$("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text(parseInt(CurrQty % UnitsPerCase));                  // Calculating
+																																// Total
+																																// value
+																																// ([case
+																																// *
+																																// caseprice]
+																																// +
+																																// [units
+																																// *
+																																// salesprice])
+               
+                }
+                
+                // Calculating Total value ([case * caseprice] + [units *
+				// salesprice])
+                var Total = eval(Cases * CasePrice) + eval(Units * Price);
+                $("#tblContent tr:eq(" + RowIndex + ") td:eq(6)").text(CheckIsNaN(Total.toFixed(decimalplace)));
+                getTotalFreeGiven();
+                findbalance(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice,RowIndex,ObjIndex); 
+// var total = 0;
+// var len = $('#tblContent tr').length;
+// $('#tblContent tr').each(function(index, element)
+// {
+// if($(this).index() > 0)
+// {
+// var index= $(this).index();
+// total += eval($(this).find('td:last').text());
+// if (index == len - 1) {
+// var allowedfree=eval(totalDiscount)-eval(GiveDiscount);
+// if(eval(total)>eval(allowedfree)){
+//                            		 
+// alert("Free given is greater than allowed discount");
+// return false;
+// }else{
+// findbalance(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty,
+// Price,CasePrice,RowIndex,ObjIndex);
+//                            		 
+// }
+// }
+// }
+// });
+                
+            }
+            else 
+            {
+                Units = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text());
+                ItemCode = data[RowIndex - 1][5];                 
+                UnitsPerCase = data[RowIndex - 1][6];
+                RouteKey = sessionStorage.getItem("RouteKey");
+                Units = (Units == undefined || Units == '') ? 0 : parseInt(Units);
+                CurrQty = parseInt(Units);
+                selectedQty = CurrQty;
+                if(ObjIndex == 2)
+                {
+                     if (CurrQty > AvailQty) 
+                     {
+                    	 isEditing=false; 
+                        navigator.notification.alert("Qty not available");
+                        $("#tblContent tr:eq(" + RowIndex + ") td:eq(" + ObjIndex + ")").text(0);
+                        return false;
+                     }
+                    
+                   
+                }
+                Price = data[RowIndex - 1][3];
+                // Calculating Total value (Units * Salesprice)
+                var Total = eval(Units * Price);
+                getTotalFreeGiven();
+                $("#tblContent tr:eq(" + RowIndex + ") td:eq(4)").text(CheckIsNaN(Total.toFixed(decimalplace)));
+// var total = 0;
+// var len = $('#tblContent tr').length;
+// $('#tblContent tr').each(function(index, element)
+// {
+// if($(this).index() > 0)
+// {
+// var index= $(this).index();
+// total += eval($(this).find('td:last').text());
+// if (index == len - 1) {
+// var allowedfree=eval(totalDiscount)-eval(GiveDiscount);
+// if(eval(total)>eval(allowedfree)){
+//                            		 
+// alert("Free given is greater than allowed discount");
+// return false;
+// }else{
+// findbalance(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty,
+// Price,CasePrice,RowIndex,ObjIndex);
+//                            		 
+// }
+// }
+// }
+// });
+                
+              
+                                 
+            }
+            
+        }
+        function findbalance(ItemCode, RouteKey, visitkey, CurrQty, Price,CasePrice,RowIndex,ObjIndex)
+        {
+                    
+            var qry ="select balanceqty from customer_foc_balance where customercode="+sessionStorage.getItem("customerid")+" and itemcode="+ItemCode;
+            if (platform == "ipad") {
+                Cordova.exec(function(result) {
+                    if(result!=''){
+                    balanceqty = result[0][0];
+                         if(CurrQty > balanceqty) 
+                        {
+                            
+                            navigator.notification.alert("Quantity Exceeded From Allowed Contract");
+                            $("#tblContent tr:eq(" + RowIndex + ") td:eq(1)").text(0);
+                            if(CaseEnabled)
+                            $("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text(0);
+                            return false;
+                        }
+                        else
+                        HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice,RowIndex);
+                    }
+                    else
+                        HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice,RowIndex);
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(qry, function(result) {
+                   if(!$.isEmptyObject(result)){
+                    var result = $.map(result.array, function(item, index) {
+                        return [[item.balanceqty]];    
+                    });
+                    balanceqty = result[0][0];
+                     	if(CurrQty > balanceqty) 
+                        {
+                     		isEditing=false;
+                    	 	getLangText("Quantity Exceeded From Allowed Contract");
+                         	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text(0);
+                            if(CaseEnabled)
+                            $("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text(0);
+                            return false;
+                        }
+                        else
+                        HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice,RowIndex);
+                   }
+                   else
+                   HasEntry(ItemCode, RouteKey, sessionStorage.getItem("VisitKey"), CurrQty, Price,CasePrice,RowIndex);
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+                    
+        }
+        function HasEntry(ItemCode, RouteKey, VisitKey, CurrQty, Price,CasePrice,RowIndex) {                
+            var res = true;
+            var Qry = "SELECT COUNT(*) as totalcount FROM Invoicedetail where itemcode=" + ItemCode + " and visitkey=" + VisitKey
+            if (platform == "ipad") {
+                Cordova.exec(function(result) {
+                    CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, result,CasePrice,RowIndex)
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    var res = $.map(result.array, function(item, index) {
+                        return [[item.totalcount]];
+                    });
+
+                    CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, res,CasePrice,RowIndex);
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+        function CheckInsert(ItemCode, RouteKey, VisitKey, CurrQty, Price, result,CasePrice,RowIndex) {
+            
+           
+             selRowIndex = RowIndex;
+           
+             anytimetabclick = true;
+             var stdsalesprice = ArrPrice[selRowIndex - 1][1];
+             
+             var stdsalescaseprice = ArrPrice[selRowIndex - 1][2];
+             var stdreturnprice = ArrPrice[selRowIndex - 1][3];
+             var stdreturncaseprice = ArrPrice[selRowIndex - 1][4];
+             var stdgoodreturnprice = ArrPrice[selRowIndex - 1][5];
+             var stdgoodreturncaseprice = ArrPrice[selRowIndex - 1][6];
+             
+             var returnprice = ArrPrice[selRowIndex - 1][7];
+             var returncaseprice = ArrPrice[selRowIndex - 1][8];
+             var goodreturnprice = ArrPrice[selRowIndex - 1][9];
+             var goodreturncaseprice = ArrPrice[selRowIndex - 1][10];
+            
+             if (result == 0) {                    
+                 Qry = "INSERT INTO invoicedetail(itemcode,routekey,transactionkey,visitkey," + Qty + ",istemp,mdat,salesprice,issync,salescaseprice,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice,stdgoodreturnprice,stdgoodreturncaseprice,returnprice,returncaseprice,goodreturnprice,goodreturncaseprice,pricechgindicator) VALUES(" + ItemCode + "," + RouteKey + ",0," + sessionStorage.getItem("VisitKey") + "," + CurrQty + ",'true',datetime()," + Price + ",0," + CasePrice + "," + stdsalesprice + "," + stdsalescaseprice + "," + stdreturnprice + "," + stdreturncaseprice + "," + stdgoodreturnprice + "," + stdgoodreturncaseprice + "," + returnprice + "," + returncaseprice + "," + goodreturnprice + "," + goodreturncaseprice + ",0)";
+             
+                 if (platform == "ipad") {
+                     Cordova.exec(function(result) {
+                         // navigator.notification.alert(result);
+                         if(Qty == "salesqty")
+                             ResetDiscount(CasePrice,Price,ItemCode);
+                         if(ShowFreeReason())
+                             ChkInvoiceRXDetailCount(CurrQty,ItemCode);
+                     },
+                     function(error) {
+                         navigator.notification.alert(error);
+                     },
+                     "PluginClass",
+                     "InsertUpdateMethod",
+                     [Qry]);
+                 }
+                 else{
+                     window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                    	 if(ShowFreeReason())
+                             ChkInvoiceRXDetailCount(CurrQty,ItemCode);
+                     },
+				     function() {
+				        console.warn("Error calling plugin");
+				    });
+                 }
+             }
+             else {
+                 Qry = "UPDATE invoicedetail SET " + Qty + " = " + CurrQty + ",issync=0,salesprice=" + Price + ",salescaseprice=" + CasePrice + ",stdsalesprice = " + stdsalesprice + ",stdsalescaseprice = " + stdsalescaseprice + ",stdreturnprice = " + stdreturnprice + ",stdreturncaseprice=" + stdreturncaseprice + ",stdgoodreturnprice=" + stdgoodreturnprice + ",stdgoodreturncaseprice=" + stdgoodreturncaseprice + ",returnprice=" + returnprice + ",returncaseprice=" + returncaseprice + ",goodreturnprice=" + goodreturnprice + ",goodreturncaseprice=" + goodreturncaseprice + ",pricechgindicator =0 where itemcode=" + ItemCode + " and visitkey=" + VisitKey;
+                 console.log(Qry);
+                 // navigator.notification.alert(Qry);
+                 if (platform == "ipad") {
+                     Cordova.exec(function(result) {
+                         // navigator.notification.alert(result);
+                         if(Qty == "salesqty")
+                             ResetDiscount(CasePrice,Price,ItemCode);
+                         if(ShowFreeReason())
+                             ChkInvoiceRXDetailCount(CurrQty,ItemCode);
+                     },
+                     function(error) {
+                         navigator.notification.alert(error);
+                     },
+                     "PluginClass",
+                     "InsertUpdateMethod",
+                     [Qry]);
+                 }
+                 else  {
+                     window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                    	
+                             ChkInvoiceRXDetailCount(CurrQty,ItemCode);
+                         
+                     },
+				     function() {
+				        console.warn("Error calling plugin");
+				     });
+                 }
+             }
+         }
+        function getPrices(){
+        	
+        	 var Qry = "select * from (SELECT actualitemcode,im.defaultsalesprice AS stdsalesprice,im.caseprice AS stdsalescaseprice,im.defaultreturnprice AS stdreturnprice,im.returncaseprice AS stdreturncaseprice,im.defaultgoodreturnprice AS stdgoodreturnprice,im.defaultgoodreturncaseprice AS stdgoodreturncaseprice,CASE WHEN invoicedetail.returnprice NOT NULL AND invoicedetail.returnprice > 0 THEN invoicedetail.returnprice ELSE (CASE WHEN pd.returnprice NOT NULL AND pd.returnprice > 0  THEN pd.returnprice ELSE im.defaultreturnprice END) END AS returnprice,CASE WHEN invoicedetail.returncaseprice NOT NULL AND invoicedetail.returncaseprice > 0 THEN invoicedetail.returncaseprice ELSE (CASE WHEN pd.returncaseprice NOT NULL AND pd.returncaseprice > 0  THEN pd.returncaseprice ELSE im.returncaseprice END) END AS returncaseprice, CASE WHEN invoicedetail.goodreturnprice NOT NULL AND invoicedetail.goodreturnprice > 0 THEN invoicedetail.goodreturnprice ELSE (CASE WHEN pd.returnprice NOT NULL AND pd.returnprice > 0  THEN pd.returnprice ELSE im.defaultgoodreturnprice END) END AS goodreturnprice, CASE WHEN invoicedetail.goodreturncaseprice NOT NULL AND invoicedetail.goodreturncaseprice > 0 THEN invoicedetail.goodreturncaseprice ELSE (CASE WHEN pd.returncaseprice NOT NULL AND pd.returncaseprice > 0 THEN pd.returncaseprice ELSE im.defaultgoodreturncaseprice END) END AS goodreturncaseprice,im.costcaseprice,im.defaultcostprice ,1 as sortf ,printsequencecust FROM itemmaster AS im JOIN inventorysummarydetail invs on invs.itemcode = im.actualitemcode AND (ifnull(invs.loadqty,0) +  ifnull(invs.loadadjustqty,0) + ifnull(invs.loadaddqty,0) +ifnull(invs.beginstockqty,0)- ifnull(invs.loadcutqty,0) - ifnull(invs.saleqty,0) + ifnull(invs.returnqty,0) + ifnull(invs.returnfreeqty,0) - ifnull(invs.freesampleqty,0)) > 0 LEFT JOIN startingloaddetail sld on sld.itemcode = actualitemcode AND strftime('%Y-%m-%d',sld.ddate)=date() and sld.status = 1 and sld.routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " join itemmustdetail imd on imd.itemcode = invs.itemcode and imd.itemmustcode =(select itemmustcode from itemmustheader imh join customermaster cm on cm.itemmustkey =imh.itemmustcode and customercode = " + sessionStorage.getItem("customerid") + ") left join invoicedetail on invoicedetail.itemcode = im.actualitemcode and invoicedetail.routekey=" + sessionStorage.getItem("RouteKey") + " and invoicedetail.visitkey=" + sessionStorage.getItem("VisitKey") + " left join customermaster cm on customercode = " + sessionStorage.getItem("customerid") + " left join distributionkeydetails dkd on cm.distributionkey = dkd.distributionkey and dkd.item = im.actualitemcode  left join pricingdetail1 pd on pd.itemcode = actualitemcode and pd.customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where im.itemtype=1 and (printsequencecust > 0 or displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN status = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN im.actualitemcode ELSE pg.itemcode END ELSE im.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ") AND im.actualitemcode IN(SELECT CASE WHEN status = 1 AND '" + Qty + "' = 'manualfreeqty' THEN foc.itemcode ELSE im.actualitemcode END FROM controlpanel left join customer_foc_detail foc WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc_detail WHERE customercode = " + sessionStorage.getItem("customerid") + ") THEN foc.customercode = " + sessionStorage.getItem("customerid") + " ELSE im.actualitemcode END) group by actualitemcode UNION SELECT actualitemcode,im.defaultsalesprice AS stdsalesprice,im.caseprice AS stdsalescaseprice,im.defaultreturnprice AS stdreturnprice,im.returncaseprice AS stdreturncaseprice,im.defaultgoodreturnprice AS stdgoodreturnprice,im.defaultgoodreturncaseprice AS stdgoodreturncaseprice,CASE WHEN invoicedetail.returnprice NOT NULL AND invoicedetail.returnprice > 0 THEN invoicedetail.returnprice ELSE (CASE WHEN pd.returnprice NOT NULL AND pd.returnprice > 0  THEN pd.returnprice ELSE im.defaultreturnprice END) END AS returnprice,CASE WHEN invoicedetail.returncaseprice NOT NULL AND invoicedetail.returncaseprice > 0 THEN invoicedetail.returncaseprice ELSE (CASE WHEN pd.returncaseprice NOT NULL AND pd.returncaseprice > 0  THEN pd.returncaseprice ELSE im.returncaseprice END) END AS returncaseprice, CASE WHEN invoicedetail.goodreturnprice NOT NULL AND invoicedetail.goodreturnprice > 0 THEN invoicedetail.goodreturnprice ELSE (CASE WHEN pd.returnprice NOT NULL AND pd.returnprice > 0  THEN pd.returnprice ELSE im.defaultgoodreturnprice END) END AS goodreturnprice, CASE WHEN invoicedetail.goodreturncaseprice NOT NULL AND invoicedetail.goodreturncaseprice > 0 THEN invoicedetail.goodreturncaseprice ELSE (CASE WHEN pd.returncaseprice NOT NULL AND pd.returncaseprice > 0 THEN pd.returncaseprice ELSE im.defaultgoodreturncaseprice END) END AS goodreturncaseprice,im.costcaseprice,im.defaultcostprice ,2 as sortf ,printsequencecust FROM itemmaster AS im JOIN inventorysummarydetail invs on invs.itemcode = im.actualitemcode AND (ifnull(invs.loadqty,0) +  ifnull(invs.loadadjustqty,0) + ifnull(invs.loadaddqty,0) +ifnull(invs.beginstockqty,0)- ifnull(invs.loadcutqty,0) - ifnull(invs.saleqty,0) + ifnull(invs.returnqty,0) + ifnull(invs.returnfreeqty,0) - ifnull(invs.freesampleqty,0)) > 0 LEFT JOIN startingloaddetail sld on sld.itemcode = actualitemcode AND strftime('%Y-%m-%d',sld.ddate)=date() and sld.status = 1 and sld.routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " left join invoicedetail on invoicedetail.itemcode = im.actualitemcode and invoicedetail.routekey=" + sessionStorage.getItem("RouteKey") + " and invoicedetail.visitkey=" + sessionStorage.getItem("VisitKey") + " left join customermaster cm on customercode = " + sessionStorage.getItem("customerid") + " left join distributionkeydetails dkd on cm.distributionkey = dkd.distributionkey and dkd.item = im.actualitemcode  left join pricingdetail1 pd on pd.itemcode = actualitemcode and pd.customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where im.itemtype=1 and (printsequencecust > 0 or displayitem=1) AND im.actualitemcode IN(SELECT CASE WHEN status = 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN im.actualitemcode ELSE pg.itemcode END ELSE im.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ") AND im.actualitemcode IN(SELECT CASE WHEN EXISTS(SELECT customercode FROM customer_foc WHERE customercode = " + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate)) and status = 1 AND '" + Qty + "' = 'manualfreeqty' THEN foc.itemcode ELSE im.actualitemcode END FROM controlpanel left join customer_foc_detail foc left join customer_foc f on foc.contractid=f.contractid WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc WHERE customercode =" + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate)) THEN foc.customercode =" + sessionStorage.getItem("customerid") + " and '" + getTabletDate() + "' between strftime('%Y-%m-%d',startdate) and strftime('%Y-%m-%d',enddate) ELSE im.actualitemcode END) group by actualitemcode) tb1 group by tb1.actualitemcode order by min(tb1.sortf), CASE tb1.printsequencecust WHEN 0 THEN 100000 ELSE tb1.printsequencecust END";
+        	
+        	 if (platform == "ipad") {
+                 Cordova.exec(function(result) {
+                     ArrPrice = result;
+                     FillOrders();
+                 },
+                 function(error) {
+                    
+                     navigator.notification.alert(error);
+                 },
+                 "PluginClass",
+                 "GetdataMethod",
+                 [Qry]);
+             }
+             else{
+             
+                 window.plugins.DataBaseHelper.select(Qry, function(result1) 
+                 {
+                     if(result1.array != undefined)
+                     {
+                    	 var array = $.map(result1.array, function(item, index) {
+						 return [[item.actualitemcode,item.stdsalesprice, item.stdsalescaseprice, item.stdreturnprice, item.stdreturncaseprice, item.stdgoodreturnprice, item.stdgoodreturncaseprice, item.returnprice, item.returncaseprice, item.goodreturnprice, item.goodreturncaseprice,item.costcaseprice,item.defaultcostprice]];    
+                     });
+                     ArrPrice = array;
+                    
+                    }
+                    getFreeRecord();
+                 },
+				 function() 
+				 {
+                    console.warn("Error calling plugin");
+				 });
+             }
+        	
+        	
+        }
+        function Redirect(){
+        	
+        	
+        	 if(eval(GivenFree) > eval(totalDiscount) || eval(GivenFree) > eval(totalDiscount-GiveDiscount)){
+        		 getLangText("Discount Exceeded Allowed Limit. Please Adjust Discount/ Free Quantity");
+        		return false;
+        	 }else{
+        		 UpdateDiscount();
+        	 }
+         }
+        
+        function UpdateDiscount(){
+        	var discount=eval($("#txtdgiven").val());
+        	
+        	var QryUpdate = "Update invoiceheader set totaldiscountamount="+discount+",totalmanualfree="+GivenFree+",comments2="+givenPercentage+" WHERE routekey="
+    			+ sessionStorage.getItem("RouteKey")
+    			+ "  and visitkey="
+    			+ sessionStorage.getItem("VisitKey");
+	    	// alert(QryUpdate);
+	    	if (platform == "iPad") {
+	    		Cordova.exec(function(result) {
+	    			if (status == 1)
+	    				applyroundinginvoice(roundamount);
+	    			else
+	    				redirect_rounding();
+	    		}, function(error) {
+	    			alert("Error in binding Bank Name : " + error);
+	    		}, "PluginClass", "InsertUpdateMethod", [ QryUpdate ]);
+	    	} else if (platform == "Android") {
+	    		window.plugins.DataBaseHelper.insert(QryUpdate, function(result) {
+	    			 
+	    			
+	    			 var allowgctocash = sessionStorage.getItem("allowgctocash");
+	                 if(sessionStorage.getItem("invoicepaymentterms") == 2)
+	                 {
+	                     if(allowgctocash == 1)
+	                     {
+	                         var msg = "Do You Want To Make Payment ?";
+	                         navigator.notification.confirm(msg,function(action){
+	                             if(action == true)
+	                                 window.location = '../customer_opt/cashcollection_mop.html';
+	                             else
+	                                 window.location = '../review/printoption.html';
+	                         })
+	                     }
+	                     else
+	                         window.location = '../review/printoption.html';
+	                 }
+	                 else
+	                 {
+	                 	window.location = '../customer_opt/cashcollection_mop.html';
+	                 }
+	    				
+	    		}, function() {
+	    			console.warn("Error calling plugin");
+	    		});
+	    	}
+        	
+        	
+        	
+        }
+        
+        function ChkInvoiceRXDetailCount(CurrQty,ItemCode)
+        {
+            var Qry = "Select count(*) as cnt From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ ItemCode +" and itemtransactiontype = " + transactiontype;
+            console.log(Qry)
+            if(platform == "iPad"){
+            	
+                Cordova.exec(function(result1) 
+                {
+                              
+                    if(eval(result1[0][0]) > 0)
+                       UpdateInvoiceRXDetail(CurrQty,ItemCode);
+                    else
+                       InsertInvoiceRXDetail(CurrQty,ItemCode);
+                        
+                },
+                function(error) {
+                    navigator.notification.alert("Error inserting record in a invoice rx detail");
+                },
+                "PluginClass", 
+                "GetdataMethod", 
+                [Qry]);
+            }
+            else 
+            {
+                window.plugins.DataBaseHelper.select(Qry,function(result)
+				{
+                    if(result.array[0].cnt > 0)       
+                    	UpdateInvoiceRXDetail(CurrQty,ItemCode);
+                    else
+                        InsertInvoiceRXDetail(CurrQty,ItemCode);
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+            }
+        }
+        
+        function InsertInvoiceRXDetail(Qty,ItemCode)
+        { 
+            var Qry;
+            if(Qty == undefined)                
+                Qry = "Insert Into invoicerxddetail(routekey,visitkey,transactionkey, itemtransactiontype,itemcode,itemtranstypeseq,reasoncode,istemp) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0," + transactiontype + ","+ ItemCode +",0,"+ $('#ddlReason').val() + ",'true')"
+            else            
+                Qry = "Insert Into invoicerxddetail(routekey,visitkey,transactionkey, itemtransactiontype,itemcode,itemtranstypeseq,reasoncode,quantity,istemp) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0," + transactiontype + ","+ ItemCode +",0,"+ $('#ddlReason').val() +","+ Qty +",'true')";
+            console.log(Qry);             
+             
+            if (platform == "iPad") 
+            {                  
+                Cordova.exec(function(result) 
+                {
+                    selRowItemCode = ItemCode;
+                    selRowQty = Qty;                        
+                    if(CaseEnabled)
+                    {
+                        data[selRowIndex - 1][10] = $("#ddlReason").val();
+                        if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                            ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val();  
+                        else
+                            ArrReasonItems[selRowIndex - 1][1] = 0;
+                    }
+                    else
+                    {
+                        data[selRowIndex - 1][8] = $("#ddlReason").val();
+                        if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                            ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val();
+                        else
+                            ArrReasonItems[selRowIndex - 1][1] = 0;
+                    }
+                },
+                function(error) {
+                    navigator.notification.alert("Error inserting record in a invoice rx detail");
+                },
+                "PluginClass", 
+                "InsertUpdateMethod", 
+                [Qry]);
+            }
+            else
+       	  	{
+           		window.plugins.DataBaseHelper.insert(Qry,function(result)
+				{
+                    selRowItemCode = ItemCode;
+                    selRowQty = Qty;
+                    if(CaseEnabled)
+                    {
+                        data[selRowIndex - 1][10] = $("#ddlReason").val();
+                        if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                            ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val(); 
+                        else
+                            ArrReasonItems[selRowIndex - 1][1] = 0;
+                    }
+                    else
+                    {
+                        data[selRowIndex - 1][8] = $("#ddlReason").val();
+                        if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                            ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val();
+                        else
+                            ArrReasonItems[selRowIndex - 1][1] = 0;
+                    }
+                    isEditing=false;
+				},
+				function()
+				{
+				 isEditing=false;
+			   	 console.warn("Error calling plugin");
+				});
+       	 	} 
+        }
+        
+        function UpdateInvoiceRXDetail(Qty,ItemCode)
+        {
+            var Qry;
+            if(Qty == undefined)                
+                Qry = "Update invoicerxddetail set reasoncode=" + $('#ddlReason').val() + " where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = " + ItemCode + " and itemtransactiontype = " + transactiontype;
+            else
+                Qry = "Update invoicerxddetail set quantity = "+ Qty +",reasoncode=" + $('#ddlReason').val() + " where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = " + ItemCode + " and itemtransactiontype = " + transactiontype;
+            console.log(Qry);
+            if (platform == "iPad") 
+            {
+                Cordova.exec(function(result) 
+                      {
+                        selRowItemCode = ItemCode;
+                        selRowQty = Qty;
+                        if(CaseEnabled)
+                        {
+                            data[selRowIndex - 1][10] = $("#ddlReason").val();
+                            if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                                ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val(); 
+                            else
+                                ArrReasonItems[selRowIndex - 1][1] = 0;
+                        }
+                        else
+                        {
+                            data[selRowIndex - 1][8] = $("#ddlReason").val();
+                            if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                                ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val();
+                            else
+                                ArrReasonItems[selRowIndex - 1][1] = 0;
+                        }
+                      },
+                      function(error) {
+                        navigator.notification.alert("Error inserting record in a invoice rx detail");
+                      },
+                      "PluginClass", 
+                      "InsertUpdateMethod", 
+                      [Qry]);            
+            }
+            else
+            {
+           		window.plugins.DataBaseHelper.insert(Qry,function(result)
+				{
+                    selRowItemCode = ItemCode;
+                    selRowQty = Qty;
+                    if(CaseEnabled)
+                        {
+                            data[selRowIndex - 1][10] = $("#ddlReason").val();
+                            if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                                ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val();
+                            else
+                                ArrReasonItems[selRowIndex - 1][1] = 0;
+                        }
+                        else
+                        {
+                            data[selRowIndex - 1][8] = $("#ddlReason").val();
+                            if($("#ddlReason").get(0).selectedIndex != 0)                                  
+                                ArrReasonItems[selRowIndex - 1][1] =  $("#ddlReason").val();
+                            else
+                                ArrReasonItems[selRowIndex - 1][1] = 0;
+                        }
+                    isEditing=false;
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+            }
+        } 
+        
+        function CheckIsNaN(val)
+        {
+            if(isNaN(val))
+                return 0;
+            else
+                return val;
+        }
+        function ShowFreeReason()
+        {
+            if(Qty == "manualfreeqty" && EnableFreeReason == true)
+                return true;
+            else
+                return false;
+        }
+        
+        function CheckfreeAvailQty()
+        {
+        	
+        	if(!isEditing){
+        		
+        	
+        	var Qry = "SELECT id.itemcode,(IFNULL(id.salesqty,0)+IFNULL(id.freesampleqty,0)+IFNULL(id.manualfreeqty,0)) InvoicedQty, (IFNULL(inv.loadqty,0)+IFNULL(inv.loadadjustqty,0)+IFNULL(inv.beginstockqty,0)+IFNULL(inv.loadaddqty,0)-IFNULL(inv.loadcutqty,0)-IFNULL(inv.saleqty,0)+IFNULL(inv.returnqty,0)+IFNULL(inv.returnfreeqty,0)-IFNULL(inv.freesampleqty,0)) AS AvailableQty FROM invoicedetail id INNER JOIN inventorysummarydetail inv ON id.itemcode = inv.itemcode AND id.visitkey = " + sessionStorage.getItem("VisitKey") + " AND id.istemp = 'true' WHERE InvoicedQty > AvailableQty";
+         
+            if(platform == "iPad") {
+                Cordova.exec(function(result) {
+                    // navigator.notification.alert(result);
+                    if (CaseEnabled)
+                        $("#AvailQty").val(parseInt(result[0][0]) + "/" + parseInt(result[0][1]));
+                    else
+                        $("#AvailQty").val(parseInt(result[0][4]));
+
+                    AvailQty = result[0][4];
+                    if(AvailQty > 0)
+                    getSuggestedQty(ItemNo,i,flag,AvailQty);
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") 
+            {
+                var line = [];
+                window.plugins.DataBaseHelper.select(Qry, function(result) {  
+                    if(result.array != undefined){
+                    	
+                    var result = $.map(result.array, function(item, index) {
+                        return [[item.itemcode,item.InvoicedQty,item.AvailableQty]];
+                    });
+                   
+                    for (i = 0; i < result.length; i++) {
+                        
+                         for (j = 0; j < result[i].length; j++) {
+                             if(j==0)
+                             {
+                                 
+                                 line.push(result[i][j]);
+                              }
+                             
+                             
+                         }
+                    }
+	                   navigator.notification.alert("Quantity Not Available   \n Item(s) :"+line.join(','));
+	                   return false;
+                    }else
+                    {
+                    	CheckReasonSelected();
+                    }    
+                    
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        	}
+        }
+        
+        function CheckReasonSelected()
+        {
+           
+            
+            if(ShowFreeReason())
+            {
+            	
+                var chk;
+                for(i=0;i<ArrReasonItems.length;i++)
+                {
+                    var Cases,Units;
+                    Cases = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(2)").text());
+                    Units = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(3)").text());
+                    if((Cases != undefined && Cases != '' && Cases != 0) || (Units != undefined && Units != '' && Units !=0))
+                    {
+                        if(ArrReasonItems[i][1] == 0)
+                        {
+                            chk = false;
+                            break;                    
+                        }
+                    }
+                }   
+                if(chk == false)
+                {
+                	getLangText("Please Select A Reason.");
+                    return false;
+                }
+                else 
+                {
+                	Redirect();
+                }
+                
+            }
+            else {
+            	Redirect();
+            }
+            
+           
+        }
+        
+        
+        
+    </script>
+
+</body>
+</html>

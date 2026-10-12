@@ -1,0 +1,1937 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 10/02/2012
+ '  Description  : This page is used for load request screen.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Load Request</title>
+		<meta name="viewport"
+			content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<!--Black P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<!--Iphone 4 P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<!--Ipad P-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<!--Ipad L-->
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+
+		<link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+			rel="stylesheet" />
+		<script>
+							if (navigator.userAgent.toLowerCase().match(
+									/android/)) {
+								document
+										.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+								document
+										.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+							} else if (navigator.userAgent.toLowerCase().match(
+									/iphone/)
+									|| navigator.userAgent.toLowerCase().match(
+											/ipad/)) {
+								document
+										.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+							}
+						</script>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript"
+			src="../js/jquery.mobile.datebox.min.js"></script>
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+			<script type="text/javascript" src="../js/printreport.js"></script>
+
+		<style type="text/css">
+
+    /*
+     * Scrolling belongs to the wrapper,
+     * not to table, thead or tbody.
+     */
+    .tblSalesHeight {
+        width: 100%;
+        height: 680px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /*
+     * One fixed-layout table controls both
+     * header and body column widths.
+     */
+    #tblContent {
+        width: 100% !important;
+        min-width: 100% !important;
+        table-layout: fixed !important;
+
+        /*
+         * Separate is more reliable than collapse
+         * when sticky headers are used.
+         */
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /*
+     * Important:
+     * Do not allow old CSS to convert table
+     * sections into block elements.
+     */
+    #tblContent thead {
+        display: table-header-group !important;
+        width: auto !important;
+    }
+
+    #tblContent tbody {
+        display: table-row-group !important;
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    #tblContent tr {
+        display: table-row !important;
+        width: auto !important;
+    }
+
+    #tblContent th,
+    #tblContent td {
+        display: table-cell !important;
+        box-sizing: border-box !important;
+        vertical-align: middle !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+    }
+
+    /*
+     * Exact column widths.
+     * These widths control header and body together.
+     */
+    #tblContent col.col-item-code {
+        width: 15% !important;
+    }
+
+    #tblContent col.col-description {
+        width: 30% !important;
+    }
+
+    #tblContent col.col-van-stock {
+        width: 14% !important;
+    }
+
+    #tblContent col.col-wh-stock {
+        width: 14% !important;
+    }
+
+    #tblContent col.col-cases {
+        width: 15% !important;
+    }
+
+    #tblContent col.col-units {
+        width: 15% !important;
+    }
+
+    /*
+     * Keep header visible while scrolling.
+     */
+    #tblContent thead th {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+
+        background: #315b5d;
+        color: #ffffff;
+
+        text-align: center;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+		height: 60px; 
+        padding: 6px 3px !important;
+    }
+
+    /*
+     * Item code.
+     */
+    #tblContent th:nth-child(1),
+    #tblContent td:nth-child(1) {
+        text-align: center !important;
+        white-space: nowrap !important;
+        padding: 4px 3px !important;
+    }
+
+    /*
+     * Description.
+     */
+    #tblContent th:nth-child(2),
+    #tblContent td:nth-child(2) {
+        text-align: left !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        padding: 4px 7px !important;
+    }
+
+    /*
+     * Stock, Cases and Units.
+     */
+    #tblContent th:nth-child(3),
+    #tblContent td:nth-child(3),
+
+    #tblContent th:nth-child(4),
+    #tblContent td:nth-child(4),
+
+    #tblContent th:nth-child(5),
+    #tblContent td:nth-child(5),
+
+    #tblContent th:nth-child(6),
+    #tblContent td:nth-child(6) {
+        text-align: center !important;
+        white-space: nowrap !important;
+        padding: 4px 3px !important;
+    }
+
+    /*
+     * Editable quantity fields.
+     */
+    #tblContent td.editable {
+        text-align: center !important;
+        padding: 3px !important;
+    }
+
+    #tblContent td.editable input {
+        width: 90% !important;
+        max-width: 90% !important;
+        height: 32px !important;
+
+        display: block !important;
+        box-sizing: border-box !important;
+
+        margin: 0 auto !important;
+        padding: 0 3px !important;
+
+        text-align: center !important;
+        border: 1px solid #b99856 !important;
+    }
+
+</style>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="Order Request">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<a href="#" id="Back_inner" onclick="OnCancel();" rel="external"
+					lang="en">Back</a>
+				<h1 lang="en">Load Request</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="com_div comm captionLabel">
+					<div class="CRow1">
+						<div style="height: 100%; float: left;">
+							<div class="loadperiod" lang="en">Request Date</div>
+							<div
+								style="float: left; position: relative; padding-left: 5px; top: 15%">
+								<div id="lblReqDate" class="ui-corner-all labelBG"></div>
+								<!--<input id="dpDeliveryDate" name="dpDeliveryDate" type="date" data-role="datebox" width="40px" height="20px"
+                                value="15/03/2012" data-options='{"mode": "flipbox","dateFormat": "dd/MM/YYYY"}'/>-->
+							</div>
+						</div>
+						<div style="float: right; height: 100%; display: none;">
+							<div class="loadperiod" lang="en">Load Period</div>
+							<div
+								style="float: left; position: relative; top: 15%; padding-left: 15px;">
+								<div id="lblReqLoad" class="ui-corner-all labelBG"
+									style="width: 100px; text-align: center"></div>
+							</div>
+						</div>
+						<div style="float: right; height: 100%;">
+							<div class="showcustomerlist" id="checkDiv"
+								onclick="javascript:setToggles1('#id_send');" style="top: 15%">
+								<img id="imgCheck1" src="../images/check.png" alt
+									style="position: absolute; display: block" /> <img id="id_send"
+									src="../images/select.png" alt
+									style="position: absolute; display: none; left: 5px;" />
+							</div>
+							<div class="ltpadding" style="top: 30% !important">
+								<label id="lbl1" class="loadperiod" style="display: block"
+									onclick="javascript:setToggles1('#id_send');" lang="en">Send
+									Immediately</label> <input type="hidden" value="0" name="sendload"
+									id="id_send" />
+							</div>
+						</div>
+					</div>
+					<div>
+						<table cellpadding="1" cellspacing="1" border="0" width="100%">
+							<tr>
+								<td lang="en" colspan="2" width="40%" id="group" class="rtext">
+									Select Item Group</td>
+								<td colspan="2" width="60%"><select style="width: 100%"
+										name="select-choice-1" id="itemgroup">
+									</select></td>
+							</tr>
+						</table>
+					</div>
+					<div class="tblBox tbltd">
+						<div class="tblSalesHeight">
+
+							<table
+								id="tblContent"
+								cellpadding="0"
+								cellspacing="0"
+								border="0"
+							>
+								<colgroup>
+									<col class="col-item-code" />
+									<col class="col-description" />
+									<col class="col-van-stock" />
+									<col class="col-wh-stock" />
+									<col class="col-cases" />
+									<col class="col-units" />
+								</colgroup>
+
+								<thead>
+									<tr>
+										<th lang="en">
+											Item Code
+										</th>
+
+										<th
+											class="leftAlign"
+											lang="en"
+										>
+											Item Description
+										</th>
+
+										<th lang="en">
+											Van Stock
+										</th>
+
+										<th lang="en">
+											WH Stock
+										</th>
+
+										<th lang="en">
+											Cases
+										</th>
+
+										<th
+											class="last"
+											lang="en"
+										>
+											Units
+										</th>
+									</tr>
+								</thead>
+
+								<tbody></tbody>
+							</table>
+
+						</div>
+
+					</div>
+					<div>
+						<table cellpadding="2" cellspacing="2" border="0" width="100%">
+							<tr>
+								<td class="captionLabel" lang="en">Price</td>
+								<td class="captionLabel" lang="en">UPC</td>
+								<td class="captionLabel" lang="en" style="display: none;">Available
+									Van Quantity</td>
+							</tr>
+							<tr>
+								<td style="width: 28%"><input id="txtItemNo" type="text"
+										class="textFont textWidth" readonly="readonly" /></td>
+								<td style="width: 28%;"><input id="txtUPC" type="text"
+										class="textFont textWidth" readonly="readonly" /></td>
+								<td style="width: 28%; display: none;">
+									<div id="AvailQty" class="readonly_text rightAlign">0/0</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="leftbottomMenu">
+					<a href="#" rel="external" id="A1" onclick="OnAdd()"
+						style="text-decoration: none" data-role="none">
+						<div class="MenuPosition">
+							<div class="MenuTextPos">
+								<img id="imgAdd" class="bottomicon" src="../images/icn-add.png"
+									alt="Add" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Add</div>
+						</div>
+					</a> 
+					<a href="#" rel="external" id="btnPrintWHStock" onclick="OnPrintWHStock()"
+						style="text-decoration: none" data-role="none">
+						<div class="MenuPosition">
+							<div class="MenuTextPos">
+								<img id="imgAdd" class="bottomicon" src="../images/print.png"
+									alt="Add" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Print WH Stock</div>
+						</div>
+					</a>
+					<a href="#" rel="external" style="text-decoration: none; display:none"
+						onclick="OnSummary()" data-role="none"><div
+							class="MenuPosition">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/doc.png" alt="Option" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Summary</div>
+						</div>
+					</a>
+						
+					<a href="#" rel="external" style="text-decoration: none"
+						data-role="none" onclick="OnExit();">
+						<div class="MenuPosition">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/icn-exit.png" alt="Exit" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Done</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="RemoveOnQuickAccess();footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								class="ui-btn-active" rel="external" data-icon="custom"
+								lang="en">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="cust" data-icon="custom" lang="en"
+								onclick="RemoveOnQuickAccess();footerredict('../customer/customer_operation.html')">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="RemoveOnQuickAccess();footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom" lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="RemoveOnQuickAccess();footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="RemoveOnQuickAccess();footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+<script type="text/javascript">
+		
+		var itemTableData = [];
+		var platform = null;
+		var CaseEnabled;
+		var AvailQty;
+		var decimalplace = sessionStorage.getItem("decimalplace");
+		var transactiontypecode = 8; // 8 is transactiontypecode for loadrequest
+		var CasePrice = 0;
+		var LoadReqRollupOrder, LoadReqMethod, RouteName;
+		var PrevLoad;
+		var var_detailkey = 0;
+		var isSendAutomatic = 0;
+		var itemmustkey = 0;
+		var urgentLoadRequest;
+		var RequestDate, RequestLoad, AllowMsl = 0;
+		var dataToInsert = [];
+		window.lang = new jquery_lang_js();
+		function setToggles1() {
+			if ($("#id_send").css("display") == 'none') {
+				isSendAutomatic = 1;
+				$("#id_send").css("display", "block");
+
+			} else {
+				isSendAutomatic = 0;
+				$("#id_send").css("display", "none");
+
+			}
+
+		}
+		resizeOrientationWindow();
+
+		$(document).ready(function() {
+
+			resizeWindow();
+			RequestDate = sessionStorage.RequestDate;
+			RequestLoad = sessionStorage.RequestLoad;
+			$("#lblReqDate").text(RequestDate);
+			$("#lblReqLoad").text(RequestLoad);
+			document.addEventListener("deviceready", onDR,false);
+
+			function onDR() {
+				platform = sessionStorage.getItem("platform");
+				fetchLiveWarehouseStock(); 
+				
+				urgentLoadRequest = eval(window.localStorage.getItem("urgentAuto")); 
+
+				if (window.localStorage.getItem("urgentAuto") == '1') {
+					$("#checkDiv").trigger('click');
+				}
+
+				if (sessionStorage.getItem("CaseEnabled") == "0"
+						|| sessionStorage
+								.getItem("CaseEnabled") == null)
+					CaseEnabled = false;
+				else if (sessionStorage.getItem("CaseEnabled") == "1")
+					CaseEnabled = true;
+
+				$("#itemgroup").unbind("change");
+
+				$("#itemgroup").bind("change", function () {
+
+					var selectedGroup = $("#itemgroup").val(); 
+					/*
+					* Clear current selection information.
+					*/
+					$("#txtItemNo").val("");
+					$("#txtUPC").val("");
+					$("#AvailQty").text("0/0");
+
+					buildItemList();
+				});
+
+				
+				getItemGroups();
+			}
+				
+								
+			$(".leftfooter").html(sessionStorage.getItem("CurrentDate"));
+			$('.ui-body-d').css({
+				'background' : '#fff'
+			});
+			$('.ui-input-datebox').css({
+				'width' : '91%',
+				'line-height' : '4.0'
+			});
+			$('.ui-btn-icon-notext').css({
+				'margin-top' : '19px !important'
+			});
+			$('.ui-input-datebox input').css({
+				'width' : '76% !important',
+				'color' : '#999'
+			});
+			$('.ui-disabled').css({
+				'opacity' : '0.8'
+			});
+
+			var lan = sessionStorage.getItem("Language");
+			window.lang.run(lan);
+			if (sessionStorage.getItem("Language") != "en") {
+
+				window.lang.change('InventoryLoad' + lan, lan);
+				window.lang.change('Footer' + lan, lan);
+				if (lan == "AR") {
+					$(".centerboxInvReq").attr("dir", "rtl");
+					$('#Back_inner')
+							.removeClass(
+									'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#Back_inner')
+							.addClass(
+									'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#lang_inner')
+							.removeClass(
+									'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+					$('#lang_inner')
+							.addClass(
+									'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				}
+
+			} else {
+				window.lang.change('en', 'en');
+				$(".centerboxInvReq").attr("dir", "ltr");
+				$('#Back_inner')
+						.removeClass(
+								'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#Back_inner')
+						.addClass(
+								'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#lang_inner')
+						.removeClass(
+								'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+				$('#lang_inner')
+						.addClass(
+								'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+			}
+
+		});
+
+		function OnPrintWHStock() {
+			if ( !itemTableData || itemTableData.length === 0) {
+				navigator.notification.alert(
+					"Please wait until the item list finishes loading."
+				);
+				return;
+			}else{
+				PrintWarehouseAndLoadDetails();
+			}
+		}
+
+		function getItemGroups() {
+			window.plugins.DataBaseHelper.select(
+				"select distinct itemgroupcode,CASE WHEN 'en' = 'en' THEN itemgroupname ELSE '' END as groupname,alternateitemgroupcode from itemmaster order by itemgroupcode",
+				function(result) {
+					var array = $.map(result.array,function(item,index) {
+									return [ [
+											item.itemgroupcode,
+											item.groupname,
+											item.alternateitemgroupcode 
+										] ];
+								});
+
+					result = array;
+					$("<option />",{ value : 0, text : getLangTextdata("All GROUPS") }).appendTo($("#itemgroup"));
+
+					for (i = 0; i < result.length; i++) {
+						$("<option />",{value : result[i][0],text : result[i][1]}).appendTo($("#itemgroup"));
+					}
+					$("#itemgroup").selectmenu("refresh");
+					getSettings();
+				},
+				function() {
+					console.warn("Error calling plugin");
+				});
+				
+		}
+		function getSettings() {
+			var Qry = "SELECT loadreqrolluporders,loadreqmethod,routename,itemmustkey FROM routemaster WHERE routecode="+ sessionStorage.getItem("RouteCode"); 
+			 
+			window.plugins.DataBaseHelper
+				.select(Qry,function(result) {
+					if (result.array != undefined) {
+						LoadReqRollupOrder = result.array[0].loadreqrolluporders;
+						LoadReqMethod = result.array[0].loadreqmethod;
+						RouteName = result.array[0].routename;
+						itemmustkey = result.array[0].itemmustkey;
+						if (eval(LoadReqRollupOrder) == 3) {
+							$("#A1").attr("onclick","");
+							$("#imgAdd").attr("src","../images/icn-add-gray.png");
+						}
+					}
+
+				},
+				function() {
+					console.warn("Error calling plugin");
+				});
+			
+		}
+	
+		function fetchLiveWarehouseStock() {
+
+			var routecode = sessionStorage.getItem("RouteCode");
+			var userid = sessionStorage.getItem("SalesmanCode");
+			var deviceid = sessionStorage.getItem("DeviceID");
+			var platform = sessionStorage.getItem("platform");
+ 
+
+			$.mobile.showPageLoadingMsg();
+
+			$.ajax({
+				type : "post",
+				url : wsurl
+						+ "ws/getwarehousestock/routeid/"
+						+ routecode + "/userid/" + userid,
+				data : "{}",
+				cache : false,
+				timeout : 20000,
+
+				crossDomain : true,
+				success : function(data) {
+
+					if (data.length > 0) {
+						deleteCurrentWarehouseStock(data);
+					}else{
+						alert("WareHouse Stock Not Found!!!");
+					}
+
+				},
+				error : function(qXHR, textStatus,
+						errorThrown) {
+					$.mobile.hidePageLoadingMsg();
+					alert("No Internet Connection");
+				}
+			});
+
+		}
+		function deleteCurrentWarehouseStock(data) {
+
+			var Qry = "DELETE FROM warehousestock";
+ 
+
+			window.plugins.DataBaseHelper.insert(Qry,
+				function (result) {
+					processWarestock(data);
+				},
+				function (error) {
+					$.mobile.hidePageLoadingMsg();
+					console.error("Failed to delete warehouse stock:",error);
+					navigator.notification.alert(
+						"Unable to refresh warehouse stock."
+					);
+				}
+			);
+		}
+
+		function processWarestock(responseData) {
+
+			var parsedData;
+
+			try {
+				parsedData =
+					typeof responseData === "string"
+						? JSON.parse(responseData)
+						: responseData;
+			} catch (error) {
+				$.mobile.hidePageLoadingMsg();
+				navigator.notification.alert(
+					"Invalid warehouse stock response."
+				);
+				return;
+			}
+
+			var warehouseItems = parsedData.warehousestock;
+
+			if (!warehouseItems || warehouseItems.length === 0) {
+				$.mobile.hidePageLoadingMsg();
+
+				navigator.notification.alert(
+					"WareHouse Stock Not Found!!!"
+				);
+
+				// Still load existing local data.
+				buildItemList();
+
+				return;
+			}
+
+			var completedCount = 0;
+			var totalCount = warehouseItems.length;
+ 
+
+			for (var i = 0; i < totalCount; i++) {
+
+				var stockItem = warehouseItems[i];
+
+				var itemCode = parseInt(stockItem.itemcode, 10) || 0;
+				var caseQty = parseInt(stockItem.cases, 10) || 0;
+				var unitQty = parseInt(stockItem.units, 10) || 0;
+				var totalQty = parseInt(stockItem.totunits, 10) || 0;
+
+				var warehouseCode = stockItem.warehousecode || "";
+				var transactionDate = stockItem.trandate || "";
+
+				var Qry =
+					"INSERT INTO warehousestock " +
+					"(itemcode, warhousecode, caseqty, unitqty, totalqty, updatedtime) " +
+					"VALUES (" +
+						itemCode + ", " +
+						"'" + escapeSqlValue(warehouseCode) + "', " +
+						caseQty + ", " +
+						unitQty + ", " +
+						totalQty + ", " +
+						"'" + escapeSqlValue(transactionDate) + "'" +
+					")";
+ 
+
+				window.plugins.DataBaseHelper.insert(Qry,
+					function (result) {
+						completedCount++;
+						if (completedCount === totalCount) {
+							$.mobile.hidePageLoadingMsg(); 
+							buildItemList();
+						}
+					},
+
+					function (error) {
+						completedCount++;
+						console.error("Warehouse insert failed:",error);
+
+						/*
+						* Continue after an individual failure so the page
+						* does not remain stuck.
+						*/
+						if (completedCount === totalCount) {
+							$.mobile.hidePageLoadingMsg(); 
+
+							buildItemList();
+						}
+					}
+				);
+			}
+		}
+		
+		function buildItemList() {
+			var language = sessionStorage.getItem("Language");
+			var checkCode = sessionStorage.getItem("CheckCode");
+			var routeKey = sessionStorage.getItem("RouteKey");
+			var selectedGroup = $("#itemgroup").val();
+
+			
+			
+		
+
+			var itemGroupFilter = "";
+
+			if (
+				selectedGroup !== null &&
+				selectedGroup !== undefined &&
+				selectedGroup !== "" &&
+				selectedGroup !== "0"
+			) {
+				itemGroupFilter =
+					" AND im.itemgroupcode = " +
+					parseInt(selectedGroup, 10) +
+					" ";
+			} 
+
+			var Qry =
+				"SELECT " +
+
+				"CASE " +
+					"WHEN '" + language + "' = 'en' " +
+					"THEN im.itemdescription " +
+					"ELSE im.arbitemdescription " +
+				"END AS Desc, " +
+
+				/* Requested cases */
+				"CASE " +
+					"WHEN IFNULL(req.quantity, 0) = 0 THEN 0 " +
+					"WHEN im.unitspercase = 1 THEN 0 " +
+					"ELSE CAST(" +
+						"IFNULL(req.quantity, 0) / im.unitspercase " +
+						"AS INTEGER" +
+					") " +
+				"END AS cases, " +
+
+				/* Requested units */
+				"CASE " +
+					"WHEN IFNULL(req.quantity, 0) = 0 THEN 0 " +
+					"WHEN im.unitspercase = 1 " +
+					"THEN IFNULL(req.quantity, 0) " +
+					"ELSE IFNULL(req.quantity, 0) % im.unitspercase " +
+				"END AS units, " +
+
+				"im.caseprice AS caseprice, " +
+				"im.defaultsalesprice AS price, " +
+
+				/* Van stock */
+				"IFNULL(van.vancases, 0) || '/' || " +
+				"IFNULL(van.vanunits, 0) AS vanstock, " +
+
+				/* Warehouse stock */
+				"CASE " +
+					"WHEN im.unitspercase = 1 " +
+					"THEN '0/' || CAST(IFNULL(wh.unitqty, 0) AS INTEGER) " +
+					"ELSE " +
+						"CAST(IFNULL(wh.caseqty, 0) AS INTEGER) || '/' || " +
+						"CAST(IFNULL(wh.unitqty, 0) AS INTEGER) " +
+				"END AS warehousestock, " +
+
+				/* Display item code */
+				"CASE " +
+					"WHEN '" + checkCode + "' = 'alternatecode' " +
+					"THEN im.alternatecode " +
+					"ELSE im.actualitemcode " +
+				"END AS Code, " +
+
+				"im.actualitemcode AS actualitemcode, " +
+				"im.unitspercase AS unitspercase, " +
+				"im.caseprice AS itemcaseprice " +
+
+				"FROM itemmaster AS im " +
+
+				/* Requested quantity */
+				"LEFT JOIN (" +
+					"SELECT " +
+						"itemcode, " +
+						"SUM(IFNULL(quantity, 0)) AS quantity " +
+					"FROM inventorytransactiondetail " +
+					"WHERE routekey = " + routeKey + " " +
+						"AND transactiontypecode = " + transactiontypecode + " " +
+						"AND istemp = 'true' " +
+					"GROUP BY itemcode" +
+				") req " +
+					"ON req.itemcode = im.actualitemcode " +
+
+				/* Warehouse stock */
+				"LEFT JOIN (" +
+					"SELECT " +
+						"itemcode, " +
+						"SUM(IFNULL(caseqty, 0)) AS caseqty, " +
+						"SUM(IFNULL(unitqty, 0)) AS unitqty " +
+					"FROM warehousestock " +
+					"GROUP BY itemcode" +
+				") wh " +
+					"ON wh.itemcode = im.actualitemcode " +
+
+				/* Van stock */
+				"LEFT JOIN (" +
+					"SELECT " +
+						"isd.itemcode, " +
+
+						/* Van cases */
+						"CASE " +
+							"WHEN SUM(" +
+								"IFNULL(isd.loadqty, 0) " +
+								"+ IFNULL(isd.loadadjustqty, 0) " +
+								"+ IFNULL(isd.beginstockqty, 0) " +
+								"+ IFNULL(isd.loadaddqty, 0) " +
+								"- IFNULL(isd.loadcutqty, 0) " +
+								"- IFNULL(isd.saleqty, 0) " +
+								"+ IFNULL(isd.returnqty, 0) " +
+								"+ IFNULL(isd.returnfreeqty, 0) " +
+								"- IFNULL(isd.freesampleqty, 0)" +
+							") = 0 THEN 0 " +
+
+							"WHEN im2.unitspercase = 1 THEN 0 " +
+
+							"ELSE CAST(" +
+								"SUM(" +
+									"IFNULL(isd.loadqty, 0) " +
+									"+ IFNULL(isd.loadadjustqty, 0) " +
+									"+ IFNULL(isd.beginstockqty, 0) " +
+									"+ IFNULL(isd.loadaddqty, 0) " +
+									"- IFNULL(isd.loadcutqty, 0) " +
+									"- IFNULL(isd.saleqty, 0) " +
+									"+ IFNULL(isd.returnqty, 0) " +
+									"+ IFNULL(isd.returnfreeqty, 0) " +
+									"- IFNULL(isd.freesampleqty, 0)" +
+								") / im2.unitspercase " +
+								"AS INTEGER" +
+							") " +
+						"END AS vancases, " +
+
+						/* Van units */
+						"CASE " +
+							"WHEN SUM(" +
+								"IFNULL(isd.loadqty, 0) " +
+								"+ IFNULL(isd.loadadjustqty, 0) " +
+								"+ IFNULL(isd.beginstockqty, 0) " +
+								"+ IFNULL(isd.loadaddqty, 0) " +
+								"- IFNULL(isd.loadcutqty, 0) " +
+								"- IFNULL(isd.saleqty, 0) " +
+								"+ IFNULL(isd.returnqty, 0) " +
+								"+ IFNULL(isd.returnfreeqty, 0) " +
+								"- IFNULL(isd.freesampleqty, 0)" +
+							") = 0 THEN 0 " +
+
+							"WHEN im2.unitspercase = 1 THEN " +
+								"SUM(" +
+									"IFNULL(isd.loadqty, 0) " +
+									"+ IFNULL(isd.loadadjustqty, 0) " +
+									"+ IFNULL(isd.beginstockqty, 0) " +
+									"+ IFNULL(isd.loadaddqty, 0) " +
+									"- IFNULL(isd.loadcutqty, 0) " +
+									"- IFNULL(isd.saleqty, 0) " +
+									"+ IFNULL(isd.returnqty, 0) " +
+									"+ IFNULL(isd.returnfreeqty, 0) " +
+									"- IFNULL(isd.freesampleqty, 0)" +
+								") " +
+
+							"ELSE CAST(" +
+								"SUM(" +
+									"IFNULL(isd.loadqty, 0) " +
+									"+ IFNULL(isd.loadadjustqty, 0) " +
+									"+ IFNULL(isd.beginstockqty, 0) " +
+									"+ IFNULL(isd.loadaddqty, 0) " +
+									"- IFNULL(isd.loadcutqty, 0) " +
+									"- IFNULL(isd.saleqty, 0) " +
+									"+ IFNULL(isd.returnqty, 0) " +
+									"+ IFNULL(isd.returnfreeqty, 0) " +
+									"- IFNULL(isd.freesampleqty, 0)" +
+								") % im2.unitspercase " +
+								"AS INTEGER" +
+							") " +
+						"END AS vanunits " +
+
+					"FROM inventorysummarydetail AS isd " +
+
+					"INNER JOIN itemmaster AS im2 " +
+						"ON im2.actualitemcode = isd.itemcode " +
+
+					"GROUP BY " +
+						"isd.itemcode, " +
+						"im2.unitspercase" +
+				") van " +
+					"ON van.itemcode = im.actualitemcode " +
+
+				/* Show request items or warehouse items */
+				"WHERE (" +
+					"req.itemcode IS NOT NULL " +
+					"OR wh.itemcode IS NOT NULL" +
+				") " +
+
+				itemGroupFilter +
+
+				"ORDER BY im.actualitemcode";
+ 
+  
+
+			window.plugins.DataBaseHelper.select(Qry,
+				function (result) {  
+					if (
+						!result ||
+						!result.array
+					) {
+						console.warn("buildItemList returned no result array."); 
+						pushTableView([]);
+
+						return;
+					}
+ 
+
+					var array = $.map(
+						result.array,
+						function (item, index) { 
+
+							return [[
+								item.Code,             // 0 Item Code
+								item.Desc,             // 1 Description
+								item.vanstock,         // 2 Van Stock
+								item.warehousestock,   // 3 WH Stock
+								item.cases,            // 4 Cases
+								item.units,            // 5 Units
+
+								// Internal values
+								item.actualitemcode,   // 6
+								item.unitspercase,     // 7
+								item.caseprice,        // 8
+								item.price             // 9
+							]];
+						}
+					);
+
+					 
+
+					pushTableView(array);
+
+					
+				},
+
+				function (error) {
+					$.mobile.hidePageLoadingMsg(); 
+					console.error("buildItemList database error:",error);
+					console.error("Failed query:",Qry);
+				}
+			);
+		
+		}
+
+		function pushTableView(result) { 
+
+			var CellCount = $("#tblContent thead th").length;
+
+			itemTableData = result || [];
+
+			/*
+			* Remove only itemTableData rows.
+			* Keep the table header.
+			*/
+			$("#tblContent tbody").empty();
+
+			for (
+				var i = 0;
+				i < itemTableData.length;
+				i++
+			) {
+
+				var rowHtml =
+					"<tr class='contentFont'>";
+
+				for (
+					var j = 0;
+					j < CellCount;
+					j++
+				) {
+
+					var cellClasses = [];
+					var cellStyles = [];
+					var cellValue = itemTableData[i][j];
+
+					if (
+						cellValue === undefined ||
+						cellValue === null
+					) {
+						cellValue = "";
+					}
+
+					if (j === 0) {
+						cellClasses.push(
+							"centerAlign"
+						);
+					}
+
+					if (j === 1) {
+						cellClasses.push(
+							"leftAlign"
+						);
+					}
+
+					if (
+						j === 2 ||
+						j === 3
+					) {
+						cellClasses.push(
+							"centerAlign"
+						);
+					}
+
+					if (j === 4) {
+
+						var unitsPerCase =
+							parseInt(
+								itemTableData[i][7],
+								10
+							);
+
+						if (
+							isNaN(unitsPerCase)
+						) {
+							unitsPerCase = 1;
+						}
+
+						if (
+							CaseEnabled &&
+							unitsPerCase !== 1
+						) {
+							cellClasses.push(
+								"editable"
+							);
+						}
+
+						cellClasses.push(
+							"centerAlign"
+						);
+
+						cellValue =
+							normalizeIntegerValue(
+								cellValue
+							);
+					}
+
+					if (j === 5) {
+
+						cellClasses.push(
+							"editable",
+							"last",
+							"centerAlign"
+						);
+
+						cellValue =
+							normalizeIntegerValue(
+								cellValue
+							);
+					}
+
+					var classAttribute = "";
+
+					if (
+						cellClasses.length > 0
+					) {
+						classAttribute =
+							" class='" +
+							cellClasses.join(" ") +
+							"'";
+					}
+
+					rowHtml +=
+						"<td" +
+						classAttribute +
+						">" +
+						cellValue +
+						"</td>";
+				}
+
+				rowHtml += "</tr>";
+
+				$("#tblContent tbody").append(
+					rowHtml
+				);
+			}
+
+			/*
+			* Row click event.
+			*
+			* Hidden data indexes:
+			* 6 = actualitemcode
+			* 7 = unitspercase
+			* 8 = caseprice
+			* 9 = unit price
+			*/
+
+
+			$("#tblContent tbody tr").unbind("click");
+
+			$("#tblContent tbody tr").bind("click", function (event) {
+
+				if (event) {
+					event.preventDefault();
+				}
+
+				var row = $(this);
+				var rowIndex = row.index();
+				var selectedRow = itemTableData[rowIndex];
+
+				 
+
+				if (!selectedRow) {
+					console.warn("No data found for row index:", rowIndex);
+
+					return false;
+				}
+
+				row.addClass("clicked");
+				row.siblings().removeClass("clicked");
+
+				if (CaseEnabled) {
+
+					$("#txtItemNo").val(
+						selectedRow[8] + "/" + selectedRow[9]
+					);
+
+				} else {
+
+					$("#txtItemNo").val(
+						selectedRow[9]
+					);
+				}
+
+				$("#txtUPC").val(
+					selectedRow[7]
+				);
+
+				AvailQty = null;
+
+				getAvailQty(
+					selectedRow[6]
+				);
+
+				return false;
+			});
+
+			// Select first data row.
+			$("#tblContent tbody tr:first").trigger("click");
+
+			// Alternating row colors.
+			$("#tblContent tbody tr:odd").addClass("oddRow");
+			$("#tblContent tbody tr:even").addClass("evenRow");
+
+			/*
+			* Enable editing when LoadReqMethod is 1.
+			*/
+			LoadReqMethod = 1; // This should be set based on your application logic.
+			if (LoadReqMethod == 1) {
+ 
+
+				$("#tblContent tbody td.editable").unbind("click");
+
+				$("#tblContent tbody td.editable").bind(
+					"click",
+					function (event) {
+
+						if (event) {
+							event.preventDefault();
+							event.stopPropagation();
+						}
+
+						var cell = $(this);
+ 
+
+						// Do not create another input if already editing.
+						if (cell.find("input").length > 0) {
+							return;
+						}
+
+						var currentValue = parseInt(cell.text(), 10);
+
+						if (isNaN(currentValue) || currentValue <= 0) {
+							currentValue = "";
+						}
+
+						var input = $("<input>", {
+							type: "tel",
+							value: currentValue
+						});
+
+						var inputWidth =
+							cell.innerWidth() - 10;
+
+						if (inputWidth < 40) {
+							inputWidth = 40;
+						}
+
+						input.css({
+							width: inputWidth,
+							maxWidth: "90%",
+							margin: "0 auto",
+							display: "block",
+							padding: 0,
+							textAlign: "center",
+							boxSizing: "border-box"
+						});
+						
+						if (window.innerWidth > 1000) {
+
+							input.css({
+								width: inputWidth,
+								border: 0,
+								height: 60,
+								fontSize: 35
+							});
+
+						} else {
+
+							input.css({
+								width: inputWidth,
+								border: 0,
+								height: 30,
+								fontSize: 16
+							});
+						}
+
+						cell.empty().append(input);
+
+						input.bind("keyup", function () {
+							return SetNumberMaxLength(this, 4);
+						});
+
+						input.bind("keypress", function (event) {
+
+							if (event.keyCode === 13) {
+								$(this).blur();
+							}
+						});
+
+						input.bind("blur", function () {
+
+							var enteredValue = parseInt($(this).val(), 10);
+
+							if (isNaN(enteredValue)) {
+								enteredValue = 0;
+							}
+
+							$(this).val(enteredValue);
+							 
+
+							if (ValidateGridCaseUnit(this)) {
+								SaveLoadRequest(this);
+							} else {
+								cell.text(enteredValue);
+							}
+						});
+
+						input.focus();
+						input.select();
+					});
+			}
+		}
+
+		function SaveLoadRequest(inputObject) {
+
+			var input = $(inputObject);
+			var cell = input.parent();
+			var row = cell.parent();
+
+			var rowIndex = row.index();
+
+			if (!itemTableData[rowIndex]) {
+
+				console.warn("SaveLoadRequest: data row not found:",rowIndex);
+
+				cell.text(0);
+
+				return false;
+			}
+
+			var enteredValue = parseInt(input.val(),10);
+
+			if (isNaN(enteredValue)) {
+				enteredValue = 0;
+			}
+
+			/*
+			* Replace textbox with entered value.
+			*/
+			cell.text(enteredValue);
+
+			/*
+			* Table columns:
+			*
+			* 4 = Cases
+			* 5 = Units
+			*/
+			var cases = parseInt(row.find("td:eq(4)").text(),10);
+
+			var units = parseInt(row.find("td:eq(5)").text(),10);
+
+			if (isNaN(cases)) {
+				cases = 0;
+			}
+
+			if (isNaN(units)) {
+				units = 0;
+			}
+
+			/*
+			* Data indexes:
+			*
+			* 6 = actual item code
+			* 7 = units per case
+			* 8 = case price
+			* 9 = unit price
+			*/
+			var actualItemCode = itemTableData[rowIndex][6];
+			var unitsPerCase = parseInt(itemTableData[rowIndex][7],10);
+
+			var casePrice = parseFloat(itemTableData[rowIndex][8]);
+			var unitPrice = parseFloat(itemTableData[rowIndex][9]);
+			if (isNaN(unitsPerCase) ||
+				unitsPerCase <= 0
+			) {
+				unitsPerCase = 1;
+			}
+
+			if (isNaN(casePrice)) {
+				casePrice = 0;
+			}
+
+			if (isNaN(unitPrice)) {
+				unitPrice = 0;
+			}
+
+			/*
+			* When units per case is 1,
+			* Cases must remain zero.
+			*/
+			if (unitsPerCase === 1) {
+				cases = 0;
+				row.find("td:eq(4)").text(0);
+			}
+
+			var quantity = (cases * unitsPerCase) + units;
+
+			if (unitsPerCase === 1) {
+
+				/*
+				* Single-unit item:
+				* all quantity remains in Units.
+				*/
+				cases = 0;
+				units = quantity;
+
+			} else {
+				cases = Math.floor(quantity / unitsPerCase);
+				units = quantity % unitsPerCase;
+			}
+
+			/*
+			* Update visible table cells.
+			*/
+			row.find("td:eq(4)").text(cases);
+			row.find("td:eq(5)").text(units);
+
+			/*
+			* Synchronize local JavaScript data.
+			*/
+			itemTableData[rowIndex][4] = cases;
+			itemTableData[rowIndex][5] = units;
+
+			var routeKey = sessionStorage.getItem("RouteKey");
+
+			var isExisting =
+				"SELECT COUNT(*) AS totalrec " +
+				"FROM inventorytransactiondetail " +
+				"WHERE routekey = " + routeKey + " " +
+				"AND transactiontypecode = " + transactiontypecode + " " +
+				"AND istemp = 'true' " +
+				"AND itemcode = " + actualItemCode;
+
+			 
+
+			window.plugins.DataBaseHelper.select(isExisting,function (result) {
+					var recordCount = 0;
+					var sql;
+					if (result && result.array && result.array.length > 0) {
+						recordCount = parseInt(result.array[0].totalrec,10) || 0;
+					} 
+
+					if (recordCount === 0) {
+
+						sql =
+							"INSERT INTO inventorytransactiondetail " +
+							"(" +
+								"itemcode, " +
+								"routekey, " +
+								"transactiontypecode, " +
+								"quantity, " +
+								"itemprice, " +
+								"itemcaseprice, " +
+								"istemp, " +
+								"issync" +
+							") VALUES (" +
+								actualItemCode + ", " +
+								routeKey + ", " +
+								transactiontypecode + ", " +
+								quantity + ", " +
+								unitPrice + ", " +
+								casePrice + ", " +
+								"'true', " +
+								"0" +
+							")";
+
+					} else {
+
+						sql =
+							"UPDATE inventorytransactiondetail " +
+							"SET quantity = " + quantity + ", " +
+								"itemprice = " + unitPrice + ", " +
+								"itemcaseprice = " + casePrice + ", " +
+								"issync = 0 " +
+							"WHERE itemcode = " +
+								actualItemCode + " " +
+							"AND routekey = " +
+								routeKey + " " +
+							"AND transactiontypecode = " +
+								transactiontypecode + " " +
+							"AND istemp = 'true'";
+					} 
+
+					window.plugins.DataBaseHelper.insert(sql,
+						function () {
+							/*
+							alert(
+								"Quantity saved successfully." +
+								"\nItem: " + actualItemCode +
+								"\nCases: " + cases +
+								"\nUnits: " + units +
+								"\nTotal Quantity: " + quantity
+							);*/
+						},
+
+						function (error) {
+							console.warn("SaveLoadRequest save failed:", error);
+							navigator.notification.alert(
+								"Unable to save quantity."
+							);
+						}
+					);
+				},
+
+				function (error) {
+
+					console.warn("SaveLoadRequest check failed:", error);
+
+					navigator.notification.alert(
+						"Unable to check quantity."
+					);
+				}
+			);
+
+			return true;
+		}
+
+		 
+		 
+		/*
+		********************* Currently Not Used *********************
+		* This Function for getting Available Qty For the selected Item from InventorySummaryDetail Table
+		*/ 
+		function getAvailQty(ItemNo) {
+
+			var routeKey = sessionStorage.getItem("RouteKey");
+
+			var Qry =
+				"SELECT " +
+
+					/*
+					* Available quantity in cases.
+					*/
+					"CASE " +
+						"WHEN itemmaster.unitspercase = 1 THEN 0 " +
+						"ELSE (" +
+							"(" +
+								"IFNULL(inventorysummarydetail.loadqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.loadadjustqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.beginstockqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.loadaddqty, 0) " +
+								"- IFNULL(inventorysummarydetail.loadcutqty, 0) " +
+								"- IFNULL(inventorysummarydetail.saleqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.returnqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.returnfreeqty, 0) " +
+								"- IFNULL(inventorysummarydetail.freesampleqty, 0)" +
+							") / itemmaster.unitspercase" +
+						") " +
+					"END AS LoadQty, " +
+
+					/*
+					* Remaining available units.
+					*/
+					"CASE " +
+						"WHEN itemmaster.unitspercase = 1 THEN (" +
+							"IFNULL(inventorysummarydetail.loadqty, 0) " +
+							"+ IFNULL(inventorysummarydetail.loadadjustqty, 0) " +
+							"+ IFNULL(inventorysummarydetail.beginstockqty, 0) " +
+							"+ IFNULL(inventorysummarydetail.loadaddqty, 0) " +
+							"- IFNULL(inventorysummarydetail.loadcutqty, 0) " +
+							"- IFNULL(inventorysummarydetail.saleqty, 0) " +
+							"+ IFNULL(inventorysummarydetail.returnqty, 0) " +
+							"+ IFNULL(inventorysummarydetail.returnfreeqty, 0) " +
+							"- IFNULL(inventorysummarydetail.freesampleqty, 0)" +
+						") " +
+						"ELSE (" +
+							"(" +
+								"IFNULL(inventorysummarydetail.loadqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.loadadjustqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.beginstockqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.loadaddqty, 0) " +
+								"- IFNULL(inventorysummarydetail.loadcutqty, 0) " +
+								"- IFNULL(inventorysummarydetail.saleqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.returnqty, 0) " +
+								"+ IFNULL(inventorysummarydetail.returnfreeqty, 0) " +
+								"- IFNULL(inventorysummarydetail.freesampleqty, 0)" +
+							") % itemmaster.unitspercase" +
+						") " +
+					"END AS LoadUnit, " +
+
+					"itemmaster.unitspercase, " +
+					"itemmaster.defaultsalesprice, " +
+
+					/*
+					* Total available quantity in units.
+					*/
+					"(" +
+						"IFNULL(inventorysummarydetail.loadqty, 0) " +
+						"+ IFNULL(inventorysummarydetail.loadadjustqty, 0) " +
+						"+ IFNULL(inventorysummarydetail.loadaddqty, 0) " +
+						"+ IFNULL(inventorysummarydetail.beginstockqty, 0) " +
+						"- IFNULL(inventorysummarydetail.loadcutqty, 0) " +
+						"- IFNULL(inventorysummarydetail.saleqty, 0) " +
+						"+ IFNULL(inventorysummarydetail.returnqty, 0) " +
+						"+ IFNULL(inventorysummarydetail.returnfreeqty, 0) " +
+						"- IFNULL(inventorysummarydetail.freesampleqty, 0)" +
+					") AS AvailableQty " +
+
+				"FROM inventorysummarydetail " +
+
+				"INNER JOIN itemmaster " +
+					"ON inventorysummarydetail.itemcode = " +
+						"itemmaster.actualitemcode " +
+					"AND inventorysummarydetail.routekey = " +
+						routeKey + " " +
+
+				"WHERE itemmaster.actualitemcode = " +
+					ItemNo;
+
+			
+
+			window.plugins.DataBaseHelper.select(
+				Qry,
+
+				function (dbResult) {
+
+					if (
+						dbResult &&
+						dbResult.array &&
+						dbResult.array.length > 0
+					) {
+						var item =
+							dbResult.array[0];
+
+						var loadQty = parseInt(
+							item.LoadQty,
+							10
+						);
+
+						var loadUnit = parseInt(
+							item.LoadUnit,
+							10
+						);
+
+						var availableQty = parseInt(
+							item.AvailableQty,
+							10
+						);
+
+						if (isNaN(loadQty)) {
+							loadQty = 0;
+						}
+
+						if (isNaN(loadUnit)) {
+							loadUnit = 0;
+						}
+
+						if (isNaN(availableQty)) {
+							availableQty = 0;
+						}
+
+						if (CaseEnabled) {
+
+							$("#AvailQty").text(
+								loadQty + "/" + loadUnit
+							);
+
+						} else {
+
+							$("#AvailQty").text(
+								availableQty
+							);
+						}
+
+						AvailQty = availableQty;
+
+					} else {
+
+						$("#AvailQty").text(
+							CaseEnabled ? "0/0" : "0"
+						);
+
+						AvailQty = 0;
+					}
+				},
+
+				function (error) {
+
+					console.warn(
+						"getAvailQty database error:",
+						error
+					);
+
+					$("#AvailQty").text(
+						CaseEnabled ? "0/0" : "0"
+					);
+
+					AvailQty = 0;
+				}
+			);
+		}
+
+		//Function When Add Button clicks
+		function OnAdd() {
+			localStorage.transactiontypecode = transactiontypecode;
+			sessionStorage.addmodule = 'inventory';
+			window.location = "loadrequest_itementry.html";
+		}
+
+		function OnSummary() {
+			sessionStorage.RouteName = RouteName;
+			window.location = "requestsummary.html";
+		}
+
+		function OnCancel() {
+
+			var routeKey = sessionStorage.getItem("RouteKey");
+
+			var checkQuery =
+				"SELECT COUNT(*) AS cnt " +
+				"FROM inventorytransactiondetail " +
+				"WHERE transactiontypecode = " +transactiontypecode + " " +
+				"AND istemp = 'true' " +
+				"AND routekey = " + routeKey;
+ 
+
+			window.plugins.DataBaseHelper.select(checkQuery,function (result) {
+
+					var recordCount = 0;
+
+					if (
+						result &&
+						result.array &&
+						result.array.length > 0
+					) {
+						recordCount = parseInt(
+							result.array[0].cnt,
+							10
+						) || 0;
+					}
+
+					/*
+					* No temporary load-request data.
+					* Exit directly.
+					*/
+					if (recordCount === 0) {
+						window.location ="inventory.html";
+						return;
+					}
+
+					/*
+					* Temporary data exists.
+					* Ask user before deleting it.
+					*/
+					var message = getLangTextdata("Discard All Changes And Exit?");
+
+					navigator.notification.confirm(message,function (action) {
+							/*
+							* Button 1 means user confirmed.
+							*/
+							if (action != 1) {
+								return;
+							}
+
+							var deleteQuery =
+								"DELETE FROM inventorytransactiondetail " +
+								"WHERE routekey = " +routeKey + " " +
+								"AND istemp = 'true' " +
+								"AND transactiontypecode = " +transactiontypecode;
+ 
+
+							window.plugins.DataBaseHelper.insert(deleteQuery,function () {
+									window.location ="inventory.html";
+								},
+								function (error) {
+									console.warn(
+										"Unable to discard changes:",
+										error
+									);
+
+									navigator.notification.alert(
+										"Unable to discard changes."
+									);
+								}
+							);
+						}
+					);
+				},
+
+				function (error) {
+					console.warn(
+						"OnCancel check failed:",
+						error
+					);
+
+					navigator.notification.alert(
+						"Unable to check pending changes."
+					);
+				}
+			);
+		}
+		  
+		
+		function RemoveOnQuickAccess() {
+			var Qry = "DELETE FROM inventorytransactiondetail WHERE routekey="
+					+ sessionStorage.getItem("RouteKey")
+					+ " AND istemp='true' AND transactiontypecode = "
+					+ transactiontypecode;
+			
+			window.plugins.DataBaseHelper.insert(Qry, function(result) {}, function() {
+				console.warn("Error calling plugin");
+			});
+		}
+		
+		 
+		function OnExit() { 
+			 
+			var Qry = "SELECT COUNT(*) as cnt,IFNULL(SUM(quantity),0) as quantity FROM inventorytransactiondetail WHERE transactiontypecode="
+					+ transactiontypecode
+					+ " AND istemp = 'true' AND routekey= "
+					+ sessionStorage.getItem("RouteKey");
+ 
+
+
+			window.plugins.DataBaseHelper.select(Qry, function(result) {
+				if (result.array[0].cnt == 0
+						|| result.array[0].quantity == 0) {
+					if (result.array[0].quantity == 0)
+						OnCancel();
+					else
+						window.location = "inventory.html";
+				} else {
+
+					window.localStorage
+							.setItem("sendAuto", isSendAutomatic);
+					localStorage.po = 'inventory';
+					/*if(var_detailkey!=0)
+					{
+					localStorage.dkey =var_detailkey;
+					}else
+					{
+					localStorage.dkey =0
+					}*/
+					window.location = "printoption_loadrequest.html";
+				}
+			}, function() {
+				console.warn("Error calling plugin");
+			});
+			
+		}
+
+		// Checking Value is Number
+		function CheckIsNaN(val) {
+			if (isNaN(val))
+				return 0;
+			else
+				return val;
+		}
+		function normalizeIntegerValue(value) {
+			if (
+				value === null ||
+				value === undefined ||
+				value === ""
+			) {
+				return 0;
+			}
+
+			var numberValue = parseInt(value, 10);
+
+			if (isNaN(numberValue)) {
+				return 0;
+			}
+
+			return numberValue;
+		}
+		function escapeSqlValue(value) {
+			if (
+				value === null ||
+				value === undefined
+			) {
+				return "";
+			}
+
+			return String(value).replace(/'/g, "''");
+		}
+	</script>
+
+	</body>
+</html>

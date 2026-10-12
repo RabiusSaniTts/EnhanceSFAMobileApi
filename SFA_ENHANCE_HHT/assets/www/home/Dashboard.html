@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME</title>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+<link rel="stylesheet" href="../css/en.css" lang="en" />
+<link rel="stylesheet"
+	media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+	href="../css/style_1400.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+	href="../css/style_1200.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 700px) and (max-width: 800px)"
+	href="../css/style_800.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 600px) and (max-width: 700px)"
+	href="../css/style_700.css">
+<link rel="stylesheet"
+	media="only screen and (min-width: 320px) and (max-width: 600px)"
+	href="../css/style_600.css">
+
+<script type="text/javascript" src="../js/jquery.js"></script>
+
+<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+<script type="text/javascript" src="../js/common.js"></script>
+
+<script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+            document.write('<script charset="utf-8" src="../js/Locationagent.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+
+<script type="text/javascript" src="../js/jquery.json-2.3.min.js"></script>
+
+<script src="../LangJS/jquery-lang.js" charset="utf-8"
+	type="text/javascript"></script>
+
+<script src="../LangJS/langpack/AR.js" charset="utf-8"
+	type="text/javascript" lang="en"></script>
+<link rel="stylesheet" type="text/css"
+	href="../css/jquery.mobile.simpledialog.css" />
+
+<script type="text/javascript" src="../js/jquery.mobile.simpledialog.js"></script>
+<script src="../js/dashboardJS/highcharts.js"></script>
+<script src="../js/dashboardJS/highcharts-more.js"></script>
+
+<script src="../js/dashboardJS/solid-gauge.js"></script>
+</head>
+<body>
+	<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+		<div>
+			<img title="" alt="" src="../images/bg.png" id="background">
+		</div>
+		<div data-role="header" data-position="inline" id="bgclheader">
+			<a id="Back_inner" href="../information/information.html" rel="external" lang="en">Back</a>
+			<h1 lang="en">DASHBOARD</h1>
+			<a href="#" id="lang_inner">EN</a><input value='' />
+		</div>
+		<div class="logo">
+			<div id="txtroutename" class="sublogo label"></div>
+		</div>
+		<div data-role="content" class="centerbox" id="test1" >
+				<div style="overflow:auto;">
+					<div id="container-speed" style="margin-top:15px;width:100%; float: left"></div>
+					
+					<div id="idSalesTrend" style="margin-top:15px;width:100%;height:40%; float: left"></div>
+					<div id="total" class="ui-grid-b" style="margin-top:15px;width:100%;height: 50%; float: left">
+						<div class="ui-block-a" >
+							<div id="totalsales" align="center" class="chart">
+								<div class="labelz_bx2"><h1 lang="en">TOTAL SALES</h1></div>
+								<div class="labelz_bx2" id="totalinvoice"><h3 lang="en"></h3></div>
+							</div>
+						</div>
+						<div class="ui-block-b">
+							<div id="totalsales" align="center" class="chart">
+							<div class="labelz_bx2"><h1 lang="en">TOTAL RECEIPT</h1></div>
+							<div class="labelz_bx2"  id="totalAR"><h3 lang="en"></h3></div>
+						</div>
+						</div>
+						<div class="ui-block-c"><div id="totalsales" class="chart">
+							<div id="totalsales" align="center" class="chart">
+							<div class="labelz_bx2"><h1 lang="en">ACHIVED TARGET</h1></div>
+							<div class="labelz_bx2" id="idtarget"><h3 lang="en"></h3></div>
+							</div> 
+						</div>
+						
+					</div>
+					<div id="container" style="margin-top:15px;width:100%;height: 50%; float: left"></div>
+				</div>
+		</div>
+			
+		</div>
+		<div data-role="footer" class="ui-bar homefooter">
+			<div class="footer">
+				<div class="leftfooter"></div>
+				<div class="rightfooter">Mirnah Technology Systems</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" language="javascript">
+        var keycount = 0;
+		var platform = '';
+		var autoload;
+		var routesequenceplanflag=0;
+		var bigfont='',smallfont='';
+		window.lang = new jquery_lang_js();
+		$(document).ready(function () {
+		    var routecode = sessionStorage.getItem("RouteCode");
+		    if (!sessionStorage.getItem("Language")) {
+		        sessionStorage.setItem("Language", "en");
+		    }
+		    resizeOrientationWindow();	
+		    document.addEventListener("deviceready", getTourID, false);
+		
+		    window.lang.run();
+		    // animateDivers();
+		    $(".leftfooter").html(getCurrentDate());
+		    $("#lang").click(function () {
+		        if ($("#lang").text() == "AR") {
+		            $("#lang").text("EN");
+		            window.lang.change('HomeAR', 'AR');
+		            $("#content").attr("dir", "rtl");
+		            sessionStorage.setItem("Language", "AR");
+		            $('#lang').removeClass('homeen').addClass('homear');
+		            $('.ui-icon').removeClass('ui-icon-arrow-r').addClass('ui-icon-arrow-r1');
+		            $('.ui-btn').removeClass('ui-btn-icon-right').addClass('ui-btn-icon-left');
+		            // $('img.HomeIconPosEN').removeClass('HomeIconPosEN').addClass('HomeIconPosAR');
+		            // $('#lang').removeClass('homeen').addClass('homear');
+		            // $('h3').css({ 'text-align': 'right', 'padding-right':
+					// '70px', 'float': 'right' });
+					// Set salesman name
+		            document.addEventListener("deviceready", getTourID, false);
+		        } else {
+		            $("#lang").text("AR");
+		            window.lang.change('en', 'en');
+		            $("#content").attr("dir", "ltr");
+		            sessionStorage.setItem("Language", "en");
+		            $('#lang').removeClass('homear').addClass('homeen');
+		            $('.ui-icon').removeClass('ui-icon-arrow-r1').addClass('ui-icon-arrow-r');
+		            $('.ui-btn').removeClass('ui-btn-icon-left').addClass('ui-btn-icon-right');
+		            // $('img.HomeIconPosAR').removeClass('HomeIconPosAR').addClass('HomeIconPosEN');
+		            // $('#lang').removeClass('homear').addClass('homeen');
+		            // $('h3').css({ 'text-align': 'left', 'padding-left':
+					// '0px', 'float': 'left', 'padding-right': '0px' });
+		
+		            // Set salesman name
+		            getTourID();
+		        }
+		    });
+		    if (sessionStorage.getItem("Language") == "AR") {
+		        $("#lang").trigger('click');
+		    }
+		
+		
+		});
+		
+		
+		
+		
+		function getTourID(){
+			 resizeWindow();
+			 var oldQry="select memo1 from routemaster Where routecode='"+ sessionStorage.getItem("RouteCode") +"'";
+			 var Qry="Select (select routecode from routemaster Where routecode='" + sessionStorage.getItem('RouteCode') + "') setting1,(select strftime('%d/%m/%Y',routestartdate) from startendday where routekey=(select max(routekey) routekey from startendday where routecode = '" + sessionStorage.getItem('RouteCode') + "' and salesmancode = '" + sessionStorage.getItem('SalesmanCode') + "')) setting2"	
+			 window.plugins.DataBaseHelper.select(Qry,function(result)
+			 {
+			 		if(result.array!=undefined)
+	            	 {
+				 		 var result = $.map(result.array, function(item, index) {
+									return [[ item.setting1,item.setting2]];
+						 });
+	            	 
+                         var tourId=result[0][0];
+                         sessionStorage.setItem("TourID",tourId);
+                         sessionStorage.setItem("TripDate",result[0][1]);
+                         
+                         //$('#txtroutename').text("ROUTE CODE : " + tourId);  
+                                 
+                     }
+			 		GetFontSize();
+			 		
+	        },
+			function()
+			{
+		   	 		console.warn("Error calling plugin");
+			});
+		
+		
+		}
+		
+		function loadChart(actual,target){
+			
+		    var gaugeOptions = {
+
+		            chart: {
+		                type: 'gauge',
+		                
+		               
+		            },
+
+		            title:{
+		    	        text: "ACTUAL/TARGET PLOT",
+		    	        style: {
+	                        fontFamily: 'Raleway',
+	                        fontSize: bigfont,
+	                        fontWeight:'bold',
+	                        textAlign: 'center'
+	                    },
+	                    margin:50
+		    	    },
+
+		            pane: {
+		                center: ['50%', '85%'],
+		                size: '200%',
+		                startAngle: -90,
+		                endAngle: 90,
+		                background: {
+		                    backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+		                    innerRadius: '60%',
+		                    outerRadius: '100%',
+		                    shape: 'arc'
+		                }
+		            },
+
+		            tooltip: {
+		                enabled: false
+		            },
+
+		            // the value axis
+		            yAxis: {
+		                stops: [
+		                    [0.1, '#DF5353'], // green
+		                    [0.5, '#DDDF0D'], // yellow
+		                    [0.9, '#55BF3B'] // red
+		                ],
+		                lineWidth: 0,
+		                minorTickInterval: null,
+		                tickPixelInterval: 200,
+		                tickWidth: 0,
+		                title: {
+		                    y: 10,
+		                    style: {
+		                        fontFamily: 'Raleway',
+		                        fontSize: smallfont,
+		                        textAlign: 'center'
+		                    }
+		                },
+		                labels: {
+		                    y: 25,
+		                    style: {
+		                        fontFamily: 'Raleway',
+		                        fontSize: smallfont,
+		                        textAlign: 'center'
+		                    }
+		                },
+		                plotBands: [{
+		    	            from: 0,
+		    	            to: target/2.5,
+		    	            color: '#DF5353' // red
+		    	        }, {
+		    	            from: target/2.5,
+		    	            to: target/1.68,
+		    	            color: '#DDDF0D' // yellow
+		    	        }, {
+		    	            from:  target/1.68,
+		    	            to: target,
+		    	            color: '#55BF3B' // green
+		    	           
+		    	        }] 
+		            },
+
+		            plotOptions: {
+		                solidgauge: {
+		                    dataLabels: {
+		                        y: 5,
+		                        borderWidth: 1,
+		                        useHTML: true
+		                       
+		                    }
+		                }
+		            }
+		        };
+
+		        // The speed gauge
+		        $('#container-speed').highcharts(Highcharts.merge(gaugeOptions, {
+		            yAxis: {
+		                min: 0,
+		                max: target,
+		                title: {
+		                    text: 'Target'
+		                }
+		            },
+
+		            credits: {
+		                enabled: false
+		            },
+		            
+		            series: [{
+		            	animation: true,
+		                name: 'Target',
+		                data: [0],
+		                dataLabels: {
+		                    format: '<div style="text-align:center" class="captionLabel"><span class="captionLabel" style="color:' +
+		                        ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+		                           '<span>Actual</span></div>',
+		                           style: {
+		                               fontWeight:'bold',
+		                               fontSize: smallfont
+		                           }
+		                },
+		                tooltip: {
+		                    valueSuffix: 'Actual'
+		                }
+		            }]
+
+		        }));
+
+		        var chart = $('#container-speed').highcharts(),
+                point,
+                newVal,
+                inc;
+
+		        if (chart) {
+	                point = chart.series[0].points[0];
+	                point.update(eval(actual));
+		        }
+
+		        getRp32WeekNumber();
+			
+			
+			
+		}
+		function LoadPieChart(cnt,pcnt,unpcnt){
+			 
+		    Highcharts.setOptions({
+		     colors: ['#ff0000','#DDDF00','#50B432']
+		    });
+			
+//			$('#container').highcharts({
+//		        chart: {
+//		            type: 'pie',
+//		           
+//		            renderTo: 'container',
+//		            options3d: {
+//		                enabled: true,
+//		                alpha: 45,
+//		                beta: 0
+//		            }
+//		        },
+//		        credits: {
+//	                enabled: false
+//	            },
+//		        title: {
+//		            text: 'PRODUCTIVITY CHART',
+//	            	style: {
+//                        fontFamily: 'Raleway',
+//                        fontSize: '38px',
+//                        fontWeight:'bold',
+//                        textAlign: 'center'
+//                    }
+//		        },
+//		        
+////		        plotOptions: {
+////		            pie: {
+////		                allowPointSelect: true,
+////		                cursor: 'pointer',
+////		                depth: 35,
+////		                distance: -30,
+////		                dataLabels: {
+////		                    enabled: true,
+////		                    format: '{point.name}',
+////		                    style: {
+////		                        fontFamily: 'Raleway',
+////		                        fontSize: '35px',
+////		                        textAlign: 'center'
+////		                    }
+////		                }
+////		               
+////		            }
+////		        },
+//		        plotOptions: {
+//		            series: {
+//		                dataLabels: {
+//		                    enabled: true,
+//		                    formatter: function() {
+//		                        return Math.round(this.percentage*100)/100 + ' %';
+//		                    },
+//		                    distance: -30,
+//		                    color:'white'
+//		                },
+//		                style: {
+//	                        fontFamily: 'Raleway',
+//	                        fontSize: '35px',
+//	                        textAlign: 'center'
+//	                    }
+//		            }
+//		            
+//		        },
+//		        series: [{
+//		            type: 'pie',
+//		            name: 'Calles Made',
+//		            data: [
+//		                ['Pending Calls',   cnt],
+//		                ['Unproductive Calls',       unpcnt],
+//		                {
+//		                    name: 'Productive Calls',
+//		                    y: pcnt,
+//		                    sliced: true,
+//		                    selected: true
+//		                }
+//		               
+//		            ],
+//		            style: {
+//                        fontFamily: 'Raleway',
+//                        fontSize: '35px',
+//                        textAlign: 'center'
+//                    }
+//		        }], legend: {
+//	                enabled: true,
+//	                layout: 'vertical',
+//	                align: 'right',
+//	                width: 200,
+//	                verticalAlign: 'middle',
+//	                useHTML: true,
+//	                labelFormatter: function() {
+//	                    return '<div style="text-align: left; width:130px;float:left;">' + this.name + '</div><div style="width:40px; float:left;text-align:right;">' + this.y + '%</div>';
+//					}
+//	            }
+//		        
+//		    });
+			
+		    $('#container').highcharts({
+				chart:{
+	                type:'pie',
+	               
+	                  },
+	            credits:{enabled: false},
+	            title:{
+	    	        text: "PRODUCTIVITY CHART",
+	    	        style: {
+                        fontFamily: 'Raleway',
+                        fontSize: bigfont,
+                        fontWeight:'bold',
+                        textAlign: 'center'
+                    },
+                    margin:50
+	    	    },
+				plotOptions: {
+	                pie: {
+	                    allowPointSelect: true,
+	                    cursor: 'pointer',
+	                    showInLegend: true,
+	                    dataLabels: {
+	                        enabled: false,                        
+	                        formatter: function() {
+	                            return this.percentage.toFixed(2) + '%';
+	                        }
+	                    } 									
+	                }
+	            },
+	            legend: {
+	                enabled: true,
+	                layout: 'vertical',
+	                align: 'right',
+	                width: 300,
+	                verticalAlign: 'middle',
+	                useHTML: true,
+	                labelFormatter: function() {
+	                    return '<div style="text-align: left;font-size:25px;float:left;">' + this.name + '</div><div style="font-size:25px; float:left;text-align:right;"> :' + this.y.toFixed(2) + '%</div>';
+					}
+	            },
+				series: [{
+					type: 'pie',
+	                dataLabels: {
+	                    
+	                        },
+	                        data: [
+	                             ['Pending Calls',   cnt],
+	                             ['Unproductive Calls',       unpcnt],
+	                             {
+								    name: 'Productive Calls',
+								    y: pcnt,
+								    sliced: true,
+								    selected: true
+								}
+
+	                          ],
+	                          style: {
+	                            fontFamily: 'Raleway',
+	                            fontSize: bigfont,
+	                            textAlign: 'center'
+	                        }
+				}]
+			});
+		    
+		    
+			getTotalSales();
+			
+		}
+		
+		function GetTargetGoalsDays()
+        {                
+            var Qry = "SELECT salesmantargetdays FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                    if(result.length > 0)                            
+                    	getMTD(result[0][0]);
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {                    	
+                	if(result.array != undefined)
+                	{                    	
+                    	var array = $.map(result.array, function(item, index) {                           
+                            return [[item.salesmantargetdays]];
+                    	});
+                    	if(array.length > 0)
+                            getMTD(array[0][0]);
+                    }                        
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+		function getMTD(targetgoalsdays)
+        {
+            //var OldQry = "SELECT 'MTD' as label,IFNULL((sum(quotaachieve2)/strftime('%d',date('now','start of month','+1 month','-1 day'))) * strftime('%d',date()),0) as col1,IFNULL(sum(quotaachieve2),0) AS col2,(SELECT (ifnull(totalcash,0) + ifnull(totalchecks,0)) from startendday WHERE routecode = " + sessionStorage.getItem("RouteCode") + ") as col3 FROM routegoal rg where routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND mmonth = strftime('%m',date())";
+            var Qry = "SELECT CASE WHEN "+targetgoalsdays+"=2 THEN 'MTD' ELSE 'WTD' END as label,SUM(quantity) As col1,SUM(achievequantity) AS col2,(SUM(quantity) - SUM(achievequantity)) as col3,(SUM(achievequantity)*1.0*100)/SUM(quantity) as Percentage FROM routegoal rg where routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND '" + getTabletDate() + "' between strftime('%Y-%m-%d',fromdate) and strftime('%Y-%m-%d',todate)";
+            console.log(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                    var tmpdata;
+                    if(result.length > 0)
+                    {
+                    	//if(targetgoalsdays == 2) //1-WEEKLY(WTD),2-MONTHLY(MTD)
+                    		//result[0][0] = 'MTD';                    		
+                        if(dataRoute != undefined)
+                        {                                
+                            tmpdata = dataRoute.concat(result);
+                            dataRoute = tmpdata;
+                        }
+                        else
+                            dataRoute = result;
+                    }
+                    //GetChequeCollected();
+                    BindRouteDetailGrid()
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    var tmpdata;
+                    if(result.array != undefined)
+                    {                        
+                    	var array = $.map(result.array, function(item, index) {                           
+                            return [[item.label,item.col1,item.col2,item.col3,item.Percentage]];
+                    	});
+                    	if(array.length > 0)
+                    	{
+                    		getRp32WeekNumber();
+                    	//	loadChart(array[0][2],array[0][1]);
+                    		$('#idtarget').text(eval(array[0][2])+"/"+eval(array[0][1]));
+                    		//loadChart(4313,20000);
+                    		
+                    	}   
+                    }
+                    
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+		function getRp32WeekNumber(){
+         	var platform= sessionStorage.getItem("platform");
+           	var today=new Date();
+            today = formatDate(today);
+            today = today +' 00:00:00';
+            console.log("select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate");
+           	var platform= sessionStorage.getItem("platform");
+           	if(platform=='iPad')
+		    {
+                   
+        	}
+         	else if(platform=='Android')
+            {
+             
+                window.plugins.DataBaseHelper.select("select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate",function(result)
+				{
+					var rp32weeknumber;
+					 if(result.array!=undefined)
+					 {
+					 	rp32weeknumber=result.array[0].rp32weeknumber;
+					 	sessionStorage.setItem("rp32weeknumber",result.array[0].rp32weeknumber);
+						 getRouteSequencePlanFlag();
+	                 }
+                 	 else
+                	 {
+			           rp32weeknumber= sessionStorage.getItem("rp32weeknumber");
+                		 getRouteSequencePlanFlag();
+                	 }
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+             }  
+        
+        
+        }
+		 function getRouteSequencePlanFlag(){
+		        
+	        	var secondqry ="select routesequenceplanflag from setup where setupid=1";
+	        	window.plugins.DataBaseHelper.select(secondqry,function(result)
+				{
+	                routesequenceplanflag = result.array[0].routesequenceplanflag;
+	                getChartData();        
+				   
+				},
+				function()
+				{
+			   	 		console.warn("Error calling plugin");
+				
+				});
+	        
+	        }
+		 function formatDate(d)
+	        {
+	            var curr_date = d.getDate();
+	            var curr_month = d.getMonth();
+	            var curr_year = d.getFullYear();
+	            curr_month =curr_month + 1;
+	            
+	            if(curr_month<10)
+	            curr_month = "0"+curr_month;
+	            
+	            if(curr_date<10)
+	            curr_date = "0"+curr_date;
+	            
+	            return curr_year+ "-" +curr_month+ "-" + curr_date;
+	        }
+		function getChartData(){
+	        
+	        var rp32weeknumber=sessionStorage.getItem("rp32weeknumber");
+			if(routesequenceplanflag==1){
+			    rp32weeknumber=9;
+			    sessionStorage.setItem("rp32weeknumber",rp32weeknumber);
+			}
+	        var d = new Date();
+            var n = d.getDay();
+            var array = ['sunseq','monseq','tueseq','wedseq','thuseq','friseq','satseq'];
+            var callarray=['callrestrictiondays7','callrestrictiondays1','callrestrictiondays2','callrestrictiondays3','callrestrictiondays4','callrestrictiondays5','callrestrictiondays6'];
+            var days = array[n];
+            var calldays = callarray[n];
+          
+        		
+        	//var	Qry = "SELECT (select count(customercode) from  routesequence where rp32weeknumber="+rp32weeknumber+" and callrestrictiondays4=1) AS PlannedCalls, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) AS CallsMadePlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS CallsMadeUnPlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS ActualCallsMade, (SELECT COUNT(DISTINCT(customercode)) FROM invoiceheader WHERE COALESCE(voidflag,0)=0) AS InvoicedCalls, ((SELECT COUNT(DISTINCT(customercode)) FROM invoiceheader WHERE COALESCE(voidflag,0)=0)*100)/((SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0)) AS ProductiveCalls, (((SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0))*100)/(SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1) AS CoverageCalls";
+            var Qry="SELECT (select count(customercode) from  routesequence where rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1) AS PlannedCalls, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) AS CallsMadePlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS CallsMadeUnPlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS ActualCallsMade, (SELECT COUNT(DISTINCT(customercode)) FROM invoiceheader WHERE COALESCE(voidflag,0)=0) AS InvoicedCalls";
+        	console.log(Qry);
+        	
+        	
+            if (platform == 'iPad') 
+            {
+                
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                    	var result = $.map(result.array, function(item, index) {
+                        	return [[item.CallsMadePlanned,item.CallsMadeUnPlanned,item.ActualCallsMade,item.InvoicedCalls,item.PlannedCalls]];
+               			 });
+                    	 var chartdata={};
+                    	 //0 For Profuctivity
+                    	 chartdata["type"] = "0";
+                         chartdata["TotalCalls"] = result[0][4];
+               			 chartdata["CallsMadePlanned"] = result[0][0];
+                         chartdata["CallsMadeUnPlanned"] = result[0][1];
+                         chartdata["ActualCallsMade"] = result[0][2];
+                         chartdata["InvoicedCalls"] = result[0][3];
+                         
+                         var totalCount=eval(result[0][4])+eval(result[0][1]);
+                         var productiveCount=eval(result[0][3]);
+ 						 var unProductiveCount=eval(result[0][2])-eval(result[0][3]);
+ 						 var remaining=totalCount-productiveCount-unProductiveCount;
+ 						 
+ 						LoadPieChart(eval(remaining/totalCount*100),eval(productiveCount/totalCount*100),eval(unProductiveCount/totalCount*100));	
+                    }
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        
+        
+        }
+		function getTotalSales()
+        {
+            var Qry = "SELECT IFNULL(SUM(totalinvoiceamount),0) totalSales FROM invoiceheader inv  where inv.voidflag is null and inv.istemp = 'false' AND inv.routekey=" + sessionStorage.getItem("RouteKey");
+            console.log(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                    if(result.length > 0)
+                    {
+                        CreditSales = result[0][0];
+                        getCashSales();              
+                    }
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                        var TotalSales = result.array[0].totalSales;
+                        $('#totalinvoice').text(TotalSales+" OMR");
+                        getTotalReceipts();
+                    }
+                },
+				function() {
+				    console.warn("Error calling plugin");
+				});
+            }
+        }
+		function getTotalReceipts(){
+			
+			 var Qry = "SELECT IFNULL(SUM(amountpaid),0) ARCollection FROM arheader WHERE voidflag = 0 AND routekey=" + sessionStorage.getItem("RouteKey");
+	            console.log(Qry);
+	            if (platform == "iPad") {
+	                Cordova.exec(function(result) {
+	                    if(result.length > 0)
+	                    {
+	                        CreditSales = result[0][0];
+	                        getCashSales();              
+	                    }
+	                },
+	                function(error) {
+	                    navigator.notification.alert(error);
+	                },
+	                "PluginClass",
+	                "GetdataMethod",
+	                [Qry]);
+	            }
+	            else if (platform == "Android") {
+	                window.plugins.DataBaseHelper.select(Qry, function(result) {
+	                    if(result.array != undefined)
+	                    {
+	                        var TotalAR = result.array[0].ARCollection;
+	                        $('#totalAR').text(TotalAR+" OMR");
+	                        showSalesTrendChart();
+	                    }
+	                },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+	            }
+			
+		}
+		function showSalesTrendChart(){
+			
+			 var Qry = "select strftime('%d-%m-%Y',date) date,totalsales,totalreturn,totaldamage from tblsalestrend where routecode="+sessionStorage.getItem("RouteCode")+" ORDER BY date(date) ASC LIMIT 10";
+	            console.log(Qry);
+	            if (platform == "iPad") {
+	                Cordova.exec(function(result) {
+	                    if(result.length > 0)
+	                    {
+	                    	
+	                    }
+	                },
+	                function(error) {
+	                    navigator.notification.alert(error);
+	                },
+	                "PluginClass",
+	                "GetdataMethod",
+	                [Qry]);
+	            }
+	            else if (platform == "Android") {
+	                window.plugins.DataBaseHelper.select(Qry, function(result) {
+	                    if(result.array != undefined)
+	                    {
+	                    	 result = $.map(result.array, function(item, index) {
+	         				    return [[item.date,item.totalsales,item.totalreturn,item.totaldamage]];
+	         			    });
+	                        
+	                    	 var date=[],amount=[],damage=[],returndata=[];;
+	                    	 for(var i=0;i<result.length;i++){
+	                    		 
+	                    		 date.push(result[i][0]);
+	                    		 amount.push(eval(result[i][1]));
+	                    		 damage.push(eval(result[i][3]))
+	                    		 returndata.push(eval(result[i][2]))
+	                    		 if(i==result.length-1){
+	                    			 showSalesTrend(date,amount,damage,returndata);
+	                    			 
+	                    		 }
+	                    		 
+	                    		 
+	                    	 }
+	                    	 
+	                    	 
+	                    	 
+	                    }
+	                },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+	            }
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		function showSalesTrend(date,amount,damage,returndata){
+
+			$('#idSalesTrend').highcharts({
+		        chart: {
+		        	style: {
+                        fontFamily: 'Raleway',
+                        fontSize: bigfont,
+                        fontWeight:'bold',
+                        textAlign: 'center'
+                    }
+		        },
+		        credits:{enabled: false},
+		        title:{
+	    	        text: "SALES TREND CHART",
+	    	        style: {
+                        fontFamily: 'Raleway',
+                        fontSize:bigfont,
+                        fontWeight:'bold',
+                        textAlign: 'center'
+                    },
+                    margin:50
+	    	    },
+		        xAxis: {
+		            categories: date,
+		            labels: {
+		                style: {
+		                   
+		                    fontSize:smallfont
+		                }
+		            },
+		            crosshair: false
+		        },
+		        yAxis: {
+		            min: 0,
+		            title: {
+		                text: 'Sales Achived'
+		            },
+		            labels: {
+		                style: {
+		                   
+		                    fontSize:smallfont
+		                }
+		            }
+		        },
+		        tooltip: {
+		            headerFormat: '<span style="font-size:'+smallfont+'">{point.key}</span><table>',
+		            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+		                '<td style="padding:0"><b>{point.y:.1f} OMR</b></td></tr>',
+		            footerFormat: '</table>',
+		            shared: true,
+		            useHTML: true
+		        },
+		        plotOptions: {
+		            column: {
+		                pointPadding: 0.2,
+		                borderWidth: 0
+		            }
+		        },
+		        series: [ {
+		            name: 'Sales Data '+sessionStorage.getItem("RouteCode"),
+		            data:amount,
+		            labels: {
+		                style: {
+		                   
+		                    fontSize:smallfont
+		                }
+		            },
+
+		        },{
+		            name: 'Damage Data '+sessionStorage.getItem("RouteCode"),
+		            data:damage,
+		            labels: {
+		                style: {
+		                   
+		                    fontSize:smallfont
+		                }
+		            },
+
+		        },{
+		            name: 'Return Data '+sessionStorage.getItem("RouteCode"),
+		            data:returndata,
+		            labels: {
+		                style: {
+		                   
+		                    fontSize:smallfont
+		                }
+		            },
+
+		        }]
+		    });
+			
+			
+			
+			
+			
+		}
+		
+		
+		function GetFontSize(){
+			
+			var width=window.innerWidth;
+			if(width>320 && width<=600){
+				
+					bigfont='22px';
+					smallfont='20px';
+				
+			}else if(width>600 && width<=700)
+			{
+				
+					bigfont='24px';
+					smallfont='22px';
+				
+				
+			}else if(width>700 && width<=800){
+				
+					bigfont='26px';
+					smallfont='24px';
+				
+			}else if(width>=1000 && width<=1200){
+				
+					bigfont='35px';
+					smallfont='33px';
+				
+			}else if(width>1200 && width<=1500){
+			
+					bigfont='38px';
+					smallfont='36px';
+				
+				
+			}
+			
+			GetTargetGoalsDays();
+            
+			
+		}
+		
+    </script>
+
+</body>
+</html>

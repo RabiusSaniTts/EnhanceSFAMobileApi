@@ -1,0 +1,175 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 03/02/2011
+ '  Description  : This page is used for utilities main screen.  
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Utilities</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1201px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="customer_operation.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Post Void</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="content-review">
+                    <ul data-role="listview" id="MenuListReview">
+                        <li><a href="void_customer.html" rel="external">
+                                <img src="../images/icn-customerlist.png"
+                                    class="HomeIconPosEN cicon" />
+                                <h3 id="lblSetup" lang="en">
+                                    By Customer Name</h3>
+                            </a></li>
+                        <li><a href="void_invoice.html" rel="external">
+                                <img src="../images/icn-info.png"
+                                    class="HomeIconPosEN cicon" />
+                                <h3 id="lblUpdate" lang="en">
+                                    By Invoice Number</h3>
+                            </a></li>
+                        <li><a href="customer_operation.html" rel="external">
+                                <img src="../images/info-8.png"
+                                    class="HomeIconPosEN cicon" />
+                                <h3 id="lblMisc" lang="en">
+                                    Cancel</h3>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+       resizeOrientationWindow();
+	  $(document).ready(function() {
+	 	resizeWindow();
+        $(".leftfooter").html(getCurrentDate());
+           
+
+             var lan = sessionStorage.getItem("Language");
+	     window.lang.run(lan);
+            
+            if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Postvoid'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                   $(".centerboxInvReq").attr("dir", "rtl");
+                   $('#MenuListReview .ui-icon').removeClass('ui-icon-arrow-r');
+                    $('#MenuListReview .ui-icon').addClass('ui-icon-arrow-r1');
+                    $('#MenuListReview li.ui-btn').removeClass('ui-btn-icon-right');
+                    $('#MenuListReview li.ui-btn').addClass('ui-btn-icon-left');
+                      $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		       $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		      $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		       $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+            }
+	    else
+	    {
+		window.lang.change('en','en');
+                 $(".centerboxInvReq").attr("dir", "ltr");
+                $('#MenuListReview .ui-icon').removeClass('ui-icon-arrow-r1');
+                    $('#MenuListReview .ui-icon').addClass('ui-icon-arrow-r');
+                    $('#MenuListReview li.ui-btn').removeClass('ui-btn-icon-left');
+                    $('#MenuListReview li.ui-btn').addClass('ui-btn-icon-right');
+		 $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		 $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+	    }
+        });
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,612 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 31/1/2011
+ '  Description  : This page is used for detail of item
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HOME</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+            scrollContent = new iScroll('contentWrapper');
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <!--<a href="index.html"   id="Back_inner">test</a>-->
+                <a id="Back_inner" href="#" data-rel="back" lang="en"
+                    rel="external" onclick="ClearVariables()">Back</a>
+                <h1 lang="en">
+                    Item Selection</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="book_detail_div">
+                    <div>
+                        <div class="td_com" style="width: 50%; float: left;">
+                            <input type="text" name="txtSearch" id="txtSearch"
+                                value size="40"
+                                onkeypress="getFillterItemList();" /></div>
+                        <div style="width: 45%; float: right;">
+                            <div class="Option1">
+                                <div class="Opt1Img">
+                                    <img src="../images/r-btn-1.png"
+                                        class="option" id="bt1" alt
+                                        onclick="javascript:setToggle('#bt1');" />
+                                    <input type="hidden" value="code"
+                                        name="search" id="search" />
+                                </div>
+                                <div class="Opt1Text">
+                                    <div>
+                                        <a href="#" data-role="none"
+                                            class="OptTextStyle" lang="en">
+                                            Code</a></div>
+                                </div>
+                            </div>
+                            <div class="Option2">
+                                <div class="Opt2Img">
+                                    <img src="../images/r-btn-2.png"
+                                        class="option" id="bt2" alt
+                                        onclick="javascript:setToggle('#bt2');" />
+                                </div>
+                                <div class="Opt2Text">
+                                    <div>
+                                        <a href="#" data-role="none"
+                                            class="OptTextStyle" lang="en">
+                                            Desc</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;">
+                    </div>
+                    <div class="tblBox tbltd">
+                        <div class="tblHeader">
+                            <table id="tblHeaderContent" width="100%"
+                                cellpadding="10" cellspacing="0">
+                                <tr>
+                                    <td width="20%" lang="en">
+                                        Item
+                                    </td>
+                                    <td width="80%" lang="en" class="last">
+                                        Item Description
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="route_table_height item "
+                            id="contentWrapper">
+                            <table border="0" width="100%" cellpadding="0"
+                                cellspacing="0" id="tbl1"
+                                data-role="none">
+                                <tr>
+                                    <td width="20%">
+                                    </td>
+                                    <td width="80%" class="last">
+                                    </td>
+
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                    <table border="0" width="100%" cellpadding="0"
+                        cellspacing="0" data-role="none">
+                        <tr>
+                            <td width="50%">
+                                <select name="select-choice-1" id="ddlCategory"
+                                    style="display: inline;"
+                                    onchange="getItemList()">
+                                </select>
+                            </td>
+                            <td class="itemselectionfont" id="itemval">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" data-rel="back" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition">
+                            <div class="iconPos">
+                                <img class="bottomicon" src="../images/ok.png"
+                                    alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Yes</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" data-rel="back" class="enableText"
+                        rel="external" onclick="ClearVariables()">
+                        <div class="MenuPosition MenuExit MenuBtn">
+                            <div class="iconPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Exit</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: fixed; z-index: 5;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            var platform=''; 
+            var itemtype = "";
+            $("#tbl1").click(function() { });
+            $('label').css({ 'background': '#D1ECFD', 'border': 'none' });
+            $('.ui-btn-inner').css({ 'border-top': 'none' });
+            $('.Opt1Text').css({ 'float': 'right', 'width': '75%', 'font-size': '24px' });
+            $('.Opt1Img').css({ 'float': 'left', 'width': '25%' });
+            $('.Opt2Text').css({ 'float': 'right', 'width': '75%', 'font-size': '24px' });
+            $('.Opt2Img').css({ 'float': 'left', 'width': '25%' });
+
+            function setToggle(id) {
+
+                var sval = $('#search').val();
+				//alert(sval);
+                if (sval == "code") {
+				//alert("code");
+		    $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+                    $('#bt2').attr("src", "../images/r-btn-1.png");
+                    $('#bt1').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('desc');
+		    $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+                }
+                else {
+				//alert("desc");
+                    $('#bt1').attr("src", "../images/r-btn-1.png");
+                    $('#bt2').attr("src", "../images/r-btn-2.png");
+                    $('#search').val('code');
+		     if(sessionStorage.getItem('CheckCode') =='alternatecode')
+		    $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+		     else
+		     $('#txtSearch').clone().attr('type','tel').insertAfter('#txtSearch').prev().remove();
+                }
+
+            }   
+            
+            /*if(window.location.toString().indexOf("pg=inventory") != -1)
+            {
+                $("#cust").removeClass("ui-btn-active");
+                $("#inve").addClass("ui-btn-active");
+            }*/
+            
+            var QryFreeContract = "";
+            if(sessionStorage.addmodule == "customer" && localStorage.salesflag == "freegoods")
+            	{
+                //QryFreeContract = " AND itemmaster.actualitemcode IN(SELECT CASE WHEN status = 1 THEN foc.itemcode ELSE itemmaster.actualitemcode END FROM controlpanel left join customer_foc_detail foc WHERE flagid = 2 AND CASE WHEN EXISTS(SELECT customercode FROM customer_foc_detail WHERE customercode = " + sessionStorage.getItem("customerid") + ") THEN foc.customercode = " + sessionStorage.getItem("customerid") + " ELSE itemmaster.actualitemcode END)";
+            	}if(sessionStorage.addmodule == "customer")
+                itemtype = " itemtype = 1 AND itemmaster.actualitemcode IN(SELECT CASE status WHEN 1 THEN CASE authorizeditemgrpkey WHEN 0 THEN itemmaster.actualitemcode ELSE pg.itemcode END ELSE itemmaster.actualitemcode END FROM customermaster cm LEFT JOIN productgroupdetail pg ON pg.groupnumber = cm.authorizeditemgrpkey LEFT JOIN controlpanel ON flagid = 30 WHERE customercode = " + sessionStorage.getItem("customerid") + ")" + QryFreeContract;
+            else if(sessionStorage.addmodule == "inventory")
+                itemtype = " 1=1 ";
+            
+            var routeCode,data;
+            
+            resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 		resizeWindow(); 
+			//---------
+			     $("#txtSearch").keyup(function(event){
+					//alert(event.keyCode);
+					//alert("te");
+					//alert($("#txtSearch").val);
+                            /*if(event.keyCode == 13)
+                            { */  
+                               if($("#txtSearch").val != "")          
+                                    getFillterItemList();
+                                else
+                                    getItemList();    
+                            //}                
+                    });
+			//----------
+				//alert("test");
+               if(sessionStorage.getItem('CheckCode') =='alternatecode')
+             $('#txtSearch').clone().attr('type','text').insertAfter('#txtSearch').prev().remove();
+            else
+           $('#txtSearch').clone().attr('type','tel').insertAfter('#txtSearch').prev().remove();
+                     platform= sessionStorage.getItem("platform");                      
+                $(".leftfooter").html(getCurrentDate());
+                window.lang.run();
+                
+                document.addEventListener("deviceready", getCategoryList, false);  
+                              
+                                                           
+                //Route Code seesion set again so remove build time              
+                //sessionStorage.setItem("RouteCode",98);              
+                              
+                routeCode = sessionStorage.getItem("RouteCode");                  
+                    
+                                                   
+               
+                $("#tbl1 tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var i = $(this).index();
+                    sessionStorage.setItem("ItemCode",data[i - 1][0]);
+                    sessionStorage.setItem("ItemDesc",data[i - 1][1]);
+                    sessionStorage.setItem("itemno",data[i - 1][2]);
+                    
+                            
+                    $('#itemval').text(data[i - 1][1]);
+                });
+                              
+                                             
+                $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#fff' });
+              
+                 var lan = sessionStorage.getItem("Language");
+                 window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Itemselection'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+		    $('.Opt1Text').css({ 'float': 'left', 'width': '75%', 'font-size': '24px' });
+                              $('.Opt1Img').css({ 'float': 'right', 'width': '25%' });
+                              $('.Opt2Text').css({ 'float': 'left', 'width': '75%', 'font-size': '24px' });
+                              $('.Opt2Img').css({ 'float': 'right', 'width': '25%' });
+		   $(".centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+                
+                              
+               
+                                             
+                      
+                              
+            });
+            
+			$("#txtSearch").keyup(function(event){
+					//alert(event.keyCode);
+					//alert("te");
+					//alert($("#txtSearch").val);
+                            /*if(event.keyCode == 13)
+                            { */  
+                               if($("#txtSearch").val != "")          
+                                    getFillterItemList();
+                                else
+                                    getItemList();    
+                            //}                
+                    });
+            //Function for bind item list
+            function getItemList() {
+            $.mobile.showPageLoadingMsg()
+                var itemListByGroup = null;
+                var groupCode = 0;
+                groupCode = $("#ddlCategory").val();
+                if ($("#ddlCategory").val() == 0) {
+                    //Old query joining with startingloaddetail
+                    /*itemListByGroup = "SELECT CASE WHEN '"+ sessionStorage.getItem('CheckCode') +"' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.anitemcode END AS Code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from startingloaddetail inner join itemmaster on startingloaddetail.itemcode = itemmaster.actualitemcode where startingloaddetail.routecode ="+ routeCode +" and  strftime('%Y-%m-%d',startingloaddetail.ddate) ='"+ getTabletDate() +"' order by Code" ;*/
+                    itemListByGroup = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster where " + itemtype + " order by Code";
+                }
+                else {
+                    //Old query joining with startingloaddetail
+                    /*itemListByGroup = "SELECT CASE WHEN '"+ sessionStorage.getItem('CheckCode') +"' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.anitemcode END AS Code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from startingloaddetail inner join itemmaster on startingloaddetail.itemcode = itemmaster.actualitemcode AND itemmaster.itemgroupcode = "+ groupCode +"  where startingloaddetail.routecode ="+ routeCode +" and  strftime('%Y-%m-%d',startingloaddetail.ddate) ='"+ getTabletDate() +"' order by Code" ;*/
+                    itemListByGroup = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster where itemmaster.itemgroupcode = " + groupCode + " AND " + itemtype + " order by Code";
+                }
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+
+                        ClearTable();
+                        BindData(result);
+                        //getCategoryList();
+                    },
+                                  function(error) {
+                                      alert("Error in binding Item : " + error);
+                                  },
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  [itemListByGroup]);
+
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(itemListByGroup, function(result) {
+                        ClearTable();
+                        BindData(result);
+                        //getCategoryList();
+                    },
+                                                         function() {
+                                                             console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+
+            function getFillterItemList() {
+			//alert(event.keyCode);
+                var fillterList = null;
+				
+				var txtsrch=$("#txtSearch").val();
+                var groupCode = 0;
+                groupCode = $("#ddlCategory").val();
+				//alert($("#search").val());
+					//alert($("#txtSearch").val());
+                if ($("#search").val() == "code") {
+				//alert("code");
+				
+                    if (groupCode == 0) {
+
+                        //Old query joining with startingloaddetail
+                        /*fillterList = "SELECT CASE WHEN '"+ sessionStorage.getItem('CheckCode') +"' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.anitemcode END AS Code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from startingloaddetail inner join itemmaster on startingloaddetail.itemcode = itemmaster.actualitemcode where startingloaddetail.routecode ="+ routeCode +" and strftime('%Y-%m-%d',startingloaddetail.ddate) ='"+ getTabletDate() +"'  and Code like '%"+ $("#txtSearch").val() +"%' order by Code";*/
+                        fillterList = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster  where Code like '%" + txtsrch + "%' AND " + itemtype + " order by Code";
+                    }
+                    else {
+                        //Old query joining with startingloaddetail
+                        /*fillterList = "SELECT CASE WHEN '"+ sessionStorage.getItem('CheckCode') +"' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.anitemcode END AS Code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from startingloaddetail inner join itemmaster on startingloaddetail.itemcode = itemmaster.actualitemcode AND itemmaster.itemgroupcode = "+ groupCode +" where startingloaddetail.routecode ="+ routeCode +" and strftime('%Y-%m-%d',startingloaddetail.ddate) ='"+ getTabletDate() +"'  and Code like '%"+ $("#txtSearch").val() +"%' order by Code";*/
+                        fillterList = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster where itemmaster.itemgroupcode = " + groupCode + " and Code like '%" + txtsrch + "%' AND " + itemtype + " order by Code";
+                    }
+                }
+                else {
+				//alert("desc");
+                    if (groupCode == 0) {
+
+                        //Old query joining with startingloaddetail
+                        /*fillterList = "SELECT CASE WHEN '"+ sessionStorage.getItem('CheckCode') +"' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.anitemcode END AS Code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from startingloaddetail inner join itemmaster on startingloaddetail.itemcode = itemmaster.actualitemcode where startingloaddetail.routecode ="+ routeCode +" and strftime('%Y-%m-%d',startingloaddetail.ddate) ='"+ getTabletDate() +"'  and Description like '%"+ $("#txtSearch").val() +"%' order by Code";*/
+
+                        fillterList = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster where Description like '%" + txtsrch + "%' AND " + itemtype + " order by Code";
+                    }
+                    else {
+                        //Old query joining with startingloaddetail
+                        /*fillterList = "SELECT CASE WHEN '"+ sessionStorage.getItem('CheckCode') +"' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.anitemcode END AS Code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from startingloaddetail inner join itemmaster on startingloaddetail.itemcode = itemmaster.actualitemcode AND itemmaster.itemgroupcode = "+ groupCode +" where startingloaddetail.routecode ="+ routeCode +" and strftime('%Y-%m-%d',startingloaddetail.ddate) ='"+ getTabletDate() +"'  and Description like '%"+ $("#txtSearch").val() +"%' order by Code";*/
+                        fillterList = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster whereitemmaster.itemgroupcode = " + groupCode + " and Description like '%" + txtsrch + "%' AND " + itemtype + " order by Code";
+                    }
+                }
+
+                if (platform == 'iPad') {
+                    Cordova.exec(function(result) {
+
+                        ClearTable();
+                        BindData(result);
+
+                    },
+                                  function(error) {
+                                      alert("Error in binding fillter Item : " + error);
+                                  },
+                                  "PluginClass",
+                                  "GetdataMethod",
+                                  [fillterList]);
+                }
+                else if (platform == 'Android') {
+                    window.plugins.DataBaseHelper.select(fillterList, function(result) {
+					 txtsrch=null;
+                        ClearTable();
+                        BindData(result);
+                    },
+                                                         function() {
+                                                             console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+
+            //Bind data dynamically
+            function BindData(result) {
+
+                var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+                data = result;
+                if (platform == 'Android') {
+                    var array = $.map(data.array, function(item, index) {
+                        return [[item.Code, item.Description, item.actualitemcode]];
+                    });
+                    data = array;
+                }
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0) ? 'class = leftAlign' : 'class = leftAlign last';  
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";                       
+                        r += c;
+                    }
+                    r += "</tr>";
+                    $('#tbl1 tbody').append(r);
+                }
+                
+                $("#tbl1 tr:odd").addClass('oddRow');
+                $("#tbl1 tr:even").addClass('evenRow');  
+                
+                $('#itemval').text('');
+                
+                sessionStorage.setItem("ItemCode",'');
+                sessionStorage.setItem("ItemDesc",'');
+                sessionStorage.setItem("itemno",0);
+                
+                //Select first row of table when screen load
+                $("#tbl1 tr:eq(1)").trigger('click');
+				$.mobile.hidePageLoadingMsg();
+				
+                
+            }               
+            
+            //Function for bind category list
+            function getCategoryList()
+            {               
+                 if(platform=='iPad')
+           		{ 
+                 Cordova.exec(function(result) { 
+                                        
+                                        for(i=0;i<result.length;i++){                    
+                                            $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlCategory"));                                           
+                                        }
+                                        getItemList();
+                                        },
+                                        function(error) {
+                                            alert("Error in binding Category : " + error);
+                                        },
+                                        "PluginClass", 
+                                        "GetdataMethod", 
+                                        ["select itemgroupcode,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemgroupname Else arbitemgroup END AS itemgroup from itemgroup order by itemgroupcode"]);         
+                
+                }
+             	else if(platform=='Android')
+            	{
+            			window.plugins.DataBaseHelper.select("select itemgroupcode,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN itemgroupname Else arbitemgroup END AS itemgroup from itemgroup order by itemgroupcode",function(result)
+						{		
+								var result = $.map(result.array, function (item, index) {               
+                				return [[item.itemgroupcode, item.itemgroup]];            					
+            					});
+            					
+            					if(result!=undefined && result.length>0){
+            						 $("<option />" ,{value:0,text:getLangTextdata("All Categories")}).appendTo($("#ddlCategory")); 
+    						    	 for(i=0;i<result.length;i++){    
+    						    		 $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlCategory"));     
+    						    		 if(i==result.length-1){
+    						    			 $('select').selectmenu('refresh'); 
+    						    			 getItemList();
+    						    		 }
+                                     }
+                                    
+    						    	 
+            						
+            					}else{
+            						getItemList();
+            					}
+            					
+                                
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+            	}
+            }
+            
+            function ClearTable() {
+                $("#tbl1  tr:gt(0)").remove();
+            }
+            
+            function ClearVariables()
+            {
+                sessionStorage.setItem("ItemCode","");
+                sessionStorage.setItem("ItemDesc","");
+                sessionStorage.setItem("itemno","");
+            }
+        </script>
+
+    </body>
+</html>

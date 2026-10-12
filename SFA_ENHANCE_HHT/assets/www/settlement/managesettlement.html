@@ -1,0 +1,1486 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 27/1/2011
+ '  Description  : This page is used for manage settlement task.    
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Settlement</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script type="text/javascript"
+            src="../js/printreportmultiple.js"></script>
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="../home/home.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Settlement</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent Spacing">
+                    <div class="CRow1">
+                        <table border="0" cellpadding="10" cellspacing="10"
+                            width="100%" id="tblContent">
+                            <tr>
+                                <td class="captionLabel rightAlign"
+                                    style="width: 30%" lang="en" id="td2">
+                                    Total Amount
+                                </td>
+                                <td class="captionLabel leftAlign"
+                                    style="width: 35%;">
+
+                                    <div
+                                        class="label_textManageSettle  ui-corner-all rightAlign"
+                                        id="lblTotalAmount">
+                                    </div>
+
+                                </td>
+                                <!--<td class="captionLabel rightAlign" style="width: 17%" lang="en" id="td2">
+                                Due Amount
+                            </td>
+                            <td class="captionLabel leftAlign" style="width: 25%">
+                                <div class="labelBG ui-corner-all rightAlign" id="lblDueAmount">
+                                </div>
+                            </td>-->
+                                <!--<td style="width: 55%">
+                                &nbsp;
+                            </td>-->
+                            </tr>
+                        </table>
+                    </div>
+                    <br />
+                    <table border="0" cellpadding="10" cellspacing="10"
+                        width="100%">
+                        <tr>
+                            <td style="width: 30%">
+                                <a href="managechecks.html" rel="external"
+                                    style="text-decoration: none;">
+                                    <div id="btnCehck"
+                                        class="btnCommission centerAlign ui-corner-all"
+                                        lang="en">
+                                        Cheques</div>
+                                </a>
+                            </td>
+                            <td style="width: 35%">
+                                <div
+                                    class="label_textManageSettle  ui-corner-all rightAlign"
+                                    id="lblCheque">
+                                </div>
+                            </td>
+                            <!--<td style="width: 35%">
+                            &nbsp;
+                        </td>-->
+                        </tr>
+                        <tr>
+                            <td style="width: 30%">
+                                <a href="#" rel="external"
+                                    style="text-decoration: none;" id="lnkCash">
+                                    <div id="divCash"
+                                        class="btnCommission centerAlign ui-corner-all"
+                                        lang="en">
+                                        Cash Paid</div>
+                                </a>
+                            </td>
+                            <td style="width: 35%">
+                                <div
+                                    class="label_textManageSettle  ui-corner-all rightAlign"
+                                    id="lblCash">
+                                </div>
+                            </td>
+                            <!--<td style="width: 35%">
+                         <div class="label_textManageSettle rightAlign" id="lblEven">
+                         0.00</div>
+                         </td>-->
+                        </tr>
+                        <tr>
+                            <td style="width: 30%">
+                                <a href="expenseentry.html" rel="external"
+                                    style="text-decoration: none;"
+                                    id="lnkExpense"
+                                    onclick="sessionStorage.expenses='settlement'">
+                                    <div id="btnExpense"
+                                        class="btnCommission centerAlign ui-corner-all"
+                                        lang="en">
+                                        Expenses</div>
+                                </a>
+                            </td>
+                            <td style="width: 35%">
+                                <div
+                                    class="label_textManageSettle  ui-corner-all rightAlign"
+                                    id="lblExpenses">
+                                </div>
+                            </td>
+                            <!--<td style="width: 35%">
+                            &nbsp;
+                        </td>-->
+                        </tr>
+                    </table>
+                    <div class="CRow1">
+                        <table border="0" cellpadding="5" cellspacing="5"
+                            width="100%" id="tblContent">
+                            <tr>
+                                <td class="captionLabel rightAlign"
+                                    style="width: 30%" lang="en" id="td2">
+                                    Due Amount
+                                </td>
+                                <td class="captionLabel leftAlign"
+                                    style="width: 35%;">
+                                    <div
+                                        class="label_textManageSettle ui-corner-all  rightAlign"
+                                        id="lblDueAmount"></div>
+                                </td>
+                                <!--<td style="width: 55%">
+                                &nbsp;
+                            </td>-->
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <!--<a href="settlecompletion.html" rel="external" style="text-decoration: none; font-weight: normal;">
+                    <div class="MenuPositionMS">
+                        <div class="MenuTextPos">
+                            <img src="../images/icn-SC.png" alt="Settlement Complete" /></div>
+                        <div class="MenuTextPos MenuText" lang="en" >
+                            Settlement Complete</div>
+                    </div>
+                </a>-->
+                    <a href="#" id="lnkNext" rel="external"
+                        style="text-decoration: none; font-weight: normal;"
+                        onclick="CheckDueAmount()">
+                        <div class="MenuPositionMS">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-SC.png"
+                                    alt="Settlement Complete" /></div>
+                            <div class="MenuTextPos MenuText" id="cntlbl"
+                                lang="en">
+                                Settlement Complete</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">09 November 2011</div>
+                    <div class="rightfooter">Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="inve"
+                                rel="external" data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                class="ui-btn-active"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var routeendodometer=0;
+        var platform,decimalplace,CashBalance;
+        var auditArr; 
+        var cloudData=[];
+		 resizeOrientationWindow();
+        $(document).ready(function() {
+			resizeWindow();
+            // Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            // Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            
+            $("#lnkCash").click(function(){ SetCashDue(); })
+            
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {                
+                platform = sessionStorage.getItem("platform");
+                decimalplace = sessionStorage.getItem("decimalplace");  
+                          getstartendday();
+                try
+                {                                             
+                getSettings();
+                }
+                catch(ex)
+                {
+                    alert(ex);
+                }
+            }
+            
+            
+            function SetCashDue()
+            {
+                localStorage.cashdue = $("#lblDueAmount").text();
+                window.location = "settlecash.html";
+            }
+                          
+            function getSettings()
+            {
+                var Qry = "SELECT enableeodexpenses,cashbalance FROM routemaster WHERE routecode = " + sessionStorage.getItem("RouteCode");                
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            if(result[0][0] == 0)
+                            {
+                                $("#lnkExpense").attr("href","#");
+                                $("#btnExpense").removeClass("btnCommission").addClass("btnCommissiongrey");
+                            }
+                            else if(result[0][0] == 1)
+                            {
+                                $("#lnkExpense").attr("href","expenseentry.html");
+                                $("#btnExpense").removeClass("btnCommissiongrey").addClass("btnCommission");
+                            }
+                            CashBalance = result[0][1];
+                        }
+                        getRecord();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            if(result.array[0].enableeodexpenses == 0)
+                            {
+                                $("#lnkExpense").attr("href","#");
+                                $("#btnExpense").removeClass("btnCommission").addClass("btnCommissiongrey");
+                            }
+                            else if(result.array[0].enableeodexpenses == 1)
+                            {
+                                $("#lnkExpense").attr("href","expenseentry.html");
+                                $("#btnExpense").removeClass("btnCommissiongrey").addClass("btnCommission");
+                            }
+                            CashBalance = result.array[0].cashbalance;
+                        }
+                        getRecord();
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getRecord()
+            {
+                var cash = 0;
+                var cheque = 0;
+                var expense = 0;
+                var totalamount = 0;    
+                var cashpaid = 0;            
+                var Qry = "SELECT (SELECT ifnull(totalcash,0) totalcash FROM startendday WHERE routekey = " + sessionStorage.getItem("RouteKey") + ") cash, (SELECT IFNULL(SUM(amount),0)  FROM cashcheckdetail WHERE (istemp = 'false' OR checktype = 1) AND typecode = 1) cheque, (SELECT ifnull(totalexpenses,0) FROM startendday WHERE routekey = " + sessionStorage.getItem("RouteKey") + ") expenses,((SELECT IFNULL(SUM(totalinvoiceamount),0) FROM invoiceheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + ") + (SELECT IFNULL(SUM(amountpaid),0) FROM arheader WHERE routekey = " + sessionStorage.getItem("RouteKey") + " AND advancepaymentflag = 1)) totalamount, (SELECT IFNULL(SUM(amount),0) FROM cashcheckdetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND typecode = 0 AND istemp = 'false') totaltranscash";
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            cash = (result[0][0] == "" || result[0][0] == undefined) ? 0 : result[0][0];
+                            cheque = (result[0][1] == "" || result[0][1] == undefined) ? 0 : result[0][1];
+                            expense = (result[0][2] == "" || result[0][2] == undefined) ? 0 : result[0][2];
+                            totalamount = (result[0][3] == "" || result[0][3] == undefined) ? 0 : result[0][3];
+                            cashpaid = (result[0][4] == "" || result[0][4] == undefined) ? 0 : result[0][4];
+                            
+                            $("#lblCash").text(eval(cash).toFixed(decimalplace));
+                            $("#lblCheque").text(eval(cheque).toFixed(decimalplace));
+                            $("#lblExpenses").text(eval(expense).toFixed(decimalplace));
+                            // //$("#lblTotalAmount").text((eval(totalamount) -
+							// eval(expense)).toFixed(decimalplace));
+                            $("#lblTotalAmount").text(((eval(cashpaid) + eval(cheque)) -  eval(expense)).toFixed(decimalplace));
+                            console.log($("#lblTotalAmount").text() + " : " + eval(cash) + " : " + eval(cheque) + " : " + eval(expense));
+                           var DueAmount = (eval($("#lblTotalAmount").text()) - eval(cash) - eval(cheque) + eval(expense));
+                            $("#lblDueAmount").text(eval(DueAmount).toFixed(decimalplace));
+                            // UpdateCashVariance();
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                        	result = $.map(result.array, function (item, index) { 
+                				return [[item.cash, item.cheque, item.expenses, item.totalamount,item.totaltranscash]];
+                        	});
+                            
+                            cash = (result[0][0] == "" || result[0][0] == undefined) ? 0 : result[0][0];
+                            cheque = (result[0][1] == "" || result[0][1] == undefined) ? 0 : result[0][1];
+                            expense = (result[0][2] == "" || result[0][2] == undefined) ? 0 : result[0][2];
+                            totalamount = (result[0][3] == "" || result[0][3] == undefined) ? 0 : result[0][3];
+                            cashpaid = (result[0][4] == "" || result[0][4] == undefined) ? 0 : result[0][4];
+                            
+                            console.log(cash + " : " + cheque + " : " + expense + " : " + totalamount + " : " + cashpaid);
+                            
+                            $("#lblCash").text(eval(cash).toFixed(decimalplace));
+                            $("#lblCheque").text(eval(cheque).toFixed(decimalplace));
+                            $("#lblExpenses").text(eval(expense).toFixed(decimalplace));
+                            // //$("#lblTotalAmount").text((eval(totalamount) -
+							// eval(expense)).toFixed(decimalplace));
+                            $("#lblTotalAmount").text(((eval(cashpaid) + eval(cheque)) -  eval(expense)).toFixed(decimalplace));
+                            var DueAmount = (eval($("#lblTotalAmount").text()) - eval(cash) - eval(cheque) + eval(expense))
+                            $("#lblDueAmount").text(eval(DueAmount).toFixed(decimalplace));
+                            // UpdateCashVariance();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+
+            // Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('ManageSettlement' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    // Set html right alignment for arbic language
+                    $(".boxContent").attr("dir", "rtl");
+
+                    // Set header align
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                // Change current language to english
+                window.lang.change('en', 'en');
+
+                // Set html left alignment for english language
+                $(".boxContent").attr("dir", "ltr");
+
+                // Set header align
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+
+            }
+
+
+        });
+        
+        function CheckDueAmount()
+        {
+            /*
+			 * if(CashBalance == 0) { if(eval($("#lblDueAmount").text()) != 0) {
+			 * navigator.notification.alert("Due Amount Must Be Zero"); return
+			 * false; } else callwebservice(); } else callwebservice();
+			 */
+            
+            if(CashBalance == 0)
+            {
+                if(eval($("#lblDueAmount").text()) != 0)
+                {
+                    getLangText("Due Amount Must Be Zero");
+                    return false;
+                }
+                else                
+                   // UpdateCashVariance();
+                	// here we have to check if any data needs to be uploaded on
+					// server then check for audit
+                	CheckAudit();
+                	
+                	// old code
+                    // DeleteLoad();
+            }
+            else
+                // UpdateCashVariance();
+            	CheckAudit();
+            	// old code
+                // DeleteLoad();
+        }
+        // ----------Start
+        function Updateinventoryheadersyncstatus() {
+            // var Qry = "UPDATE inventorysummarydetail SET saleqty = (SELECT
+			// IFNULL(SUM(id.salesqty),0) FROM invoicedetail id Where
+			// inventorysummarydetail.routekey =id.routekey AND
+			// inventorysummarydetail.itemcode = id.itemcode AND id.istemp =
+			// 'false'),returnqty = (SELECT IFNULL(SUM(id.returnqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false'),returnfreeqty = (SELECT
+			// IFNULL(SUM(id.returnfreeqty),0) FROM invoicedetail id Where
+			// inventorysummarydetail.routekey = id.routekey AND
+			// inventorysummarydetail.itemcode = id.itemcode AND id.istemp =
+			// 'false'),damageqty = (SELECT IFNULL(SUM(id.damagedqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false'),expiryqty = (SELECT
+			// IFNULL(SUM(id.expiryqty),0) FROM invoicedetail id Where
+			// inventorysummarydetail.routekey = id.routekey AND
+			// inventorysummarydetail.itemcode = id.itemcode AND id.istemp =
+			// 'false'),freesampleqty = (SELECT
+			// IFNULL(SUM(id.manualfreeqty+id.freesampleqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false'),rentqty = (SELECT
+			// IFNULL(SUM(id.rebaterentqty+id.fixedrentqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false')";
+             var Qry = "UPDATE inventorytransactionheader SET issync = 0 where detailkey in (select Distinct detailkey from inventorytransactiondetail where issync=0)";
+             console.log(Qry);
+             if(platform == "iPad")
+             {
+                 Cordova.exec(function(result) {
+                     // navigator.notification.alert("Save invoice rxd detail
+						// record successfully");
+                     UpdateCashVariance();
+                 },
+                 function(error) {
+                     navigator.notification.alert("Error save invoice rxd detail record");
+                 },
+                 "PluginClass",
+                 "InsertUpdateMethod",
+                 [Qry]);
+             }
+             else if(platform == "Android")
+             {
+                
+                 window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                     // UpdateCashVariance();
+					 if (sessionStorage.getItem("RouteKey") =='' || sessionStorage.getItem("RouteKey")==0 || sessionStorage.getItem("RouteKey") == null)
+                    {
+                 		getafterRouteKey()
+                 	}else
+                 	{
+                 		UpdateCashVariance();
+                 	}
+                 },
+                 function() {
+                     console.warn("Error calling plugin");
+                 });
+             }
+         }
+		 
+		  function getafterRouteKey() {
+            var platform = sessionStorage.getItem("platform");
+          
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                    if (result>0) {
+                        sessionStorage.setItem("RouteKey", result[0][0]);
+                              
+                    }
+                    
+
+                },
+                          function(error) {
+                              alert("Error in getting salesman : " + error);
+                          },
+                          "PluginClass",
+                          "GetdataMethod",
+                          ["select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeclosed=0"]);
+            }
+            else if (platform == 'Android') {
+                
+                window.plugins.DataBaseHelper.select("select max(routekey) routekey from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + "", function(result) {
+                    if (result.array != undefined) {        
+                       
+                       
+                        if (result.array[0].routekey>0) {
+                        	sessionStorage.setItem("RouteKey", result.array[0].routekey);
+                        	UpdateCashVariance();
+                        }
+                       
+                    }
+                    
+                    },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            
+        }
+	}
+        // ----------End
+        // ----------Start Delete Starting Load detail
+        function DeleteLoad() 
+        {
+            // var Qry = "UPDATE inventorysummarydetail SET saleqty = (SELECT
+			// IFNULL(SUM(id.salesqty),0) FROM invoicedetail id Where
+			// inventorysummarydetail.routekey =id.routekey AND
+			// inventorysummarydetail.itemcode = id.itemcode AND id.istemp =
+			// 'false'),returnqty = (SELECT IFNULL(SUM(id.returnqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false'),returnfreeqty = (SELECT
+			// IFNULL(SUM(id.returnfreeqty),0) FROM invoicedetail id Where
+			// inventorysummarydetail.routekey = id.routekey AND
+			// inventorysummarydetail.itemcode = id.itemcode AND id.istemp =
+			// 'false'),damageqty = (SELECT IFNULL(SUM(id.damagedqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false'),expiryqty = (SELECT
+			// IFNULL(SUM(id.expiryqty),0) FROM invoicedetail id Where
+			// inventorysummarydetail.routekey = id.routekey AND
+			// inventorysummarydetail.itemcode = id.itemcode AND id.istemp =
+			// 'false'),freesampleqty = (SELECT
+			// IFNULL(SUM(id.manualfreeqty+id.freesampleqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false'),rentqty = (SELECT
+			// IFNULL(SUM(id.rebaterentqty+id.fixedrentqty),0) FROM
+			// invoicedetail id Where inventorysummarydetail.routekey =
+			// id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND
+			// id.istemp = 'false')";
+             var Qry = "Delete From startingloaddetail";
+             console.log(Qry);
+             if(platform == "iPad")
+             {
+                 Cordova.exec(function(result) {
+                     // navigator.notification.alert("Save invoice rxd detail
+						// record successfully");
+                     Updateinventoryheadersyncstatus();
+                 },
+                 function(error) {
+                     navigator.notification.alert("Error save invoice rxd detail record");
+                 },
+                 "PluginClass",
+                 "InsertUpdateMethod",
+                 [Qry]);
+             }
+             else if(platform == "Android")
+             {
+                 window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                     Updateinventoryheadersyncstatus();
+                 },
+                 function() {
+                     console.warn("Error calling plugin");
+                 });
+             }
+         }
+        // ----------End
+        function UpdateCashVariance()
+        {
+                // ------------START
+                $("#lnkNext").attr("onclick","");                   
+                $("#cntlbl").addClass('MenuGray');
+                $("#Back_inner").attr("href","");
+                
+                // --------------End
+        		// var arr = [{"ReportName" : "Deposit"}]
+                var arr = [{"ReportName" : "DepositSlip"}];                
+                var Qry = "UPDATE startendday SET cashvariance = " + $("#lblDueAmount").text() + " WHERE routecode = " + sessionStorage.getItem("RouteCode") + " AND salesmancode=" + sessionStorage.getItem("SalesmanCode") + " AND routekey = " + sessionStorage.getItem("RouteKey");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {   
+                        // callwebservice();
+                        ReportsToPrint(arr,0);
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                        // callwebservice();
+                        ReportsToPrint(arr,0);
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+        }
+        
+        function PrintDone()
+        {        	
+			  	callwebservice();
+        }
+        
+        function callwebservice()
+        {
+            var salesqry="select count(*) as cnt from invoiceheader where routekey="+sessionStorage.getItem('RouteKey');
+            var orderqry="select count(*) as cnt from salesorderheader where routekey="+sessionStorage.getItem('RouteKey');
+            var collectionqry = "select count(*) as cnt from arheader where advancepaymentflag=0 and routekey="+sessionStorage.getItem('RouteKey');
+            var advanceqry = "select count(*) as cnt from arheader where advancepaymentflag=1 and routekey="+sessionStorage.getItem('RouteKey');
+            var cashqry = "select sum(ifnull(amount,0)) as amount from cashcheckdetail where istemp = 'false' and typecode=0 AND routekey="+sessionStorage.getItem('RouteKey');
+            var chequeqry="select sum(ifnull(amount,0)) as amount from cashcheckdetail where istemp = 'false' and typecode=1 AND routekey="+sessionStorage.getItem('RouteKey');
+            var orderamountqry ="select sum(ifnull(totalinvoiceamount,0)) as amount from salesorderheader where routekey="+sessionStorage.getItem('RouteKey');
+            var salesamountqry ="select sum(ifnull(totalinvoiceamount,0)) as amount from invoiceheader where routekey="+sessionStorage.getItem('RouteKey');
+            var creditqry = "select sum(ifnull(totalinvoiceamount,0)) as amount from invoiceheader where gcpaymenttype=2 and routekey="+sessionStorage.getItem('RouteKey');
+            console.log(creditqry);
+            // var cashamtqry = "select sum(ifnull(totalinvoiceamount,0)) as
+			// amount from invoiceheader where gcpaymenttype=0 and
+			// routekey="+sessionStorage.getItem('RouteKey');
+            var cashamtqry = "select sum(ifnull(immediatepaid,0)) as amount from invoiceheader where immediatepaid!=0 and routekey="+sessionStorage.getItem('RouteKey');
+            console.log(cashamtqry);
+            var collectionadvaamtqry ="select sum(ifnull(amountpaid,0)) as amount from arheader where routekey="+sessionStorage.getItem('RouteKey');
+            var expenceqry ="select ifnull(totalexpenses,0) from startendday where routekey="+sessionStorage.getItem('RouteKey');
+            var autoload = sessionStorage.getItem("autoload");
+            if(autoload == 3 || autoload == 4)
+            var field ="endstockqty";
+            else
+            var field ="unloadqty";
+	    
+            var calculateqty ="CASE WHEN "+field+" = 0 THEN 0 ELSE ((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))-ifnull(truckdamagedunloadqty,0)-ifnull("+field+",0)-ifnull(freshunloadqty,0)) END";
+	
+        // var inventoryqry = "select
+		// sum((("+calculateqty+"%unitspercase)*defaultsalesprice)+(("+calculateqty+"/unitspercase)*caseprice))
+		// as amount from inventorysummarydetail join itemmaster on
+		// itemmaster.actualitemcode=inventorysummarydetail.itemcode";
+        var inventoryqry ="select sum(((inventorytransactiondetail.quantity%unitspercase)*inventorytransactiondetail.itemprice)+(CAST((inventorytransactiondetail.quantity/unitspercase) AS INT)*inventorytransactiondetail.itemcaseprice)) as amount from inventorytransactiondetail inner join itemmaster on itemmaster.actualitemcode=inventorytransactiondetail.itemcode And inventorytransactiondetail.transactiontypecode=9";
+        console.log(inventoryqry);
+            
+            // var inventoryqry = "select sum(ifnull(quantity,0)) as qty from
+			// inventorytransactiondetail where
+			// routekey="+sessionStorage.getItem('RouteKey')+" and
+			// transactiontypecode=9";
+           // console.log(inventoryqry);
+            var cashvariance = "select ifnull(cashvariance,0) as cashvariance from startendday where routekey="+sessionStorage.getItem('RouteKey');
+			console.log(cashvariance);
+
+            var totalsales,totalorder,totalcollection,totaladvancepayment,totalcash,totalcheque,totalorderamount,totalsalesamount,totalcreditamount,totalcashamount,totalcollectionadvanceamount,totalexpenses,totalinventory,totalcashvariance;
+            var cDate = new Date();
+            var dtime = cDate.getHours() +':'+cDate.getMinutes()+':'+cDate.getSeconds();
+            var data = {};
+            data["routekey"] = sessionStorage.getItem('RouteKey');       
+            data["routeendtime"] = dtime;
+            data["routeenddate"] =getTabletDate();
+            data["routeendodometer"] = routeendodometer; 
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              totalsales = result[0][0];
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [salesqry]);
+                Cordova.exec(function(result) {  
+                              totalorder = result[0][0];
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [orderqry]);
+                Cordova.exec(function(result) {     
+                              totalcollection = result[0][0];
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [collectionqry]);
+                Cordova.exec(function(result) {  
+                              totaladvancepayment = result[0][0];
+                              data["totaldocuments"]=eval(totaladvancepayment)+eval(totalcollection)+eval(totalorder)+eval(totalsales);
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [advanceqry]);
+                Cordova.exec(function(result) {  
+                              totalcash= result[0][0];
+                              data["totalcash"]=eval(totalcash).toFixed(decimalplace);
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [cashqry]);
+                Cordova.exec(function(result) { 
+                              totalcheque= result[0][0];
+                              data["totalchecks"]=totalcheque;
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [chequeqry]);
+                Cordova.exec(function(result) {  
+                              totalorderamount= result[0][0];
+                               data["totalorderamount"]=totalorderamount;
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [orderamountqry]);
+                Cordova.exec(function(result) {
+                              totalsalesamount=result[0][0];
+                              data["totalinvoiceamount"]=eval(totalsalesamount).toFixed(decimalplace);
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [salesamountqry]);
+                Cordova.exec(function(result) {  
+                              totalcreditamount=result[0][0];
+                               data["totalchargesales"]=eval(totalcreditamount).toFixed(decimalplace);
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [creditqry]);
+                Cordova.exec(function(result) {  
+                              totalcashamount=result[0][0];
+                              data["totalcashsales"]=eval(totalcashamount).toFixed(decimalplace);
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [cashamtqry]);
+                Cordova.exec(function(result) {  
+                              totalcollectionadvanceamount=result[0][0];
+                              data["totalacctsreceivable"]=totalcollectionadvanceamount;
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [collectionadvaamtqry]);
+                Cordova.exec(function(result) { 
+                              totalexpenses=result[0][0];
+                              data["totalexpenses"]=totalinventory;
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [expenceqry]);
+                Cordova.exec(function(result) {     
+                              totalinventory=result[0][0];
+                               data["inventoryvariance"]=eval(totalinventory).toFixed(decimalplace);
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [inventoryqry]);
+                Cordova.exec(function(result) {     
+                               totalcashvariance=result[0][0];
+                              data["cashvariance"]=totalcashvariance;
+                              data = JSON.stringify(data);
+                              ajaxcall(data);
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [cashvariance]);
+                
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(salesqry, function(result) {     
+                                                     totalsales=result.array[0].cnt;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(orderqry, function(result) {    
+                                                     totalorder=result.array[0].cnt;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(collectionqry, function(result) {  
+                                                     totalcollection=result.array[0].cnt;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(advanceqry, function(result) {    
+                                                     totaladvancepayment=result.array[0].cnt;
+                                                     data["totaldocuments"]=eval(totaladvancepayment)+eval(totalcollection)+eval(totalorder)+eval(totalsales);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(cashqry, function(result) {  
+                                                     totalcash=result.array[0].amount;
+                                                     data["totalcash"]=eval(totalcash).toFixed(decimalplace);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(chequeqry, function(result) { 
+                                                     totalcheque=result.array[0].amount;
+                                                     data["totalchecks"]=totalcheque;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(orderamountqry, function(result) {    
+                                                     totalorderamount=result.array[0].amount;
+                                                     data["totalorderamount"]=totalorderamount;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+
+                window.plugins.DataBaseHelper.select(salesamountqry, function(result) {  
+                                                     totalsalesamount=result.array[0].amount;
+                                                     data["totalinvoiceamount"]=eval(totalsalesamount).toFixed(decimalplace);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+
+                window.plugins.DataBaseHelper.select(creditqry, function(result) {    
+                                                     totalcreditamount=result.array[0].amount;
+                                                     data["totalchargesales"]=eval(totalcreditamount).toFixed(decimalplace);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(cashamtqry, function(result) {   
+                                                     totalcashamount=eval(result.array[0].amount).toFixed(decimalplace);
+                                                     
+                                                     data["totalcashsales"]=totalcashamount;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+
+                window.plugins.DataBaseHelper.select(collectionadvaamtqry, function(result) { 
+                                                     totalcollectionadvanceamount=result.array[0].amount;
+                                                     data["totalacctsreceivable"]=totalcollectionadvanceamount;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.select(expenceqry, function(result) {       
+                                                     totalexpenses=result.array[0].totalexpenses;
+                                                     data["totalexpenses"]=totalinventory;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+
+                window.plugins.DataBaseHelper.select(inventoryqry, function(result) {   
+                                                     totalinventory=result.array[0].amount;
+                                                     data["inventoryvariance"]=eval(totalinventory).toFixed(decimalplace);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+
+                window.plugins.DataBaseHelper.select(cashvariance, function(result) {
+                                                     totalcashvariance=result.array[0].cashvariance;
+                                                     data["cashvariance"]=totalcashvariance;
+                                                     data = JSON.stringify(data);
+                                                     ajaxcall(data);
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                
+
+
+                
+            }
+
+            
+            
+            
+            
+                 
+            
+            
+            
+        }
+        function ajaxcall(data)
+        {
+			// alert(data);
+            console.log("data = "+data);
+            $.ajax({
+                   type: "get",
+                   url: wsurl + "ws/endday?endday=["+ data +"]",
+                   data: "{}",
+                   cache: false,
+                    timeout: 60000,
+                   crossDomain: true,
+                   success: function(data2) {  
+                   
+                   getRouteSequnceDifference(data);
+                   
+                   },
+                   error: function(qXHR, textStatus, errorThrown) {
+                   alert("Start day prompt off failure: " + qXHR.status + ":" + textStatus + " " + errorThrown);
+                   }
+                   });
+        }
+        function getstartendday()
+        {
+            var Qry="select routeendodometer from startendday where routekey="+sessionStorage.getItem('RouteKey');
+            console.log(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              if(result!='')
+                              routeendodometer= result[0][0];
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                                                     if(result.array!=undefined)
+                                                     routeendodometer= result.array[0].routeendodometer;
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function getRouteSequnceDifference(data){
+        
+        	
+            var Qry="SELECT CAST(julianday('now') - julianday(routestartdate) AS INT) as diff FROM startendday";
+            console.log(Qry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              if(result!='')
+                              routeendodometer= result[0][0];
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                {
+	                if(result.array!=undefined){
+	                	 var diff=eval(result.array[0].diff);
+	                	 if(diff<0 || diff==undefined){
+	                	 	diff=0;
+	                	 }
+	                	 getRP32WeekNumber(data,diff);
+	                	
+	                }else{
+	                
+	                	getRP32WeekNumber(data,0);
+	                	 
+	                }
+	               
+                },
+                function() {
+                	console.warn("Error calling plugin");
+                });
+            }
+        
+        }
+        
+        function getRP32WeekNumber(data,diff){
+       	 
+            var today=new Date();
+          
+            var curr_date = today.getDate();
+            var curr_month = today.getMonth();
+            var curr_year = today.getFullYear();
+            curr_month =curr_month + 1;
+            
+            if(curr_month<10)
+            curr_month = "0"+curr_month;
+            
+            if(curr_date<10)
+            curr_date = "0"+curr_date;
+            
+            today = curr_year+ "-" +curr_month+ "-" + curr_date +" 00:00:00";
+        	
+        	window.plugins.DataBaseHelper.select("select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate",function(result)
+     	    {
+     				 if(result.array!=undefined)
+     				 {
+     				 	sessionStorage.setItem("rp32weeknumber",result.array[0].rp32weeknumber);
+     				 	getRouteSequencePlanFlag(data,diff,result.array[0].rp32weeknumber);
+     				 
+     				 }
+                     else
+                     {
+                    	getRouteSequencePlanFlag(data,diff,window.localStorage.getItem("rp32week"));
+                    	
+                     }
+			},
+			function()
+			{
+		   	 	console.warn("Error calling plugin");
+			});
+        }
+        
+        function getRouteSequencePlanFlag(data,diff,rp32weeknumber){
+        
+         	var secondqry ="select routesequenceplanflag from setup where setupid=1";
+        
+        	if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              if(result!='')
+                              routeendodometer= result[0][0];
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == "Android") {
+                 window.plugins.DataBaseHelper.select(secondqry,function(result)
+						{
+                            routesequenceplanflag = result.array[0].routesequenceplanflag;
+                           	 if(eval(routesequenceplanflag)==1)
+				             {
+				                
+				                sessionStorage.setItem("rp32weeknumber",result);
+				                	insertOffOdometer(data,diff,9);
+				             }else{
+				             		insertOffOdometer(data,diff,rp32weeknumber);
+				             }
+						   
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+            }
+        
+        
+        
+        
+        
+        
+        
+        }
+        function insertOffOdometer(data,diff,rp32weeknumber)
+        {
+            
+            var cDate = new Date();
+            var dtime = cDate.getHours() +':'+cDate.getMinutes()+':'+cDate.getSeconds();
+			var transQuery;
+            data = JSON.parse(data);
+            var seqweeknumber = rp32weeknumber;
+            var d = new Date();
+            var n = d.getDay();
+            var array = ['sunseq','monseq','tueseq','wedseq','thuseq','friseq','satseq'];
+            var callarray = ['callrestrictiondays7', 'callrestrictiondays1', 'callrestrictiondays2', 'callrestrictiondays3', 'callrestrictiondays4', 'callrestrictiondays5', 'callrestrictiondays6'];
+            var calldays = callarray[n];
+            var days = array[n];
+            var index = $.inArray(calldays, callarray);
+            if (index == 0)
+            callindex = 7;
+            else
+            callindex = index;
+           
+            var indexseq=callindex;
+            transQuery ="callrestrictiondays"+callindex+"=1";
+            if(diff>0){
+            	
+           		for(var i=0;i<diff;i++){
+	           		if(indexseq==1){
+	           			indexseq=7
+	           		}else{
+	           			indexseq=indexseq-1;
+	           		}
+           			transQuery=transQuery+" or callrestrictiondays"+indexseq+"=1";
+           		 	
+           		}
+            }
+           	
+           	var insertselectqry = "insert into routesequencecustomerstatus('routekey','seqweeknumber','seqweekday','routecode','customercode','sequencenumber','schelduledflag','servicedflag','scannedflag','issync') select "+sessionStorage.getItem("RouteKey")+"," + seqweeknumber + "," + callindex + "," + sessionStorage.getItem("RouteCode") + ",customercode,"+days+",1,0,0,0 from routesequence where routecode = "+sessionStorage.getItem("RouteCode")+" and rp32weeknumber="+seqweeknumber+" and ( "+transQuery+" ) and customercode not in (select customercode from customeroperationscontrol where routekey="+sessionStorage.getItem("RouteKey")+")";
+            console.log(insertselectqry);
+            var insert1selectqry = "insert into nonservicedcustomer('routekey','customercode','reasoncode','issync') select "+sessionStorage.getItem("RouteKey")+",customercode,1,0 from routesequence where routecode = "+sessionStorage.getItem("RouteCode")+" and rp32weeknumber="+sessionStorage.getItem("rp32weeknumber")+" and customercode not in (select customercode from customeroperationscontrol where routekey="+sessionStorage.getItem("RouteKey")+")";
+           
+            insertquery = "update startendday set routeenddate='"+getTabletDate()+"',routeendtime='"+dtime+"',routeclosed=1,data=2,routeendodometer="+data.routeendodometer+",totaldocuments='"+data.totaldocuments+"',totalcash='"+data.totalcash+"',totalchecks='"+data.totalchecks+"',totalorderamount='"+data.totalorderamount+"',totalinvoiceamount='"+data.totalinvoiceamount+"',totalchargesales='"+data.totalchargesales+"',totalcashsales='"+data.totalcashsales+"',totalacctsreceivable='"+data.totalacctsreceivable+"',inventoryvariance='"+data.inventoryvariance+"',cashvariance='"+data.cashvariance+"' where routekey="+sessionStorage.getItem('RouteKey');
+            console.log(insertquery);
+            sessionStorage.setItem("beginday",0);
+            if(platform=='iPad')
+            {
+                
+                Cordova.exec(function(result) {                              
+                             
+                             
+                             },
+                             function(error) {
+                             navigator.notification.alert("Error in insert start end day : " + error);
+                             },
+                             "PluginClass", 
+                             "InsertUpdateMethod", 
+                             [insertselectqry]); 
+                Cordova.exec(function(result) {                              
+                             
+                             
+                             },
+                             function(error) {
+                             navigator.notification.alert("Error in insert start end day : " + error);
+                             },
+                             "PluginClass", 
+                             "InsertUpdateMethod", 
+                             [insert1selectqry]); 
+                Cordova.exec(function(result) {       
+                              
+                              
+                              sessionStorage.setItem("beginday",0);
+                              window.location = "settlementreport.html";
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error in insert start end day : " + error);
+                              },
+                              "PluginClass", 
+                              "InsertUpdateMethod", 
+                              [insertquery]);         
+            }
+            else if(platform=='Android')
+            {          
+                window.plugins.DataBaseHelper.insert(insertselectqry,function(result)
+                                                     {                                                     
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(insert1selectqry,function(result)
+                                                     {                                                     
+                                                     
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(insertquery,function(result)
+                                                     {                                                     
+                                                      sessionStorage.setItem("beginday",0);
+                                                      DeleteTempsalesData();	
+                                                    
+                                                     },
+                                                     function()
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }                
+            
+        }
+        function DeleteTempsalesData(){
+        
+        	var Tbls = ['invoicedetail','invoiceheader','salesorderdetail','salesorderheader','arheader','ardetail','cashcheckdetail','inventorytransactionheader','inventorysummarydetail','inventorytransactiondetail'];
+            if(platform=='iPad')
+            {
+            	for(i=0;i<Tbls.length;i++)
+                {
+                    
+                    var Qry = "DELETE FROM " + Tbls[i]+" where istemp='true'";
+                    
+                    console.log(Qry);
+                    Cordova.exec(function(result) {
+                                 
+                                 
+                                 
+                    },
+                    function(error) {
+                    alert(error);},
+                    "PluginClass", 
+                    "InsertUpdateMethod", 
+                    [Qry]);
+                     
+                }
+                
+            }
+            else if(platform=='Android')
+            {
+                for(i=0;i<Tbls.length;i++)
+                {
+                    
+                    var Qry = "DELETE FROM " +Tbls[i]+" where ifnull(istemp,'true')='true'";
+                    console.log(Qry);
+                    window.plugins.DataBaseHelper.insert(Qry,function(result)
+                    {
+                    
+                    },
+                    function()
+                    {
+                    console.warn("Error calling plugin");
+                    });
+                    if(i==Tbls.length-1)
+					{
+						window.location = "settlementreport.html";		
+					}
+                        
+                }
+               
+            }
+        
+        
+        }
+        function CheckAudit()
+        {
+        	var routekey=sessionStorage.getItem('RouteKey')
+        	//var qry="SELECT 1 NO, 'IVTH' TYPE, COUNT(*) CloudCount FROM inventorytransactionheader WHERE routekey= "+routekey+" UNION SELECT 2 NO, 'INVH' TYPE, COUNT(*) CloudCount FROM invoiceheader WHERE routekey= "+routekey+" UNION SELECT 3 NO, 'SAOH' TYPE, COUNT(*) CloudCount FROM salesorderheader WHERE routekey= "+routekey+" UNION SELECT 4 NO, 'ARHR' TYPE, COUNT(*) CloudCount FROM arheader WHERE routekey= "+routekey;
+        	
+        // sujee commented org qry for confirmorder check flag for Enhance 
+        	//var qry="SELECT 1 NO, 'IVTH' TYPE, COUNT(*) CloudCount FROM inventorytransactionheader WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 2 NO, 'INVH' TYPE, COUNT(*) CloudCount FROM invoiceheader WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 3 NO, 'SAOH' TYPE, COUNT(*) CloudCount FROM salesorderheader WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 4 NO, 'ARHR' TYPE, COUNT(*) CloudCount FROM arheader WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 5 NO, 'CCDS' TYPE, COUNT(*) CloudCount FROM cashcheckdetail WHERE routekey= "+routekey+" and istemp='false'";
+        	
+        	var qry="SELECT 1 NO, 'IVTH' TYPE, COUNT(*) CloudCount FROM inventorytransactionheader WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 2 NO, 'INVH' TYPE, COUNT(*) CloudCount FROM invoiceheader WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 3 NO, 'SAOH' TYPE, COUNT(*) CloudCount FROM salesorderheader WHERE routekey= "+routekey+" and istemp='false' and dexflag=0 and confirmorder = 1 UNION SELECT 4 NO, 'ARHR' TYPE, COUNT(*) CloudCount FROM arheader WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 5 NO, 'CCDS' TYPE, COUNT(*) CloudCount FROM cashcheckdetail WHERE routekey= "+routekey+" and istemp='false' UNION SELECT 6 NO, 'RSCS' TYPE, COUNT(*) CloudCount FROM routesequencecustomerstatus WHERE routekey= "+routekey+"  UNION SELECT 7 NO, 'RSCC' TYPE, ifnull(SUM(servicedflag),0) CloudCount FROM  routesequencecustomerstatus WHERE routekey = "+routekey+" UNION SELECT 8 NO, 'CVLG' TYPE, COUNT(*) CloudCount FROM customervisitlog where routekey = "+routekey+" UNION SELECT 9 NO, 'INVD' TYPE, COUNT(*) CloudCount FROM invoicedetail where routekey = "+routekey+" and istemp='false' UNION SELECT 10 NO, 'ARDL' TYPE, COUNT(*) CloudCount FROM ardetail where routekey = "+routekey+" and istemp='false' UNION SELECT 11 NO, 'CUOC' TYPE, COUNT(*) CloudCount FROM customeroperationscontrol where routekey = "+routekey+" ";
+        	//alert(qry);
+        	 if(platform=='iPad')
+             {
+                       Cordova.exec(function(result) {
+                               //needs to be developed for ios 
+                       },
+                       function(error) {
+                       alert(error);},
+                       "PluginClass", 
+                       "GetdataMethod", 
+                       [qry]);
+                       
+             }
+             else if(platform=='Android')
+             {			           		
+                    window.plugins.DataBaseHelper.select(qry,function(result)
+                    {
+                           if(result.array != undefined)
+                           {
+                              
+                             result = $.map(result.array, function (item, index)
+                              {                                      
+                                 return [[item.TYPE,item.CloudCount]];
+                                 
+                              });
+                           
+                             auditArr = new Object();
+                            
+                             for(i=0;i<result.length;i++)
+                             {
+                            	 	
+                            		auditArr[result[i][0]]=result[i][1];
+                            		
+                             }
+                             //alert(JSON.stringify(auditArr));
+                             getServerData();
+                           
+                           }                              
+                    },
+                    function()
+                    {
+                     console.warn("Error calling plugin");
+                    });
+                 }
+        
+        }
+        function getAuditDetails(k) {
+            return auditArr[k];
+        }
+        
+        
+        function getServerData()
+        {
+        	cloudData=[];
+        	$.mobile.showPageLoadingMsg();
+        	sessionStorage.setItem("CloudData","");
+            $.ajax({
+                type: "GET",             
+                url:wsurl+"transaction/trandata/routekey/"+sessionStorage.getItem("RouteKey")+"",
+                dataType: 'json',
+                error: function(){
+                     $.mobile.hidePageLoadingMsg();
+                     alert('Error in request or check your network connection');
+                },
+                success: function(data ){
+                    
+                   var trandata =data;
+                   //alert(JSON.stringify(trandata));
+                   var isAuditSuccess="0";
+                  
+                   for (var i = 0; i < trandata.length; i++) 
+                   {     
+                	   
+                	   var auditValue=getAuditDetails(trandata[i].TYPE);
+                	   var cloud_valus={};
+                	   if(auditValue!=undefined)
+                	   {
+                		  
+                		   switch(trandata[i].TYPE)
+                		   {
+	                		   
+                		       case "IVTH":
+	                			   cloud_valus['type']="Inventory";
+	                			   break;
+	                		   case "INVH":
+	                			   cloud_valus['type']="Invoice";
+	                			   break;
+	                		   case "SAOH":
+	                			   cloud_valus['type']="Order";
+	                			   break;
+	                		   case "ARHR":
+	                			   cloud_valus['type']="Collection";
+	                			   break;
+	                		   case "CCDS":
+                                   cloud_valus['type']="Payment";
+                                   break;	
+                               case "RSCS":
+                                   cloud_valus['type']="Visit";
+                                   break;	
+                               case "RSCC":
+                            	   cloud_valus['type']="Serviced Visit";
+                                   break;	
+                               case "CVLG":
+                            	   cloud_valus['type']="Customer Visit";
+                                   break;	
+                               case "INVD":
+                            	   cloud_valus['type']="Invoice Detail";
+                                   break;	
+                               case "ARDL":
+                            	   cloud_valus['type']="AR Detail";
+                                   break;
+                               case "CUOC":
+                            	   cloud_valus['type']="Customer Operations";
+                                   break;
+	                			   
+                		   }
+                		  
+                		   cloud_valus['tabletcount']=auditValue;
+                		   cloud_valus['cloudcount']=trandata[i].CloudCount;
+                		   cloudData.push(cloud_valus);
+                		  
+                		
+                		   if(eval(parseInt(auditValue))!=eval(parseInt(trandata[i].CloudCount)))
+                		   {
+                			   isAuditSuccess="1";
+                		   }
+                	   }
+                	   
+                   }
+                   if(isAuditSuccess=="1")
+            	   { 
+                	   
+            		   sessionStorage.setItem("CloudData",JSON.stringify(cloudData));
+            		   //alert(sessionStorage.getItem("CloudData"));
+            		   window.location = "../settlement/settlementaudit.html";
+            		    
+            	   }else
+            	   {
+            		   DeleteLoad();
+            		   
+            	   }
+                   
+                   $.mobile.hidePageLoadingMsg();
+                 
+                }});
+           
+        }
+        
+        
+    </script>
+
+</body>
+</html>

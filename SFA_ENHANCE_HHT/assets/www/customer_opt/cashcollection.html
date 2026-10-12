@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Cash Collection</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="finalizetransaction.html" id="Back_inner"
+                    rel="external">Back</a>
+                <h1 lang="en">
+                    Cash Collection</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <table cellpadding="5" cellspacing="5" style="width:100%"
+                        border="0">
+                        <tr>
+                            <td style="width:15%" lang="en">Customer #</td>
+                            <td style="width:30%;text-align:right"
+                                class="readonly_text">102005933</td>
+                            <td style="width:20%" lang="en">
+                                Customer Name
+                            </td>
+                            <td style="width:30%" class="readonly_text">
+                                <label id="lblCustomerName">TFANEN</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%" colspan="4"
+                                lang="en">Cash/Cheque TC</td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%" lang="en">Minimum Due</td>
+                            <td style="width:30%;text-align:right"
+                                class="readonly_text">430.89</td>
+                            <td style="width:15%" lang="en">Allowed TC</td>
+                            <td style="width:30%;text-align:right"
+                                class="readonly_text">
+                                <label id="Label1">84.55</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%" lang="en">Amount Due</td>
+                            <td style="width:30%;text-align:right"
+                                class="readonly_text">514.90</td>
+                            <td style="width:15%" lang="en">
+                                Cash Amount
+                            </td>
+                            <td style="width:30%">
+                                <input type="text" class="textFont textWidth"
+                                    id="txtCashAmount" />
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="tblBox">
+                        <table id="tblContent" cellpadding="0" cellspacing="1"
+                            border="0" width="100%">
+                            <tr class="tblHeader">
+                                <th style="width: 30%;" class="leftAlign"
+                                    lang="en">
+                                    Bank Name
+                                </th>
+                                <th style="width: 15%;" lang="en">
+                                    Date
+                                </th>
+                                <th style="width: 15%;" lang="en">
+                                    Amount
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="textBar">
+                        <table cellpadding="5" cellspacing="2" border="0"
+                            width="100%">
+                            <tr>
+                                <td class="captionLabel" lang="en">
+                                    Cheque Number
+                                </td>
+                                <td>
+                                    <input id="txtCheckNumber" type="text"
+                                        class="textWidth textFont" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <div class="MenuPosition">
+                        <a href="finalizetransaction.html" rel="external"
+                            id="simplestring" style="text-decoration:none"
+                            data-role="none">
+                            <div class="MenuTextPos"><img
+                                    src="../images/summary.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Back</div>
+                        </a>
+                    </div>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <div class="MenuPosition">
+                        <div class="MenuTextPos">
+                            <img src="../images/print.png" alt="Exit" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Proceed</div>
+                    </div>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+     window.lang = new jquery_lang_js();
+       	resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();        
+		$(".leftfooter").html(getCurrentDate());
+            var CellCount = $("#tblContent tr:eq(0) th").length;
+            var data = [['LBN FF 200 ML', '15', '10', '150', '3000'], ['AQW FF 300 ML', '25', '10', '100', '1000'], ['DEF RF 400 ML', '14', '10', '200', '2000']]
+            for (i = 0; i < data.length; i++) {
+                var r = "<tr class='contentFont'>";
+                for (j = 0; j < CellCount; j++) {
+                    var temp = (j == 0) ? 'class = leftAlign' : '';
+                    var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                    r += c;
+                }
+                r += "</tr>";
+                $('#tblContent tbody').append(r);
+            }
+            $("#tblContent tr:odd").addClass('oddRow');
+            $("#tblContent tr:even").addClass('evenRow');
+            if (sessionStorage.getItem("Language") == "EN") {
+                $("#tblContent tr:first th:first").addClass('tableBorderTopLeft');
+                $("#tblContent tr:first th:last").addClass('tableBorderTopRight');
+                $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft');
+                $("#tblContent tr:last td:last").addClass('tableBorderBottomRight');
+            }
+            else {
+                $("#tblContent tr:first th:first").addClass('tableBorderTopRight');
+                $("#tblContent tr:first th:last").addClass('tableBorderTopLeft');
+                $("#tblContent tr:last td:first").addClass('tableBorderBottomRight');
+                $("#tblContent tr:last td:last").addClass('tableBorderBottomLeft');
+            }
+
+           
+             var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('CashCollection'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		ChangeTableRadius();
+		if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    ChangeTableRadius();
+		    $(".centerboxInvReq").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+            function GetElements(xmlDoc) {
+                var PageName = 'orderRequest';
+            }
+
+            function ChangeTableRadius() {
+                if (sessionStorage.getItem("Language") == "en") {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomRight');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomLeft');
+                }
+                else {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomLeft');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomRight');
+
+                }
+            }
+
+        });
+    </script>
+
+    </body>
+</html>

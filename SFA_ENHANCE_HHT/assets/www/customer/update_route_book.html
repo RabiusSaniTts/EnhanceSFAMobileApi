@@ -1,0 +1,206 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 30/1/2011
+ '  Description  : This page is used for detail of route book update
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+	
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="../css/style.css" />
+     <link rel="stylesheet" href="../css/en.css" lang="en" />
+    <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+	<link type="text/css" href="../css/jquery.mobile.datebox.min.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+        href="../css/style_1400.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+        href="../css/style_1200.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 700px) and (max-width: 800px)"
+        href="../css/style_800.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 600px) and (max-width: 699px)"
+        href="../css/style_700.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 320px) and (max-width: 599px)"
+        href="../css/style_600.css" />
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+    <script type="text/javascript" src="../js/common.js"></script>
+
+	<script type="text/javascript" src="../js/jquery.mobile.datebox.min.js"></script>
+    <script src="../LangJS/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+
+    <script src="../LangJS/langpack/AR.js" charset="utf-8" type="text/javascript" lang="en"></script>
+
+	 <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+	
+</head>
+</head>
+<body>
+    <div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+        <div>
+            <img title="" alt="" src="../images/bg.png" id="background">
+        </div>
+        <div data-role="header" data-position="inline" id="bgclheader">
+            <!--<a href="index.html"   id="Back_inner">test</a>-->
+            <a id="Back_inner" href="route_book_detail.html" rel="external" lang="en">Back</a>
+            <h1 lang="en">
+                Route Book Update</h1>
+            <a href="#" id="lang_inner">EN</a>
+        </div>
+        <div data-role="content" class="centerbox">
+            <div class="tblBox com_div">
+                <table border="0" width="100%" cellpadding="10" cellspacing="3" id="tbl1" data-role="none">
+                    <tbody class="tbl_body">
+                        <tr class="td_update">
+                            <td width="50%">
+                                <label for="shipping" id="UserName" lang="en">
+                                    Item No.</label>
+                                <input type="text" name="name" id="name-a" value="234543" readonly="readonly" />
+                            </td>
+                            <td>
+                                <label for="shipping" id="UserName" lang="en">
+                                    Item Name</label>
+                                <input type="text" name="name" id="name-a" value="200 CN UHT MILK" readonly="readonly" />
+                            </td>
+                        </tr>
+                        <tr class="td_update">
+                            <td width="50%">
+                                <label for="shipping" id="UserName" lang="en">
+                                    Build Qty</label><br />
+                                <div style="width: 50%; float: left;">
+                                    <select name="select-choice-1" id="select-choice-1" style="display: inline;">
+                                        <option>Mon</option>
+                                        <option value="jan">Tue</option>
+                                    </select>
+                                </div>
+                                <div style="width: 50%; float: right;">
+                                    <input type="number" name="name" id="name-a" value="0" />
+                                </div>
+                            </td>
+                            <td>
+                                <label for="shipping" id="UserName" lang="en">
+                                    Order Point</label>
+                                <input type="text" name="name" id="name-a" value="0" />
+                            </td>
+                        </tr>
+                        <tr class="td_update">
+                            <td width="50%">
+                                <label for="shipping" id="UserName" lang="en">
+                                    Facings</label>
+                                <input type="text" name="name" id="name-a" value="0" />
+                            </td>
+                            <td>
+                                <label for="shipping" id="UserName" lang="en">
+                                    Retail Price</label>
+                                <input type="number" name="name" id="name-a" value="0" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="leftbottomMenu com_info_right">
+                <div class="MenuPosition up_book_div">
+                    <div class="MenuTextPos">
+                        <img src="../images/save_gray.png" alt="Add" /></div>
+                    <div class="MenuTextPos MenuText MenuGray" lang="en">
+                        Save</div>
+                </div>
+                <div class="MenuPosition up_book_div">
+                    <div class="MenuTextPos">
+                        <img src="../images/left.png" alt="Option" /></div>
+                    <div class="MenuTextPos MenuText" lang="en">
+                        Next</div>
+                </div>
+                <div class="MenuPosition up_book_div">
+                    <div class="MenuTextPos">
+                        <img src="../images/right.png" alt="Option" /></div>
+                    <div class="MenuTextPos MenuText" lang="en">
+                        Previous</div>
+                </div>
+                <a href="route_book_detail.html" class="enableText" rel="external">
+                    <div class="MenuPosition up_book_div">
+                        <div class="MenuTextPos">
+                            <img src="../images/icn-exit.png" alt="Exit" /></div>
+                        <div class="MenuTextPos MenuText" lang="en">
+                            Cancel</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="f1" data-role="footer" class="ui-bar">
+            <div class="footer">
+                <div class="leftfooter">
+                    09 November 2011</div>
+                <div class="rightfooter">
+                    Mirnah Technology Systems</div>
+            </div>
+        </div>
+        <div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+             <div data-role="navbar" data-iconpos="top" data-grid="f">
+                <ul>
+                    <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="day" data-icon="custom" lang="en" onclick="footerredict('../startofday/startofday.html')">Start day</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" id="inve" rel="external" data-icon="custom" lang="en" onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" class="ui-btn-active" rel="external" id="cust" data-icon="custom" lang="en">Customer</a></li>
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="sett" data-icon="custom" lang="en" onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+			        
+			        <li style="margin-bottom:0 !important;"><a href="#" rel="external" id="info" data-icon="custom" lang="en" onclick="footerredict('../information/information.html')">Information</a></li>
+			        <li style="margin-bottom:0 !important; width:14.0%"><a href="#" rel="external" id="setup" data-icon="custom" lang="en" onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+        $(".leftfooter").html(getCurrentDate());
+          
+	    $('.ui-select .ui-btn-text').css({ 'text-align': 'left','color':'#999'});
+           
+            var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Updateroute'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+                     
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+        });
+        
+        </script>
+
+    </div>
+</body>
+</html>

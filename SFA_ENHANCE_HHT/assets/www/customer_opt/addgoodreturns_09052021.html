@@ -1,0 +1,1970 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Good Returns</title>
+        <meta name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css" />
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css" />
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css" />
+        <link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+            rel="stylesheet" />
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css" />
+        <!--Ipad L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css" />
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script type="text/javascript" src="../js/batch.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script type="text/javascript"
+            src="../js/jquery.mobile.datebox.min.js"></script>
+        <script type="text/javascript" src="../barcodescanner.js"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en"
+                    onclick="return ValidateExititem(false);">Back</a>
+                <h1 lang="en">
+                    Good Returns</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent Spacing">
+                    <table class="topbox" cellpadding="0">
+                        <tr>
+                            <td style="width:25%">
+                                <table cellpadding="0">
+                                    <tr>
+                                        <td style="width:10%" lang="en">No.</td>
+                                        <td style="width:80%;">
+                                            <input type="tel" name="itemno"
+                                                id="itemno"
+                                                class="textWidth textFont"
+                                                value>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td style="width:60%;padding-left:40px">
+                                <label class="cus_lable heading" lang="en"
+                                    id="lblDesc">
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 40%;" class="leftAlign"
+                                    lang="en">
+                                    Reason
+                                </th>
+                                <th style="width: 30%;" lang="en">
+                                    Cases
+                                </th>
+                                <th style="width: 30%;" lang="en">
+                                    Units
+                                </th>
+                                <th style="width: 30%;display:none;" lang="en">
+                                    Code
+                                </th>
+                                <th style="width: 30%;" lang="en"
+                                    class="last">Expiry Date</th>
+                            </tr>
+                        </table>
+                        <div class="tblSalesHeight">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 40%;">
+                                    </td>
+                                    <td style="width: 30%;">
+                                    </td>
+                                    <td style="width: 30%;">
+                                    </td>
+                                    <td style="width: 30%;display:none;">
+                                    </td>
+                                    <td style="width: 30%;" class="last">
+                                    </td>
+                                </tr>
+                            </table>
+                            <div
+                                style="visibility: hidden;height: 0px;float: right;">
+                                <input name="mydate" id="mydate" type="date"
+                                    data-role="datebox"
+                                    data-options='{"noButton": true,"mode": "datebox"}'></div>
+                        </div>
+                    </div>
+                    <!--   <div class="textBar"   width="100%" style="table-layout:fixed;">
+					<table border="0" width="100%">
+						<tr>
+							<td  width="60%" lang="en">Select Date</td>
+							<td  width="40%"  lang="en">Invoice Number</td>
+						</tr>
+						<tr>
+						<div >
+							<td width="55%">
+							
+							<input name="startdate" 
+								type="date" readonly="readonly" data-role="datebox"
+								id="startdate"
+								data-options='{"mode": "datebox","dateFormat": "dd-MM-YYYY"}'
+								onchange="getDateChange()"/>    </td>
+							</div>
+							<td width="45%"><select style="width: 100%"
+								name="select-choice-1" id="invoicenumber">
+
+							</select></td>
+						</tr>
+
+					</table>
+			</div>-->
+
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="../customer/item_selection.html" rel="external"
+                        id="A1" style="text-decoration: none"
+                        data-role="none">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/search.png"
+                                    alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Find</div>
+                        </div>
+                    </a>
+                    <a href="#" class="enableText" rel="external"
+                        data-role="none" id="lnkScan"
+                        onclick="clickScan()">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/barcode-scan.png"
+                                    alt="Scan" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Scan</div>
+                        </div>
+                    </a>
+                    <a href="#" rel="external" id="simplestring"
+                        style="text-decoration:none" data-role="none"
+                        rel="external" onclick="return ValidateExititem(true);">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos"><img
+                                    src="../images/save.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText"
+                                lang="en">Save</div>
+                        </div>
+                    </a>
+                    <a href="salesgoodreturn.html" rel="external" id="lnkExit"
+                        style="text-decoration:none" data-role="none"
+                        rel="external" onclick="ClearVariables();">
+                        <div class="MenuPositionFourIcons">
+                            <div class="MenuTextPos">
+                                <img src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Done</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = null; 
+        var ArrPrice;
+        var index = 0;
+        var returnprice = 0;
+        var stdreturnprice = 0;
+        var caseprice = 0;
+        var platform=''; 
+        var key;
+        var isSaved=false;
+        var batchqty='returnqty';
+        var transactiontypecode=18;
+       
+        var selRowExpityIndex = ''; 
+        var dataInventory = null;
+        var itemno = sessionStorage.getItem("itemno");
+        $('#lblDesc').text(sessionStorage.getItem('ItemDesc')); 
+        $("#itemno").val(sessionStorage.getItem('ItemCode'));
+         
+        window.lang = new jquery_lang_js();
+        $("#tblContent").click(function() { });
+        resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();	    
+	    if(sessionStorage.getItem('CheckCode') =='alternatecode')
+            $('#itemno').clone().attr('type','text').insertAfter('#itemno').prev().remove();
+        else
+            $('#itemno').clone().attr('type','tel').insertAfter('#itemno').prev().remove();
+	    
+        platform= sessionStorage.getItem("platform");
+	 	$("#itemno").keyup(function(event)
+	 	{
+              if(event.keyCode == 13)
+              {
+                    if($("#itemno").val != "")          
+                        getFillterItemList();
+              }
+                                
+       });
+        $(".leftfooter").html(getCurrentDate());           
+        document.addEventListener("deviceready", FillReasongrid, false); 
+        var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);		
+        /// / Dropdown text color and disabled opacity setting
+       $('.ui-select .ui-btn-text').css({ 'text-align': 'left', 'color': '#999' });
+                          
+        if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('AddGoodReturns'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+                if(lan=="AR")
+                {
+                     $("#centerboxInvReq").attr("dir", "rtl");
+                     ChangeTableRadius();
+                     $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                     $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                     $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                     $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".centerboxInvReq").attr("dir", "ltr");
+		    ChangeTableRadius();
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+
+        function GetElements(xmlDoc) {
+            var PageName = 'orderRequest';
+        }
+
+        function ChangeTableRadius() {
+                if (sessionStorage.getItem("Language") == "en") {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomRight');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomLeft');
+                }
+                else {
+                    $("#tblContent tr:first th:first").addClass('tableBorderTopRight');
+                    $("#tblContent tr:first th:last").addClass('tableBorderTopLeft');
+                    $("#tblContent tr:last td:first").addClass('tableBorderBottomRight');
+                    $("#tblContent tr:last td:last").addClass('tableBorderBottomLeft');
+
+                    $("#tblContent tr:first th:first").removeClass('tableBorderTopLeft');
+                    $("#tblContent tr:first th:last").removeClass('tableBorderTopRight');
+                    $("#tblContent tr:last td:first").removeClass('tableBorderBottomLeft');
+                    $("#tblContent tr:last td:last").removeClass('tableBorderBottomRight');
+
+                }
+            }
+
+        });
+        
+        $("#txtCase").blur(function () { $(this).val(parseFloat(CheckIsNaN($(this).val()))) });
+        $("#txtUnits").blur(function () { $(this).val(parseFloat(CheckIsNaN($(this).val()))) }); 
+        
+        /// / -----------------Start---------------------------
+       function clickScan() {
+            window.plugins.barcodeScanner.scan(scannerSuccess, scannerFailure);
+        }
+        
+        function scannerSuccess(result) {
+            
+            
+            if (result.cancelled)
+            {
+                alert("the user cancelled the scan");
+            }
+            else
+            {
+                
+                var itemcode = result.text; 
+                itemscan(result.text);
+            }
+            
+            
+        }
+		function UpdateData(obj) 
+		{
+                
+				var RowIndex = $(obj).parent().parent().index();
+                var ObjIndex = $(obj).parent().index();
+               
+                if(ObjIndex == 1 || ObjIndex == 2)
+                        $(obj).parent().text(parseInt(CheckIsNaN($(obj).val())));
+                
+                                   
+            
+                var Cases, Units, UnitsPerCase, ItemCode, RouteKey, CurrQty, Price,CasePrice;
+                          
+                Cases = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(1)").text());
+                Units = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text());
+                Code = eval($("#tblContent tr:eq(" + RowIndex + ") td:eq(3)").text());
+			    console.log(griddata);
+			    console.log(RowIndex);
+                UnitsPerCase = griddata[RowIndex - 1][4];
+		   	    console.log(UnitsPerCase);
+		        CurrQty = (parseInt(Cases) * UnitsPerCase) + parseInt(Units);
+		        if(eval(UnitsPerCase)==1){
+                    
+                  	$("#tblContent tr:eq(" + RowIndex + ") td:eq(1)").text("0");
+                  	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text(parseInt(CurrQty));                 
+					
+                    
+               }else{
+	             	$("#tblContent tr:eq(" + RowIndex + ") td:eq(1)").text(parseInt(CurrQty / UnitsPerCase));
+	             	$("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text(parseInt(CurrQty % UnitsPerCase));                 
+																																
+             
+               }
+		       
+		       var expirydate=$("#tblContent tr:eq(" + RowIndex + ") td:eq(4)").text();
+		       if(expirydate.split('-')[0]<10){  //formating 0d-MM-YYYY
+               	expirydate='0'+expirydate.split('-')[0]+"-"+expirydate.split('-')[1]+"-"+expirydate.split('-')[2];
+                  }
+		       if(expirydate!=null && expirydate!='' && expirydate!=undefined && expirydate.length>0){
+		    	   CheckInvoiceRXDetailItemCount(CurrQty,Code,expirydate);
+		    	   
+		       }else{
+		    	   $("#tblContent tr:eq(" + RowIndex + ") td:eq(1)").text("0");
+		    	   $("#tblContent tr:eq(" + RowIndex + ") td:eq(2)").text("0");    
+		    	   getLangText("Please Enter Expiry Date.");
+		       }
+		        
+            }
+        	function getFillterItemList()
+        	{
+	           /// / var qry = "SELECT CASE WHEN '" +
+				// sessionStorage.getItem('CheckCode') + "' = 'alternatecode'
+				// THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode
+				// END AS Code,CASE WHEN '" + sessionStorage.getItem('Language')
+				// + "' = 'en' THEN itemmaster.itemdescription ELSE
+				// itemmaster.arbitemdescription END As
+				// Description,itemmaster.actualitemcode from itemmaster where
+				// Code like '%" + $("#itemno").val() + "%' order by Code";
+	           	var qry = "SELECT CASE WHEN '" + sessionStorage.getItem('CheckCode') + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END AS Code,CASE WHEN '" + sessionStorage.getItem('Language') + "' = 'en' THEN itemmaster.itemdescription ELSE itemmaster.arbitemdescription END As Description,itemmaster.actualitemcode from itemmaster  where (barcode1 ='"+$.trim($("#itemno").val())+"' OR barcode2 ='"+$.trim($("#itemno").val())+"' OR barcode3 ='"+$.trim($("#itemno").val())+"' OR barcode4 ='"+$.trim($("#itemno").val())+"'OR barcode5 ='"+$.trim($("#itemno").val())+"' OR barcode6 ='" + $.trim($("#itemno").val()) + "'OR barcode7 = '"+$.trim($("#itemno").val())+"' OR barcode8 ='"+$.trim($("#itemno").val())+"' OR barcode9 ='"+$.trim($("#itemno").val())+"' OR barcode10 ='"+$.trim($("#itemno").val())+"' OR Code  = '"+$("#itemno").val()+"' ) order by Code";
+                
+        		
+	            if (platform == 'iPad') {
+	                    Cordova.exec(function(result) {
+	                    	if(result1!='')
+	                    	{ 
+                    				var code = result[0][0];
+                                    var Description = result[0][1];
+                                    var actualitemcode = result[0][2];
+                                    sessionStorage.setItem("ItemCode",code);
+				    
+                                    sessionStorage.setItem("ItemDesc",Description);
+                                    sessionStorage.setItem("itemno",actualitemcode);
+                                    $('#lblDesc').text(sessionStorage.getItem('ItemDesc'));
+                                    itemno = sessionStorage.getItem("itemno");
+                                    
+                                    FillReasongrid();
+	                        }
+	                        else
+	                        	alert("Item Not Available");
+	
+	                    	},
+	                        function(error) {
+	                              alert("Error in binding fillter Item : " + error);
+	                        },
+	                        "PluginClass",
+	                        "GetdataMethod",
+	                        [qry]);
+	                }
+	                else if (platform == 'Android') {
+	                    window.plugins.DataBaseHelper.select(qry, function(result) 
+	                    {
+	                        if(result.array != undefined)
+	                        {
+                                  	var code = result.array[0].Code;
+                                  	var Description = result.array[0].Description;
+                                    var actualitemcode = result.array[0].actualitemcode;
+                                    sessionStorage.setItem("ItemCode",code);
+				   
+                                    sessionStorage.setItem("ItemDesc",Description);
+                                    sessionStorage.setItem("itemno",actualitemcode);
+                                    $('#lblDesc').text(sessionStorage.getItem('ItemDesc'));
+                                    itemno = sessionStorage.getItem("itemno");
+                                    FillReasongrid();
+                            }
+                            else
+                            {
+                                getLangText("Item Not Available");
+                            }
+	                    },
+	                    function() {
+	                         console.warn("Error calling plugin");
+	                    });
+	                }
+        }
+       function FillReasongrid()
+       {
+    	   $.mobile.showPageLoadingMsg();
+    	   if(sessionStorage.getItem('batchsetting') ==1)
+    		   selectbatchdata();
+           if(itemno=='')
+        	   itemno =0;
+	   		var selectqry = "select CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN description Else arbdescription END AS description,(CASE WHEN unitspercase=1 THEN 0 ELSE (ifnull(quantity,0)/unitspercase) END) as cases,(CASE WHEN unitspercase=1 THEN ifnull(quantity,0) ELSE (ifnull(quantity,0)%unitspercase) END) as units,code,unitspercase,ifnull(expirydate,'') as expirydate from retitmreasons left join itemmaster ON actualitemcode = " + itemno +" left join invoicerxddetail ON reasoncode = code and itemcode =" + itemno +" and routekey = "+sessionStorage.getItem('RouteKey')+" and visitkey="+sessionStorage.getItem('VisitKey')+" order by description";
+	   		if(platform=='iPad')
+		    {
+	            Cordova.exec(function(result) 
+	            {
+	            		ClearTable('tblContent');
+	                    FillGrid(result);                        
+	                    getPrices();
+	                          
+	             },
+	             function(error) {
+	            	 navigator.notification.alert("Error in binding Reason : " + error);
+	             },
+	             "PluginClass", 
+	             "GetdataMethod", 
+	             [selectqry]);         
+            }
+            else if(platform=='Android')
+           	{
+	           		window.plugins.DataBaseHelper.select(selectqry,function(result)
+					{
+						if(result.array != undefined)
+						{
+		                    var result = $.map(result.array, function (item, index) {
+                				return [[item.description,item.cases,item.units,item.code,item.unitspercase,item.expirydate]];
+            				});
+		                    ClearTable('tblContent');
+                        	FillGrid(result);
+				
+                        	
+                         }
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	} 
+       }
+       function FillGrid(result)
+       {
+			griddata = result;
+			var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+		 	for (i = 0; i < griddata.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+						   if (j == 1 || j == 2) {
+						   
+						   		if(j==1 && eval(griddata[i][4])==1){
+                            		temp='';
+                            	}else{
+                                	temp = "class = 'editable'"; 
+                                } 
+						   		if (griddata[i][j] != '' && griddata[i][j] != undefined)
+                                    griddata[i][j] = parseInt(griddata[i][j]);
+                                else {
+                                    griddata[i][j] = '';
+                                }
+                            }
+                            else
+                                temp = '';
+							
+							  
+							temp += (j == 0) ? 'class = leftAlign' : '';
+							if (j == 3)
+								temp += " style='display:none;text-align:right;padding:0px 10px 0px 10px;'";
+							var value='';
+							if(j==4){
+								
+								temp = "class = 'editable1'"; 
+								value=griddata[i][5];
+							}else{
+								value=griddata[i][j];
+								
+							}
+							    
+							var c = "<td " + temp + " id='c" + i + "_" +  j + "'>" + value + "</td>";    
+				                        r += c;
+						    }
+		    			r += "</tr>";
+                    	$('#tblContent tbody').append(r);
+		 	}
+		 	
+		 	 $("#tblContent tr").live('click', function() {
+                 $(this).addClass('clicked');
+                 $(this).siblings().removeClass('clicked');
+                 var idx = $(this).index();
+                 selRowExpityIndex = idx; 
+             });
+			 
+		 	
+		 	
+	 		$('#tblContent td.editable').click(function() {
+                    var index = $(this).index();
+                    selColIndex = index
+                    var colcaseunits,colprices;
+                    if(itemno == "" || itemno == null)
+				    {
+					  getLangText("Please Select Item.");
+					  return false;
+					} 
+                    if(eval($(this).text()) <= 0)
+                    	$(this).text("");
+                    var input = $("<input type='tel'/>").attr('value', $(this).text());
+                    var w = $(this).innerWidth();
+                    w = w - 50;
+                    if(window.innerWidth>1000){
+                    	input.css('width', w).css('border', '0').css('height', 60).css('font-size',35);
+                    }else{
+                    	input.css('width', w).css('border', '0').css('height', 30).css('font-size', 16);
+                    }
+                    $(this).empty();
+                    $(this).append(input);  
+                   
+                        input.bind("keyup",function() { return SetNumberMaxLength(this,4) });
+                        input.focusout(function() {
+                        	var v = parseInt($(input).val(),10);
+                        	$(input).val(v); 
+                        	if(ValidateGridCaseUnit(this)) 
+                        	{ 
+                        		UpdateData(this); 
+                        	} 
+                        });
+                    
+                    
+                    input.focus();
+                    $(this).find('input').live("keypress", function(event) {
+                        if (event.keyCode == 13) {
+                            input.focusout();
+                        }
+                    });
+                });
+	 		
+	 	      // If Edit is enabled allow editing in grid
+	 		   $('#tblContent td.editable1').click(function() {
+	 			   $.mobile.showPageLoadingMsg();
+	 			   anytimetabclick = false;
+	 			   var col = $(this).parent().children().index($(this));
+	 			   var row = $(this).parent().parent().children().index($(this).parent());
+	 			   var oldval =$(this).text();
+	 			   $('#mydate').val(oldval);
+	 			   $('input[name=mydate]').datebox('refresh');  
+	 			   $('#mydate').datebox('open');
+              
+	 			   var obj =this;
+	 			   $.mobile.hidePageLoadingMsg();   
+                
+	 			   $('#mydate').bind('datebox', function(e, p) {
+	 				   if ( p.method === 'set' ) {
+	 					   e.stopImmediatePropagation()
+	 			  $("#tblContent tr:eq(" + selRowExpityIndex + ") td:eq(4)").text($(this).val());	   
+                  $('#mydate').datebox('close');
+                }
+              });
+               
+            });
+	 		setTimeout(getPrices, 200);
+	 		
+	 		
+       }
+        function itemscan(itemcode)
+    	{   
+            var Qry = "SELECT actualitemcode,itemdescription FROM itemmaster   WHERE (barcode1 ='"+itemcode+"'OR barcode2 ='"+itemcode+"'OR barcode3 ='"+itemcode+"'OR barcode4 ='"+itemcode+"'OR barcode5 ='"+itemcode+"' OR barcode6 ='" + itemcode + "'OR barcode7 = '"+itemcode+"' OR barcode8 ='"+itemcode+"' OR barcode9 ='"+itemcode+"' OR barcode10 ='"+itemcode+"')";
+            console.log(Qry);  
+            if(platform == "iPad")
+            {          
+            	Cordova.exec(function(result1) 
+            	{            	
+                	if(result1!='')
+                 	{                 		
+                 		if(result1.length > 0)
+                 		{
+                 			sessionStorage.setItem("itemno","");
+                 			sessionStorage.setItem("itemno",result1[0][0]);
+                 			itemno = result1[0][0];
+                 			$('#itemno').val(result1[0][0]); 
+                 			$('#lblDesc').text(result1[0][1]);                 			
+                 			getInvoiceList();
+                 		}
+             		}
+                 	else
+                 	{
+                 		alert("Item No found");
+             		}
+             	},
+                function(error) {
+                 	navigator.notification.alert(error);
+             	},
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+            	window.plugins.DataBaseHelper.select(Qry, function(result1){
+        			if(result1.array != undefined)
+        			{				                     	
+                  		sessionStorage.setItem("itemno","");
+             			sessionStorage.setItem("itemno",result1.array[0].actualitemcode);
+             			itemno = result1.array[0].actualitemcode;
+             			$('#itemno').val(result1.array[0].actualitemcode); 
+             			$('#lblDesc').text(result1.array[0].itemdescription);             			             				
+             			getInvoiceList();			                     	
+        			}
+        			else
+        				getLangText("Item No found");  
+                },
+                function()
+                {
+                 	console.warn("Error calling plugin");
+                });
+            }
+    	}
+        
+        function scannerFailure(message) {
+            console.log("scannerFailure: message: " + message)
+            
+        }
+        
+        function getInvoiceList()
+        {    
+            var Qty;
+            Qty = "returnqty";            
+                        
+            if(itemno == "" || itemno == null)
+                return false;
+                
+            if(sessionStorage.getItem("CaseEnabled") != 1)
+            {
+                $("#tdCaseLabel").hide();
+                $("#txtCase").hide();
+            }
+            
+            var Qry;            
+            if(sessionStorage.getItem("CaseEnabled") == 1)
+            {
+                Qry = "SELECT distinct im.defaultgoodreturnprice,(SELECT case when " + Qty + "=0 THEN '' ELSE (" + Qty + "/ im.unitspercase) END from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as cases,(SELECT case when " + Qty + "=0 THEN '' ELSE (" + Qty + " % im.unitspercase) END from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as units,(select reasoncode from invoicerxddetail where itemcode = im.actualitemcode and itemtransactiontype=1 and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as reason,im.unitspercase,defaultgoodreturncaseprice FROM itemmaster AS im where im.itemtype = 1 and actualitemcode = " + itemno;
+            }
+            else
+                Qry = "SELECT distinct im.defaultgoodreturnprice,(SELECT case when " + Qty + "=0 THEN '' ELSE (" + Qty + " % im.unitspercase) END from invoicedetail invd where istemp='true' and invd.itemcode = im.actualitemcode and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as units,(select reasoncode from invoicerxddetail where itemcode = im.actualitemcode and itemtransactiontype=1 and routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey") + ") as reason,im.unitspercase,defaultgoodreturncaseprice FROM itemmaster AS im where im.itemtype = 1 and actualitemcode = " + itemno;
+            console.log(Qry)
+            
+            if(platform=='iPad')
+		    {
+            	Cordova.exec(function(result) {
+                            if(result.length > 0)
+                            {
+                                data = result;
+                                if (eval(sessionStorage.getItem("CaseEnabled")) == 1)
+                                {
+                                    $("#txtCase").val(CheckIsNaN(parseInt(data[0][1])));
+                                    $("#txtUnits").val(CheckIsNaN(parseInt(data[0][2])));
+                                    $("#ddlReason").val(parseInt(data[0][3]));
+                                    $("#ddlReason").selectmenu("refresh");
+                                }
+                                else 
+                                {                                    
+                                    $("#txtUnits").val(CheckIsNaN(parseInt(data[0][1])));
+                                    $("#ddlReason").val(parseInt(data[0][2]));
+                                    $("#ddlReason").selectmenu("refresh");
+                                }                                
+                            }
+                            getPrices();
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in binding Invoice Detail : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [Qry]);         
+            }
+            else if(platform=='Android')
+           	{
+	           		window.plugins.DataBaseHelper.select(Qry,function(result)
+					{						
+						  if(result.array != undefined)
+						  {
+		                    result = $.map(result.array, function (item, index) {
+                                if(sessionStorage.getItem("CaseEnabled") == 1)
+                                    return [[item.defaultgoodreturnprice, item.cases, item.units, item.reason, item.unitspercase, item.defaultgoodreturncaseprice]];
+                                else
+                                    return [[item.defaultgoodreturnprice,item.units,item.reason,item.unitspercase]];
+            				});
+		                   data = result;
+		                   console.log("----DATA-----");
+		                   console.log(data);
+		                   if (eval(sessionStorage.getItem("CaseEnabled")) == 1) {
+		                       $("#txtCase").val(CheckIsNaN(parseInt(data[0][1])));
+		                       $("#txtUnits").val(CheckIsNaN(parseInt(data[0][2])));
+		                       $("#ddlReason").val(parseInt(data[0][3]));
+		                       $("#ddlReason").selectmenu("refresh");
+		                   }
+		                   else {
+		                       $("#txtUnits").val(CheckIsNaN(parseInt(data[0][1])));
+		                       $("#ddlReason").val(parseInt(data[0][2]));
+		                       $("#ddlReason").selectmenu("refresh");
+		                   }
+		                   }
+                            getPrices();
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	} 
+        }
+                
+        // Function for bind category list
+        function FillReason()
+        {               
+            if(sessionStorage.getItem('batchsetting') ==1)
+            selectbatchdata();
+            if(platform=='iPad')
+		    {
+            	Cordova.exec(function(result) { 
+                          if(result.length > 0)
+                              $("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#ddlReason"));
+                          for(i=0;i<result.length;i++){                    
+                          $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlReason"));                                           
+                          }
+                          $("#ddlReason").selectmenu("refresh");
+                          getInvoiceList();
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in binding Reason : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["select code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN description Else arbdescription END AS description from retitmreasons order by code"]);         
+            
+            }
+            else if(platform=='Android')
+           	{
+	           		window.plugins.DataBaseHelper.select("select code,CASE WHEN '"+ sessionStorage.getItem('Language') +"' = 'en' THEN description Else arbdescription END AS description from retitmreasons order by code",function(result)
+					{					 	
+						if(result.array != undefined)
+						{
+		                    result = $.map(result.array, function (item, index) {                
+                				return [[item.code, item.description]];
+            				});
+                          if(result.length > 0)
+                                $("<option />" ,{value:"0",text:" -- SELECT --"}).appendTo($("#ddlReason"));
+		                  for(i=0;i<result.length;i++){                    
+                          $("<option />" ,{value:result[i][0],text:result[i][1]}).appendTo($("#ddlReason"));                                           
+                          }
+                          $("#ddlReason").selectmenu("refresh");
+                         }
+                        getInvoiceList();
+		                
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	} 
+        }
+        
+        function getPrices()
+        {
+                
+	        	if(sessionStorage.getItem("itemno")=='' || sessionStorage.getItem("itemno")==undefined){
+		    		$.mobile.hidePageLoadingMsg();
+		    		
+		    	}
+        	
+        		var Qry = "SELECT actualitemcode,im.defaultsalesprice AS stdsalesprice,im.caseprice AS stdsalescaseprice,im.defaultreturnprice AS stdreturnprice,im.returncaseprice AS stdreturncaseprice,CASE WHEN invoicedetail.goodreturnprice NOT NULL AND invoicedetail.goodreturnprice > 0 THEN invoicedetail.goodreturnprice ELSE (case when pd.returnprice NOT NULL AND pd.returnprice > 0 THEN pd.returnprice else im.defaultgoodreturnprice end) END AS stdgoodreturnprice,CASE WHEN invoicedetail.goodreturncaseprice NOT NULL AND invoicedetail.goodreturncaseprice > 0 THEN invoicedetail.goodreturncaseprice ELSE (case when pd.returncaseprice NOT NULL AND pd.returncaseprice > 0 THEN pd.returncaseprice else im.defaultgoodreturncaseprice end) END AS stdgoodreturncaseprice,CASE WHEN invoicedetail.returnprice NOT NULL AND invoicedetail.returnprice > 0 THEN invoicedetail.returnprice ELSE (CASE WHEN pd.returnprice NOT NULL AND pd.returnprice > 0  THEN pd.returnprice ELSE im.defaultreturnprice END) END AS returnprice,CASE WHEN invoicedetail.returncaseprice NOT NULL AND invoicedetail.returncaseprice > 0 THEN invoicedetail.returncaseprice ELSE (CASE WHEN pd.returncaseprice NOT NULL AND pd.returncaseprice > 0  THEN pd.returncaseprice ELSE im.returncaseprice END) END AS returncaseprice, CASE WHEN invoicedetail.salesprice NOT NULL AND invoicedetail.salesprice > 0 THEN invoicedetail.salesprice ELSE (CASE WHEN pd.salesprice NOT NULL AND pd.salesprice > 0  THEN pd.salesprice ELSE im.defaultsalesprice END) END AS salesprice, CASE WHEN invoicedetail.salescaseprice NOT NULL AND invoicedetail.salescaseprice > 0 THEN invoicedetail.salescaseprice ELSE (CASE WHEN pd.salescaseprice NOT NULL AND pd.salescaseprice > 0 THEN pd.salescaseprice ELSE im.caseprice END) END AS caseprice,im.costcaseprice,im.defaultcostprice FROM itemmaster AS im LEFT JOIN startingloaddetail sld on sld.itemcode = actualitemcode AND strftime('%Y-%m-%d',sld.ddate)=date() and sld.status = 1 and sld.routecode = " + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " left join invoicedetail on invoicedetail.itemcode = im.actualitemcode and invoicedetail.routekey=" + sessionStorage.getItem("RouteKey") + " and invoicedetail.visitkey=" + sessionStorage.getItem("VisitKey") + " left join pricingdetail1 pd on pd.itemcode = actualitemcode and pd.customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where im.itemtype=1 AND im.actualitemcode = " + sessionStorage.getItem("itemno");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        ArrPrice = result;
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    var array = $.map(result.array, function(item, index) {
+                        return [[item.actualitemcode, item.stdsalesprice, item.stdsalescaseprice, item.stdreturnprice, item.stdreturncaseprice, item.stdgoodreturnprice, item.stdgoodreturncaseprice, item.returnprice, item.returncaseprice, item.salesprice, item.caseprice, item.costcaseprice, item.defaultcostprice]];
+                    });                    
+                    ArrPrice = array;
+                    getTodayInvoice();
+                	},
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+        }
+        function getTodayInvoice(){
+        	
+        	
+        	var cDate = new Date();
+            
+            var tDate = ("0" + cDate.getDate()).slice(-2)+'-'+("0" + (cDate.getMonth() + 1)).slice(-2) + '-' + cDate.getFullYear(); // Change
+																																	// after
+																																	// merge
+																																	// js
+																																	// file
+            $("#startdate").val(tDate);
+            $("#startdate").trigger('datebox',{'method':'set','value':  $("#startdate").val(),'date':new Date($("#startdate").val())})
+            $("#startdate").datebox("refresh");
+            $.mobile.hidePageLoadingMsg();
+        	
+        	
+        }
+        function Validate()
+        {
+        	itemno = sessionStorage.getItem("itemno");
+            if(itemno == "" || itemno == null || itemno === undefined)
+            {
+                getLangText("Please Select Item.");
+                return false;
+            }
+            if($("#ddlReason").get(0).selectedIndex == 0)
+            {
+                getLangText("Please Select A Reason.");
+                return false;
+            }
+            else
+                CheckItemPrice();
+        }
+        
+        function CheckInvoiceDetailItemCount()
+        {
+            
+            if(platform=='iPad')
+		    {
+            		Cordova.exec(function(result) 
+            		{          
+                          
+                          if(result.length > 0)
+                          {
+	                          if(result[0][0] == 0)
+	                          {                            
+	                            fetchqty(0);
+	                          }
+	                          else
+	                          {
+	                            fetchqty(1);
+	                          }
+                          }
+                          
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in check invoice detail item count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["Select Count(routekey) From invoicedetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +""]);    
+        	}
+        	else if(platform=='Android')
+           	{
+	           		window.plugins.DataBaseHelper.select("Select Count(routekey) as routekey From invoicedetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +"",function(result)
+					{		
+						if(result.array != undefined)
+						{											
+		                  result = $.map(result.array, function (item, index) {                
+                				return [[item.routekey]];
+            			  });            				
+		                  if(result.length > 0)
+                          {                          
+	                          if(result[0][0] == 0)
+	                          {                            
+	                            fetchqty(0);
+	                          }
+	                          else
+	                          {                           
+	                            fetchqty(1);
+	                          }
+                          }
+						}		                
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	} 
+        }
+        function fetchqty(flag)
+        {
+        	var qry = "Select sum(ifnull(quantity,0)) as quantity  From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +" and itemtransactiontype = 1";
+        	if(platform=='iPad')
+		    {
+        		Cordova.exec(function(result) 
+        		{          
+                          
+	                          if(result.length > 0)
+	                          {
+	                            if(flag == 0)
+								    InsertInvoiceDetail(result[0][0]);
+							    else
+							    	UpdateInvoiceDetail(result[0][0]);
+	                          }
+                          
+                          },
+                          function(error) {
+                            navigator.notification.alert("Error in check invoice rx detail item count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          [qry]);    
+        	}
+        	else if(platform=='Android')
+           	  	{
+	           		window.plugins.DataBaseHelper.select(qry,function(result)
+					{
+					 	 
+					 	 if(result.array != undefined)
+					 	 {
+					 	 	result = $.map(result.array, function (item, index) {                
+                				return [[item.quantity]];
+            				});            			
+						 	if(result.length > 0)
+							{
+									if(flag == 0)
+									InsertInvoiceDetail(result[0][0]);
+									else
+									UpdateInvoiceDetail(result[0][0]);
+							}
+                         }
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	}
+	}
+        function InsertInvoiceDetail(Qty)
+        {          	
+            
+            
+            var ADDstdsalesprice = ArrPrice[0][1];
+            var ADDstdsalescaseprice = ArrPrice[0][2];
+            var ADDstdreturnprice = ArrPrice[0][3];
+            var ADDstdreturncaseprice = ArrPrice[0][4];
+            var ADDstdgoodreturnprice = ArrPrice[0][5];
+            var ADDstdgoodreturncaseprice = ArrPrice[0][6];
+            var ADDreturnprice = ArrPrice[0][7];
+            var ADDreturncaseprice = ArrPrice[0][8];
+            var ADDsalesprice = ArrPrice[0][9];
+            var ADDsalescaseprice = ArrPrice[0][10];
+          
+            if(Qty != 0)
+            {
+            if(sessionStorage.getItem('batchsetting') ==1){
+                var selectqry = "select allowbatchentry from itemmaster where actualitemcode="+itemno;
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                               
+                                               if(eval(result[0][0]) == 0)
+                                               {
+                                               deletebatchexpiry(itemno,sessionStorage.getItem('RouteKey'),sessionStorage.getItem('VisitKey'), parseInt(Qty),18,'returnqty');                                                     }
+                                               
+                                               },
+                                               function(error) {
+                                               alert(error);},
+                                               "PluginClass", 
+                                               "GetdataMethod", 
+                                               [selectqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                         {
+                                                         
+                                                         result = $.map(result.array, function (item, index) {
+                                                                        
+                                                                        return [[item.allowbatchentry]];
+                                                                        });
+                                                         if(eval(result[0][0]) == 0)
+                                                         {
+                                                         deletebatchexpiry(itemno,sessionStorage.getItem('RouteKey'),sessionStorage.getItem('VisitKey'), parseInt(Qty),18,'returnqty');
+                                                         }
+                                                         
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                }
+                if(platform=='iPad')
+                {                  
+                    Cordova.exec(function(result) 
+                          {
+                               ClearVariables();  
+                                  // navigator.notification.alert("Insert
+									// Invoice Detail Successfully");
+                      // InsertInvoiceRXDetail();
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error inserting record in a invoice detail");
+                          },
+                          "PluginClass", 
+                          "InsertUpdateMethod",
+                          ["Insert Into invoicedetail(routekey,transactionkey,visitkey,itemcode,returnqty,goodreturnprice,mdat,istemp,issync,goodreturncaseprice,displayitem,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice,stdgoodreturnprice,stdgoodreturncaseprice,returnprice,returncaseprice,salesprice,salescaseprice) values(" + sessionStorage.getItem('RouteKey') + ",0," + sessionStorage.getItem('VisitKey') + "," + itemno + "," + parseInt(Qty) + "," + ADDstdgoodreturnprice  + ",datetime(),'true',0," + ADDstdgoodreturncaseprice + ",1," + ADDstdsalesprice + "," + ADDstdsalescaseprice + "," + ADDstdreturnprice + "," + ADDstdreturncaseprice + "," + ADDstdgoodreturnprice + "," + ADDstdgoodreturncaseprice + "," + ADDreturnprice + "," + ADDreturncaseprice + "," + ADDsalesprice + "," + ADDsalescaseprice + ")"
+                           ]);
+                }
+                else if(platform=='Android')
+           	  	{
+           	  	    window.plugins.DataBaseHelper.insert("Insert Into invoicedetail(routekey,transactionkey,visitkey,itemcode,returnqty,goodreturnprice,mdat,istemp,issync,goodreturncaseprice,displayitem,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice,stdgoodreturnprice,stdgoodreturncaseprice,returnprice,returncaseprice,salesprice,salescaseprice) values(" + sessionStorage.getItem('RouteKey') + ",0," + sessionStorage.getItem('VisitKey') + "," + itemno + "," + parseInt(Qty) + "," + ADDstdgoodreturnprice  + ",datetime(),'true',0," + ADDstdgoodreturncaseprice + ",1," + ADDstdsalesprice + "," + ADDstdsalescaseprice + "," + ADDstdreturnprice + "," + ADDstdreturncaseprice + "," + ADDstdgoodreturnprice + "," + ADDstdgoodreturncaseprice + "," + ADDreturnprice + "," + ADDreturncaseprice + "," + ADDsalesprice + "," + ADDsalescaseprice + ")", function(result)
+					{
+					     // ClearVariables();
+					 	 // navigator.notification.alert("Insert Invoice Detail Successfully");
+                         // InsertInvoiceRXDetail();
+					 	 updateTaxForInvoiceDetail(itemno);
+					},
+					function()
+					{
+				   	 	console.warn("Error calling plugin");
+					});
+           	 	} 
+            }
+            else
+            {
+                getLangText("Please Enter Quantity.");
+            }
+        }
+        
+        function updateTaxForInvoiceDetail(ItemCode){ //alert("updateTaxForInvoiceDetail");
+    	var Qry="UPDATE invoicedetail  SET "
+        	+"salesitemexcisetax=(CASE WHEN (select enabletax from itemmaster where actualitemcode = "+ItemCode+") = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.salesqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN ( ( cast(( (COALESCE(sd.salesqty,0))/ im.unitspercase) as int)*sd.salescaseprice) + (((COALESCE(sd.salesqty,0))% im.unitspercase)*sd.salesprice))*(tm.taxpercentage/100) "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((COALESCE(sd.salesqty,0)))*sd.salesprice)*tm.taxpercentage/100 END"
+    			+" as salesexcisetax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey1 WHERE sd.itemcode=invoicedetail.itemcode) END),"				
+    					
+    		+" returnitemexcisetax=(CASE WHEN (select enabletax from itemmaster where actualitemcode = "+ItemCode+") = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.returnqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN ( ( cast(( (COALESCE(sd.returnqty,0))/ im.unitspercase) as int)*sd.goodreturncaseprice) + (((COALESCE(sd.returnqty,0))% im.unitspercase)*sd.goodreturnprice))*(tm.taxpercentage/100) "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((COALESCE(sd.returnqty,0)))*sd.goodreturnprice)*tm.taxpercentage/100 END"
+    			+" as returnexcisetax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey1 WHERE sd.itemcode=invoicedetail.itemcode) END),"
+    					
+    		+"damageditemexcisetax=(CASE WHEN (select enabletax from itemmaster where actualitemcode = "+ItemCode+") = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.damagedqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN ( ( cast(( (COALESCE(sd.damagedqty,0))/ im.unitspercase) as int)*sd.returncaseprice) + (((COALESCE(sd.damagedqty,0))% im.unitspercase)*sd.returnprice))*(tm.taxpercentage/100)"
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((COALESCE(sd.damagedqty,0)))*sd.returnprice)*tm.taxpercentage/100 END"
+    			+" as damagedexcisetax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey1 WHERE sd.itemcode=invoicedetail.itemcode) END),"
+    			
+    		+"promoitemexcisetax=(CASE WHEN 0 = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.freesampleqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN ( ( cast(( (COALESCE(sd.freesampleqty,0))/ im.unitspercase) as int)*sd.salescaseprice) + (((COALESCE(sd.freesampleqty,0))% im.unitspercase)*sd.salesprice))*(tm.taxpercentage/100)"
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((COALESCE(sd.freesampleqty,0)))*sd.salesprice)*tm.taxpercentage/100 END "
+    			+"as promofreeexcisetax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey1 WHERE sd.itemcode=invoicedetail.itemcode) END),"
+    			
+    		+"fgitemexcisetax=(CASE WHEN 0 = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN(COALESCE(sd.manualfreeqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN ( ( cast(( (COALESCE(sd.manualfreeqty,0))/ im.unitspercase) as int)*sd.salescaseprice) + (((COALESCE(sd.manualfreeqty,0))% im.unitspercase)*sd.salesprice))*(tm.taxpercentage/100) "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((COALESCE(sd.manualfreeqty,0)))*sd.salesprice)*tm.taxpercentage/100 END "
+    			+" as focexcisetax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey1 WHERE sd.itemcode=invoicedetail.itemcode) END),"
+    		
+    		 +"buybackexcisetax=(CASE WHEN 0 = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN(COALESCE(sd.returnfreeqty,0))*tm.taxpercentage/100 "
+    				+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN ( ( cast(( (COALESCE(sd.returnfreeqty,0))/ im.unitspercase) as int)*sd.goodreturncaseprice) + (((COALESCE(sd.returnfreeqty,0))% im.unitspercase)*sd.goodreturnprice))*(tm.taxpercentage/100) "
+    				+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((COALESCE(sd.returnfreeqty,0)))*sd.goodreturnprice)*tm.taxpercentage/100 END "
+    				+" as buybackexcisetax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    				+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    				+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey1 WHERE sd.itemcode=invoicedetail.itemcode) END),"
+    			
+    		+"salesitemgsttax=(CASE WHEN (select enabletax from itemmaster where actualitemcode = "+ItemCode+") = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.salesqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN (((cast(((COALESCE(sd.salesqty,0))/ im.unitspercase)as int)*sd.salescaseprice +(((COALESCE(sd.salesqty,0)))% im.unitspercase)*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100  "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((((COALESCE(sd.salesqty,0)))*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100 END"
+    			+" as salesitemgsttax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey2 WHERE sd.itemcode=invoicedetail.itemcode) END),"				
+    					
+    		+" returnitemgsttax=(CASE WHEN (select enabletax from itemmaster where actualitemcode = "+ItemCode+") = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.returnqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN  (CASE WHEN COALESCE(sd.returnqty,0)=0 THEN (cast(((COALESCE(sd.returnqty,0))/ im.unitspercase)as int)*sd.goodreturncaseprice +((COALESCE(sd.returnqty,0))% im.unitspercase)*sd.goodreturnprice) ELSE ((cast(((COALESCE(sd.returnqty,0))/ im.unitspercase)as int)*sd.goodreturncaseprice +((COALESCE(sd.returnqty,0))% im.unitspercase)*sd.goodreturnprice)-coalesce(sd.returnpromovalue,0))END)*tm.taxpercentage/100   "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (CASE WHEN COALESCE(sd.returnqty,0)=0 THEN ((COALESCE(sd.returnqty,0))*sd.goodreturnprice) ELSE (((COALESCE(sd.returnqty,0))*sd.goodreturnprice)-coalesce(sd.returnpromovalue,0))END)*tm.taxpercentage/100 END"
+    			+" as returnitemgsttax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey2 WHERE sd.itemcode=invoicedetail.itemcode) END),"
+    					
+    		+"damageditemgsttax=(CASE WHEN (select enabletax from itemmaster where actualitemcode = "+ItemCode+") = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.damagedqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN (CASE WHEN COALESCE(sd.damagedqty,0)=0 THEN (cast(((COALESCE(sd.damagedqty,0))/ im.unitspercase)as int)*sd.returncaseprice +((COALESCE(sd.damagedqty,0))% im.unitspercase)*sd.returnprice) ELSE ((cast(((COALESCE(sd.damagedqty,0))/ im.unitspercase)as int)*sd.returncaseprice +((COALESCE(sd.damagedqty,0))% im.unitspercase)*sd.returnprice)-coalesce(sd.returnpromovalue,0))END)*tm.taxpercentage/100   "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (CASE WHEN COALESCE(sd.damagedqty,0)=0 THEN ((COALESCE(sd.damagedqty,0))*sd.returnprice) ELSE (((COALESCE(sd.damagedqty,0))*sd.returnprice)-coalesce(sd.returnpromovalue,0))END)*tm.taxpercentage/100 END"
+    			+" as damageditemgsttax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey2 WHERE sd.itemcode=invoicedetail.itemcode) END),"
+    			
+    		+"promoitemgsttax=(CASE WHEN 0 = 0 THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.freesampleqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN (((cast(((COALESCE(sd.freesampleqty,0))/ im.unitspercase)as int)*sd.salescaseprice +(((COALESCE(sd.freesampleqty,0)))% im.unitspercase)*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100  "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((((COALESCE(sd.freesampleqty,0)))*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100 END"
+    			+" as promoitemgsttax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey2 WHERE sd.itemcode=invoicedetail.itemcode) END),"				
+    			
+    		+"fgitemgsttax=(CASE WHEN 0 = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.manualfreeqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN (((cast(((COALESCE(sd.manualfreeqty,0))/ im.unitspercase)as int)*sd.salescaseprice +(((COALESCE(sd.manualfreeqty,0)))% im.unitspercase)*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100  "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((((COALESCE(sd.manualfreeqty,0)))*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100 END"
+    			+" as fgitemgsttax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey2 WHERE sd.itemcode=invoicedetail.itemcode) END),"				
+    			
+    		+"buybackgsttax=(CASE WHEN 0 = 0  THEN 0 ELSE (SELECT CASE WHEN COALESCE(im.defaultsalesprice,0)>0 and tm.taxbase = 2 THEN (COALESCE(sd.returnfreeqty,0))*tm.taxpercentage/100 "
+    			+"WHEN im.unitspercase>1 and tm.taxbase = 1 THEN (((cast(((COALESCE(sd.returnfreeqty,0))/ im.unitspercase)as int)*sd.salescaseprice +(((COALESCE(sd.returnfreeqty,0)))% im.unitspercase)*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100  "
+    			+" WHEN im.unitspercase<=1 and tm.taxbase = 1 THEN (((((COALESCE(sd.returnfreeqty,0)))*sd.salesprice))-coalesce(sd.promovalue,0))*tm.taxpercentage/100 END"
+    			+" as buybackgsttax FROM invoicedetail sd INNER JOIN itemmaster im ON "
+    			+"sd.itemcode=im.actualitemcode AND sd.visitkey="+sessionStorage.getItem('VisitKey')
+    			+" inner join taxmaster tm on tm.taxcode=im.itemtaxkey2 WHERE sd.itemcode=invoicedetail.itemcode) END)"		
+    			
+    			+" where visitkey = "+sessionStorage.getItem('VisitKey')+" and routekey = " + sessionStorage.getItem('RouteKey') + "";
+    			
+    	console.log("Qry%%%%%"+Qry);	
+    	if (platform == 'Android') 
+     {
+         window.plugins.DataBaseHelper.select(Qry, function(result) {       
+
+        	 updateRoundingInvoiceDetails1();
+           
+         },
+    		function() {
+    		    console.warn("Error calling plugin");
+    		});
+     }
+    }
+    
+        function updateRoundingInvoiceDetails1(){
+        	
+          	 var decimalplace = sessionStorage.getItem("decimalplace");
+          	 if(decimalplace==null || decimalplace==undefined){
+          		 decimalplace=3;
+          	 }
+          	 $.mobile.hidePageLoadingMsg();  
+          	 $.mobile.showPageLoadingMsg(); 
+          	try{
+          		var Qry="select CAST(itemcode AS VARCHAR) itemcode,ifnull(salesitemgsttax,0) salesitemgsttax,ifnull(salesitemexcisetax,0) salesitemexcisetax,ifnull(returnitemexcisetax,0) returnitemexcisetax,ifnull(returnitemgsttax,0) returnitemgsttax,ifnull(damageditemexcisetax,0) damageditemexcisetax,ifnull(damageditemgsttax,0) damageditemgsttax,ifnull(fgitemexcisetax,0) fgitemexcisetax,ifnull(fgitemgsttax,0) fgitemgsttax,ifnull(promoitemexcisetax,0) promoitemexcisetax,ifnull(promoitemgsttax,0) promoitemgsttax from invoicedetail where visitkey="+sessionStorage.getItem("VisitKey");
+          		window.plugins.DataBaseHelper.select(Qry, function(result) {
+          	         
+          	         if(!$.isEmptyObject(result))
+          	         {
+          	        	 $.each(result.array, function(index, item) {
+          	        		
+          	        		 
+          	        		 //eval((Math.round(num * 100) / 100)).toFixed(2)
+          	        		 var salesitemexcisetax=eval(((item.salesitemexcisetax * 100) / 100)).toFixed(decimalplace);
+          	        		 var salesitemgsttax=eval(((item.salesitemgsttax * 100) / 100)).toFixed(decimalplace);
+          	        		 var returnitemexcisetax=eval(((item.returnitemexcisetax * 100) / 100)).toFixed(decimalplace);
+          	        		 var returnitemgsttax=eval(((item.returnitemgsttax * 100) / 100)).toFixed(decimalplace);
+          	        		 var damageditemexcisetax=eval(((item.damageditemexcisetax * 100) / 100)).toFixed(decimalplace);
+          	        		 var damageditemgsttax=eval(((item.damageditemgsttax * 100) / 100)).toFixed(decimalplace);
+          	        		
+          	        		 var fgitemexcisetax=eval(((item.fgitemexcisetax * 100) / 100)).toFixed(decimalplace);
+          	        		 var fgitemgsttax=eval(((item.fgitemgsttax * 100) / 100)).toFixed(decimalplace);
+          	        		 var promoitemexcisetax=eval(((item.promoitemexcisetax * 100) / 100)).toFixed(decimalplace);
+          	        		 var promoitemgsttax=eval(((item.promoitemgsttax * 100) / 100)).toFixed(decimalplace);
+          	        		 var itemcode=item.itemcode;
+          	        		 var QryUpdate="UPDATE invoicedetail set salesitemexcisetax='"+salesitemexcisetax+"',salesitemgsttax='"+salesitemgsttax+"',returnitemexcisetax='"+returnitemexcisetax+"',returnitemgsttax='"+returnitemgsttax+"',damageditemexcisetax='"+damageditemexcisetax+"',damageditemgsttax='"+damageditemgsttax+"',fgitemexcisetax='"+fgitemexcisetax+"',fgitemgsttax='"+fgitemgsttax+"',promoitemexcisetax='"+promoitemexcisetax+"',promoitemgsttax='"+promoitemgsttax+"' where visitkey="+sessionStorage.getItem("VisitKey")+" and itemcode="+itemcode; 
+          	        			 		
+          	    			window.plugins.DataBaseHelper.insert(QryUpdate, function(result1) {
+          	    				
+          	    				if(index==(result.array.length-1)){
+          	    					$.mobile.hidePageLoadingMsg();  
+          	    					updateTotalLineItemTax1();
+          	    				}
+          	    			 
+          	    		    },
+          	    		    function() {
+          	    		    console.warn("Error calling plugin");
+          	    		    });
+          	        		 
+          	        		 
+          	        		 	
+          	        	 });
+          	         }
+          	     	},
+          			function() {
+          			    console.warn("Error calling plugin");
+          			});
+          		
+          		
+          		
+          	}catch(e){
+          		$.mobile.hidePageLoadingMsg();  
+          		updateTotalLineItemTax1();
+          	} 
+          }
+        
+    
+        function updateTotalLineItemTax1(){
+          	 var decimalplace = sessionStorage.getItem("decimalplace");
+          	 if(decimalplace==null || decimalplace==undefined){
+          		 decimalplace=3;
+          	 }
+
+          	 var Qry="UPDATE invoiceheader set itemlinetaxamount =ROUND(((Select COALESCE(SUM(ROUND(salesitemexcisetax,"+decimalplace+")),0) +COALESCE(SUM(ROUND(salesitemgsttax,"+decimalplace+")),0)-COALESCE(SUM(ROUND(returnitemexcisetax,"+decimalplace+")),0) -COALESCE(SUM(ROUND(returnitemgsttax,"+decimalplace+")),0) -COALESCE(SUM(ROUND(damageditemexcisetax,"+decimalplace+")),0)-COALESCE(SUM(ROUND(damageditemgsttax,"+decimalplace+")),0) + COALESCE(SUM(ROUND(fgitemexcisetax,"+decimalplace+")),0) +COALESCE(SUM(ROUND(fgitemgsttax,"+decimalplace+")),0) +COALESCE(SUM(ROUND(promoitemexcisetax,"+decimalplace+")),0) +COALESCE(SUM(ROUND(promoitemgsttax,"+decimalplace+")),0) -COALESCE(SUM(ROUND(buybackexcisetax,"+decimalplace+")),0) -COALESCE(SUM(ROUND(buybackgsttax,"+decimalplace+")),0)  from invoicedetail "
+          	 				+"where invoicedetail.routekey="+sessionStorage.getItem('RouteKey')
+          	 				+" and invoicedetail.visitkey="+sessionStorage.getItem('VisitKey')+")),"+decimalplace+")"
+          	 				+"where routekey="+sessionStorage.getItem('RouteKey')+" and visitkey="+sessionStorage.getItem('VisitKey');
+          	 		
+          	 
+          	if (platform == 'Android') 
+           {
+               window.plugins.DataBaseHelper.select(Qry, function(result) {    
+              	updateInvoiceLevelTax1();
+                 
+               },
+          		function() {
+          		    console.warn("Error calling plugin");
+          		});
+           }
+          }
+           
+           function updateInvoiceLevelTax1(){
+           	
+           	var Qry="UPDATE invoiceheader set totaltaxesamount= (select taxAmount from "
+           	+"(select cm.custtaxkey1,tm.taxtype,tm.taxpercentage,case when tm.taxtype=1 then "
+           	+" ( (COALESCE(ih.totalsalesamount,0)-COALESCE(ih.totalpromoamount,0)+COALESCE(ih.itemlinetaxamount,0) +COALESCE(ih.diffround,0))*tm.taxpercentage/100)  else 0 END taxAmount " 
+           	+"from customermaster cm inner join taxmaster  tm on cm.custtaxkey1=tm.taxcode "
+           	+"inner join invoiceheader ih on routekey="+sessionStorage.getItem('RouteKey')
+           	+" and visitkey="+sessionStorage.getItem('VisitKey')+" where  cm.customercode="+sessionStorage.getItem('customerid')
+           	+") where routekey="+sessionStorage.getItem('RouteKey')+" and visitkey="+sessionStorage.getItem('VisitKey')+")";
+           	
+           	if (platform == 'Android') 
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {     
+               	// alert("tax aupdated");
+                },
+           		function() {
+           		    console.warn("Error calling plugin");
+           		});
+            }
+           }
+    
+        function InsertInvoiceRXDetail(CurrQty,Code,expirydate,invoicenumber)
+        {       
+        	
+        	
+            var Qty = CurrQty;            
+            console.log("Insert Into invoicerxddetail(routekey,visitkey,transactionkey, itemtransactiontype,itemcode,itemtranstypeseq,reasoncode,quantity,istemp,issync,expirydate) values(" + sessionStorage.getItem('RouteKey') + "," + sessionStorage.getItem('VisitKey') + ",0,1," + itemno + ",0," + Code + "," + parseInt(Qty) + ",'true',0,"+expirydate+")");
+            // Insert Invoice Detail
+            if(platform=='iPad')
+		    {                  
+            Cordova.exec(function(result) 
+                          {                          
+                           // ClearVariables();
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error inserting record in a invoice rx detail");
+                          },
+                          "PluginClass", 
+                          "InsertUpdateMethod", 
+                          ["Insert Into invoicerxddetail(routekey,visitkey,transactionkey, itemtransactiontype,itemcode,itemtranstypeseq,reasoncode,quantity,istemp,issync,expirydate,invoicenumber) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,1,"+ itemno +",0,"+ Code +","+ parseInt(Qty) +",'true',0,'"+expirydate+"','"+invoicenumber+"')"]);
+        	}
+        	 else if(platform=='Android')
+           	  	{
+           	  	    window.plugins.DataBaseHelper.insert("Insert Into invoicerxddetail(routekey,visitkey,transactionkey, itemtransactiontype,itemcode,itemtranstypeseq,reasoncode,quantity,istemp,issync,expirydate,invoicenumber) values(" + sessionStorage.getItem('RouteKey') + "," + sessionStorage.getItem('VisitKey') + ",0,1," + itemno + ",0," + Code + "," + parseInt(Qty) + ",'true',0,'"+expirydate+"','"+invoicenumber+"')", function(result)
+					{					 	
+                       
+                        Validateitem();                         
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	} 
+        }
+        
+        function UpdateInvoiceDetail(Qty)
+        {   
+            
+            var ADDstdsalesprice = ArrPrice[0][1];
+            var ADDstdsalescaseprice = ArrPrice[0][2];
+            var ADDstdreturnprice = ArrPrice[0][3];
+            var ADDstdreturncaseprice = ArrPrice[0][4];
+            var ADDstdgoodreturnprice = ArrPrice[0][5];
+            var ADDstdgoodreturncaseprice = ArrPrice[0][6];
+            var ADDreturnprice = ArrPrice[0][7];
+            var ADDreturncaseprice = ArrPrice[0][8];
+            var ADDsalesprice = ArrPrice[0][9];
+            var ADDsalescaseprice = ArrPrice[0][10];
+            
+            // if(Qty != 0)
+            // {
+            if(sessionStorage.getItem('batchsetting') ==1){
+                var selectqry = "select allowbatchentry from itemmaster where actualitemcode="+itemno;
+                if(platform=='iPad')
+                {
+                    Cordova.exec(function(result) {
+                                               
+                                               if(eval(result[0][0]) == 0)
+                                               {
+                                               deletebatchexpiry(itemno,sessionStorage.getItem('RouteKey'),sessionStorage.getItem('VisitKey'), parseInt(Qty),18,'returnqty');                                                     }
+                                               
+                                               },
+                                               function(error) {
+                                               alert(error);},
+                                               "PluginClass", 
+                                               "GetdataMethod", 
+                                               [selectqry]);
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select(selectqry,function(result)
+                                                         {
+                                                         
+                                                         result = $.map(result.array, function (item, index) {
+                                                                        
+                                                                        return [[item.allowbatchentry]];
+                                                                        });
+                                                         if(eval(result[0][0]) == 0)
+                                                         {
+                                                         deletebatchexpiry(itemno,sessionStorage.getItem('RouteKey'),sessionStorage.getItem('VisitKey'), parseInt(Qty),18,'returnqty');
+                                                         }
+                                                         
+                                                         
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+                }
+                // Update Invoice Detail
+                 if(platform=='iPad')
+		    	{                   
+                Cordova.exec(function(result) 
+                              {                              
+                             // CheckInvoiceRXDetailItemCount();
+			     ClearVariables();
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error updating record in a invoice detail");
+                              },
+                              "PluginClass", 
+                              "InsertUpdateMethod",
+                              ["Update invoicedetail set returnqty = " + parseInt(Qty) + ",goodreturnprice = " + ADDstdgoodreturnprice + ",mdat = datetime(),issync=0,goodreturncaseprice=" + ADDstdgoodreturncaseprice + ",stdsalesprice = " + ADDstdsalesprice + ",stdsalescaseprice = " + ADDstdsalescaseprice + ",stdreturnprice = " + ADDstdreturnprice + ",stdreturncaseprice=" + ADDstdreturncaseprice + ",stdgoodreturnprice=" + ADDstdgoodreturnprice + ",stdgoodreturncaseprice=" + ADDstdgoodreturncaseprice + ",returnprice=" + ADDreturnprice + ",returncaseprice=" + ADDreturncaseprice + ",salesprice=" + ADDsalesprice + ",salescaseprice=" + ADDsalescaseprice + " where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and itemcode = " + itemno + ""]);                              
+            	}
+           		 else if(platform=='Android')
+           	  	{
+           	  	    window.plugins.DataBaseHelper.insert("Update invoicedetail set returnqty = " + parseInt(Qty) + ",goodreturnprice = " + ADDstdgoodreturnprice + ",mdat = datetime(),issync=0,goodreturncaseprice=" + ADDstdgoodreturncaseprice + ",stdsalesprice = " + ADDstdsalesprice + ",stdsalescaseprice = " + ADDstdsalescaseprice + ",stdreturnprice = " + ADDstdreturnprice + ",stdreturncaseprice=" + ADDstdreturncaseprice + ",stdgoodreturnprice=" + ADDstdgoodreturnprice + ",stdgoodreturncaseprice=" + ADDstdgoodreturncaseprice + ",returnprice=" + ADDreturnprice + ",returncaseprice=" + ADDreturncaseprice + ",salesprice=" + ADDsalesprice + ",salescaseprice=" + ADDsalescaseprice + " where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and itemcode = " + itemno + "", function(result)
+					{
+					 	 // navigator.notification.alert("Update Invoice
+							// Detail Successfully");
+                            // CheckInvoiceRXDetailItemCount();
+			    		// ClearVariables();
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	}
+            // }
+           // else
+            // {
+              // navigator.notification.alert("Please Enter Quantity.");
+            // }
+        }
+        
+        function CheckInvoiceRXDetailItemCount(CurrQty,Code,expirydate)
+        {
+           if(platform=='iPad')
+		    {
+            Cordova.exec(function(result) {
+                          if(result.length > 0)
+                          {
+                          if(result[0][0] == 0)
+                          {
+                          InsertInvoiceRXDetail(CurrQty,Code,expirydate);
+                          }
+                          else
+                          {
+                          UpdateInvoiceRXDetail(CurrQty,Code,expirydate);
+                          }
+                          }
+                          
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in check invoice rx detail item count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["Select Count(routekey) From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +" and reasoncode ="+ Code +" and itemtransactiontype = 1"]);    
+        	}
+        	 else if(platform=='Android')
+           	  	{
+	           		window.plugins.DataBaseHelper.select("Select Count(routekey) as cnt From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +" and reasoncode ="+ Code +" and itemtransactiontype = 1",function(result)
+					{
+					 	
+					 	 if(result.array != undefined)
+					 	 {
+					 	 	result = $.map(result.array, function (item, index) {                
+                				return [[item.cnt]];
+            				});            			
+					 		if(result.length > 0)
+                          	{
+					 			var invoicenumber=$('#invoicenumber :selected').val();
+                          		if(result[0][0] == 0)
+                          		{
+                          			InsertInvoiceRXDetail(CurrQty,Code,expirydate,invoicenumber);
+                          		}
+                          		else
+                          		{
+                          			UpdateInvoiceRXDetail(CurrQty,Code,expirydate,invoicenumber);
+	                          	}
+                          	}
+                        }
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	}
+        }
+        
+        function UpdateInvoiceRXDetail(CurrQty,Code,expirydate,invoicenumber)
+        {
+            
+            var Qty = CurrQty;          
+            
+           
+            
+            // Update Invoice RX Detail
+            if(platform=='iPad')
+		    {
+            Cordova.exec(function(result) 
+                          {                          
+                          // ClearVariables();
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error inserting record in a invoice rx detail");
+                          },
+                          "PluginClass", 
+                          "InsertUpdateMethod", 
+                          ["Update invoicerxddetail set quantity = "+ parseInt(Qty) +",issync=0,expirydate="+expirydate+",invoicenumber='"+invoicenumber+"' where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno + " and reasoncode=" + Code + " and itemtransactiontype = 1"]);            
+            }
+            else if(platform=='Android')
+           	  {
+           	      window.plugins.DataBaseHelper.insert("Update invoicerxddetail set quantity = " + parseInt(Qty) + ",issync=0,expirydate='"+expirydate+"',invoicenumber='"+invoicenumber+"' where routekey = " + sessionStorage.getItem('RouteKey') + " and visitkey = " + sessionStorage.getItem('VisitKey') + " and itemcode = " + itemno + " and reasoncode=" + Code + " and itemtransactiontype = 1", function(result)
+					{
+					 	Validateitem();
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 }
+        } 
+        function Validateitem()
+        {
+        	isSaved=true;
+            if(itemno == "" || itemno == null)
+            {
+                getLangText("Please Select Item.");
+                return false;
+            }            
+            else
+                CheckItem();
+        }
+        function CheckItem()
+		{
+        	if(platform=='iPad')
+		    {
+            Cordova.exec(function(result) {          
+                          
+                          if(result.length > 0)
+                          {
+                            if(result[0][0] == 0)
+                            {
+                                getLangText("Please Enter Quantity.");
+                            }
+                            else
+                            {
+                                CheckInvoiceDetailItemCount();
+                            }
+                          }
+                          
+                          },
+                          function(error) {
+                            navigator.notification.alert("Error in check invoice rx detail item count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["Select Count(routekey) as cnt From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +" and itemtransactiontype = 1"]);    
+        	}
+        	else if(platform=='Android')
+           	  	{
+	           		window.plugins.DataBaseHelper.select("Select Count(routekey) as cnt From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +" and itemtransactiontype = 1",function(result)
+					{
+					 	 
+					 	 if(result.array != undefined)
+					 	 {
+					 	 	result = $.map(result.array, function (item, index) {                
+                				return [[item.cnt]];
+            				});            			
+					 	 	if(result.length > 0)
+                          	{
+	                            if(result[0][0] == 0)
+                            	{
+	                                alert("Please Enter Quantity.");
+                            	}
+                            	else
+                            	{
+	                                CheckInvoiceDetailItemCount();
+                            	}
+                          	}
+                         }
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	}
+		}
+        function CheckItemPrice()
+        {
+           var Qry = "Select CASE WHEN inv.goodreturnprice NOT NULL AND inv.goodreturnprice > 0 THEN inv.goodreturnprice ELSE (case when pd.returnprice NOT NULL AND pd.returnprice > 0 THEN pd.returnprice else im.defaultgoodreturnprice end) END AS returnprice,CASE WHEN inv.goodreturncaseprice NOT NULL AND inv.goodreturncaseprice > 0 THEN inv.goodreturncaseprice ELSE (case when pd.returncaseprice NOT NULL AND pd.returncaseprice > 0 THEN pd.returncaseprice else im.defaultgoodreturncaseprice end) END AS returncaseprice From itemmaster im left join invoicedetail inv ON inv.itemcode = im.actualitemcode AND inv.routekey = " + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey") + " LEFT JOIN pricingdetail1 pd ON pd.itemcode = im.actualitemcode AND customerpricingkey =(select ifnull(customerpricing1.customerpricingkey,0) from customerpricing1 join customermaster on customerpricing1.pricingplankey = customermaster.pricingkey and customercode = " + sessionStorage.getItem("customerid") + ") where  im.actualitemcode = " + sessionStorage.getItem('itemno');
+            console.log(Qry);
+	    
+           if(platform=='iPad')
+		    {    
+            Cordova.exec(function(result) {          
+                         
+                          if(result.length > 0)
+                          {                         
+                                if(result[0][0] > 0)
+                                {
+                                    returnprice = result[0][0];                          
+                                    stdreturnprice = data[0][0];    
+                                }
+                                else 
+                                {
+                                    returnprice = data[0][0];
+                                    stdreturnprice = data[0][0];
+                                }
+
+                                if (sessionStorage.getItem("CaseEnabled") == 1) {
+                                    if (result[0][1] > 0)
+                                        caseprice = result[0][1];
+                                    else
+                                        caseprice = data[0][5];
+                                }
+                          }
+                          else
+                          {
+                                returnprice = data[0][0];
+                                stdreturnprice = data[0][0];
+
+                                if (sessionStorage.getItem("CaseEnabled") == 1)
+                                    caseprice = data[0][5];
+                          }
+                          CheckInvoiceDetailItemCount();
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in check item price : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod",
+                          [Qry]);  
+       		}
+       		else if(platform=='Android')
+           	  {
+           	      window.plugins.DataBaseHelper.select(Qry, function(result)
+					{			 
+					 	 if(result.array!=undefined)
+					 	 {
+                           result = $.map(result.array, function (item, index) {
+                
+                				return [[item.returnprice,item.returncaseprice]];
+            				});
+            				if (result.length > 0) {
+	            			    if (result[0][0] > 0) {
+            			        	returnprice = result[0][0];
+            			        	stdreturnprice = data[0][0];
+            			    	}
+            			    	else {
+	            			        returnprice = data[0][0];
+    	        			        stdreturnprice = data[0][0];
+            			    	}
+
+            			    	if (sessionStorage.getItem("CaseEnabled") == 1) {
+	            			        if (result[0][1] > 0)
+            			            	caseprice = result[0][1];
+            			        	else
+	            			            caseprice = data[0][5];
+            			    	}
+            				}
+            			}
+            			else {
+            			    returnprice = data[0][0];
+            			    stdreturnprice = data[0][0];
+
+            			    if (sessionStorage.getItem("CaseEnabled") == 1)
+            			        caseprice = data[0][5];
+            			}
+                        CheckInvoiceDetailItemCount();  
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 } 
+        }
+        
+        function getInventoryDetail()
+        {
+            if(platform=='iPad')
+		    {
+            Cordova.exec(function(result) {                        
+                          if(result.length > 0)
+                          {
+                            dataInventory = result;
+                          
+                          }
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in binding inventory detail : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          /*
+							 * ["Select (inventorysummarydetail.loadqty /
+							 * itemmaster.unitspercase) As LoadQty,
+							 * (inventorysummarydetail.loadqty %
+							 * itemmaster.unitspercase) As LoadUnit from
+							 * inventorysummarydetail inner join itemmaster on
+							 * inventorysummarydetail.itemcode =
+							 * itemmaster.actualitemcode where
+							 * itemmaster.actualitemcode = "+ data[index - 1][2] +"
+							 * and routekey = "+
+							 * sessionStorage.getItem('RouteKey') +""]);
+							 */
+            
+                          /*
+							 * ["Select ((inventorysummarydetail.loadqty) -
+							 * ifnull(invoicedetail.salesqty +
+							 * invoicedetail.returnqty -
+							 * invoicedetail.damagedqty ,0)) As LoadQty from
+							 * inventorysummarydetail inner join itemmaster on
+							 * inventorysummarydetail.itemcode =
+							 * itemmaster.actualitemcode and
+							 * inventorysummarydetail.routekey = "+
+							 * sessionStorage.getItem('RouteKey') +" left join
+							 * invoicedetail on invoicedetail.itemcode =
+							 * itemmaster.actualitemcode and
+							 * invoicedetail.routekey = "+
+							 * sessionStorage.getItem('RouteKey') +" and
+							 * invoicedetail.visitkey = "+
+							 * sessionStorage.getItem('VisitKey') +" where
+							 * itemmaster.actualitemcode = "+ data[index - 1][2]
+							 * +""]);
+							 */
+            
+                            ["Select (ifnull(loadqty,0) +ifnull(loadadjustqty,0)+ifnull(beginstockqty,0)+ ifnull(loadaddqty,0) - ifnull(loadcutqty,0) -  ifnull(saleqty,0) + ifnull(returnqty,0) - ifnull(freesampleqty,0)) As AvialableQty from inventorysummarydetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and itemcode = "+ itemno +""]);
+        	}
+        	else if(platform=='Android')
+           	  {
+	           		window.plugins.DataBaseHelper.select("Select (ifnull(loadqty,0) +ifnull(loadadjustqty,0)+ifnull(beginstockqty,0)+ ifnull(loadaddqty,0) - ifnull(loadcutqty,0) -  ifnull(saleqty,0) + ifnull(returnqty,0) - ifnull(freesampleqty,0)) As AvialableQty from inventorysummarydetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and itemcode = "+ itemno +"",function(result)
+					{
+					 	 if(result.array!=undefined)
+					 	 {
+                           	result = $.map(result.array, function (item, index) {                
+                				return [[item.AvialableQty]];
+            				});            			
+					 	 	if(result.length > 0)
+                          	{
+	                            dataInventory = result;                          
+                          	}
+                        }  
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 } 
+        }
+    
+        function ClearVariables()
+        {            
+            $("#itemno").val("");
+            $("#lblDesc").text("");
+            
+            sessionStorage.setItem("ItemCode","");
+            sessionStorage.setItem("ItemDesc","");
+            sessionStorage.setItem("itemno","");
+            localStorage.setItem("addgood",1);
+	    	itemno = 0;
+	     	ClearTable('tblContent');
+	    	FillReasongrid();
+	    	
+	    	if(!isSaved)
+	    	{
+	    		
+	    		window.location='salesgoodreturn.html';
+	    		
+	    	}
+	    	
+	    	
+        }
+        
+        function CheckIsNaN(val)
+        {            
+            if(isNaN(val) || $.trim(val) == "")
+                return 0;
+            else
+                return val;
+        }
+        
+        function SetFormat(obj)
+        {
+            var Num = new Number($(obj).val());            
+            $(obj).val(parseInt(Num));
+        }
+		function ClearTable(TBL) {
+                $("#" + TBL + " tr:gt(0)").remove();
+        }
+		
+		
+		// added for exit button click
+        
+        function ValidateExititem(isExist)
+        {
+        	isSaved=isExist;
+            ClearVariables();
+            
+        }
+        function CheckExitItem()
+		{
+        	if(platform=='iPad')
+		    {
+            Cordova.exec(function(result) {          
+                          
+                          if(result.length > 0)
+                          {
+                            if(result[0][0] == 0)
+                            {
+                            	 window.location='salesgoodreturn.html';
+                            }
+                            else
+                            {
+                                CheckInvoiceDetailItemCount();
+                            }
+                          }
+                          
+                          },
+                          function(error) {
+                            navigator.notification.alert("Error in check invoice rx detail item count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["Select Count(routekey) as cnt From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +" and itemtransactiontype = 1"]);    
+        	}
+        	else if(platform=='Android')
+           	  	{
+	           		window.plugins.DataBaseHelper.select("Select Count(routekey) as cnt From invoicerxddetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and itemcode = "+ itemno +" and itemtransactiontype = 1",function(result)
+					{
+					 	 
+					 	 if(result.array != undefined)
+					 	 {
+					 	 	result = $.map(result.array, function (item, index) {                
+                				return [[item.cnt]];
+            				});            			
+					 	 	if(result.length > 0)
+                          	{
+	                            if(result[0][0] == 0)
+                            	{
+	                            	 window.location='salesgoodreturn.html';
+                            	}
+                            	else
+                            	{
+	                                CheckInvoiceDetailItemCount();
+                            	}
+                          	}
+                         }
+					},
+					function()
+					{
+				   	 console.warn("Error calling plugin");
+					});
+           	 	}
+		}
+        function getDateChange()
+        {
+        	
+        	var date=parseDate($("#startdate").val());
+        	var invoicedata=[];
+        	
+        	if(platform=='iPad')
+ 		    {
+             	Cordova.exec(function(result) {                        
+                           if(result.length > 0)
+                           {
+                        	   invoicedata = result;      
+                          
+                           }
+                           },
+                           function(error) {
+                             navigator.notification.alert("Error in binding inventory detail : " + error);
+                           },
+                           "PluginClass", 
+                           "GetdataMethod", 
+                           ["select distinct * from routebook where strftime('%Y-%m-%d',date)='"+date+"' and customecode='"+sessionStorage.getItem("customerid")+"'"]);
+         
+         	}
+         	else if(platform=='Android')
+         	{
+            	    window.plugins.DataBaseHelper.select("select distinct invoicenumber from routebook where strftime('%Y-%m-%d',date)='"+date+"' and customecode='"+sessionStorage.getItem("customerid")+"' union select invoicenumber from invoiceheader where customercode='"+sessionStorage.getItem("customerid")+"' and totalinvoiceamount>0 ", function(result)
+ 					{
+ 					 	 if(result.array!=undefined)
+ 					 	 {
+                            result = $.map(result.array, function (item, index) {                
+                 				return [[item.invoicenumber]];
+             				});            			
+ 					 		if(result.length > 0)
+                           	{
+ 					 			$('#invoicenumber').empty();
+ 					 			$("<option />" ,{value:0,text:getLangTextdata("--SELECT--")}).appendTo($("#invoicenumber"));             
+ 					 			for(i=0;i<result.length;i++){                    
+                                    $("<option />" ,{value:result[i][0],text:result[i][0]}).appendTo($("#invoicenumber"));                                           
+                                }
+ 					 			$("#invoicenumber").selectmenu("refresh");
+                           	}else{
+                           		
+                           		$('#invoicenumber').empty();
+                           		$("<option />" ,{value:0,text:getLangTextdata("--SELECT--")}).appendTo($("#invoicenumber"));             
+                           		$("#invoicenumber").selectmenu("refresh");
+                           	}
+                         }else{
+                        	 $('#invoicenumber').empty();
+                        	 $("<option />" ,{value:0,text:getLangTextdata("--SELECT--")}).appendTo($("#invoicenumber"));             
+                        	 $("#invoicenumber").selectmenu("refresh");
+                        	 
+                         }  
+ 					},
+ 					function()
+ 					{
+ 				   	 console.warn("Error calling plugin");
+ 					});
+            } 
+        	
+        }
+        function parseDate(str) {
+            var mdy = str.split('-');
+            var year=mdy[2];
+          
+            
+            var month =parseInt(mdy[1],10);
+            if(month <= 9)
+                month = '0'+month;
+
+            var day=parseInt(mdy[0],10);
+            if(day <= 9)
+                day = '0'+day;
+            
+            return year +'-'+ month +'-'+ day;
+        }
+		
+		
+		
+    </script>
+
+    </body>
+</html>

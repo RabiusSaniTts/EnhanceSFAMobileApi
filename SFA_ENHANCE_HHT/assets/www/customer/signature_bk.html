@@ -1,0 +1,667 @@
+<!--
+ '  Created By   : Pratik Raval
+ '  Created Date : 17/02/2012
+ '  Description  : This page is used for Signature.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Signature</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+        <script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+
+        <!-- Signature CSS and Java Script File  -->
+        <link rel="stylesheet" href="../css/jquery.signaturepad.css">
+
+        <script src="../js/jquery.signaturepad.min.js"
+            type="text/javascript"></script>
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <!--End Signature CSS and Java Script File  -->
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Signature</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="boxContent">
+                    <div>
+                        <!--<canvas style="border: 1px solid black; background-color: white" id="thecanvas"></canvas>-->
+                        <div class="sigPad" style="text-align:center">
+                            <canvas class="pad" width="1000" height="700"
+                                id="thecanvas"></canvas>
+                            <input type="hidden" name="output" class="output"
+                                id="hidsignature" />
+                        </div>
+                        <div style="height: 30px;">
+                        </div>
+                        <div>
+                            <table cellpadding="5" cellspacing="2" border="0"
+                                width="100%">
+                                <tr>
+                                    <td class="captionLabel" lang="en">
+                                        Customer#
+                                    </td>
+                                    <td class="captionLabel" lang="en">
+                                        Customer Name
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="txtCustomerNumber"
+                                            type="text" class="textFont"
+                                            style="width: 80%"
+                                            disabled="disabled" />
+                                    </td>
+                                    <td>
+                                        <input id="txtCustomerName" type="text"
+                                            class="textFont" disabled="disabled"
+                                            style="width: 80%" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="captionLabel" lang="en"
+                                        id="lblOrdNumber">
+                                        Order Number
+                                    </td>
+                                    <td class="captionLabel" id="lblAmount"
+                                        lang="en">
+                                        Amount Due
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="txtInvoiceNumber" type="text"
+                                            size="20" class="textFont"
+                                            style="width: 80%"
+                                            disabled="disabled" />
+                                    </td>
+                                    <td>
+                                        <input id="txtAmountDue" type="text"
+                                            size="11" class="textFont"
+                                            disabled="disabled"
+                                            style="width: 80%;text-align:right" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu com_info_right">
+                    <a href="javascript:Clear();" class="clearButton"
+                        style="text-decoration: none" rel="external">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/clear.png" alt="Add" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Clear</div>
+                        </div>
+                    </a><a id="lnkAccept" href="#" rel="external"
+                        style="text-decoration: none" data-role="none">
+                        <div class="MenuPosition">
+                            <div class="iconPos">
+                                <img class="bottomicon"
+                                    src="../images/accept.png"
+                                    alt="Option" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Accept</div>
+                        </div>
+                    </a><a id="lnkExit" href="#" rel="external" id="A2"
+                        style="text-decoration: none"
+                        data-role="none">
+                        <div class="MenuPosition">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="cust"
+                                data-icon="custom" lang="en">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+        	var platform='';
+            platform= sessionStorage.getItem("platform");
+            //platform == "iPad";
+            window.lang = new jquery_lang_js();
+            var presignature = "";
+ 			resizeOrientationWindow();
+	  		$(document).ready(function() {
+	 		resizeWindow();
+                $(".leftfooter").html(getCurrentDate());
+                $('.sigPad').signaturePad({ drawOnly: true });
+                 localStorage.setItem("roundredirect",'signature');
+					document.addEventListener("deviceready", GetCashSetting, false);
+                                              /*else if(localStorage.sign == 'promo')
+                              {
+                              var back = '../customer/promotion_review.html';
+                              var exitlink = '../customer/promotion_review.html';
+                              }
+                              else if(localStorage.sign == 'promo_list')
+                              {
+                              
+                              var back = '../customer/customer_promotion_list.html';    
+                              var exitlink = '../customer/customer_promotion_list.html';
+                              }
+                              else if(localStorage.sign == 'order_promo_list')
+                              {
+                              
+                              var back = '../customer_opt/order_promotion_list.html';    
+                              var exitlink = '../customer_opt/order_promotion_list.html';
+                              }*/
+
+
+                $("#lnkAccept").attr("href", acceptlink);
+                //$("#lnkExit").attr("href", exitlink);
+                $("#Back_inner").attr("href", back);				
+                var lan = sessionStorage.getItem("Language");
+                window.lang.run(lan);
+
+                if (sessionStorage.getItem("Language") != "en") {
+
+                    window.lang.change('Signature' + lan, lan);
+                    window.lang.change('Footer' + lan, lan);
+                    if (lan == "AR") {
+                        $(".boxContent").attr("dir", "rtl");
+                        $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                        $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    }
+
+                }
+                else {
+                    window.lang.change('en', 'en');
+                    $(".boxContent").attr("dir", "ltr");
+                    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            });            
+
+            function GetCashSetting() {     
+             	$.mobile.showPageLoadingMsg();        	
+                platform = sessionStorage.getItem("platform");
+                var acceptlink,exitlink;
+                $("#lnkAccept").attr("onclick","");
+                if (localStorage.signature == 'sales') {                    
+                    if (eval(sessionStorage.getItem("invoicepaymentterms")) != 2)
+                        acceptlink = '../customer_opt/cashcollection_mop.html';
+                                                      
+                    exitlink = '../customer_opt/salesinvoice_option.html';
+                    getRoundingline();
+                }   
+                else if (localStorage.signature == 'orderrequest') {
+                    acceptlink = '../customer_opt/orderdetail.html';  
+                    var back = '../customer_opt/orderRequest.html';
+                    var exitlink = '../customer_opt/orderRequest.html';
+                    getSignature();
+                }
+                $("#lnkAccept").attr("href", "#");
+                $("#lnkExit").attr("href", exitlink);
+                $("#Back_inner").attr("href", exitlink);
+                $("#txtCustomerNumber").val(sessionStorage.getItem("customercode"));
+                $("#txtCustomerName").val(sessionStorage.getItem("customername"));  
+                
+                
+                //getRoundinginvoice();
+                //getSignature();
+            }
+           
+          	
+            function getSignature()
+            {
+            	$.mobile.hidePageLoadingMsg(); 
+            	$("#lnkAccept").attr("onclick","CheckSignatueCount()");
+                var Qry = "SELECT signaturedata FROM sigcapturedata WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey");
+                if(platform == "iPad")
+                {                    
+                    Cordova.exec(function(result) {
+                       if(result.length > 0)
+                       {
+                            if(result[0][0] != "")
+                            {
+                                $(".sigPad").signaturePad().regenerate(result[0][0]);
+                                presignature = result[0][0];
+                            }
+                       }
+                       getAmountDue();
+                    },
+                    function(error) {
+                        alert("Error in binding Bank Name : " + error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if(platform == "Android")
+                {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    	if(result.array != undefined)
+                    	{                    	
+                    		result = $.map(result.array, function (item, index) {                
+                       		 	return [[item.signaturedata]];
+                    		});                    	
+                    		if(result.length > 0)
+                       		{
+	                            if(result[0][0] != "")
+                            	{
+	                                $(".sigPad").signaturePad().regenerate(result[0][0]);
+                                	presignature = result[0][0];
+                            	}
+                       		}
+                       	}
+                       	getSaleAmount();
+                       
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+            function getSaleAmount(){
+            
+            
+            		var Qry = "select sum(diffround) as diffrence from invoicedetail where visitkey="+ sessionStorage.getItem("VisitKey")+" and routekey="+sessionStorage.getItem("RouteKey");
+					
+					console.log(Qry);
+					if (platform == "iPad") {
+						Cordova.exec(function(result) {
+							
+					
+						}, function(error) {
+							alert("Error in binding Bank Name : " + error);
+						}, "PluginClass", "GetdataMethod", [ Qry ]);
+					} else if (platform == "Android") {
+						window.plugins.DataBaseHelper.select(Qry, function(result) {
+							if (result.array != undefined) {
+								result = $.map(result.array, function(item, index) {
+									return [ [ item.diffrence] ];
+								});
+								if (result.length > 0) {
+									
+									if(eval(result[0][0])!=0){
+									
+										 $('#lblAmount').text("Amount due(After Rounding)");
+									
+									}
+								}
+								getAmountDue();
+							}
+					
+						}, function() {
+							console.warn("Error calling plugin");
+						});
+					}
+            	
+            }
+            function getAmountDue()
+            {                
+                var decimalplace = sessionStorage.getItem("decimalplace");
+                var routekey=sessionStorage.getItem("RouteKey");
+                var visitkey=sessionStorage.getItem("VisitKey");
+                var customerid=sessionStorage.getItem("customerid");                
+                var Qry;
+                if(localStorage.getItem("signature") == "sales")
+                {
+                    
+                   
+                    $('#lblOrdNumber').html("Invoice Number");
+                    Qry = "select CAST(ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0) AS VARCHAR) as amount from invoiceheader where routekey="+routekey+" and visitkey="+visitkey+" and customercode="+customerid+" and istemp='true' group by routekey,visitkey";
+                 // Qry = "select CAST(ifnull(totalinvoiceamount,0) AS VARCHAR) as amount from invoiceheader where routekey="+routekey+" and visitkey="+visitkey+" and customercode="+customerid+" and istemp='true' group by routekey,visitkey";
+                }
+                else if(localStorage.getItem("signature") == "orderrequest")
+                {
+                    $('#lblOrdNumber').html("Order Number");
+                    Qry = "select CAST(ifnull(totalsalesamount,0)-ifnull(totalreturnamount,0)-ifnull(totalpromoamount,0)-ifnull(totaldamagedamount,0) AS VARCHAR) as amount from salesorderheader where routekey="+routekey+" and visitkey="+visitkey+" and customercode="+customerid+" and istemp='true' group by routekey,visitkey";
+                    
+                }
+                console.log(Qry);
+                if(platform=='iPad')
+		    	{
+                    var abc = Cordova.exec(function(result) {
+                                            $('#txtAmountDue').val(parseFloat(result[0][0]).toFixed(decimalplace));
+                                            if(localStorage.getItem("signature") == "sales")
+                                                $('#txtInvoiceNumber').val(sessionStorage.getItem("InvoiceNumber"));
+                                            else if(localStorage.getItem("signature") == "orderrequest")
+                                                $('#txtInvoiceNumber').val(sessionStorage.getItem("OrderNumber"));                                                   
+                                            sessionStorage.setItem("amountdue",result[0][0]);                                        
+                                            },
+                                            function(error) {
+                                            navigator.notification.alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            [Qry]);
+            	}
+                else if(platform=='Android')
+           		{
+           		    window.plugins.DataBaseHelper.select(Qry, function(result)
+                                                         {
+                                                            
+                                                         result = $.map(result.array, function (item, index) {
+                                                                        return [[item.amount]];
+                                                                        });
+                                                        
+                                                         $('#txtAmountDue').val(parseFloat(result[0][0]).toFixed(decimalplace));
+                                            			 if(localStorage.getItem("signature") == "sales")
+                                                			$('#txtInvoiceNumber').val(sessionStorage.getItem("InvoiceNumber"));
+                                            			 else if(localStorage.getItem("signature") == "orderrequest")
+                                                			$('#txtInvoiceNumber').val(sessionStorage.getItem("OrderNumber"));                                                   
+                                            			 sessionStorage.setItem("amountdue",result[0][0]);
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+           		} 
+            }
+            
+            function CheckSignatueCount()
+            {
+                platform= sessionStorage.getItem("platform");  
+               // alert($('#lnkAccept').attr('href'));
+                console.log("select count(customercode) from sigcapturedata where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +"");
+                if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) {                                
+                                    if(result.length > 0)
+                                    {
+                              
+                                        if(result[0][0] == 0)
+                                        {
+                                            InsertImage();
+                                        }
+                                        else
+                                        {
+                                            UpdateImage();
+                                        }
+                                    }                                   
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error in check signature count : " + error);
+                              },
+                              "PluginClass", 
+                              "GetdataMethod", 
+                              ["select count(customercode) from sigcapturedata where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +""]);      
+            	}
+             else if(platform=='Android')
+            		{
+             		
+		             window.plugins.DataBaseHelper.select("select count(customercode) As custcode from sigcapturedata where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +"",function(result)
+						{
+						
+										
+						    			if(result.array!=undefined)
+                                        {                                           
+                                            if(result.array[0].custcode == 0)
+                                        	{
+                                            	InsertImage();
+                                        	}
+                                        	else
+                                        	{
+                                            	UpdateImage();
+                                        	}
+                                        }                                        
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+             		}   
+            }
+            
+            function InsertImage()
+            {
+                localStorage.collectionMOP ='signature';
+                console.log("aa");
+                var obj = {};
+                obj.Img = document.getElementById('thecanvas').toDataURL();
+                
+              
+                var signature = $("#hidsignature").val();
+                signature = presignature + signature;
+              
+               
+               // navigator.notification.alert(signature);
+               //alert("Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),strftime('%H:%M',datetime()),0,'"+ signature +"','true')");
+                 if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) 
+                                        {
+                                            //navigator.notification.alert("Insert record successfully");
+                                            CheckGCToCash();
+                                        },
+                                        function(error) {
+                                            navigator.notification.alert("Error insert record in sigcapturedata");
+                                        },
+                                        "PluginClass", 
+                                        "InsertUpdateMethod", 
+                 
+                                        ["Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp,issync) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),time('now', 'localtime'),0,'"+ signature +"','true',0)"]);
+                 }                       
+            	 else if(platform=='Android')
+            		{
+             
+		             window.plugins.DataBaseHelper.insert("Insert Into sigcapturedata(routekey,visitkey,transactionkey,customercode,documentnumber,transactiondate,transactiontime,balancedueamount,signaturedata,istemp,issync) values("+ sessionStorage.getItem('RouteKey') +","+ sessionStorage.getItem('VisitKey') +",0,"+ sessionStorage.getItem('customerid') +",0,strftime('%Y-%m-%d',datetime()),time('now', 'localtime'),0,'"+ signature +"','true',0)",function(result)
+						{
+						    //navigator.notification.alert("Insert record successfully");
+                            CheckGCToCash();
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+             		}   
+            }
+            
+           
+            function UpdateImage()
+            {
+                localStorage.collectionMOP ='signature';
+                
+                var obj = {};
+                obj.Img = document.getElementById('thecanvas').toDataURL();
+                var signature = $("#hidsignature").val();
+                /*if(presignature != "")
+                {                                               
+                    signature = signature.concat(presignature);
+                }*/
+                
+                //navigator.notification.alert(obj.Img);
+                console.log("Update sigcapturedata set documentnumber = 0,transactiondate =  strftime('%Y-%m-%d',datetime()),transactiontime = time('now', 'localtime'),balancedueamount = 0,issync=0,signaturedata = '"+ signature +"' where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +"");
+                 if(platform=='iPad')
+           		{
+                Cordova.exec(function(result) 
+                              {
+                                //navigator.notification.alert("Update record successfully");
+                                CheckGCToCash();
+                              },
+                              function(error) {
+                                navigator.notification.alert("Error update record in sigcapturedata");
+                              },
+                              "PluginClass", 
+                              "InsertUpdateMethod", 
+                              ["Update sigcapturedata set documentnumber = 0,transactiondate =  strftime('%Y-%m-%d',datetime()),transactiontime = time('now', 'localtime'),balancedueamount = 0,issync=0,signaturedata = '"+ signature +"' where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +""]);
+            	}                       
+            	 else if(platform=='Android')
+            		{
+             
+		             	window.plugins.DataBaseHelper.insert("Update sigcapturedata set documentnumber = 0,transactiondate =  strftime('%Y-%m-%d',datetime()),transactiontime = time('now', 'localtime'),balancedueamount = 0,issync=0,signaturedata = '"+ signature +"' where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +"",function(result)
+						{
+						   //navigator.notification.alert("Update record successfully");
+                           CheckGCToCash();
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+             		}   
+            }
+
+            function Clear() {
+                $('.sigPad').signaturePad({ drawOnly: true });
+            }
+        function updateinvoice()
+        {
+            console.log("select sum(promoamount) from invoicedetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" group by routekey,visitkey");
+            Cordova.exec(function(result) {                                
+                          if(result.length > 0)
+                          {
+                          updateheader(result[0][0]);
+                          }
+                          },
+                          function(error) {
+                          navigator.notification.alert("Error in check signature count : " + error);
+                          },
+                          "PluginClass", 
+                          "GetdataMethod", 
+                          ["select sum(promoamount) from invoicedetail where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" group by routekey,visitkey"]);    
+        }
+            function updateheader(data)
+            {
+                console.log("Update invoiceheader set totalpromoamount = "+data+" where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +"");
+                Cordova.exec(function(result) 
+                              {
+                             
+                              },
+                              function(error) {
+                              navigator.notification.alert("Error update record in sigcapturedata");
+                              },
+                              "PluginClass", 
+                              "InsertUpdateMethod", 
+                              ["Update invoiceheader set totalpromoamount = "+data+",issync=0 where routekey = "+ sessionStorage.getItem('RouteKey') +" and visitkey = "+ sessionStorage.getItem('VisitKey') +" and customercode = "+ sessionStorage.getItem('customerid') +""]);
+                
+            }
+            
+            function CheckGCToCash()
+            {
+                if(localStorage.signature == "sales")
+                {
+                    var lnkaccept = ""                    
+                    var allowgctocash = sessionStorage.getItem("allowgctocash");
+                    if(sessionStorage.getItem("invoicepaymentterms") == 2)
+                    {
+                        if(allowgctocash == 1)
+                        {
+                            var msg = "Do You Want To Make Payment ?";
+                            navigator.notification.confirm(msg,function(action){
+                                if(action == true)
+                                    window.location = '../customer_opt/cashcollection_mop.html';
+                                else
+                                    window.location = '../review/printoption.html';
+                            })
+                        }
+                        else
+                            window.location = '../review/printoption.html';
+                    }
+                    else
+                        window.location = '../customer_opt/cashcollection_mop.html';
+                }else{
+                	 window.location = '../customer_opt/orderdetail.html';
+                
+                }
+            }
+            
+        </script>
+        </body>
+    </html>

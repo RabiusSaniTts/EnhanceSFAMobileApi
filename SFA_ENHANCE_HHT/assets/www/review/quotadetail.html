@@ -1,0 +1,572 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 02/02/2012
+ '  Description  : This page is used for quota details.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quota Details</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="goals-quota.html" id="Back_inner" rel="external"
+                    lang="en">Back</a>
+                <h1 lang="en">
+                    Quota Details</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="tblBox tbltd">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 20%;" class="leftAlign"
+                                    lang="en">
+                                    Item Number
+                                </th>
+                                <th style="width: 50%;" lang="en"
+                                    class="leftAlign">
+                                    Description
+                                </th>
+                                <th style="width: 10%;" lang="en">
+                                    UPC
+                                </th>
+                                <th style="width: 10%;" lang="en">
+                                    Cases
+                                </th>
+                                <th style="width: 10%;" lang="en" class="last">
+                                    Units
+                                </th>
+                            </tr>
+                        </table>
+                        <div id="contentWrapper" class="tblHeightWithTab">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 20%;" class="leftAlign">
+                                    </td>
+                                    <td style="width: 50%;">
+                                    </td>
+                                    <td style="width: 10%;">
+                                    </td>
+                                    <td style="width: 10%;">
+                                    </td>
+                                    <td style="width: 10%;" class="last">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tabedBar">
+                        <div class="paging" id="paging" style="display:none">
+                            <img id="imgPrev" src="../images/right.png" />
+                            <img id="imgNext" src="../images/left.png" />
+                        </div>
+                        <div id="TabPanel" class="TabPanelEN">
+                        </div>
+                    </div>
+                    <table border="0" cellpadding="0" cellspacing="5"
+                        width="100%">
+                        <tr>
+                            <td class="captionLabel" lang="en"
+                                style="width: 60%;">
+                                Customer
+                            </td>
+                            <td class="captionLabel" lang="en"
+                                style="width: 20%;">
+                                Totals
+                            </td>
+                            <td style="width:20%">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="txtCustomer" type="text"
+                                    class="textFont" readonly="readonly"
+                                    style="width:95%" />
+                            </td>
+                            <td>
+                                <input id="txtTotals" type="text"
+                                    class="textWidth textFont centerAlign"
+                                    readonly="readonly" />
+                            </td>
+                            <td>
+                                <input id="txtTotalAmt" type="text"
+                                    class="textWidth textFont rightAlign"
+                                    readonly="readonly" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="leftbottomMenu">
+                    <a href="goals-quota.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPositionSCLarge">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Settlement Complete" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Done</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="info"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        $("#tblContent").click(function() { });       
+        var ActiveIndex = 0;
+        var Qty,data,total;
+        var platform,decimalplace,CaseEnabled,IsTabActive,CustomerCode;
+        resizeOrientationWindow();
+	  	$(document).ready(function() {
+	 	resizeWindow();
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            
+             //On Device Ready Event
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {                
+                platform = sessionStorage.getItem("platform");
+                decimalplace = sessionStorage.getItem("decimalplace");
+                /*var url = window.location.toString();
+                CustomerCode = url.substring(url.indexOf("=")+1);*/
+                CustomerCode = sessionStorage.quotacustcode;
+                CaseEnabled = sessionStorage.getItem("CaseEnabled");
+                try{
+                getTabs();  
+                SetTabs(); 
+                getRecord();           
+                }
+                catch(ex)
+                {
+                    alert(ex);
+                }
+            }
+            
+            function SetTabs() {               
+            
+                $("#TabPanel div").removeClass("TabActive");
+                $("#Tab" + ActiveIndex).addClass("TabActive");
+
+                Qty = $("#TabPanel div:eq(" + ActiveIndex + ")").attr("db");
+                switch (Qty) {
+                    case 'O':
+                        Qty = 'salesqty';
+                        total = 'totalsalesamount';
+                        break;
+                    case 'GR':
+                        Qty = 'returnqty';
+                        total = 'totalreturnamount';                   
+                        break;
+                    case 'BR':
+                        Qty = 'damagedqty';
+                        total = 'totaldamagedamount';                   
+                        break;
+                    case 'F':
+                        Qty = 'manualfreeqty';
+                        total = 'totalmanualfree';
+                        break; 
+                    default:
+                        Qty = 'salesqty';                        
+                }
+                IsTabActive = $("#TabPanel div:eq(" + ActiveIndex + ")").attr("act");                
+                if (ActiveIndex > 2) {
+                    $("#TabPanel div").slice(0, 3).css("display", "none");
+                    $("#TabPanel div").slice(3, $("#TabPanel div").length).css("display", "block");
+                    
+                    if(IsTabActive == 1)
+                    {
+                        $("#TabPanel div:eq(" + ActiveIndex + ")").css("display","block");
+                        ////getRecord();
+                    }
+                    else if(IsTabActive == 0)
+                    {
+                        $("#TabPanel div:eq(" + ActiveIndex + ")").css("display","none");
+                    }
+                }
+                else 
+                {
+                    $("#TabPanel div").slice(0, 3).css("display", "block");
+                    $("#TabPanel div").slice(3, $("#TabPanel div").length).css("display", "none");
+                    if(IsTabActive == 1)
+                    {
+                        $("#TabPanel div:eq(" + ActiveIndex + ")").css("display","block");
+                        ////getRecord();
+                    }
+                    else if(IsTabActive == 0)
+                    {
+                        $("#TabPanel div:eq(" + ActiveIndex + ")").css("display","none");
+                    }
+                }
+                
+                /*$("#TabPanel div").each(function(index){
+                    if($(this).attr("act") == "0")
+                        $(this).css("display","none");
+                    else
+                        $(this).css("display","block");
+                });*/
+                
+                $('#tblContent').css("display", "table");
+            }
+
+            var NoNext, NoPrev;
+            $("#imgNext").click(function() {
+                if (!NoNext) {
+                    ActiveIndex += 1;
+                    SetTabs();
+                    getRecord();
+                }
+                if (ActiveIndex >= ($("#TabPanel div").length - 1)) {
+                    $(this).attr("src", "../images/left-gray.png");
+                    NoNext = true;
+                }
+                else {
+                    NoNext = false;
+                    NoPrev = false;
+                    $("#imgPrev").attr("src", "../images/right.png");
+                }
+            });
+
+            $("#imgPrev").click(function() {
+                if (!NoPrev) {
+                    ActiveIndex -= 1;
+                    SetTabs();
+                    getRecord();
+                }
+                if (ActiveIndex <= 0) {
+                    $(this).attr("src", "../images/right-gray.png");
+                    NoPrev = true;
+                }
+                else {
+                    NoPrev = false;
+                    NoNext = false;
+                    $("#imgNext").attr("src", "../images/left.png");
+                }
+            });
+            
+            function getTabs()
+            {                           
+                var strSales = "<div id='Tab0' class='Tab TabFirst TabActive' db='O' lang='en' style='display: block;' act='1'>Sales</div>";
+                var strGoodReturn = "<div id='Tab1' class='Tab ordertab' db='GR' lang='en' style='display: block;'>Good Return</div>";
+                var strBadReturn = "<div id='Tab2' class='Tab' db='BR' lang='en' style='display: block'>Bad Return</div>";
+                var strFree = "<div id='Tab3' class='Tab' db='F' lang='en' act='1' style='display: block'>Free</div>";                
+                
+                $("#TabPanel").append(strSales);
+                $("#TabPanel").append(strGoodReturn);
+                $("#TabPanel").append(strBadReturn); 
+                $("#TabPanel").append(strFree);              
+                
+                
+                var TabCount = $("#TabPanel div").length;
+                if(TabCount < 4)
+                {
+                    $("#paging").hide()
+                    /*$("#imgNext").hide();
+                    $("#imgPrev").hide();*/
+                }
+                else
+                    $("#paging").show();
+                
+                $("#TabPanel div:eq(" + (eval(TabCount) - 1) + ")").addClass("TabLast"); //Class for last Tab
+                if(TabCount > 2)
+                {                 
+                    $("#TabPanel div:eq(1)").addClass("Tabmiddle");
+                }
+                if(TabCount > 3)
+                {
+                    $("#TabPanel div:eq(2)").addClass("TabLast");
+                    $("#TabPanel div:eq(3)").addClass("TabFirst");
+                }
+                
+                 //Setting Tab Styles
+                $("#TabPanel div").click(function() {
+                ActiveIndex = $("#TabPanel div").index(this);
+                Qty = $(this).attr("db");
+                switch (Qty) {
+                    case 'O':
+                        Qty = 'salesqty'; 
+                        total = 'totalsalesamount';
+                        break;
+                    case 'GR':
+                        Qty = 'returnqty'; 
+                        total = 'totalreturnamount';
+                        break;
+                    case 'BR':
+                        Qty = 'damagedqty'; 
+                        total = 'totaldamagedamount';
+                        break;
+                    case 'F':
+                        Qty = 'manualfreeqty'; 
+                        total = 'totalmanualfree';
+                        break; 
+                    default:
+                        Qty = 'salesqty';
+                }
+                $("#TabPanel div").removeClass("TabActive");
+                $(this).removeClass("TabInactive").addClass("TabActive");
+
+                $("#lblQty").css("display", "block");
+                $("#txtQty").css("display", "block");
+                $("#txtItemNo").addClass("textWidth");
+                
+                getRecord();
+                $('#tblContent').css("display", "table");
+                });
+            }
+            
+            function getRecord()
+            {                
+                if(CaseEnabled)
+                    var Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as ItemCode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,unitspercase,(SUM(ifnull(" + Qty + ",0)))/unitspercase AS Cases,(SUM(ifnull(" + Qty + ",0)))%unitspercase AS Units,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN cm.customername ELSE cm.arbcustomername END AS customername," + total + " as total FROM invoicedetail inv JOIN invoiceheader invh ON inv.transactionkey = invh.transactionkey AND invh.customercode = " + CustomerCode + " AND invh.salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND invh.routecode = " + sessionStorage.getItem("RouteCode") + " AND invh.istemp = 'false' JOIN customermaster cm ON cm.customercode = invh.customercode JOIN itemmaster im ON im.actualitemcode = inv.itemcode WHERE ifnull(" + Qty + ",0) > 0 group by actualitemcode";
+                else
+                    var Qry = "SELECT CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END as ItemCode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END as Desc,unitspercase,(SUM(ifnull(" + Qty + ",0)))%unitspercase AS Units,customername," + total + " as total FROM invoicedetail inv JOIN invoiceheader invh ON inv.transactionkey = invh.transactionkey AND invh.customercode = " + CustomerCode + " AND invh.salesmancode = " + sessionStorage.getItem("SalesmanCode") + " AND invh.routecode = " + sessionStorage.getItem("RouteCode") + " AND invh.istemp = 'false' JOIN customermaster cm ON cm.customercode = invh.customercode JOIN itemmaster im ON im.actualitemcode = inv.itemcode WHERE ifnull(" + Qty + ",0) > 0 group by actualitemcode";
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                         ClearTable();
+                        BindData(result)
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                         ClearTable();
+                    	if(result.array != undefined)
+                    	{
+                        var array = $.map(result.array, function(item, index) {
+                            if(CaseEnabled)
+                                return [[item.ItemCode,item.Desc,item.unitspercase,item.Cases,item.Units,item.customername,item.total]];
+                            else
+                                return [[item.ItemCode,item.Desc,item.unitspercase,item.Units,item.customername,item.total]];
+                        });
+                        BindData(array);
+                        }
+                        else
+                        {
+                            $("#txtTotals").val(0);
+                            $('#txtTotalAmt').val(0);
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function BindData(result) {
+                ClearTable();
+                data = result;
+                var totalcase=0;
+                var totalunit=0;
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        var temp = (j == 0 || j == 1) ? 'class = leftAlign' : '';
+                        if (j == CellCount - 1)
+                            temp += ' class = "last" ';                        
+
+                        if(CaseEnabled)
+                        {
+                            if(j == 3 || j == 4)
+                                data[i][j] = parseInt(data[i][j]);
+                        }
+                        else
+                        {
+                            if(j == 3)
+                                data[i][j] = parseInt(data[i][j]);
+                        }
+                        
+                        
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                        r += c;
+                    }
+                    if(CaseEnabled)
+                    {
+                        totalcase += data[i][3];
+                        totalunit += data[i][4];
+                        $('#txtCustomer').val(data[i][5]);
+                    }
+                    else
+                    {
+                        totalunit += data[i][3];
+                        $('#txtCustomer').val(data[i][4]);
+                    }
+                    r += "</tr>";
+                    $('#tblContent tbody').append(r);
+                }                
+                
+                if(CaseEnabled)
+                {                    
+                    $("#txtTotals").val(totalcase + "/" + totalunit);
+                    if(data != "" && eval(data[0][6]) != "")
+                        $('#txtTotalAmt').val(eval(data[0][6]).toFixed(sessionStorage.getItem("decimalplace")));
+                    else
+                        $('#txtTotalAmt').val(0);
+                }
+                else
+                {
+                    $("#txtTotals").val(totalunit);
+                    if(data != "" && eval(data[0][5]) != "")
+                        $('#txtTotalAmt').val(eval(data[0][5]).toFixed(sessionStorage.getItem("decimalplace")));
+                    else
+                        $('#txtTotalAmt').val(0);
+                }
+                
+                //Table click event
+                $("#tblContent tr").live('click', function() {
+                    $(this).toggleClass('clicked');
+                    $(this).siblings().removeClass('clicked');                    
+                });
+
+                //Set background for odd and even row.
+                $("#tblContent tr:odd").addClass('oddRow');
+                $("#tblContent tr:even").addClass('evenRow');
+                $("#tblContent tr:eq(1)").trigger('click');
+            }
+
+            //Clear table 
+            function ClearTable() {
+                $("#tblContent" + " tr:gt(0)").remove();
+            }
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('QuotaDetail' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".boxContent").attr("dir", "rtl");
+
+                    //Set header align
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".boxContent").attr("dir", "ltr");
+
+                //Set header align
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+        });
+    </script>
+
+    </body>
+</html>

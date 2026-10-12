@@ -1,0 +1,731 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 27/1/2011
+ '  Description  : This page is used for detail of customer
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HOME</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1201px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 699px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script>
+if (navigator.userAgent.toLowerCase().match(/android/)) {
+document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+} else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+}
+</script>
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+		<!--<script type="text/javascript" src="../js/iscroll.js"></script>
+	<script type="text/javascript">
+
+        var scrollContent, scrollNav;
+
+        function loaded() {
+            scrollContent = new iScroll('contentWrapper');
+        }
+
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+        document.addEventListener('DOMContentLoaded', loaded, false);   
+
+</script>-->
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="index.html"   id="Back_inner">test</a>-->
+				<a id="Back_inner" href="#" rel="external" lang="en">Back</a>
+				<h1 lang="en">Customer Info</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerbox">
+				<div class="tblBox com_info_div">
+					<table width="100%">
+						<thead>
+							<tr>
+								<td colspan="2" id="name" class="tblHeader" style="padding: 3px;"
+									lang="en"></td>
+							</tr>
+						</thead>
+					</table>
+					<div class="info" id="contentWrapper">
+						<!-- 					<div  id="name" class="tblHeader" style="padding: 3px;" -->
+						<!-- 						lang="en"></div> -->
+						<table border="0" width="100%" cellpadding="5" cellspacing="0"
+							id="tbl1" data-role="none">
+
+							<tbody class="tbl_body captionLabel">
+
+								<tr class="td_com">
+									<td width="29%"><label for="name" id="lcode" lang="en">
+											Customer #</label></td>
+									<td><div class="addressdiv_bold" id="code"></div></td>
+
+								</tr>
+							</tbody>
+						</table>
+						<div style="margin-left: 22px; margin-right: 1px;">
+							<div
+								class="addressdiv_bold" id="address"></div>
+						</div>
+						<table border="0" width="100%" cellpadding="5" cellspacing="0">
+							<tbody class="tbl_body captionLabel">
+								<tr class="td_com">
+									<td width="40%"><label for="alpha" id="lalpha" lang="en">
+											ERP#</label></td>
+									<td width="100%"><div class="addressdiv_bold" id="alpha"></div></td>
+
+								</tr>
+								<tr class="td_com">
+
+									<td width="40%"><label for="cname" id="lcname" lang="en">
+											Contact Person</label>
+										<td width="100%">
+											<div class="addressdiv_bold" id="cname"></div>
+										</td>
+
+									</tr>
+									<tr class="td_com">
+
+										<td width="40%"><label for="phone" id="lphone" lang="en">
+												Phone #</label>
+											<td width="100%">
+												<div class="addressdiv_bold" id="phone"></div>
+											</td>
+
+										</tr>
+
+										<tr class="td_com" style="display: none;">
+											<td width="40%" colspan=2><label for="name" id="lname"
+													lang="en"> Name</label>
+												<div class="addressdiv_bold" id="name"
+													style="width: 99%;"></div></td>
+										</tr>
+										<tr class="td_com">
+
+											<td width="40%"><label for="sequence" id="lsequence"
+													lang="en"> Sequence #</label>
+												<td width="100%">
+													<div class="addressdiv_bold" id="sequence"></div>
+												</td>
+
+											</tr>
+											<tr class="td_com">
+												<td width="40%"><label for="payment" id="lpayment"
+														lang="en"> Payment Type</label></td>
+												<td width="100%"><div class="addressdiv_bold"
+														id="payment"></div></td>
+
+											</tr>
+
+											<tr class="td_com">
+
+												<td width="40%"><label for="creditdays" id="lcreditdays"
+														lang="en">Credit Days</label>
+													<td width="100%">
+														<div class="addressdiv_bold" id="creditdays"></div>
+													</td>
+
+												</tr>
+												<tr class="td_com">
+
+													<td width="40%"><label for="credit" id="lcredit" lang="en">
+															Credit Limit</label></td>
+													<td width="100%">
+														<div class="addressdiv_bold" id="credit"></div>
+													</td>
+
+												</tr>
+												<tr class="td_com">
+
+													<td width="40%"><label for="balance" id="lbalance"
+															lang="en">Balance</label></td>
+													<td width="100%">
+														<div class="addressdiv_bold" id="balance"></div>
+													</td>
+
+												</tr>
+
+												<tr class="td_com">
+													<td width="40%"><label for="variance" id="lvariance"
+															lang="en"> Available Limit</label></td>
+													<td width="100%">
+														<div class="addressdiv_bold" id="variance"></div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<div class="bottomMenu">
+
+									<a href="#" class="enableText" rel="external" id="exit">
+										<div class="MenuPosition">
+											<div class="MenuIconPos">
+												<img class="bottomicon" src="../images/info-8.png" alt />
+											</div>
+											<div class="MenuTextPos1 ml" lang="en">Exit</div>
+										</div>
+									</a>
+
+								</div>
+
+								<!-- <div class="boxSideMenu com_info_right">
+				<div class="Menu1">
+					<a href="route_book.html" class="enableText" rel="external"
+						onclick=localStorage.root='cust'>
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/info-1.png" alt="" />
+							</div>
+							<div id="lblMenuInfo" class="MenuTextPos1 ml" lang="en">
+								Route Book</div>
+						</div>
+					</a><a  onclick="openOrders();" class="enableText" rel="external" id="linkorder">
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/info-5.png" alt="" id="imgorder" />
+							</div>
+							<div class="MenuTextPos1 ml" lang="en" id="lblorder">
+								Orders</div>
+						</div>
+					</a><a href="customer_messages.html"
+						onclick="localStorage.message = 'info'" class="enableText"
+						rel="external">
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/info-2.png" alt="" />
+							</div>
+							<div id="lblMenuAdd" class="MenuTextPos1 ml" lang="en">
+								Messages</div>
+						</div>
+					</a><a href="price_list.html" class="enableText" id="linkprice"
+						rel="external" onclick=localStorage.price='cust'>
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/icn-pricelist.png" alt="" id="imgprice" />
+							</div>
+							<div class="MenuTextPos1 ml" lang="en" id="lblprice">Price List</div>
+						</div>
+					</a>
+
+				</div>
+				<div class="Menu2">
+					<a href="promotion_list.html" class="enableText" rel="external"
+						onclick=localStorage.promo='cust'>
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/icn-promotion-small.png" alt="" />
+							</div>
+							<div id="lblMenuNoSale" class="MenuTextPos1 ml" lang="en">
+								Promotions</div>
+						</div>
+					</a>
+				
+					
+								<a href="#" class="enableText" rel="external"
+						onclick='openBalances()'>
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/icn-analysis.png" alt="" />
+							</div>
+							<div class="MenuTextPos1 ml" lang="en">Balances</div>
+						</div>
+					</a>
+					
+					
+					 <a href="../utilities/gpsinfo.html" class="enableText"
+						rel="external" onclick=localStorage.gps='cust'>
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/info-4.png" alt="" />
+							</div>
+							<div id="lblMenuNoSale" class="MenuTextPos1 ml" lang="en">
+								GPS Info</div>
+						</div>
+					</a> <a href="#" class="enableText" rel="external" id="exit">
+						<div class="MenuPosition1 info_right_icon">
+							<div class="MenuIconPos">
+								<img class="bottomicon" src="../images/info-8.png" alt="" />
+							</div>
+							<div class="MenuTextPos1 ml" lang="en">Exit</div>
+						</div>
+					</a>
+				</div>
+			</div> -->
+							</div>
+							<div id="f1" data-role="footer" class="ui-bar">
+								<div class="footer">
+									<div class="leftfooter">09 November 2011</div>
+									<div class="rightfooter">Mirnah Technology Systems</div>
+								</div>
+							</div>
+							<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+								<div data-role="navbar" data-iconpos="top" data-grid="f">
+									<ul>
+										<li style="margin-bottom: 0 !important;"><a href="#"
+												rel="external" id="day" data-icon="custom" lang="en"
+												onclick="footerredict('../startofday/startofday.html')">Start
+												day</a></li>
+										<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+												rel="external" data-icon="custom" lang="en"
+												onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+										<li style="margin-bottom: 0 !important;"><a href="#"
+												class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+												lang="en">Customer</a></li>
+										<li style="margin-bottom: 0 !important;"><a href="#"
+												rel="external" id="sett" data-icon="custom" lang="en"
+												onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+										<li style="margin-bottom:0 !important;"><a href="#"
+			                                rel="external" id="ordstatus" data-icon="custom"
+			                                lang="en"
+			                                onclick="footerredict('../home/orderstatus.html')">Order
+			                                Status</a></li>
+										<li style="margin-bottom: 0 !important;"><a href="#"
+												rel="external" id="info" data-icon="custom" lang="en"
+												onclick="footerredict('../information/information.html')">Information</a></li>
+										<li style="margin-bottom: 0 !important; width: 14.0%"><a
+												href="#" rel="external" id="setup" data-icon="custom" lang="en"
+												onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<script type="text/javascript" language="javascript">
+            window.lang = new jquery_lang_js();
+            $(document).ready(function() {
+
+                $(".leftfooter").html(getCurrentDate());
+                resizeOrientationWindow();
+               document.addEventListener("deviceready", getrecord, false);
+                 var lan = sessionStorage.getItem("Language");
+		window.lang.run(lan);
+		
+		if (localStorage.info == 'cust') {
+                    var page = '../customer_opt/cust_opt.html'
+                }
+                else if (localStorage.info == 'info') {
+                    var page = '../customer_opt/invoiceoptions.html';
+                }
+                 else if (localStorage.info == 'todaysunserviced') {
+                    var page = '../information/todaysunserviced.html';
+                }  
+                else if (localStorage.info == 'todaysschedule') {
+                    var page = '../information/todaysschedule.html';
+                }
+                else if (localStorage.info == 'bydayofweek') {
+                    var page = '../information/bydayofweek.html';
+                }
+                else if (localStorage.info == 'allroutecustomers') {
+                    var page = '../information/allroutecustomers.html';
+                }
+                else if(localStorage.info =='invoice')
+                {
+                    var page = '../customer_opt/invoiceoptions.html';
+                }
+                $("#Back_inner").attr("href", page);
+                $("#exit").attr("href", page);
+		
+                              $("#credit").ForceNumericOnly();
+		
+                if (sessionStorage.getItem("Language")  != "en") {
+               
+                window.lang.change('Customerinfo'+lan,lan);
+                window.lang.change('Footer'+lan,lan);
+		if(lan=="AR")
+                {
+		   
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+		
+		}
+		else
+		{
+		    window.lang.change('en','en');	   
+		    
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui- shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+            });
+            function TableDataOffLine(RecSet,flag)
+            {                       
+                var CellCount = $("#tblheader tr:eq(0) td").length;
+                var data = RecSet;
+                inputvalue=RecSet;
+                var paymenttypearray = ['CASH Only','CASH or CHEQUE','CHARGE Only (GC)','TC (CASH or CHEQUE)','TC (CASH Only)'];
+                
+               if(flag=='ipad')
+               {
+                   var paymentterm = paymenttypearray[data[0][7]];
+                $("#code").text(data[0][0]);
+                $("#sequence").text(data[0][5]);
+                $("#name").text(data[0][1]);
+				 $("#tblheader").text(data[0][1]);	
+                   var address =data[0][2];
+                   if(data[0][3] !='')
+                   address =address+" , "+data[0][3];
+                   if(data[0][14] !='')
+                   address =address+" , "+data[0][14];
+                   $("#txtaddress").html(address);
+                 $("#address").html(address);
+                 $("#phone").text(data[0][4]);
+                 $("#payment").text(paymentterm);
+                 $("#cname").text(data[0][8]);
+                 $("#variance").text(eval(eval(data[0][12])-eval(data[0][6])).toFixed(sessionStorage.getItem('decimalplace')));
+                 $("#balance").text(eval(data[0][6]).toFixed(sessionStorage.getItem('decimalplace')));
+                 $("#credit").text(eval(data[0][12]).toFixed(sessionStorage.getItem('decimalplace')));
+                 $("#creditdays").text(data[0][10]);
+                 $("#alpha").text(data[0][11]);
+                   var pricingkey = data[0][15];
+               }
+               else
+               {
+                   var paymentterm = paymenttypearray[data.array[0].invoicepaymentterms];
+               $("#code").text(data.array[0].customercode);
+                $("#sequence").text(data.array[0].customersequence);
+                $("#name").text(data.array[0].customername);
+                   var address =data.array[0].customeraddress1;
+                   if(data.array[0].customeraddress2 !='')
+                   address =address+" , "+data.array[0].customeraddress2;
+                   if(data.array[0].customeraddress3 !='')
+                   address =address+" , "+data.array[0].customeraddress3;
+                 $("#address").html(address);
+                 $("#phone").text(data.array[0].customerphone);
+                 $("#payment").text(paymentterm);
+                 $("#cname").text(data.array[0].contactname);
+                 $("#variance").text(eval(eval(data.array[0].creditlimit)-eval(data.array[0].balance)).toFixed(sessionStorage.getItem('decimalplace')));
+                 
+                 $("#balance").text(eval(data.array[0].balance).toFixed(sessionStorage.getItem('decimalplace')));
+                 $("#credit").text(eval(data.array[0].creditlimit).toFixed(sessionStorage.getItem('decimalplace')));
+                 $("#creditdays").text(data.array[0].creditlimitdays);
+                 $("#alpha").text(data.array[0].alternatecode);
+                    var pricingkey = data.array[0].pricingkey
+               }
+                if(pricingkey == '' || pricingkey== 0)
+                {
+                    $('#lblprice').addClass('MenuGray');
+                    $('#imgprice').attr('src', '../images/icn-pricelist_gray.png');
+                    $('#linkprice').attr('href', '');
+                }
+            }
+            function openOrders(){
+            
+            	localStorage.order="cust";
+            	window.location="pre_sold_order_review.html";
+            
+            }
+            function getrecord()
+            {
+				resizeWindow();
+                var custid=sessionStorage.getItem("customerid");
+                var platform= sessionStorage.getItem("platform");
+                getSetting();
+                if(sessionStorage.getItem("Language")=='en')
+                {
+                    if(platform=='iPad')
+                    {
+                    var abc = Cordova.exec(function(result) {
+                                            TableDataOffLine(result,'ipad');
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            ["select customercode,customername,customeraddress1,customeraddress2,customerphone,customersequence,balance,invoicepaymentterms,contactname,routenumber,creditlimitdays,alternatecode,creditlimit,pobox,customeraddress3,pricingkey from customermaster where customercode="+custid]);
+               		}
+               		else if(platform=='Android')
+           			{
+			           		window.plugins.DataBaseHelper.select("select customercode,customername,customeraddress1,customeraddress2,customerphone,customersequence,CAST(balance AS VARCHAR) balance,invoicepaymentterms,contactname,routenumber,creditlimitdays,alternatecode,creditlimit,pobox,customeraddress3,pricingkey from customermaster where customercode="+custid,function(result)
+							{
+									
+							 		TableDataOffLine(result,'android');
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+           			}
+                }
+                else
+                {
+                    if(platform=='iPad')
+                    {
+                    var abc = Cordova.exec(function(result) {
+                                            TableDataOffLine(result,'ipad');
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            ["select customercode,arbcustomername,arbcustomeraddress1,arbcustomeraddress2,customerphone,customersequence,balance,invoicepaymentterms,arbcontactname,routenumber,creditlimitdays,alternatecode,creditlimit,pobox,customeraddress3 from customermaster where customercode="+custid]); 
+                	}
+                	else if(platform=='Android')
+           			{
+			           		window.plugins.DataBaseHelper.select("select customercode,arbcustomername as customername,arbcustomeraddress3 as customeraddress1,arbcustomeraddress2 as customeraddress2,customerphone,customersequence,CAST(balance AS VARCHAR) balance,invoicepaymentterms,arbcontactname,routenumber,creditlimitdays,alternatecode,creditlimit,pobox,arbcustomeraddress1 as customeraddress3 from customermaster where customercode="+custid,function(result)
+							{
+							 		TableDataOffLine(result,'android');
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+           			}
+                }
+                
+                return false;
+            }
+            function getSetting()
+            {
+                var platform= sessionStorage.getItem("platform");
+                if(platform=='iPad')
+                {
+                    var abc = Cordova.exec(function(result) {
+                                            if(eval(result[0][0]) ==3)
+                                            {
+                                                $('#lblorder').addClass('MenuGray');
+                                                $('#imgorder').attr('src', '../images/info-5_g.png');
+                                                $('#linkorder').attr('href', '');
+                                            }
+                                            },
+                                            function(error) {
+                                            alert(error);},
+                                            "PluginClass", 
+                                            "GetdataMethod", 
+                                            ["select routetype from routemaster where routecode="+sessionStorage.getItem("RouteCode")]); 
+                }
+                else if(platform=='Android')
+                {
+                    window.plugins.DataBaseHelper.select("select routetype from routemaster where routecode="+sessionStorage.getItem("RouteCode"),function(result)
+                                                         {
+                                                         if(eval(result.array[0][0]) !=3)
+                                                         {
+                                                         
+                                                         }
+                                                         },
+                                                         function()
+                                                         {
+                                                         console.warn("Error calling plugin");
+                                                         });
+                }
+            }
+            
+            function openBalances(){
+           		sessionStorage.AgingCustCode=sessionStorage.getItem("customerid");
+            	localStorage.age='cust'
+            	window.location="aging_analysis.html";
+            	
+            }
+            
+            /*
+             *@method getCustomerBalances
+             *function to get the customer balances before customer visit
+             *Balance is checked only if routemaster allowbalcheck is 1
+             *@param{array}
+             */
+             function getCustomerBalances(){
+             	$.mobile.showPageLoadingMsg();
+            	 
+            	 var customerbalance = {};
+            	customerbalance["routecode"] =  sessionStorage.getItem("RouteCode");
+            	customerbalance["customercode"] =  sessionStorage.getItem("customerid");
+            	customerbalance = JSON.stringify(customerbalance);
+            		 $.mobile.showPageLoadingMsg();
+            		$.ajax({
+            			type : "get",
+            			url : wsurl + "ws/getcustomerbalance?customerbalance=[" + customerbalance + "]",
+            			data : "{}",
+            			cache : false,
+            			timeout : 10000,
+            			crossDomain : true,
+            			success : function(data) {
+            				if (data.length > 0) {
+            					data = JSON.parse(data);
+            					deleteCustomerBalances(data);
+            				}else{
+            					 openBalances();
+            					$.mobile.hidePageLoadingMsg();
+            				}
+
+            			},
+            			error : function(qXHR, textStatus, errorThrown) {
+            				 openBalances();
+            				alert("Connection error : " + qXHR.status + ":"
+            						+ textStatus + " " + errorThrown);
+            				$.mobile.hidePageLoadingMsg();
+            			}
+            		});
+
+             	
+             	
+             }
+             
+             /*
+             *@method deleteCustomerBalances
+             *function to delete existinng data from customerinvoice which are not in invoiceheader and ardetail 
+             *@param{data,array}
+             */
+         function deleteCustomerBalances(data){
+            	 var Qry="DELETE FROM customerinvoice where invoicenumber NOT IN(SELECT invoicenumber from invoiceheader " 
+            		 +"union  select invoicenumber from ardetail)  and customercode="+sessionStorage.getItem("customerid");
+            	 if(platform=='Android')
+              {
+                                     
+                      console.log(Qry);
+                      window.plugins.DataBaseHelper.insert(Qry,function(result){
+                     	 for ( var key in data) {
+                  			switch (key) {
+                  			case "customerbalance":
+                  				var customerbalance = data[key];
+                  				if (customerbalance.length > 0) {
+                  					updateCustomerBalances(customerbalance,0,customerbalance.length,0)
+                  						
+                  				}else{
+                  					 openBalances();
+                  					$.mobile.hidePageLoadingMsg();
+                  				}
+                  				break;
+                  			}
+                  		}
+                     	 
+                           },
+                           function()
+                           {
+                           console.warn("Error calling plugin");
+                           });
+                 
+              }
+            	 
+         }    
+             
+             /*
+              *@method updateCustomerBalances
+              *function to update the customer balances before customer visit
+              *@param{data,array}
+              */
+             function updateCustomerBalances(itemdata,i,total,alltotal){
+             	 if(platform=='Android')
+                  {
+                         	 window.plugins.DataBaseHelper.select("select routecode from customerinvoice where routecode="+itemdata[i].routecode+" and invoicenumber="+itemdata[i].invoicenumber,function(result)
+                      				{
+                      				 if(!$.isEmptyObject(result))
+                                                       {
+                                                        var QrySelect="select count(*) as cnt from ardetail where invoicenumber="+itemdata[i].invoicenumber;
+                                                               window.plugins.DataBaseHelper.select(QrySelect,function(result)
+                                                              {
+                                                                  if(result.array[0].cnt > 0)
+                                                                      return true;
+                                                                  else
+                                                                      insert_customerinvoicedata(itemdata,i,"update");
+                                                              },
+                                                              function()
+                                                              {
+                                                                  console.warn("Error calling plugin");
+                                                              });
+                                                               
+                                                              }
+                                                              else
+                                                              {
+                                                                 insert_customerinvoicedata(itemdata,i,"insert");
+                                                              }
+                                                              if(i+1 < total)
+                                                              {
+                                                             	 updateCustomerBalances(itemdata,i+1,total,alltotal);
+                                                              }
+                                                               else
+                                                             {
+                                                             	  $.mobile.hidePageLoadingMsg();
+                                                             	 openBalances();
+                                                             }
+                      				},
+                      				function()
+                      				{
+                      			   	 console.warn("Error calling plugin");
+                      				});  
+                 
+                     
+                  }
+             	
+             }
+              
+              function insert_customerinvoicedata(customerinvoicedata,i,flag)
+              {
+                 var platform= sessionStorage.getItem("platform");
+             	 if(platform=='Android')
+   		    	{
+                      if(flag=="insert")
+                      {
+                         
+          								           	window.plugins.DataBaseHelper.insert("INSERT INTO `customerinvoice` ('transactionkey','transactiontype','documentnumber','invoicenumber','transactiondate','transactiontime','customercode','routecode','salesmancode','totalinvoiceamount','totalsalesamount','totalreturnamount','totaldamagedamount','totalfreesampleamount','immediatepaid','amountpaid','dnamountpaid','cnamountpaid','invoicebalance','paymenttype','voidflag','paymentstatus','hhcinvoicenumber','remarks1','remarks2','routestartdate','erpreferencenumber','mdat','totalpromoamount','gcpaymenttype','totaltaxesamount','itemlinetaxamount','totaldiscountamount','pdcindicator','chequecollection','totalexpiryamount','currencycode','pdcbalance','totalmanualfree','totallimitedfree','totalrebaterent','totalfixedrent','data','totaldiscdistributionamount','totalreplacementamount','pdcdate','totalbuybackfreeamount','duedate') VALUES ('"+customerinvoicedata[i].transactionkey+"','"+customerinvoicedata[i].transactiontype+"','"+customerinvoicedata[i].documentnumber+"','"+customerinvoicedata[i].invoicenumber+"','"+customerinvoicedata[i].transactiondate+"','"+customerinvoicedata[i].transactiontime+"','"+customerinvoicedata[i].customercode+"','"+customerinvoicedata[i].routecode+"','"+customerinvoicedata[i].salesmancode+"','"+customerinvoicedata[i].totalinvoiceamount+"','"+customerinvoicedata[i].totalsalesamount+"','"+customerinvoicedata[i].totalreturnamount+"','"+customerinvoicedata[i].totaldamagedamount+"','"+customerinvoicedata[i].totalfreesampleamount+"','"+customerinvoicedata[i].immediatepaid+"','"+customerinvoicedata[i].amountpaid+"','"+customerinvoicedata[i].dnamountpaid+"','"+customerinvoicedata[i].cnamountpaid+"','"+customerinvoicedata[i].invoicebalance+"','"+customerinvoicedata[i].paymenttype+"','"+customerinvoicedata[i].voidflag+"','"+customerinvoicedata[i].paymentstatus+"','"+customerinvoicedata[i].hhcinvoicenumber+"','"+customerinvoicedata[i].remarks1+"','"+customerinvoicedata[i].remarks2+"','"+customerinvoicedata[i].routestartdate+"','"+customerinvoicedata[i].erpreferencenumber+"','"+customerinvoicedata[i].mdat+"','"+customerinvoicedata[i].totalpromoamount+"','"+customerinvoicedata[i].gcpaymenttype+"','"+customerinvoicedata[i].totaltaxesamount+"','"+customerinvoicedata[i].itemlinetaxamount+"','"+customerinvoicedata[i].totaldiscountamount+"','"+customerinvoicedata[i].pdcindicator+"','"+customerinvoicedata[i].chequecollection+"','"+customerinvoicedata[i].totalexpiryamount+"','"+customerinvoicedata[i].currencycode+"','"+customerinvoicedata[i].pdcbalance+"','"+customerinvoicedata[i].totalmanualfree+"','"+customerinvoicedata[i].totallimitedfree+"','"+customerinvoicedata[i].totalrebaterent+"','"+customerinvoicedata[i].totalfixedrent+"','"+customerinvoicedata[i].data+"','"+customerinvoicedata[i].totaldiscdistributionamount+"','"+customerinvoicedata[i].totalreplacementamount+"','"+customerinvoicedata[i].pdcdate+"','"+customerinvoicedata[i].totalbuybackfreeamount+"','"+customerinvoicedata[i].duedate+"')",function(result)
+          												{
+          												 return true;
+          												},
+          												function()
+          												{
+          											   	 console.warn("Error calling plugin");
+          												});
+                      }else
+                      {
+                    
+ 	                  window.plugins.DataBaseHelper.insert("update customerinvoice set transactionkey='"+customerinvoicedata[i].transactionkey+"',transactiontype='"+customerinvoicedata[i].transactiontype+"',documentnumber='"+customerinvoicedata[i].documentnumber+"',invoicenumber='"+customerinvoicedata[i].invoicenumber+"',transactiondate='"+customerinvoicedata[i].transactiondate+"',transactiontime='"+customerinvoicedata[i].transactiontime+"',customercode='"+customerinvoicedata[i].customercode+"',routecode='"+customerinvoicedata[i].routecode+"',salesmancode='"+customerinvoicedata[i].salesmancode+"',totalinvoiceamount='"+customerinvoicedata[i].totalinvoiceamount+"',totalsalesamount='"+customerinvoicedata[i].totalsalesamount+"',totalreturnamount='"+customerinvoicedata[i].totalreturnamount+"',totaldamagedamount='"+customerinvoicedata[i].totaldamagedamount+"',totalfreesampleamount='"+customerinvoicedata[i].totalfreesampleamount+"',immediatepaid='"+customerinvoicedata[i].immediatepaid+"',amountpaid='"+customerinvoicedata[i].amountpaid+"',dnamountpaid='"+customerinvoicedata[i].dnamountpaid+"',cnamountpaid='"+customerinvoicedata[i].cnamountpaid+"',invoicebalance='"+customerinvoicedata[i].invoicebalance+"',paymenttype='"+customerinvoicedata[i].paymenttype+"',voidflag='"+customerinvoicedata[i].voidflag+"',paymentstatus='"+customerinvoicedata[i].paymentstatus+"',hhcinvoicenumber='"+customerinvoicedata[i].hhcinvoicenumber+"',remarks1='"+customerinvoicedata[i].remarks1+"',remarks2='"+customerinvoicedata[i].remarks2+"',routestartdate='"+customerinvoicedata[i].routestartdate+"',erpreferencenumber='"+customerinvoicedata[i].erpreferencenumber+"',mdat='"+customerinvoicedata[i].mdat+"',totalpromoamount='"+customerinvoicedata[i].totalpromoamount+"',gcpaymenttype='"+customerinvoicedata[i].gcpaymenttype+"',totaltaxesamount='"+customerinvoicedata[i].totaltaxesamount+"',itemlinetaxamount='"+customerinvoicedata[i].itemlinetaxamount+"',totaldiscountamount='"+customerinvoicedata[i].totaldiscountamount+"',pdcindicator='"+customerinvoicedata[i].pdcindicator+"',chequecollection='"+customerinvoicedata[i].chequecollection+"',totalexpiryamount='"+customerinvoicedata[i].totalexpiryamount+"',currencycode='"+customerinvoicedata[i].currencycode+"',pdcbalance='"+customerinvoicedata[i].pdcbalance+"',totalmanualfree='"+customerinvoicedata[i].totalmanualfree+"',totallimitedfree='"+customerinvoicedata[i].totallimitedfree+"',totalrebaterent='"+customerinvoicedata[i].totalrebaterent+"',totalfixedrent='"+customerinvoicedata[i].totalfixedrent+"',data='"+customerinvoicedata[i].data+"',totaldiscdistributionamount='"+customerinvoicedata[i].totaldiscdistributionamount+"',totalreplacementamount='"+customerinvoicedata[i].totalreplacementamount+"',pdcdate='"+customerinvoicedata[i].pdcdate+"',totalbuybackfreeamount='"+customerinvoicedata[i].totalbuybackfreeamount+"',duedate='"+customerinvoicedata[i].duedate+"' where routecode='"+customerinvoicedata[i].routecode+"' and invoicenumber='"+customerinvoicedata[i].invoicenumber+"'",function(result)
+ 	                                  {
+ 	                                   return true;
+ 	                                  },
+ 	                                  function()
+ 	                                  {
+ 	                                   console.warn("Error calling plugin");
+
+                 						});
+                    }
+   		    	}
+              }
+             
+            
+        </script>
+
+						</div>
+					</body>
+				</html>

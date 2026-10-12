@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Translate Example</title>
+
+<script src="barcodescanner.js" type="text/javascript"></script>
+  
+ <script type="text/javascript">
+    window.plugins.barcodeScanner.scan( function(result) {
+        alert("We got a barcode\n" +
+                  "Result: " + result.text + "\n" +
+                  "Format: " + result.format + "\n" +
+                  "Cancelled: " + result.cancelled);
+    }, function(error) {
+        alert("Scanning failed: " + error);
+    }
+);
+
+   </script>   
+
+
+</head>
+<body>
+    
+       
+    <div id="article">
+        <p>
+            Google Inc is set to introduce on Tuesday a new Web browser designed to handle text
+            and graphics.</p>
+    </div>
+</body>
+</html>

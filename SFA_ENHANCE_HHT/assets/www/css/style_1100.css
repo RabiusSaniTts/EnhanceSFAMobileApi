@@ -1,0 +1,51 @@
+/*iWebKit css 5.04 by Christopher Plieger*/
+
+
+/*Sales Invoice & Order Request page class*/
+
+.centerboxInvReq
+{
+ 	padding-right:0px;
+}
+
+.tblHeader
+{
+ 	height:30px;
+}
+ 
+.contentFont
+{ 
+ 	height:30px;
+}
+.contentFontBlack {
+	height:30px;
+}
+.MenuPosition
+{
+    height:100px;
+    padding-top:10px;   
+}
+
+.MenuTextPos
+{
+    text-align:center;
+    color:#095778;
+}
+
+.textWidth
+{	
+	
+}
+
+.textBar
+{	
+	margin-top:0px;
+}
+
+.boxContent
+{
+    float:left;
+    width:85%;
+}
+
+/*Over Sales Invoice & Order Request page class*/

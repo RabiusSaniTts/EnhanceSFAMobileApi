@@ -1,0 +1,896 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 02/02/2012
+ '  Description  : This page is used today's summary.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Today's Summary</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="../information/information.html" id="Back_inner"
+                    rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Todays Summary</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent captionLabel">
+                    <div class="tblBox">
+                        <div id="contentWrapper" class="tblInvoice">
+                            <table border="0" cellpadding="5" cellspacing="5"
+                                width="100%" id="tblContent">
+                                <tr>
+                                    <td class="tSummaryTitle" lang="en"
+                                        style="width:50%">Total Sales</td>
+                                    <td>
+                                        <div align="center" id="lbltotalsales"
+                                            class="rightAlign tSummaryTitle"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">Cash
+                                        Sales</td>
+                                    <td>
+                                        <div id="lblcashsales"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">Credit
+                                        Sales</td>
+                                    <td>
+                                        <div id="lblcreditsales"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">TC Sales</td>
+                                    <td>
+                                        <div id="lbltcsales"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" cellpadding="5" cellspacing="5"
+                                width="100%" id="tblContent">
+                                <tr>
+                                    <td class="tSummaryTitle" lang="en"
+                                        style="width:50%">Sales Discounts</td>
+                                    <td>
+                                        <div id="lblsalesdiscounts"
+                                            class="rightAlign tSummaryTitle"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">Invoice
+                                        Discounts</td>
+                                    <td>
+                                        <div id="lblinvoicediscounts"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">Item
+                                        Discounts</td>
+                                    <td>
+                                        <div id="lblitemdiscounts"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table border="0" cellpadding="5" cellspacing="5"
+                                width="100%" id="tblContent">
+                                <tr>
+                                    <td class="tSummaryTitle" lang="en"
+                                        style="width:50%">Receipts</td>
+                                    <td>
+                                        <div id="lblreceipts"
+                                            class="rightAlign tSummaryTitle"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">AR
+                                        Collection</td>
+                                    <td>
+                                        <div id="lblarcollection"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">Advance
+                                        Payment</td>
+                                    <td>
+                                        <div id="lbladvancepayment"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="0" cellpadding="5" cellspacing="5"
+                                width="100%" id="tblContent">
+                                <tr>
+                                    <td class="tSummaryTitle" lang="en"
+                                        style="width:50%">Van Stock</td>
+                                    <td>
+                                        <div id="lblvanstock"
+                                            class="rightAlign tSummaryTitle"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">Quantity</td>
+                                    <td>
+                                        <div id="lblvanqty"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td lang="en" class="tSummary">Amount</td>
+                                    <td>
+                                        <div id="lblvanamount"
+                                            class="rightAlign tSummary"></div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+
+                    <a onclick="getRp32WeekNumber();" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPosition printDocumentHeight">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/chart.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Charts</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="../information/information.html" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div
+                            class="MenuPosition printDocumentHeight MenuExit MenuBtn">
+                            <div class="MenuTextPos ">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Done</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" rel="external" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" rel="external" id="info"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        window.lang = new jquery_lang_js();
+        var platform,decimalplace;
+        var CashSales = 0;
+        var CreditSales = 0;
+        var TcSales = 0;
+        var InvoiceDiscounts = 0;
+        var ItemDiscounts = 0;
+        var ARCollection = 0;
+        var AdvancePayment = 0;
+        var VanQty = 0;
+        var VanAmount = 0;
+        var routesequenceplanflag=0;
+        resizeOrientationWindow();
+	    $(document).ready(function() {
+	    	resizeWindow();            
+			//Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+            
+            platform = sessionStorage.getItem("platform");
+            decimalplace = sessionStorage.getItem("decimalplace");
+            document.addEventListener("deviceready", getCreditSales, false);
+            
+            function getCreditSales()
+            {
+                var Qry = "SELECT IFNULL(SUM(totalinvoiceamount),0) CreditSales FROM invoiceheader inv JOIN customermaster cm ON cm.customercode = inv.customercode and cm.invoicepaymentterms = 2 where inv.voidflag is null and inv.istemp = 'false' AND inv.routekey=" + sessionStorage.getItem("RouteKey");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            CreditSales = result[0][0];
+                            getCashSales();              
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            CreditSales = result.array[0].CreditSales;
+                            getCashSales();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getCashSales()
+            {
+                //var Qry = "SELECT IFNULL(SUM(totalinvoiceamount),0) CashSales FROM invoiceheader WHERE  paymenttype = 0 AND voidflag is null AND routekey=" + sessionStorage.getItem("RouteKey");
+                var Qry="SELECT IFNULL(SUM(totalinvoiceamount),0) CashSales FROM invoiceheader inv JOIN customermaster cm ON cm.customercode = inv.customercode and cm.invoicepaymentterms < 2 where inv.voidflag is null and inv.istemp = 'false' AND inv.routekey=" + sessionStorage.getItem("RouteKey");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            CashSales = result[0][0];
+                            getTCSales();              
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            CashSales = result.array[0].CashSales;                           
+                            getTCSales();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getTCSales()
+            {
+                var Qry = "SELECT IFNULL(SUM(totalinvoiceamount),0) TCSales FROM invoiceheader inv JOIN customermaster cm ON cm.customercode = inv.customercode and cm.invoicepaymentterms IN(3,4) where inv.voidflag is null and inv.istemp = 'false'";
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            TCSales = result[0][0];
+                            getInvoiceDiscounts();              
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            TCSales = result.array[0].TCSales;
+                            getInvoiceDiscounts();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getInvoiceDiscounts()
+            {
+                var Qry = "SELECT IFNULL(SUM(totalpromoamount) - (SELECT SUM(promoamount) FROM invoicedetail WHERE routekey = invoiceheader.routekey AND istemp = 'false'),0) InvoiceDiscounts from invoiceheader WHERE istemp = 'false' AND routekey=" + sessionStorage.getItem("RouteKey");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            InvoiceDiscounts = result[0][0];
+                            getItemDiscounts();              
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            InvoiceDiscounts = result.array[0].InvoiceDiscounts;
+                            getItemDiscounts();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getItemDiscounts()
+            {
+                var Qry = "SELECT IFNULL(SUM(promoamount),0) ItemDiscounts FROM invoicedetail WHERE istemp = 'false' AND routekey=" + sessionStorage.getItem("RouteKey");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            ItemDiscounts = result[0][0];
+                            getARCollection();              
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            ItemDiscounts = result.array[0].ItemDiscounts;
+                            getARCollection();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getARCollection()
+            {
+                var Qry = "SELECT IFNULL(SUM(amountpaid),0) ARCollection FROM arheader WHERE voidflag = 0 and advancepaymentflag = 0 AND routekey=" + sessionStorage.getItem("RouteKey");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            ARCollection = result[0][0];
+                            getAdvancePayment();              
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            ARCollection = result.array[0].ARCollection;
+                            getAdvancePayment();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getAdvancePayment()
+            {
+                var Qry = "SELECT IFNULL(SUM(amountpaid),0) ADVANCECollection FROM arheader WHERE voidflag = 0 and advancepaymentflag = 1 AND routekey=" + sessionStorage.getItem("RouteKey");
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            AdvancePayment = result[0][0];
+                            getVanStock();              
+                        }
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                            AdvancePayment = result.array[0].ADVANCECollection;
+                            getVanStock();
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            
+            function getVanStock()
+            {
+              //  var Qry = "SELECT IFNULL(SUM((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(loadaddqty,0)+ifnull(beginstockqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))/unitspercase),0) totalcases, IFNULL(SUM((ifnull(loadqty,0)+ifnull(loadaddqty,0)+ifnull(beginstockqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))%unitspercase),0) totalunits, IFNULL(SUM(((ifnull(loadqty,0)+ifnull(loadaddqty,0)+ifnull(beginstockqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))/unitspercase) * caseprice + ((ifnull(loadqty,0)+ifnull(loadaddqty,0)+ifnull(beginstockqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0))%unitspercase) * defaultsalesprice),0) totalamount FROM Inventorysummarydetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode";
+              //  var Qry="SELECT IFNULL(SUM(((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))/unitspercase),0) totalcases, IFNULL(SUM(((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))%unitspercase),0) totalunits, IFNULL(SUM((((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))/unitspercase) * caseprice + (((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))%unitspercase) * defaultsalesprice),0) totalamount FROM Inventorysummarydetail isd JOIN itemmaster im ON im.actualitemcode = isd.itemcode";
+               // var Qry="SELECT IFNULL(SUM(IFNULL(CAST((((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))/unitspercase ) AS INT),0)),0) totalcases, IFNULL(SUM(((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))%unitspercase),0) totalunits, IFNULL(SUM(CAST((((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))/unitspercase) AS INT) * caseprice + (((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))%unitspercase) * defaultsalesprice),0) totalamount FROM Inventorysummarydetail isd JOIN itemmaster im ON im.actualitemcode = isd.itemcode";
+               var Qry="SELECT CASE WHEN unitspercase=1 THEN 0 ELSE IFNULL(IFNULL(CAST((((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))/unitspercase) AS INT),0),0) END AS totalcases, CASE WHEN unitspercase=1 THEN IFNULL(((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0))),0) ELSE IFNULL(((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0))%unitspercase),0) END AS totalunits, IFNULL(CAST((((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0)))/unitspercase) AS INT) * caseprice + (((IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0))%unitspercase) * defaultsalesprice),0) totalamount FROM Inventorysummarydetail isd JOIN itemmaster im ON im.actualitemcode = isd.itemcode";
+                console.log(Qry);                
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if(result.length > 0)
+                        {
+                            VanQty = parseInt(result[0][0]) + " / " + parseInt(result[0][1]);
+                            VanAmount = result[0][2];                            
+                        }
+                        BindData();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {  
+                        
+                        	var length=eval(result.array.length);
+                        	if(length>0)
+                        	{
+	                        	var sumCases=0,sumUnits=0;
+	                        	VanAmount=0;
+	                        	
+	                        	for(var i=0;i<length;i++){
+	                        	
+	                        		
+	                        		sumCases=eval(sumCases)+eval(result.array[i].totalcases);
+	                        		sumUnits=eval(sumUnits)+eval(result.array[i].totalunits);
+	                        		VanAmount = eval(VanAmount)+eval(result.array[i].totalamount);
+	                        		if(i==length-1){
+	                        		  	 VanQty = parseInt(eval(sumCases)) + " / " + parseInt(eval(sumUnits));
+	                            		 BindData();	
+	                        		}
+	                        	
+	                        	}
+                        	}                 	
+                          
+                        }else{
+                        		VanQty = "0/0";
+	                       		VanAmount = 0
+	                   			BindData();
+                        	
+                        }
+                       
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+            }
+            //
+            function PrintReportVanStock()
+            {
+                //alert("v2");
+                getroutedate();
+                var routekey = sessionStorage.getItem("RouteKey");
+              //  alert(sessionStorage.getItem("RouteKey"));
+//                var availqty="ifnull(inventorysummarydetail.loadqty,0)+ifnull(inventorysummarydetail.loadadjustqty,0)+ifnull(inventorysummarydetail.beginstockqty,0)+ifnull(loadaddqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freesampleqty,0)";
+               // Qry = "SELECT DISTINCT CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END AS 'itemcode',itemdescription AS 'description',(IFNULL(CAST((loadqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((loadqty%unitspercase) AS INT),0)) AS 'loadqty',(IFNULL(CAST((loadadjustqty/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((loadadjustqty%unitspercase) AS INT),0)) AS 'soldqty', (CAST(((IFNULL(beginstockqty,0)+IFNULL(loadqty,0)+IFNULL(loadadjustqty,0))/unitspercase) AS INT) ||  '/' || CAST(((IFNULL(beginstockqty,0)+IFNULL(loadqty,0)+IFNULL(loadadjustqty,0))%unitspercase) AS INT)) AS 'avlqty' FROM inventorytransactionheader invth JOIN inventorytransactiondetail invtd ON invtd.detailkey = invth.detailkey JOIN inventorysummarydetail invsum ON invsum.itemcode = invtd.itemcode JOIN itemmaster im ON im.actualitemcode = invsum.itemcode WHERE invth.loadnumber=" + loadperiodnumber+" or invth.loadnumber=0" ;
+                //Qry="select CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN itemmaster.alternatecode ELSE itemmaster.actualitemcode END as itemcode,CASE WHEN '" + sessionStorage.getItem("Language") + "' = 'en' THEN itemdescription ELSE arbitemdescription END AS 'description',(IFNULL(CAST((("+availqty+")/unitspercase) AS INT),0) ||  '/' || IFNULL(CAST((("+availqty+")%unitspercase) AS INT),0)) AS 'avlqty',caseprice,defaultsalesprice,unitspercase as upc,itemmaster.actualitemcode from itemmaster left join inventorysummarydetail on itemmaster.actualitemcode=inventorysummarydetail.itemcode where routekey="+routekey+" and ("+availqty+") > 0 order by CASE printsequenceroute WHEN 0 THEN 100000 ELSE printsequenceroute END";
+                var Qry ="SELECT itemcode,description,(CAST(loadedqty/unitspercase AS INT) || '/' || CAST(loadedqty%unitspercase AS INT)) AS loadedqty,(CAST(transferqty/unitspercase AS INT) || '/' || CAST(transferqty%unitspercase AS INT)) AS transferqty,(CAST(invoicedqty/unitspercase AS INT) || '/' || CAST(invoicedqty%unitspercase AS INT)) AS saleqty ,(CAST(returnqty/unitspercase AS INT) || '/' || CAST(returnqty%unitspercase AS INT)) as returnqty,(CAST(vanstock /unitspercase AS INT) || '/' || CAST(vanstock %unitspercase AS INT)) AS vanstock FROM ( SELECT CASE WHEN '" + sessionStorage.getItem("CheckCode") + "' = 'alternatecode' THEN im.alternatecode ELSE im.actualitemcode END AS itemcode,itemdescription AS description,unitspercase,IFNULL((IFNULL(isd.beginstockqty,0)+IFNULL(isd.loadqty,0)),0) AS loadedqty,IFNULL((IFNULL(isd.loadaddqty,0) - IFNULL(isd.loadcutqty,0)),0) AS transferqty,IFNULL((IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0) AS invoicedqty,IFNULL((IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) AS returnqty,IFNULL((IFNULL(isd.beginstockqty,0) + IFNULL(isd.loadqty,0) + IFNULL(isd.loadaddqty,0) + IFNULL(isd.returnqty,0) + IFNULL(isd.returnfreeqty,0)),0) -IFNULL((IFNULL(isd.loadcutqty,0) + IFNULL(isd.saleqty,0) + IFNULL(isd.freesampleqty,0)),0) AS vanstock FROM inventorysummarydetail isd INNER JOIN itemmaster im ON im.actualitemcode = isd.itemcode where routekey = "+sessionStorage.getItem("RouteKey")+") order by itemcode";
+               // alert(Qry);
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        if (result.length < 0)
+                            result = []
+                        ProcessReportVanStock(result);
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if (result.array != undefined) {  
+                            //alert("v2");
+                            result = $.map(result.array, function(item, index) {
+                               // return [[item.itemcode,item.description,item.upc,item.avlqty,item.caseprice,item.defaultsalesprice]];
+                                return [[item.itemcode,item.description,item.loadedqty,item.transferqty,item.saleqty,item.returnqty,item.vanstock]];
+                                
+                            });
+                        }
+                        else
+                            result = [];
+                        ProcessReportVanStock(result);
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+            }
+
+            function ProcessReportVanStock(result) {
+               // alert("v3");
+               // alert(result);
+                /*var Headers = ["Item#", "Description", "UPC", "Available Qty", "Case Price", "Unit Price"]
+                var Total = {"Available Qty": "0/0"}*/
+                var Headers = ["Item#","Description","Loaded Qty","Transfer Qty","Sale Qty","Return Qty","Truck Stock"];
+                var Total = {"Loaded Qty" : "0/0","Transfer Qty" : "0/0", "Sale Qty" : "0/0", "Return Qty" : "0/0","Truck Stock" : "0/0"};
+                for (i = 0; i < result.length; i++) {
+                   // alert("v5");
+                    for (j = 0; j < result[i].length; j++) {
+                        
+                        if (j == 0) {
+                            if(!isNaN(result[i][j]))
+                                result[i][j] = parseInt(result[i][j]);
+                            result[i][j] = (result[i][j]).toString();
+                        }
+                        if(j >= 2 && j<=6)
+                        {
+                        var qtykey = "";
+                        if(j == 2)
+                            qtykey = "Loaded Qty";
+                        if(j == 3)
+                            qtykey = "Transfer Qty";
+                        if(j == 4)
+                            qtykey = "Sale Qty";
+                        if(j == 5)
+                            qtykey = "Return Qty";
+                        if(j == 6)
+                            qtykey = "Truck Stock";
+                        
+                        QuantityTotal(Total,qtykey,result[i][j]);
+                        
+                        }
+                        
+                    }
+                }
+                //data["Load Number"] = loadperiodnumber.toString();
+                data["DOCUMENT NO"] = documentnumber;
+                data["HEADERS"] = Headers;
+                data["TOTAL"] = [Total];
+                data["printstatus"] = getPrintStatus();
+                data["data"] = result;
+                getCommonData();
+                console.log(JSON.stringify(data));
+                //alert("v4");
+                
+                
+               // PrintReport(ReportName.VanStock,data);   
+            }
+            //
+            
+            function BindData()
+            {
+            
+            
+            
+                $("#lblcashsales").text(eval(CashSales).toFixed(decimalplace));
+                $("#lblcreditsales").text(eval(CreditSales).toFixed(decimalplace));
+                $("#lbltcsales").text(eval(TCSales).toFixed(decimalplace));
+                $("#lblinvoicediscounts").text(eval(InvoiceDiscounts).toFixed(decimalplace));
+                $("#lblitemdiscounts").text(eval(ItemDiscounts).toFixed(decimalplace));
+                $("#lblarcollection").text(eval(ARCollection).toFixed(decimalplace));
+                $("#lbladvancepayment").text(eval(AdvancePayment).toFixed(decimalplace));
+                $("#lblvanqty").text(VanQty);                
+                $("#lblvanamount").text(eval(VanAmount).toFixed(decimalplace));
+                
+                var totalsales=(eval(CashSales) + eval(CreditSales)+eval(TCSales)).toFixed(decimalplace);
+                var salesdiscounts=(eval(InvoiceDiscounts) + eval(ItemDiscounts)).toFixed(decimalplace);
+                var receipts=(eval(ARCollection) + eval(AdvancePayment)).toFixed(decimalplace);;
+                
+                $("#lbltotalsales").text(eval(totalsales).toFixed(decimalplace));
+                $("#lblsalesdiscounts").text(eval(salesdiscounts).toFixed(decimalplace));
+                $("#lblreceipts").text(eval(receipts).toFixed(decimalplace));
+                
+                
+            }
+
+            //Set table radius
+            $("#tblContent tr:last").addClass('tableBorderTopLeft tableBorderTopRight');
+            $("#tblContent tr:last").addClass('tableBorderBottomLeft tableBorderBottomRight');
+
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('TodaySummary' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    //Set header align                
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".centerboxInvReq").attr("dir", "ltr");
+
+                //Set header align
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+        });
+        
+        function getRp32WeekNumber(){
+         	var platform= sessionStorage.getItem("platform");
+           	var today=new Date();
+            today = formatDate(today);
+            today = today +' 00:00:00';
+            console.log("select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate");
+           	var platform= sessionStorage.getItem("platform");
+           	if(platform=='iPad')
+		    {
+                   
+        	}
+         	else if(platform=='Android')
+            {
+             
+                window.plugins.DataBaseHelper.select("select rp32weeknumber from salescalender where '"+today+"' BETWEEN weekstartdate AND weekenddate",function(result)
+				{
+					var rp32weeknumber;
+					 if(result.array!=undefined)
+					 {
+					 	rp32weeknumber=result.array[0].rp32weeknumber;
+					 	sessionStorage.setItem("rp32weeknumber",result.array[0].rp32weeknumber);
+						 getRouteSequencePlanFlag();
+	                 }
+                 	 else
+                	 {
+			           rp32weeknumber= sessionStorage.getItem("rp32weeknumber");
+                		 getRouteSequencePlanFlag();
+                	 }
+				},
+				function()
+				{
+			   	 console.warn("Error calling plugin");
+				});
+             }  
+        
+        
+        }
+        function formatDate(d)
+        {
+            var curr_date = d.getDate();
+            var curr_month = d.getMonth();
+            var curr_year = d.getFullYear();
+            curr_month =curr_month + 1;
+            
+            if(curr_month<10)
+            curr_month = "0"+curr_month;
+            
+            if(curr_date<10)
+            curr_date = "0"+curr_date;
+            
+            return curr_year+ "-" +curr_month+ "-" + curr_date;
+        }
+        function getRouteSequencePlanFlag(){
+        
+        	var secondqry ="select routesequenceplanflag from setup where setupid=1";
+        	window.plugins.DataBaseHelper.select(secondqry,function(result)
+			{
+                routesequenceplanflag = result.array[0].routesequenceplanflag;
+                getChartData();        
+			   
+			},
+			function()
+			{
+		   	 		console.warn("Error calling plugin");
+			
+			});
+        
+        }
+        
+        
+        function getChartData(){
+        
+	        var rp32weeknumber=sessionStorage.getItem("rp32weeknumber");
+			if(routesequenceplanflag==1){
+			    rp32weeknumber=9;
+			    sessionStorage.setItem("rp32weeknumber",rp32weeknumber);
+			}
+	        var d = new Date();
+            var n = d.getDay();
+            var array = ['sunseq','monseq','tueseq','wedseq','thuseq','friseq','satseq'];
+            var callarray=['callrestrictiondays7','callrestrictiondays1','callrestrictiondays2','callrestrictiondays3','callrestrictiondays4','callrestrictiondays5','callrestrictiondays6'];
+            var days = array[n];
+            var calldays = callarray[n];
+          
+        		
+        	//var	Qry = "SELECT (select count(customercode) from  routesequence where rp32weeknumber="+rp32weeknumber+" and callrestrictiondays4=1) AS PlannedCalls, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) AS CallsMadePlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS CallsMadeUnPlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS ActualCallsMade, (SELECT COUNT(DISTINCT(customercode)) FROM invoiceheader WHERE COALESCE(voidflag,0)=0) AS InvoicedCalls, ((SELECT COUNT(DISTINCT(customercode)) FROM invoiceheader WHERE COALESCE(voidflag,0)=0)*100)/((SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0)) AS ProductiveCalls, (((SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0))*100)/(SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1) AS CoverageCalls";
+            var Qry="SELECT (select count(customercode) from  routesequence where rp32weeknumber="+rp32weeknumber+" and "+calldays+"=1) AS PlannedCalls, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) AS CallsMadePlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS CallsMadeUnPlanned, (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 1 AND servicedflag > 0) + (SELECT COUNT(DISTINCT(customercode)) FROM routesequencecustomerstatus WHERE schelduledflag = 0 AND servicedflag > 0) AS ActualCallsMade, (SELECT COUNT(DISTINCT(customercode)) FROM invoiceheader WHERE COALESCE(voidflag,0)=0) AS InvoicedCalls";
+        	console.log(Qry);
+        	
+        	
+            if (platform == 'iPad') 
+            {
+                
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                    	var result = $.map(result.array, function(item, index) {
+                        	return [[item.CallsMadePlanned,item.CallsMadeUnPlanned,item.ActualCallsMade,item.InvoicedCalls,item.PlannedCalls]];
+               			 });
+                    	 var chartdata={};
+                    	 //0 For Profuctivity
+                    	 chartdata["type"] = "0";
+                         chartdata["TotalCalls"] = result[0][4];
+               			 chartdata["CallsMadePlanned"] = result[0][0];
+                         chartdata["CallsMadeUnPlanned"] = result[0][1];
+                         chartdata["ActualCallsMade"] = result[0][2];
+                         chartdata["InvoicedCalls"] = result[0][3];
+                         
+                         showChart(chartdata);
+                        
+                    }
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        
+        
+        }
+        function showChart(data)
+        {
+        	
+        	var platform=sessionStorage.getItem("platform");
+        	if(platform=='Android')
+        	{
+        	
+        		 window.plugins.ChartHelper.getChart(data,function(data)
+        		 {
+        							
+        		 },
+        		 function()
+        		 {
+        				   	 
+        		 });
+        		
+        		
+        		
+        	}else
+        	{
+        		
+        		
+        	}
+        	
+        }
+        
+    </script>
+
+    </body>
+</html>

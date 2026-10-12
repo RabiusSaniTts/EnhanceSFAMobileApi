@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Messages</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 600px)"
+			href="../css/style_600.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 601px) and (max-width: 700px)"
+			href="../css/style_700.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css">
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css">
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+		<script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+	</head>
+	<body>
+		<div data-role="page" data-theme="d">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<a href="startofday.html" id="Back_inner" rel="external" lang="en">Back</a>
+				<h1 lang="en">Load Checking</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="boxContent Spacing">
+
+					<table border="0" cellpadding="2" cellspacing="2" width="100%"
+						class="ManageCheckHeader" style="display:none;">
+						<tr>
+							<td class="CheckCaption leftAlign" style="width: 82%" id="td2"
+								lang="en">Salesman #</td>
+
+						</tr>
+						<tr>
+							<td class="leftAlign" style="width: 82%">
+								<div class="label_text ui-corner-all" style="width: 90%"
+									id="lblRouteCode"></div>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="leftAlign" style="width: 82%">
+								<div class="label_text ui-corner-all" style="width: 90%"
+									id="divSalesmanCode"></div>
+							</td>
+						</tr>
+					</table>
+
+					<div class="tblBox">
+						<table id="tblHeaderContent" cellpadding="0" cellspacing="0"
+							width="100%" class="tblHeader">
+							<tr>
+								<th style="width: 100%;" class="leftAlign">
+									<!-- <div id="txtSalesmanName">&nbsp;</div> -->
+								</th>
+							</tr>
+						</table>
+						<div id="contentWrapper" class="tblMessageNew">
+							<table border="0" cellpadding="0" cellspacing="0" width="100%"
+								id="tblContent">
+								<tr>
+
+									<!-- <td style="width: 100%;font-size:25px !important" ><div id="devcarryover">&nbsp;</div></td> -->
+									<!-- <td id="devcarryover"></td> -->
+
+								</tr>
+								<tr>
+									<!-- <td style="width: 100%;font-size:25px !important" ><div id="bckcarryover">&nbsp;</div></td> -->
+									<!-- <td id="bckcarryover"></td> -->
+								</tr>
+								<tr>
+									<td style="width: 100%;font-size:25px !important"><div
+											id>&nbsp;</div></td>
+								</tr>
+								<tr>
+									<td style="width: 100%;font-size:25px !important"><div
+											id="devnewload">&nbsp;</div></td>
+									<!-- <td id="devnewload"></td> -->
+								</tr>
+								<tr>
+									<td style="width: 100%;font-size:25px !important"> <div
+											id="bcknewload">&nbsp;</div></td>
+									<!-- <td id="bcknewload"></td> -->
+								</tr>
+
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="icon-bar" id="downloadbutton">
+				  	<a id="hlinkok" href="#" rel="external" onclick="checkImportCount(this)"  class="jtrbutton !important jtroneicon" >
+				 	<img  src="../images/update.png" alt="Ok"  />
+				  	<div  lang="en">Download</div>
+				    </a>
+			</div> -->
+
+				<div class="leftbottomMenu">
+					<a id="hlinkok" href rel="external" onclick="checkImportCount(this)"
+						style="text-decoration: none; font-weight: normal;">
+						<div class="MenuPositionSCLarge">
+							<div class="iconPos">
+								<img class="bottomicon" src="../images/yes.png" alt="Ok" />
+							</div>
+							<div id="divmenutext" class="MenuTextPos MenuText" lang="en">
+								Download</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div data-role="footer" id="f1" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div data-role="footer" id="f2" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								class="ui-btn-active" rel="external" id="day" data-icon="custom"
+								lang="en" onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="cust" data-icon="custom" lang="en"
+								onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" language="javascript">
+        var platform = '',data = null;
+        window.lang = new jquery_lang_js();
+        $("#tblContent").click(function() { });
+        $(document).ready(function() {
+		$("#txtSalesmanName").text(sessionStorage.getItem("SalesmanName"));
+            
+            resizeOrientationWindow();
+       
+            document.addEventListener("deviceready",  checksetting, false);    
+                          
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            //Table click event and set selected row
+            $("#tblContent tr").live('click', function() {
+                $(this).toggleClass('clicked');
+                $(this).siblings().removeClass('clicked');
+            });
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                var val = 'Messages' + lan;
+                window.lang.change(val, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".boxContent").attr("dir", "rtl");
+
+                    //Set header align                 
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".boxContent").attr("dir", "ltr");
+
+                //Set header align
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+		
+            
+            
+            
+            //var bckcarryoverCount = sessionStorage.getItem("carryoverCount");
+			var bcknewloadCount = sessionStorage.getItem("newloadCount");
+			//var devcarryover = sessionStorage.getItem("devicecarryover");
+			var devnewloadCount = sessionStorage.getItem("devicenewloadCount");
+			
+			//alert(bckcarryoverCount);
+			//console.log("bckcarryoverCount-"+bckcarryoverCount);
+			console.log("bcknewloadCount-"+bcknewloadCount);
+			
+			//$("#devcarryover").text("Carryover HHT Count: "+devcarryover);
+			//$("#bckcarryover").text("Carryover Backoffice Count: "+bckcarryoverCount);
+			
+			$("#devnewload").text("Load HHT Count:"+devnewloadCount);
+			$("#bcknewload").text("Load Backoffice Count: "+bcknewloadCount);
+            
+        });
+        
+     // checking Device inventory count with server data updated on 03-10-2022
+		const checkImportCount = async(obj)=>{
+			
+			 
+			const res = await fetch(wsurl + 'transaction/importinventorycount/routecode/' +sessionStorage.getItem("RouteCode")).then(response => response.json());
+			console.log("JSONRes-"+JSON.stringify(res));
+			const carryoverCount = res[1].CloudCount;
+			const newloadCount = res[0].CloudCount;
+			//console.log('carryoverCount' +carryoverCount);
+			
+			
+			//alert(pricingCount);
+			getDatafromDeviceDB(obj).then((res)=>{
+				
+				console.log("devicecarryover:"+res[0][0]);
+				console.log("devicenewloadCount:"+res[0][1]);
+				console.log("carryoverCount:"+carryoverCount);
+				console.log("newloadCount:"+newloadCount);
+				
+				 
+				
+				if(carryoverCount!= res[0][0]) //res[0][0]
+					{
+					
+					 
+					  $.mobile.showPageLoadingMsg();
+			            
+			             var routecode= sessionStorage.getItem("RouteCode");
+			            var userid= sessionStorage.getItem("SalesmanCode");
+			           //var deviceid= sessionStorage.getItem("DeviceID");
+			             var deviceid= "a";
+			            var table = 9; 
+			            var mdate= sessionStorage.getItem("mdate");
+			            
+			            console.log(mdate);
+			            console.log("data url : " + wsurl+"index/getsyncdata/routeid/"+routecode+"/userid/"+userid+"/deviceid/"+deviceid+"/mdate/"+mdate+"/table/"+table);
+			             var url = wsurl+"index/getsyncdata/routeid/"+routecode+"/userid/"+userid+"/deviceid/"+deviceid+"/mdate/"+mdate+"/table/"+table;
+			             fetch(url)  
+			             .then(res => res.json())  
+			             .then((out) => {  
+			               console.log("out- "+JSON.stringify(out));  
+			               
+			               var jsontext = JSON.stringify(out);
+			               
+			               //var keys = jsontext[0];
+			               
+			               var jsondata = JSON.parse(jsontext);
+			               
+			              console.log("jsondata"+jsondata);
+			               
+								
+			                    	 
+                             inventorytransactiondetail = jsondata["inventorytransactiondetail"];
+			                         //console.log("inv-"+inventorytransactiondetail);
+			                        if(inventorytransactiondetail.length > 0)
+			                        {
+			                        	//alert("inventorytransactiondetail");
+			                    
+										window.plugins.DataBaseHelper.insert("DELETE FROM inventorytransactiondetail", function (result) {
+                                          getinventorytransdata(inventorytransactiondetail, 0, inventorytransactiondetail.length, 0, carryoverCount, newloadCount, res, obj);
+			                     		   return true;
+			                     		  
+			                     	   },
+			                     	   function()
+									  
+			             	   				{
+			             	   			   	 console.warn("Error calling plugin");
+			             	   				});
+			                        	
+			                         
+			                        	 
+			                                            
+			                        }
+			                        else
+			                        	{
+			                        	
+			                        	window.plugins.DataBaseHelper.insert("DELETE FROM inventorytransactiondetail",function(result){
+				                     		   return true;
+			                        	 },
+				                     	   function()
+										  
+				             	   				{
+				             	   			   	 console.warn("Error calling plugin");
+				             	   				});
+			                        	checknewloadcount(carryoverCount,newloadCount,res,obj);
+			                        	}
+			                        
+			                       
+			                    
+			            	   
+			            	  
+			               
+			               
+			             })  
+			             .catch(err => {  
+			               throw err  
+			             });
+			             
+			             
+			            
+					 
+					}else //res[0][0]
+					{
+						
+						checknewloadcount(carryoverCount,newloadCount,res,obj);
+					}
+				}).catch((err)=> {
+				console.log(err)
+				});
+			};
+        
+        
+			function checknewloadcount(carryoverCount,newloadCount,res,obj)
+			{
+				
+				//alert(carryoverCount+"--"+res[0][0]+"--"+newloadCount+"--"+res[0][1]);
+				if( newloadCount!= res[0][1]){ 
+					//alert(" Downloading New Load. Please Wait.");
+				    //window.location='../sync.html';
+					$.mobile.showPageLoadingMsg();
+		            //var worker = new Worker('worker1.js');
+					var routecode= sessionStorage.getItem("RouteCode");
+		            var userid= sessionStorage.getItem("SalesmanCode");
+		            //var deviceid= sessionStorage.getItem("DeviceID");
+		            var deviceid= "a";
+		            var table = 3;
+		            var mdate= sessionStorage.getItem("mdate");
+		            
+		            console.log(mdate);
+		            console.log("data url : " + wsurl+"index/getsyncdata/routeid/"+routecode+"/userid/"+userid+"/deviceid/"+deviceid+"/mdate/"+mdate+"/table/"+table);
+		             var url = wsurl+"index/getsyncdata/routeid/"+routecode+"/userid/"+userid+"/deviceid/"+deviceid+"/mdate/"+mdate+"/table/"+table;
+		             
+		             fetch(url)  
+		             .then(res => res.json())  
+		             .then((out) => {  
+		               console.log("out- "+JSON.stringify(out));  
+		               
+		               var jsontext = JSON.stringify(out);
+		               
+		               var jsondata = JSON.parse(jsontext);
+		               
+						 console.log("jsondata" + jsondata);
+
+                         startloaddata = jsondata["startingloaddetail"];
+		                 
+		               
+		            	   
+		            	    
+		                    
+		                        
+		                       
+		                        console.log("nidhi ---- "+startloaddata);
+		                        if(startloaddata.length > 0)
+		                        {
+									window.plugins.DataBaseHelper.insert("DELETE FROM startingloaddetail", function (result) {
+                                        getstartloadpselect(startloaddata, 0, startloaddata.length, 0, carryoverCount, res, newloadCount, obj);
+			                     		   return true;
+			                     		  
+			                     	   },
+			                     	   function()
+			             	   				{
+			             	   			   	 console.warn("Error calling plugin");
+			             	   				});
+		                           
+		                        }
+		                        else
+		                        	{
+		                        	
+		                        	alert("There is no new load available in BO.");
+		                        	
+		                        	window.plugins.DataBaseHelper.insert("DELETE FROM startingloaddetail",function(result){
+			                     		   return true;
+		                        	 },
+			                     	   function()
+									  
+			             	   				{
+			             	   			   	 console.warn("Error calling plugin");
+			             	   				});
+		                        	
+		                        	apianddevicecountcheck(carryoverCount,newloadCount,obj);
+		                        	
+		                        	}
+		                        
+		                        
+		                    
+		            	   
+		            	   
+		                
+		               
+		             })  
+		             .catch(err => {  
+		               throw err  
+		             });
+		            	   
+		            	   
+		               
+				} else {
+					apianddevicecountcheck(carryoverCount,newloadCount,obj);
+				}
+				
+				
+				
+			
+			}
+			
+			
+const  getDatafromDeviceDB =  async(obj)=>{ 
+				
+				//	var Qry ="Select count(*) as cnt from pricingdetail1" ;
+				var Qry =" Select 1,(Select ifnull(sum(quantity),0)  from inventorytransactiondetail where transactiontypecode = 5) as carryover,(Select ifnull(sum(totunits),0)  from startingloaddetail where status=0) as newload ";
+				    return new Promise((resolve,reject)=>{
+			    		window.plugins.DataBaseHelper.select(Qry, function(result) {
+			    			
+			    			   if(result.array!=undefined)
+		                      {         
+		                   
+		                          var result = $.map(result.array, function(item, index) {
+		                                     
+		                                     return [[item.carryover,item.newload]];
+		                                  });
+		                      }
+					//alert(JSON.stringify(result));
+			    			resolve(result);
+			    		}, function() {
+			    			console.warn("Error calling plugin");
+			    			reject("ERROR");
+			    		});
+			 	
+			});
+				};
+				
+				
+				
+				function getstartloadpselect(itemdata,i,total,alltotal,carryoverCount,res,newloadCount,obj)
+		        {
+		        	//progressBars(i,alltotal);
+			        console.log("startLoadstart--- "+i);
+			       
+								          if(platform=='Android')
+								           {
+			   
+		                                        
+		                                          insert_startloaddata(itemdata,i,"insert");
+		                                        
+				                                        if(i+1 < total)
+														{
+															getstartloadpselect(itemdata,i+1,total,alltotal,carryoverCount,res,newloadCount,obj);
+														}
+		                                                 else
+		                                                 {   
+		                                                	 
+		                                                	 $.mobile.hidePageLoadingMsg();
+		                                                	 apianddevicecountcheck(carryoverCount,newloadCount,obj);
+															 //checkStartEndDay(obj);
+		                                                	 
+		                                                 }
+						
+										}
+		        		}
+				
+				
+				
+				 function insert_startloaddata(startloaddata,i,flag)
+		            {
+		                console.log("startload");
+		               
+		                var platform= sessionStorage.getItem("platform");
+		                if(flag=="insert")
+		                {
+		                   
+		               if(platform=='Android')
+		          		 {
+		   
+		            	   
+		           	window.plugins.DataBaseHelper.insert("INSERT INTO startingloaddetail ('itemcode' ,'routecode' ,'ddate' ,'loadperiodnumber' ,'cases' ,'units' ,'totunits' ,'suggtotunits' , 'rcvdtotunits' ,'upc' ,'loadtime' ,'salesmancode' ,'salesprice' ,                                                'returnprice' ,'status' , 'transactiondate' ,'erpreferencenumber' ,'currencycode' , 'batchnumber' , 'expirydate' , 'warehouse' , 'warehousestock','mdat','caseprice' )  VALUES ('"+startloaddata[i].itemcode+"' , '"+startloaddata[i].routecode+"' ,'"+startloaddata[i].ddate+"' , '"+startloaddata[i].loadperiodnumber+"' , '"+startloaddata[i].cases+"' , '"+startloaddata[i].units+"' , '"+startloaddata[i].totunits+"' , '"+startloaddata[i].suggtotunits+"' , '"+startloaddata[i].rcvdtotunits+"' , '"+startloaddata[i].upc+"' , '"+startloaddata[i].loadtime+"' , '"+startloaddata[i].salesmancode+"' , '"+startloaddata[i].salesprice+"' , '"+startloaddata[i].returnprice+"' , '"+startloaddata[i].status+"' , '"+startloaddata[i].transactiondate+"' , '"+startloaddata[i].erpreferencenumber+"' , '"+startloaddata[i].currencycode+"' , '"+startloaddata[i].batchnumber+"' , '"+startloaddata[i].expirydate+"' , '"+startloaddata[i].warehouse+"' , '"+startloaddata[i].warehousestock+"', '"+startloaddata[i].mdat+"', '"+startloaddata[i].caseprice+"')",function(result)
+						{
+						 return true;
+						},
+						function()
+						{
+					   	 console.warn("Error calling plugin");
+						});
+		           		}
+		                }
+		                
+		            }
+			
+				 
+				 
+				 
+				 
+				 function getinventorytransdata(itemdata,i,total,alltotal,carryoverCount,newloadCount,res,obj)
+			        {
+			          // progressBars(i,alltotal);
+				        console.log("tranactionde--- "+i);
+				        console.log("total--- "+total);
+				        
+			            
+			     
+										 if(platform=='Android')
+								            {
+			                
+			                                                     
+			                                                     insert_inventorytransdata(itemdata,i,"insert");
+			                                                     
+			                                                     if(i+1 < total)
+			                                                     {
+			                                                     getinventorytransdata(itemdata,i+1,total,alltotal,carryoverCount,newloadCount,res);
+			                                                     }
+			                                                     else
+			                                                     {
+																	 $.mobile.hidePageLoadingMsg();
+			                                                    	 checknewloadcount(carryoverCount,newloadCount,res,obj);
+			                                                    	
+			                                                  		//alert("Done");
+			                                                  		
+			                                                     
+			                                                     }
+			                                                     
+			                                                    
+			            					}
+			        }
+				 
+				 
+				 
+				 function insert_inventorytransdata(inventorytransdata,i,flag)
+			        {
+			            console.log("inventra");
+			            var platform= sessionStorage.getItem("platform");
+			            if(flag=="insert")
+			            {
+			           
+			         if(platform=='Android')
+			           {
+			        	 
+			           	window.plugins.DataBaseHelper.insert("INSERT INTO `inventorytransactiondetail` (`routekey` ,`detailkey` ,`transactiontypecode` ,`itemcode` ,`quantity` ,`weighted` ,`itemprice` ,`batchdetailkey` ,`itemcaseprice` ,`currencycode`)VALUES ('"+inventorytransdata[i].routekey+"', '"+inventorytransdata[i].detailkey+"', '"+inventorytransdata[i].transactiontypecode+"', '"+inventorytransdata[i].itemcode+"', '"+inventorytransdata[i].quantity+"', '"+inventorytransdata[i].weighted+"', '"+inventorytransdata[i].itemprice+"', '"+inventorytransdata[i].batchdetailkey+"' , '"+inventorytransdata[i].itemcaseprice+"', '"+inventorytransdata[i].currencycode+"')",function(result)
+							{
+							 return true;
+							},
+							function()
+							{
+						   	 console.warn("Error calling plugin");
+							});
+			           }
+			            }
+			            
+			        }
+				 
+				 
+				 
+				 
+				 function apianddevicecountcheck(carryoverCount,newloadCount,obj)
+					{
+						getDatafromDeviceDB(obj).then((res)=>{
+							sessionStorage.setItem("devicecarryover",res[0][0]);
+							sessionStorage.setItem("devicenewloadCount",res[0][1]);
+							if(carryoverCount== res[0][0] && newloadCount== res[0][1]){
+								//checkStartEndDay(obj);
+								alert("Data Downloaded Successfully.Try Begin Day.")
+								window.location.href="../home/home.html";
+							} else {
+								alert(getLangTextdata("Count Mismatch. Try Again."));
+								window.location.href="checkinventorycount.html";
+								
+								
+							}
+							
+							
+						}).catch((err)=> {
+							console.log(err)
+							});
+					}
+			
+        function checksetting()
+        {
+            platform= sessionStorage.getItem("platform");
+            if (platform == 'iPad') {
+                console.log("select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeenddate IS NULL");
+                Cordova.exec(function(result) {
+                              if (result!='') {
+                              
+                              }
+                              else
+                              {
+                              $("#day").attr("onclick","");                                                       
+                              $("#day").addClass('MenuGray');
+                              
+                              $("#inve").attr("onclick","");                                                       
+                              $("#inve").addClass('MenuGray');
+                              
+                              $("#cust").attr("onclick","");                                                       
+                              $("#cust").addClass('MenuGray');
+                              
+                              $("#sett").attr("onclick","");                                                       
+                              $("#sett").addClass('MenuGray');
+                              
+                              $("#expe").attr("onclick","");                                                       
+                              $("#expe").addClass('MenuGray');
+                              
+                              $("#info").attr("onclick","");                                                       
+                              $("#info").addClass('MenuGray');
+                              
+                              $("#setup").attr("onclick","");                                                       
+                              $("#setup").addClass('MenuGray');
+                              
+                              
+                              }
+                              
+                              },
+                              function(error) {
+                              alert("Error in getting salesman : " + error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              ["select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeenddate IS NULL"]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select("select max(routekey) from startendday where routecode = " + sessionStorage.getItem('RouteCode') + " and salesmancode = " + sessionStorage.getItem('SalesmanCode') + " and routeenddate IS NULL", function(result) {
+                                                     if (result!='') {
+                                                     
+                                                     }
+                                                     else
+                                                     {
+                                                     $("#day").attr("onclick","");                                                       
+                                                     $("#day").addClass('MenuGray');
+                                                     
+                                                     $("#inve").attr("onclick","");                                                       
+                                                     $("#inve").addClass('MenuGray');
+                                                     
+                                                     $("#cust").attr("onclick","");                                                       
+                                                     $("#cust").addClass('MenuGray');
+                                                     
+                                                     $("#sett").attr("onclick","");                                                       
+                                                     $("#sett").addClass('MenuGray');
+                                                     
+                                                     $("#expe").attr("onclick","");                                                       
+                                                     $("#expe").addClass('MenuGray');
+                                                     
+                                                     $("#info").attr("onclick","");                                                       
+                                                     $("#info").addClass('MenuGray');
+                                                     
+                                                     $("#setup").attr("onclick","");                                                       
+                                                     $("#setup").addClass('MenuGray');
+                                                     
+                                                     
+                                                     }
+                                                      //getMessageList();
+                                                     });
+            }
+        }
+        
+       
+        
+
+    </script>
+
+	</body>
+</html>

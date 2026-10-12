@@ -1,0 +1,682 @@
+<!--
+ '  Created By   : Nidhi Dedania
+ '  Created Date : 1/2/2011
+ '  Description  : This page is used for detail of order review
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HOME</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/en.css" lang="en" />
+		<link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+		<link type="text/css" href="../css/jquery.mobile.datebox.min.css"
+			rel="stylesheet" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+			href="../css/style_1400.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+			href="../css/style_1200.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 700px) and (max-width: 800px)"
+			href="../css/style_800.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 600px) and (max-width: 699px)"
+			href="../css/style_700.css" />
+		<link rel="stylesheet"
+			media="only screen and (min-width: 320px) and (max-width: 599px)"
+			href="../css/style_600.css" />
+
+		<script type="text/javascript" src="../js/jquery.js"></script>
+
+		<script type="text/javascript" src="../js/jquery.mobile-1.0.js"></script>
+
+		<script type="text/javascript" src="../js/common.js"></script>
+
+		<script type="text/javascript"
+			src="../js/jquery.mobile.datebox.min.js"></script>
+
+		<script src="../LangJS/jquery-lang.js" charset="utf-8"
+			type="text/javascript"></script>
+
+		<script src="../LangJS/langpack/AR.js" charset="utf-8"
+			type="text/javascript" lang="en"></script>
+
+		<script>
+	if (navigator.userAgent.toLowerCase().match(/android/))
+	{
+		document
+				.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+		document
+				.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+	} else if (navigator.userAgent.toLowerCase().match(/iphone/)
+			|| navigator.userAgent.toLowerCase().match(/ipad/))
+	{
+		document
+				.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+	}
+</script>
+
+		<script type="text/javascript">
+	/* var scrollContent, scrollNav;
+
+	 function loaded() {
+	     scrollContent = new iScroll('contentWrapper');
+	 }
+
+	 document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+	 document.addEventListener('DOMContentLoaded', loaded, false); */
+</script>
+
+	</head>
+	<body>
+		<div data-role="page" data-theme="d" data-title="HOME" id="myPage">
+			<div>
+				<img title alt src="../images/bg.png" id="background">
+			</div>
+			<div data-role="header" data-position="inline" id="bgclheader">
+				<!--<a href="index.html"   id="Back_inner">test</a>-->
+				<a id="Back_inner" href="#" rel="external" lang="en">Back</a>
+				<h1 lang="en">Pre Sold Orders</h1>
+				<a href="#" id="lang_inner">EN</a>
+			</div>
+			<div data-role="content" class="centerboxInvReq">
+				<div class="com_div comm">
+
+					<div class="textBar captionLabel">
+
+						<table cellpadding="2" cellspacing="2" border="0" width="80%">
+							<tr>
+								<td lang="en" style="width: 25%" id="customer"
+									class="rtext">Customer</td>
+								<td style="width: 75%"><select style="width: 100%"
+										name="select-choice-1" id="custname">
+									</select></td>
+							</tr>
+
+						</table>
+
+						<table style="table-layout: initial" cellpadding="10"
+							cellspacing="10" border="0" width="80%">
+							<tr>
+								<td lang="en" style="width: 25%; font-size: 44px;">Customer#</td>
+								<td class="readonly_text" id="ccode"></td>
+							</tr>
+						</table>
+					</div>
+
+					<div class="tblBox tbltd">
+						<div style="text-align: center;">
+							<table class="tblHeader" width="100%" cellpadding="5"
+								cellspacing="0" id="tblHeaderContent">
+								<tr>
+									<td width="25%" lang="en">Order#</td>
+
+									<td width="25%" lang="en">Delivery Date</td>
+									<td width="25%" lang="en">Order Amount</td>
+									<td width="25%" lang="en" class="last">LPO Number</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="route_table_height tblFixedHeight">
+							<table border="0" width="100%" cellpadding="0" cellspacing="0"
+								id="tbl1">
+								<tr>
+									<td style="width: 20%;" class="leftAlign"></td>
+
+									<td style="width: 20%;" class="rightAlign"></td>
+									<td style="width: 20%;" class="rightAlign"></td>
+									<td style="width: 20%;" class="rightAlign"></td>
+								</tr>
+							</table>
+						</div>
+						<br>
+
+					</div>
+					<table style="table-layout: initial" cellpadding="10"
+						cellspacing="10" border="0" width="80%">
+						<tr>
+							<td lang="en" style="width: 40%; font-size: 30px;">Order Amount</td>
+							<td class="readonly_text" id="totOrd"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="leftbottomMenu">
+					<a href="#" onclick="check()" class="enableText" rel="external">
+						<div class="MenuPosition">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/detail.png" alt="Add" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Detail</div>
+						</div>
+					</a> <a href="#" class="enableText" rel="external"
+						onclick="localStorage.po ='customer_opt'"><div
+							class="MenuPosition MenuExit" style="left: 5%;">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/print.png" alt="Option" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Print</div>
+						</div></a> <a href="customer_info.html" id="exit" class="enableText"
+						rel="external">
+						<div class="MenuPosition MenuExit">
+							<div class="MenuTextPos">
+								<img class="bottomicon" src="../images/icn-exit.png" alt="Exit" />
+							</div>
+							<div class="MenuTextPos MenuText" lang="en">Cancel</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div id="f1" data-role="footer" class="ui-bar">
+				<div class="footer">
+					<div class="leftfooter">09 November 2011</div>
+					<div class="rightfooter">Mirnah Technology Systems</div>
+				</div>
+			</div>
+			<div id="f2" data-role="footer" style="bottom: 0; position: absolute;">
+				<div data-role="navbar" data-iconpos="top" data-grid="f">
+					<ul>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="day" data-icon="custom" lang="en"
+								onclick="footerredict('../startofday/startofday.html')">Start
+								day</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#" id="inve"
+								rel="external" data-icon="custom" lang="en"
+								onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								class="ui-btn-active" rel="external" id="cust" data-icon="custom"
+								lang="en">Customer</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="sett" data-icon="custom" lang="en"
+								onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+						<li style="margin-bottom:0 !important;"><a href="#"
+								rel="external" id="ordstatus" data-icon="custom"
+								lang="en"
+								onclick="footerredict('../home/orderstatus.html')">Order
+								Status</a></li>
+						<li style="margin-bottom: 0 !important;"><a href="#"
+								rel="external" id="info" data-icon="custom" lang="en"
+								onclick="footerredict('../information/information.html')">Information</a></li>
+						<li style="margin-bottom: 0 !important; width: 14.0%"><a
+								href="#" rel="external" id="setup" data-icon="custom" lang="en"
+								onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<script type="text/javascript" language="javascript">
+			window.lang = new jquery_lang_js();
+			var platform = '';
+			var inputvalue;
+
+			$("#tbl1").click(function()
+			{
+			});
+
+			resizeOrientationWindow();
+			$(document)
+					.ready(
+							function()
+							{
+								resizeWindow();
+
+								$("#cusPrint").attr("href", "");
+								$("#imgPrint").attr("src",
+										"../images/print-gray.png");
+								sessionStorage.setItem("orderid", '');
+								platform = sessionStorage.getItem("platform");
+								sessionStorage.setItem("orderid", '');
+								$("#custname").change(function()
+								{
+
+									getCustomervalue($(this).val());
+								});
+								document.addEventListener("deviceready",
+										getCustomerList, false);
+								var customeraid = sessionStorage
+										.getItem("customercode");
+								var customername = sessionStorage
+										.getItem("customername");
+
+								// $('#custid').text(customeraid);
+								// $('#custname').text(customername);
+
+								if (localStorage.order == 'review')
+								{
+									var page = '../review/review.html';
+									$('#custname').selectmenu("enable");
+									$('#custname').selectmenu("refresh");
+								} else
+								{
+									var page = 'customer_info.html';
+									$('#custname').selectmenu("disable");
+								}
+								$("#Back_inner").attr("href", page);
+								$("#exit").attr("href", page);
+
+								$(".leftfooter").html(getCurrentDate());
+								$("#tbl1 tr")
+										.live(
+												'click',
+												function()
+												{
+													$(this).toggleClass(
+															'clicked');
+													$(this).siblings()
+															.removeClass(
+																	'clicked');
+													var i = $(this).index();
+													sessionStorage.setItem(
+															"orderid",
+															inputvalue[i][4]);
+													localStorage.ordernum = inputvalue[i][0];
+													localStorage.Deliverydate = inputvalue[i][1];
+													localStorage.promoamount = inputvalue[i][6];
+													localStorage.totalamount = inputvalue[i][2];
+													localStorage.totalamount = inputvalue[i][2];
+													getCustomerData(inputvalue[i][5]);
+
+												});
+
+								$('.ui-body-d').css({
+									'background' : '#fff'
+								});
+								$('.ui-input-datebox').css({
+									'width' : '92%',
+									'line-height' : '4.0'
+								});
+								$('.ui-input-datebox input').css({
+									'color' : '#999',
+									'width' : '83% !important'
+								});
+								$('.ui-btn-icon-notext').css({
+									'margin-top' : '19px !important'
+								});
+								$('.ui-select .ui-btn-text').css({
+									'text-align' : 'left',
+									'color' : '#999'
+								});
+								var lan = sessionStorage.getItem("Language");
+								window.lang.run(lan);
+
+								if (sessionStorage.getItem("Language") != "en")
+								{
+
+									window.lang.change('Presoldreview' + lan,
+											lan);
+									window.lang.change('Footer' + lan, lan);
+									if (lan == "AR")
+									{
+										$("#contentWrapper").attr("dir", "rtl");
+										$('#Back_inner')
+												.removeClass(
+														'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+										$('#Back_inner')
+												.addClass(
+														'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+										$('#lang_inner')
+												.removeClass(
+														'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+										$('#lang_inner')
+												.addClass(
+														'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									}
+
+								} else
+								{
+									window.lang.change('en', 'en');
+									$("#contentWrapper").attr("dir", "ltr");
+									$('#Back_inner')
+											.removeClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#Back_inner')
+											.addClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.removeClass(
+													'ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+									$('#lang_inner')
+											.addClass(
+													'ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+								}
+							});
+
+			function check()
+			{
+
+				if (sessionStorage.getItem("orderid") == ''
+						|| sessionStorage.getItem("orderid") == null)
+				{
+					getLangText("Please Select Order.");
+					return false;
+				} else
+				{
+					window.location = 'pre_sold_order_detail.html';
+				}
+			}
+
+			function getCustomervalue(ccode)
+			{
+
+				if (eval(ccode) != 0)
+				{
+					var Qry;
+
+					Qry = "SELECT customercode,customername,alternatecode FROM customermaster WHERE customercode="
+							+ ccode;
+					console.log(Qry);
+					if (platform == "iPad")
+					{
+						Cordova.exec(function(result)
+						{
+
+						}, function(error)
+						{
+							navigator.notification
+									.alert("Error in binding Customer : "
+											+ error);
+						}, "PluginClass", "GetdataMethod", [Qry]);
+
+					} else if (platform == "Android")
+					{
+						window.plugins.DataBaseHelper.select(Qry, function(
+								result)
+						{
+							if (result.array != undefined)
+							{
+								var result = $.map(result.array, function(item,
+										index)
+								{
+									return [[item.customercode,
+											item.customername,
+											item.alternatecode]];
+								});
+								if (result.length > 0)
+								{
+									$('#ccode').text("   " + result[0][2]);
+									getOrderList(result[0][2]);
+								}
+							}
+
+						}, function()
+						{
+							console.warn("Error calling plugin");
+						});
+					}
+
+				} else
+				{
+
+					getOrderList("0");
+
+				}
+
+			}
+
+			function getCustomerData(ccode)
+			{
+
+				var Qry = "SELECT customercode,customername,alternatecode FROM customermaster WHERE customercode="
+						+ ccode;
+				console.log(Qry);
+				if (platform == "iPad")
+				{
+					Cordova.exec(function(result)
+					{
+
+					}, function(error)
+					{
+						navigator.notification
+								.alert("Error in binding Customer : " + error);
+					}, "PluginClass", "GetdataMethod", [Qry]);
+
+				} else if (platform == "Android")
+				{
+					window.plugins.DataBaseHelper.select(Qry, function(result)
+					{
+						if (result.array != undefined)
+						{
+							var result = $.map(result.array, function(item,
+									index)
+							{
+								return [[item.customercode, item.customername,
+										item.alternatecode]];
+							});
+							if (result.length > 0)
+							{
+								sessionStorage.setItem('ordercust',
+										result[0][0]);
+								sessionStorage.setItem('alternatecust',
+										result[0][2]);
+								sessionStorage.setItem('ordercustname',
+										result[0][1]);
+							}
+						}
+
+					}, function()
+					{
+						console.warn("Error calling plugin");
+					});
+				}
+
+			}
+			function getOrderList(alternateid)
+			{
+
+				ClearTable();
+				var customerid = $('#custname').val();
+				var customername = $('#custname option:selected').text();
+				sessionStorage.setItem('ordercust', customerid);
+				sessionStorage.setItem('alternatecust', alternateid);
+				sessionStorage.setItem('ordercustname', customername);
+				if (alternateid == "0")
+				{
+					var qry = "select invoicenumber,strftime('%d-%m-%Y',transactiondate) as transactiondate,orderdeliverydate,totalinvoiceamount,comments2,transactionkey,ifnull(totalpromoamount,0),customercode from salesorderheader where  istemp='false'";
+				} else
+				{
+					var qry = "select invoicenumber,strftime('%d-%m-%Y',transactiondate) as transactiondate,orderdeliverydate,totalinvoiceamount,comments2,transactionkey,ifnull(totalpromoamount,0),customercode from salesorderheader where customercode = "
+							+ customerid + " and istemp='false'";
+
+				}
+
+				console.log(qry);
+				if (platform == 'iPad')
+				{
+					Cordova.exec(function(result)
+					{
+						ClearTable();
+						if (result.length > 0)
+						{
+
+							BindData(result);
+
+						}
+
+					}, function(error)
+					{
+						navigator.notification
+								.alert("Error in binding promotion list : "
+										+ error);
+					}, "PluginClass", "GetdataMethod", [qry]);
+				} else if (platform == 'Android')
+				{
+					window.plugins.DataBaseHelper.select(qry, function(result)
+					{
+
+						if (result.array != undefined)
+						{
+
+							BindData(result);
+
+						}
+
+					}, function()
+					{
+						console.warn("Error calling plugin");
+					});
+				}
+			}
+			function BindData(result)
+			{
+				var totamt = 0;
+				var CellCount = $("#tblHeaderContent tr:eq(0) td").length;
+				data = result;
+				inputvalue = result;
+				if (platform == 'Android')
+				{
+					var array = $.map(data.array, function(item, index)
+					{
+
+						return [[item.invoicenumber, item.orderdeliverydate,
+								item.totalinvoiceamount, item.comments2,
+								item.transactionkey, item.customercode]];
+					});
+
+					data = array;
+					inputvalue = array;
+				}
+
+				for (i = 0; i < data.length; i++)
+				{
+					var r = "<tr>";
+
+					for (j = 0; j < CellCount; j++)
+					{
+						var c = '';
+						var temp = '';
+
+						if (j == CellCount - 1)
+							temp += " class = 'rowpadding'";
+
+						if (j == 3)
+							temp += " class = 'rightAlign'";
+
+						if (j == 2)
+						{
+							data[i][j] = eval(data[i][j]).toFixed(sessionStorage.getItem("decimalplace"));
+							temp += " class = 'rightAlign'";
+							totamt += parseFloat(data[i][j]);
+						}
+
+						c = "<td width='20%' " + temp + ">" + data[i][j]
+								+ "</td>";
+
+						r += c;
+					}
+					r += "</tr>";
+					$('#tbl1 tbody').append(r);
+
+				}
+				$('#totOrd').text("   " + totamt.toFixed(3));
+				$("#tbl1 tr:eq(0)").trigger('click');
+				$("#tbl1 tr:odd").addClass('oddRow');
+				$("#tbl1 tr:even").addClass('evenRow');
+
+			}
+			function getCustomerList()
+			{
+				if (platform == 'iPad')
+				{
+					Cordova
+							.exec(
+									function(result)
+									{
+
+										for (i = 0; i < result.length; i++)
+										{
+
+											$(
+													"<option />",
+													{
+														value : result[i][0],
+														text : result[i][0]
+																+ " "
+																+ result[i][1]
+													}).appendTo($("#custname"));
+
+										}
+										if (localStorage.order == 'cust')
+										{
+											var custid = sessionStorage
+													.getItem("customerid");
+
+											$("#custname").val(custid);
+										}
+										$("#custname").selectmenu("refresh");
+										getOrderList();
+									},
+									function(error)
+									{
+										alert("Error in binding Category : "
+												+ error);
+									},
+									"PluginClass",
+									"GetdataMethod",
+									["select customercode,CASE WHEN '"
+											+ sessionStorage
+													.getItem("Language")
+											+ "' = 'en' THEN customername ELSE arbcustomername END as Desc from customermaster WHERE templateindicator IS NOT 1 order by customercode"]);
+
+				} else if (platform == 'Android')
+				{
+					window.plugins.DataBaseHelper
+							.select(
+									"select customercode,CASE WHEN '"
+											+ sessionStorage
+													.getItem("Language")
+											+ "' = 'en' THEN customername ELSE arbcustomername END as Desc from customermaster WHERE templateindicator IS NOT 1 order by customercode",
+									function(result)
+									{
+										var array = $.map(result.array,
+												function(item, index)
+												{
+													return [[item.customercode,
+															item.Desc]];
+												});
+
+										result = array;
+										$("<option />", {
+											value : "0",
+											text : " -- All --"
+										}).appendTo($("#custname"));
+										for (i = 0; i < result.length; i++)
+										{
+											$("<option />", {
+												value : result[i][0],
+												text : result[i][1]
+											}).appendTo($("#custname"));
+										}
+
+										if (localStorage.order == 'cust')
+										{
+
+											var custid = sessionStorage
+													.getItem("customerid");
+											$("#custname").val(custid);
+										}
+										$("#custname").selectmenu("refresh");
+
+										getCustomervalue($('#custname').val());
+
+									}, function()
+									{
+										console.warn("Error calling plugin");
+									});
+				}
+			}
+			function ClearTable()
+			{
+				$("#tbl1 tr").remove();
+			}
+		</script>
+
+		</div>
+	</body>
+</html>

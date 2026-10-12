@@ -1,0 +1,788 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 05/02/2012
+ '  Description  : This page is used for select print options.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Print Options</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Print Options</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerbox">
+                <div class="boxContent">
+                    <div class="tblBox tblReport">
+                        <center>
+                            <table border="0" cellpadding="4" cellspacing="4"
+                                width="60%" id="tblContent">
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5%;">
+                                        <img src="../images/r-btn-1.png"
+                                            id="bt1" alt class="printAlign" />
+                                    </td>
+                                    <td style="width: 95%">
+                                        <h3 class="captionLabel" lang="en">Print
+                                            Final Copy</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/r-btn-2.png"
+                                            id="bt2" alt class="printAlign" />
+                                    </td>
+                                    <td>
+                                        <h3 class="captionLabel" lang="en">Print
+                                            Draft Copy</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/r-btn-2.png"
+                                            id="bt3" alt class="printAlign" />
+                                    </td>
+                                    <td>
+                                        <h3 class="captionLabel" lang="en">elay
+                                            Printing</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" rel="external"
+                        style="text-decoration: none; font-weight: normal;"
+                        id="lnkNext"
+                        onclick="GetDocumentNumber()">
+                        <div class="MenuPosition printLoadHeight">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon" src="../images/ok.png"
+                                    alt="Continue" /></div>
+                            <div class="MenuTextPos MenuText" id="cntlbl"
+                                lang="en">
+                                Continue</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding ">
+                        &nbsp;</div>
+                    <a href="#" id="lnkExit" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPosition printLoadHeight MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                    </div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                class="ui-btn-active" id="inve" rel="external"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" language="javascript">
+        var page = "#";
+        window.lang = new jquery_lang_js();
+        var platform = "";
+        var DocumentNumber,InvoiceNumber;
+        var printstatus = 0;
+        
+          resizeOrientationWindow();
+        $(document).ready(function() {
+       		resizeWindow();            
+			//Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            ////            if (localStorage.printoption == 'inventory') {
+            ////                var page = '../inventory/inventory.html'
+            ////            }
+            ////            else {
+            ////                var page = '../customer_opt/orderdetail.html';
+            ////            }
+            
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {
+                platform = sessionStorage.getItem("platform");
+                          checkenableprintoption();
+            }
+                          
+            page = 'adjustload.html'
+            $("#lnkExit").attr("href", page);
+            $("#Back_inner").attr("href", page);
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('PrintOption' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    //Set header align                
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".centerboxInvReq").attr("dir", "ltr");
+
+                //Set header align                
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+
+            $("#bt1").click(function() {
+            	if($("#bt1").attr('src') != '../images/r-btn-2-gray.png')
+            	{
+                	$("#bt1").attr('src', '../images/r-btn-1.png');
+					if($("#bt2").attr('src') != '../images/r-btn-2-gray.png')                	
+	                	$("#bt2").attr('src', '../images/r-btn-2.png');
+					if($("#bt3").attr('src') != '../images/r-btn-2-gray.png')                	
+	                	$("#bt3").attr('src', '../images/r-btn-2.png');
+	                printstatus = 0;
+                }
+            });
+
+            $("#bt2").click(function() {
+            	if($("#bt2").attr('src') != '../images/r-btn-2-gray.png')
+            	{
+                	$("#bt2").attr('src', '../images/r-btn-1.png');
+                	if($("#bt1").attr('src') != '../images/r-btn-2-gray.png')
+                		$("#bt1").attr('src', '../images/r-btn-2.png');
+					if($("#bt3").attr('src') != '../images/r-btn-2-gray.png')                		
+                		$("#bt3").attr('src', '../images/r-btn-2.png');
+                	printstatus = 1;
+                }
+            });
+
+            $("#bt3").click(function() {
+            	if($("#bt3").attr('src') != '../images/r-btn-2-gray.png')
+            	{
+	                $("#bt3").attr('src', '../images/r-btn-1.png');
+	                if($("#bt1").attr('src') != '../images/r-btn-2-gray.png')
+	                	$("#bt1").attr('src', '../images/r-btn-2.png');
+					if($("#bt2").attr('src') != '../images/r-btn-2-gray.png')	                	
+	                	$("#bt2").attr('src', '../images/r-btn-2.png');
+	                printstatus = 2;
+                }
+            });
+
+            function toogleClass(element) {
+                if ($(element).attr("src") == '../images/r-btn-1.png') {
+                    $(element).attr("src", "../images/r-btn-2.png");
+                }
+                else {
+                    $(element).attr("src", "../images/r-btn-1.png");
+                }
+            }
+
+        });
+        function checkenableprintoption()
+        {
+            var Qry = "select enabledraftcopy,enabledelayprint FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              if(result[0][0]==0)
+                              {
+                              $("#bt2").unbind('click');
+                              $("#bt2").attr('src', '../images/r-btn-2-gray.png');
+                              }
+                              if(result[0][1]==0)
+                              {
+                              $("#bt3").unbind('click');
+                              $("#bt3").attr('src', '../images/r-btn-2-gray.png');
+                              }
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                                                     {
+                                                     if(result.array[0].enabledraftcopy == 0)
+                                                     {
+                                                     $("#bt2").unbind('click');
+                                                     $("#bt2").attr('src', '../images/r-btn-2-gray.png');
+                                                     }
+                                                     if(result.array[0].enabledelayprint == 0)
+                                                     {
+                                                     $("#bt3").unbind('click');
+                                                     $("#bt3").attr('src', '../images/r-btn-2-gray.png');
+                                                     }
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }      
+        }
+        function GetDocumentNumber()
+        {
+                    $("#lnkNext").attr("onclick","");                   
+                    $("#cntlbl").addClass('MenuGray');
+            var Qry = "SELECT CASE WHEN MAX(bodocseq) IS NULL OR MAX(bodocseq) <=0 OR MAX(bodocseq) = '' OR MAX(bodocseq) = 'null' THEN 0 ELSE bodocseq END AS documentnumber FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              if(result.length > 0)
+                              {
+                              var DocPrefix  = sessionStorage.getItem("RouteCode").toString();
+                              DocumentNumber = DocPrefix.toString() + (eval(result[0][0]) + 1).toString().lpad("0",7); 
+                              SaveFinalData();
+                              }
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                                                     {
+                                                     	if(result.array != undefined)
+                                                     	{
+                                                     		var DocPrefix  = sessionStorage.getItem("RouteCode").toString();
+                                                     		DocumentNumber = DocPrefix.toString() + result.array[0].documentnumber;
+                                                     		DocumentNumber = eval(DocumentNumber) + 1;
+                                                     		SaveFinalData();
+                                                     	}
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+
+        function SaveFinalData() {
+            DeleteZeroQtyData();
+        }
+        
+        function DeleteZeroQtyData()
+        {
+            var Qry = "DELETE FROM inventorytransactiondetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND IFNULL(quantity,0) = 0";
+            if (platform == "iPad") 
+            {
+                    Cordova.exec(function(result) {
+                        GetTransactionDataForUpdate();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+            }
+            else if (platform == "Android") 
+            {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                        GetTransactionDataForUpdate();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+            }
+        }
+        
+        // Funciton to get sum of load transfer quantity to save inventorysummarydetail
+        function GetTransactionDataForUpdate()
+        {
+                var routekey = sessionStorage.getItem("RouteKey");
+                var Qry = "SELECT itemcode,quantity FROM inventorytransactiondetail inv WHERE istemp='true' AND routekey=" + routekey + " AND transactiontypecode = 23";
+                console.log(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                       if(result.length > 0)
+                       {
+                          var ObjData = {};
+                          for(i=0;i<result.length;i++)
+                          {
+                            ObjData.itemcode = result[i][0];
+                            ObjData.quantity = result[i][1];
+                            UpdateSummaryDetail(ObjData);
+                            if(i == (result.length - 1))
+                                GetHHCDocumentNumber();
+                          }
+                       } 
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        if(result.array != undefined)
+                        {
+                          var ObjData = {};
+                          for(i=0;i<result.array.length;i++)
+                          {
+                            ObjData.itemcode = result.array[i].itemcode;
+                            ObjData.quantity = result.array[i].quantity;
+                            UpdateSummaryDetail(ObjData);
+                            if(i == (result.array.length - 1))
+                                GetHHCDocumentNumber();
+                          }
+                        }
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                }
+                
+        }
+
+        // Function to save load transfer(inventorytransactiondetail) data to inventorysummarydetail.
+        function UpdateSummaryDetail(obj)
+        {
+            var QrySelect = "SELECT COUNT(*) as cnt FROM inventorysummarydetail WHERE itemcode = " + obj.itemcode + " AND routekey = " + sessionStorage.getItem("RouteKey");        
+            var QryUpdate = "UPDATE inventorysummarydetail SET loadadjustqty = (" + obj.quantity + " - ifnull(loadqty,0)),istemp = 'false',issync=0 WHERE routekey = " + sessionStorage.getItem("RouteKey") + " AND itemcode = " + obj.itemcode;
+            var QryInsert = "INSERT INTO inventorysummarydetail(loadadjustqty,inventorykey,routekey,itemcode,istemp,issync,stdsalesprice,stdsalescaseprice,stdreturnprice,stdreturncaseprice) SELECT " + obj.quantity + "," + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("RouteKey") + "," + obj.itemcode + ",'false',0,defaultsalesprice,caseprice,defaultreturnprice,returncaseprice FROM itemmaster WHERE actualitemcode=" + obj.itemcode;
+            var QryNew = "";           
+                if (platform == "iPad") 
+                {
+                    console.log(QrySelect);
+                    Cordova.exec(function(result) {
+                        if(result[0][0] > 0)
+                            QryNew = QryUpdate;
+                        else
+                            QryNew = QryInsert;
+                        Cordova.exec(function(result) {                                  
+                        },
+                        function(error) {
+                            navigator.notification.alert(error);
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [QryNew]);           
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [QrySelect]);
+                }
+                else if (platform == "Android") 
+                {
+                    window.plugins.DataBaseHelper.select(QrySelect, function(result) {
+                        if(result.array != undefined)
+                        {
+                            if(result.array[0].cnt > 0)
+                                QryNew = QryUpdate;
+                            else
+                                QryNew = QryInsert;
+                            window.plugins.DataBaseHelper.insert(QryNew, function(result) {    
+                            },
+                            function() {
+                                console.warn("Error calling plugin");
+                            });
+                        }
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+        }
+        
+        function GetHHCDocumentNumber()
+        {
+        	var Qry = "SELECT CASE WHEN MAX(hhcivtseq) IS NULL OR MAX(hhcivtseq) <=0 OR MAX(hhcivtseq) = '' OR MAX(hhcivtseq) = 'null' THEN 0 ELSE hhcivtseq END AS documentnumber FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+        	if(platform == "iPad")
+        	{            
+            	console.log(Qry);
+            	Cordova.exec(function(result) {
+	                if(result.length > 0)
+    	            {
+        	           	var InvoicePrefix  = sessionStorage.getItem("RouteCode").toString() + '4';
+                   		InvoiceNumber = InvoicePrefix.toString() + (eval(result[0][0]) + 1).toString().lpad("0",6);
+                   		SaveInventoryTransactionHeader();
+                	}
+            	},
+            	function(error) {
+	                alert(error);
+            	},
+            	"PluginClass",
+            	"GetdataMethod",
+            	[Qry]);
+            }
+            else if(platform == "Android")
+            {
+            	window.plugins.DataBaseHelper.select(Qry, function(result) {
+                   if(result.array != undefined)
+                   {
+                   		var InvoicePrefix  = sessionStorage.getItem("RouteCode").toString() + '4';
+                   		InvoiceNumber = InvoicePrefix.toString() + (eval(result.array[0].documentnumber) + 1).toString().lpad("0",5);
+                   		SaveInventoryTransactionHeader();
+                   }
+                },
+                function() {
+                   console.warn("Error calling plugin");
+                });
+            }
+        } 
+        
+        function SaveInventoryTransactionHeader()
+        {
+            var transactiontype = 5; // Type 5 is adjustload
+            var Qry = "INSERT INTO inventorytransactionheader(inventorykey,routekey,transactiontype,routecode,salesmancode,transactiondate,transactiontime,documentnumber,odometerreading,transferlocationcode,referencenumber,securitycode,transmitindicator,voidflag,hhcdocumentnumber,loadnumber,refdocumentnumber,currencycode,actualtransactiondate,inventorynumber,data,issync,istemp,printstatus) VALUES(" + sessionStorage.getItem("RouteKey") + "," + sessionStorage.getItem("RouteKey") + "," + transactiontype + "," + sessionStorage.getItem("RouteCode") + "," + sessionStorage.getItem("SalesmanCode") + ",date('now', 'localtime'),time('now', 'localtime')," + DocumentNumber + ",0,0,0,0,0,0," + InvoiceNumber + ",0,0,0,date('now', 'localtime'),0,0,0,'false'," + printstatus + ")";
+            console.log(Qry);
+            if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result) {
+                                  updatebactkey();
+                                               
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") 
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                         updatebactkey();
+                                                              
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+        }
+        function updatebactkey()
+        {
+            var updateqry ="update inventorytransactiondetail set batchdetailkey=(select batchdetailkey from batchexpirydetail where routekey="+sessionStorage.getItem("RouteKey")+" and istemp='true' and transactiontypecode=inventorytransactiondetail.transactiontypecode and itemcode=inventorytransactiondetail.itemcode) where routekey="+sessionStorage.getItem("RouteKey")+" and istemp='true'";
+            console.log(updateqry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              
+                              updatebatchdata();
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                                                    
+                                                     updatebatchdata();
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function updatebatchdata()
+        {
+            var updateqry = "update batchexpirydetail set istemp='false' where transactiontypecode=23 and routekey="+sessionStorage.getItem("RouteKey")+"";
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              addnewloadbatch();
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                                                     addnewloadbatch();
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function addnewloadbatch()
+        {
+            var batchqty = "ifnull(batchmaster_temp.quantity,0)+ifnull(batchmaster_temp.adjustqty,0)";
+            var insertqry ="insert into batchmaster(quantity,batchdetailkey,batchnumber,expirydate,itemcode,damagequantity) select "+batchqty+",batchdetailkey,batchnumber,expirydate,itemcode,ifnull(badquantity,0)+ifnull(damageqty,0)+ifnull(expiryqty,0) from batchmaster_temp where batchmaster_temp.batchnumber || batchmaster_temp.itemcode not in(select batchmaster.batchnumber || batchmaster.itemcode from batchmaster)";
+            var updateqry = "update batchmaster set quantity = (select "+batchqty+" from batchmaster_temp where batchmaster_temp.batchnumber=batchmaster.batchnumber and batchmaster_temp.itemcode=batchmaster.itemcode) where exists (select "+batchqty+" from batchmaster_temp where batchmaster_temp.batchnumber=batchmaster.batchnumber and batchmaster_temp.itemcode=batchmaster.itemcode)";
+            console.log(insertqry);
+            console.log(updateqry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              //UpdateTransactionDetail();  
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [insertqry]);
+                Cordova.exec(function(result) {
+                              UpdateTransactionDetail();  
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(insertqry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                                                     UpdateTransactionDetail();  
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function UpdateTransactionDetail()
+        {
+            var Qry = "UPDATE inventorytransactiondetail SET istemp='false',detailkey=(SELECT MAX(detailkey) FROM inventorytransactionheader) WHERE istemp='true' AND routekey=" + sessionStorage.getItem("RouteKey") + "  AND transactiontypecode = 23";
+            console.log(Qry);
+            if (platform == "iPad") 
+                {
+                    Cordova.exec(function(result) {
+                          UpdateDocumentNumber();           
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "InsertUpdateMethod",
+                    [Qry]);
+                }
+                else if (platform == "Android") 
+                {
+                    window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                         UpdateDocumentNumber();                  	
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+                }
+        }
+        
+        function UpdateDocumentNumber()
+        {
+            var Qry = "UPDATE routemaster SET bodocseq = (ifnull(bodocseq,0) + 1),hhcivtseq = (ifnull(hhcivtseq,0) + 1) WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    if(sessionStorage.getItem('syncmode') == 1)
+                    {
+						senddata('inv',"../inventory/inventory.html");
+                        //senddata('print',"../inventory/inventory.html");
+                    }
+                    else
+                    {
+                        getLangText("Transaction Saved Successfully.");
+                        window.location = "../inventory/inventory.html";
+                    }
+                },
+                function(error) {
+                    alert(error);
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                {
+                    if(sessionStorage.getItem('syncmode') == 1)
+                    {
+                        senddata('inv',"../inventory/inventory.html");
+						//senddata('print',"../inventory/inventory.html");
+                    }
+                    else
+                    {
+                        getLangText("Transaction Saved Successfully.");
+                        window.location = "../inventory/inventory.html";
+                    }
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+    </script>
+
+    </body>
+</html>

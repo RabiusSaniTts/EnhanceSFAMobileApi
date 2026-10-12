@@ -1,0 +1,1733 @@
+<!--
+ '  Created By   : Ankur Shah
+ '  Created Date : 05/02/2012
+ '  Description  : This page is used for select print options.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Print Options</title>
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0;maximum-scale=1.0;user-scalable=0; target-densitydpi=device-dpi">
+
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 320px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 601px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1200px) and (max-width: 1500px)"
+            href="../css/style_1400.css">
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.json-2.3.min.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+
+        <script type="text/javascript"
+            src="../js/printreportmultiple.js"></script>
+
+        <script>
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external" lang="en">Back</a>
+                <h1 lang="en">
+                    Print Options</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <div class="boxContent">
+                    <div class="tblBox tblReport">
+                        <center>
+                            <table border="0" style="table-layout:fixed;"
+                                cellpadding="4" cellspacing="4" width="60%"
+                                id="tblContent">
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 5%;">
+                                        <img class="printicon"
+                                            src="../images/r-btn-1.png" id="bt1"
+                                            alt
+                                            style="vertical-align: middle" />
+                                    </td>
+                                    <td style="width: 95%">
+                                        <h3 class="captionLabel" lang="en">Print
+                                            Final Copy</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="printicon"
+                                            src="../images/r-btn-2.png" id="bt2"
+                                            alt
+                                            style="vertical-align: middle" />
+                                    </td>
+                                    <td>
+                                        <h3 class="captionLabel" lang="en">Print
+                                            Draft Copy</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="printicon"
+                                            src="../images/r-btn-2.png" id="bt3"
+                                            alt
+                                            style="vertical-align: middle" />
+                                    </td>
+                                    <td>
+                                        <h3 class="captionLabel" lang="en">Delay
+                                            Printing</h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </center>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" rel="external"
+                        style="text-decoration: none; font-weight: normal;"
+                        id="lnkNext" onclick="savedata()">
+                        <div class="MenuPosition printLoadHeight">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon" src="../images/ok.png"
+                                    alt="Continue" /></div>
+                            <div class="MenuTextPos MenuText" id="cntlbl"
+                                lang="en">
+                                Continue</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding ">
+                        &nbsp;</div>
+                    <a href="#" id="lnkExit" rel="external"
+                        style="text-decoration: none; font-weight: normal;">
+                        <div class="MenuPosition printLoadHeight MenuExit">
+                            <div class="MenuTextPos">
+                                <img class="bottomicon"
+                                    src="../images/icn-exit.png"
+                                    alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" id="extlbl"
+                                lang="en">
+                                Cancel</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div id="f1" data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                    </div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div id="f2" data-role="footer"
+                style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="day" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../startofday/startofday.html')">Start
+                                day</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                id="inve" class="ui-btn-active" rel="external"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../inventory/inventory.html')">Inventory</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="cust" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../customer/customer_operation.html')">Customer</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="sett" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../settlement/managesettlement.html')">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="info" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../information/information.html')">Information</a></li>
+                        <li style="margin-bottom:0 !important; width:14.0%"><a
+                                href="#" rel="external" id="setup"
+                                data-icon="custom" lang="en"
+                                onclick="footerredict('../utilities/utilities.html')">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" language="javascript">
+        var page = "#";
+        window.lang = new jquery_lang_js();
+        var platform = "";
+        var DocumentNumber,InvoiceNumber;
+        var printstatus = 0;
+        
+         resizeOrientationWindow();
+        $(document).ready(function() {
+       		resizeWindow();
+            //Set current date in footer
+            $(".leftfooter").html(getCurrentDate());
+
+            //Fetch current language and set that language.
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+
+            ////            if (localStorage.printoption == 'inventory') {
+            ////                var page = '../inventory/inventory.html'
+            ////            }
+            ////            else {
+            ////                var page = '../customer_opt/orderdetail.html';
+            ////            }
+            
+            document.addEventListener("deviceready", onDR, false);
+            function onDR() {
+                platform = sessionStorage.getItem("platform");
+                          checkenableprintoption();
+            }
+
+
+            if (localStorage.printinv == 'vanstock') {
+               
+                page = 'routeinventory.html';
+            }
+            else if(localStorage.printinv == 'unload')
+            {
+                       
+                          page = 'unload_option.html';
+            }
+            else {
+                page = 'inventory.html';
+            }
+                          
+            $("#lnkExit").attr("href", page);
+            $("#Back_inner").attr("href", page);
+
+            //Check for current language and set css for that
+            if (sessionStorage.getItem("Language") != "en") {
+                window.lang.change('PrintOption' + lan, lan);
+                window.lang.change('Footer' + lan, lan);
+
+                if (lan == "AR") {
+                    //Set html right alignment for arbic language
+                    $(".centerboxInvReq").attr("dir", "rtl");
+
+                    //Set header align                
+                    $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                    $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                }
+            }
+            else {
+                //Change current language to english
+                window.lang.change('en', 'en');
+
+                //Set html left alignment for english language
+                $(".centerboxInvReq").attr("dir", "ltr");
+
+                //Set header align                
+                $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+
+
+            $("#bt1").click(function() {
+                $("#bt1").attr('src', '../images/r-btn-1.png');
+                $("#bt2").attr('src', '../images/r-btn-2.png');
+                $("#bt3").attr('src', '../images/r-btn-2.png');
+                printstatus = 0;
+            });
+
+            $("#bt2").click(function() {
+                $("#bt2").attr('src', '../images/r-btn-1.png');
+                $("#bt1").attr('src', '../images/r-btn-2.png');
+                $("#bt3").attr('src', '../images/r-btn-2.png');
+                printstatus = 1;
+            });
+
+            $("#bt3").click(function() {
+                $("#bt3").attr('src', '../images/r-btn-1.png');
+                $("#bt1").attr('src', '../images/r-btn-2.png');
+                $("#bt2").attr('src', '../images/r-btn-2.png');
+                printstatus = 2;
+            });
+
+            function toogleClass(element) {
+                if ($(element).attr("src") == '../images/r-btn-1.png') {
+                    $(element).attr("src", "../images/r-btn-2.png");
+                }
+                else {
+                    $(element).attr("src", "../images/r-btn-1.png");
+                }
+            }
+
+        });
+        function checkenableprintoption()
+        {
+            var Qry = "select enabledraftcopy,enabledelayprint FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              if(result[0][0]==0)
+                              {
+                              $("#bt2").unbind('click');
+                              $("#bt2").attr('src', '../images/r-btn-2-gray.png');
+                              }
+                              if(result[0][1]==0)
+                              {
+                              $("#bt3").unbind('click');
+                              $("#bt3").attr('src', '../images/r-btn-2-gray.png');
+                              }
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                                                     {
+                                                     if(result.array[0].enabledraftcopy==0)
+                                                     {
+                                                     $("#bt2").unbind('click');
+                                                     $("#bt2").attr('src', '../images/r-btn-2-gray.png');
+                                                     }
+                                                     if(result.array[0].enabledelayprint==0)
+                                                     {
+                                                     $("#bt3").unbind('click');
+                                                     $("#bt3").attr('src', '../images/r-btn-2-gray.png');
+                                                     }
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }      
+        }
+        function savedata()
+        {
+                    $("#lnkNext").attr("onclick","");                   
+                    $("#cntlbl").addClass('MenuGray');
+                    $("#lnkExit").attr("href","");
+                    $("#extlbl").addClass('MenuGray');
+                    $("#Back_inner").attr("href","");
+                    
+                    
+            if (localStorage.printinv == 'vanstock') {
+                PrintVanStockAndExit();  //Added function by Sujeethv 9/1/2014
+                //window.location = 'inventory.html';
+              // window.location = 'inventory.html';
+            }
+            else if(localStorage.printinv =='unload')
+            {
+               Updateinventoryvalue();
+            }
+        }
+        function Updateinventoryvalue() {
+           
+           var varianceAvailable=sessionStorage.getItem("varianceavailable");
+           
+           if(eval(varianceAvailable)==1){
+	           //var Qry ="UPDATE inventorysummarydetail SET saleqty = (SELECT IFNULL(SUM(IFNULL(id.salesqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1), returnqty = (SELECT IFNULL(SUM(IFNULL(id.returnqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1), returnfreeqty = (SELECT IFNULL(SUM(IFNULL(id.returnfreeqty,0)),0) FROM invoicedetail id  JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1), damageqty = (SELECT IFNULL(SUM(IFNULL(id.damagedqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1), expiryqty = (SELECT IFNULL(SUM(IFNULL(id.expiryqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1),freesampleqty = (SELECT IFNULL(SUM(IFNULL(id.manualfreeqty,0)+IFNULL(id.freesampleqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1),rentqty = (SELECT IFNULL(SUM(IFNULL(id.rebaterentqty,0)+IFNULL(id.fixedrentqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1)";
+	           
+	            var Qry ="UPDATE inventorysummarydetail SET saleqty = (SELECT IFNULL(SUM(IFNULL(id.salesqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1 AND ih.customercode <> (select variancecustomercode from routemaster where routecode ="+sessionStorage.getItem('RouteCode')+") ), returnqty = (SELECT IFNULL(SUM(IFNULL(id.returnqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1 AND ih.customercode <> (select variancecustomercode from routemaster where routecode ="+sessionStorage.getItem('RouteCode')+")), returnfreeqty = (SELECT IFNULL(SUM(IFNULL(id.returnfreeqty,0)),0) FROM invoicedetail id  JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1 AND ih.customercode <> (select variancecustomercode from routemaster where routecode ="+sessionStorage.getItem('RouteCode')+")), damageqty = (SELECT IFNULL(SUM(IFNULL(id.damagedqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1 AND ih.customercode <> (select variancecustomercode from routemaster where routecode ="+sessionStorage.getItem('RouteCode')+")), expiryqty = (SELECT IFNULL(SUM(IFNULL(id.expiryqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1 AND ih.customercode <> (select variancecustomercode from routemaster where routecode ="+sessionStorage.getItem('RouteCode')+")),freesampleqty = (SELECT IFNULL(SUM(IFNULL(id.manualfreeqty,0)+IFNULL(id.freesampleqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1 AND ih.customercode <> (select variancecustomercode from routemaster where routecode ="+sessionStorage.getItem('RouteCode')+")),rentqty = (SELECT IFNULL(SUM(IFNULL(id.rebaterentqty,0)+IFNULL(id.fixedrentqty,0)),0) FROM invoicedetail id JOIN invoiceheader ih ON ih.transactionkey=id.transactionkey Where inventorysummarydetail.routekey = id.routekey AND inventorysummarydetail.itemcode = id.itemcode AND id.istemp = 'false' AND ih.voidflag IS NOT 1 AND ih.customercode <> (select variancecustomercode from routemaster where routecode ="+sessionStorage.getItem('RouteCode')+"))";
+	            
+	            console.log(Qry);
+	            if(platform == "iPad")
+	            {
+	                Cordova.exec(function(result) {
+	                    // navigator.notification.alert("Save invoice rxd detail
+						// record successfully");
+	                },
+	                function(error) {
+	                    navigator.notification.alert("Error save invoice rxd detail record");
+	                },
+	                "PluginClass",
+	                "InsertUpdateMethod",
+	                [Qry]);
+	            }
+	            else if(platform == "Android")
+	            {
+	                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+	                   GetDocumentNumber();
+	                },
+	                function() {
+	                    console.warn("Error calling plugin");
+	                });
+	            }
+            }else{
+            	 GetDocumentNumber();
+            	
+            }
+        }
+        
+        
+        function GetDocumentNumber()
+        {
+            var Qry = "SELECT CASE WHEN MAX(bodocseq) IS NULL OR MAX(bodocseq) <=0 OR MAX(bodocseq) = '' OR MAX(bodocseq) = 'null' THEN 0 ELSE bodocseq END AS documentnumber FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                              if(result.length > 0)
+                              {
+                              var DocPrefix  = sessionStorage.getItem("RouteCode").toString();
+                             DocumentNumber = DocPrefix.toString() + (eval(result[0][0]) + 1).toString().lpad("0",7); 
+                              UpdateDocumentNumber();
+                              GetHHCDocumentNumber();
+                              }
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                                                     {
+                                                     var DocPrefix  = sessionStorage.getItem("RouteCode").toString();
+                                                     DocumentNumber = DocPrefix.toString() + (eval(result.array[0].documentnumber) + 1).toString().lpad("0",6);
+                                                     UpdateDocumentNumber();
+                                                     //GetHHCDocumentNumber();
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function GetHHCDocumentNumber()
+        {  
+            var Qry = "SELECT CASE WHEN MAX(hhcivtseq) IS NULL OR MAX(hhcivtseq) <=0 OR MAX(hhcivtseq) = '' OR MAX(hhcivtseq) = 'null' THEN 0 ELSE hhcivtseq END AS documentnumber FROM routemaster WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+            Cordova.exec(function(result) {
+                          if(result.length > 0)
+                          {
+                          var InvoicePrefix  = sessionStorage.getItem("RouteCode").toString() + '4'; // 1 is the prefix for order
+                          InvoiceNumber = InvoicePrefix.toString() + (eval(result[0][0]) + 1).toString().lpad("0",6); 
+                          SaveInventoryTransactionHeader();
+                          }
+                          },
+                          function(error) {
+                          alert(error);
+                          },
+                          "PluginClass",
+                          "GetdataMethod",
+                          [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) 
+                                                     {
+                                                      if(result.array.length > 0)
+							                          {
+								                          var InvoicePrefix  = sessionStorage.getItem("RouteCode").toString() + '4'; // 1 is the prefix for order
+								                          InvoiceNumber = InvoicePrefix.toString() + (eval(result.array[0].documentnumber) + 1).toString().lpad("0",5); 
+								                          SaveInventoryTransactionHeader();
+							                          }
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        } 
+        function SaveInventoryTransactionHeader()
+        {
+            var transactiontype = 3; // Type 2 is unload
+            var Qry = "INSERT INTO inventorytransactionheader(inventorykey,routekey,transactiontype,routecode,salesmancode,transactiondate,transactiontime,documentnumber,odometerreading,transferlocationcode,referencenumber,securitycode,transmitindicator,voidflag,hhcdocumentnumber,loadnumber,refdocumentnumber,currencycode,actualtransactiondate,inventorynumber,data,issync,istemp,printstatus) VALUES("+sessionStorage.getItem("RouteKey")+"," + sessionStorage.getItem("RouteKey") + "," + transactiontype + "," + sessionStorage.getItem("RouteCode") + "," + sessionStorage.getItem("SalesmanCode") + ",date('now', 'localtime'),time('now', 'localtime')," + DocumentNumber + ",0,0,0,0,0,0," + InvoiceNumber + ",0,0,0,date(),0,0,0,'false'," + printstatus + ")";
+            console.log(Qry);
+            if (platform == "iPad") 
+            {
+                Cordova.exec(function(result) {
+                              SaveInventoryTransactiondetail();           
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if (platform == "Android") 
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                                                    	getAutoLoad();                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        
+        function getAutoLoad(){
+        	var autoload;
+        	var Qry ="select autocalculateloadin from routemaster where routecode="+sessionStorage.getItem("RouteCode");
+            if (platform == 'iPad') {
+                Cordova.exec(function(result) {
+                              autoload = result[0][0];
+                              sessionStorage.setItem("autoload",autoload); 
+                              
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [Qry]);
+            }
+            else if (platform == 'Android') {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                		
+                                                      autoload = result.array[0].autocalculateloadin;
+                                                      window.localStorage.setItem("autoloadlocal", autoload);
+                                                      SaveInventoryTransactiondetail(autoload);              
+                                                   
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        
+        
+        
+        
+        
+        }
+        
+        
+        function SaveInventoryTransactiondetail(loadsetting)
+        {
+           var autoload =eval(loadsetting);
+            if(autoload == 3 || autoload == 4)
+            {
+            	var types ="05";
+            }            
+            else
+            {
+            	var types ="06";  
+            }
+            
+            endQry = "INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey") + ",0,"+types+",itemcode,CASE WHEN endinvqty=0 THEN (ifnull(vanstock,0)-ifnull(truckdamageqty,0)-ifnull(freshunloadqty,0)-ifnull(varianceqty,0)) ELSE endinvqty END,defaultsalesprice,caseprice,date(),'true',0 from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+           
+            var qry ="select " + sessionStorage.getItem("RouteKey") + ",0,"+types+",itemcode,CASE WHEN endinvqty=0 THEN (ifnull(vanstock,0)-ifnull(truckdamageqty,0)-ifnull(freshunloadqty,0)-ifnull(varianceqty,0)) ELSE endinvqty END,defaultsalesprice,caseprice,date(),'true',0 from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode";
+           
+            freshQry = "INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey") + ",0,14,itemcode,freshunloadqty,defaultsalesprice,caseprice,date(),'true',0 from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode where freshunloadqty > 0";
+            truckQry = "INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey") + ",0,11,itemcode,truckdamageqty,defaultsalesprice,caseprice,date(),'true',0 from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode where truckdamageqty > 0";
+			
+            
+            console.log(endQry);
+            if (platform == "iPad") 
+            {
+                Cordova.exec(function(result) {
+                              checkbatchentry(); 
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [endQry]);
+                Cordova.exec(function(result) {
+                                
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [freshQry]);
+                Cordova.exec(function(result) {
+                              UpdateSummaryDetail();           
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [truckQry]);
+            }
+            else if (platform == "Android") 
+            {
+                window.plugins.DataBaseHelper.insert(endQry, function(result) {
+                                                        checkbatchentry();                  
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(freshQry, function(result) {
+                                                                    
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(truckQry, function(result) {
+                                                     //UpdateSummaryDetail(); 
+													badreturnqty();		
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+            
+        }
+		
+		function badreturnqty()
+        {
+            
+            var Qry = "DELETE FROM inventorytransactiondetail WHERE transactiontypecode = 07";
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    /*localStorage.setItem('invoicenumber','');
+                    localStorage.setItem('collectionMOP','');
+                    localStorage.setItem('ARDATA','');*/
+                },
+                function(error) {
+                navigator.notification.alert(error);},
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result)
+                {
+					InsertTemptoTranscationdetail();
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+		function InsertTemptoTranscationdetail()
+		{
+		           
+            var Qry = "INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey") + ",0,07,itemcode,badreturnqty,defaultsalesprice,caseprice,date(),'true',0 from transactiondetailtemp join itemmaster on itemmaster.actualitemcode=transactiondetailtemp.itemcode where badreturnqty > 0";
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    /*localStorage.setItem('invoicenumber','');
+                    localStorage.setItem('collectionMOP','');
+                    localStorage.setItem('ARDATA','');*/
+                },
+                function(error) {
+                navigator.notification.alert(error);},
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result)
+                {
+				UpdateSummaryDetail();
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        
+		}
+		function InsertBadreturnVariance()
+		{
+		           
+            var Qry = "INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey") + ",0,10,itemcode,damageqty -(select quantity FROM inventorytransactiondetail where inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=07 and inventorytransactiondetail.istemp='true'),defaultsalesprice,caseprice,date(),'true',0 from inventorysummarydetail join itemmaster on itemmaster.actualitemcode=inventorysummarydetail.itemcode where inventorysummarydetail.damageqty > 0";
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {
+                    /*localStorage.setItem('invoicenumber','');
+                    localStorage.setItem('collectionMOP','');
+                    localStorage.setItem('ARDATA','');*/
+                },
+                function(error) {
+                navigator.notification.alert(error);},
+                "PluginClass",
+                "InsertUpdateMethod",
+                [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result)
+                {
+				
+                },
+                function()
+                {
+                    console.warn("Error calling plugin");
+                });
+            }
+        
+		}
+        function checkbatchentry()
+        {
+           var autoload = window.localStorage.getItem("autoloadlocal");
+            if(autoload == 3 || autoload == 4)
+            var types ="05";            
+            else
+            var types ="06";  
+            var batchavaiqty ="ifnull(batchmaster_temp.quantity,0)-ifnull(batchmaster_temp.salesqty,0)-ifnull(batchmaster_temp.freeqty,0)+ifnull(batchmaster_temp.returnqty,0)-ifnull(batchmaster_temp.rentalqty,0)-ifnull(batchmaster_temp.promoqty,0)+ifnull(batchmaster_temp.loadaddqty,0)-ifnull(batchmaster_temp.loadcutqty,0)-ifnull(batchmaster_temp.freshunloadqty,0)-ifnull(batchmaster_temp.truckdamageunloadqty,0)";
+            var QrySelect="select count(*) as cnt from batchexpirydetail where routekey = "+sessionStorage.getItem("RouteKey")+" and transactiontypecode="+types;
+            var Qry ="insert into batchexpirydetail ('itemcode','batchdetailkey','batchnumber','expirydate','quantity','transactiontypecode','routekey','visitkey','issync','istemp') select itemcode,(select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where transactiontypecode="+types+"),batchnumber,expirydate,"+batchavaiqty+","+types+"," + sessionStorage.getItem("RouteKey") + ",0,0,'false' from batchmaster_temp";
+            console.log(Qry);
+            if (platform == "iPad") 
+            {
+                Cordova.exec(function(result) {
+                              if(result[0][0] == 0)
+                              {
+                              Cordova.exec(function(result) {
+                                           
+                                            },
+                                            function(error) {
+                                            navigator.notification.alert(error);
+                                            },
+                                            "PluginClass",
+                                            "InsertUpdateMethod",
+                                            [Qry]);
+                              }
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "GetdataMethod",
+                              [QrySelect]);
+            }
+            else if (platform == "Android") 
+            {
+                window.plugins.DataBaseHelper.select(QrySelect, function(result) {
+                                                     if(result.array[0].cnt == 0)
+                                                     {
+                                                    	 window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                                                                                          
+                                                                                          },
+                                                                                          function() {
+                                                                                          console.warn("Error calling plugin");
+                                                                                          });
+                                                     }
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+		
+        function UpdateTransactionDetail()
+        {
+            updatebatchexpirytemp();
+            var Qry = "UPDATE inventorytransactiondetail SET istemp='false',detailkey=(SELECT MAX(detailkey) FROM inventorytransactionheader where routekey=" + sessionStorage.getItem("RouteKey")+") WHERE istemp='true' AND routekey=" + sessionStorage.getItem("RouteKey");
+            console.log(Qry);
+            if (platform == "iPad") 
+            {
+                Cordova.exec(function(result) {
+                              /*navigator.notification.alert("Transaction Saved Successfully.");
+                              window.location = "inventory.html";*/
+                              //InsertEndStockToTransactionDetail();
+                                updatebactkey();
+                                PrintAndExit();
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if (platform == "Android") 
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                                                     /*navigator.notification.alert("Transaction Saved Successfully.");
+                                                     window.location = "inventory.html";*/
+                                                     //InsertEndStockToTransactionDetail();
+                                                        updatebactkey();
+                                                       
+                                                       FetchPaidAmount();
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        
+        
+        
+        function InsertEndStockToTransactionDetail()
+        {
+            var transactiontypecode = 12 //12 for Opening load
+            var QrySelect = "SELECT IFNULL(SUM(endstockqty),0) endstockqty FROM inventorysummarydetail WHERE routekey=" + sessionStorage.getItem("RouteKey");
+            var Qry = "INSERT INTO inventorytransactiondetail(detailkey,itemcode,routekey,transactiontypecode,quantity,itemprice,itemcaseprice,istemp,issync) SELECT (SELECT MAX(detailkey) FROM inventorytransactionheader where routekey=" + sessionStorage.getItem("RouteKey")+"),itemcode,routekey," + transactiontypecode + ",endstockqty,defaultsalesprice,caseprice,'false','0' FROM inventorysummarydetail inv JOIN itemmaster im ON im.actualitemcode = inv.itemcode";
+            console.log(Qry);
+            if (platform == "iPad") 
+            {
+                    Cordova.exec(function(result) {
+                        if(result[0][0] > 0)
+                        {
+                                  
+                                  Cordova.exec(function(result) {
+                                                updatebactkey();
+                                PrintAndExit();
+                            },
+                            function(error) {
+                                navigator.notification.alert(error);
+                            },
+                            "PluginClass",
+                            "InsertUpdateMethod",
+                            [Qry]);
+                        }
+                        else
+                            PrintAndExit();
+                    },
+                    function(error) {
+                        navigator.notification.alert(error);
+                    },
+                    "PluginClass",
+                    "GetdataMethod",
+                    [QrySelect]);
+            }
+            else if (platform == "Android") 
+            {
+                    window.plugins.DataBaseHelper.select(QrySelect, function(result) {
+                        if(result.array[0].endstockqty > 0)
+                        {
+                           
+                                                         window.plugins.DataBaseHelper.insert(Qry, function(result) {
+                                                                                              updatebactkey();
+                                PrintAndExit();
+                            },
+                            function() {
+                                console.warn("Error calling plugin");
+                            });
+                        }
+                        else
+                            PrintAndExit();
+                    },
+                    function() {
+                        console.warn("Error calling plugin");
+                    });
+            }
+        }
+        var arr = [];
+        function PrintSelectedReports()
+        {
+             
+           //GetSelectedReports("VanStockReport");          
+            GetSelectedReports("EndInventoryReport");
+            GetSelectedReports("ReturnSummary");
+          	getBadReturnVariance();
+        }
+        function getBadReturnVariance(){
+        	
+        	 var Qry = "select sum(badreturnqty) as cnt from transactiondetailtemp";
+             var platform= sessionStorage.getItem("platform");
+               if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        
+                        if (result == 0) {
+                            
+                            
+                        }
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                        "PluginClass",
+                        "GetdataMethod",
+                        [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        
+                        if (result.array[0].cnt > 0) 
+						{
+                             GetSelectedReports("UnloadDamage");
+                             if(arr.length > 0)
+                				ReportsToPrint(arr,0);
+                        }else{
+                        	if(arr.length > 0)
+                				ReportsToPrint(arr,0);
+                        }
+                        
+                    },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+                } 
+        	
+        }
+        function GetSelectedReports(ReportName)
+        {      // alert(ReportName);               
+                arr.push({"ReportName" : ReportName});
+        }
+        
+        function FetchPaidAmount()
+        {      
+        	var varianceAvailable=sessionStorage.getItem("varianceavailable");
+           if(eval(varianceAvailable)==1){ 
+	            var Qry  = "SELECT CAST(amount AS VARCHAR) amount,typecode from cashcheckdetail where routekey = " + sessionStorage.getItem("RouteKey") + " and visitkey = " + sessionStorage.getItem("VisitKey");
+	            
+	            var Amount,PaymentType;
+	            var Invoice = {};
+	            if(platform == "iPad")
+	            {
+	                Cordova.exec(function(result) {
+	                    var Invoice = {};
+	                    if(result.length>0)
+	                    {
+	                        Invoice.Amount = result[0][0];
+	                        Invoice.gcpaymenttype = 0;
+	                        if(eval(result[0][1]) == 0)
+	                        {
+	                              Invoice.PaymentType = 0; // cash
+	                              Invoice.PaymentStatus = 0; // cash
+	                              if(sessionStorage.invoicepaymentterms == 2)
+	                                Invoice.gcpaymenttype = 1;
+	                              else
+	                                Invoice.gcpaymenttype = 0;
+	                        }
+	                        else if(eval(result[0][1]) == 1)
+	                        {
+	                              Invoice.PaymentType = 4; // cheque
+	                              Invoice.PaymentStatus = 4; // cheque
+	                        }
+	                    }
+	                    else
+	                    {
+	                        Invoice.Amount = 0;
+	                        Invoice.PaymentType = 1; // charge/credit
+	                        Invoice.PaymentStatus = 1; // charge/credit
+	                        Invoice.gcpaymenttype = 2;
+	                    }
+	                    getInvoicepaymentTerms(Invoice);        
+	                },
+	                function(error) {
+	                    navigator.notification.alert("Error");
+	                },
+	                "PluginClass",
+	                "GetdataMethod",
+	                [Qry]);
+	            }  
+	            else if(platform == "Android")
+	            {
+	                window.plugins.DataBaseHelper.select(Qry, function(result) {                   
+	                  
+	                    if(!$.isEmptyObject(result))
+	                    {
+	                    console.log("result3"+result);
+	                    result = $.map(result.array, function(item, index) {
+	                        return [[item.amount,item.typecode]];
+	                    });
+	                    console.log("result"+result);
+	                    console.log("len"+result.length);
+	                    	if (result.length > 0) {
+		                        Invoice.Amount = eval(result[0][0]);
+	                        	Invoice.gcpaymenttype = 0;
+	                        	if (eval(result[0][1]) == 0) {
+		                            Invoice.PaymentType = 0; // cash
+	                            	Invoice.PaymentStatus = 0; // cash
+	                            	Invoice.gcpaymenttype = 1;
+	                        	}
+	                        	else if (eval(result[0][1]) == 1) {
+		                            Invoice.PaymentType = 4; // cheque
+	                            	Invoice.PaymentStatus = 4; // cheque
+	                        	}
+	                        	getInvoicepaymentTerms(Invoice);
+	                    	}
+	                    }
+	                    else
+	                    {
+	                    	Invoice.Amount = 0;
+	                        Invoice.PaymentType = 1; // charge/credit
+	                        Invoice.PaymentStatus = 1; // charge/credit
+	                        Invoice.gcpaymenttype = 2;
+	                        getInvoicepaymentTerms(Invoice);
+	                    }
+	                    
+	                                        
+	                   
+	                },
+					function() {
+					    console.warn("Error calling plugin");
+					});
+	            } 
+	          }else{
+            	 PrintAndExit();	
+            	
+            }            
+        }
+        function getInvoicepaymentTerms(Invoice){
+    	   
+    	   var custid=sessionStorage.getItem("customerid");
+           var platform= sessionStorage.getItem("platform");
+           var routecode=sessionStorage.getItem("RouteCode");
+           var CompanyCode=sessionStorage.getItem("CompanyCode");
+           
+           
+           if(platform=='iPad')
+           {
+                Cordova.exec(function(result) {
+                             
+                            
+                 },
+                 function(error) {
+                 alert(error);
+                 },   
+                 "PluginClass",
+                 "GetdataMethod",
+                 ["select invoicepaymentterms from customermaster where customercode="+custid]);
+           }
+           else if(platform=='Android')
+           {
+               window.plugins.DataBaseHelper.select("select invoicepaymentterms from customermaster where customercode="+custid,function(result)
+               {
+               	
+               	   if(result.array != undefined)
+                   {
+						
+	               		var paymentterms = $.map(result.array, function (item, index) {
+	                        return [[item.invoicepaymentterms]];
+	               		});	
+               	
+	               		UpdateCustomerInvoice(Invoice,paymentterms[0][0]);
+                       	
+                   }else{
+                   	
+                	   UpdateCustomerInvoice(Invoice,window.localStorage.getItem("invoicepaymenttersmslocal"));
+                   } 
+                       
+                },
+                function()
+                {
+                	console.warn("Error calling plugin");
+                });
+           }
+    	   
+    	   
+       }
+        
+        function UpdateCustomerInvoice(Invoice,paymentterms) {
+            var balanceupdate;
+			
+            var ipt = paymentterms;
+            if(eval(ipt) == 2 || eval(ipt) == 3 || eval(ipt) == 4)
+            {
+                if(Invoice.PaymentType == 4)
+                {
+                    
+                    if(sessionStorage.getItem("disablebalanceupdate") == 1)                
+                        balanceupdate = true;
+                    else if(sessionStorage.getItem("disablebalanceupdate") == 0)
+                        balanceupdate = false;
+                }
+            }
+            
+            
+            
+            
+            if(balanceupdate == true)
+            {
+				
+                // Invoiceheader : invoicebalance and amountpaid will be updated
+                var QryUpdate = "Update invoiceheader set invoicebalance=(ifnull(totalinvoiceamount,0)) - " + eval(Invoice.Amount) + ",amountpaid=" + eval(Invoice.Amount) + ",paymenttype=" + eval(Invoice.PaymentType) + ",issync=0,immediatepaid=" + eval(Invoice.Amount) + ",paymentstatus=" + eval(Invoice.PaymentStatus) + ",gcpaymenttype=" + Invoice.gcpaymenttype + ",actualtransactiondate = date()  WHERE routekey=" + sessionStorage.getItem("RouteKey") + "  and visitkey=" + sessionStorage.getItem("VisitKey");
+                
+                // CustomerInvoice : invoicebalance and amountpaid will be
+				// updated; pdcbalance,pdcindicator and pdcdate will not be
+				// updated
+                var QryInsertToCustomer = "INSERT INTO customerinvoice(transactionkey,documentnumber,invoicenumber,erpreferencenumber,transactiondate,transactiontime,customercode,routecode,salesmancode,totalinvoiceamount,totalsalesamount,totalreturnamount,totaldamagedamount,totalfreesampleamount,amountpaid,invoicebalance,paymenttype,transactiontype,voidflag,issync,pdcbalance,immediatepaid,paymenttype,paymentstatus,gcpaymenttype,pdcindicator,totalbuybackfreeamount,pdcdate) SELECT transactionkey,documentnumber,invoicenumber,invoicenumber as erpreferencenumber,date('now', 'localtime'),time('now', 'localtime'),customercode,routecode,salesmancode,totalinvoiceamount,totalsalesamount,totalreturnamount,totaldamagedamount,totalfreesampleamount,ifnull(amountpaid,0) as amountpaid,invoicebalance,ifnull(paymenttype,1) as paymenttype,2,0,0,NULL,immediatepaid,paymenttype,paymentstatus,gcpaymenttype,NULL,totalbuybackfreeamount,NULL FROM invoiceheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+				
+            }
+            else if(balanceupdate == false)
+            {
+			
+                // Invoiceheader : invoicebalance and amountpaid will not be
+				// updated
+                var QryUpdate = "Update invoiceheader set invoicebalance=0,amountpaid=0,paymenttype=" + eval(Invoice.PaymentType) + ",issync=0,immediatepaid=" + eval(Invoice.Amount) + ",paymentstatus=" + eval(Invoice.PaymentStatus) + ",gcpaymenttype=" + Invoice.gcpaymenttype + ",actualtransactiondate = date()  WHERE routekey=" + sessionStorage.getItem("RouteKey") + "  and visitkey=" + sessionStorage.getItem("VisitKey");
+                
+                // CustomerInvoice : invoicebalance and amountpaid will not be
+				// updated; pdcbalance,pdcindicator and pdcdate will be updated
+                var QryInsertToCustomer = "INSERT INTO customerinvoice(transactionkey,documentnumber,invoicenumber,erpreferencenumber,transactiondate,transactiontime,customercode,routecode,salesmancode,totalinvoiceamount,totalsalesamount,totalreturnamount,totaldamagedamount,totalfreesampleamount,amountpaid,invoicebalance,paymenttype,transactiontype,voidflag,issync,pdcbalance,immediatepaid,paymenttype,paymentstatus,gcpaymenttype,pdcindicator,totalbuybackfreeamount,pdcdate) SELECT transactionkey,documentnumber,invoicenumber,invoicenumber as erpreferencenumber,date('now', 'localtime'),time('now', 'localtime'),customercode,routecode,salesmancode,totalinvoiceamount,totalsalesamount,totalreturnamount,totaldamagedamount,totalfreesampleamount,ifnull(amountpaid,0) as amountpaid,invoicebalance,ifnull(paymenttype,1) as paymenttype,2,0,0,(SELECT CASE typecode WHEN 1 THEN ifnull(amount,0) ELSE 0 END FROM cashcheckdetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey") + "),immediatepaid,paymenttype,paymentstatus,gcpaymenttype,(CASE paymenttype WHEN 4 THEN 1 ELSE 0 END),totalbuybackfreeamount,(SELECT CASE typecode WHEN 1 THEN checkdate ELSE NULL END FROM cashcheckdetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey") + ") FROM invoiceheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+				
+				
+            } 
+            else
+            {
+            	var QryInsertToCustomer = "INSERT INTO customerinvoice(transactionkey,documentnumber,invoicenumber,erpreferencenumber,transactiondate,transactiontime,customercode,routecode,salesmancode,totalinvoiceamount,totalsalesamount,totalreturnamount,totaldamagedamount,totalfreesampleamount,amountpaid,invoicebalance,paymenttype,transactiontype,voidflag,issync,pdcbalance,immediatepaid,paymenttype,paymentstatus,gcpaymenttype,pdcindicator,totalbuybackfreeamount,pdcdate) SELECT transactionkey,documentnumber,invoicenumber,invoicenumber as erpreferencenumber,date('now', 'localtime'),time('now', 'localtime'),customercode,routecode,salesmancode,totalinvoiceamount,totalsalesamount,totalreturnamount,totaldamagedamount,totalfreesampleamount,ifnull(amountpaid,0) as amountpaid,invoicebalance,ifnull(paymenttype,1) as paymenttype,2,0,0,(SELECT CASE typecode WHEN 1 THEN ifnull(amount,0) ELSE 0 END FROM cashcheckdetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey") + "),immediatepaid,paymenttype,paymentstatus,gcpaymenttype,(CASE paymenttype WHEN 4 THEN 1 ELSE 0 END),totalbuybackfreeamount,(SELECT CASE typecode WHEN 1 THEN checkdate ELSE NULL END FROM cashcheckdetail WHERE routekey=" + sessionStorage.getItem("RouteKey") + " AND visitkey=" + sessionStorage.getItem("VisitKey") + ") FROM invoiceheader WHERE routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=" + sessionStorage.getItem("VisitKey");
+ 				
+        		if(eval(ipt) > 1)
+    			{
+                    var QryUpdate = "Update invoiceheader set invoicebalance=(ifnull(totalinvoiceamount,0)) - " + eval(Invoice.Amount) + ",amountpaid=" + eval(Invoice.Amount) + ",paymenttype=" + eval(Invoice.PaymentType) + ",issync=0,immediatepaid=" + eval(Invoice.Amount) + ",paymentstatus=" + eval(Invoice.PaymentStatus) + ",gcpaymenttype=" + Invoice.gcpaymenttype + ",actualtransactiondate = date()  WHERE routekey=" + sessionStorage.getItem("RouteKey") + "  and visitkey=" + sessionStorage.getItem("VisitKey");
+    			  
+    			}
+        		else
+    			{
+    				
+        			var QryUpdate = "Update invoiceheader set totalinvoiceamount=" + eval(Invoice.Amount) + ",invoicebalance=0,amountpaid=" + eval(Invoice.Amount) + ",paymenttype=" + eval(Invoice.PaymentType) + ",issync=0,immediatepaid=" + eval(Invoice.Amount) + ",paymentstatus=" + eval(Invoice.PaymentStatus) + ",gcpaymenttype=" + Invoice.gcpaymenttype + ",actualtransactiondate = date()  WHERE routekey=" + sessionStorage.getItem("RouteKey") + "  and visitkey=" + sessionStorage.getItem("VisitKey");
+                }     
+               
+				
+            }                  
+                
+            if (platform == "iPad") {
+                Cordova.exec(function(result) 
+                {
+                    console.log(QryUpdate);
+                    if (result !='') 
+                    {
+                        Cordova.exec(function(result1) 
+                        {
+                            console.log(QryInsertToCustomer);
+                          
+                            UpdateCustomerBalanceSales();
+                        },
+                        function(error) {
+                            navigator.notification.alert("Error");
+                        },
+                        "PluginClass",
+                        "InsertUpdateMethod",
+                        [QryInsertToCustomer]);
+                    }
+                },
+                function(error) {
+                    navigator.notification.alert("Error");
+                },
+                "PluginClass",
+                "InsertUpdateMethod",
+                [QryUpdate]);
+            }
+            else if (platform == "Android") 
+            {
+			
+                window.plugins.DataBaseHelper.insert(QryUpdate, function(result) 
+                {   
+					//if(eval(ipt)>1)// commented by jibin to make cash customer varince sales printout on 14-04-2022
+						if(1==1)
+					{
+						
+							window.plugins.DataBaseHelper.insert(QryInsertToCustomer, function(result1) {
+								 var invoicenumber=sessionStorage.getItem("varianceinvoice");
+								 if(eval(invoicenumber)!=0){
+								 	 arr.push({"ReportName" : "Sales", "key" : 0, "invoicenumber" : invoicenumber});
+	                        	 }
+								 PrintAndExit();	
+	                        },
+	                        function() {
+	                            console.warn("Error calling plugin");
+	                        });
+							
+						
+                       
+					}
+					else
+					{
+						 PrintAndExit();
+					}
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        function PrintAndExit()
+        {
+            if(printstatus == 0 || printstatus == 1)
+            {
+                PrintSelectedReports();
+            }
+            else
+            {
+                PrintDone();
+            }
+            
+        }
+        //----Start Made Chage by mirnah 9/1/2014 
+        function PrintVanStockAndExit()
+        {
+            if(printstatus == 0 || printstatus == 1)
+                getVanInfo();
+            else
+                window.location = 'inventory.html';
+            
+        }
+        //--------End
+        function PrintDone()
+        {
+            var path;
+            if(platform == "iPad")
+                path = "inventory.html";
+            else if(platform == "Android")
+                path = "../inventory/inventory.html";
+            if(sessionStorage.getItem('syncmode') == 1)
+            {
+            	 
+            	
+				
+				//
+				//alert("Checking inventory variance");
+                senddata('inv',path); // inventory
+                
+                //senddata('sale',path);
+              
+               
+
+            }
+            else
+            {
+                getLangText("Transaction Saved Successfully.");
+                window.location = path;
+            }
+        }
+        
+        function UpdateSummaryDetail()
+        {
+            //update for truckdamage type
+            var truckQry ="Update inventorysummarydetail SET truckdamagedunloadqty =ifnull(truckdamagedunloadqty,0)+(select quantity FROM inventorytransactiondetail where inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=11 and inventorytransactiondetail.istemp='true'),issync=0 WHERE EXISTS ( SELECT itemcode FROM inventorytransactiondetail WHERE inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=11 and inventorytransactiondetail.istemp='true')";
+            console.log(truckQry);
+            //update for fresh unload type
+            var freshQry ="Update inventorysummarydetail SET freshunloadqty =ifnull(freshunloadqty,0)+(select quantity FROM inventorytransactiondetail where inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=14 and inventorytransactiondetail.istemp='true'),issync=0 WHERE EXISTS ( SELECT itemcode FROM inventorytransactiondetail WHERE inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=14 and inventorytransactiondetail.istemp='true')";
+            console.log(freshQry);
+            //update for badreturn type
+            var badreturnQry ="Update inventorysummarydetail SET damagedunloadqty =ifnull(damagedunloadqty,0)+(select quantity FROM inventorytransactiondetail where inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=07 and inventorytransactiondetail.istemp='true'),issync=0 WHERE EXISTS ( SELECT itemcode FROM inventorytransactiondetail WHERE inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode=07 and inventorytransactiondetail.istemp='true')";
+            console.log(badreturnQry);
+            var emptyQry ="Update inventorysummarydetail SET emptycontainerunloadqty =ifnull(emptycontainerunloadqty,0)+(select emptycontainerqty FROM inventorysummarydetail as is2 where is2.itemcode = inventorysummarydetail.itemcode AND is2.routekey = " + sessionStorage.getItem("RouteKey")+"),issync=0 WHERE EXISTS ( SELECT itemcode FROM inventorysummarydetail is1 WHERE is1.itemcode = inventorysummarydetail.itemcode AND inventorysummarydetail.routekey = " + sessionStorage.getItem("RouteKey") + ") ";
+            console.log(emptyQry);
+           var autoload = window.localStorage.getItem("autoloadlocal");
+            if(autoload == 3 || autoload == 4)
+            {
+            var field ="endstockqty";
+            var types = "05";
+            }
+            else
+            {
+            var field ="unloadqty";
+            var types = "06";
+            }
+            
+            var endingQry ="Update inventorysummarydetail SET "+field+" =ifnull("+field+",0)+(select quantity FROM inventorytransactiondetail where inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode="+types+" and inventorytransactiondetail.istemp='true'),issync=0 WHERE EXISTS ( SELECT itemcode FROM inventorytransactiondetail WHERE inventorytransactiondetail.itemcode = inventorysummarydetail.itemcode AND inventorytransactiondetail.routekey = " + sessionStorage.getItem("RouteKey") + " AND transactiontypecode="+types+" and inventorytransactiondetail.istemp='true')";
+            
+            console.log(endingQry);
+            if (platform == "iPad") 
+            {
+                Cordova.exec(function(result) {
+                             
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [truckQry]);
+                Cordova.exec(function(result) {
+                             
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [freshQry]);
+                Cordova.exec(function(result) {
+                             if(result > 0)
+                              updatevariance();
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [badreturnQry]);
+                Cordova.exec(function(result) {
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [emptyQry]);
+                Cordova.exec(function(result) {
+                              UpdateTransactionDetail();
+                              if(autoload == 2 || autoload == 4)
+                              {
+                              unloadvariance();
+                              }
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [endingQry]);
+            }
+            else if (platform == "Android") 
+            {
+                window.plugins.DataBaseHelper.insert(truckQry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(freshQry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(badreturnQry, function(result) {
+                                                    // if(result > 0)
+                                                     //updatevariance();
+													 checkdifference();
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(emptyQry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+                window.plugins.DataBaseHelper.insert(endingQry, function(result) {
+                                                     
+                                                     UpdateTransactionDetail();
+                                                    // alert(autoload);
+                                                     if(autoload == 2 || autoload == 4)
+                                                     {
+                                                     unloadvariance();
+                                                     }
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+		
+		function checkdifference()
+        {
+            var Qry = "select count(*) as cnt from inventorysummarydetail where damageqty!=damagedunloadqty";
+                var platform= sessionStorage.getItem("platform");
+                console.log(Qry);
+				//alert(Qry);
+                if (platform == "iPad") {
+                    Cordova.exec(function(result) {
+                        
+                        if (result == 0) {
+                            
+                            
+                        }
+                    },
+                    function(error) {
+                        alert(error);
+                    },
+                        "PluginClass",
+                        "GetdataMethod",
+                        [Qry]);
+                }
+                else if (platform == "Android") {
+                    window.plugins.DataBaseHelper.select(Qry, function(result) {
+                        
+                        if (result.array[0].cnt > 0) 
+						{
+                            unloadbadreturnvariance();
+                        }else
+						{
+						
+						}
+                    },
+							function() {
+							    console.warn("Error calling plugin");
+							});
+                } 
+        }
+		
+        function updatevariance()
+        {
+            var Qry ="INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey")+",(SELECT MAX(detailkey) FROM inventorytransactionheader where routekey=" + sessionStorage.getItem("RouteKey")+"),10,is2.itemcode,(ifnull(damageqty,0) - ifnull(damagedunloadqty,0)),stdsalesprice,stdsalescaseprice,date(),'false',0 FROM inventorysummarydetail as is2 WHERE EXISTS ( SELECT itemcode FROM inventorysummarydetail is1 WHERE is1.routekey = " + sessionStorage.getItem("RouteKey") + " and damageqty > 0 and ((damageqty) - (damagedunloadqty))!=0";
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {   
+                              
+                              
+                              
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                                                     {
+                                                     
+                                                     
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function unloadvariance()
+        {
+        	
+        	
+        	//jibin - 12-04-2022
+           var autoload = window.localStorage.getItem("autoloadlocal");
+            if(autoload == 3 || autoload == 4)
+            var field ="endstockqty";
+            else
+            var field ="unloadqty";
+             
+            var Qry ="INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey")+",(SELECT MAX(detailkey) FROM inventorytransactionheader where routekey=" + sessionStorage.getItem("RouteKey")+"),9,is2.itemcode,((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(loadaddqty,0)+ifnull(beginstockqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)-ifnull(freesampleqty,0)-ifnull(rentqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freshunloadqty,0)-ifnull(truckdamagedunloadqty,0)) - ifnull("+field+",0)),stdsalesprice,stdsalescaseprice,date(),'false',0 FROM inventorysummarydetail as is2 WHERE EXISTS ( SELECT itemcode FROM inventorysummarydetail is1 WHERE is1.routekey = " + sessionStorage.getItem("RouteKey") + " and is1.itemcode=is2.itemcode and ((ifnull(loadqty,0)+ifnull(loadadjustqty,0)+ifnull(loadaddqty,0)+ifnull(beginstockqty,0)-ifnull(loadcutqty,0)-ifnull(saleqty,0)-ifnull(freesampleqty,0)-ifnull(rentqty,0)+ifnull(returnqty,0)+ifnull(returnfreeqty,0)-ifnull(freshunloadqty,0)-ifnull(truckdamagedunloadqty,0)) - ifnull("+field+",0)) > 0)";
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {   
+                              
+                              
+                              
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                                                     {
+                                                     
+													 unloadbadreturnvariance();
+                                                     
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+		function unloadbadreturnvariance()
+        {
+			
+           /* var autoload = sessionStorage.getItem("autoload");
+            if(autoload == 3 || autoload == 4)
+            var field ="endstockqty";
+            else
+            var field ="unloadqty";*/
+            
+           // var Qry ="INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey")+",(SELECT MAX(detailkey) FROM inventorytransactionheader where routekey=" + sessionStorage.getItem("RouteKey")+"),10,is2.itemcode,((ifnull(damageqty,0)) -(ifnull(damagedunloadqty,0))),stdsalesprice,stdsalescaseprice,date('localtime'),'false',0 FROM inventorysummarydetail as is2 WHERE EXISTS (SELECT itemcode FROM inventorysummarydetail is1 WHERE is1.routekey = " + sessionStorage.getItem("RouteKey") + " and is1.itemcode=is2.itemcode and (ifnull(damagedunloadqty,0)) > 0)";
+			var Qry ="INSERT INTO inventorytransactiondetail(routekey,detailkey,transactiontypecode,itemcode,quantity,itemprice,itemcaseprice,mdate,istemp,issync) select " + sessionStorage.getItem("RouteKey")+",(SELECT MAX(detailkey) FROM inventorytransactionheader where routekey=" + sessionStorage.getItem("RouteKey")+"),10,itemcode,((ifnull(damageqty,0)) -(ifnull(damagedunloadqty,0))),stdsalesprice,stdsalescaseprice,date('localtime'),'false',0 FROM inventorysummarydetail  where (ifnull(damagedunloadqty,0)) > 0";
+			//alert(Qry);
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {   
+                              
+                              
+                              
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                                                     {
+                                                     
+                                                     
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function UpdateDocumentNumber()
+        {
+            var Qry = "UPDATE routemaster SET bodocseq = (ifnull(bodocseq,0) + 1),hhcivtseq = (ifnull(hhcivtseq,0) + 1) WHERE routecode=" + sessionStorage.getItem("RouteCode");
+            console.log(Qry);
+            if(platform == "iPad")
+            {
+                Cordova.exec(function(result) {   
+                              
+                              
+                              
+                              },
+                              function(error) {
+                              alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [Qry]);
+            }
+            else if(platform == "Android")
+            {
+                window.plugins.DataBaseHelper.insert(Qry, function(result) 
+                                                     {
+                                                     
+                                                     GetHHCDocumentNumber();
+                                                     },
+                                                     function() 
+                                                     {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function insertopeningbatch()
+        {
+            var updateqry = "insert into batchexpirydetail ('itemcode','batchdetailkey','batchnumber','expirydate','quantity','transactiontypecode','routekey','visitkey','issync','istemp') select itemcode,(select CASE WHEN count(batchdetailkey)>0 THEN batchdetailkey ELSE (select max(batchdetailkey)+1 from batchexpirydetail) END as batchdetailkey from batchexpirydetail where transactiontypecode=12),batchnumber,expirydate,quantity,12,routekey,visitkey,0,'false' from batchexpirydetail where routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=0 and transactiontypecode=5";
+            console.log(updateqry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                											updatebactkey();
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function updatebatchexpirytemp()
+        {
+            var updateqry = "update batchexpirydetail set istemp='false' where routekey=" + sessionStorage.getItem("RouteKey") + " and visitkey=0 and (transactiontypecode=7 or transactiontypecode=5 or transactiontypecode=6 or transactiontypecode=11 or transactiontypecode=14)";
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              updatebatchmaster_temp();
+                              insertopeningbatch();
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                                                     updatebatchmaster_temp();
+                                                    
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+            
+        }
+        function updatebatchmaster_temp()
+        {
+            var batchavaiqty ="ifnull(batchmaster_temp.quantity,0)-ifnull(batchmaster_temp.salesqty,0)-ifnull(batchmaster_temp.freeqty,0)+ifnull(batchmaster_temp.returnqty,0)-ifnull(batchmaster_temp.rentalqty,0)-ifnull(batchmaster_temp.promoqty,0)+ifnull(batchmaster_temp.loadaddqty,0)-ifnull(batchmaster_temp.loadcutqty,0)-ifnull(batchmaster_temp.freshunloadqty,0)-ifnull(batchmaster_temp.truckdamageunloadqty,0)";
+            var batchqty = "CASE WHEN batchmaster_temp.endinvqty == 0 || "+batchavaiqty+"==batchmaster_temp.endinvqty THEN "+batchavaiqty+" ELSE batchmaster_temp.endinvqty END";
+            var updateqry = "update batchmaster set quantity = (select "+batchqty+" from batchmaster_temp where batchmaster_temp.batchnumber=batchmaster.batchnumber and batchmaster_temp.itemcode=batchmaster.itemcode) where exists (select "+batchqty+" from batchmaster_temp where batchmaster_temp.batchnumber=batchmaster.batchnumber and batchmaster_temp.itemcode=batchmaster.itemcode)";
+            var badupdateqry = "update batchmaster set damagequantity = (select ifnull(badquantity,0)-ifnull(batchmaster_temp.damageoutqty,0)-ifnull(damageunloadqty,0) from batchmaster_temp where batchmaster_temp.batchnumber=batchmaster.batchnumber and batchmaster_temp.itemcode=batchmaster.itemcode) where exists (select ifnull(badquantity,0)-ifnull(batchmaster_temp.damageoutqty,0)-ifnull(damageunloadqty,0) from batchmaster_temp where batchmaster_temp.batchnumber=batchmaster.batchnumber and batchmaster_temp.itemcode=batchmaster.itemcode)";
+            console.log(updateqry);
+            addnewbatch();
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              updatebactkey();
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                                                    
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [badupdateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(badupdateqry, function(result) {
+                											insertopeningbatch()
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function addnewbatch()
+        {
+            var batchqty = "ifnull(batchmaster_temp.quantity,0)-ifnull(batchmaster_temp.salesqty,0)-ifnull(batchmaster_temp.freeqty,0)+ifnull(batchmaster_temp.returnqty,0)-ifnull(batchmaster_temp.rentalqty,0)-ifnull(batchmaster_temp.promoqty,0)+ifnull(batchmaster_temp.loadaddqty,0)-ifnull(batchmaster_temp.loadcutqty,0)";
+            var insertqry ="insert into batchmaster(quantity,batchdetailkey,batchnumber,expirydate,itemcode,damagequantity) select "+batchqty+",batchdetailkey,batchnumber,expirydate,itemcode,ifnull(badquantity,0)-ifnull(damageoutqty,0)-ifnull(damageunloadqty,0) from batchmaster_temp where batchmaster_temp.batchnumber || batchmaster_temp.itemcode not in(select batchmaster.batchnumber || batchmaster.itemcode from batchmaster)";
+            console.log(insertqry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [insertqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(insertqry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        function updatebactkey()
+        {
+            var updateqry ="update inventorytransactiondetail set batchdetailkey=(select batchdetailkey from batchexpirydetail where routekey="+sessionStorage.getItem("RouteKey")+" and istemp='false' and transactiontypecode=inventorytransactiondetail.transactiontypecode and itemcode=inventorytransactiondetail.itemcode) where routekey="+sessionStorage.getItem("RouteKey")+" and istemp='false'";
+            console.log(updateqry);
+            if (platform == "iPad") {
+                Cordova.exec(function(result) {
+                              
+                              },
+                              function(error) {
+                              navigator.notification.alert(error);
+                              },
+                              "PluginClass",
+                              "InsertUpdateMethod",
+                              [updateqry]);
+            }
+            else if (platform == "Android") {
+                window.plugins.DataBaseHelper.insert(updateqry, function(result) {
+                                                     
+                                                     },
+                                                     function() {
+                                                     console.warn("Error calling plugin");
+                                                     });
+            }
+        }
+        </script>
+
+    </body>
+</html>

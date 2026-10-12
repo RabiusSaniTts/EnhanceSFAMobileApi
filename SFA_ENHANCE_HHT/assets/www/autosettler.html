@@ -1,0 +1,520 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>AR Collection</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/en.css" lang="en" />
+        <link rel="stylesheet" href="../css/jquery.mobile-1.0.min.css" />
+        <link rel="stylesheet"
+            media="only screen and (min-width: 480px) and (max-width: 600px)"
+            href="../css/style_600.css">
+        <!--Black P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 600px) and (max-width: 700px)"
+            href="../css/style_700.css">
+        <!--Iphone 4 P-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 700px) and (max-width: 800px)"
+            href="../css/style_800.css">
+        <!--Ipad P-->
+        <!--Black L-->
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1000px) and (max-width: 1200px)"
+            href="../css/style_1200.css">
+        <link rel="stylesheet"
+            media="only screen and (min-width: 1201px) and (max-width: 1400px)"
+            href="../css/style_1400.css">
+        <!--Ipad L-->
+        <!--<link rel="stylesheet" media="only screen and (min-width: 1200px) and (max-width: 1400px)" href="style_invoice_1400.css">-->
+
+        <script type="text/javascript" src="../js/jquery.js"></script>
+
+        <script type="text/javascript"
+            src="../js/jquery.mobile-1.0.js"></script>
+
+        <script type="text/javascript" src="../js/common.js"></script>
+
+        <script src="../LangJS/jquery-lang.js" charset="utf-8"
+            type="text/javascript"></script>
+
+        <script src="../LangJS/langpack/AR.js" charset="utf-8"
+            type="text/javascript" lang="en"></script>
+        <script type="text/javascript">
+        if (navigator.userAgent.toLowerCase().match(/android/)) {
+            document.write('<script charset="utf-8" src="../cordova-2.0.0.js"><\/script>');
+            document.write('<script charset="utf-8" src="../directoryListing.js"><\/script>');
+        } else if (navigator.userAgent.toLowerCase().match(/iphone/) || navigator.userAgent.toLowerCase().match(/ipad/)) {
+            document.write('<script charset="utf-8" src="../cordova-1.5.0.js"><\/script>');
+        }
+    </script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="d" data-title="Order Request">
+            <div>
+                <img title alt src="../images/bg.png" id="background">
+            </div>
+            <div data-role="header" data-position="inline" id="bgclheader">
+                <a href="#" id="Back_inner" rel="external"
+                    onclick="clearval();">Back</a>
+                <h1 lang="en">
+                    AR Collection</h1>
+                <a href="#" id="lang_inner">EN</a>
+            </div>
+            <div data-role="content" class="centerboxInvReq">
+                <!--<div style="padding:5px">
+                <div style="padding-top:20px">Customer#</div>
+                <div style="float:left;padding:5px">
+                    <input type="text" id="txtCustName" class="textFont textWidth" style="height:30px"/>
+                </div>
+            </div>-->
+                <div class="boxContent">
+                    <div class="tblBox tbltd" id="contentWrapper">
+                        <table id="tblHeaderContent" cellpadding="0"
+                            cellspacing="0" width="100%" class="tblHeader">
+                            <tr>
+                                <th style="width: 20%;" lang="en">
+                                    Invoice No.
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Invoice Date
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Invoice Amount
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Balance Due
+                                </th>
+                                <th style="width: 20%;" lang="en">
+                                    Amount
+                                </th>
+                            </tr>
+                        </table>
+                        <div style="height: 250px">
+                            <table id="tblContent" cellpadding="0"
+                                cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                    <td style="width: 20%;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="textBar">
+                        <table cellpadding="5" cellspacing="2" border="0"
+                            width="100%">
+                            <tr>
+                                <td class="captionLabel rtext" lang="en">
+                                    PDC Amount
+                                </td>
+                                <td class="captionLabel rtext" lang="en">
+                                    Total AR Amount
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input id="txtPdcAmt" readonly="readonly"
+                                        type="text" value="0"
+                                        class="textWidth textFont rightAlign" />
+                                </td>
+                                <td>
+                                    <input id="txtTotalDue" readonly="readonly"
+                                        type="text" pattern="[0-9]*"
+                                        class="textWidth textFont rightAlign"
+                                        value="0" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="leftbottomMenu">
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="#" class="enableText" id="btnYes" rel="external"
+                        onclick="CheckArAmount()">
+                        <div class="MenuPosition">
+                            <div class="iconPos">
+                                <img src="../images/yes.png" alt="Save" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                Yes</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                    <a href="../customer_opt/cust_opt.html" class="enableText"
+                        rel="external">
+                        <div class="MenuPosition MenuExit">
+                            <div class="iconPos">
+                                <img src="../images/no.png" alt="Exit" /></div>
+                            <div class="MenuTextPos MenuText" lang="en">
+                                No</div>
+                        </div>
+                    </a>
+                    <div class="menuPadding">
+                        &nbsp;</div>
+                </div>
+            </div>
+            <div data-role="footer" class="ui-bar">
+                <div class="footer">
+                    <div class="leftfooter">
+                        09 November 2011</div>
+                    <div class="rightfooter">
+                        Mirnah Technology Systems</div>
+                </div>
+            </div>
+            <div data-role="footer" style="bottom: 0; position: absolute;">
+                <div data-role="navbar" data-iconpos="top" data-grid="f">
+                    <ul>
+                        <li style="margin-bottom: 0 !important;"><a
+                                href="../startofday/startofday.html"
+                                id="day" data-icon="custom" lang="en"
+                                rel="external">Start of day</a></li>
+                        <li style="margin-bottom: 0 !important;"><a
+                                href="../inventory/inventory.html" id="inve"
+                                data-icon="custom" lang="en"
+                                rel="external">Inventory</a></li>
+                        <li style="margin-bottom: 0 !important;"><a href="#"
+                                id="cust" data-icon="custom"
+                                class="ui-btn-active" lang="en"
+                                rel="external">Customer opt</a></li>
+                        <li style="margin-bottom: 0 !important;"><a
+                                href="../settlement/managesettlement.html"
+                                id="sett" data-icon="custom" lang="en"
+                                rel="external">Settlement</a></li>
+                        <li style="margin-bottom:0 !important;"><a href="#"
+                                rel="external" id="ordstatus" data-icon="custom"
+                                lang="en"
+                                onclick="footerredict('../home/orderstatus.html')">Order
+                                Status</a></li>
+                        <li style="margin-bottom: 0 !important;"><a
+                                href="../information/information.html"
+                                id="info" data-icon="custom" lang="en"
+                                rel="external">Information</a></li>
+                        <li style="margin-bottom: 0 !important; width: 14.0%"><a
+                                href="../utilities/utilities.html"
+                                id="setup" data-icon="custom" lang="en"
+                                rel="external">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        window.lang = new jquery_lang_js();
+        //alert(localStorage.po);
+        var platform = '';
+        var AndroidPlatform = "Android";
+        var iPadPlatform = "iPad";
+        var decimalplace = sessionStorage.getItem("decimalplace");
+        var Settlement = 1;
+        var data;
+        var currRowIndex;    
+        var objData = {};         
+        $("#tblContent").click(function() { });
+        $(document).ready(function() {
+           $("#txtTotalDue").ForceNumericOnly();
+            $(".leftfooter").html(getCurrentDate());            
+            $("#tbl1 tr:odd").addClass('oddRow');
+            $("#tbl1 tr:even").addClass('evenRow');                        
+            var lan = sessionStorage.getItem("Language");
+            window.lang.run(lan);
+                          $("#btnYes").click(function() { CheckArAmount(); });
+        
+        document.addEventListener("deviceready", onDR, false);
+        function onDR() {
+            platform = sessionStorage.getItem("platform");
+            getAutoSettleSetting();
+        }
+        
+        function getAutoSettleSetting()
+        {
+            var Qry = "SELECT autosettlecollection FROM customermaster where customercode=" + sessionStorage.getItem("customerid");
+            console.log(Qry);
+            if(platform == iPadPlatform)
+            {
+                Cordova.exec(function(result) {
+                    if(result.length>0)
+                    {
+                        Settlement = eval(result);                        
+                        if(Settlement==1)
+                        {
+                            $("#txtTotalDue").removeAttr("readonly");
+                            $("#tblHeaderContent tr th:eq(4)").remove();
+                            $("#tblContent tr td:eq(4)").remove();
+                        }
+                        getRecord();
+                    }
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == AndroidPlatform)
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    if(result.array != undefined)
+                    {
+                        Settlement = eval(result.array[0].autosettlecollection);
+                        getRecord();
+                    }
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function getRecord()
+        {
+            var Qry = "SELECT invoicenumber,strftime('%m-%d-%Y',transactiondate) as InvoiceDate,ifnull(totalinvoiceamount,0) as totalinvoiceamount,invoicebalance as AmountDue,invoicebalance as DisplayAmount FROM customerinvoice WHERE invoicebalance <> 0 and routecode=" + sessionStorage.getItem("RouteCode") + " and salesmancode = " + sessionStorage.getItem("SalesmanCode") + " and customercode = " + sessionStorage.getItem("customerid");
+            console.log(Qry);
+            if(platform = iPadPlatform)
+            {
+                Cordova.exec(function(result) {
+                        TableDataOffLine(result);
+                },
+                function(error) {
+                    navigator.notification.alert(error);
+                },
+                "PluginClass",
+                "GetdataMethod",
+                [Qry]);
+            }
+            else if(platform == AndroidPlatform)
+            {
+                window.plugins.DataBaseHelper.select(Qry, function(result) {
+                    TableDataOffLine(result);
+                },
+                function() {
+                    console.warn("Error calling plugin");
+                });
+            }
+        }
+        
+        function TableDataOffLine(RecSet) 
+        {
+                var CellCount = $("#tblHeaderContent tr:eq(0) th").length;
+                var temp='';
+                data = RecSet;
+                if (platform == AndroidPlatform) {
+                    var array = $.map(data.array, function(item, index) {                        
+                        return [[item.invoicenumber, item.InvoiceDate, item.totalinvoiceamount, item.AmountDue, item.invoicebalance,item.DisplayAmount]];
+                    });
+                    data = array;
+                    RecSet = array;
+                }                
+                for (i = 0; i < data.length; i++) {
+                    var r = "<tr class='contentFont'>";
+                    for (j = 0; j < CellCount; j++) {
+                        if(j == 0)
+                          data[i][j] = parseInt(data[i][j]);
+                        if(j>1)
+                        {
+                            data[i][j] = eval(data[i][j]).toFixed(decimalplace);
+                        }
+                        if(j == 4)
+                        {
+                            if(Settlement==0)
+                            {                                
+                                if(localStorage.getItem("tmpargrid") != null && localStorage.getItem("tmpargrid") != undefined )
+                                {
+                                    var tmpdata = localStorage.getItem("tmpargrid");   
+                                    tmpdata = JSON.parse(tmpdata.split(","));                                 
+                                    data[i][j] = tmpdata[i][j];
+                                }
+                                else
+                                    data[i][j] = 0;
+                                temp += " class = 'editable' ";
+                            }                            
+                        }
+                        else
+                          temp = "";
+                        var c = "<td " + temp + ">" + data[i][j] + "</td>";
+                        r += c;                        
+                    }
+                    r += "</tr>";
+                    $('#tblContent tbody').append(r);
+                }               
+                
+                
+                //Click event for each row in table to process row data.
+                $("#tblContent tr").live('click', function() {
+                    $(this).addClass('clicked');
+                    $(this).siblings().removeClass('clicked');
+                    var idx = $(this).index();
+                    if(Settlement == 0)
+                        $("#txtTotalDue").val(eval(GetTotalAmount()).toFixed(decimalplace));
+                    else
+                    {
+                       if(localStorage.getItem("tmparamount") != null && localStorage.getItem("tmparamount") != undefined)                       
+                             $("#txtTotalDue").val(localStorage.getItem("tmparamount"));                            
+                    }
+                    localStorage.setItem("documentnumber",eval(data[idx - 1][0]));
+                    currRowIndex = idx;                    
+                });
+
+                $("#tblContent tr").find("td:gt(1)").addClass("rightAlign");
+                $("#tblContent tr:eq(1)").trigger('click');
+                $("#tblContent tr:odd").addClass('oddRow');
+                $("#tblContent tr:even").addClass('evenRow');
+                
+                // If Edit is enabled allow editing in grid
+                $('#tblContent td.editable').click(function() {
+                    var input = $("<input type='text' pattern='[0-9]*'/>").attr('value', $(this).text());
+                    var w = $(this).innerWidth();
+                    w = w - 50 + "px";
+                    input.css('width', w).css('border', '0').css('height', 30).css('font-size', 16);
+                    $(this).empty();
+                    $(this).append(input);
+                    //input.bind("keyup",function() { return SetNumberMaxLength(this,4) });
+                    input.focusout(function() { UpdateData(this) });
+                    $(this).find('input').live("keypress", function(event) {
+                        if (event.keyCode == 13) {
+                            input.focusout();
+                        }
+                    });
+                    input.focus();
+                });
+        }
+        
+        //Validating Total A/R amount and setting in storage for later use.
+        function CheckArAmount()
+        {
+            var TotalDue = GetTotalBalanceDue();
+            if(eval($("#txtTotalDue").val()) > eval(TotalDue))
+            {
+                navigator.notification.alert("Amount Exceeds Total Balance Due.");
+                return false;
+            }
+            if(eval($("#txtTotalDue").val()) == "")
+            {
+                navigator.notification.alert("Enter Receipt Amount.");
+                return false;
+            }               
+                    
+            
+            var aramount;
+            var autoAR;
+            var balancedue;
+            if(Settlement == 0)
+            {
+                /*aramount = $("#tblContent tr:eq(" + currRowIndex + ") td:eq(3)").text();
+                balancedue = $("#tblContent tr:eq(" + currRowIndex + ") td:eq(2)").text();*/
+                aramount = $("#txtTotalDue").val();
+                balancedue = $("#txtTotalDue").val();
+                autoAR = false;
+            }
+            else
+            {
+                localStorage.setItem("tmparamount",$("#txtTotalDue").val());
+                aramount = $("#txtTotalDue").val();
+                balancedue = $("#txtTotalDue").val();
+                autoAR = true;
+            }
+                          
+            if(aramount == "" || isNaN(aramount))
+            {
+                ("No amount to settle");
+                aramount = 0;
+            }
+            objData.invoicenumber = $("#tblContent tr:eq(" + currRowIndex + ") td:eq(0)").text();
+            objData.aramount = aramount;
+            objData.balancedue = balancedue;
+            objData.autoAR = autoAR;
+            localStorage.collectionMOP ='autosettle';
+            localStorage.ARAmount = 0; // Resets ARAmount variable entered from cash/cheque screen
+            localStorage.setItem("ARDATA",JSON.stringify(objData));
+            window.location='autosettercomment.html';
+        }
+        
+        
+        // Calculating Total A/R Amount in grid.
+        function GetTotalAmount() 
+        {
+                var T;
+                var Total = 0;
+                for (i = 0; i < data.length; i++) {                    
+                    T = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(4)").text());
+                    if (T == undefined)
+                        T = 0;
+                    else
+                        Total = Total + T;
+                }
+                return Total.toFixed(decimalplace);          
+        }
+        
+        // Calculating Total Amount Due.
+        function GetTotalBalanceDue()
+        {
+            
+                var T;
+                var Total = 0;
+                for (i = 0; i < data.length; i++) {                    
+                    T = eval($("#tblContent tr:eq(" + (i + 1) + ") td:eq(3)").text());
+                    if (T == undefined)
+                        T = 0;
+                    else
+                        Total = Total + T;
+                }
+                return Total.toFixed(decimalplace);
+           
+        }
+        
+        function UpdateData(obj) 
+        {       
+                var RowIndex = $(obj).parent().parent().index();
+                var ObjIndex = $(obj).parent().index();
+                var amt = eval($(obj).val()).toFixed(decimalplace);
+                $(obj).parent().text(amt);
+                data[RowIndex - 1][4] = amt;
+                localStorage.setItem("tmpargrid",JSON.stringify(data));                    
+                
+                $("#txtTotalDue").val(eval(GetTotalAmount()).toFixed(decimalplace));                      
+        }
+		
+        if (sessionStorage.getItem("Language")  != "en") 
+        {               
+            window.lang.change('AutoSettle'+lan,lan);
+            window.lang.change('Footer'+lan,lan);
+            if(lan=="AR")
+            {
+                $("#contentWrapper").attr("dir", "rtl");
+                $('#Back_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#Back_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+                $('#lang_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+            }
+		}
+		else
+		{
+		    window.lang.change('en','en');
+		    $(".contentWrapper").attr("dir", "ltr");
+		    $('#Back_inner').removeClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#Back_inner').addClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').removeClass('ui-btn-left ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		    $('#lang_inner').addClass('ui-btn-right ui-btn ui-btn-corner-all ui-shadow ui-btn-up-a');
+		}
+    });
+    
+    function clearval()
+    {
+        localStorage.removeItem("tmpargrid");
+        localStorage.removeItem("tmparamount");
+        window.location = "cust_opt.html";
+    }
+    </script>
+
+    </body>
+</html>
