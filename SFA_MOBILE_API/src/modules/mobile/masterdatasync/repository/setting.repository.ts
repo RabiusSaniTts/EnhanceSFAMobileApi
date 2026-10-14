@@ -1,5 +1,5 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
-import { getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
+import { buildInClause, getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
 import type { GenericRow } from '../../../../shared/utils/commonUtils';
 import type { MasterDataSyncResponseSections } from '../masterdatasync.types';
 
@@ -597,14 +597,13 @@ async function getRouteMaster(
   connection: PoolConnection,
   routeCodes: number[]
 ): Promise<GenericRow[]> {
-  const placeholders = routeCodes.map(() => '?').join(', ');
   const [rows] = await connection.query<GenericRow[]>(
     `
       SELECT
         route.*,
         route.creditlimit AS routecreditlimit
       FROM routemaster AS route
-      WHERE route.routecode IN (${placeholders})
+      WHERE route.routecode IN (${buildInClause(routeCodes)})
     `,
     routeCodes
   );

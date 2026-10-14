@@ -135,7 +135,17 @@ export async function registerMobileRoutes(app: FastifyInstance): Promise<void> 
   });
   app.route({
     method: ['GET', 'POST'],
+    url: '/api/ws/getcustomeritemgrp/routeid/:routeid',
+    handler: getCustomerItemGroup
+  });
+  app.route({
+    method: ['GET', 'POST'],
     url: '/api/ws/getorderstatus/routeid/:routeid/userid/:userid',
+    handler: getOrderStatus
+  });
+  app.route({
+    method: ['GET', 'POST'],
+    url: '/api/ws/getorderstatus/routeid/:routeid',
     handler: getOrderStatus
   });
   app.route({ method: ['GET', 'POST'], url: '/api/ws/getorderstatus', handler: getOrderStatus });
@@ -144,10 +154,20 @@ export async function registerMobileRoutes(app: FastifyInstance): Promise<void> 
     url: '/api/ws/getvisualdata/routeid/:routeid/userid/:userid',
     handler: getVisualData
   });
+  app.route({
+    method: ['GET', 'POST'],
+    url: '/api/ws/getvisualdata/routeid/:routeid',
+    handler: getVisualData
+  });
   app.route({ method: ['GET', 'POST'], url: '/api/ws/getvisualdata', handler: getVisualData });
   app.route({
     method: ['GET', 'POST'],
     url: '/api/ws/getwarehousestock/routeid/:routeid/userid/:userid',
+    handler: getWarehouseStock
+  });
+  app.route({
+    method: ['GET', 'POST'],
+    url: '/api/ws/getwarehousestock/routeid/:routeid',
     handler: getWarehouseStock
   });
   app.route({
