@@ -1,6 +1,12 @@
 import { withTransaction } from '../../../shared/db/transaction';
 import { ApiError } from '../../../shared/middleware/errors';
 import {
+  asRecords,
+  isPlainObject,
+  normalizeLegacyRecords,
+  readScalar
+} from '../../../shared/utils/commonUtils';
+import {
   saveCustomerOperationControl,
   saveCustomerSequence,
   saveCustomerVisitLog,
@@ -744,30 +750,3 @@ function pruneEmptySendDataResponse(response: MutableSendDataResponse): SendData
   ) as SendDataResponse;
 }
 
-function normalizeLegacyRecords(value: unknown): Record<string, unknown>[] {
-  if (Array.isArray(value)) {
-    return value.filter(isPlainObject);
-  }
-
-  if (isPlainObject(value)) {
-    return Object.values(value).filter(isPlainObject);
-  }
-
-  return [];
-}
-
-function readScalar(value: unknown): string | number | null {
-  if (typeof value === 'string' || typeof value === 'number') {
-    return value;
-  }
-
-  return null;
-}
-
-function asRecords<T>(items: unknown[]): T[] {
-  return items.filter(isPlainObject) as T[];
-}
-
-function isPlainObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
-}

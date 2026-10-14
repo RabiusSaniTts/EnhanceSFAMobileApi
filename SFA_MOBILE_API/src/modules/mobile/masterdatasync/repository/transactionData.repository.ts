@@ -1,32 +1,12 @@
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
+import { getLatestClosedRouteKey, tableExists } from "../../../../shared/utils/commonUtils";
+import type { GenericRow } from "../../../../shared/utils/commonUtils";
 import type { MasterDataSyncResponseSections } from "../masterdatasync.types";
 
 interface TransactionDataSyncInput {
   routeId: number;
   userId: number;
   deviceId: string;
-}
-
-type GenericRow = RowDataPacket & Record<string, unknown>;
-
-interface InventorySyncInput {
-  routeId: number;
-}
-
-
-async function getInventorySyncSections(
-  connection: PoolConnection,
-  input: InventorySyncInput
-): Promise<MasterDataSyncResponseSections> {
-  const [startingLoadDetail, inventorySummaryDetail] = await Promise.all([
-    getStartingLoadDetail(connection, input.routeId),
-    getInventorySummaryDetail(connection, input.routeId)
-  ]);
-
-  return {
-    startingloaddetail: startingLoadDetail,
-    inventorysummarydetail: inventorySummaryDetail
-  };
 }
 
 async function getStartingLoadDetail(
@@ -174,73 +154,6 @@ async function getInventorySummaryDetail(
   );
 
   return rows;
-}
-
-interface OrderSyncInput {
-  routeId: number;
-}
-
-type RouteKeyRow = RowDataPacket & { routekey: number };
-
-async function getOrderSyncSections(
-  connection: PoolConnection,
-  input: OrderSyncInput
-): Promise<MasterDataSyncResponseSections> {
-  const routeKey = await getLatestClosedRouteKey(connection, input.routeId);
-  const [
-    salesOrderHeader,
-    salesOrderDetail,
-    suggestedSalesInvoice,
-    inventoryTransactionDetail,
-    customerFocBalance,
-    customerFocDetail,
-    journeyPlanCreditLimit,
-    batchExpiryDetail,
-    customerFoc
-  ] = await Promise.all([
-    getSalesOrderHeader(connection, input.routeId),
-    getSalesOrderDetail(connection, input.routeId),
-    getSuggestedSalesInvoice(connection, input.routeId),
-    getInventoryTransactionDetail(connection, routeKey),
-    getCustomerFocBalance(connection, input.routeId),
-    getCustomerFocDetail(connection, input.routeId),
-    getJourneyPlanCreditLimit(connection),
-    getBatchExpiryDetail(connection, routeKey),
-    getCustomerFoc(connection, input.routeId)
-  ]);
-
-  return {
-    salesorderheader: salesOrderHeader,
-    salesorderdetail: salesOrderDetail,
-    suggestedsalesinvoice: suggestedSalesInvoice,
-    inventorytransactiondetail: inventoryTransactionDetail,
-    customer_foc_balance: customerFocBalance,
-    customer_foc_detail: customerFocDetail,
-    journeyplancreditlimit: journeyPlanCreditLimit,
-    batchexpirydetail: batchExpiryDetail,
-    customer_foc: customerFoc
-  };
-}
-
-async function getLatestClosedRouteKey(
-  connection: PoolConnection,
-  routeId: number
-): Promise<number> {
-  if (!(await tableExists(connection, 'startendday'))) {
-    return 0;
-  }
-
-  const [rows] = await connection.execute<RouteKeyRow[]>(
-    `
-      SELECT COALESCE(MAX(routekey), 0) AS routekey
-      FROM startendday
-      WHERE routeclosed = 1
-      AND routecode = :routeId
-    `,
-    { routeId }
-  );
-
-  return rows[0]?.routekey ?? 0;
 }
 
 async function getSalesOrderHeader(
@@ -512,17 +425,6 @@ const DELETE_MASTER_TABLES = [
   'customerpricing1'
 ] as const;
 
-async function getDeleteMasterSyncSections(
-  connection: PoolConnection,
-  input: DeleteMasterSyncInput
-): Promise<MasterDataSyncResponseSections> {
-  const deleteMaster = await getDeleteMaster(connection, input);
-
-  return {
-    deletemaster: deleteMaster
-  };
-}
-
 async function getDeleteMaster(
   connection: PoolConnection,
   input: DeleteMasterSyncInput
@@ -628,39 +530,52 @@ export async function getTransactionDataSyncSections(
   connection: PoolConnection,
   input: TransactionDataSyncInput,
 ): Promise<MasterDataSyncResponseSections> {
-  const inventorySections = await getInventorySyncSections(connection, {
-    routeId: input.routeId,
-  });
-  const orderSections = await getOrderSyncSections(connection, {
-    routeId: input.routeId,
-  });
-  const deleteMasterSections = await getDeleteMasterSyncSections(connection, {
-    userId: input.userId,
-    deviceId: input.deviceId,
-  });
+  const routeKey = await getLatestClosedRouteKey(connection, input.routeId);
+
+  const [
+    startingloaddetail,
+    inventorysummarydetail,
+    salesorderheader,
+    salesorderdetail,
+    suggestedsalesinvoice,
+    inventorytransactiondetail,
+    customer_foc_balance,
+    customer_foc_detail,
+    journeyplancreditlimit,
+    batchexpirydetail,
+    customer_foc,
+    deletemaster
+  ] = await Promise.all([
+    getStartingLoadDetail(connection, input.routeId),
+    getInventorySummaryDetail(connection, input.routeId),
+    getSalesOrderHeader(connection, input.routeId),
+    getSalesOrderDetail(connection, input.routeId),
+    getSuggestedSalesInvoice(connection, input.routeId),
+    getInventoryTransactionDetail(connection, routeKey),
+    getCustomerFocBalance(connection, input.routeId),
+    getCustomerFocDetail(connection, input.routeId),
+    getJourneyPlanCreditLimit(connection),
+    getBatchExpiryDetail(connection, routeKey),
+    getCustomerFoc(connection, input.routeId),
+    getDeleteMaster(connection, {
+      userId: input.userId,
+      deviceId: input.deviceId
+    })
+  ]);
 
   return {
-    ...inventorySections,
-    ...orderSections,
-    ...deleteMasterSections,
+    startingloaddetail,
+    inventorysummarydetail,
+    salesorderheader,
+    salesorderdetail,
+    suggestedsalesinvoice,
+    inventorytransactiondetail,
+    customer_foc_balance,
+    customer_foc_detail,
+    journeyplancreditlimit,
+    batchexpirydetail,
+    customer_foc,
+    deletemaster
   };
-}
-
-async function tableExists(
-  connection: PoolConnection,
-  tableName: string,
-): Promise<boolean> {
-  const [rows] = await connection.execute<GenericRow[]>(
-    `
-      SELECT 1
-      FROM information_schema.tables
-      WHERE table_schema = DATABASE()
-        AND table_name = :tableName
-      LIMIT 1
-    `,
-    { tableName },
-  );
-
-  return rows.length > 0;
 }
 

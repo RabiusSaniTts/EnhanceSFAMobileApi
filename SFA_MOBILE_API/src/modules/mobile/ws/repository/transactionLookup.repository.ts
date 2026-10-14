@@ -1,8 +1,8 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
+import { getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
 import type { ImportInventoryCountRow, TransactionCountRow } from '../types/wsLookup.types';
 
 type CountRow = RowDataPacket & { CloudCount: string | number };
-type RouteKeyRow = RowDataPacket & { routekey: string | number | null };
 
 export async function getTransactionDataCounts(
   connection: PoolConnection,
@@ -106,19 +106,3 @@ export async function getImportInventoryCounts(
   ];
 }
 
-async function getLatestClosedRouteKey(
-  connection: PoolConnection,
-  routeCode: string | number
-): Promise<string | number> {
-  const [rows] = await connection.execute<RouteKeyRow[]>(
-    `
-      SELECT COALESCE(MAX(routekey), 0) AS routekey
-      FROM startendday
-      WHERE routeclosed = 1
-      AND routecode = :routeCode
-    `,
-    { routeCode }
-  );
-
-  return rows[0]?.routekey ?? 0;
-}

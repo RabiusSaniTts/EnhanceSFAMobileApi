@@ -23,6 +23,7 @@ import type {
 } from './auth.types';
 import type { FastifyRequest } from 'fastify';
 import { ApiError } from '../../../shared/middleware/errors';
+import { isPlainObject } from '../../../shared/utils/commonUtils';
 
 export async function getCompanyIdByDevice(
   deviceId: string
@@ -189,6 +190,3 @@ function readBodyField(body: unknown, field: string): unknown {
   return isPlainObject(body) ? body[field] : undefined;
 }
 
-function isPlainObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
-}

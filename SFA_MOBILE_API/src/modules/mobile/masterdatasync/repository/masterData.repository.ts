@@ -1,11 +1,11 @@
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
+import { buildInClause, tableExists } from "../../../../shared/utils/commonUtils";
+import type { GenericRow } from "../../../../shared/utils/commonUtils";
 import type { MasterDataSyncResponseSections } from "../masterdatasync.types";
 
 interface MasterDataSyncInput {
   routeId: number;
 }
-
-type GenericRow = RowDataPacket & Record<string, unknown>;
 
 const CUSTOMER_MASTER_RESPONSE_FIELDS = [
   "customercode",
@@ -239,50 +239,68 @@ const CUSTOMER_MASTER_RESPONSE_FIELDS = [
   "customerfacetime",
 ] as const;
 
-interface ItemSyncInput {
-  routeId: number;
-}
-
 export async function getMasterDataSyncSections(
   connection: PoolConnection,
   input: MasterDataSyncInput,
 ): Promise<MasterDataSyncResponseSections> {
-  const itemSections = await getItemSyncSections(connection, input);
-  const customerSections = await getCustomerSyncSections(connection, input);
-  const promotionPricingSections = await getPromotionPricingSyncSections(connection, input);
-  const surveySections = await getSurveySyncSections(connection);
-  const reasonSections = await getReasonSyncSections(connection, input);
-  const otherSections = await getOtherSyncSections(connection);
+  const routeCustomerCodes = await getRouteCustomerCodes(connection, input.routeId);
+  const routeWeek = await getRouteSequenceWeek(connection);
 
-  return {
-    ...itemSections,
-    ...customerSections,
-    ...promotionPricingSections,
-    ...surveySections,
-    ...reasonSections,
-    ...otherSections,
-  };
-}
-
-
-async function getItemSyncSections(
-  connection: PoolConnection,
-  input: ItemSyncInput
-): Promise<MasterDataSyncResponseSections> {
   const [
-    itemGroup,
-    itemMaster,
-    itemPackageMaster,
-    routeGoal,
-    avgSalesQty,
-    outletItemCodes,
-    taxMaster,
-    itemMustHeader,
-    itemMustDetail,
-    itemNrp,
-    customerNrp,
-    customerItemGroups,
-    customerItemMap
+    itemgroup,
+    ItemMaster,
+    itempackagemaster,
+    routegoal,
+    avgsalesqty,
+    outletitemcodes,
+    taxmaster,
+    itemmustheader,
+    itemmustdetail,
+    itemnrp,
+    custnrp,
+    customeritemgrp,
+    customeritemmap,
+    CustomerMaster,
+    salescalender,
+    routesequence,
+    customerinvoice,
+    discountkeyheader,
+    discountkeydetail,
+    distributionkeydetails,
+    productgroupheader,
+    productgroupdetail,
+    promokeyheader,
+    promokeydetail,
+    promoplanheader,
+    promoplandetail,
+    promotionassignmentadvanced,
+    customerpricing1,
+    pricingdetail1,
+    POSmaster,
+    customerposinventory,
+    customerposlimit,
+    posinstructions,
+    customersurveyplan,
+    customersurveykeyplan,
+    customersurveykey,
+    customersurveydefinition,
+    customersurveydefassign,
+    lookupindexdetail,
+    nonservreasons,
+    expreasons,
+    expiryreturnreasons,
+    retitmreasons,
+    freegoodreasons,
+    voidreasons,
+    routebook,
+    salestrend,
+    tempcustinventory,
+    customermessages,
+    salesmanmessages,
+    vanmaster,
+    bankmaster,
+    cashdesc,
+    inventorylocation,
   ] = await Promise.all([
     getItemGroup(connection, input.routeId),
     getItemMaster(connection, input.routeId),
@@ -296,25 +314,108 @@ async function getItemSyncSections(
     getItemNrp(connection, input.routeId),
     getCustomerNrp(connection, input.routeId),
     getCustomerItemGroups(connection, input.routeId),
-    getCustomerItemMap(connection, input.routeId)
+    getCustomerItemMap(connection, input.routeId),
+    getCustomerMaster(connection, input.routeId, routeCustomerCodes),
+    getSalesCalendar(connection),
+    getRouteSequence(connection, input.routeId, routeCustomerCodes, routeWeek),
+    getCustomerInvoice(connection, input.routeId, routeCustomerCodes),
+    getDiscountKeyHeader(connection),
+    getDiscountKeyDetail(connection),
+    getDistributionKeyDetails(connection),
+    getProductGroupHeader(connection, input.routeId),
+    getProductGroupDetail(connection, input.routeId),
+    getPromoKeyHeader(connection, input.routeId),
+    getPromoKeyDetail(connection, input.routeId),
+    getPromoPlanHeader(connection, input.routeId),
+    getPromoPlanDetail(connection, input.routeId),
+    getPromotionAssignmentAdvanced(connection, input.routeId),
+    getCustomerPricing1(connection, input.routeId),
+    getPricingDetail1(connection, input.routeId),
+    getPosMaster(connection),
+    getCustomerPosInventory(connection),
+    getCustomerPosLimit(connection),
+    getPosInstructions(connection),
+    getCustomerSurveyPlan(connection),
+    getCustomerSurveyKeyPlan(connection),
+    getCustomerSurveyKey(connection),
+    getCustomerSurveyDefinition(connection),
+    getCustomerSurveyDefAssign(connection),
+    getLookupIndexDetail(connection),
+    getNonServiceReasons(connection),
+    getExpenseReasons(connection),
+    getExpiryReturnReasons(connection),
+    getReturnItemReasons(connection),
+    getFreeGoodReasons(connection),
+    getVoidReasons(connection),
+    getRouteBook(connection, input.routeId),
+    getSalesTrend(connection, input.routeId),
+    getTempCustomerInventory(connection, input.routeId),
+    getCustomerMessages(connection),
+    getSalesmanMessages(connection),
+    getVanMaster(connection),
+    getBankMaster(connection),
+    getCashDescription(connection),
+    getInventoryLocation(connection),
   ]);
 
   return {
-    itemgroup: itemGroup,
-    ItemMaster: itemMaster,
-    itempackagemaster: itemPackageMaster,
-    routegoal: routeGoal,
-    avgsalesqty: avgSalesQty,
-    outletitemcodes: outletItemCodes,
-    taxmaster: taxMaster,
-    itemmustheader: itemMustHeader,
-    itemmustdetail: itemMustDetail,
-    itemnrp: itemNrp,
-    custnrp: customerNrp,
-    customeritemgrp: customerItemGroups,
-    customeritemmap: customerItemMap
+    itemgroup,
+    ItemMaster,
+    itempackagemaster,
+    routegoal,
+    avgsalesqty,
+    outletitemcodes,
+    taxmaster,
+    itemmustheader,
+    itemmustdetail,
+    itemnrp,
+    custnrp,
+    customeritemgrp,
+    customeritemmap,
+    CustomerMaster,
+    salescalender,
+    routesequence,
+    customerinvoice,
+    discountkeyheader,
+    discountkeydetail,
+    distributionkeydetails,
+    productgroupheader,
+    productgroupdetail,
+    promokeyheader,
+    promokeydetail,
+    promoplanheader,
+    promoplandetail,
+    promotionassignmentadvanced,
+    customerpricing1,
+    pricingdetail1,
+    POSmaster,
+    customerposinventory,
+    customerposlimit,
+    posinstructions,
+    customersurveyplan,
+    customersurveykeyplan,
+    customersurveykey,
+    customersurveydefinition,
+    customersurveydefassign,
+    lookupindexdetail,
+    nonservreasons,
+    expreasons,
+    expiryreturnreasons,
+    retitmreasons,
+    freegoodreasons,
+    voidreasons,
+    routebook,
+    salestrend,
+    tempcustinventory,
+    customermessages,
+    salesmanmessages,
+    vanmaster,
+    bankmaster,
+    cashdesc,
+    inventorylocation,
   };
 }
+
 
 async function getItemGroup(
   connection: PoolConnection,
@@ -703,10 +804,6 @@ async function getCustomerItemMap(
   return rows;
 }
 
-interface CustomerSyncInput {
-  routeId: number;
-}
-
 type SetupRoutePlanRow = RowDataPacket & {
   journeyplanflag: string | number | null;
   routesequenceplanflag: string | number | null;
@@ -719,29 +816,6 @@ type ScalarRow = RowDataPacket & {
   itemmustkey?: string | number | null;
   status?: string | number | null;
 };
-
-async function getCustomerSyncSections(
-  connection: PoolConnection,
-  input: CustomerSyncInput
-): Promise<MasterDataSyncResponseSections> {
-  const routeCustomerCodes = await getRouteCustomerCodes(connection, input.routeId);
-  const routeWeek = await getRouteSequenceWeek(connection);
-
-  const [customerMaster, salesCalendar, routeSequence, customerInvoice] =
-    await Promise.all([
-      getCustomerMaster(connection, input.routeId, routeCustomerCodes),
-      getSalesCalendar(connection),
-      getRouteSequence(connection, input.routeId, routeCustomerCodes, routeWeek),
-      getCustomerInvoice(connection, input.routeId, routeCustomerCodes)
-    ]);
-
-  return {
-    CustomerMaster: customerMaster,
-    salescalender: salesCalendar,
-    routesequence: routeSequence,
-    customerinvoice: customerInvoice
-  };
-}
 
 async function getRouteCustomerCodes(
   connection: PoolConnection,
@@ -826,10 +900,6 @@ async function getRouteSequenceWeek(connection: PoolConnection): Promise<number>
   );
 
   return Number(weekRows[0]?.rp32weeknumber ?? 9);
-}
-
-function buildInClause(values: unknown[]): string {
-  return values.map(() => '?').join(', ');
 }
 
 function normalizeCustomerMasterRows(rows: GenericRow[]): GenericRow[] {
@@ -1014,59 +1084,6 @@ async function getCustomerInvoice(
   void routeCustomerCodes;
 
   return [];
-}
-
-interface PromotionPricingSyncInput {
-  routeId: number;
-}
-
-
-async function getPromotionPricingSyncSections(
-  connection: PoolConnection,
-  input: PromotionPricingSyncInput
-): Promise<MasterDataSyncResponseSections> {
-  const [
-    discountKeyHeader,
-    discountKeyDetail,
-    distributionKeyDetails,
-    productGroupHeader,
-    productGroupDetail,
-    promoKeyHeader,
-    promoKeyDetail,
-    promoPlanHeader,
-    promoPlanDetail,
-    promotionAssignmentAdvanced,
-    customerPricing1,
-    pricingDetail1
-  ] = await Promise.all([
-    getDiscountKeyHeader(connection),
-    getDiscountKeyDetail(connection),
-    getDistributionKeyDetails(connection),
-    getProductGroupHeader(connection, input.routeId),
-    getProductGroupDetail(connection, input.routeId),
-    getPromoKeyHeader(connection, input.routeId),
-    getPromoKeyDetail(connection, input.routeId),
-    getPromoPlanHeader(connection, input.routeId),
-    getPromoPlanDetail(connection, input.routeId),
-    getPromotionAssignmentAdvanced(connection, input.routeId),
-    getCustomerPricing1(connection, input.routeId),
-    getPricingDetail1(connection, input.routeId)
-  ]);
-
-  return {
-    discountkeyheader: discountKeyHeader,
-    discountkeydetail: discountKeyDetail,
-    distributionkeydetails: distributionKeyDetails,
-    productgroupheader: productGroupHeader,
-    productgroupdetail: productGroupDetail,
-    promokeyheader: promoKeyHeader,
-    promokeydetail: promoKeyDetail,
-    promoplanheader: promoPlanHeader,
-    promoplandetail: promoPlanDetail,
-    promotionassignmentadvanced: promotionAssignmentAdvanced,
-    customerpricing1: customerPricing1,
-    pricingdetail1: pricingDetail1
-  };
 }
 
 async function getDiscountKeyHeader(connection: PoolConnection): Promise<GenericRow[]> {
@@ -1473,47 +1490,6 @@ async function getPricingDetail1(
   return rows;
 }
 
-async function getSurveySyncSections(
-  connection: PoolConnection
-): Promise<MasterDataSyncResponseSections> {
-  const [
-    posMaster,
-    customerPosInventory,
-    customerPosLimit,
-    posInstructions,
-    customerSurveyPlan,
-    customerSurveyKeyPlan,
-    customerSurveyKey,
-    customerSurveyDefinition,
-    customerSurveyDefAssign,
-    lookupIndexDetail
-  ] = await Promise.all([
-    getPosMaster(connection),
-    getCustomerPosInventory(connection),
-    getCustomerPosLimit(connection),
-    getPosInstructions(connection),
-    getCustomerSurveyPlan(connection),
-    getCustomerSurveyKeyPlan(connection),
-    getCustomerSurveyKey(connection),
-    getCustomerSurveyDefinition(connection),
-    getCustomerSurveyDefAssign(connection),
-    getLookupIndexDetail(connection)
-  ]);
-
-  return {
-    POSmaster: posMaster,
-    customerposinventory: customerPosInventory,
-    customerposlimit: customerPosLimit,
-    posinstructions: posInstructions,
-    customersurveyplan: customerSurveyPlan,
-    customersurveykeyplan: customerSurveyKeyPlan,
-    customersurveykey: customerSurveyKey,
-    customersurveydefinition: customerSurveyDefinition,
-    customersurveydefassign: customerSurveyDefAssign,
-    lookupindexdetail: lookupIndexDetail
-  };
-}
-
 async function getPosMaster(connection: PoolConnection): Promise<GenericRow[]> {
   if (!(await tableExists(connection, 'posmaster'))) {
     return [];
@@ -1730,50 +1706,6 @@ async function getLookupIndexDetail(
   return rows;
 }
 
-interface ReasonSyncInput {
-  routeId: number;
-}
-
-
-async function getReasonSyncSections(
-  connection: PoolConnection,
-  input: ReasonSyncInput
-): Promise<MasterDataSyncResponseSections> {
-  const [
-    nonServiceReasons,
-    expenseReasons,
-    expiryReturnReasons,
-    returnItemReasons,
-    freeGoodReasons,
-    voidReasons,
-    routeBook,
-    salesTrend,
-    tempCustomerInventory
-  ] = await Promise.all([
-    getNonServiceReasons(connection),
-    getExpenseReasons(connection),
-    getExpiryReturnReasons(connection),
-    getReturnItemReasons(connection),
-    getFreeGoodReasons(connection),
-    getVoidReasons(connection),
-    getRouteBook(connection, input.routeId),
-    getSalesTrend(connection, input.routeId),
-    getTempCustomerInventory(connection, input.routeId)
-  ]);
-
-  return {
-    nonservreasons: nonServiceReasons,
-    expreasons: expenseReasons,
-    expiryreturnreasons: expiryReturnReasons,
-    retitmreasons: returnItemReasons,
-    freegoodreasons: freeGoodReasons,
-    voidreasons: voidReasons,
-    routebook: routeBook,
-    salestrend: salesTrend,
-    tempcustinventory: tempCustomerInventory
-  };
-}
-
 async function getNonServiceReasons(
   connection: PoolConnection
 ): Promise<GenericRow[]> {
@@ -1935,35 +1867,6 @@ async function getTempCustomerInventory(
   return rows;
 }
 
-async function getOtherSyncSections(
-  connection: PoolConnection
-): Promise<MasterDataSyncResponseSections> {
-  const [
-    customerMessages,
-    salesmanMessages,
-    vanMaster,
-    bankMaster,
-    cashDescription,
-    inventoryLocation
-  ] = await Promise.all([
-    getCustomerMessages(connection),
-    getSalesmanMessages(connection),
-    getVanMaster(connection),
-    getBankMaster(connection),
-    getCashDescription(connection),
-    getInventoryLocation(connection)
-  ]);
-
-  return {
-    customermessages: customerMessages,
-    salesmanmessages: salesmanMessages,
-    vanmaster: vanMaster,
-    bankmaster: bankMaster,
-    cashdesc: cashDescription,
-    inventorylocation: inventoryLocation
-  };
-}
-
 async function getCustomerMessages(
   connection: PoolConnection
 ): Promise<GenericRow[]> {
@@ -2120,20 +2023,3 @@ async function getInventoryLocation(
 
 
 
-async function tableExists(
-  connection: PoolConnection,
-  tableName: string,
-): Promise<boolean> {
-  const [rows] = await connection.execute<GenericRow[]>(
-    `
-      SELECT 1
-      FROM information_schema.tables
-      WHERE table_schema = DATABASE()
-        AND table_name = :tableName
-      LIMIT 1
-    `,
-    { tableName },
-  );
-
-  return rows.length > 0;
-}
