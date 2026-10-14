@@ -1,6 +1,7 @@
 import cors from '@fastify/cors';
 import multipart from '@fastify/multipart';
 import Fastify from 'fastify';
+import { env } from './config/env';
 import { errorHandler } from './shared/middleware/errorHandler';
 import { registerLegacyBodyParsers } from './shared/middleware/legacyBodyParser';
 import { registerRequestLogger } from './shared/middleware/requestLogger';
@@ -9,7 +10,9 @@ import { registerMobileRoutes } from './modules/mobile/mobile.routes';
 
 export async function buildApp() {
   const app = Fastify({
-    logger: true,
+    logger: {
+      level: env.LOG_LEVEL
+    },
     disableRequestLogging: true,
     bodyLimit: 50 * 1024 * 1024
   });

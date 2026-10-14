@@ -261,7 +261,7 @@ export async function getOrderStatus(
 ): Promise<OrderStatusResponse> {
   const params = readLegacyParams(request);
   const orderstatus = await withTransaction((connection) =>
-    getOrderStatusData(connection, requireParam(params, 'userid'))
+    getOrderStatusData(connection, readRequiredAnyParam(params, ['userid', 'routeid']))
   );
 
   return { orderstatus };
@@ -472,5 +472,23 @@ function requireParam(params: LegacyParams, field: string): string | number {
   }
 
   throw new ApiError(400, `Invalid ${field}`);
+}
+
+function readRequiredAnyParam(params: LegacyParams, fields: string[]): string | number {
+  for (const field of fields) {
+    const value = params[field];
+
+    if (value === undefined || value === null || value === '') {
+      continue;
+    }
+
+    if (typeof value === 'number' || typeof value === 'string') {
+      return value;
+    }
+
+    throw new ApiError(400, `Invalid ${field}`);
+  }
+
+  throw new ApiError(400, `Missing ${fields.join(' or ')}`);
 }
 

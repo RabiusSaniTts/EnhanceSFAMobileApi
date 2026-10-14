@@ -145,6 +145,27 @@ Common mobile errors:
 - `Internal server error`: check server logs for SQL bind or query failure.
 - Sync completes but data missing: compare Node JSON array names/fields/row counts with Zend.
 
+Detailed debugging instructions are maintained in:
+
+```text
+docs/DEBUGGING_GUIDE.md
+```
+
+Endpoint ownership is maintained in:
+
+```text
+docs/MOBILE_API_ENDPOINT_MAP.md
+```
+
+Useful `.env` values for development:
+
+```env
+LOG_LEVEL=debug
+DEBUG_PAYLOAD=false
+```
+
+Use `DEBUG_PAYLOAD=true` only temporarily because mobile upload payloads can be large.
+
 ## Production Safety Rules
 
 - Do not expose raw SQL errors to mobile responses.
