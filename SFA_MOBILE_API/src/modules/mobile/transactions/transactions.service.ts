@@ -1,5 +1,6 @@
 import { withTransaction } from '../../../shared/db/transaction';
 import { ApiError } from '../../../shared/middleware/errors';
+import { isPlainObject } from '../../../shared/utils/objectUtils';
 import {
   saveCustomerOperationControl,
   saveCustomerSequence,
@@ -768,6 +769,3 @@ function asRecords<T>(items: unknown[]): T[] {
   return items.filter(isPlainObject) as T[];
 }
 
-function isPlainObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
-}

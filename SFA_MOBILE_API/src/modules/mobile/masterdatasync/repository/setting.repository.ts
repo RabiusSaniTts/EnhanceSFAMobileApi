@@ -1,11 +1,11 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
+import type { GenericRow } from '../../../../shared/db/db.types';
 import type { MasterDataSyncResponseSections } from '../masterdatasync.types';
 
 interface SettingSyncInput {
   routeId: number;
 }
 
-type GenericRow = RowDataPacket & Record<string, unknown>;
 const ROUTE_MASTER_RESPONSE_FIELDS = [
   'routecode',
   'routename',

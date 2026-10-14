@@ -1,5 +1,6 @@
 import { withTransaction } from '../../../shared/db/transaction';
 import { ApiError } from '../../../shared/middleware/errors';
+import { isPlainObject } from '../../../shared/utils/objectUtils';
 import {
   createStartDay,
   getDatabaseCurrentDate,
@@ -473,6 +474,3 @@ function requireParam(params: LegacyParams, field: string): string | number {
   throw new ApiError(400, `Invalid ${field}`);
 }
 
-function isPlainObject(value: unknown): value is LegacyParams {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
-}

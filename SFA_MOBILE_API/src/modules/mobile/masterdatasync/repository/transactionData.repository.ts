@@ -1,4 +1,6 @@
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
+import type { GenericRow } from "../../../../shared/db/db.types";
+import { tableExists } from "../../../../shared/db/schema";
 import type { MasterDataSyncResponseSections } from "../masterdatasync.types";
 
 interface TransactionDataSyncInput {
@@ -6,8 +8,6 @@ interface TransactionDataSyncInput {
   userId: number;
   deviceId: string;
 }
-
-type GenericRow = RowDataPacket & Record<string, unknown>;
 
 async function getStartingLoadDetail(
   connection: PoolConnection,
@@ -600,23 +600,5 @@ export async function getTransactionDataSyncSections(
     customer_foc,
     deletemaster
   };
-}
-
-async function tableExists(
-  connection: PoolConnection,
-  tableName: string,
-): Promise<boolean> {
-  const [rows] = await connection.execute<GenericRow[]>(
-    `
-      SELECT 1
-      FROM information_schema.tables
-      WHERE table_schema = DATABASE()
-        AND table_name = :tableName
-      LIMIT 1
-    `,
-    { tableName },
-  );
-
-  return rows.length > 0;
 }
 
