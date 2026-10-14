@@ -77,7 +77,7 @@ export async function getImportInventoryCounts(
 ): Promise<ImportInventoryCountRow[]> {
   const routeKey = await getLatestClosedRouteKey(connection, routeCode);
   const [loadRows] = await connection.execute<
-    (RowDataPacket & { CloudCount: string | number })[]
+    (RowDataPacket & { CloudCount: number })[]
   >(
     `
       SELECT IFNULL(SUM(totunits), 0) AS CloudCount
@@ -90,7 +90,7 @@ export async function getImportInventoryCounts(
     { routeCode }
   );
   const [inventoryRows] = await connection.execute<
-    (RowDataPacket & { CloudCount: string | number })[]
+    (RowDataPacket & { CloudCount: number })[]
   >(
     `
       SELECT IFNULL(SUM(quantity), 0) AS CloudCount

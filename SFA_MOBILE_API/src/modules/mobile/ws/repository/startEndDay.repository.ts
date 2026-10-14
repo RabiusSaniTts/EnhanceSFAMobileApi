@@ -22,12 +22,12 @@ export async function getRouteVersion(
   routeCode: string | number
 ): Promise<{
   versionNo: string | null;
-  versionStatus: string | number | null;
+  versionStatus: number | null;
 } | null> {
   const [rows] = await connection.execute<
     (RowDataPacket & {
       versionNo: string | null;
-      versionStatus: string | number | null;
+      versionStatus: number | null;
     })[]
   >(
     `
@@ -273,9 +273,9 @@ export async function resolveLogoutRouteKey(
 async function getTabletTripRouteCode(
   connection: PoolConnection,
   routeKey: string | number
-): Promise<string | number | null> {
+): Promise<number | null> {
   const [rows] = await connection.execute<
-    (RowDataPacket & { routecode: string | number | null })[]
+    (RowDataPacket & { routecode: number | null })[]
   >(
     `
       SELECT routecode

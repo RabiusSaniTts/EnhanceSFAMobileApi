@@ -540,8 +540,8 @@ async function getInvoiceHeaderTransactionKey(
 async function getNextInvoiceDocumentNumber(
   connection: PoolConnection,
   routeCode: string | number
-): Promise<string | number> {
-  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: string | number })[]>(
+): Promise<number> {
+  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: number })[]>(
     `
       SELECT COALESCE(
         MAX(documentnumber) + 1,
@@ -553,12 +553,12 @@ async function getNextInvoiceDocumentNumber(
     { routeCode }
   );
 
-  return rows[0]?.documentNumber ?? `${routeCode}000001`;
+  return rows[0]?.documentNumber ?? Number(`${routeCode}000001`);
 }
 
 function mapInvoiceHeaderParams(
   item: InvoiceHeaderUploadItem,
-  documentNumber: string | number
+  documentNumber: number
 ) {
   return {
     routeKey: required(item.routekey),

@@ -173,9 +173,9 @@ export async function findRouteVersion(
 export async function findRouteCodeBySalesman(
   connection: PoolConnection,
   userId: string | number
-): Promise<string | number | null> {
+): Promise<number | null> {
   const [rows] = await connection.execute<
-    (RowDataPacket & { routecode: string | number | null })[]
+    (RowDataPacket & { routecode: number | null })[]
   >(
     `
       SELECT routecode
@@ -237,7 +237,7 @@ export async function insertSyncLog(
   }
 
   const [routeKeyRows] = await connection.execute<
-    (RowDataPacket & { routekey: string | number | null })[]
+    (RowDataPacket & { routekey: number | null })[]
   >(
     `
       SELECT COALESCE(MAX(routekey), 0) AS routekey

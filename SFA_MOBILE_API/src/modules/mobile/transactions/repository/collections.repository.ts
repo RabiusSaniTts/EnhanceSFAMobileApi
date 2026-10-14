@@ -172,8 +172,8 @@ async function getArHeaderTransactionKey(
 async function getNextArDocumentNumber(
   connection: PoolConnection,
   routeCode: string | number
-): Promise<string | number> {
-  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: string | number })[]>(
+): Promise<number> {
+  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: number })[]>(
     `
       SELECT COALESCE(
         MAX(documentnumber) + 1,
@@ -185,10 +185,10 @@ async function getNextArDocumentNumber(
     { routeCode }
   );
 
-  return rows[0]?.documentNumber ?? `${routeCode}000001`;
+  return rows[0]?.documentNumber ?? Number(`${routeCode}000001`);
 }
 
-function mapArHeaderParams(item: ArHeaderUploadItem, documentNumber: string | number) {
+function mapArHeaderParams(item: ArHeaderUploadItem, documentNumber: number) {
   return {
     routeKey: required(item.routekey),
     visitKey: required(item.visitkey),

@@ -198,8 +198,8 @@ async function getSalesOrderTransactionKey(
 async function getNextSalesOrderDocumentNumber(
   connection: PoolConnection,
   routeCode: string | number
-): Promise<string | number> {
-  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: string | number })[]>(
+): Promise<number> {
+  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: number })[]>(
     `
       SELECT COALESCE(
         MAX(documentnumber) + 1,
@@ -211,12 +211,12 @@ async function getNextSalesOrderDocumentNumber(
     { routeCode }
   );
 
-  return rows[0]?.documentNumber ?? `${routeCode}000001`;
+  return rows[0]?.documentNumber ?? Number(`${routeCode}000001`);
 }
 
 function mapSalesOrderHeaderParams(
   item: SalesOrderHeaderUploadItem,
-  documentNumber: string | number
+  documentNumber: number
 ) {
   return {
     routeKey: required(item.routekey),

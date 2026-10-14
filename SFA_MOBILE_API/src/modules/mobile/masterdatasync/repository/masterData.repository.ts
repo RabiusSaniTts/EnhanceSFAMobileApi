@@ -810,8 +810,8 @@ async function getRouteCustomerCodes(
 ): Promise<Array<number | string>> {
   const [setupRows] = await connection.execute<
     (RowDataPacket & {
-      journeyplanflag: string | number | null;
-      routesequenceplanflag: string | number | null;
+      journeyplanflag: number | null;
+      routesequenceplanflag: number | null;
     })[]
   >(
     'SELECT journeyplanflag, routesequenceplanflag FROM setup LIMIT 1'
@@ -851,7 +851,7 @@ async function selectCustomerCodes(
   values: unknown[]
 ): Promise<Array<number | string>> {
   const [rows] = await connection.query<
-    (RowDataPacket & { customercode: number | string })[]
+    (RowDataPacket & { customercode: number })[]
   >(sql, values);
   return rows.map((row) => row.customercode);
 }
@@ -877,7 +877,7 @@ function getCallRestrictionColumn(dayNumber: number): string {
 
 async function getRouteSequenceWeek(connection: PoolConnection): Promise<number> {
   const [setupRows] = await connection.execute<
-    (RowDataPacket & { routesequenceplanflag: string | number | null })[]
+    (RowDataPacket & { routesequenceplanflag: number | null })[]
   >(
     'SELECT routesequenceplanflag FROM setup LIMIT 1'
   );
@@ -919,8 +919,8 @@ async function getCustomerMaster(
 ): Promise<GenericRow[]> {
   const [routeRows] = await connection.execute<
     (RowDataPacket & {
-      division: string | number | null;
-      itemmustkey: string | number | null;
+      division: number | null;
+      itemmustkey: number | null;
     })[]
   >(
     `

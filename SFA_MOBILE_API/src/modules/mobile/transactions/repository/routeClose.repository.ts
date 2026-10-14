@@ -29,7 +29,7 @@ async function insertSyncLog(
     return;
   }
 
-  const [routeRows] = await connection.execute<(RowDataPacket & { routecode: string | number | null })[]>(
+  const [routeRows] = await connection.execute<(RowDataPacket & { routecode: number | null })[]>(
     `
       SELECT routecode
       FROM routemaster
@@ -269,7 +269,7 @@ async function updateDataPosting(
   connection: PoolConnection,
   routeCode: string | number
 ): Promise<void> {
-  const [rows] = await connection.execute<(RowDataPacket & { routekey: number | null; salesmancode: number | string | null })[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { routekey: number | null; salesmancode: number | null })[]>(
     `
       SELECT routekey, salesmancode
       FROM startendday

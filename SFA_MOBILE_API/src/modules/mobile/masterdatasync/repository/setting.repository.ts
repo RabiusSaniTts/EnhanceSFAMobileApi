@@ -377,7 +377,7 @@ async function getMaxInvoiceNumber(
   const params: Record<string, number> =
     dexFlag === undefined ? { routeId } : { routeId, dexFlag };
   const [rows] = await connection.execute<
-    (RowDataPacket & { invoicenumber: string | number | null })[]
+    (RowDataPacket & { invoicenumber: number | null })[]
   >(
     `
       SELECT COALESCE(MAX(invoicenumber), 0) AS invoicenumber
@@ -396,7 +396,7 @@ async function getMaxArNumber(
   routeId: number
 ): Promise<string> {
   const [rows] = await connection.execute<
-    (RowDataPacket & { invoicenumber: string | number | null })[]
+    (RowDataPacket & { invoicenumber: number | null })[]
   >(
     `
       SELECT COALESCE(MAX(invoicenumber), 0) AS invoicenumber
@@ -414,7 +414,7 @@ async function getMaxSalesOrderNumber(
   routeId: number
 ): Promise<string> {
   const [rows] = await connection.execute<
-    (RowDataPacket & { invoicenumber: string | number | null })[]
+    (RowDataPacket & { invoicenumber: number | null })[]
   >(
     `
       SELECT COALESCE(MAX(invoicenumber), 0) AS invoicenumber
@@ -432,7 +432,7 @@ async function getMaxDocumentNumber(
   routeId: number
 ): Promise<string> {
   const [rows] = await connection.execute<
-    (RowDataPacket & { maxdocumentnumber: string | number | null })[]
+    (RowDataPacket & { maxdocumentnumber: number | null })[]
   >(
     `
       SELECT MAX(maxdocumentnumber) AS maxdocumentnumber
@@ -501,7 +501,7 @@ async function getSyncRouteCodes(
   }
 
   const [setupRows] = await connection.execute<
-    (RowDataPacket & { transferinventoryflag: string | number | null })[]
+    (RowDataPacket & { transferinventoryflag: number | null })[]
   >(
     'SELECT transferinventoryflag FROM setup LIMIT 1'
   );
