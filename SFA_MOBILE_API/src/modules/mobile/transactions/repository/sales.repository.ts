@@ -7,11 +7,6 @@ import type {
   InvoiceRxdDetailUploadItem,
   PromotionDetailUploadItem
 } from '../transactions.types';
-import type {
-  CountRow,
-  GeneratedDocumentNumberRow,
-  TransactionKeyRow
-} from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 export async function saveInvoiceHeader(
@@ -124,7 +119,7 @@ export async function saveInvoiceDetail(
   item: InvoiceDetailUploadItem,
   transactionKey: number
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM invoicedetail
@@ -216,7 +211,7 @@ export async function saveInvoiceRxdDetail(
   item: InvoiceRxdDetailUploadItem,
   transactionKey: number
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM invoicerxddetail
@@ -284,7 +279,7 @@ export async function savePromotionDetail(
   transactionKey: number
 ): Promise<boolean> {
   const params = mapPromotionDetailParams(item, transactionKey);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM promotiondetail
@@ -373,7 +368,7 @@ export async function saveCustomerInvoice(
   connection: PoolConnection,
   item: CustomerInvoiceUploadItem
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customerinvoice
@@ -475,7 +470,7 @@ export async function saveBatchExpiryDetail(
   }
 
   const params = mapBatchExpiryDetailParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM batchexpirydetail
@@ -529,7 +524,7 @@ async function getInvoiceHeaderTransactionKey(
   connection: PoolConnection,
   invoiceNumber: string | number
 ): Promise<number | null> {
-  const [rows] = await connection.execute<TransactionKeyRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { transactionkey: number })[]>(
     `
       SELECT transactionkey
       FROM invoiceheader
@@ -545,8 +540,8 @@ async function getInvoiceHeaderTransactionKey(
 async function getNextInvoiceDocumentNumber(
   connection: PoolConnection,
   routeCode: string | number
-): Promise<string | number> {
-  const [rows] = await connection.execute<GeneratedDocumentNumberRow[]>(
+): Promise<number> {
+  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: number })[]>(
     `
       SELECT COALESCE(
         MAX(documentnumber) + 1,
@@ -558,12 +553,12 @@ async function getNextInvoiceDocumentNumber(
     { routeCode }
   );
 
-  return rows[0]?.documentNumber ?? `${routeCode}000001`;
+  return rows[0]?.documentNumber ?? Number(`${routeCode}000001`);
 }
 
 function mapInvoiceHeaderParams(
   item: InvoiceHeaderUploadItem,
-  documentNumber: string | number
+  documentNumber: number
 ) {
   return {
     routeKey: required(item.routekey),

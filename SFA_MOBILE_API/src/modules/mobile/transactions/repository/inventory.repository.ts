@@ -1,13 +1,9 @@
-import type { PoolConnection, ResultSetHeader } from 'mysql2/promise';
+import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import type {
   InventorySummaryDetailUploadItem,
   InventoryTransactionDetailUploadItem,
   InventoryTransactionHeaderUploadItem
 } from '../transactions.types';
-import type {
-  CountRow,
-  TransactionKeyRow
-} from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 export async function saveInventoryTransactionHeader(
@@ -79,7 +75,7 @@ export async function saveInventoryTransactionDetail(
   detailKey: number
 ): Promise<boolean> {
   const params = mapInventoryTransactionDetailParams(item, detailKey);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM inventorytransactiondetail
@@ -129,7 +125,7 @@ export async function saveInventorySummaryDetail(
   item: InventorySummaryDetailUploadItem
 ): Promise<boolean> {
   const params = mapInventorySummaryDetailParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM inventorysummarydetail
@@ -185,7 +181,7 @@ async function getInventoryDetailKey(
   connection: PoolConnection,
   documentNumber: string | number
 ): Promise<number | null> {
-  const [rows] = await connection.execute<TransactionKeyRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { transactionkey: number })[]>(
     `
       SELECT detailkey AS transactionkey
       FROM inventorytransactionheader

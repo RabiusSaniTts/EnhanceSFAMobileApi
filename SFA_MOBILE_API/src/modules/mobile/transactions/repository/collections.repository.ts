@@ -1,14 +1,9 @@
-import type { PoolConnection, ResultSetHeader } from 'mysql2/promise';
+import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import type {
   ArDetailUploadItem,
   ArHeaderUploadItem,
   CashCheckDetailUploadItem
 } from '../transactions.types';
-import type {
-  CountRow,
-  GeneratedDocumentNumberRow,
-  TransactionKeyRow
-} from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 export async function saveArHeader(
@@ -53,7 +48,7 @@ export async function saveArDetail(
   item: ArDetailUploadItem,
   transactionKey: number
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM ardetail
@@ -108,7 +103,7 @@ export async function saveCashCheckDetail(
   item: CashCheckDetailUploadItem
 ): Promise<boolean> {
   const params = mapCashCheckDetailParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM cashcheckdetail
@@ -161,7 +156,7 @@ async function getArHeaderTransactionKey(
   connection: PoolConnection,
   invoiceNumber: string | number
 ): Promise<number | null> {
-  const [rows] = await connection.execute<TransactionKeyRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { transactionkey: number })[]>(
     `
       SELECT transactionkey
       FROM arheader
@@ -177,8 +172,8 @@ async function getArHeaderTransactionKey(
 async function getNextArDocumentNumber(
   connection: PoolConnection,
   routeCode: string | number
-): Promise<string | number> {
-  const [rows] = await connection.execute<GeneratedDocumentNumberRow[]>(
+): Promise<number> {
+  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: number })[]>(
     `
       SELECT COALESCE(
         MAX(documentnumber) + 1,
@@ -190,10 +185,10 @@ async function getNextArDocumentNumber(
     { routeCode }
   );
 
-  return rows[0]?.documentNumber ?? `${routeCode}000001`;
+  return rows[0]?.documentNumber ?? Number(`${routeCode}000001`);
 }
 
-function mapArHeaderParams(item: ArHeaderUploadItem, documentNumber: string | number) {
+function mapArHeaderParams(item: ArHeaderUploadItem, documentNumber: number) {
   return {
     routeKey: required(item.routekey),
     visitKey: required(item.visitkey),

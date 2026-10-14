@@ -1,9 +1,8 @@
-import type { PoolConnection, ResultSetHeader } from 'mysql2/promise';
+import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import type {
   ArTransactionDetailItem,
   InvoiceTransactionDetailItem
 } from '../types/senddata.types';
-import type { TransactionKeyRow } from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 export async function saveInvoiceTransactionDetail(
@@ -147,7 +146,7 @@ async function getInvoiceHeaderTransactionKey(
   routeKey: string | number,
   visitKey: string | number
 ): Promise<number | null> {
-  const [rows] = await connection.execute<TransactionKeyRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { transactionkey: number })[]>(
     `
       SELECT transactionkey
       FROM invoiceheader
@@ -166,7 +165,7 @@ async function getArHeaderTransactionKey(
   routeKey: string | number,
   visitKey: string | number
 ): Promise<number | null> {
-  const [rows] = await connection.execute<TransactionKeyRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { transactionkey: number })[]>(
     `
       SELECT transactionkey
       FROM arheader

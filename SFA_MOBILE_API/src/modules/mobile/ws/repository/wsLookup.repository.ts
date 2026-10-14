@@ -2,8 +2,6 @@ import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/prom
 import { stringValue } from '../../../../shared/utils/commonUtils';
 import type { TempCustomerInventoryItem } from '../types/wsLookup.types';
 
-type CountRow = RowDataPacket & { cnt: number };
-
 export async function checkRouteLoad(
   connection: PoolConnection,
   userId: string | number,
@@ -22,7 +20,7 @@ export async function checkRouteLoad(
     return true;
   }
 
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { cnt: number })[]>(
     `
       SELECT COUNT(*) AS cnt
       FROM startingloaddetail sd
@@ -129,7 +127,7 @@ export async function saveTempCustomerInventory(
     routeCode: item.routecode ?? null,
     salesmanCode: item.salesmancode ?? null
   };
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { cnt: number })[]>(
     `
       SELECT COUNT(*) AS cnt
       FROM tempcustomerinventory

@@ -1,4 +1,4 @@
-import type { PoolConnection, ResultSetHeader } from 'mysql2/promise';
+import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import type {
   AccessOverrideLogUploadItem,
   CustomerImageUploadItem,
@@ -6,9 +6,6 @@ import type {
   PosMasterUploadItem,
   SurveyAuditDetailUploadItem
 } from '../transactions.types';
-import type {
-  CountRow
-} from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 export async function saveSurveyAuditDetail(
@@ -16,7 +13,7 @@ export async function saveSurveyAuditDetail(
   item: SurveyAuditDetailUploadItem
 ): Promise<boolean> {
   const params = mapSurveyAuditDetailParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM surveyauditdetail
@@ -63,7 +60,7 @@ export async function savePosEquipmentChangeDetail(
   item: PosEquipmentChangeDetailUploadItem
 ): Promise<boolean> {
   const params = mapPosEquipmentChangeDetailParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM posequipmentchangedetail
@@ -139,7 +136,7 @@ export async function saveCustomerImage(
   item: CustomerImageUploadItem
 ): Promise<boolean> {
   const params = mapCustomerImageParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customerimages

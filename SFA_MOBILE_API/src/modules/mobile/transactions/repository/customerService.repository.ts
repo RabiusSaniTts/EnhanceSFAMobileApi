@@ -1,4 +1,4 @@
-import type { PoolConnection, ResultSetHeader } from 'mysql2/promise';
+import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import type {
   CustomerDistributionCheckUploadItem,
   CustomerFocBalanceUploadItem,
@@ -10,9 +10,6 @@ import type {
   NoSalesHeaderUploadItem,
   RouteGoalUploadItem
 } from '../transactions.types';
-import type {
-  CountRow
-} from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 const CUSTOMER_MASTER_INSERT_COLUMNS = [
@@ -253,7 +250,7 @@ export async function saveCustomerMaster(
   item: CustomerMasterUploadItem
 ): Promise<boolean> {
   const params = mapCustomerMasterParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customermaster
@@ -296,7 +293,7 @@ export async function saveNonServicedCustomer(
     customerCode: required(item.customercode),
     reasonCode: required(item.reasoncode)
   };
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM nonservicedcustomer
@@ -347,7 +344,7 @@ export async function saveCustomerInventoryDetail(
   item: CustomerInventoryDetailUploadItem
 ): Promise<boolean> {
   const params = mapCustomerInventoryParams(item, 'expirydate');
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customerinventorydetail
@@ -397,7 +394,7 @@ export async function saveCustomerInventoryCheck(
   item: CustomerInventoryCheckUploadItem
 ): Promise<boolean> {
   const params = mapCustomerInventoryParams(item, 'expiry_date');
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customerinventorycheck
@@ -443,7 +440,7 @@ export async function saveCustomerDistributionCheck(
     qty: nullable(item.qty),
     distributionKey: nullable(item.distributionkey)
   };
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customerdistributioncheck
@@ -531,7 +528,7 @@ export async function saveCustomerFocBalance(
   item: CustomerFocBalanceUploadItem
 ): Promise<boolean> {
   const params = mapCustomerFocBalanceParams(item);
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customer_foc_balance
@@ -598,7 +595,7 @@ export async function saveEndDayDetailUpload(
     params
   );
 
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM ardetail
