@@ -220,10 +220,8 @@ ws/ws.routes.ts
 ws/ws.controller.ts
 ws/ws.service.ts
 ws/repository/startEndDay.repository.ts
-ws/types/startEndDay.types.ts
 transactions/transactions.routes.ts
 transactions/transactions.controller.ts
-transactions/transactions.types.ts
 transactions/transactions.service.ts
 transactions/repository/transaction.repository.ts
 transactions/repository/shared.repository.ts
@@ -238,11 +236,6 @@ transactions/repository/routeClose.repository.ts
 transactions/types/shared.types.ts
 transactions/types/routeActivity.types.ts
 transactions/types/sales.types.ts
-transactions/types/orders.types.ts
-transactions/types/collections.types.ts
-transactions/types/inventory.types.ts
-transactions/types/customerService.types.ts
-transactions/types/auditExtra.types.ts
 transactions/types/senddata.types.ts
 ```
 
@@ -271,17 +264,13 @@ Type responsibility split:
 
 | File | Responsibility |
 | --- | --- |
-| `transactions/transactions.types.ts` | Barrel export for backward-compatible transaction imports. No direct type definitions should be added here. |
-| `ws/types/startEndDay.types.ts` | Start-day, end-day, logout, route hierarchy, and created start-day response types. |
+| `ws/ws.controller.ts` / `ws/ws.service.ts` / `ws/repository/startEndDay.repository.ts` | Start-day, end-day, logout, route hierarchy, and created start-day response types are kept beside the functions that use them. |
 | `transactions/types/shared.types.ts` | Shared Fastify request/reply aliases and generic legacy upload item shape. |
 | `transactions/types/routeActivity.types.ts` | Customer operation control, visit log, route master upload, and route sequence status types. |
 | `transactions/types/sales.types.ts` | Invoice, invoice detail, invoice RX detail, promotion detail, customer invoice, and batch expiry types. |
-| `transactions/types/orders.types.ts` | Sales order header/detail and order RX detail types. |
-| `transactions/types/collections.types.ts` | AR header/detail and cash/check collection types. |
-| `transactions/types/inventory.types.ts` | Inventory transaction header/detail and inventory summary types. |
-| `transactions/types/customerService.types.ts` | Non-service, no-sale, customer inventory, distribution check, route goal, FOC balance, and end-day detail types. |
-| `transactions/types/auditExtra.types.ts` | Survey audit, POS equipment, POS master, customer image, and access override types. |
 | `transactions/types/senddata.types.ts` | Send-data array field list, parsed payload, and response shape. |
+
+Alias-only upload item types for orders, collections, inventory, customer service, and audit/POS are kept beside their service/repository functions instead of separate `.types.ts` files.
 
 Repository responsibility split:
 

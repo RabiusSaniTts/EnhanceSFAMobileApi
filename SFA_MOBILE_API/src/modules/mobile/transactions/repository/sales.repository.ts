@@ -6,7 +6,7 @@ import type {
   InvoiceHeaderUploadItem,
   InvoiceRxdDetailUploadItem,
   PromotionDetailUploadItem
-} from '../transactions.types';
+} from '../types/sales.types';
 import { nullable, required } from './shared.repository';
 
 export async function saveInvoiceHeader(

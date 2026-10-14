@@ -1,6 +1,15 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
-import type { ImportInventoryCountRow, TransactionCountRow } from '../types/wsLookup.types';
+
+interface TransactionCountRow {
+  TYPE: string;
+  CloudCount: string | number;
+}
+
+interface ImportInventoryCountRow {
+  TTYPE: string;
+  CloudCount: string | number;
+}
 
 export async function getTransactionDataCounts(
   connection: PoolConnection,

@@ -13,17 +13,74 @@ import {
   insertSyncLog,
   insertSyncService
 } from './repository/auth.repository';
-import type {
-  CompanyIdByDeviceResponseItem,
-  SalesmanLoginResponseItem,
-  SalesmanVersionCheckResponseItem,
-  UpdateSyncDateParams,
-  UpdateSyncDateQuery,
-  UpdateSyncDateResponse
-} from './auth.types';
 import type { FastifyRequest } from 'fastify';
 import { ApiError } from '../../../shared/middleware/errors';
 import { isPlainObject } from '../../../shared/utils/commonUtils';
+
+interface CompanyIdByDeviceResponseItem {
+  status: string;
+  url: string | null;
+  ver: string | null;
+}
+
+interface SalesmanLoginFailureResponseItem {
+  STATUS: 1 | 2 | 3;
+}
+
+interface SalesmanLoginSuccessResponseItem {
+  STATUS: 0;
+  routecode: number | null;
+  cdat: string | null;
+  salesmancode: number;
+  salesmanname1: string | null;
+  salesmanname2: string | null;
+  arbsalesmanname1: string | null;
+  messagekey: number | null;
+  pricingkey: number | null;
+  created: string | null;
+  modified: string | null;
+  mdat: string | null;
+  memo1: string | null;
+  memo2: string | null;
+  alternatesalesmancode: string | null;
+  type: number | null;
+  activestatus: number | null;
+  parentcompany: number | null;
+  ansalesmancode: string | null;
+  username: string | null;
+  userpassword: string | null;
+  useencription: 0 | 1;
+}
+
+type SalesmanLoginResponseItem =
+  | SalesmanLoginFailureResponseItem
+  | SalesmanLoginSuccessResponseItem;
+
+interface SalesmanVersionCheckResponseItem {
+  STATUS: 0 | 1;
+}
+
+interface UpdateSyncDateParams {
+  routeid?: string;
+  userid?: string;
+  deviceid?: string;
+  routecode?: string;
+  routekey?: string;
+  routeclosed?: string;
+}
+
+interface UpdateSyncDateQuery {
+  routeid?: string;
+  userid?: string;
+  deviceid?: string;
+  routecode?: string;
+  routekey?: string;
+  routeclosed?: string;
+}
+
+interface UpdateSyncDateResponse {
+  status: 'success';
+}
 
 export async function getCompanyIdByDevice(
   deviceId: string

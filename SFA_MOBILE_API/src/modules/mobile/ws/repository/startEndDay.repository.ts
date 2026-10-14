@@ -1,13 +1,64 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import type {
-  CreatedStartDay,
-  EndDayRequestItem,
-  EndDayResponseItem,
-  LogoutRequestItem,
-  RouteHierarchy,
-  StartDayRequestItem
-} from '../types/startEndDay.types';
 import { nullable, required } from '../../transactions/repository/shared.repository';
+
+interface StartDayRequestItem {
+  routecode: string | number;
+  salesmancode: string | number;
+  routestartodometer: string | number;
+  deviceid: string;
+  ver: string;
+  startdate: string;
+}
+
+interface EndDayRequestItem {
+  routekey: string | number;
+  routeenddate: string;
+  routeendtime: string;
+  routeendodometer: string | number;
+  totaldocuments: string | number;
+  totalcash: string | number;
+  totalchecks: string | number;
+  totalorderamount: string | number;
+  totalinvoiceamount: string | number;
+  totalchargesales: string | number;
+  totalcashsales: string | number;
+  totalacctsreceivable: string | number;
+  totalexpenses: string | number;
+  inventoryvariance: string | number;
+  cashvariance: string | number;
+}
+
+interface EndDayResponseItem {
+  routekey: number;
+  routeenddate: string | null;
+  routeendtime: string | null;
+}
+
+interface LogoutRequestItem {
+  routekey: string | number;
+  routecode: string | number;
+  status?: string | number;
+}
+
+interface RouteHierarchy {
+  subareacode: string | number | null;
+  supervisorcode: string | number | null;
+  areacode: string | number | null;
+  areamanagercode: string | number | null;
+  depotcode: string | number | null;
+  branchmanagercode: string | number | null;
+  cmpycode: string | number | null;
+  nationalsalesmanagercode: string | number | null;
+  amountdecimaldigits: string | number | null;
+  tourid: string | null;
+}
+
+interface CreatedStartDay {
+  routekey: number;
+  routestartdate: string | null;
+  routestarttime: string | null;
+  routestartodometer: string | number | null;
+}
 
 export async function getDatabaseCurrentDate(connection: PoolConnection): Promise<string> {
   const [rows] = await connection.execute<(RowDataPacket & { currentDate: string })[]>(

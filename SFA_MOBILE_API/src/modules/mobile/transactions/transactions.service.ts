@@ -55,39 +55,6 @@ import {
   saveInvoiceTransactionDetail
 } from './repository/transactionDetail.repository';
 import type {
-  AccessOverrideLogUploadItem,
-  CustomerImageUploadItem,
-  PosEquipmentChangeDetailUploadItem,
-  PosMasterUploadItem,
-  SurveyAuditDetailUploadItem
-} from './types/auditExtra.types';
-import type {
-  ArDetailUploadItem,
-  ArHeaderUploadItem,
-  CashCheckDetailUploadItem
-} from './types/collections.types';
-import type {
-  CustomerDistributionCheckUploadItem,
-  CustomerFocBalanceUploadItem,
-  CustomerInventoryCheckUploadItem,
-  CustomerInventoryDetailUploadItem,
-  CustomerMasterUploadItem,
-  EndDayDetailUploadItem,
-  NoSalesHeaderUploadItem,
-  NonServicedCustomerUploadItem,
-  RouteGoalUploadItem
-} from './types/customerService.types';
-import type {
-  InventorySummaryDetailUploadItem,
-  InventoryTransactionDetailUploadItem,
-  InventoryTransactionHeaderUploadItem
-} from './types/inventory.types';
-import type {
-  OrderRxdDetailUploadItem,
-  SalesOrderDetailUploadItem,
-  SalesOrderHeaderUploadItem
-} from './types/orders.types';
-import type {
   CustomerOperationControlItem,
   CustomerSequenceRequestItem,
   CustomerSequenceResponse,
@@ -113,9 +80,34 @@ import type {
   SendDataResponse
 } from './types/senddata.types';
 import type {
+  LegacyUploadItem,
   LegacyTransactionReply,
   LegacyTransactionRequest
 } from './types/shared.types';
+
+type AccessOverrideLogUploadItem = LegacyUploadItem;
+type ArDetailUploadItem = LegacyUploadItem;
+type ArHeaderUploadItem = LegacyUploadItem;
+type CashCheckDetailUploadItem = LegacyUploadItem;
+type CustomerDistributionCheckUploadItem = LegacyUploadItem;
+type CustomerFocBalanceUploadItem = LegacyUploadItem;
+type CustomerImageUploadItem = LegacyUploadItem;
+type CustomerInventoryCheckUploadItem = LegacyUploadItem;
+type CustomerInventoryDetailUploadItem = LegacyUploadItem;
+type CustomerMasterUploadItem = LegacyUploadItem;
+type EndDayDetailUploadItem = LegacyUploadItem;
+type InventorySummaryDetailUploadItem = LegacyUploadItem;
+type InventoryTransactionDetailUploadItem = LegacyUploadItem;
+type InventoryTransactionHeaderUploadItem = LegacyUploadItem;
+type NoSalesHeaderUploadItem = LegacyUploadItem;
+type NonServicedCustomerUploadItem = LegacyUploadItem;
+type OrderRxdDetailUploadItem = LegacyUploadItem;
+type PosEquipmentChangeDetailUploadItem = LegacyUploadItem;
+type PosMasterUploadItem = LegacyUploadItem;
+type RouteGoalUploadItem = LegacyUploadItem;
+type SalesOrderDetailUploadItem = LegacyUploadItem;
+type SalesOrderHeaderUploadItem = LegacyUploadItem;
+type SurveyAuditDetailUploadItem = LegacyUploadItem;
 
 type MutableSendDataResponse = Record<SendDataArrayField, Record<string, unknown>[]>;
 

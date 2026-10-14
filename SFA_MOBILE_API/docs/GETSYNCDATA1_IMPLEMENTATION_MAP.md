@@ -534,7 +534,6 @@ src/modules/mobile/auth/
   auth.controller.ts
   auth.service.ts
   auth.mapper.ts
-  auth.types.ts
   repository/
     auth.repository.ts
 
@@ -542,7 +541,6 @@ src/modules/mobile/masterdatasync/
   masterdatasync.controller.ts
   masterdatasync.service.ts
   masterdatasync.mapper.ts
-  masterdatasync.types.ts
   repository/
     setting.repository.ts
     masterData.repository.ts

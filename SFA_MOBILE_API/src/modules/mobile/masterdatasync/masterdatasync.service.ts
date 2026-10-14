@@ -3,10 +3,21 @@ import { buildMasterDataSyncResponse } from "./masterdatasync.mapper";
 import { getSettingSyncSections } from "./repository/setting.repository";
 import { getMasterDataSyncSections } from "./repository/masterData.repository";
 import { getTransactionDataSyncSections } from "./repository/transactionData.repository";
-import type {
-  MasterDataSyncParams,
-  MasterDataSyncResponse,
-} from "./masterdatasync.types";
+
+interface MasterDataSyncParams {
+  routeid: string;
+  userid: string;
+  deviceid: string;
+  mdate: string;
+  table?: string;
+}
+
+type MasterDataSyncResponse = Record<string, unknown[]> & {
+  synccount: Array<{
+    tablename: string;
+    tablecount: number | string;
+  }>;
+};
 
 export async function getMasterDataSync(
   params: MasterDataSyncParams,

@@ -1,9 +1,4 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
-import type {
-  AppVersionRow,
-  RouteVersionRow,
-  SalesmanLoginSuccessResponseItem
-} from '../auth.types';
 
 export async function ensureDeviceRegistered(
   connection: PoolConnection,
@@ -24,8 +19,10 @@ export async function ensureDeviceRegistered(
 
 export async function findLatestAppVersion(
   connection: PoolConnection
-): Promise<AppVersionRow | null> {
-  const [rows] = await connection.execute<(RowDataPacket & AppVersionRow)[]>(
+): Promise<{ url: string | null; verno: string | null } | null> {
+  const [rows] = await connection.execute<
+    (RowDataPacket & { url: string | null; verno: string | null })[]
+  >(
     'SELECT url, verno FROM tbl_version LIMIT 1'
   );
 
@@ -114,9 +111,57 @@ export async function findSalesmanLoginSuccessRows(
   username: string,
   password: string,
   useEncryption: 0 | 1
-): Promise<SalesmanLoginSuccessResponseItem[]> {
+): Promise<
+  Array<{
+    STATUS: 0;
+    routecode: number | null;
+    cdat: string | null;
+    salesmancode: number;
+    salesmanname1: string | null;
+    salesmanname2: string | null;
+    arbsalesmanname1: string | null;
+    messagekey: number | null;
+    pricingkey: number | null;
+    created: string | null;
+    modified: string | null;
+    mdat: string | null;
+    memo1: string | null;
+    memo2: string | null;
+    alternatesalesmancode: string | null;
+    type: number | null;
+    activestatus: number | null;
+    parentcompany: number | null;
+    ansalesmancode: string | null;
+    username: string | null;
+    userpassword: string | null;
+    useencription: 0 | 1;
+  }>
+> {
   const [rows] = await connection.execute<
-    (RowDataPacket & SalesmanLoginSuccessResponseItem)[]
+    (RowDataPacket & {
+      STATUS: 0;
+      routecode: number | null;
+      cdat: string | null;
+      salesmancode: number;
+      salesmanname1: string | null;
+      salesmanname2: string | null;
+      arbsalesmanname1: string | null;
+      messagekey: number | null;
+      pricingkey: number | null;
+      created: string | null;
+      modified: string | null;
+      mdat: string | null;
+      memo1: string | null;
+      memo2: string | null;
+      alternatesalesmancode: string | null;
+      type: number | null;
+      activestatus: number | null;
+      parentcompany: number | null;
+      ansalesmancode: string | null;
+      username: string | null;
+      userpassword: string | null;
+      useencription: 0 | 1;
+    })[]
   >(
     `
       SELECT
@@ -156,8 +201,10 @@ export async function findSalesmanLoginSuccessRows(
 export async function findRouteVersion(
   connection: PoolConnection,
   routeCode: string
-): Promise<RouteVersionRow | null> {
-  const [rows] = await connection.execute<(RowDataPacket & RouteVersionRow)[]>(
+): Promise<{ VER_NO: string | null; VER_STS: string | null } | null> {
+  const [rows] = await connection.execute<
+    (RowDataPacket & { VER_NO: string | null; VER_STS: string | null })[]
+  >(
     `
       SELECT VER_NO, VER_STS
       FROM route_version_map

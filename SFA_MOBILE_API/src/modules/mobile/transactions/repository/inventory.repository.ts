@@ -1,10 +1,10 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import type {
-  InventorySummaryDetailUploadItem,
-  InventoryTransactionDetailUploadItem,
-  InventoryTransactionHeaderUploadItem
-} from '../transactions.types';
+import type { LegacyUploadItem } from '../types/shared.types';
 import { nullable, required } from './shared.repository';
+
+type InventorySummaryDetailUploadItem = LegacyUploadItem;
+type InventoryTransactionDetailUploadItem = LegacyUploadItem;
+type InventoryTransactionHeaderUploadItem = LegacyUploadItem;
 
 export async function saveInventoryTransactionHeader(
   connection: PoolConnection,

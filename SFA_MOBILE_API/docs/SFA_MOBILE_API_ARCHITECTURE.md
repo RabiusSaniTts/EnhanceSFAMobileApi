@@ -195,7 +195,6 @@ Important files:
 masterdatasync.controller.ts
 masterdatasync.service.ts
 masterdatasync.mapper.ts
-masterdatasync.types.ts
 repository/setting.repository.ts
 repository/masterData.repository.ts
 repository/transactionData.repository.ts
@@ -298,7 +297,6 @@ Important files:
 ```text
 transactions.controller.ts
 transactions.service.ts
-transactions.types.ts
 repository/*
 types/*
 ```
