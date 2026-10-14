@@ -1082,11 +1082,109 @@ async function getCustomerInvoice(
   routeId: number,
   routeCustomerCodes: Array<number | string>
 ): Promise<GenericRow[]> {
-  void connection;
-  void routeId;
-  void routeCustomerCodes;
+  if (routeCustomerCodes.length === 0) {
+    return [];
+  }
 
-  return [];
+  const [eligibleCustomerRows] = await connection.query<
+    (RowDataPacket & { customercode: number })[]
+  >(
+    `
+      SELECT cm.customercode
+      FROM customermaster cm
+      WHERE cm.customercode IN (${buildInClause(routeCustomerCodes)})
+      AND NOT (cm.invoicepaymentterms > 1 AND cm.enablearcollection = 0)
+    `,
+    routeCustomerCodes
+  );
+
+  const eligibleCustomerCodes = eligibleCustomerRows.map((row) => row.customercode);
+
+  if (eligibleCustomerCodes.length === 0) {
+    return [];
+  }
+
+  const [flagRows] = await connection.execute<
+    (RowDataPacket & { status: number | null })[]
+  >(
+    `
+      SELECT status
+      FROM controlpanel
+      WHERE flagid = 51
+      LIMIT 1
+    `
+  );
+
+  const allowAllRoutes = flagRows[0]?.status === 1;
+  const routeFilter = allowAllRoutes ? "" : "AND ci.routecode = ?";
+  const values = allowAllRoutes
+    ? [routeId, ...eligibleCustomerCodes]
+    : [routeId, ...eligibleCustomerCodes, routeId];
+
+  const [rows] = await connection.query<GenericRow[]>(
+    `
+      SELECT
+        ci.transactionkey,
+        ci.transactiontype,
+        ci.documentnumber,
+        ci.invoicenumber,
+        ci.transactiondate,
+        ci.transactiontime,
+        ci.customercode,
+        ? AS routecode,
+        ci.salesmancode,
+        ci.totalinvoiceamount,
+        ci.totalsalesamount,
+        ci.totalreturnamount,
+        ci.totaldamagedamount,
+        ci.totalfreesampleamount,
+        ci.immediatepaid,
+        ci.amountpaid,
+        ci.dnamountpaid,
+        ci.cnamountpaid,
+        ci.invoicebalance,
+        ci.paymenttype,
+        ci.voidflag,
+        ci.paymentstatus,
+        ci.hhcinvoicenumber,
+        sm.alternatesalesmancode AS remarks1,
+        '' AS remarks2,
+        ci.routestartdate,
+        ci.erpreferencenumber,
+        ci.mdat,
+        ci.totalpromoamount,
+        ci.gcpaymenttype,
+        ci.totaltaxesamount,
+        ci.itemlinetaxamount,
+        ci.totaldiscountamount,
+        ci.pdcindicator,
+        ci.chequecollection,
+        ci.totalexpiryamount,
+        ci.currencycode,
+        ci.pdcbalance,
+        ci.totalmanualfree,
+        ci.totallimitedfree,
+        ci.totalrebaterent,
+        ci.totalfixedrent,
+        ci.data,
+        ci.totaldiscdistributionamount,
+        ci.totalreplacementamount,
+        ci.pdcdate,
+        ci.totalbuybackfreeamount,
+        ci.duedate
+      FROM customerinvoice ci
+      INNER JOIN salesman sm
+        ON sm.salesmancode = ci.salesmancode
+      WHERE ci.customercode IN (${buildInClause(eligibleCustomerCodes)})
+      AND ci.transactiontype = 2
+      AND ci.voidflag = 0
+      AND ci.duedate IS NOT NULL
+      ${routeFilter}
+    `,
+    values
+  );
+
+  return rows;
 }
 
 async function getDiscountKeyHeader(connection: PoolConnection): Promise<GenericRow[]> {
