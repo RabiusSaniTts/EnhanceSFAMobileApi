@@ -1,4 +1,4 @@
-import type { PoolConnection, ResultSetHeader } from 'mysql2/promise';
+import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import type {
   CreatedStartDay,
   EndDayRequestItem,
@@ -7,20 +7,10 @@ import type {
   RouteHierarchy,
   StartDayRequestItem
 } from '../types/startEndDay.types';
-import type {
-  CreatedStartDayRow,
-  CurrentDateRow,
-  EndDayResponseRow,
-  OpenRouteKeyRow,
-  RouteClosedRow,
-  RouteCodeRow,
-  RouteHierarchyRow,
-  RouteVersionRow
-} from '../../transactions/repository/shared.repository';
 import { nullable, required } from '../../transactions/repository/shared.repository';
 
 export async function getDatabaseCurrentDate(connection: PoolConnection): Promise<string> {
-  const [rows] = await connection.execute<CurrentDateRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { currentDate: string })[]>(
     "SELECT DATE_FORMAT(CURDATE(), '%Y-%m-%d') AS currentDate"
   );
 
@@ -30,8 +20,16 @@ export async function getDatabaseCurrentDate(connection: PoolConnection): Promis
 export async function getRouteVersion(
   connection: PoolConnection,
   routeCode: string | number
-): Promise<RouteVersionRow | null> {
-  const [rows] = await connection.execute<RouteVersionRow[]>(
+): Promise<{
+  versionNo: string | null;
+  versionStatus: string | number | null;
+} | null> {
+  const [rows] = await connection.execute<
+    (RowDataPacket & {
+      versionNo: string | null;
+      versionStatus: string | number | null;
+    })[]
+  >(
     `
       SELECT
         VER_NO AS versionNo,
@@ -50,7 +48,9 @@ export async function getLatestRouteClosedStatus(
   connection: PoolConnection,
   routeCode: string | number
 ): Promise<number> {
-  const [rows] = await connection.execute<RouteClosedRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { routeclosed: number | null })[]
+  >(
     `
       SELECT routeclosed
       FROM startendday
@@ -68,7 +68,7 @@ export async function getRouteHierarchy(
   connection: PoolConnection,
   routeCode: string | number
 ): Promise<RouteHierarchy> {
-  const [rows] = await connection.execute<RouteHierarchyRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & RouteHierarchy)[]>(
     `
       SELECT
         rm.subareacode,
@@ -154,7 +154,7 @@ export async function createStartDay(
     }
   );
 
-  const [rows] = await connection.execute<CreatedStartDayRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & CreatedStartDay)[]>(
     `
       SELECT routekey, routestartdate, routestarttime, routestartodometer
       FROM startendday
@@ -233,7 +233,7 @@ export async function updateEndDay(
     );
   }
 
-  const [rows] = await connection.execute<EndDayResponseRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & EndDayResponseItem)[]>(
     `
       SELECT routekey, routeenddate, routeendtime
       FROM startendday
@@ -253,7 +253,9 @@ export async function resolveLogoutRouteKey(
   connection: PoolConnection,
   item: LogoutRequestItem
 ): Promise<number> {
-  const [rows] = await connection.execute<OpenRouteKeyRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { routekey: number | null })[]
+  >(
     `
       SELECT routekey
       FROM startendday
@@ -272,7 +274,9 @@ async function getTabletTripRouteCode(
   connection: PoolConnection,
   routeKey: string | number
 ): Promise<string | number | null> {
-  const [rows] = await connection.execute<RouteCodeRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { routecode: string | number | null })[]
+  >(
     `
       SELECT routecode
       FROM startendday

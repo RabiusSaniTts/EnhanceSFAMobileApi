@@ -371,16 +371,6 @@ interface DeleteMasterSyncInput {
   deviceId: string;
 }
 
-interface SyncDateRow extends RowDataPacket {
-  syncdate: string | null;
-}
-
-interface DeleteLogRow extends RowDataPacket {
-  CODE: number;
-  tablename: string;
-  recordid: number;
-}
-
 type DeleteMasterRow = Record<string, unknown> & {
   CODE: number;
   tablename: string;
@@ -442,7 +432,13 @@ async function getDeleteMaster(
     return [];
   }
 
-  const [rows] = await connection.execute<DeleteLogRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & {
+      CODE: number;
+      tablename: string;
+      recordid: number;
+    })[]
+  >(
     `
       SELECT
         code AS CODE,
@@ -473,7 +469,7 @@ async function getSyncDate(
   connection: PoolConnection,
   input: DeleteMasterSyncInput
 ): Promise<string | null> {
-  const [rows] = await connection.execute<SyncDateRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { syncdate: string | null })[]>(
     `
       SELECT syncdate
       FROM tbl_syncservice
@@ -492,7 +488,7 @@ async function getSyncDate(
 
 async function getPrimaryKeyByTable(
   connection: PoolConnection,
-  rows: DeleteLogRow[]
+  rows: { tablename: string }[]
 ): Promise<Map<string, string>> {
   const tableNames = [...new Set(rows.map((row) => row.tablename.trim()))];
 

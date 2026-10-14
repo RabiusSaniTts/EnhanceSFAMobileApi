@@ -804,29 +804,21 @@ async function getCustomerItemMap(
   return rows;
 }
 
-type SetupRoutePlanRow = RowDataPacket & {
-  journeyplanflag: string | number | null;
-  routesequenceplanflag: string | number | null;
-};
-type WeekRow = RowDataPacket & { rp32weeknumber: number | null };
-type DayRow = RowDataPacket & { dayNumber: number };
-type CodeRow = RowDataPacket & { customercode: number | string };
-type ScalarRow = RowDataPacket & {
-  division?: string | number | null;
-  itemmustkey?: string | number | null;
-  status?: string | number | null;
-};
-
 async function getRouteCustomerCodes(
   connection: PoolConnection,
   routeId: number
 ): Promise<Array<number | string>> {
-  const [setupRows] = await connection.execute<SetupRoutePlanRow[]>(
+  const [setupRows] = await connection.execute<
+    (RowDataPacket & {
+      journeyplanflag: string | number | null;
+      routesequenceplanflag: string | number | null;
+    })[]
+  >(
     'SELECT journeyplanflag, routesequenceplanflag FROM setup LIMIT 1'
   );
 
   const journeyPlanFlag = String(setupRows[0]?.journeyplanflag ?? '');
-  const [dayRows] = await connection.execute<DayRow[]>(
+  const [dayRows] = await connection.execute<(RowDataPacket & { dayNumber: number })[]>(
     'SELECT DAYOFWEEK(CURRENT_DATE()) AS dayNumber'
   );
   const dayNumber = dayRows[0]?.dayNumber ?? 0;
@@ -858,7 +850,9 @@ async function selectCustomerCodes(
   sql: string,
   values: unknown[]
 ): Promise<Array<number | string>> {
-  const [rows] = await connection.query<CodeRow[]>(sql, values);
+  const [rows] = await connection.query<
+    (RowDataPacket & { customercode: number | string })[]
+  >(sql, values);
   return rows.map((row) => row.customercode);
 }
 
@@ -882,7 +876,9 @@ function getCallRestrictionColumn(dayNumber: number): string {
 }
 
 async function getRouteSequenceWeek(connection: PoolConnection): Promise<number> {
-  const [setupRows] = await connection.execute<SetupRoutePlanRow[]>(
+  const [setupRows] = await connection.execute<
+    (RowDataPacket & { routesequenceplanflag: string | number | null })[]
+  >(
     'SELECT routesequenceplanflag FROM setup LIMIT 1'
   );
 
@@ -890,7 +886,9 @@ async function getRouteSequenceWeek(connection: PoolConnection): Promise<number>
     return 9;
   }
 
-  const [weekRows] = await connection.execute<WeekRow[]>(
+  const [weekRows] = await connection.execute<
+    (RowDataPacket & { rp32weeknumber: number | null })[]
+  >(
     `
       SELECT rp32weeknumber
       FROM salescalender
@@ -919,7 +917,12 @@ async function getCustomerMaster(
   routeId: number,
   routeCustomerCodes: Array<number | string>
 ): Promise<GenericRow[]> {
-  const [routeRows] = await connection.execute<ScalarRow[]>(
+  const [routeRows] = await connection.execute<
+    (RowDataPacket & {
+      division: string | number | null;
+      itemmustkey: string | number | null;
+    })[]
+  >(
     `
       SELECT
         COALESCE(division, 0) AS division,

@@ -171,17 +171,6 @@ const ROUTE_MASTER_RESPONSE_FIELDS = [
   'enablegpstracking',
   'enablearcollection'
 ] as const;
-type RouteCodeRow = RowDataPacket & { routecode: number };
-type ScalarRow = RowDataPacket & {
-  routekey?: number | null;
-  routeitemgrpcode?: number | null;
-  depotcode?: number | null;
-  transferinventoryflag?: string | number | null;
-  transactionnoseq?: number | null;
-  invoicenumber?: string | number | null;
-  documentnumber?: string | number | null;
-  maxdocumentnumber?: string | number | null;
-};
 
 export async function getSettingSyncSections(
   connection: PoolConnection,
@@ -232,7 +221,9 @@ async function maintainRouteSyncSideEffects(
   connection: PoolConnection,
   input: { routeId: number; latestRouteKey: number }
 ): Promise<void> {
-  const [routeRows] = await connection.execute<ScalarRow[]>(
+  const [routeRows] = await connection.execute<
+    (RowDataPacket & { routeitemgrpcode: number | null })[]
+  >(
     `
       SELECT COALESCE(routeitemgrpcode, 0) AS routeitemgrpcode
       FROM routemaster
@@ -303,7 +294,9 @@ async function updateRouteSequenceNumbers(
   connection: PoolConnection,
   routeId: number
 ): Promise<void> {
-  const [routeRows] = await connection.execute<ScalarRow[]>(
+  const [routeRows] = await connection.execute<
+    (RowDataPacket & { transactionnoseq: number | null })[]
+  >(
     `
       SELECT COALESCE(transactionnoseq, 0) AS transactionnoseq
       FROM routemaster
@@ -383,7 +376,9 @@ async function getMaxInvoiceNumber(
   const dexFlagFilter = dexFlag === undefined ? '' : 'AND dexflag = :dexFlag';
   const params: Record<string, number> =
     dexFlag === undefined ? { routeId } : { routeId, dexFlag };
-  const [rows] = await connection.execute<ScalarRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { invoicenumber: string | number | null })[]
+  >(
     `
       SELECT COALESCE(MAX(invoicenumber), 0) AS invoicenumber
       FROM invoiceheader
@@ -400,7 +395,9 @@ async function getMaxArNumber(
   connection: PoolConnection,
   routeId: number
 ): Promise<string> {
-  const [rows] = await connection.execute<ScalarRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { invoicenumber: string | number | null })[]
+  >(
     `
       SELECT COALESCE(MAX(invoicenumber), 0) AS invoicenumber
       FROM arheader
@@ -416,7 +413,9 @@ async function getMaxSalesOrderNumber(
   connection: PoolConnection,
   routeId: number
 ): Promise<string> {
-  const [rows] = await connection.execute<ScalarRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { invoicenumber: string | number | null })[]
+  >(
     `
       SELECT COALESCE(MAX(invoicenumber), 0) AS invoicenumber
       FROM salesorderheader
@@ -432,7 +431,9 @@ async function getMaxDocumentNumber(
   connection: PoolConnection,
   routeId: number
 ): Promise<string> {
-  const [rows] = await connection.execute<ScalarRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { maxdocumentnumber: string | number | null })[]
+  >(
     `
       SELECT MAX(maxdocumentnumber) AS maxdocumentnumber
       FROM (
@@ -479,7 +480,9 @@ async function getSyncRouteCodes(
   connection: PoolConnection,
   routeId: number
 ): Promise<number[]> {
-  const [depotRows] = await connection.execute<ScalarRow[]>(
+  const [depotRows] = await connection.execute<
+    (RowDataPacket & { depotcode: number | null })[]
+  >(
     `
       SELECT am.depotcode
       FROM areamaster am
@@ -497,7 +500,9 @@ async function getSyncRouteCodes(
     return [routeId];
   }
 
-  const [setupRows] = await connection.execute<ScalarRow[]>(
+  const [setupRows] = await connection.execute<
+    (RowDataPacket & { transferinventoryflag: string | number | null })[]
+  >(
     'SELECT transferinventoryflag FROM setup LIMIT 1'
   );
   const transferFlag = String(setupRows[0]?.transferinventoryflag ?? '');
@@ -511,7 +516,7 @@ async function getSyncRouteCodes(
           ? 'AND rm.depotrouteflag = 1'
           : 'AND rm.depotrouteflag < 2';
 
-  const [rows] = await connection.execute<RouteCodeRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { routecode: number })[]>(
     `
       SELECT DISTINCT rm.routecode
       FROM areamaster am

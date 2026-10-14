@@ -1,14 +1,9 @@
-import type { PoolConnection, ResultSetHeader } from 'mysql2/promise';
+import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import type {
   OrderRxdDetailUploadItem,
   SalesOrderDetailUploadItem,
   SalesOrderHeaderUploadItem
 } from '../transactions.types';
-import type {
-  CountRow,
-  GeneratedDocumentNumberRow,
-  TransactionKeyRow
-} from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 export async function saveSalesOrderHeader(
@@ -85,7 +80,7 @@ export async function saveSalesOrderDetail(
   item: SalesOrderDetailUploadItem,
   transactionKey: number
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM salesorderdetail
@@ -132,7 +127,7 @@ export async function saveOrderRxdDetail(
   item: OrderRxdDetailUploadItem,
   transactionKey: number
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM orderrxddetail
@@ -187,7 +182,7 @@ async function getSalesOrderTransactionKey(
   connection: PoolConnection,
   invoiceNumber: string | number
 ): Promise<number | null> {
-  const [rows] = await connection.execute<TransactionKeyRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { transactionkey: number })[]>(
     `
       SELECT transactionkey
       FROM salesorderheader
@@ -204,7 +199,7 @@ async function getNextSalesOrderDocumentNumber(
   connection: PoolConnection,
   routeCode: string | number
 ): Promise<string | number> {
-  const [rows] = await connection.execute<GeneratedDocumentNumberRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { documentNumber: string | number })[]>(
     `
       SELECT COALESCE(
         MAX(documentnumber) + 1,

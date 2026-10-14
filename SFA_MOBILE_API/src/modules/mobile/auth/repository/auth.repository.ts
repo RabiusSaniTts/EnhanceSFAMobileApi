@@ -5,15 +5,6 @@ import type {
   SalesmanLoginSuccessResponseItem
 } from '../auth.types';
 
-type AppVersionDbRow = RowDataPacket & AppVersionRow;
-type CountDbRow = RowDataPacket & { count: number };
-type DeviceIdDbRow = RowDataPacket & { deviceId: string };
-type UseEncryptionDbRow = RowDataPacket & { useencription: 0 | 1 };
-type SalesmanLoginSuccessDbRow = RowDataPacket & SalesmanLoginSuccessResponseItem;
-type RouteVersionDbRow = RowDataPacket & RouteVersionRow;
-type RouteCodeDbRow = RowDataPacket & { routecode: string | number | null };
-type RouteKeyDbRow = RowDataPacket & { routekey: string | number | null };
-
 export async function ensureDeviceRegistered(
   connection: PoolConnection,
   deviceId: string
@@ -34,7 +25,7 @@ export async function ensureDeviceRegistered(
 export async function findLatestAppVersion(
   connection: PoolConnection
 ): Promise<AppVersionRow | null> {
-  const [rows] = await connection.execute<AppVersionDbRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & AppVersionRow)[]>(
     'SELECT url, verno FROM tbl_version LIMIT 1'
   );
 
@@ -71,7 +62,7 @@ export async function countSalesmanByCredentials(
   username: string,
   password: string
 ): Promise<number> {
-  const [rows] = await connection.execute<CountDbRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM salesman
@@ -89,7 +80,7 @@ export async function findAssignedDeviceIdByCredentials(
   username: string,
   password: string
 ): Promise<string> {
-  const [rows] = await connection.execute<DeviceIdDbRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { deviceId: string })[]>(
     `
       SELECT
         CASE
@@ -111,7 +102,7 @@ export async function findAssignedDeviceIdByCredentials(
 export async function getUseEncryptionFlag(
   connection: PoolConnection
 ): Promise<0 | 1> {
-  const [rows] = await connection.execute<UseEncryptionDbRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { useencription: 0 | 1 })[]>(
     "SELECT CASE WHEN INSTR(VERSION(), 'ubuntu') THEN 1 ELSE 0 END AS useencription"
   );
 
@@ -124,7 +115,9 @@ export async function findSalesmanLoginSuccessRows(
   password: string,
   useEncryption: 0 | 1
 ): Promise<SalesmanLoginSuccessResponseItem[]> {
-  const [rows] = await connection.execute<SalesmanLoginSuccessDbRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & SalesmanLoginSuccessResponseItem)[]
+  >(
     `
       SELECT
         0 AS STATUS,
@@ -164,7 +157,7 @@ export async function findRouteVersion(
   connection: PoolConnection,
   routeCode: string
 ): Promise<RouteVersionRow | null> {
-  const [rows] = await connection.execute<RouteVersionDbRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & RouteVersionRow)[]>(
     `
       SELECT VER_NO, VER_STS
       FROM route_version_map
@@ -181,7 +174,9 @@ export async function findRouteCodeBySalesman(
   connection: PoolConnection,
   userId: string | number
 ): Promise<string | number | null> {
-  const [rows] = await connection.execute<RouteCodeDbRow[]>(
+  const [rows] = await connection.execute<
+    (RowDataPacket & { routecode: string | number | null })[]
+  >(
     `
       SELECT routecode
       FROM routemaster
@@ -241,7 +236,9 @@ export async function insertSyncLog(
     return;
   }
 
-  const [routeKeyRows] = await connection.execute<RouteKeyDbRow[]>(
+  const [routeKeyRows] = await connection.execute<
+    (RowDataPacket & { routekey: string | number | null })[]
+  >(
     `
       SELECT COALESCE(MAX(routekey), 0) AS routekey
       FROM startendday

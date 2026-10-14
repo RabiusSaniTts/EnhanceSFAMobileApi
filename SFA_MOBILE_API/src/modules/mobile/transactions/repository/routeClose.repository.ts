@@ -1,11 +1,4 @@
-import type { PoolConnection } from 'mysql2/promise';
-import type {
-  CountRow,
-  NumericValueRow,
-  OpenRouteKeyRow,
-  RouteCodeRow,
-  RouteKeySalesmanRow
-} from './shared.repository';
+import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { required } from './shared.repository';
 
 type SendDataPostProcessingParams = {
@@ -36,7 +29,7 @@ async function insertSyncLog(
     return;
   }
 
-  const [routeRows] = await connection.execute<RouteCodeRow[]>(
+  const [routeRows] = await connection.execute<(RowDataPacket & { routecode: string | number | null })[]>(
     `
       SELECT routecode
       FROM routemaster
@@ -51,7 +44,7 @@ async function insertSyncLog(
     return;
   }
 
-  const [routeKeyRows] = await connection.execute<OpenRouteKeyRow[]>(
+  const [routeKeyRows] = await connection.execute<(RowDataPacket & { routekey: number | null })[]>(
     `
       SELECT COALESCE(MAX(routekey), 0) AS routekey
       FROM startendday
@@ -80,7 +73,7 @@ async function isRouteClosed(
   connection: PoolConnection,
   routeKey: string | number
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM startendday
@@ -101,7 +94,7 @@ async function rebuildSuggestedSalesInvoiceAfterRouteFilter(
     routeCode
   });
 
-  const [salesStatusRows] = await connection.execute<NumericValueRow[]>(
+  const [salesStatusRows] = await connection.execute<(RowDataPacket & { value: number | null })[]>(
     `
       SELECT status AS value
       FROM controlpanel
@@ -114,7 +107,7 @@ async function rebuildSuggestedSalesInvoiceAfterRouteFilter(
     return;
   }
 
-  const [routeTypeRows] = await connection.execute<NumericValueRow[]>(
+  const [routeTypeRows] = await connection.execute<(RowDataPacket & { value: number | null })[]>(
     `
       SELECT COALESCE(routetype, 0) AS value
       FROM routemaster
@@ -124,7 +117,7 @@ async function rebuildSuggestedSalesInvoiceAfterRouteFilter(
     { routeCode }
   );
   const routeType = Number(routeTypeRows[0]?.value ?? 0);
-  const [offtakeRows] = await connection.execute<NumericValueRow[]>(
+  const [offtakeRows] = await connection.execute<(RowDataPacket & { value: number | null })[]>(
     'SELECT COALESCE(offtakeparameter, 1) * 7 AS value FROM setup LIMIT 1'
   );
   const offtakeDays = Number(offtakeRows[0]?.value ?? 7);
@@ -276,7 +269,7 @@ async function updateDataPosting(
   connection: PoolConnection,
   routeCode: string | number
 ): Promise<void> {
-  const [rows] = await connection.execute<RouteKeySalesmanRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { routekey: number | null; salesmancode: number | string | null })[]>(
     `
       SELECT routekey, salesmancode
       FROM startendday
@@ -337,7 +330,7 @@ async function rebuildAverageSalesQuantity(
   connection: PoolConnection,
   routeCode: string | number
 ): Promise<void> {
-  const [rows] = await connection.execute<NumericValueRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { value: number | null })[]>(
     `
       SELECT defaultrequestdays AS value
       FROM routemaster

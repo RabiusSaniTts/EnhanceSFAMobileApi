@@ -1,20 +1,17 @@
-import type { PoolConnection } from 'mysql2/promise';
+import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import type {
   CustomerOperationControlItem,
   CustomerSequenceRequestItem,
   CustomerVisitLogItem,
   RouteMasterUploadItem
 } from '../transactions.types';
-import type {
-  CountRow
-} from './shared.repository';
 import { nullable, required } from './shared.repository';
 
 export async function saveCustomerOperationControl(
   connection: PoolConnection,
   item: CustomerOperationControlItem
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM customeroperationscontrol
@@ -224,7 +221,7 @@ async function customerSequenceExists(
   connection: PoolConnection,
   item: CustomerSequenceRequestItem
 ): Promise<boolean> {
-  const [rows] = await connection.execute<CountRow[]>(
+  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
       FROM routesequencecustomerstatus
