@@ -298,8 +298,13 @@ Important files:
 transactions.controller.ts
 transactions.service.ts
 repository/*
-types/*
+types/shared.types.ts
+types/routeActivity.types.ts
+types/sales.types.ts
+types/senddata.types.ts
 ```
+
+Small alias-only upload types for orders, collections, inventory, customer service, and audit/POS are defined beside the service or repository functions that use them.
 
 ### Transaction Repository Split
 
@@ -367,8 +372,9 @@ ws.service.ts
 repository/startEndDay.repository.ts
 repository/transactionLookup.repository.ts
 repository/wsLookup.repository.ts
-types/*
 ```
+
+Small WS request/response types are defined beside the controller, service, or repository functions that use them.
 
 Main endpoints:
 
