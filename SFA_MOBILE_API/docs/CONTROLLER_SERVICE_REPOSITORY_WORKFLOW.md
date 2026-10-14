@@ -184,20 +184,23 @@ Mapper responsibilities:
 
 Not every module needs a mapper file. Use mapper files when response conversion becomes repeated or large.
 
-## Type Layer
+## Type Placement
 
-Type files:
+This project now keeps most small request, response, and database row types beside the functions that use them. This avoids jumping between files for simple route params or one-query result shapes.
+
+Remaining shared transaction type files:
 
 ```text
-*.types.ts
-transactions/types/*.types.ts
-ws/types/*.types.ts
+transactions/types/shared.types.ts
+transactions/types/routeActivity.types.ts
+transactions/types/sales.types.ts
+transactions/types/senddata.types.ts
 ```
 
 Type responsibilities:
 
-- document request params
-- document upload payload objects
+- document important request params
+- document large upload payload objects
 - document response structures
 - help TypeScript catch mistakes before runtime
 
@@ -207,7 +210,7 @@ Example:
 FastifyRequest<{ Params: SalesmanLoginParams }>
 ```
 
-This means the controller expects route params matching `SalesmanLoginParams`.
+This means the controller expects route params matching `SalesmanLoginParams`. For small params, define that interface in the controller file. For large reusable upload shapes, use the remaining transaction type files.
 
 ## Common Utility Layer
 

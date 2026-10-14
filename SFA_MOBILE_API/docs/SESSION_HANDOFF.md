@@ -14,6 +14,23 @@ The user confirmed the mobile app was tested after the recent refactor and every
 
 ## Recent Important Changes
 
+- Master sync `customerinvoice` is now implemented from the legacy `sp_ws_syncicsdata_customers` logic instead of returning an empty array.
+- Compatibility type cleanup was completed:
+  - removed `auth.types.ts`
+  - removed `masterdatasync.types.ts`
+  - removed `transactions/transactions.types.ts`
+  - removed `ws/types/startEndDay.types.ts`
+  - removed `ws/types/wsLookup.types.ts`
+  - removed alias-only transaction type files for orders, collections, inventory, customer service, and audit/POS
+- Small request, response, and database row types now live beside the controller, service, or repository functions that use them. Remaining shared transaction type files are:
+
+```text
+transactions/types/shared.types.ts
+transactions/types/routeActivity.types.ts
+transactions/types/sales.types.ts
+transactions/types/senddata.types.ts
+```
+
 - Master sync repositories were simplified so top-level sync functions directly show each returned array.
 - Unused wrapper functions were removed from:
   - `masterData.repository.ts`
