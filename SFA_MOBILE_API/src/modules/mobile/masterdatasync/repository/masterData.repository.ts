@@ -1,6 +1,6 @@
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
-import type { GenericRow } from "../../../../shared/db/db.types";
-import { tableExists } from "../../../../shared/db/schema";
+import { buildInClause, tableExists } from "../../../../shared/utils/commonUtils";
+import type { GenericRow } from "../../../../shared/utils/commonUtils";
 import type { MasterDataSyncResponseSections } from "../masterdatasync.types";
 
 interface MasterDataSyncInput {
@@ -900,10 +900,6 @@ async function getRouteSequenceWeek(connection: PoolConnection): Promise<number>
   );
 
   return Number(weekRows[0]?.rp32weeknumber ?? 9);
-}
-
-function buildInClause(values: unknown[]): string {
-  return values.map(() => '?').join(', ');
 }
 
 function normalizeCustomerMasterRows(rows: GenericRow[]): GenericRow[] {

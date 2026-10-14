@@ -4,6 +4,7 @@ import path from 'path';
 import { pipeline } from 'stream/promises';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { ApiError } from '../../../shared/middleware/errors';
+import { sanitizeFileName } from '../../../shared/utils/commonUtils';
 import {
   customerSequence,
   sendData,
@@ -68,6 +69,3 @@ export async function uploadImageAction(
   await reply.type('text/plain').send(`0The file ${fileName} has beenuploaded`);
 }
 
-function sanitizeFileName(fileName: string): string {
-  return path.basename(fileName).replace(/[<>:"/\\|?*\x00-\x1F]/g, '').trim();
-}

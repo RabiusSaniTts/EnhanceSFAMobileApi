@@ -1,5 +1,6 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
-import type { GenericRow } from '../../../../shared/db/db.types';
+import { getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
+import type { GenericRow } from '../../../../shared/utils/commonUtils';
 import type { MasterDataSyncResponseSections } from '../masterdatasync.types';
 
 interface SettingSyncInput {
@@ -225,23 +226,6 @@ export async function getSettingSyncSections(
     synctime: syncTime,
     CurrencyMaster: currencyMaster
   };
-}
-
-async function getLatestClosedRouteKey(
-  connection: PoolConnection,
-  routeId: number
-): Promise<number> {
-  const [rows] = await connection.execute<ScalarRow[]>(
-    `
-      SELECT COALESCE(MAX(routekey), 0) AS routekey
-      FROM startendday
-      WHERE routeclosed = 1
-      AND routecode = :routeId
-    `,
-    { routeId }
-  );
-
-  return Number(rows[0]?.routekey ?? 0);
 }
 
 async function maintainRouteSyncSideEffects(

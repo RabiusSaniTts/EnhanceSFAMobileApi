@@ -1,6 +1,6 @@
 import { withTransaction } from '../../../shared/db/transaction';
 import { ApiError } from '../../../shared/middleware/errors';
-import { isPlainObject } from '../../../shared/utils/objectUtils';
+import { isPlainObject } from '../../../shared/utils/commonUtils';
 import {
   createStartDay,
   getDatabaseCurrentDate,

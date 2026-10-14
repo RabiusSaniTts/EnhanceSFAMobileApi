@@ -1,4 +1,5 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
+import { stringValue } from '../../../../shared/utils/commonUtils';
 import type { TempCustomerInventoryItem } from '../types/wsLookup.types';
 
 type CountRow = RowDataPacket & { cnt: number };
@@ -458,6 +459,3 @@ async function getDeliveryOrderNumbers(
   return [];
 }
 
-function stringValue(value: unknown): string {
-  return value === undefined || value === null ? '' : String(value).trim();
-}

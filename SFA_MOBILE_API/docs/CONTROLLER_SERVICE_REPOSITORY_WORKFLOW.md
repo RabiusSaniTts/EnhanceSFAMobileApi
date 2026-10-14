@@ -209,6 +209,47 @@ FastifyRequest<{ Params: SalesmanLoginParams }>
 
 This means the controller expects route params matching `SalesmanLoginParams`.
 
+## Common Utility Layer
+
+Shared helper file:
+
+```text
+src/shared/utils/commonUtils.ts
+```
+
+Use this file for small reusable helpers that are not owned by one business module.
+
+Current common helpers include:
+
+- `GenericRow`
+- `buildInClause()`
+- `tableExists()`
+- `getLatestClosedRouteKey()`
+- `isPlainObject()`
+- `stringValue()`
+- `readScalar()`
+- `normalizeLegacyRecords()`
+- `asRecords()`
+- `sanitizeFileName()`
+- legacy date, number, null, and path-param helpers
+
+Use common utilities when the behavior is generic and reused by more than one area.
+
+Keep helpers local when they are business-specific, such as:
+
+- `mapInvoiceHeaderParams()`
+- `mapSalesOrderDetailParams()`
+- `toRouteTransactionSequence()`
+- `toZendTableCount()`
+- end-day-only defaulting logic
+
+Simple rule:
+
+```text
+Reusable technical helper -> commonUtils.ts
+Business/table/API behavior -> keep local
+```
+
 ## Full Example: Salesman Login
 
 Endpoint:

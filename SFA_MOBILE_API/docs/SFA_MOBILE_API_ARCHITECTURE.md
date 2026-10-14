@@ -437,13 +437,26 @@ Responsibilities:
 ### Utilities
 
 ```text
-dateMapper.ts
-legacyParamParser.ts
-nullMapper.ts
-numberMapper.ts
+src/shared/utils/commonUtils.ts
 ```
 
-These helpers normalize legacy mobile values before they reach SQL.
+`commonUtils.ts` is the single common helper file for reusable utility logic.
+
+Current responsibilities include:
+
+- `GenericRow`: shared mysql2 row type for dynamic database rows
+- `toLegacyDateString`: converts dates into legacy string format
+- `parseLegacyPathParams`: parses old Zend-style path params
+- `emptyStringToNull` and `nullToEmptyString`: maps empty/null values
+- `toLegacyNumber`: converts legacy numeric values safely
+- `isPlainObject`: checks unknown values before object access
+- `stringValue`, `readScalar`, `normalizeLegacyRecords`, `asRecords`: generic legacy payload helpers
+- `sanitizeFileName`: protects uploaded image filenames
+- `buildInClause`: creates SQL placeholder lists
+- `tableExists`: checks optional database tables
+- `getLatestClosedRouteKey`: reads the latest closed route key
+
+Business-specific helpers should stay local to their module. For example, mapper-only formatting, route sequence calculations, and table-specific parameter mapping should not be moved into `commonUtils.ts`.
 
 Important rule:
 
@@ -495,7 +508,7 @@ RowDataPacket
 Example:
 
 ```ts
-type GenericRow = RowDataPacket & Record<string, unknown>;
+export type GenericRow = RowDataPacket & Record<string, unknown>;
 ```
 
 Meaning:
@@ -503,6 +516,14 @@ Meaning:
 - `RowDataPacket` means one MySQL result row
 - `Record<string, unknown>` means dynamic column names are allowed
 - `GenericRow[]` means an array of MySQL rows with unknown column structure
+
+`GenericRow` is defined once in:
+
+```text
+src/shared/utils/commonUtils.ts
+```
+
+Repositories should import it from there instead of redefining it locally.
 
 For known query results, use specific row types:
 

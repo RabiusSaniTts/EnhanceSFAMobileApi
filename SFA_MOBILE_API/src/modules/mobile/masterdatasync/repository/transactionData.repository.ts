@@ -1,6 +1,6 @@
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
-import type { GenericRow } from "../../../../shared/db/db.types";
-import { tableExists } from "../../../../shared/db/schema";
+import { getLatestClosedRouteKey, tableExists } from "../../../../shared/utils/commonUtils";
+import type { GenericRow } from "../../../../shared/utils/commonUtils";
 import type { MasterDataSyncResponseSections } from "../masterdatasync.types";
 
 interface TransactionDataSyncInput {
@@ -154,29 +154,6 @@ async function getInventorySummaryDetail(
   );
 
   return rows;
-}
-
-type RouteKeyRow = RowDataPacket & { routekey: number };
-
-async function getLatestClosedRouteKey(
-  connection: PoolConnection,
-  routeId: number
-): Promise<number> {
-  if (!(await tableExists(connection, 'startendday'))) {
-    return 0;
-  }
-
-  const [rows] = await connection.execute<RouteKeyRow[]>(
-    `
-      SELECT COALESCE(MAX(routekey), 0) AS routekey
-      FROM startendday
-      WHERE routeclosed = 1
-      AND routecode = :routeId
-    `,
-    { routeId }
-  );
-
-  return rows[0]?.routekey ?? 0;
 }
 
 async function getSalesOrderHeader(

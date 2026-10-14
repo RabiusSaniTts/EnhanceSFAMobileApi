@@ -23,7 +23,7 @@ import type {
 } from './auth.types';
 import type { FastifyRequest } from 'fastify';
 import { ApiError } from '../../../shared/middleware/errors';
-import { isPlainObject } from '../../../shared/utils/objectUtils';
+import { isPlainObject } from '../../../shared/utils/commonUtils';
 
 export async function getCompanyIdByDevice(
   deviceId: string
