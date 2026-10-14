@@ -1,8 +1,13 @@
-import type {
-  MasterDataSyncResponse,
-  MasterDataSyncResponseSections,
-  SyncCountItem
-} from './masterdatasync.types';
+type MasterDataSyncResponseSections = Partial<Record<string, unknown[]>>;
+
+type MasterDataSyncResponse = Record<string, unknown[]> & {
+  synccount: SyncCountItem[];
+};
+
+interface SyncCountItem {
+  tablename: string;
+  tablecount: number | string;
+}
 
 export const GET_SYNC_DATA_TABLE_NAMES = [
   'ControlPanel',

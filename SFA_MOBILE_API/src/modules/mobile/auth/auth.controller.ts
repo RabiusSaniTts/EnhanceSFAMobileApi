@@ -5,13 +5,39 @@ import {
   loginSalesman,
   updateSyncDate as updateSyncDateService
 } from './auth.service';
-import type {
-  CompanyIdByDeviceParams,
-  SalesmanLoginParams,
-  SalesmanVersionCheckParams,
-  UpdateSyncDateParams,
-  UpdateSyncDateQuery
-} from './auth.types';
+
+interface CompanyIdByDeviceParams {
+  deviceid: string;
+}
+
+interface SalesmanLoginParams {
+  username: string;
+  password: string;
+  deviceid: string;
+}
+
+interface SalesmanVersionCheckParams {
+  routecode: string;
+  verno: string;
+}
+
+interface UpdateSyncDateParams {
+  routeid?: string;
+  userid?: string;
+  deviceid?: string;
+  routecode?: string;
+  routekey?: string;
+  routeclosed?: string;
+}
+
+interface UpdateSyncDateQuery {
+  routeid?: string;
+  userid?: string;
+  deviceid?: string;
+  routecode?: string;
+  routekey?: string;
+  routeclosed?: string;
+}
 
 export async function companyIdByDevice(
   request: FastifyRequest<{ Params: CompanyIdByDeviceParams }>,

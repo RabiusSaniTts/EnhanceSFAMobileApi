@@ -1,10 +1,10 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import type {
-  ArDetailUploadItem,
-  ArHeaderUploadItem,
-  CashCheckDetailUploadItem
-} from '../transactions.types';
+import type { LegacyUploadItem } from '../types/shared.types';
 import { nullable, required } from './shared.repository';
+
+type ArDetailUploadItem = LegacyUploadItem;
+type ArHeaderUploadItem = LegacyUploadItem;
+type CashCheckDetailUploadItem = LegacyUploadItem;
 
 export async function saveArHeader(
   connection: PoolConnection,

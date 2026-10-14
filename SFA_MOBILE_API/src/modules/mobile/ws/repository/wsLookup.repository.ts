@@ -1,6 +1,7 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { stringValue } from '../../../../shared/utils/commonUtils';
-import type { TempCustomerInventoryItem } from '../types/wsLookup.types';
+
+type TempCustomerInventoryItem = Record<string, string | number | null | undefined>;
 
 export async function checkRouteLoad(
   connection: PoolConnection,

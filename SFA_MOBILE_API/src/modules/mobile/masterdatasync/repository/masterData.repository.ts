@@ -1,7 +1,8 @@
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
 import { buildInClause, tableExists } from "../../../../shared/utils/commonUtils";
 import type { GenericRow } from "../../../../shared/utils/commonUtils";
-import type { MasterDataSyncResponseSections } from "../masterdatasync.types";
+
+type MasterDataSyncResponseSections = Partial<Record<string, unknown[]>>;
 
 interface MasterDataSyncInput {
   routeId: number;

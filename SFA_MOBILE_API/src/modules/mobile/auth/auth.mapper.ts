@@ -1,4 +1,13 @@
-import type { AppVersionRow, CompanyIdByDeviceResponseItem } from './auth.types';
+interface AppVersionRow {
+  url: string | null;
+  verno: string | null;
+}
+
+interface CompanyIdByDeviceResponseItem {
+  status: string;
+  url: string | null;
+  ver: string | null;
+}
 
 export function mapCompanyDeviceResponse(
   appVersion: AppVersionRow | null

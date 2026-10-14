@@ -16,17 +16,37 @@ import {
   logout as logoutService,
   startDay
 } from './ws.service';
-import type {
-  EndDayQuery,
-  LogoutQuery,
-  StartDayQuery
-} from './types/startEndDay.types';
-import type {
-  CustomerMasterParams,
-  CustomerMasterQuery,
-  TransactionParams,
-  TransactionQuery
-} from './types/wsLookup.types';
+interface StartDayQuery {
+  startday?: string;
+}
+
+interface EndDayQuery {
+  endday?: string;
+}
+
+interface LogoutQuery {
+  logout?: string;
+}
+
+interface CustomerMasterParams {
+  routecode?: string;
+  customercode?: string;
+}
+
+interface CustomerMasterQuery {
+  routecode?: string;
+  customercode?: string;
+}
+
+interface TransactionParams {
+  routekey?: string;
+  routecode?: string;
+}
+
+interface TransactionQuery {
+  routekey?: string;
+  routecode?: string;
+}
 
 export async function checkLoad(request: FastifyRequest, reply: FastifyReply): Promise<void> {
   const result = await checkLoadService(request, reply);

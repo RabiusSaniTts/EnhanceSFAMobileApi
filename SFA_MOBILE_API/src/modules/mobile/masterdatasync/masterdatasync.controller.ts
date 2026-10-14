@@ -1,6 +1,13 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { getMasterDataSync } from './masterdatasync.service';
-import type { MasterDataSyncParams } from './masterdatasync.types';
+
+interface MasterDataSyncParams {
+  routeid: string;
+  userid: string;
+  deviceid: string;
+  mdate: string;
+  table?: string;
+}
 
 export async function masterDataSyncAction(
   request: FastifyRequest<{ Params: MasterDataSyncParams }>,

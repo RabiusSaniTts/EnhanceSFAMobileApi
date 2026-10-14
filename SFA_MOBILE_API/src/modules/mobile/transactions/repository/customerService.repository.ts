@@ -1,16 +1,16 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import type {
-  CustomerDistributionCheckUploadItem,
-  CustomerFocBalanceUploadItem,
-  CustomerInventoryCheckUploadItem,
-  CustomerInventoryDetailUploadItem,
-  CustomerMasterUploadItem,
-  EndDayDetailUploadItem,
-  NonServicedCustomerUploadItem,
-  NoSalesHeaderUploadItem,
-  RouteGoalUploadItem
-} from '../transactions.types';
+import type { LegacyUploadItem } from '../types/shared.types';
 import { nullable, required } from './shared.repository';
+
+type CustomerDistributionCheckUploadItem = LegacyUploadItem;
+type CustomerFocBalanceUploadItem = LegacyUploadItem;
+type CustomerInventoryCheckUploadItem = LegacyUploadItem;
+type CustomerInventoryDetailUploadItem = LegacyUploadItem;
+type CustomerMasterUploadItem = LegacyUploadItem;
+type EndDayDetailUploadItem = LegacyUploadItem;
+type NonServicedCustomerUploadItem = LegacyUploadItem;
+type NoSalesHeaderUploadItem = LegacyUploadItem;
+type RouteGoalUploadItem = LegacyUploadItem;
 
 const CUSTOMER_MASTER_INSERT_COLUMNS = [
   'customercode',

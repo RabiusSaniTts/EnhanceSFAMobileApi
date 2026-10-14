@@ -10,13 +10,6 @@ import {
   resolveLogoutRouteKey,
   updateEndDay
 } from './repository/startEndDay.repository';
-import type {
-  EndDayRequestItem,
-  EndDayResponse,
-  LogoutRequestItem,
-  StartDayRequestItem,
-  StartDayResponse
-} from './types/startEndDay.types';
 import {
   checkRouteLoad,
   findCustomerMaster,
@@ -34,28 +27,130 @@ import {
   getTransactionDataCounts
 } from './repository/transactionLookup.repository';
 import type {
-  CheckLoadResponse,
-  CustomerBalanceResponse,
-  CustomerItemGroupResponse,
-  CustomerMasterParams,
-  CustomerMasterQuery,
-  CustomerMasterResponse,
-  DeliveryResponse,
-  ImportInventoryCountRow,
-  LegacyParams,
-  OrderStatusResponse,
-  TempCustomerInventoryItem,
-  TransactionCountRow,
-  TransactionParams,
-  TransactionQuery,
-  VisualDataResponse,
-  WarehouseStockResponse,
-  WhStockResponse
-} from './types/wsLookup.types';
-import type {
   LegacyTransactionReply,
   LegacyTransactionRequest
 } from '../transactions/types/shared.types';
+
+type LegacyParams = Record<string, unknown>;
+type TempCustomerInventoryItem = Record<string, string | number | null | undefined>;
+type CheckLoadResponse = '0' | '1';
+
+interface StartDayRequestItem {
+  routecode: string | number;
+  salesmancode: string | number;
+  routestartodometer: string | number;
+  deviceid: string;
+  ver: string;
+  startdate: string;
+}
+
+type StartDayResponse = {
+  startday: Array<
+    | {
+        status: 0;
+        routekey: string;
+        routestartdate: string | null;
+        routestarttime: string | null;
+        routestartodometer: string | number | null;
+      }
+    | { status: 1 | 2 }
+  >;
+};
+
+interface EndDayRequestItem {
+  routekey: string | number;
+  routeenddate: string;
+  routeendtime: string;
+  routeendodometer: string | number;
+  totaldocuments: string | number;
+  totalcash: string | number;
+  totalchecks: string | number;
+  totalorderamount: string | number;
+  totalinvoiceamount: string | number;
+  totalchargesales: string | number;
+  totalcashsales: string | number;
+  totalacctsreceivable: string | number;
+  totalexpenses: string | number;
+  inventoryvariance: string | number;
+  cashvariance: string | number;
+}
+
+type EndDayResponse = {
+  endday: Array<{
+    routekey: number;
+    routeenddate: string | null;
+    routeendtime: string | null;
+  }>;
+};
+
+interface LogoutRequestItem {
+  routekey: string | number;
+  routecode: string | number;
+  status?: string | number;
+}
+
+interface DeliveryResponse {
+  deliveryheader: Record<string, unknown>[];
+  deliverydetail: Record<string, unknown>[];
+}
+
+interface WarehouseStockResponse {
+  warehousestock: Record<string, unknown>[];
+}
+
+interface WhStockResponse {
+  whstock: Record<string, unknown>[];
+}
+
+interface CustomerBalanceResponse {
+  customerbalance: Record<string, unknown>[];
+}
+
+interface CustomerItemGroupResponse {
+  customeritemgrp: Record<string, unknown>[];
+  customeritemmap: Record<string, unknown>[];
+}
+
+interface OrderStatusResponse {
+  orderstatus: Record<string, unknown>[];
+}
+
+interface VisualDataResponse {
+  visualheader: Record<string, unknown>[];
+  visualdetail: Record<string, unknown>[];
+}
+
+interface CustomerMasterParams {
+  routecode?: string;
+  customercode?: string;
+}
+
+interface CustomerMasterQuery {
+  routecode?: string;
+  customercode?: string;
+}
+
+type CustomerMasterResponse = Record<string, unknown>;
+
+interface TransactionParams {
+  routekey?: string;
+  routecode?: string;
+}
+
+interface TransactionQuery {
+  routekey?: string;
+  routecode?: string;
+}
+
+interface TransactionCountRow {
+  TYPE: string;
+  CloudCount: string | number;
+}
+
+interface ImportInventoryCountRow {
+  TTYPE: string;
+  CloudCount: string | number;
+}
 
 export async function startDay(
   request: LegacyTransactionRequest,

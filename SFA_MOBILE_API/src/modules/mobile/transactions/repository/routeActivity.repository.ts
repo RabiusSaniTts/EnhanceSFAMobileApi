@@ -4,7 +4,7 @@ import type {
   CustomerSequenceRequestItem,
   CustomerVisitLogItem,
   RouteMasterUploadItem
-} from '../transactions.types';
+} from '../types/routeActivity.types';
 import { nullable, required } from './shared.repository';
 
 export async function saveCustomerOperationControl(

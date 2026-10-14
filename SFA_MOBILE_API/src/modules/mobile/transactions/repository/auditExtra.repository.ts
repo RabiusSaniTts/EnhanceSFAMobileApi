@@ -1,12 +1,12 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import type {
-  AccessOverrideLogUploadItem,
-  CustomerImageUploadItem,
-  PosEquipmentChangeDetailUploadItem,
-  PosMasterUploadItem,
-  SurveyAuditDetailUploadItem
-} from '../transactions.types';
+import type { LegacyUploadItem } from '../types/shared.types';
 import { nullable, required } from './shared.repository';
+
+type AccessOverrideLogUploadItem = LegacyUploadItem;
+type CustomerImageUploadItem = LegacyUploadItem;
+type PosEquipmentChangeDetailUploadItem = LegacyUploadItem;
+type PosMasterUploadItem = LegacyUploadItem;
+type SurveyAuditDetailUploadItem = LegacyUploadItem;
 
 export async function saveSurveyAuditDetail(
   connection: PoolConnection,
