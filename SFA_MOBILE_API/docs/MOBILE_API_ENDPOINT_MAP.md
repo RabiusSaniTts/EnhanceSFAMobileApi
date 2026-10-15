@@ -32,26 +32,26 @@ This document maps important PhoneGap mobile calls to the Node.js API modules.
 
 | Mobile Purpose | Endpoint | Controller | Service/Repository |
 | --- | --- | --- | --- |
-| Check active load | `/api/ws/checkload/routeid/:routeid/userid/:userid` | `ws.controller.ts` | `ws.service.ts`, `wsLookup.repository.ts` |
-| Start day | `/api/ws/senddata?startday=[]` | `ws.controller.ts` | `ws.service.ts`, `startEndDay.repository.ts` |
-| End day | `/api/ws/endday?endday=[]` | `ws.controller.ts` | `ws.service.ts`, `startEndDay.repository.ts` |
-| Logout | `/api/ws/logout?logout=[]` | `ws.controller.ts` | `ws.service.ts`, `startEndDay.repository.ts` |
-| Customer invoice lookup | `/api/ws/getcustinv` | `ws.controller.ts` | `wsLookup.repository.ts` |
-| Customer balance lookup | `/api/ws/getcustomerbalance` | `ws.controller.ts` | `wsLookup.repository.ts` |
-| Customer item group lookup | `/api/ws/getcustomeritemgrp`, `/api/ws/getcustomeritemgrp/routeid/:routeid` | `ws.controller.ts` | `wsLookup.repository.ts` |
-| Delivery lookup | `/api/ws/getdelivery` | `ws.controller.ts` | `wsLookup.repository.ts` |
-| Order status lookup | `/api/ws/getorderstatus`, `/api/ws/getorderstatus/routeid/:routeid` | `ws.controller.ts` | `wsLookup.repository.ts` |
-| Visual data lookup | `/api/ws/getvisualdata`, `/api/ws/getvisualdata/routeid/:routeid` | `ws.controller.ts` | `wsLookup.repository.ts` |
-| Warehouse stock lookup | `/api/ws/getwarehousestock`, `/api/ws/getwarehousestock/routeid/:routeid` | `ws.controller.ts` | `wsLookup.repository.ts` |
-| WH stock lookup | `/api/ws/getwhstock` | `ws.controller.ts` | `wsLookup.repository.ts` |
+| Check active load | `/api/ws/checkload/routeid/:routeid/userid/:userid` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Start day | `/api/ws/senddata?startday=[]` | `controllers/ws.controller.ts` | `models/startEndDay.model.ts` |
+| End day | `/api/ws/endday?endday=[]` | `controllers/ws.controller.ts` | `models/startEndDay.model.ts` |
+| Logout | `/api/ws/logout?logout=[]` | `controllers/ws.controller.ts` | `models/startEndDay.model.ts` |
+| Customer invoice lookup | `/api/ws/getcustinv` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Customer balance lookup | `/api/ws/getcustomerbalance` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Customer item group lookup | `/api/ws/getcustomeritemgrp`, `/api/ws/getcustomeritemgrp/routeid/:routeid` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Delivery lookup | `/api/ws/getdelivery` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Order status lookup | `/api/ws/getorderstatus`, `/api/ws/getorderstatus/routeid/:routeid` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Visual data lookup | `/api/ws/getvisualdata`, `/api/ws/getvisualdata/routeid/:routeid` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Warehouse stock lookup | `/api/ws/getwarehousestock`, `/api/ws/getwarehousestock/routeid/:routeid` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| WH stock lookup | `/api/ws/getwhstock` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
 
 ## Customer And Transaction Lookups
 
 | Mobile Purpose | Endpoint | Controller | Service/Repository |
 | --- | --- | --- | --- |
-| Customer master by customer | `/api/customer/customermaster/routecode/:routecode/customercode/:customercode` | `ws.controller.ts` | `ws.service.ts`, `transactionLookup.repository.ts` |
-| Transaction data | `/api/transaction/trandata/routekey/:routekey` | `ws.controller.ts` | `ws.service.ts`, `transactionLookup.repository.ts` |
-| Import inventory count | `/api/transaction/importinventorycount/routecode/:routecode` | `ws.controller.ts` | `ws.service.ts`, `transactionLookup.repository.ts` |
+| Customer master by customer | `/api/customer/customermaster/routecode/:routecode/customercode/:customercode` | `controllers/ws.controller.ts` | `models/wsLookup.model.ts` |
+| Transaction data | `/api/transaction/trandata/routekey/:routekey` | `controllers/ws.controller.ts` | `models/transactionLookup.model.ts` |
+| Import inventory count | `/api/transaction/importinventorycount/routecode/:routecode` | `controllers/ws.controller.ts` | `models/transactionLookup.model.ts` |
 
 ## Accepted Gap
 

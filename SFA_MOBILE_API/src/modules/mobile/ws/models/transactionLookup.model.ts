@@ -1,21 +1,11 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
 
-interface TransactionCountRow {
-  TYPE: string;
-  CloudCount: string | number;
-}
-
-interface ImportInventoryCountRow {
-  TTYPE: string;
-  CloudCount: string | number;
-}
-
 export async function getTransactionDataCounts(
   connection: PoolConnection,
   routeKey: string | number
-): Promise<TransactionCountRow[]> {
-  const [rows] = await connection.execute<(RowDataPacket & TransactionCountRow)[]>(
+): Promise<RowDataPacket[]> {
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT 'SEDY' TYPE, COUNT(*) CloudCount FROM startendday WHERE routekey = :routeKey
       UNION
@@ -83,11 +73,9 @@ export async function getTransactionDataCounts(
 export async function getImportInventoryCounts(
   connection: PoolConnection,
   routeCode: string | number
-): Promise<ImportInventoryCountRow[]> {
+) {
   const routeKey = await getLatestClosedRouteKey(connection, routeCode);
-  const [loadRows] = await connection.execute<
-    (RowDataPacket & { CloudCount: number })[]
-  >(
+  const [loadRows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT IFNULL(SUM(totunits), 0) AS CloudCount
       FROM startingloaddetail
@@ -98,9 +86,7 @@ export async function getImportInventoryCounts(
     `,
     { routeCode }
   );
-  const [inventoryRows] = await connection.execute<
-    (RowDataPacket & { CloudCount: number })[]
-  >(
+  const [inventoryRows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT IFNULL(SUM(quantity), 0) AS CloudCount
       FROM inventorytransactiondetail

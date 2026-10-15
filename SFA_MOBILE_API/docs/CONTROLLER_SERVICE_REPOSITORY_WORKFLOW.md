@@ -56,7 +56,7 @@ Controller files:
 src/modules/mobile/auth/controllers/auth.controller.ts
 src/modules/mobile/masterdatasync/masterdatasync.controller.ts
 src/modules/mobile/transactions/transactions.controller.ts
-src/modules/mobile/ws/ws.controller.ts
+src/modules/mobile/ws/controllers/ws.controller.ts
 ```
 
 The controller is the API entry point.
@@ -98,7 +98,6 @@ Service files:
 ```text
 src/modules/mobile/masterdatasync/masterdatasync.service.ts
 src/modules/mobile/transactions/transactions.service.ts
-src/modules/mobile/ws/ws.service.ts
 ```
 
 The service layer is the business workflow layer.
@@ -148,7 +147,7 @@ src/modules/mobile/masterdatasync/repository/transactionData.repository.ts
 src/modules/mobile/transactions/repository/sales.repository.ts
 src/modules/mobile/transactions/repository/inventory.repository.ts
 src/modules/mobile/transactions/repository/collections.repository.ts
-src/modules/mobile/ws/repository/startEndDay.repository.ts
+src/modules/mobile/ws/models/startEndDay.model.ts
 ```
 
 Repository responsibilities:
@@ -417,8 +416,8 @@ Flow:
 ```text
 mobile.routes.ts
   -> endDay()
-  -> ws.service.ts
-  -> startEndDay.repository.ts
+  -> controllers/ws.controller.ts
+  -> models/startEndDay.model.ts
   -> response
 ```
 

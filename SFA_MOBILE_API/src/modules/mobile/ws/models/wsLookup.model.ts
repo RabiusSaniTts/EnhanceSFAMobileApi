@@ -1,14 +1,12 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { stringValue } from '../../../../shared/utils/commonUtils';
 
-type TempCustomerInventoryItem = Record<string, string | number | null | undefined>;
-
 export async function checkRouteLoad(
   connection: PoolConnection,
   userId: string | number,
   routeId: string | number
 ): Promise<boolean> {
-  const [controlRows] = await connection.execute<(RowDataPacket & { status: number })[]>(
+  const [controlRows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT status
       FROM controlpanel
@@ -21,7 +19,7 @@ export async function checkRouteLoad(
     return true;
   }
 
-  const [rows] = await connection.execute<(RowDataPacket & { cnt: number })[]>(
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT COUNT(*) AS cnt
       FROM startingloaddetail sd
@@ -113,7 +111,7 @@ export async function getWhStockData(
 
 export async function saveTempCustomerInventory(
   connection: PoolConnection,
-  item: TempCustomerInventoryItem
+  item: Record<string, any>
 ): Promise<boolean> {
   const params = {
     routeKey: item.routekey ?? null,
@@ -128,7 +126,7 @@ export async function saveTempCustomerInventory(
     routeCode: item.routecode ?? null,
     salesmanCode: item.salesmancode ?? null
   };
-  const [rows] = await connection.execute<(RowDataPacket & { cnt: number })[]>(
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT COUNT(*) AS cnt
       FROM tempcustomerinventory
@@ -410,7 +408,7 @@ async function getDeliveryOrderNumbers(
   const lpono = stringValue(filters.lpono);
 
   if (customercode !== '') {
-    const [rows] = await connection.execute<(RowDataPacket & { orderno: string | number })[]>(
+    const [rows] = await connection.execute<RowDataPacket[]>(
       `
         SELECT dh.orderno
         FROM deliveryheader dh
@@ -426,7 +424,7 @@ async function getDeliveryOrderNumbers(
   }
 
   if (orderno !== '') {
-    const [rows] = await connection.execute<(RowDataPacket & { orderno: string | number })[]>(
+    const [rows] = await connection.execute<RowDataPacket[]>(
       `
         SELECT DISTINCT orderno
         FROM deliveryheader
@@ -441,7 +439,7 @@ async function getDeliveryOrderNumbers(
   }
 
   if (lpono !== '') {
-    const [rows] = await connection.execute<(RowDataPacket & { orderno: string | number })[]>(
+    const [rows] = await connection.execute<RowDataPacket[]>(
       `
         SELECT DISTINCT orderno
         FROM deliveryheader

@@ -87,9 +87,8 @@ Example:
 startofday/startofday.html
 -> /api/ws/senddata?startday=[]
 -> mobile.routes.ts
--> ws.controller.ts
--> ws.service.ts
--> ws/repository/startEndDay.repository.ts
+-> ws/controllers/ws.controller.ts
+-> ws/models/startEndDay.model.ts
 -> startendday, routesequence
 ```
 

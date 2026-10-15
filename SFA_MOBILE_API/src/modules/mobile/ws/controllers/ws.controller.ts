@@ -1,6 +1,7 @@
-import { withTransaction } from '../../../shared/db/transaction';
-import { ApiError } from '../../../shared/middleware/errors';
-import { isPlainObject } from '../../../shared/utils/commonUtils';
+import type { FastifyReply, FastifyRequest } from 'fastify';
+import { withTransaction } from '../../../../shared/db/transaction';
+import { ApiError } from '../../../../shared/middleware/errors';
+import { isPlainObject } from '../../../../shared/utils/commonUtils';
 import {
   createStartDay,
   getDatabaseCurrentDate,
@@ -9,7 +10,7 @@ import {
   getRouteVersion,
   resolveLogoutRouteKey,
   updateEndDay
-} from './repository/startEndDay.repository';
+} from '../models/startEndDay.model';
 import {
   checkRouteLoad,
   findCustomerMaster,
@@ -21,141 +22,20 @@ import {
   getWarehouseStockData,
   getWhStockData,
   saveTempCustomerInventory
-} from './repository/wsLookup.repository';
+} from '../models/wsLookup.model';
 import {
   getImportInventoryCounts,
   getTransactionDataCounts
-} from './repository/transactionLookup.repository';
+} from '../models/transactionLookup.model';
 import type {
   LegacyTransactionReply,
   LegacyTransactionRequest
-} from '../transactions/types/shared.types';
+} from '../../transactions/types/shared.types';
 
-type LegacyParams = Record<string, unknown>;
-type TempCustomerInventoryItem = Record<string, string | number | null | undefined>;
-type CheckLoadResponse = '0' | '1';
-
-interface StartDayRequestItem {
-  routecode: string | number;
-  salesmancode: string | number;
-  routestartodometer: string | number;
-  deviceid: string;
-  ver: string;
-  startdate: string;
-}
-
-type StartDayResponse = {
-  startday: Array<
-    | {
-        status: 0;
-        routekey: string;
-        routestartdate: string | null;
-        routestarttime: string | null;
-        routestartodometer: string | number | null;
-      }
-    | { status: 1 | 2 }
-  >;
-};
-
-interface EndDayRequestItem {
-  routekey: string | number;
-  routeenddate: string;
-  routeendtime: string;
-  routeendodometer: string | number;
-  totaldocuments: string | number;
-  totalcash: string | number;
-  totalchecks: string | number;
-  totalorderamount: string | number;
-  totalinvoiceamount: string | number;
-  totalchargesales: string | number;
-  totalcashsales: string | number;
-  totalacctsreceivable: string | number;
-  totalexpenses: string | number;
-  inventoryvariance: string | number;
-  cashvariance: string | number;
-}
-
-type EndDayResponse = {
-  endday: Array<{
-    routekey: number;
-    routeenddate: string | null;
-    routeendtime: string | null;
-  }>;
-};
-
-interface LogoutRequestItem {
-  routekey: string | number;
-  routecode: string | number;
-  status?: string | number;
-}
-
-interface DeliveryResponse {
-  deliveryheader: Record<string, unknown>[];
-  deliverydetail: Record<string, unknown>[];
-}
-
-interface WarehouseStockResponse {
-  warehousestock: Record<string, unknown>[];
-}
-
-interface WhStockResponse {
-  whstock: Record<string, unknown>[];
-}
-
-interface CustomerBalanceResponse {
-  customerbalance: Record<string, unknown>[];
-}
-
-interface CustomerItemGroupResponse {
-  customeritemgrp: Record<string, unknown>[];
-  customeritemmap: Record<string, unknown>[];
-}
-
-interface OrderStatusResponse {
-  orderstatus: Record<string, unknown>[];
-}
-
-interface VisualDataResponse {
-  visualheader: Record<string, unknown>[];
-  visualdetail: Record<string, unknown>[];
-}
-
-interface CustomerMasterParams {
-  routecode?: string;
-  customercode?: string;
-}
-
-interface CustomerMasterQuery {
-  routecode?: string;
-  customercode?: string;
-}
-
-type CustomerMasterResponse = Record<string, unknown>;
-
-interface TransactionParams {
-  routekey?: string;
-  routecode?: string;
-}
-
-interface TransactionQuery {
-  routekey?: string;
-  routecode?: string;
-}
-
-interface TransactionCountRow {
-  TYPE: string;
-  CloudCount: string | number;
-}
-
-interface ImportInventoryCountRow {
-  TTYPE: string;
-  CloudCount: string | number;
-}
-
-export async function startDay(
+async function processStartDay(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<StartDayResponse> {
+) {
   const items = parseStartDayItems(request);
 
   if (items.length === 0) {
@@ -210,10 +90,10 @@ export async function startDay(
   });
 }
 
-export async function endDay(
+async function processEndDay(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<EndDayResponse> {
+) {
   const items = parseEndDayItems(request);
 
   if (items.length === 0) {
@@ -239,7 +119,7 @@ export async function endDay(
   });
 }
 
-export async function logout(
+async function processLogout(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
 ): Promise<void> {
@@ -256,10 +136,10 @@ export async function logout(
   });
 }
 
-export async function checkLoad(
+async function processCheckLoad(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<CheckLoadResponse> {
+) {
   const params = readLegacyParams(request);
   const isLoaded = await withTransaction((connection) =>
     checkRouteLoad(connection, requireParam(params, 'userid'), requireParam(params, 'routeid'))
@@ -268,10 +148,10 @@ export async function checkLoad(
   return isLoaded ? '1' : '0';
 }
 
-export async function getDelivery(
+async function processDelivery(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<DeliveryResponse> {
+) {
   const params = parseLegacyArrayParam(readLegacyParams(request), 'delivery');
 
   if (params.length === 0) {
@@ -281,10 +161,10 @@ export async function getDelivery(
   return withTransaction((connection) => getDeliveryData(connection, params[0] ?? {}));
 }
 
-export async function getWhStock(
+async function processWhStock(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<WhStockResponse> {
+) {
   const params = parseLegacyArrayParam(readLegacyParams(request), 'whstock');
 
   if (params.length === 0) {
@@ -298,7 +178,7 @@ export async function getWhStock(
   return { whstock };
 }
 
-export async function getCustomerInvoice(
+async function processCustomerInvoice(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
 ): Promise<Record<string, never>> {
@@ -309,7 +189,7 @@ export async function getCustomerInvoice(
   }
 
   await withTransaction(async (connection) => {
-    for (const item of items as TempCustomerInventoryItem[]) {
+    for (const item of items) {
       await saveTempCustomerInventory(connection, item);
     }
   });
@@ -317,10 +197,10 @@ export async function getCustomerInvoice(
   return {};
 }
 
-export async function getCustomerBalance(
+async function processCustomerBalance(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<CustomerBalanceResponse> {
+) {
   const params = parseLegacyArrayParam(readLegacyParams(request), 'customerbalance');
 
   if (params.length === 0) {
@@ -338,10 +218,10 @@ export async function getCustomerBalance(
   return { customerbalance };
 }
 
-export async function getWarehouseStock(
+async function processWarehouseStock(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<WarehouseStockResponse> {
+) {
   const params = readLegacyParams(request);
   const warehousestock = await withTransaction((connection) =>
     getWarehouseStockData(connection, requireParam(params, 'routeid'))
@@ -350,10 +230,10 @@ export async function getWarehouseStock(
   return { warehousestock };
 }
 
-export async function getOrderStatus(
+async function processOrderStatus(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<OrderStatusResponse> {
+) {
   const params = readLegacyParams(request);
   const orderstatus = await withTransaction((connection) =>
     getOrderStatusData(connection, readRequiredAnyParam(params, ['userid', 'routeid']))
@@ -362,10 +242,10 @@ export async function getOrderStatus(
   return { orderstatus };
 }
 
-export async function getCustomerItemGroup(
+async function processCustomerItemGroup(
   request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<CustomerItemGroupResponse> {
+) {
   const params = readLegacyParams(request);
 
   return withTransaction((connection) =>
@@ -373,19 +253,19 @@ export async function getCustomerItemGroup(
   );
 }
 
-export async function getVisualData(
+async function processVisualData(
   _request: LegacyTransactionRequest,
   _reply: LegacyTransactionReply
-): Promise<VisualDataResponse> {
+) {
   return withTransaction((connection) => getVisualDataSections(connection));
 }
 
-export async function getCustomerMaster(
+async function processCustomerMaster(
   request: LegacyTransactionRequest & {
-    params: CustomerMasterParams;
-    query: CustomerMasterQuery;
+    params: Record<string, string | undefined>;
+    query: Record<string, string | undefined>;
   }
-): Promise<CustomerMasterResponse> {
+) {
   const routeCode = readRequestParam(request, 'routecode');
   const customerCode = readRequestParam(request, 'customercode');
 
@@ -396,29 +276,29 @@ export async function getCustomerMaster(
   return customer ?? {};
 }
 
-export async function getTransactionData(
+async function processTransactionData(
   request: LegacyTransactionRequest & {
-    params: TransactionParams;
-    query: TransactionQuery;
+    params: Record<string, string | undefined>;
+    query: Record<string, string | undefined>;
   }
-): Promise<TransactionCountRow[]> {
+) {
   const routeKey = readTransactionParam(request, 'routekey');
 
   return withTransaction((connection) => getTransactionDataCounts(connection, routeKey));
 }
 
-export async function getImportInventoryCount(
+async function processImportInventoryCount(
   request: LegacyTransactionRequest & {
-    params: TransactionParams;
-    query: TransactionQuery;
+    params: Record<string, string | undefined>;
+    query: Record<string, string | undefined>;
   }
-): Promise<ImportInventoryCountRow[]> {
+) {
   const routeCode = readTransactionParam(request, 'routecode');
 
   return withTransaction((connection) => getImportInventoryCounts(connection, routeCode));
 }
 
-function parseStartDayItems(request: LegacyTransactionRequest): StartDayRequestItem[] {
+function parseStartDayItems(request: LegacyTransactionRequest): Record<string, any>[] {
   const rawStartDay = readLegacyParams(request).startday;
 
   if (rawStartDay === undefined || rawStartDay === null || rawStartDay === '') {
@@ -433,7 +313,7 @@ function parseStartDayItems(request: LegacyTransactionRequest): StartDayRequestI
   }
 }
 
-function parseEndDayItems(request: LegacyTransactionRequest): EndDayRequestItem[] {
+function parseEndDayItems(request: LegacyTransactionRequest): Record<string, any>[] {
   const rawEndDay = readLegacyParams(request).endday;
 
   if (rawEndDay === undefined || rawEndDay === null || rawEndDay === '') {
@@ -448,7 +328,7 @@ function parseEndDayItems(request: LegacyTransactionRequest): EndDayRequestItem[
   }
 }
 
-function parseLogoutItems(request: LegacyTransactionRequest): LogoutRequestItem[] {
+function parseLogoutItems(request: LegacyTransactionRequest): Record<string, any>[] {
   const rawLogout = readLegacyParams(request).logout;
 
   if (rawLogout === undefined || rawLogout === null || rawLogout === '') {
@@ -467,15 +347,15 @@ function normalizeDate(value: string): string {
   return String(value).trim().slice(0, 10);
 }
 
-function readLegacyParams(request: LegacyTransactionRequest): LegacyParams {
+function readLegacyParams(request: LegacyTransactionRequest): Record<string, any> {
   return {
     ...readLegacyBodyParams(request.body),
-    ...((request.params as LegacyParams | undefined) ?? {}),
-    ...((request.query as LegacyParams | undefined) ?? {})
+    ...((request.params as Record<string, any> | undefined) ?? {}),
+    ...((request.query as Record<string, any> | undefined) ?? {})
   };
 }
 
-function readLegacyBodyParams(body: unknown): LegacyParams {
+function readLegacyBodyParams(body: unknown): Record<string, any> {
   if (body === undefined || body === null || body === '') {
     return {};
   }
@@ -504,10 +384,10 @@ function readLegacyBodyParams(body: unknown): LegacyParams {
 
 function readRequestParam(
   request: LegacyTransactionRequest & {
-    params: CustomerMasterParams;
-    query: CustomerMasterQuery;
+    params: Record<string, string | undefined>;
+    query: Record<string, string | undefined>;
   },
-  field: keyof CustomerMasterParams
+  field: string
 ): string {
   const value =
     request.params[field] ?? request.query[field] ?? readLegacyBodyParams(request.body)[field];
@@ -521,10 +401,10 @@ function readRequestParam(
 
 function readTransactionParam(
   request: LegacyTransactionRequest & {
-    params: TransactionParams;
-    query: TransactionQuery;
+    params: Record<string, string | undefined>;
+    query: Record<string, string | undefined>;
   },
-  field: keyof TransactionParams
+  field: string
 ): string {
   const value =
     request.params[field] ?? request.query[field] ?? readLegacyBodyParams(request.body)[field];
@@ -536,7 +416,10 @@ function readTransactionParam(
   return String(value);
 }
 
-function parseLegacyArrayParam(params: LegacyParams, field: string): LegacyParams[] {
+function parseLegacyArrayParam(
+  params: Record<string, any>,
+  field: string
+): Record<string, any>[] {
   const value = params[field];
 
   if (value === undefined || value === null || value === '') {
@@ -555,7 +438,7 @@ function parseLegacyArrayParam(params: LegacyParams, field: string): LegacyParam
   }
 }
 
-function requireParam(params: LegacyParams, field: string): string | number {
+function requireParam(params: Record<string, any>, field: string): string | number {
   const value = params[field];
 
   if (value === undefined || value === null || value === '') {
@@ -569,7 +452,10 @@ function requireParam(params: LegacyParams, field: string): string | number {
   throw new ApiError(400, `Invalid ${field}`);
 }
 
-function readRequiredAnyParam(params: LegacyParams, fields: string[]): string | number {
+function readRequiredAnyParam(
+  params: Record<string, any>,
+  fields: string[]
+): string | number {
   for (const field of fields) {
     const value = params[field];
 
@@ -585,5 +471,122 @@ function readRequiredAnyParam(params: LegacyParams, fields: string[]): string | 
   }
 
   throw new ApiError(400, `Missing ${fields.join(' or ')}`);
+}
+
+export async function checkLoad(request: FastifyRequest, reply: FastifyReply): Promise<void> {
+  const result = await processCheckLoad(request, reply);
+  await reply.type('text/plain').send(result);
+}
+
+export async function endDay(
+  request: FastifyRequest<{ Querystring: Record<string, string | undefined> }>,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processEndDay(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function logout(
+  request: FastifyRequest<{ Querystring: Record<string, string | undefined> }>,
+  reply: FastifyReply
+): Promise<void> {
+  await processLogout(request, reply);
+  await reply.send('');
+}
+
+export async function getCustomerInvoice(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processCustomerInvoice(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function getCustomerBalance(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processCustomerBalance(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function getCustomerItemGroup(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processCustomerItemGroup(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function customerMaster(
+  request: FastifyRequest<{
+    Params: Record<string, string | undefined>;
+    Querystring: Record<string, string | undefined>;
+  }>,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processCustomerMaster(request);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function transactionData(
+  request: FastifyRequest<{
+    Params: Record<string, string | undefined>;
+    Querystring: Record<string, string | undefined>;
+  }>,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processTransactionData(request);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function importInventoryCount(
+  request: FastifyRequest<{
+    Params: Record<string, string | undefined>;
+    Querystring: Record<string, string | undefined>;
+  }>,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processImportInventoryCount(request);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function getDelivery(request: FastifyRequest, reply: FastifyReply): Promise<void> {
+  const result = await processDelivery(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function getOrderStatus(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processOrderStatus(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function getVisualData(request: FastifyRequest, reply: FastifyReply): Promise<void> {
+  const result = await processVisualData(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function getWarehouseStock(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processWarehouseStock(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function getWhStock(request: FastifyRequest, reply: FastifyReply): Promise<void> {
+  const result = await processWhStock(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function wsSendData(
+  request: FastifyRequest<{ Querystring: Record<string, string | undefined> }>,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await processStartDay(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
