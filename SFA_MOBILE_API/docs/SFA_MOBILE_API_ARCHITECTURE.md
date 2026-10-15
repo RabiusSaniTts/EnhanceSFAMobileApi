@@ -100,6 +100,10 @@ Main mobile route file:
 
 ```text
 src/modules/mobile/mobile.routes.ts
+src/modules/mobile/auth/auth.routes.ts
+src/modules/mobile/masterdatasync/masterdatasync.routes.ts
+src/modules/mobile/transactions/transactions.routes.ts
+src/modules/mobile/ws/ws.routes.ts
 ```
 
 This file keeps all mobile-facing endpoints in one place.

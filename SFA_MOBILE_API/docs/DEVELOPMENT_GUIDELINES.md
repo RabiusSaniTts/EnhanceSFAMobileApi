@@ -16,7 +16,16 @@ The mobile app should not know that Zend was replaced.
 src/modules/mobile/mobile.routes.ts
 ```
 
-Registers legacy mobile API endpoints and maps them to controllers.
+Acts as the central registrar for module-owned route files:
+
+```text
+auth/auth.routes.ts
+masterdatasync/masterdatasync.routes.ts
+transactions/transactions.routes.ts
+ws/ws.routes.ts
+```
+
+Each module route file registers its legacy endpoint paths and maps them to that module's controller.
 
 ```text
 src/modules/mobile/auth

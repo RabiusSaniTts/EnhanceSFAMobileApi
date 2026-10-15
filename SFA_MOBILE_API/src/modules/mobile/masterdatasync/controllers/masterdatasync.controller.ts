@@ -35,12 +35,14 @@ export async function masterDataSyncAction(
   const result = await withTransaction(async (connection) => {
     const routeId = Number(params.routeid);
     const userId = Number(params.userid);
+    const deviceId = params.deviceid;
+
     const settingSections = await getSettingSyncSections(connection, { routeId });
     const masterDataSections = await getMasterDataSyncSections(connection, { routeId });
     const transactionDataSections = await getTransactionDataSyncSections(connection, {
       routeId,
       userId,
-      deviceId: params.deviceid
+      deviceId
     });
 
     const { ControlPanel, Setup, companydetail, SalesmanMaster, RouteMaster, startendday, synctime, CurrencyMaster } = settingSections;
