@@ -14,6 +14,18 @@ The user confirmed the mobile app was tested after the recent refactor and every
 
 ## Recent Important Changes
 
+### 2026-10-15 Maintainability Refactor
+
+- Customer master and inventory summary uploads now use explicit query-level parameter and SQL mappings. Dynamic column constants and generated assignment SQL were removed from `customerService.model.ts` and `inventory.model.ts`.
+- Transaction parameter mapper functions were removed so bind values are visible beside their SQL operations.
+- `transactions/models/shared.model.ts` was removed. Its generic `required()` and `nullable()` helpers now live in `src/shared/utils/commonUtils.ts`.
+- Shared helpers added to `commonUtils.ts`: `toFixedDecimalString()`, `parseLegacyBodyValues()`, `parseLegacyRecordArray()`, `readOptionalRequestParam()`, and `readRequiredRequestParam()`.
+- Auth, WS, and transaction controllers now reuse shared legacy request parsing while preserving endpoint-specific validation messages.
+- WS start-day, end-day, and logout arrays now use one local `parseWsArrayItems()` helper.
+- End-day numeric defaults use the shared `required()` helper.
+- Master-sync Zend decimal formatting imports `toFixedDecimalString()` from `commonUtils.ts`; table-specific formatting remains local.
+- `npm run typecheck` and `npm run build` passed after these changes.
+
 - The auth module is the first module converted to modular MVC with a service layer:
 
 ```text
@@ -76,6 +88,10 @@ This file now contains helpers such as:
 - `normalizeLegacyRecords`
 - `asRecords`
 - `sanitizeFileName`
+- `required` and `nullable`
+- `toFixedDecimalString`
+- `parseLegacyBodyValues` and `parseLegacyRecordArray`
+- `readOptionalRequestParam` and `readRequiredRequestParam`
 - legacy date, null, number, and path-param helpers
 
 ## Verified Commands

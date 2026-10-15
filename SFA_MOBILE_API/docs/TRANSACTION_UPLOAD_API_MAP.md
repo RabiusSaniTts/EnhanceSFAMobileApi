@@ -259,7 +259,7 @@ Model responsibility split:
 | File | Responsibility |
 | --- | --- |
 | `ws/models/startEndDay.model.ts` | Start-day, end-day, logout route-key lookup, and route version/date checks. |
-| `shared/utils/commonUtils.ts` | Shared value normalization and reusable technical helpers. |
+| `shared/utils/commonUtils.ts` | Shared value normalization, legacy request parsing, request parameter reading, decimal formatting, and reusable technical helpers. |
 | `transactions/models/routeActivity.model.ts` | Customer operation control, visit log, route master upload, and customer route sequence status. |
 | `transactions/models/sales.model.ts` | Invoice, invoice detail, invoice RX detail, promotion detail, customer invoice, and batch expiry SQL. |
 | `transactions/models/orders.model.ts` | Sales order header/detail and order RX detail SQL. |
@@ -270,6 +270,8 @@ Model responsibility split:
 | `transactions/models/routeClose.model.ts` | Sync log, route-close check, suggested sales rebuild, posting cleanup, and average sales rebuild SQL. |
 
 Current refactor status: strict MVC is complete. The transaction controller owns workflow and the business models own SQL. There is no service, repository directory, or separate transaction type directory.
+
+Customer master and inventory summary uploads now use explicit query-level bind mappings and SQL assignments. Dynamic column arrays and generated assignment strings were removed so developers can inspect every uploaded field directly beside its SQL operation.
 
 ## Migration Order
 

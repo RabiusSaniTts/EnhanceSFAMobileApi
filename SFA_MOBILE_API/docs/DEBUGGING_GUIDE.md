@@ -75,9 +75,8 @@ mobile screen
 -> exact API URL
 -> src/modules/mobile/mobile.routes.ts
 -> controller
--> service
--> repository
--> database table
+-> model
+-> database table or tables
 -> response back to mobile
 ```
 
@@ -119,7 +118,7 @@ Check server log for:
 - SQL syntax error
 - missing table
 
-Fix usually belongs in repository mapping or SQL.
+Fix usually belongs in model bind mapping or SQL.
 
 ### Acknowledgement Not Received
 
@@ -158,7 +157,6 @@ Then trace:
 
 ```text
 controllers/transactions.controller.ts
--> controllers/transactions.controller.ts
 -> transactions/models/*.model.ts
 ```
 

@@ -194,17 +194,19 @@ Current common helpers include:
 - `normalizeLegacyRecords()`
 - `asRecords()`
 - `sanitizeFileName()`
+- `required()` and `nullable()`
+- `toFixedDecimalString()`
+- `parseLegacyBodyValues()` and `parseLegacyRecordArray()`
+- `readOptionalRequestParam()` and `readRequiredRequestParam()`
 - legacy date, number, null, and path-param helpers
 
 Use common utilities when the behavior is generic and reused by more than one area.
 
 Keep helpers local when they are business-specific, such as:
 
-- `mapInvoiceHeaderParams()`
-- `mapSalesOrderDetailParams()`
 - `toRouteTransactionSequence()`
 - `toZendTableCount()`
-- end-day-only defaulting logic
+- table-specific response formatting
 
 Simple rule:
 

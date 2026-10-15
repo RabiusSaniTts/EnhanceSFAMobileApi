@@ -439,14 +439,18 @@ Current responsibilities include:
 - `parseLegacyPathParams`: parses old Zend-style path params
 - `emptyStringToNull` and `nullToEmptyString`: maps empty/null values
 - `toLegacyNumber`: converts legacy numeric values safely
+- `required` and `nullable`: prevent undefined mysql2 bind values
+- `toFixedDecimalString`: preserves Zend four-decimal response values
 - `isPlainObject`: checks unknown values before object access
 - `stringValue`, `readScalar`, `normalizeLegacyRecords`, `asRecords`: generic legacy payload helpers
+- `parseLegacyBodyValues`, `parseLegacyRecordArray`: parse shared JSON, form, and array payload formats
+- `readOptionalRequestParam`, `readRequiredRequestParam`: read path, query, and legacy body parameters consistently
 - `sanitizeFileName`: protects uploaded image filenames
 - `buildInClause`: creates SQL placeholder lists
 - `tableExists`: checks optional database tables
 - `getLatestClosedRouteKey`: reads the latest closed route key
 
-Business-specific helpers should stay local to their module. For example, mapper-only formatting, route sequence calculations, and table-specific parameter mapping should not be moved into `commonUtils.ts`.
+Business-specific helpers should stay local to their module. For example, Zend table-count formatting, route sequence calculations, and table-specific response formatting should not be moved into `commonUtils.ts`.
 
 Important rule:
 
@@ -458,7 +462,7 @@ Use `null`, `0`, or required value mapping depending on the legacy stored proced
 
 The legacy Zend API depended heavily on MySQL stored procedures.
 
-The Node API is designed to replace stored procedure behavior with direct SQL inside repositories.
+The Node API replaces stored procedure behavior with direct SQL inside MVC model files.
 
 Architecture rule:
 
