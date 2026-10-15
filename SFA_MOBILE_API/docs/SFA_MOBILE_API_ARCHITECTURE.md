@@ -157,11 +157,11 @@ Purpose:
 Typical flow:
 
 ```text
-auth.controller.ts
-  -> auth.service.ts
-  -> repository/auth.repository.ts
-  -> auth.mapper.ts
+controllers/auth.controller.ts
+  -> models/auth.model.ts
 ```
+
+The auth module uses strict MVC. Its controller owns the small authentication workflow and calls the model directly.
 
 This module supports old `/api/index/...` endpoints that were previously handled by Zend `IndexController`.
 

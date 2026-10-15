@@ -4,12 +4,12 @@ This document maps important PhoneGap mobile calls to the Node.js API modules.
 
 ## Auth And Device
 
-| Mobile Purpose | Endpoint | Controller | Service/Repository |
+| Mobile Purpose | Endpoint | Controller | Model |
 | --- | --- | --- | --- |
-| Device company lookup | `/api/index/companyidbydevice/deviceid/:deviceid` | `auth.controller.ts` | `auth.service.ts`, `auth.repository.ts` |
-| Salesman login | `/api/index/salesmanlogin/username/:username/password/:password/deviceid/:deviceid` | `auth.controller.ts` | `auth.service.ts`, `auth.repository.ts` |
-| Version check | `/api/index/salesmanverchk/routecode/:routecode/verno/:verno` | `auth.controller.ts` | `auth.service.ts`, `auth.repository.ts` |
-| Sync date update | `/api/index/updatesyncdate/...` | `auth.controller.ts` | `auth.service.ts`, `auth.repository.ts` |
+| Device company lookup | `/api/index/companyidbydevice/deviceid/:deviceid` | `controllers/auth.controller.ts` | `models/auth.model.ts` |
+| Salesman login | `/api/index/salesmanlogin/username/:username/password/:password/deviceid/:deviceid` | `controllers/auth.controller.ts` | `models/auth.model.ts` |
+| Version check | `/api/index/salesmanverchk/routecode/:routecode/verno/:verno` | `controllers/auth.controller.ts` | `models/auth.model.ts` |
+| Sync date update | `/api/index/updatesyncdate/...` | `controllers/auth.controller.ts` | `models/auth.model.ts` |
 
 ## Master Data Sync
 

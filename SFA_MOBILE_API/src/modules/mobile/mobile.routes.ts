@@ -5,7 +5,7 @@ import {
   salesmanLogin,
   salesmanVersionCheck,
   updateSyncDate
-} from './auth/auth.controller';
+} from './auth/controllers/auth.controller';
 import {
   arTransactionDetailAction,
   customerSequenceAction,

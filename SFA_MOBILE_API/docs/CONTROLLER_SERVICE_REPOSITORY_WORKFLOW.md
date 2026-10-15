@@ -53,7 +53,7 @@ Route layer should not contain business logic or SQL.
 Controller files:
 
 ```text
-src/modules/mobile/auth/auth.controller.ts
+src/modules/mobile/auth/controllers/auth.controller.ts
 src/modules/mobile/masterdatasync/masterdatasync.controller.ts
 src/modules/mobile/transactions/transactions.controller.ts
 src/modules/mobile/ws/ws.controller.ts
@@ -96,7 +96,6 @@ Controller should not:
 Service files:
 
 ```text
-src/modules/mobile/auth/auth.service.ts
 src/modules/mobile/masterdatasync/masterdatasync.service.ts
 src/modules/mobile/transactions/transactions.service.ts
 src/modules/mobile/ws/ws.service.ts
@@ -142,7 +141,7 @@ Repository files are inside each module's `repository` folder.
 Examples:
 
 ```text
-src/modules/mobile/auth/repository/auth.repository.ts
+src/modules/mobile/auth/models/auth.model.ts
 src/modules/mobile/masterdatasync/repository/setting.repository.ts
 src/modules/mobile/masterdatasync/repository/masterData.repository.ts
 src/modules/mobile/masterdatasync/repository/transactionData.repository.ts
@@ -172,7 +171,6 @@ Repository should not:
 Mapper files:
 
 ```text
-auth.mapper.ts
 masterdatasync.mapper.ts
 ```
 
@@ -266,11 +264,11 @@ Flow:
 ```text
 mobile.routes.ts
   -> salesmanLogin()
-  -> auth.service.ts loginSalesman()
-  -> auth.repository.ts
-  -> auth.mapper.ts
+  -> models/auth.model.ts
   -> mobile response
 ```
+
+The auth module follows strict MVC and keeps its small authentication workflow in `controllers/auth.controller.ts`. Other modules may retain services where their business workflows are large.
 
 Controller:
 
@@ -289,7 +287,7 @@ The service handles login logic.
 
 The repository checks database records.
 
-The mapper formats the response expected by mobile.
+The auth service formats the small response expected by mobile directly. A separate auth mapper is unnecessary because the transformation is used only once.
 
 ## Full Example: Master Data Sync
 
