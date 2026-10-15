@@ -22,11 +22,11 @@ This document maps important PhoneGap mobile calls to the Node.js API modules.
 
 | Mobile Purpose | Endpoint | Controller | Service/Repository |
 | --- | --- | --- | --- |
-| Main upload | `/api/sync/senddata` | `transactions.controller.ts` | `transactions.service.ts`, transaction repositories |
-| Customer sequence upload | `/api/sync/custseq` | `transactions.controller.ts` | `transactions.service.ts`, `routeActivity.repository.ts` |
-| Invoice detail upload | `/api/sync/invtxndetail` | `transactions.controller.ts` | `transactions.service.ts`, sales repositories |
-| AR detail upload | `/api/sync/artxndetail` | `transactions.controller.ts` | `transactions.service.ts`, collection repositories |
-| Image upload | `/api/image/upload` | `transactions.controller.ts` | `transactions.service.ts` |
+| Main upload | `/api/sync/senddata` | `controllers/transactions.controller.ts` | `controllers/transactions.controller.ts`, transaction repositories |
+| Customer sequence upload | `/api/sync/custseq` | `controllers/transactions.controller.ts` | `controllers/transactions.controller.ts`, `routeActivity.model.ts` |
+| Invoice detail upload | `/api/sync/invtxndetail` | `controllers/transactions.controller.ts` | `controllers/transactions.controller.ts`, sales repositories |
+| AR detail upload | `/api/sync/artxndetail` | `controllers/transactions.controller.ts` | `controllers/transactions.controller.ts`, collection repositories |
+| Image upload | `/api/image/upload` | `controllers/transactions.controller.ts` | `controllers/transactions.controller.ts` |
 
 ## WS Legacy APIs
 

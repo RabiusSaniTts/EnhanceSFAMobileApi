@@ -12,7 +12,7 @@ import {
   invoiceTransactionDetailAction,
   sendDataAction,
   uploadImageAction
-} from './transactions/transactions.controller';
+} from './transactions/controllers/transactions.controller';
 import {
   checkLoad,
   customerMaster,

@@ -1,18 +1,11 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import type { LegacyUploadItem } from '../types/shared.types';
-import { nullable, required } from './shared.repository';
+import { nullable, required } from '../../../../shared/utils/commonUtils';
 
-type AccessOverrideLogUploadItem = LegacyUploadItem;
-type CustomerImageUploadItem = LegacyUploadItem;
-type PosEquipmentChangeDetailUploadItem = LegacyUploadItem;
-type PosMasterUploadItem = LegacyUploadItem;
-type SurveyAuditDetailUploadItem = LegacyUploadItem;
 
 export async function saveSurveyAuditDetail(
   connection: PoolConnection,
-  item: SurveyAuditDetailUploadItem
+  item: Record<string, any>
 ): Promise<boolean> {
-  const params = mapSurveyAuditDetailParams(item);
   const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
@@ -21,7 +14,11 @@ export async function saveSurveyAuditDetail(
       AND visitkey = :visitKey
       AND surveydefkey = :surveyDefKey
     `,
-    params
+    {
+      routeKey: required(item.routekey),
+      visitKey: required(item.visitkey),
+      surveyDefKey: required(item.surveydefkey)
+    }
   );
 
   if (Number(rows[0]?.count ?? 0) === 0) {
@@ -33,7 +30,16 @@ export async function saveSurveyAuditDetail(
           surveyrectype = :surveyRecType, lookuptype = :lookupType,
           surveyresponse = :surveyResponse
       `,
-      params
+      {
+        routeKey: required(item.routekey),
+        visitKey: required(item.visitkey),
+        surveyDefKey: required(item.surveydefkey),
+        surveyPage: nullable(item.surveypage),
+        surveyIndex: nullable(item.surveyindex),
+        surveyRecType: nullable(item.surveyrectype),
+        lookupType: nullable(item.lookuptype),
+        surveyResponse: nullable(item.surveyresponse)
+      }
     );
   } else {
     await connection.execute(
@@ -48,7 +54,16 @@ export async function saveSurveyAuditDetail(
         AND visitkey = :visitKey
         AND surveydefkey = :surveyDefKey
       `,
-      params
+      {
+        routeKey: required(item.routekey),
+        visitKey: required(item.visitkey),
+        surveyDefKey: required(item.surveydefkey),
+        surveyPage: nullable(item.surveypage),
+        surveyIndex: nullable(item.surveyindex),
+        surveyRecType: nullable(item.surveyrectype),
+        lookupType: nullable(item.lookuptype),
+        surveyResponse: nullable(item.surveyresponse)
+      }
     );
   }
 
@@ -57,9 +72,8 @@ export async function saveSurveyAuditDetail(
 
 export async function savePosEquipmentChangeDetail(
   connection: PoolConnection,
-  item: PosEquipmentChangeDetailUploadItem
+  item: Record<string, any>
 ): Promise<boolean> {
-  const params = mapPosEquipmentChangeDetailParams(item);
   const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
@@ -68,7 +82,11 @@ export async function savePosEquipmentChangeDetail(
       AND visitkey = :visitKey
       AND itemcode = :itemCode
     `,
-    params
+    {
+      routeKey: required(item.routekey),
+      visitKey: required(item.visitkey),
+      itemCode: required(item.itemcode)
+    }
   );
 
   if (Number(rows[0]?.count ?? 0) === 0) {
@@ -79,7 +97,15 @@ export async function savePosEquipmentChangeDetail(
           itemcode = :itemCode, quantity = :quantity, serialnumber = :serialNumber,
           instructioncode = :instructionCode
       `,
-      params
+      {
+        routeKey: required(item.routekey),
+        visitKey: required(item.visitkey),
+        posAction: nullable(item.posaction),
+        itemCode: required(item.itemcode),
+        quantity: nullable(item.quantity),
+        serialNumber: nullable(item.serialnumber),
+        instructionCode: nullable(item.instructioncode)
+      }
     );
   } else {
     await connection.execute(
@@ -92,7 +118,15 @@ export async function savePosEquipmentChangeDetail(
         AND visitkey = :visitKey
         AND itemcode = :itemCode
       `,
-      params
+      {
+        routeKey: required(item.routekey),
+        visitKey: required(item.visitkey),
+        posAction: nullable(item.posaction),
+        itemCode: required(item.itemcode),
+        quantity: nullable(item.quantity),
+        serialNumber: nullable(item.serialnumber),
+        instructionCode: nullable(item.instructioncode)
+      }
     );
   }
 
@@ -101,7 +135,7 @@ export async function savePosEquipmentChangeDetail(
 
 export async function savePosMaster(
   connection: PoolConnection,
-  item: PosMasterUploadItem
+  item: Record<string, any>
 ): Promise<number> {
   const [insertResult] = await connection.execute<ResultSetHeader>(
     `
@@ -133,9 +167,8 @@ export async function savePosMaster(
 
 export async function saveCustomerImage(
   connection: PoolConnection,
-  item: CustomerImageUploadItem
+  item: Record<string, any>
 ): Promise<boolean> {
-  const params = mapCustomerImageParams(item);
   const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
     `
       SELECT COUNT(*) AS count
@@ -144,7 +177,11 @@ export async function saveCustomerImage(
       AND routekey = :routeKey
       AND customercode = :customerCode
     `,
-    params
+    {
+      imageName: required(item.imagename),
+      routeKey: required(item.routekey),
+      customerCode: required(item.customercode)
+    }
   );
 
   if (Number(rows[0]?.count ?? 0) > 0) {
@@ -164,7 +201,17 @@ export async function saveCustomerImage(
         transactiontime = :transactionTime,
         visitkey = :visitKey
     `,
-    params
+    {
+      imageName: required(item.imagename),
+      customerCode: required(item.customercode),
+      imageNo: nullable(item.imageno),
+      imagePath: nullable(item.imagepath),
+      routeCode: required(item.routecode),
+      routeKey: required(item.routekey),
+      transactionDate: nullable(item.transactiondate),
+      transactionTime: nullable(item.transactiontime),
+      visitKey: required(item.visitkey)
+    }
   );
 
   return insertResult.insertId > 0;
@@ -172,7 +219,7 @@ export async function saveCustomerImage(
 
 export async function saveAccessOverrideLog(
   connection: PoolConnection,
-  item: AccessOverrideLogUploadItem
+  item: Record<string, any>
 ): Promise<boolean> {
   await connection.execute(
     `
@@ -207,41 +254,3 @@ export async function saveAccessOverrideLog(
   return Number(item.routekey) > 0;
 }
 
-function mapSurveyAuditDetailParams(item: SurveyAuditDetailUploadItem) {
-  return {
-    routeKey: required(item.routekey),
-    visitKey: required(item.visitkey),
-    surveyDefKey: required(item.surveydefkey),
-    surveyPage: nullable(item.surveypage),
-    surveyIndex: nullable(item.surveyindex),
-    surveyRecType: nullable(item.surveyrectype),
-    lookupType: nullable(item.lookuptype),
-    surveyResponse: nullable(item.surveyresponse)
-  };
-}
-
-function mapPosEquipmentChangeDetailParams(item: PosEquipmentChangeDetailUploadItem) {
-  return {
-    routeKey: required(item.routekey),
-    visitKey: required(item.visitkey),
-    posAction: nullable(item.posaction),
-    itemCode: required(item.itemcode),
-    quantity: nullable(item.quantity),
-    serialNumber: nullable(item.serialnumber),
-    instructionCode: nullable(item.instructioncode)
-  };
-}
-
-function mapCustomerImageParams(item: CustomerImageUploadItem) {
-  return {
-    imageName: required(item.imagename),
-    customerCode: required(item.customercode),
-    imageNo: nullable(item.imageno),
-    imagePath: nullable(item.imagepath),
-    routeCode: required(item.routecode),
-    routeKey: required(item.routekey),
-    transactionDate: nullable(item.transactiondate),
-    transactionTime: nullable(item.transactiontime),
-    visitKey: required(item.visitkey)
-  };
-}

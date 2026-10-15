@@ -61,6 +61,22 @@ export function readScalar(value: unknown): string | number | null {
   return null;
 }
 
+export function required(value: unknown): string | number {
+  return nullable(value) ?? 0;
+}
+
+export function nullable(value: unknown): string | number | null {
+  if (typeof value === 'number') {
+    return value;
+  }
+
+  if (typeof value === 'string') {
+    return value === '' ? null : value;
+  }
+
+  return null;
+}
+
 export function normalizeLegacyRecords(value: unknown): Record<string, unknown>[] {
   if (Array.isArray(value)) {
     return value.filter(isPlainObject);
