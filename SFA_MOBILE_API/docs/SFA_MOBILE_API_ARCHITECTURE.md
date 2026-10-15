@@ -60,8 +60,8 @@ Example for transaction upload:
 ```text
 /api/sync/senddata
   -> mobile.routes.ts
-  -> transactions.controller.ts
-  -> transactions.service.ts
+  -> controllers/transactions.controller.ts
+  -> controllers/transactions.controller.ts
   -> repository files by business area
   -> MySQL transaction
   -> acknowledgement response
@@ -291,47 +291,38 @@ Handles mobile upload APIs, mainly:
 Important files:
 
 ```text
-transactions.controller.ts
-transactions.service.ts
-repository/*
-types/shared.types.ts
-types/routeActivity.types.ts
-types/sales.types.ts
-types/senddata.types.ts
+controllers/transactions.controller.ts
+models/*
 ```
 
-Small alias-only upload types for orders, collections, inventory, customer service, and audit/POS are defined beside the service or repository functions that use them.
+### Transaction Model Split
 
-### Transaction Repository Split
-
-Repositories are split by business area:
+Models are split by business area:
 
 ```text
-auditExtra.repository.ts
-collections.repository.ts
-customerService.repository.ts
-inventory.repository.ts
-orders.repository.ts
-routeActivity.repository.ts
-routeClose.repository.ts
-sales.repository.ts
-shared.repository.ts
-transaction.repository.ts
-transactionDetail.repository.ts
+auditExtra.model.ts
+collections.model.ts
+customerService.model.ts
+inventory.model.ts
+orders.model.ts
+routeActivity.model.ts
+routeClose.model.ts
+sales.model.ts
+transactionDetail.model.ts
 ```
 
-This avoids one very large upload repository and makes maintenance easier.
+This avoids one very large SQL model and makes maintenance easier.
 
 Example responsibilities:
 
-- `sales.repository.ts`: invoice header/detail, invoice RXD, promotion detail, batch expiry, customer invoice
-- `orders.repository.ts`: sales order header/detail, order RXD
-- `collections.repository.ts`: AR header/detail, cash/check detail
-- `inventory.repository.ts`: inventory transaction header/detail, inventory summary
-- `routeActivity.repository.ts`: visit log, route master updates, customer operations, customer sequence
-- `customerService.repository.ts`: customer inventory, no sales, non-serviced customer, route goal, FOC balance
-- `auditExtra.repository.ts`: survey audit, POS, images, override logs
-- `routeClose.repository.ts`: post-upload route close and sequence behavior
+- `sales.model.ts`: invoice header/detail, invoice RXD, promotion detail, batch expiry, customer invoice
+- `orders.model.ts`: sales order header/detail, order RXD
+- `collections.model.ts`: AR header/detail, cash/check detail
+- `inventory.model.ts`: inventory transaction header/detail, inventory summary
+- `routeActivity.model.ts`: visit log, route master updates, customer operations, customer sequence
+- `customerService.model.ts`: customer inventory, no sales, non-serviced customer, route goal, FOC balance
+- `auditExtra.model.ts`: survey audit, POS, images, override logs
+- `routeClose.model.ts`: post-upload route close and sequence behavior
 
 ### Transaction Upload Flow
 

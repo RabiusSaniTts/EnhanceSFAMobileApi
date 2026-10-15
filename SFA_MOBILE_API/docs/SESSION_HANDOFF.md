@@ -51,15 +51,8 @@ masterdatasync/models/transactionData.model.ts
   - removed `transactions/transactions.types.ts`
   - removed `ws/types/startEndDay.types.ts`
   - removed `ws/types/wsLookup.types.ts`
-  - removed alias-only transaction type files for orders, collections, inventory, customer service, and audit/POS
-- Small request, response, and database row types now live beside the controller, service, or repository functions that use them. Remaining shared transaction type files are:
-
-```text
-transactions/types/shared.types.ts
-transactions/types/routeActivity.types.ts
-transactions/types/sales.types.ts
-transactions/types/senddata.types.ts
-```
+  - removed all transaction type files
+- Transactions now use strict MVC with `controllers/transactions.controller.ts` and business SQL files under `models/`. Upload order, transaction rollback behavior, endpoint responses, and image upload behavior remain unchanged.
 
 - Master sync models were simplified so top-level sync functions directly show each returned array.
 - Unused wrapper functions were removed from:

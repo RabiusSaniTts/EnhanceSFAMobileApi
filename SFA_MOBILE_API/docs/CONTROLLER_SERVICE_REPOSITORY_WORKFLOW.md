@@ -55,7 +55,7 @@ Controller files:
 ```text
 src/modules/mobile/auth/controllers/auth.controller.ts
 src/modules/mobile/masterdatasync/controllers/masterdatasync.controller.ts
-src/modules/mobile/transactions/transactions.controller.ts
+src/modules/mobile/transactions/controllers/transactions.controller.ts
 src/modules/mobile/ws/controllers/ws.controller.ts
 ```
 
@@ -78,11 +78,11 @@ Controller responsibilities:
 - receive `FastifyRequest`
 - receive `FastifyReply`
 - read path params, query params, or body when needed
-- call the service
+- run the module workflow or call the relevant model
 - send the final response
 - set response content type when legacy mobile expects it
 
-Controller should stay thin.
+Auth and lookup controllers stay thin. The transaction controller also owns upload orchestration because this project uses strict MVC without a service layer.
 
 Controller should not:
 
@@ -91,15 +91,9 @@ Controller should not:
 - know table insert order
 - duplicate stored procedure logic
 
-## Service Layer
+## Transaction Workflow
 
-Service files:
-
-```text
-src/modules/mobile/transactions/transactions.service.ts
-```
-
-The service layer is the business workflow layer.
+The transaction controller is the business workflow layer.
 
 It decides what needs to happen and in which order.
 
@@ -119,22 +113,20 @@ sendData()
   -> return acknowledgement response
 ```
 
-Service responsibilities:
+Transaction controller responsibilities:
 
 - parse legacy mobile payloads
 - validate or normalize important values
-- call repositories in correct business order
+- call models in correct business order
 - manage transaction boundaries through `withTransaction`
-- build service-level response objects
+- build Zend-compatible response objects
 - preserve Zend-compatible behavior
 
-Service should not directly expose Fastify details except where legacy request parsing requires the original request object.
+The controller does not contain SQL. SQL belongs in models.
 
-Service should avoid writing SQL directly. SQL belongs in repositories.
+## Model Layer
 
-## Repository Layer
-
-Repository files are inside each module's `repository` folder.
+Model files are inside each module's `models` folder.
 
 Examples:
 
@@ -143,22 +135,22 @@ src/modules/mobile/auth/models/auth.model.ts
 src/modules/mobile/masterdatasync/models/setting.model.ts
 src/modules/mobile/masterdatasync/models/masterData.model.ts
 src/modules/mobile/masterdatasync/models/transactionData.model.ts
-src/modules/mobile/transactions/repository/sales.repository.ts
-src/modules/mobile/transactions/repository/inventory.repository.ts
-src/modules/mobile/transactions/repository/collections.repository.ts
+src/modules/mobile/transactions/models/sales.model.ts
+src/modules/mobile/transactions/models/inventory.model.ts
+src/modules/mobile/transactions/models/collections.model.ts
 src/modules/mobile/ws/models/startEndDay.model.ts
 ```
 
-Repository responsibilities:
+Model responsibilities:
 
 - execute SQL
 - read from MySQL
 - insert/update/delete records
 - map JavaScript values into SQL parameters
 - avoid passing `undefined` to mysql2
-- return database result data to service
+- return database result data to the controller
 
-Repository should not:
+Models should not:
 
 - know Fastify request or reply objects
 - decide HTTP response format
@@ -170,23 +162,7 @@ Auth, WS, and master sync use strict MVC and do not have separate mapper files. 
 
 ## Type Placement
 
-This project now keeps most small request, response, and database row types beside the functions that use them. This avoids jumping between files for simple route params or one-query result shapes.
-
-Remaining shared transaction type files:
-
-```text
-transactions/types/shared.types.ts
-transactions/types/routeActivity.types.ts
-transactions/types/sales.types.ts
-transactions/types/senddata.types.ts
-```
-
-Type responsibilities:
-
-- document important request params
-- document large upload payload objects
-- document response structures
-- help TypeScript catch mistakes before runtime
+The strict MVC mobile modules do not use separate `.types.ts` files. Legacy upload rows use flexible records because payload values vary between PhoneGap versions.
 
 Example:
 
@@ -321,26 +297,26 @@ Flow:
 ```text
 mobile.routes.ts
   -> sendDataAction()
-  -> transactions.service.ts sendData()
-  -> transactions repository files
+  -> controllers/transactions.controller.ts sendData()
+  -> transactions model files
   -> MySQL transaction
   -> acknowledgement response
 ```
 
-Important repositories:
+Important models:
 
 ```text
-routeActivity.repository.ts
-sales.repository.ts
-orders.repository.ts
-collections.repository.ts
-inventory.repository.ts
-customerService.repository.ts
-auditExtra.repository.ts
-routeClose.repository.ts
+routeActivity.model.ts
+sales.model.ts
+orders.model.ts
+collections.model.ts
+inventory.model.ts
+customerService.model.ts
+auditExtra.model.ts
+routeClose.model.ts
 ```
 
-Why service order matters:
+Why controller workflow order matters:
 
 - invoice detail needs the saved invoice header key
 - order detail needs the saved order header key
@@ -348,7 +324,7 @@ Why service order matters:
 - inventory detail needs the saved inventory header/detail key
 - route close post-processing should run after upload data is saved
 
-The service stores key mappings while processing:
+The controller stores key mappings while processing:
 
 ```text
 mobile transaction key -> database transaction key
@@ -369,8 +345,8 @@ Flow:
 ```text
 mobile.routes.ts
   -> customerSequenceAction()
-  -> transactions.service.ts customerSequence()
-  -> routeActivity.repository.ts saveCustomerSequence()
+  -> controllers/transactions.controller.ts customerSequence()
+  -> routeActivity.model.ts saveCustomerSequence()
   -> response
 ```
 
@@ -378,7 +354,7 @@ Purpose:
 
 The native Java mobile flow sends route sequence customer status separately.
 
-Service parses the request array and saves each item.
+The controller parses the request array and saves each item.
 
 Response remains Zend-style:
 

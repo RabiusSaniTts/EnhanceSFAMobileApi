@@ -27,14 +27,9 @@ import {
   getImportInventoryCounts,
   getTransactionDataCounts
 } from '../models/transactionLookup.model';
-import type {
-  LegacyTransactionReply,
-  LegacyTransactionRequest
-} from '../../transactions/types/shared.types';
-
 async function processStartDay(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const items = parseStartDayItems(request);
 
@@ -91,8 +86,8 @@ async function processStartDay(
 }
 
 async function processEndDay(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const items = parseEndDayItems(request);
 
@@ -120,8 +115,8 @@ async function processEndDay(
 }
 
 async function processLogout(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ): Promise<void> {
   const items = parseLogoutItems(request);
 
@@ -137,8 +132,8 @@ async function processLogout(
 }
 
 async function processCheckLoad(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const params = readLegacyParams(request);
   const isLoaded = await withTransaction((connection) =>
@@ -149,8 +144,8 @@ async function processCheckLoad(
 }
 
 async function processDelivery(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const params = parseLegacyArrayParam(readLegacyParams(request), 'delivery');
 
@@ -162,8 +157,8 @@ async function processDelivery(
 }
 
 async function processWhStock(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const params = parseLegacyArrayParam(readLegacyParams(request), 'whstock');
 
@@ -179,8 +174,8 @@ async function processWhStock(
 }
 
 async function processCustomerInvoice(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ): Promise<Record<string, never>> {
   const items = parseLegacyArrayParam(readLegacyParams(request), 'tempcustomerinventory');
 
@@ -198,8 +193,8 @@ async function processCustomerInvoice(
 }
 
 async function processCustomerBalance(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const params = parseLegacyArrayParam(readLegacyParams(request), 'customerbalance');
 
@@ -219,8 +214,8 @@ async function processCustomerBalance(
 }
 
 async function processWarehouseStock(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const params = readLegacyParams(request);
   const warehousestock = await withTransaction((connection) =>
@@ -231,8 +226,8 @@ async function processWarehouseStock(
 }
 
 async function processOrderStatus(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const params = readLegacyParams(request);
   const orderstatus = await withTransaction((connection) =>
@@ -243,8 +238,8 @@ async function processOrderStatus(
 }
 
 async function processCustomerItemGroup(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   const params = readLegacyParams(request);
 
@@ -254,14 +249,14 @@ async function processCustomerItemGroup(
 }
 
 async function processVisualData(
-  _request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
+  _request: FastifyRequest,
+  _reply: FastifyReply
 ) {
   return withTransaction((connection) => getVisualDataSections(connection));
 }
 
 async function processCustomerMaster(
-  request: LegacyTransactionRequest & {
+  request: FastifyRequest & {
     params: Record<string, string | undefined>;
     query: Record<string, string | undefined>;
   }
@@ -277,7 +272,7 @@ async function processCustomerMaster(
 }
 
 async function processTransactionData(
-  request: LegacyTransactionRequest & {
+  request: FastifyRequest & {
     params: Record<string, string | undefined>;
     query: Record<string, string | undefined>;
   }
@@ -288,7 +283,7 @@ async function processTransactionData(
 }
 
 async function processImportInventoryCount(
-  request: LegacyTransactionRequest & {
+  request: FastifyRequest & {
     params: Record<string, string | undefined>;
     query: Record<string, string | undefined>;
   }
@@ -298,7 +293,7 @@ async function processImportInventoryCount(
   return withTransaction((connection) => getImportInventoryCounts(connection, routeCode));
 }
 
-function parseStartDayItems(request: LegacyTransactionRequest): Record<string, any>[] {
+function parseStartDayItems(request: FastifyRequest): Record<string, any>[] {
   const rawStartDay = readLegacyParams(request).startday;
 
   if (rawStartDay === undefined || rawStartDay === null || rawStartDay === '') {
@@ -313,7 +308,7 @@ function parseStartDayItems(request: LegacyTransactionRequest): Record<string, a
   }
 }
 
-function parseEndDayItems(request: LegacyTransactionRequest): Record<string, any>[] {
+function parseEndDayItems(request: FastifyRequest): Record<string, any>[] {
   const rawEndDay = readLegacyParams(request).endday;
 
   if (rawEndDay === undefined || rawEndDay === null || rawEndDay === '') {
@@ -328,7 +323,7 @@ function parseEndDayItems(request: LegacyTransactionRequest): Record<string, any
   }
 }
 
-function parseLogoutItems(request: LegacyTransactionRequest): Record<string, any>[] {
+function parseLogoutItems(request: FastifyRequest): Record<string, any>[] {
   const rawLogout = readLegacyParams(request).logout;
 
   if (rawLogout === undefined || rawLogout === null || rawLogout === '') {
@@ -347,7 +342,7 @@ function normalizeDate(value: string): string {
   return String(value).trim().slice(0, 10);
 }
 
-function readLegacyParams(request: LegacyTransactionRequest): Record<string, any> {
+function readLegacyParams(request: FastifyRequest): Record<string, any> {
   return {
     ...readLegacyBodyParams(request.body),
     ...((request.params as Record<string, any> | undefined) ?? {}),
@@ -383,7 +378,7 @@ function readLegacyBodyParams(body: unknown): Record<string, any> {
 }
 
 function readRequestParam(
-  request: LegacyTransactionRequest & {
+  request: FastifyRequest & {
     params: Record<string, string | undefined>;
     query: Record<string, string | undefined>;
   },
@@ -400,7 +395,7 @@ function readRequestParam(
 }
 
 function readTransactionParam(
-  request: LegacyTransactionRequest & {
+  request: FastifyRequest & {
     params: Record<string, string | undefined>;
     query: Record<string, string | undefined>;
   },

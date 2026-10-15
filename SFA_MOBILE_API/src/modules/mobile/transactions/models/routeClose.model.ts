@@ -1,16 +1,9 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
-import { required } from './shared.repository';
-
-type SendDataPostProcessingParams = {
-  userid: string | number | null;
-  routecode: string | number | null;
-  routekey: string | number | null;
-  routeclosed: string | number | null;
-};
+import { required } from '../../../../shared/utils/commonUtils';
 
 export async function runSendDataPostProcessing(
   connection: PoolConnection,
-  params: SendDataPostProcessingParams
+  params: Record<string, any>
 ): Promise<void> {
   await insertSyncLog(connection, params);
 
@@ -23,7 +16,7 @@ export async function runSendDataPostProcessing(
 
 async function insertSyncLog(
   connection: PoolConnection,
-  params: SendDataPostProcessingParams
+  params: Record<string, any>
 ): Promise<void> {
   if (Number(params.userid ?? 0) === 0 || Number(params.routekey ?? 0) === 0) {
     return;

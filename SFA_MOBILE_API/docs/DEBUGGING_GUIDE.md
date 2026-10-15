@@ -157,9 +157,9 @@ For `/api/sync/senddata`, find which array mobile uploaded:
 Then trace:
 
 ```text
-transactions.controller.ts
--> transactions.service.ts
--> transactions/repository/*.repository.ts
+controllers/transactions.controller.ts
+-> controllers/transactions.controller.ts
+-> transactions/models/*.model.ts
 ```
 
 If the log says a bind value is `undefined`, map that field to `null` or the old Zend default value.

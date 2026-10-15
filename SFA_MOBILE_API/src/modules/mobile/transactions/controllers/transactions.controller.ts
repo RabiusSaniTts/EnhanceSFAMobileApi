@@ -1,17 +1,23 @@
-import { withTransaction } from '../../../shared/db/transaction';
-import { ApiError } from '../../../shared/middleware/errors';
+import { createWriteStream } from 'fs';
+import { mkdir } from 'fs/promises';
+import path from 'path';
+import { pipeline } from 'stream/promises';
+import type { FastifyReply, FastifyRequest } from 'fastify';
+import { withTransaction } from '../../../../shared/db/transaction';
+import { ApiError } from '../../../../shared/middleware/errors';
 import {
   asRecords,
   isPlainObject,
   normalizeLegacyRecords,
-  readScalar
-} from '../../../shared/utils/commonUtils';
+  readScalar,
+  sanitizeFileName
+} from '../../../../shared/utils/commonUtils';
 import {
   saveCustomerOperationControl,
   saveCustomerSequence,
   saveCustomerVisitLog,
   updateRouteMasterFromUpload
-} from './repository/routeActivity.repository';
+} from '../models/routeActivity.model';
 import {
   saveBatchExpiryDetail,
   saveCustomerInvoice,
@@ -19,18 +25,18 @@ import {
   saveInvoiceHeader,
   saveInvoiceRxdDetail,
   savePromotionDetail
-} from './repository/sales.repository';
+} from '../models/sales.model';
 import {
   saveOrderRxdDetail,
   saveSalesOrderDetail,
   saveSalesOrderHeader
-} from './repository/orders.repository';
-import { saveArDetail, saveArHeader, saveCashCheckDetail } from './repository/collections.repository';
+} from '../models/orders.model';
+import { saveArDetail, saveArHeader, saveCashCheckDetail } from '../models/collections.model';
 import {
   saveInventorySummaryDetail,
   saveInventoryTransactionDetail,
   saveInventoryTransactionHeader
-} from './repository/inventory.repository';
+} from '../models/inventory.model';
 import {
   saveCustomerDistributionCheck,
   saveCustomerFocBalance,
@@ -41,80 +47,39 @@ import {
   saveNoSalesHeader,
   saveNonServicedCustomer,
   saveRouteGoal
-} from './repository/customerService.repository';
+} from '../models/customerService.model';
 import {
   saveAccessOverrideLog,
   saveCustomerImage,
   savePosEquipmentChangeDetail,
   savePosMaster,
   saveSurveyAuditDetail
-} from './repository/auditExtra.repository';
-import { runSendDataPostProcessing } from './repository/routeClose.repository';
+} from '../models/auditExtra.model';
+import { runSendDataPostProcessing } from '../models/routeClose.model';
 import {
   saveArTransactionDetail,
   saveInvoiceTransactionDetail
-} from './repository/transactionDetail.repository';
-import type {
-  CustomerOperationControlItem,
-  CustomerSequenceRequestItem,
-  CustomerSequenceResponse,
-  CustomerVisitLogItem,
-  RouteMasterUploadItem
-} from './types/routeActivity.types';
-import type {
-  BatchExpiryDetailUploadItem,
-  CustomerInvoiceUploadItem,
-  InvoiceDetailUploadItem,
-  InvoiceHeaderUploadItem,
-  InvoiceRxdDetailUploadItem,
-  PromotionDetailUploadItem
-} from './types/sales.types';
-import { SEND_DATA_ARRAY_FIELDS } from './types/senddata.types';
-import type {
-  ArTransactionDetailItem,
-  ArTransactionDetailResponse,
-  InvoiceTransactionDetailItem,
-  InvoiceTransactionDetailResponse,
-  SendDataArrayField,
-  SendDataPayload,
-  SendDataResponse
-} from './types/senddata.types';
-import type {
-  LegacyUploadItem,
-  LegacyTransactionReply,
-  LegacyTransactionRequest
-} from './types/shared.types';
+} from '../models/transactionDetail.model';
+const SEND_DATA_ARRAY_FIELDS = [
+  'invoicedetail', 'invoiceheader', 'invoicerxddetail', 'promotiondetail',
+  'customerinvoice', 'salesorderheader', 'salesorderdetail', 'orderrxddetail',
+  'batchexpirydetail', 'arheader', 'ardetail', 'cashcheckdetail',
+  'inventorytransactionheader', 'inventorytransactiondetail',
+  'inventorysummarydetail', 'nonservicedcustomer', 'surveyauditdetail',
+  'posequipmentchangedetail', 'posmaster', 'sigcapturedata', 'customermaster',
+  'customeroperationscontrol', 'routemaster', 'customerinventorydetail',
+  'routesequencecustomerstatus', 'routegoal', 'nosalesheader',
+  'customer_foc_balance', 'enddaydetail', 't_access_override_log',
+  'customerinventorycheck', 'customerimages', 'customervisitlog',
+  'visualsfeedback', 'promotions_remark', 'customerdistributioncheck'
+] as const;
 
-type AccessOverrideLogUploadItem = LegacyUploadItem;
-type ArDetailUploadItem = LegacyUploadItem;
-type ArHeaderUploadItem = LegacyUploadItem;
-type CashCheckDetailUploadItem = LegacyUploadItem;
-type CustomerDistributionCheckUploadItem = LegacyUploadItem;
-type CustomerFocBalanceUploadItem = LegacyUploadItem;
-type CustomerImageUploadItem = LegacyUploadItem;
-type CustomerInventoryCheckUploadItem = LegacyUploadItem;
-type CustomerInventoryDetailUploadItem = LegacyUploadItem;
-type CustomerMasterUploadItem = LegacyUploadItem;
-type EndDayDetailUploadItem = LegacyUploadItem;
-type InventorySummaryDetailUploadItem = LegacyUploadItem;
-type InventoryTransactionDetailUploadItem = LegacyUploadItem;
-type InventoryTransactionHeaderUploadItem = LegacyUploadItem;
-type NoSalesHeaderUploadItem = LegacyUploadItem;
-type NonServicedCustomerUploadItem = LegacyUploadItem;
-type OrderRxdDetailUploadItem = LegacyUploadItem;
-type PosEquipmentChangeDetailUploadItem = LegacyUploadItem;
-type PosMasterUploadItem = LegacyUploadItem;
-type RouteGoalUploadItem = LegacyUploadItem;
-type SalesOrderDetailUploadItem = LegacyUploadItem;
-type SalesOrderHeaderUploadItem = LegacyUploadItem;
-type SurveyAuditDetailUploadItem = LegacyUploadItem;
-
-type MutableSendDataResponse = Record<SendDataArrayField, Record<string, unknown>[]>;
+const CUSTOMER_IMAGE_DIR = path.resolve(process.cwd(), 'public', 'customerimage');
 
 export async function sendData(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
-): Promise<SendDataResponse> {
+  request: FastifyRequest,
+  _reply: FastifyReply
+): Promise<Record<string, any>> {
   const payload = parseSendDataPayload(request);
 
   return withTransaction(async (connection) => {
@@ -124,7 +89,7 @@ export async function sendData(
     const arTransactionKeys = new Map<string, number>();
     const inventoryDetailKeys = new Map<string, number>();
 
-    for (const item of asRecords<CustomerOperationControlItem>(payload.customeroperationscontrol)) {
+    for (const item of asRecords<Record<string, any>>(payload.customeroperationscontrol)) {
       if (await saveCustomerOperationControl(connection, item)) {
         response.customeroperationscontrol.push({
           routekey: item.routekey,
@@ -134,7 +99,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerVisitLogItem>(payload.customervisitlog)) {
+    for (const item of asRecords<Record<string, any>>(payload.customervisitlog)) {
       if (await saveCustomerVisitLog(connection, item)) {
         response.customervisitlog.push({
           routekey: item.routekey,
@@ -144,7 +109,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerMasterUploadItem>(payload.customermaster)) {
+    for (const item of asRecords<Record<string, any>>(payload.customermaster)) {
       if (await saveCustomerMaster(connection, item)) {
         response.customermaster.push({
           customercode: item.customercode
@@ -152,13 +117,13 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<RouteMasterUploadItem>(payload.routemaster)) {
+    for (const item of asRecords<Record<string, any>>(payload.routemaster)) {
       if (await updateRouteMasterFromUpload(connection, item)) {
         response.routemaster.push({ routecode: item.routecode });
       }
     }
 
-    for (const item of asRecords<CustomerSequenceRequestItem>(payload.routesequencecustomerstatus)) {
+    for (const item of asRecords<Record<string, any>>(payload.routesequencecustomerstatus)) {
       if (await saveCustomerSequence(connection, item)) {
         response.routesequencecustomerstatus.push({
           routekey: item.routekey,
@@ -167,7 +132,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<InvoiceHeaderUploadItem>(payload.invoiceheader)) {
+    for (const item of asRecords<Record<string, any>>(payload.invoiceheader)) {
       const transactionKey = await saveInvoiceHeader(connection, item);
       invoiceTransactionKeys.set(String(Number(item.transactionkey)), transactionKey);
 
@@ -179,7 +144,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<InvoiceDetailUploadItem>(payload.invoicedetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.invoicedetail)) {
       const transactionKey = invoiceTransactionKeys.get(String(Number(item.transactionkey)));
 
       if (transactionKey === undefined) {
@@ -195,7 +160,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<InvoiceRxdDetailUploadItem>(payload.invoicerxddetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.invoicerxddetail)) {
       const transactionKey = invoiceTransactionKeys.get(String(Number(item.transactionkey)));
 
       if (transactionKey === undefined) {
@@ -211,7 +176,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<PromotionDetailUploadItem>(payload.promotiondetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.promotiondetail)) {
       if (String(item.itemtransactiontype) === '4') {
         continue;
       }
@@ -231,7 +196,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerInvoiceUploadItem>(payload.customerinvoice)) {
+    for (const item of asRecords<Record<string, any>>(payload.customerinvoice)) {
       if (await saveCustomerInvoice(connection, item)) {
         response.customerinvoice.push({
           transactionkey: item.transactionkey
@@ -239,7 +204,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<BatchExpiryDetailUploadItem>(payload.batchexpirydetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.batchexpirydetail)) {
       if (await saveBatchExpiryDetail(connection, item)) {
         response.batchexpirydetail.push({
           routekey: item.routekey,
@@ -249,7 +214,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<SalesOrderHeaderUploadItem>(payload.salesorderheader)) {
+    for (const item of asRecords<Record<string, any>>(payload.salesorderheader)) {
       const transactionKey = await saveSalesOrderHeader(connection, item);
       orderTransactionKeys.set(String(Number(item.transactionkey)), transactionKey);
 
@@ -261,7 +226,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<SalesOrderDetailUploadItem>(payload.salesorderdetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.salesorderdetail)) {
       const transactionKey = orderTransactionKeys.get(String(Number(item.transactionkey)));
 
       if (transactionKey === undefined) {
@@ -277,7 +242,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<OrderRxdDetailUploadItem>(payload.orderrxddetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.orderrxddetail)) {
       const transactionKey = orderTransactionKeys.get(String(Number(item.transactionkey)));
 
       if (transactionKey === undefined) {
@@ -293,7 +258,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<PromotionDetailUploadItem>(payload.promotiondetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.promotiondetail)) {
       if (String(item.itemtransactiontype) !== '4') {
         continue;
       }
@@ -313,7 +278,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<ArHeaderUploadItem>(payload.arheader)) {
+    for (const item of asRecords<Record<string, any>>(payload.arheader)) {
       const transactionKey = await saveArHeader(connection, item);
       arTransactionKeys.set(String(Number(item.transactionkey)), transactionKey);
 
@@ -325,7 +290,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<ArDetailUploadItem>(payload.ardetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.ardetail)) {
       const transactionKey = arTransactionKeys.get(String(Number(item.transactionkey)));
 
       if (transactionKey === undefined) {
@@ -341,7 +306,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CashCheckDetailUploadItem>(payload.cashcheckdetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.cashcheckdetail)) {
       if (await saveCashCheckDetail(connection, item)) {
         response.cashcheckdetail.push({
           routekey: item.routekey,
@@ -350,7 +315,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<InventoryTransactionHeaderUploadItem>(
+    for (const item of asRecords<Record<string, any>>(
       payload.inventorytransactionheader
     )) {
       const detailKey = await saveInventoryTransactionHeader(connection, item);
@@ -365,7 +330,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<InventoryTransactionDetailUploadItem>(
+    for (const item of asRecords<Record<string, any>>(
       payload.inventorytransactiondetail
     )) {
       const detailKey = inventoryDetailKeys.get(String(Number(item.detailkey)));
@@ -383,7 +348,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<InventorySummaryDetailUploadItem>(payload.inventorysummarydetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.inventorysummarydetail)) {
       if (await saveInventorySummaryDetail(connection, item)) {
         response.inventorysummarydetail.push({
           routekey: item.routekey,
@@ -393,7 +358,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<NonServicedCustomerUploadItem>(payload.nonservicedcustomer)) {
+    for (const item of asRecords<Record<string, any>>(payload.nonservicedcustomer)) {
       if (await saveNonServicedCustomer(connection, item)) {
         response.nonservicedcustomer.push({
           routekey: item.routekey,
@@ -402,7 +367,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerInventoryDetailUploadItem>(
+    for (const item of asRecords<Record<string, any>>(
       payload.customerinventorydetail
     )) {
       if (await saveCustomerInventoryDetail(connection, item)) {
@@ -414,7 +379,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<NoSalesHeaderUploadItem>(payload.nosalesheader)) {
+    for (const item of asRecords<Record<string, any>>(payload.nosalesheader)) {
       const transactionKey = await saveNoSalesHeader(connection, item);
 
       if (transactionKey > 0) {
@@ -424,7 +389,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerDistributionCheckUploadItem>(
+    for (const item of asRecords<Record<string, any>>(
       payload.customerdistributioncheck
     )) {
       if (await saveCustomerDistributionCheck(connection, item)) {
@@ -437,7 +402,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerInventoryCheckUploadItem>(payload.customerinventorycheck)) {
+    for (const item of asRecords<Record<string, any>>(payload.customerinventorycheck)) {
       if (await saveCustomerInventoryCheck(connection, item)) {
         response.customerinventorycheck.push({
           routekey: item.routekey,
@@ -447,7 +412,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<RouteGoalUploadItem>(payload.routegoal)) {
+    for (const item of asRecords<Record<string, any>>(payload.routegoal)) {
       const primaryKey = await saveRouteGoal(connection, item);
 
       if (primaryKey > 0) {
@@ -457,7 +422,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerFocBalanceUploadItem>(payload.customer_foc_balance)) {
+    for (const item of asRecords<Record<string, any>>(payload.customer_foc_balance)) {
       if (await saveCustomerFocBalance(connection, item)) {
         response.customer_foc_balance.push({
           customercode: item.itemcode,
@@ -466,7 +431,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<EndDayDetailUploadItem>(payload.enddaydetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.enddaydetail)) {
       if (await saveEndDayDetailUpload(connection, item)) {
         response.enddaydetail.push({
           routekey: item.routekey
@@ -474,7 +439,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<SurveyAuditDetailUploadItem>(payload.surveyauditdetail)) {
+    for (const item of asRecords<Record<string, any>>(payload.surveyauditdetail)) {
       if (await saveSurveyAuditDetail(connection, item)) {
         response.surveyauditdetail.push({
           routekey: item.routekey,
@@ -484,7 +449,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<PosEquipmentChangeDetailUploadItem>(
+    for (const item of asRecords<Record<string, any>>(
       payload.posequipmentchangedetail
     )) {
       if (await savePosEquipmentChangeDetail(connection, item)) {
@@ -496,7 +461,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<PosMasterUploadItem>(payload.posmaster)) {
+    for (const item of asRecords<Record<string, any>>(payload.posmaster)) {
       const itemCode = await savePosMaster(connection, item);
 
       if (itemCode > 0) {
@@ -506,7 +471,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<CustomerImageUploadItem>(payload.customerimages)) {
+    for (const item of asRecords<Record<string, any>>(payload.customerimages)) {
       if (await saveCustomerImage(connection, item)) {
         response.customerimages.push({
           routekey: item.imagename
@@ -514,7 +479,7 @@ export async function sendData(
       }
     }
 
-    for (const item of asRecords<AccessOverrideLogUploadItem>(payload.t_access_override_log)) {
+    for (const item of asRecords<Record<string, any>>(payload.t_access_override_log)) {
       if (await saveAccessOverrideLog(connection, item)) {
         response.t_access_override_log.push({
           routekey: item.routekey,
@@ -536,9 +501,9 @@ export async function sendData(
 }
 
 export async function customerSequence(
-  request: LegacyTransactionRequest,
-  _reply: LegacyTransactionReply
-): Promise<CustomerSequenceResponse> {
+  request: FastifyRequest,
+  _reply: FastifyReply
+): Promise<Record<string, any>> {
   const items = parseCustomerSequenceItems(request);
 
   await withTransaction(async (connection) => {
@@ -554,15 +519,15 @@ export async function customerSequence(
 }
 
 export async function uploadInvoiceTransactionDetails(
-  request: LegacyTransactionRequest
-): Promise<InvoiceTransactionDetailResponse> {
+  request: FastifyRequest
+): Promise<Record<string, any>> {
   const items = parseLegacyRequestArrayField(
     request,
     'invoicedetail'
-  ) as InvoiceTransactionDetailItem[];
+  ) as Record<string, any>[];
 
   return withTransaction(async (connection) => {
-    const invoicedetail: InvoiceTransactionDetailResponse['invoicedetail'] = [];
+    const invoicedetail: Record<string, any>[] = [];
 
     for (const item of items) {
       if (await saveInvoiceTransactionDetail(connection, item)) {
@@ -579,12 +544,12 @@ export async function uploadInvoiceTransactionDetails(
 }
 
 export async function uploadArTransactionDetails(
-  request: LegacyTransactionRequest
-): Promise<ArTransactionDetailResponse> {
-  const items = parseLegacyRequestArrayField(request, 'ardetail') as ArTransactionDetailItem[];
+  request: FastifyRequest
+): Promise<Record<string, any>> {
+  const items = parseLegacyRequestArrayField(request, 'ardetail') as Record<string, any>[];
 
   return withTransaction(async (connection) => {
-    const ardetail: ArTransactionDetailResponse['ardetail'] = [];
+    const ardetail: Record<string, any>[] = [];
 
     for (const item of items) {
       if (await saveArTransactionDetail(connection, item)) {
@@ -600,7 +565,7 @@ export async function uploadArTransactionDetails(
   });
 }
 
-function parseSendDataPayload(request: LegacyTransactionRequest): SendDataPayload {
+function parseSendDataPayload(request: FastifyRequest): Record<string, any> {
   const rawValues = readLegacyBodyValues(request.body);
   const payload = createEmptySendDataPayload();
 
@@ -617,7 +582,7 @@ function parseSendDataPayload(request: LegacyTransactionRequest): SendDataPayloa
 }
 
 function parseLegacyRequestArrayField(
-  request: LegacyTransactionRequest,
+  request: FastifyRequest,
   field: string
 ): Record<string, unknown>[] {
   const params = {
@@ -670,8 +635,8 @@ function readLegacyBodyValues(body: unknown): Record<string, unknown> {
 }
 
 function parseCustomerSequenceItems(
-  request: LegacyTransactionRequest
-): CustomerSequenceRequestItem[] {
+  request: FastifyRequest
+): Record<string, any>[] {
   const rawBody = request.body;
 
   if (rawBody === undefined || rawBody === null || rawBody === '') {
@@ -690,13 +655,13 @@ function parseCustomerSequenceItems(
   }
 }
 
-function createEmptySendDataPayload(): SendDataPayload {
+function createEmptySendDataPayload(): Record<string, any> {
   const payload = {
     routekey: null,
     routecode: null,
     routeclosed: null,
     userid: null
-  } as SendDataPayload;
+  } as Record<string, any>;
 
   for (const field of SEND_DATA_ARRAY_FIELDS) {
     payload[field] = [];
@@ -705,8 +670,8 @@ function createEmptySendDataPayload(): SendDataPayload {
   return payload;
 }
 
-function createEmptySendDataResponse(): MutableSendDataResponse {
-  const response = {} as MutableSendDataResponse;
+function createEmptySendDataResponse(): Record<string, Record<string, any>[]> {
+  const response = {} as Record<string, Record<string, any>[]>;
 
   for (const field of SEND_DATA_ARRAY_FIELDS) {
     response[field] = [];
@@ -715,7 +680,7 @@ function createEmptySendDataResponse(): MutableSendDataResponse {
   return response;
 }
 
-function parseLegacyArrayField(field: SendDataArrayField, value: unknown): unknown[] {
+function parseLegacyArrayField(field: string, value: unknown): unknown[] {
   if (value === undefined || value === null || value === '') {
     return [];
   }
@@ -736,9 +701,64 @@ function parseLegacyArrayField(field: SendDataArrayField, value: unknown): unkno
   }
 }
 
-function pruneEmptySendDataResponse(response: MutableSendDataResponse): SendDataResponse {
+function pruneEmptySendDataResponse(response: Record<string, Record<string, any>[]>): Record<string, any> {
   return Object.fromEntries(
     Object.entries(response).filter(([, items]) => Array.isArray(items) && items.length > 0)
-  ) as SendDataResponse;
+  ) as Record<string, any>;
+}
+
+export async function sendDataAction(request: FastifyRequest, reply: FastifyReply): Promise<void> {
+  const result = await sendData(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function customerSequenceAction(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await customerSequence(request, reply);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function invoiceTransactionDetailAction(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await uploadInvoiceTransactionDetails(request);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function arTransactionDetailAction(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  const result = await uploadArTransactionDetails(request);
+  await reply.type('text/plain').send(JSON.stringify(result));
+}
+
+export async function uploadImageAction(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
+  if (!request.isMultipart()) {
+    throw new ApiError(400, 'Image upload must be multipart/form-data');
+  }
+
+  const file = await request.file();
+
+  if (!file || file.fieldname !== 'file') {
+    throw new ApiError(400, 'Missing image file');
+  }
+
+  const fileName = sanitizeFileName(file.filename);
+
+  if (fileName === '') {
+    throw new ApiError(400, 'Invalid image filename');
+  }
+
+  await mkdir(CUSTOMER_IMAGE_DIR, { recursive: true });
+  await pipeline(file.file, createWriteStream(path.join(CUSTOMER_IMAGE_DIR, fileName)));
+
+  await reply.type('text/plain').send(`0The file ${fileName} has beenuploaded`);
 }
 

@@ -1,5 +1,5 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import { nullable, required } from '../../transactions/repository/shared.repository';
+import { nullable, required } from '../../../../shared/utils/commonUtils';
 
 export async function getDatabaseCurrentDate(connection: PoolConnection): Promise<string> {
   const [rows] = await connection.execute<RowDataPacket[]>(

@@ -221,23 +221,17 @@ ws/controllers/ws.controller.ts
 ws/models/startEndDay.model.ts
 ws/models/wsLookup.model.ts
 ws/models/transactionLookup.model.ts
-transactions/transactions.routes.ts
-transactions/transactions.controller.ts
-transactions/transactions.service.ts
-transactions/repository/transaction.repository.ts
-transactions/repository/shared.repository.ts
-transactions/repository/routeActivity.repository.ts
-transactions/repository/sales.repository.ts
-transactions/repository/orders.repository.ts
-transactions/repository/collections.repository.ts
-transactions/repository/inventory.repository.ts
-transactions/repository/customerService.repository.ts
-transactions/repository/auditExtra.repository.ts
-transactions/repository/routeClose.repository.ts
-transactions/types/shared.types.ts
-transactions/types/routeActivity.types.ts
-transactions/types/sales.types.ts
-transactions/types/senddata.types.ts
+transactions/controllers/transactions.controller.ts
+shared/utils/commonUtils.ts
+transactions/models/routeActivity.model.ts
+transactions/models/sales.model.ts
+transactions/models/orders.model.ts
+transactions/models/collections.model.ts
+transactions/models/inventory.model.ts
+transactions/models/customerService.model.ts
+transactions/models/auditExtra.model.ts
+transactions/models/routeClose.model.ts
+transactions/models/transactionDetail.model.ts
 ```
 
 The public routes remain compatible with the mobile app:
@@ -250,46 +244,32 @@ The public routes remain compatible with the mobile app:
 /api/ws/logout
 ```
 
-Service responsibility split:
+MVC responsibility split:
 
 | File | Responsibility |
 | --- | --- |
 | `ws/ws.routes.ts` | Registers `/api/ws/*` URLs including start day, end day, and logout. |
 | `ws/controllers/ws.controller.ts` | Handles WS request parsing, workflow, and legacy response formatting. |
 | `ws/models/startEndDay.model.ts` | Handles start-day, end-day, logout, and route version/date database operations. |
-| `transactions/transactions.routes.ts` | Registers `/api/sync/senddata` and `/api/sync/custseq`. |
-| `transactions/transactions.controller.ts` | Fastify request/reply bridge for sync transaction endpoints. |
-| `transactions/transactions.service.ts` | Handles `POST /api/sync/senddata` batch upload and `POST /api/sync/custseq` customer sequence status. |
+| `mobile.routes.ts` | Registers `/api/sync/senddata`, `/api/sync/custseq`, detail upload, and image upload endpoints. |
+| `transactions/controllers/transactions.controller.ts` | Parses legacy payloads, controls upload order and transactions, and returns mobile acknowledgements. |
 
-Type responsibility split:
-
-| File | Responsibility |
-| --- | --- |
-| `ws/controllers/ws.controller.ts` / `ws/models/startEndDay.model.ts` | Start-day, end-day, logout, route hierarchy, and response types are kept beside the functions that use them. |
-| `transactions/types/shared.types.ts` | Shared Fastify request/reply aliases and generic legacy upload item shape. |
-| `transactions/types/routeActivity.types.ts` | Customer operation control, visit log, route master upload, and route sequence status types. |
-| `transactions/types/sales.types.ts` | Invoice, invoice detail, invoice RX detail, promotion detail, customer invoice, and batch expiry types. |
-| `transactions/types/senddata.types.ts` | Send-data array field list, parsed payload, and response shape. |
-
-Alias-only upload item types for orders, collections, inventory, customer service, and audit/POS are kept beside their service/repository functions instead of separate `.types.ts` files.
-
-Repository responsibility split:
+Model responsibility split:
 
 | File | Responsibility |
 | --- | --- |
 | `ws/models/startEndDay.model.ts` | Start-day, end-day, logout route-key lookup, and route version/date checks. |
-| `transactions/repository/transaction.repository.ts` | Barrel export for backward-compatible transaction imports. No SQL implementation should be added here. |
-| `transactions/repository/shared.repository.ts` | Shared row types and value helpers used by transaction repositories. |
-| `transactions/repository/routeActivity.repository.ts` | Customer operation control, visit log, route master upload, and customer route sequence status. |
-| `transactions/repository/sales.repository.ts` | Invoice, invoice detail, invoice RX detail, promotion detail, customer invoice, and batch expiry SQL. |
-| `transactions/repository/orders.repository.ts` | Sales order header/detail and order RX detail SQL. |
-| `transactions/repository/collections.repository.ts` | AR header/detail and cash/check collection SQL. |
-| `transactions/repository/inventory.repository.ts` | Inventory transaction header/detail and inventory summary SQL. |
-| `transactions/repository/customerService.repository.ts` | Non-service, no-sale, customer inventory, distribution check, route goal, FOC balance, and end-day detail SQL. |
-| `transactions/repository/auditExtra.repository.ts` | Survey audit, POS equipment, POS master, customer image, and access override SQL. |
-| `transactions/repository/routeClose.repository.ts` | Sync log, route-close check, suggested sales rebuild, posting cleanup, and average sales rebuild SQL. |
+| `shared/utils/commonUtils.ts` | Shared value normalization and reusable technical helpers. |
+| `transactions/models/routeActivity.model.ts` | Customer operation control, visit log, route master upload, and customer route sequence status. |
+| `transactions/models/sales.model.ts` | Invoice, invoice detail, invoice RX detail, promotion detail, customer invoice, and batch expiry SQL. |
+| `transactions/models/orders.model.ts` | Sales order header/detail and order RX detail SQL. |
+| `transactions/models/collections.model.ts` | AR header/detail and cash/check collection SQL. |
+| `transactions/models/inventory.model.ts` | Inventory transaction header/detail and inventory summary SQL. |
+| `transactions/models/customerService.model.ts` | Non-service, no-sale, customer inventory, distribution check, route goal, FOC balance, and end-day detail SQL. |
+| `transactions/models/auditExtra.model.ts` | Survey audit, POS equipment, POS master, customer image, and access override SQL. |
+| `transactions/models/routeClose.model.ts` | Sync log, route-close check, suggested sales rebuild, posting cleanup, and average sales rebuild SQL. |
 
-Current refactor status: service, type definitions, and SQL repository implementations are now split by business model.
+Current refactor status: strict MVC is complete. The transaction controller owns workflow and the business models own SQL. There is no service, repository directory, or separate transaction type directory.
 
 ## Migration Order
 
