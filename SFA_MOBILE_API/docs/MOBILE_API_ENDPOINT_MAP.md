@@ -15,8 +15,8 @@ This document maps important PhoneGap mobile calls to the Node.js API modules.
 
 | Mobile Purpose | Endpoint | Controller | Service/Repository |
 | --- | --- | --- | --- |
-| Main mobile sync | `/api/index/getsyncdata1/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate/table/:table` | `masterdatasync.controller.ts` | `masterdatasync.service.ts`, `masterData.repository.ts`, `setting.repository.ts`, `transactionData.repository.ts` |
-| Compatibility sync | `/api/index/getsyncdata/...` | `masterdatasync.controller.ts` | Same as `getsyncdata1` |
+| Main mobile sync | `/api/index/getsyncdata1/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate/table/:table` | `controllers/masterdatasync.controller.ts` | `models/masterData.model.ts`, `models/setting.model.ts`, `models/transactionData.model.ts` |
+| Compatibility sync | `/api/index/getsyncdata/...` | `controllers/masterdatasync.controller.ts` | Same as `getsyncdata1` |
 
 ## Upload Transactions
 

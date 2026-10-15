@@ -1,5 +1,5 @@
 import type { FastifyInstance } from 'fastify';
-import { masterDataSyncAction } from './masterdatasync/masterdatasync.controller';
+import { masterDataSyncAction } from './masterdatasync/controllers/masterdatasync.controller';
 import {
   companyIdByDevice,
   salesmanLogin,
