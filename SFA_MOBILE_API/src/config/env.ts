@@ -14,7 +14,7 @@ const envSchema = z.object({
   FILE_LOG_PATH: z.string().default('./logs'),
   FILE_LOG_NAME: z.string().min(1).default('{module}-log-{requestId}-{hh}-{mm}-{ss}-{milliseconds}-{AM/PM}.json'),
   FILE_LOG_RESPONSE_ENABLED: z.string().default('false').transform((value) => value.toLowerCase() === 'true'),
-  FILE_LOG_MAX_RESPONSE_LENGTH: z.coerce.number().int().positive().default(1048576),
+  FILE_LOG_MAX_RESPONSE_LENGTH: z.coerce.number().int().positive().default(10485760),
   PORT: z.coerce.number().int().positive().default(3000),
   HOST: z.string().default('0.0.0.0'),
   DB_HOST: z.string().default('127.0.0.1'),
