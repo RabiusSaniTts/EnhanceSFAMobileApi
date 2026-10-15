@@ -180,7 +180,7 @@ Optional production-oriented text logging is controlled through `.env`:
 ```env
 FILE_LOG_ENABLED=true
 FILE_LOG_PATH=./logs
-FILE_LOG_NAME=api-log.jsonl
+FILE_LOG_NAME={module}-log-{requestId}-{hh}-{mm}-{ss}-{milliseconds}-{AM/PM}.json
 FILE_LOG_RESPONSE_ENABLED=true
 FILE_LOG_MAX_RESPONSE_LENGTH=1048576
 ```
@@ -194,7 +194,7 @@ Files are created automatically using this layout:
 Example:
 
 ```text
-logs/2026-10-15/1818/transactions/api-log.jsonl
+logs/2026-10-15/1818/transactions/transactions-log-req-15-04-17-30-125-PM.json
 ```
 
 Supported module folders are `auth`, `masterdatasync`, `transactions`, `ws`,
@@ -203,9 +203,11 @@ and `system`. When a request has no route code, it is written under
 status, duration, query/body field names, and safe error details. Raw payloads,
 password-bearing URLs, and customer transaction data are not written.
 
-The `.jsonl` extension means JSON Lines: every line is an independent valid
-JSON object. This format is designed for append-only production logs and avoids
-rewriting a large JSON array for every concurrent API request.
+Each request creates one formatted JSON file. Filename placeholders are replaced
+automatically: `{module}` is the API module, `{requestId}` is Fastify's request
+identifier, and `{hh}`, `{mm}`, `{ss}`, `{milliseconds}`, and `{AM/PM}` provide
+a readable 12-hour completion time. Hyphens are used because Windows filenames
+cannot contain the colon from a value such as `4:17 PM`.
 
 Set `FILE_LOG_ENABLED=false` to disable file logging without a code change.
 Set `FILE_LOG_RESPONSE_ENABLED=false` to keep request/status logs while omitting

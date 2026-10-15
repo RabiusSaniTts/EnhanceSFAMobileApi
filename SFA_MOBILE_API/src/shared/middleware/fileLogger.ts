@@ -3,7 +3,7 @@
  * @date 2026-10-15
  */
 
-import { appendFile, mkdir } from 'fs/promises';
+import { mkdir, writeFile } from 'fs/promises';
 import path from 'path';
 import type { FastifyRequest } from 'fastify';
 import { env } from '../../config/env';
@@ -42,7 +42,20 @@ export async function writeRequestFileLog(
       routeCode,
       moduleName
     );
-    const logFilePath = path.join(logDirectory, path.basename(env.FILE_LOG_NAME));
+    const fileDate = new Date();
+    const fileTimestamp = formatFileTimestamp(fileDate);
+    const fileTime = getFileTimeParts(fileDate);
+    const requestId = sanitizePathSegment(request.id);
+    const configuredFileName = env.FILE_LOG_NAME
+      .split('{module}').join(moduleName)
+      .split('{requestId}').join(requestId)
+      .split('{timestamp}').join(fileTimestamp)
+      .split('{hh}').join(fileTime.hours)
+      .split('{mm}').join(fileTime.minutes)
+      .split('{ss}').join(fileTime.seconds)
+      .split('{milliseconds}').join(fileTime.milliseconds)
+      .split('{AM/PM}').join(fileTime.period);
+    const logFilePath = path.join(logDirectory, path.basename(configuredFileName));
     const responseDetails = formatResponsePayload(details.responsePayload);
     const logRecord = {
       timestamp: new Date().toISOString(),
@@ -67,7 +80,7 @@ export async function writeRequestFileLog(
     };
 
     await mkdir(logDirectory, { recursive: true });
-    await appendFile(logFilePath, `${JSON.stringify(logRecord)}\n`, 'utf8');
+    await writeFile(logFilePath, `${JSON.stringify(logRecord, null, 2)}\n`, 'utf8');
   } catch (error) {
     request.log.warn({ err: error }, 'file log write failed');
   }
@@ -238,4 +251,30 @@ function formatLocalDate(date: Date): string {
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
+}
+
+/** Creates a Windows-safe timestamp for an individual request log filename. */
+function formatFileTimestamp(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  const milliseconds = String(date.getMilliseconds()).padStart(3, '0');
+  return `${year}${month}${day}T${hours}${minutes}${seconds}${milliseconds}`;
+}
+
+/** Returns readable 12-hour clock values for configurable filename placeholders. */
+function getFileTimeParts(date: Date) {
+  const hours24 = date.getHours();
+  const hours12 = hours24 % 12 || 12;
+
+  return {
+    hours: String(hours12).padStart(2, '0'),
+    minutes: String(date.getMinutes()).padStart(2, '0'),
+    seconds: String(date.getSeconds()).padStart(2, '0'),
+    milliseconds: String(date.getMilliseconds()).padStart(3, '0'),
+    period: hours24 >= 12 ? 'PM' : 'AM'
+  };
 }

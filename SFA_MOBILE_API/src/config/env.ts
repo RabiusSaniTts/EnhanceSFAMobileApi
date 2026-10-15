@@ -12,7 +12,7 @@ const envSchema = z.object({
   DEBUG_PAYLOAD: z.coerce.boolean().default(false),
   FILE_LOG_ENABLED: z.string().default('false').transform((value) => value.toLowerCase() === 'true'),
   FILE_LOG_PATH: z.string().default('./logs'),
-  FILE_LOG_NAME: z.string().min(1).default('api-log.jsonl'),
+  FILE_LOG_NAME: z.string().min(1).default('{module}-log-{requestId}-{hh}-{mm}-{ss}-{milliseconds}-{AM/PM}.json'),
   FILE_LOG_RESPONSE_ENABLED: z.string().default('false').transform((value) => value.toLowerCase() === 'true'),
   FILE_LOG_MAX_RESPONSE_LENGTH: z.coerce.number().int().positive().default(1048576),
   PORT: z.coerce.number().int().positive().default(3000),
