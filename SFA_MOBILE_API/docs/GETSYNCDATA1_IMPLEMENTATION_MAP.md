@@ -301,7 +301,7 @@ Node implementation recommendation:
 - Use CTEs/subqueries for open stock.
 - Keep side-effect updates in a transaction.
 - Replace `sp_update_sequence_numbers` with direct SQL, not a stored procedure call.
-- Current Node implementation updates route sequence fields and vehicle odometer in `src/modules/mobile/masterdatasync/repository/setting.repository.ts`.
+- Current Node implementation updates route sequence fields and vehicle odometer in `src/modules/mobile/masterdatasync/models/setting.model.ts`.
 
 ### `sp_ws_syncicsdata_customers`
 
@@ -332,7 +332,7 @@ Node implementation recommendation:
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/masterData.model.ts`.
 - Replaces `sp_ws_syncicsdata_schemes` with direct MySQL queries.
 - Populates:
   - `discountkeyheader`
@@ -356,7 +356,7 @@ This procedure returns POS and customer survey reference data. It also returns v
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/masterData.model.ts`.
 - Replaces `sp_ws_syncicsdata_survey` with direct MySQL queries.
 - Preserves the current procedure behavior where `var_checkmdate` is forced to `0`, meaning these tables are full-sync datasets in this endpoint.
 - Populates:
@@ -378,7 +378,7 @@ This procedure returns reason/reference tables plus route-specific route book, s
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/masterData.model.ts`.
 - Replaces `sp_ws_syncicsdata_reasons` with direct MySQL queries.
 - Uses separate named functions per dataset for maintainability.
 - Populates:
@@ -400,7 +400,7 @@ This procedure returns message and miscellaneous reference/master tables used by
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/masterData.model.ts`.
 - Replaces `sp_ws_syncicsdata_others` with direct MySQL queries.
 - Uses separate named functions per dataset for maintainability.
 - Preserves the current procedure behavior where `var_checkmdate` is forced to `0`, meaning these tables are full-sync datasets in this endpoint.
@@ -418,7 +418,7 @@ This procedure returns pending deliveries/orders, suggested sales, open stock, F
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/transactionData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/transactionData.model.ts`.
 - Replaces `sp_ws_syncicsdata_orders` with direct MySQL queries.
 - Uses separate named functions per dataset for maintainability.
 - Replaces physical temp tables:
@@ -443,7 +443,7 @@ This procedure is called twice by current PHP `getsyncdata1Action()`. The second
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/masterData.model.ts`.
 - Exposed through `getMasterDataSyncSections()`.
 - Replaces `sp_ws_syncicsdata_itemmust` with direct MySQL queries.
 - Node calls the logic once and returns the final effective four keys.
@@ -462,7 +462,7 @@ This procedure returns delete logs so the mobile app can remove stale SQLite row
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/transactionData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/transactionData.model.ts`.
 - Replaces `sp_ws_tablet_deletemaster` with direct MySQL queries.
 - Does not call the MySQL `show_pk()` function.
 - Resolves `fieldname` directly from `information_schema.columns`, matching `show_pk()` behavior of returning the first primary key column.
@@ -477,7 +477,7 @@ This procedure returns customer-specific item group headers and item mappings fo
 
 Current Node status:
 
-- Implemented in `src/modules/mobile/masterdatasync/repository/masterData.repository.ts`.
+- Implemented in `src/modules/mobile/masterdatasync/models/masterData.model.ts`.
 - Exposed through `getMasterDataSyncSections()`.
 - Replaces `sp_ws_syncicsdata_customeritemgrp` with direct MySQL queries.
 - Uses separate named functions for group headers and mappings.
@@ -536,24 +536,23 @@ src/modules/mobile/auth/
     auth.model.ts
 
 src/modules/mobile/masterdatasync/
-  masterdatasync.controller.ts
-  masterdatasync.service.ts
-  masterdatasync.mapper.ts
-  repository/
-    setting.repository.ts
-    masterData.repository.ts
-    transactionData.repository.ts
+  controllers/
+    masterdatasync.controller.ts
+  models/
+    setting.model.ts
+    masterData.model.ts
+    transactionData.model.ts
 ```
 
-`masterdatasync.service.ts` uses three top-level repository groups:
+`masterdatasync.controller.ts` uses three top-level model groups:
 
 ```text
-setting.repository.ts
-masterData.repository.ts
-transactionData.repository.ts
+setting.model.ts
+masterData.model.ts
+transactionData.model.ts
 ```
 
-`masterData.repository.ts` groups master/reference sync sections:
+`masterData.model.ts` groups master/reference sync sections:
 
 ```text
 items
@@ -564,7 +563,7 @@ reasons
 messages and small masters
 ```
 
-`transactionData.repository.ts` groups route/user transaction sync sections:
+`transactionData.model.ts` groups route/user transaction sync sections:
 
 ```text
 inventory
@@ -575,7 +574,7 @@ deletemaster
 Item master data, item-must/NRP data, and customer item group data are intentionally handled together in:
 
 ```text
-src/modules/mobile/masterdatasync/repository/masterData.repository.ts
+src/modules/mobile/masterdatasync/models/masterData.model.ts
 ```
 
 That repository exposes one public function for the full master/reference group:
@@ -604,9 +603,9 @@ customeritemmap
 
 ## 9. Current Implementation Layout
 
-The current Node implementation is organized into three repository files.
+The current Node implementation is organized into three model files.
 
-1. `setting.repository.ts`
+1. `setting.model.ts`
    - `ControlPanel`
    - `Setup`
    - `companydetail`
@@ -615,7 +614,7 @@ The current Node implementation is organized into three repository files.
    - `startendday`
    - `synctime`
    - `CurrencyMaster`
-2. `masterData.repository.ts`
+2. `masterData.model.ts`
    - `itemgroup`
    - `ItemMaster`
    - `itempackagemaster`
@@ -637,7 +636,7 @@ The current Node implementation is organized into three repository files.
    - survey/POS reference data
    - reasons
    - messages and small master tables
-3. `transactionData.repository.ts`
+3. `transactionData.model.ts`
    - `startingloaddetail`
    - `inventorysummarydetail`
    - `salesorderheader`

@@ -48,12 +48,10 @@ Example for master sync:
 ```text
 /api/index/getsyncdata1/routeid/:routeid/userid/:userid/deviceid/:deviceid/mdate/:mdate/table/:table
   -> mobile.routes.ts
-  -> masterdatasync.controller.ts
-  -> masterdatasync.service.ts
-  -> setting.repository.ts
-  -> masterData.repository.ts
-  -> transactionData.repository.ts
-  -> masterdatasync.mapper.ts
+  -> controllers/masterdatasync.controller.ts
+  -> models/setting.model.ts
+  -> models/masterData.model.ts
+  -> models/transactionData.model.ts
   -> JSON response consumed by mobile SQLite sync
 ```
 
@@ -192,12 +190,10 @@ Internally both are handled by the same Node flow because the current mobile app
 Important files:
 
 ```text
-masterdatasync.controller.ts
-masterdatasync.service.ts
-masterdatasync.mapper.ts
-repository/setting.repository.ts
-repository/masterData.repository.ts
-repository/transactionData.repository.ts
+controllers/masterdatasync.controller.ts
+models/setting.model.ts
+models/masterData.model.ts
+models/transactionData.model.ts
 ```
 
 ### Master Sync Responsibilities
@@ -207,7 +203,7 @@ The master sync response is built from three repository groups.
 Setting data:
 
 ```text
-setting.repository.ts
+models/setting.model.ts
 ```
 
 Examples:
@@ -224,7 +220,7 @@ Examples:
 Business master data:
 
 ```text
-masterData.repository.ts
+models/masterData.model.ts
 ```
 
 Examples:
@@ -241,7 +237,7 @@ Examples:
 Route transaction download data:
 
 ```text
-transactionData.repository.ts
+models/transactionData.model.ts
 ```
 
 Examples:
@@ -270,7 +266,7 @@ const transactionDataSections = await getTransactionDataSyncSections(connection,
 
 Then it destructures response arrays explicitly before building the final response.
 
-This makes the output contract visible in `masterdatasync.service.ts`, so developers can easily see which arrays are returned to the mobile app.
+This makes the output contract visible in `controllers/masterdatasync.controller.ts`, so developers can easily see which arrays are returned to the mobile app.
 
 ## Transactions Module
 

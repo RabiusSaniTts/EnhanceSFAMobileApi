@@ -2,14 +2,6 @@ import type { PoolConnection, RowDataPacket } from "mysql2/promise";
 import { getLatestClosedRouteKey, tableExists } from "../../../../shared/utils/commonUtils";
 import type { GenericRow } from "../../../../shared/utils/commonUtils";
 
-type MasterDataSyncResponseSections = Partial<Record<string, unknown[]>>;
-
-interface TransactionDataSyncInput {
-  routeId: number;
-  userId: number;
-  deviceId: string;
-}
-
 async function getStartingLoadDetail(
   connection: PoolConnection,
   routeId: number
@@ -367,18 +359,6 @@ async function getCustomerFoc(
   return rows;
 }
 
-interface DeleteMasterSyncInput {
-  userId: number;
-  deviceId: string;
-}
-
-type DeleteMasterRow = Record<string, unknown> & {
-  CODE: number;
-  tablename: string;
-  recordid: number;
-  fieldname: string | null;
-};
-
 const DELETE_MASTER_TABLES = [
   'customermaster',
   'salesman',
@@ -418,8 +398,8 @@ const DELETE_MASTER_TABLES = [
 
 async function getDeleteMaster(
   connection: PoolConnection,
-  input: DeleteMasterSyncInput
-): Promise<DeleteMasterRow[]> {
+  input: Record<string, any>
+) {
   if (
     !(await tableExists(connection, 'tbl_syncservice')) ||
     !(await tableExists(connection, 'logmaster'))
@@ -468,7 +448,7 @@ async function getDeleteMaster(
 
 async function getSyncDate(
   connection: PoolConnection,
-  input: DeleteMasterSyncInput
+  input: Record<string, any>
 ): Promise<string | null> {
   const [rows] = await connection.execute<(RowDataPacket & { syncdate: string | null })[]>(
     `
@@ -525,8 +505,8 @@ async function getPrimaryKeyByTable(
 
 export async function getTransactionDataSyncSections(
   connection: PoolConnection,
-  input: TransactionDataSyncInput,
-): Promise<MasterDataSyncResponseSections> {
+  input: Record<string, any>,
+) {
   const routeKey = await getLatestClosedRouteKey(connection, input.routeId);
 
   const [

@@ -54,7 +54,7 @@ Controller files:
 
 ```text
 src/modules/mobile/auth/controllers/auth.controller.ts
-src/modules/mobile/masterdatasync/masterdatasync.controller.ts
+src/modules/mobile/masterdatasync/controllers/masterdatasync.controller.ts
 src/modules/mobile/transactions/transactions.controller.ts
 src/modules/mobile/ws/controllers/ws.controller.ts
 ```
@@ -96,7 +96,6 @@ Controller should not:
 Service files:
 
 ```text
-src/modules/mobile/masterdatasync/masterdatasync.service.ts
 src/modules/mobile/transactions/transactions.service.ts
 ```
 
@@ -141,9 +140,9 @@ Examples:
 
 ```text
 src/modules/mobile/auth/models/auth.model.ts
-src/modules/mobile/masterdatasync/repository/setting.repository.ts
-src/modules/mobile/masterdatasync/repository/masterData.repository.ts
-src/modules/mobile/masterdatasync/repository/transactionData.repository.ts
+src/modules/mobile/masterdatasync/models/setting.model.ts
+src/modules/mobile/masterdatasync/models/masterData.model.ts
+src/modules/mobile/masterdatasync/models/transactionData.model.ts
 src/modules/mobile/transactions/repository/sales.repository.ts
 src/modules/mobile/transactions/repository/inventory.repository.ts
 src/modules/mobile/transactions/repository/collections.repository.ts
@@ -165,21 +164,9 @@ Repository should not:
 - decide HTTP response format
 - contain mobile URL logic
 
-## Mapper Layer
+## Response Mapping
 
-Mapper files:
-
-```text
-masterdatasync.mapper.ts
-```
-
-Mapper responsibilities:
-
-- convert database/service result into mobile-compatible response
-- keep Zend response shape
-- centralize response formatting where useful
-
-Not every module needs a mapper file. Use mapper files when response conversion becomes repeated or large.
+Auth, WS, and master sync use strict MVC and do not have separate mapper files. Their controllers preserve the Zend response shape and formatting directly.
 
 ## Type Placement
 
@@ -301,11 +288,10 @@ Flow:
 ```text
 mobile.routes.ts
   -> masterDataSyncAction()
-  -> masterdatasync.service.ts getMasterDataSync()
-  -> setting.repository.ts
-  -> masterData.repository.ts
-  -> transactionData.repository.ts
-  -> masterdatasync.mapper.ts
+  -> models/setting.model.ts
+  -> models/masterData.model.ts
+  -> models/transactionData.model.ts
+  -> controller response builder
   -> mobile SQLite sync response
 ```
 

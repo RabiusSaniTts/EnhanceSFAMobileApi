@@ -34,7 +34,17 @@ ws/models/transactionLookup.model.ts
 ```
 
 - WS route paths, GET/POST compatibility, request parsing, `text/plain` response behavior, and database transactions remain unchanged.
-- Master sync `customerinvoice` is now implemented from the legacy `sp_ws_syncicsdata_customers` logic instead of returning an empty array.
+- The master sync module now follows the same strict MVC structure as auth and WS:
+
+```text
+masterdatasync/controllers/masterdatasync.controller.ts
+masterdatasync/models/setting.model.ts
+masterdatasync/models/masterData.model.ts
+masterdatasync/models/transactionData.model.ts
+```
+
+- Master sync has no service, mapper, repository directory, or custom interface/type declarations. Its endpoint paths, SQL behavior, explicit response arrays, Zend formatting, and `synccount` contract remain unchanged.
+- Master sync `customerinvoice` is implemented from the legacy `sp_ws_syncicsdata_customers` logic instead of returning an empty array.
 - Compatibility type cleanup was completed:
   - removed `auth.types.ts`
   - removed `masterdatasync.types.ts`
@@ -51,10 +61,10 @@ transactions/types/sales.types.ts
 transactions/types/senddata.types.ts
 ```
 
-- Master sync repositories were simplified so top-level sync functions directly show each returned array.
+- Master sync models were simplified so top-level sync functions directly show each returned array.
 - Unused wrapper functions were removed from:
-  - `masterData.repository.ts`
-  - `transactionData.repository.ts`
+  - `models/masterData.model.ts`
+  - `models/transactionData.model.ts`
 - Shared technical helpers were centralized into:
 
 ```text
