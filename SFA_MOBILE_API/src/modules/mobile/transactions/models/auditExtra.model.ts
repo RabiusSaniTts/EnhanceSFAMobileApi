@@ -2,6 +2,7 @@ import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/prom
 import { nullable, required } from '../../../../shared/utils/commonUtils';
 
 
+/** Inserts or updates one survey response and reports persistence success. */
 export async function saveSurveyAuditDetail(
   connection: PoolConnection,
   item: Record<string, any>
@@ -70,6 +71,7 @@ export async function saveSurveyAuditDetail(
   return Number(item.routekey) > 0;
 }
 
+/** Saves a POS equipment change scoped to route, visit, and item. */
 export async function savePosEquipmentChangeDetail(
   connection: PoolConnection,
   item: Record<string, any>
@@ -133,6 +135,7 @@ export async function savePosEquipmentChangeDetail(
   return Number(item.routekey) > 0;
 }
 
+/** Updates mobile-managed values for an existing POS master record. */
 export async function savePosMaster(
   connection: PoolConnection,
   item: Record<string, any>
@@ -165,6 +168,7 @@ export async function savePosMaster(
   return insertResult.insertId;
 }
 
+/** Saves customer-image metadata; binary upload is handled by the controller. */
 export async function saveCustomerImage(
   connection: PoolConnection,
   item: Record<string, any>
@@ -217,6 +221,7 @@ export async function saveCustomerImage(
   return insertResult.insertId > 0;
 }
 
+/** Stores an access-override audit event and reports insertion success. */
 export async function saveAccessOverrideLog(
   connection: PoolConnection,
   item: Record<string, any>

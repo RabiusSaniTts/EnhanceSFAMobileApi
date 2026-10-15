@@ -1,5 +1,6 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
+/** Saves an AR collection header and returns its transaction key. */
 export async function saveArHeader(connection: PoolConnection, item: Record<string, any>): Promise<number> {
     const existingTransactionKey = await getArHeaderTransactionKey(connection, required(item.invoicenumber));
     if (existingTransactionKey !== null) {
@@ -51,6 +52,7 @@ export async function saveArHeader(connection: PoolConnection, item: Record<stri
     });
     return insertResult.insertId;
 }
+/** Saves an AR detail linked to the resolved header transaction key. */
 export async function saveArDetail(connection: PoolConnection, item: Record<string, any>, transactionKey: number): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
@@ -107,6 +109,7 @@ export async function saveArDetail(connection: PoolConnection, item: Record<stri
     });
     return true;
 }
+/** Saves cash or cheque payment information with legacy defaults. */
 export async function saveCashCheckDetail(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         routeKey: required(item.routekey),
@@ -167,6 +170,7 @@ export async function saveCashCheckDetail(connection: PoolConnection, item: Reco
     }
     return Number(item.routekey) > 0;
 }
+/** Finds an existing AR header key so retry uploads remain idempotent. */
 async function getArHeaderTransactionKey(connection: PoolConnection, invoiceNumber: string | number): Promise<number | null> {
     const [rows] = await connection.execute<(RowDataPacket & {
         transactionkey: number;
@@ -178,6 +182,7 @@ async function getArHeaderTransactionKey(connection: PoolConnection, invoiceNumb
     `, { invoiceNumber });
     return rows[0]?.transactionkey ?? null;
 }
+/** Allocates the next AR document number for a route. */
 async function getNextArDocumentNumber(connection: PoolConnection, routeCode: string | number): Promise<number> {
     const [rows] = await connection.execute<(RowDataPacket & {
         documentNumber: number;
@@ -191,6 +196,7 @@ async function getNextArDocumentNumber(connection: PoolConnection, routeCode: st
     `, { routeCode });
     return rows[0]?.documentNumber ?? Number(`${routeCode}000001`);
 }
+/** Applies the database length limit without changing null or numeric values. */
 function truncateCheckNumber(value: unknown): string | number | null {
     const checkNumber = nullable(value);
     if (typeof checkNumber !== 'string') {

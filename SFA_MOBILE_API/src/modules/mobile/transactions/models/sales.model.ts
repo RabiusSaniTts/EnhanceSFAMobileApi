@@ -1,5 +1,6 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
+/** Saves an invoice header and returns the existing or generated transaction key. */
 export async function saveInvoiceHeader(connection: PoolConnection, item: Record<string, any>): Promise<number> {
     const existingTransactionKey = await getInvoiceHeaderTransactionKey(connection, item.invoicenumber);
     if (existingTransactionKey !== null) {
@@ -144,6 +145,7 @@ export async function saveInvoiceHeader(connection: PoolConnection, item: Record
     });
     return insertResult.insertId;
 }
+/** Saves an invoice line linked to its header transaction key. */
 export async function saveInvoiceDetail(connection: PoolConnection, item: Record<string, any>, transactionKey: number): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
@@ -281,6 +283,7 @@ export async function saveInvoiceDetail(connection: PoolConnection, item: Record
     });
     return true;
 }
+/** Saves invoice prescription/Rx detail linked to its invoice header. */
 export async function saveInvoiceRxdDetail(connection: PoolConnection, item: Record<string, any>, transactionKey: number): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
@@ -336,6 +339,7 @@ export async function saveInvoiceRxdDetail(connection: PoolConnection, item: Rec
     });
     return true;
 }
+/** Saves promotion usage detail associated with an invoice transaction. */
 export async function savePromotionDetail(connection: PoolConnection, item: Record<string, any>, transactionKey: number): Promise<boolean> {
     const params = {
         routeKey: item.routekey,
@@ -431,6 +435,7 @@ export async function savePromotionDetail(connection: PoolConnection, item: Reco
     `, params);
     return Number(item.routekey) > 0;
 }
+/** Inserts or updates the customer invoice balance copy used during mobile sync. */
 export async function saveCustomerInvoice(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
@@ -599,6 +604,7 @@ export async function saveCustomerInvoice(connection: PoolConnection, item: Reco
     }
     return Number(item.transactionkey) > 0;
 }
+/** Saves batch and expiry information for an uploaded sales transaction. */
 export async function saveBatchExpiryDetail(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const [flagRows] = await connection.execute<(RowDataPacket & {
         status: number | null;
@@ -662,6 +668,7 @@ export async function saveBatchExpiryDetail(connection: PoolConnection, item: Re
     }
     return Number(item.routekey) > 0;
 }
+/** Finds an existing invoice key so retry uploads do not duplicate headers. */
 async function getInvoiceHeaderTransactionKey(connection: PoolConnection, invoiceNumber: string | number): Promise<number | null> {
     const [rows] = await connection.execute<(RowDataPacket & {
         transactionkey: number;
@@ -673,6 +680,7 @@ async function getInvoiceHeaderTransactionKey(connection: PoolConnection, invoic
     `, { invoiceNumber });
     return rows[0]?.transactionkey ?? null;
 }
+/** Allocates the next invoice document number for a route. */
 async function getNextInvoiceDocumentNumber(connection: PoolConnection, routeCode: string | number): Promise<number> {
     const [rows] = await connection.execute<(RowDataPacket & {
         documentNumber: number;

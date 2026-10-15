@@ -1,5 +1,6 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
+/** Inserts or updates a customer created or changed on the mobile device. */
 export async function saveCustomerMaster(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         customercode: required(item.customercode),
@@ -441,6 +442,7 @@ export async function saveCustomerMaster(connection: PoolConnection, item: Recor
 
     return Number(item.customercode) > 0;
 }
+/** Stores the reason a planned customer visit was not serviced. */
 export async function saveNonServicedCustomer(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         routeKey: required(item.routekey),
@@ -465,6 +467,7 @@ export async function saveNonServicedCustomer(connection: PoolConnection, item: 
     }
     return Number(item.routekey) > 0;
 }
+/** Saves a no-sale visit header and returns the affected/generated key. */
 export async function saveNoSalesHeader(connection: PoolConnection, item: Record<string, any>): Promise<number> {
     const [insertResult] = await connection.execute<ResultSetHeader>(`
       INSERT INTO nosalesheader SET
@@ -494,6 +497,7 @@ export async function saveNoSalesHeader(connection: PoolConnection, item: Record
     });
     return insertResult.insertId;
 }
+/** Saves customer shelf/inventory quantities captured during a visit. */
 export async function saveCustomerInventoryDetail(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         routeKey: required(item.routekey),
@@ -551,6 +555,7 @@ export async function saveCustomerInventoryDetail(connection: PoolConnection, it
     }
     return true;
 }
+/** Saves the customer inventory-check header/status uploaded by mobile. */
 export async function saveCustomerInventoryCheck(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         routeKey: required(item.routekey),
@@ -599,6 +604,7 @@ export async function saveCustomerInventoryCheck(connection: PoolConnection, ite
     }
     return Number(item.routekey) > 0;
 }
+/** Saves customer distribution compliance results for an item/visit. */
 export async function saveCustomerDistributionCheck(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         routeKey: required(item.routekey),
@@ -642,6 +648,7 @@ export async function saveCustomerDistributionCheck(connection: PoolConnection, 
     }
     return Number(item.itemcode) > 0;
 }
+/** Updates route-goal progress and returns the affected row count. */
 export async function saveRouteGoal(connection: PoolConnection, item: Record<string, any>): Promise<number> {
     const [insertResult] = await connection.execute<ResultSetHeader>(`
       INSERT INTO routegoal SET
@@ -701,6 +708,7 @@ export async function saveRouteGoal(connection: PoolConnection, item: Record<str
     });
     return insertResult.insertId;
 }
+/** Inserts or updates the customer's free-of-charge balance. */
 export async function saveCustomerFocBalance(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         customerCode: required(item.customercode),
@@ -744,6 +752,7 @@ export async function saveCustomerFocBalance(connection: PoolConnection, item: R
     }
     return Number(item.customercode) > 0;
 }
+/** Saves the mobile end-day denomination/detail record. */
 export async function saveEndDayDetailUpload(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         routeKey: required(item.routekey),

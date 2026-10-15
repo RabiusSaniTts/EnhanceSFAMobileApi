@@ -1,6 +1,10 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { stringValue } from '../../../../shared/utils/commonUtils';
 
+/**
+ * Checks for today's pending route load. Control-panel flag 72 disables this
+ * requirement, in which case the function returns true immediately.
+ */
 export async function checkRouteLoad(
   connection: PoolConnection,
   userId: string | number,
@@ -34,6 +38,7 @@ export async function checkRouteLoad(
   return Number(rows[0]?.cnt ?? 0) > 0;
 }
 
+/** Returns matching delivery headers and details for the supplied search filters. */
 export async function getDeliveryData(
   connection: PoolConnection,
   filters: {
@@ -49,6 +54,7 @@ export async function getDeliveryData(
   const orderNumbers = await getDeliveryOrderNumbers(connection, filters);
 
   if (orderNumbers.length === 0) {
+    // Both keys must exist because mobile reads each array independently.
     return { deliveryheader: [], deliverydetail: [] };
   }
 
@@ -84,6 +90,7 @@ export async function getDeliveryData(
   return { deliveryheader, deliverydetail };
 }
 
+/** Returns active item pricing and warehouse stock mapped to a route. */
 export async function getWhStockData(
   connection: PoolConnection,
   routeCode: string | number
@@ -109,11 +116,16 @@ export async function getWhStockData(
   return rows;
 }
 
+/**
+ * Inserts or updates temporary customer inventory. Optional mobile fields are
+ * normalized to null so mysql2 never receives an undefined bind parameter.
+ */
 export async function saveTempCustomerInventory(
   connection: PoolConnection,
   item: Record<string, any>
 ): Promise<boolean> {
   const params = {
+    // This object is shared by duplicate detection and insert/update queries.
     routeKey: item.routekey ?? null,
     visitKey: item.visitkey ?? null,
     itemCode: item.itemcode ?? null,
@@ -178,6 +190,7 @@ export async function saveTempCustomerInventory(
   return result.affectedRows >= 0;
 }
 
+/** Returns outstanding invoice/balance data for one customer and route. */
 export async function getCustomerBalanceData(
   connection: PoolConnection,
   routeCode: string | number,
@@ -247,6 +260,7 @@ export async function getCustomerBalanceData(
   return rows;
 }
 
+/** Returns positive warehouse stock for items mapped to the requested route. */
 export async function getWarehouseStockData(
   connection: PoolConnection,
   routeId: string | number
@@ -279,6 +293,7 @@ export async function getWarehouseStockData(
   return rows;
 }
 
+/** Returns back-office order and invoice status rows for a salesman. */
 export async function getOrderStatusData(
   connection: PoolConnection,
   userId: string | number
@@ -315,6 +330,7 @@ export async function getOrderStatusData(
   return rows;
 }
 
+/** Returns customer item-group headers and item mappings for a route. */
 export async function getCustomerItemGroupData(
   connection: PoolConnection,
   routeId: string | number
@@ -350,6 +366,7 @@ export async function getCustomerItemGroupData(
   return { customeritemgrp, customeritemmap };
 }
 
+/** Returns one customer with the route's alternate-code setting, or null. */
 export async function findCustomerMaster(
   connection: PoolConnection,
   routeCode: string | number,
@@ -371,6 +388,7 @@ export async function findCustomerMaster(
   return rows[0] ?? null;
 }
 
+/** Returns visual header/detail master arrays used by the mobile display. */
 export async function getVisualDataSections(
   connection: PoolConnection
 ): Promise<{
@@ -394,6 +412,10 @@ export async function getVisualDataSections(
   return { visualheader, visualdetail };
 }
 
+/**
+ * Resolves up to ten delivery order numbers from customer, order, or load-sheet
+ * search values. Filters are checked in that priority order.
+ */
 async function getDeliveryOrderNumbers(
   connection: PoolConnection,
   filters: {
@@ -407,6 +429,7 @@ async function getDeliveryOrderNumbers(
   const orderno = stringValue(filters.orderno);
   const lpono = stringValue(filters.lpono);
 
+  // Only the first non-empty filter is applied, matching the legacy workflow.
   if (customercode !== '') {
     const [rows] = await connection.execute<RowDataPacket[]>(
       `

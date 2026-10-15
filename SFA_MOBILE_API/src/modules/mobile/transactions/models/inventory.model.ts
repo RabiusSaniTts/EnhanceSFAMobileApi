@@ -1,5 +1,6 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
+/** Saves an inventory transaction header and returns its detail key. */
 export async function saveInventoryTransactionHeader(connection: PoolConnection, item: Record<string, any>): Promise<number> {
     const existingDetailKey = await getInventoryDetailKey(connection, required(item.documentnumber));
     if (existingDetailKey !== null) {
@@ -70,6 +71,7 @@ export async function saveInventoryTransactionHeader(connection: PoolConnection,
     }
     return insertResult.insertId;
 }
+/** Saves one inventory movement linked to its parent detail key. */
 export async function saveInventoryTransactionDetail(connection: PoolConnection, item: Record<string, any>, detailKey: number): Promise<boolean> {
     const params = {
         routeKey: required(item.routekey),
@@ -121,6 +123,7 @@ export async function saveInventoryTransactionDetail(connection: PoolConnection,
     }
     return Number(item.routekey) > 0;
 }
+/** Inserts or updates the route inventory summary reported by mobile. */
 export async function saveInventorySummaryDetail(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const params = {
         inventorykey: required(item.inventorykey),
@@ -421,6 +424,7 @@ export async function saveInventorySummaryDetail(connection: PoolConnection, ite
 
     return Number(item.routekey) > 0;
 }
+/** Finds an existing inventory key by document number for retry handling. */
 async function getInventoryDetailKey(connection: PoolConnection, documentNumber: string | number): Promise<number | null> {
     const [rows] = await connection.execute<(RowDataPacket & {
         transactionkey: number;

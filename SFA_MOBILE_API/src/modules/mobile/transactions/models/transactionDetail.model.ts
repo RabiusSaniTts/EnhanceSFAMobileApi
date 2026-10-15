@@ -1,5 +1,6 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
+/** Saves a standalone invoice-detail retry after resolving its header key. */
 export async function saveInvoiceTransactionDetail(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const transactionKey = await getInvoiceHeaderTransactionKey(connection, required(item.routekey), required(item.visitkey));
     if (transactionKey === null) {
@@ -124,6 +125,7 @@ export async function saveInvoiceTransactionDetail(connection: PoolConnection, i
     });
     return result.affectedRows >= 0;
 }
+/** Saves a standalone AR-detail retry after resolving its header key. */
 export async function saveArTransactionDetail(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const transactionKey = await getArHeaderTransactionKey(connection, required(item.routekey), required(item.visitkey));
     if (transactionKey === null) {
@@ -177,6 +179,7 @@ export async function saveArTransactionDetail(connection: PoolConnection, item: 
     `, params);
     return result.affectedRows >= 0;
 }
+/** Resolves the invoice header key for a route/visit pair. */
 async function getInvoiceHeaderTransactionKey(connection: PoolConnection, routeKey: string | number, visitKey: string | number): Promise<number | null> {
     const [rows] = await connection.execute<(RowDataPacket & {
         transactionkey: number;
@@ -189,6 +192,7 @@ async function getInvoiceHeaderTransactionKey(connection: PoolConnection, routeK
     `, { routeKey, visitKey });
     return rows[0]?.transactionkey ?? null;
 }
+/** Resolves the AR header key for a route/visit pair. */
 async function getArHeaderTransactionKey(connection: PoolConnection, routeKey: string | number, visitKey: string | number): Promise<number | null> {
     const [rows] = await connection.execute<(RowDataPacket & {
         transactionkey: number;

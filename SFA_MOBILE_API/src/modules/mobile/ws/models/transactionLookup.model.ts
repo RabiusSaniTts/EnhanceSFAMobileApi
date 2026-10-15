@@ -1,6 +1,10 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
 
+/**
+ * Returns transaction-table counts for a route key. TYPE values are legacy
+ * reconciliation identifiers consumed directly by the mobile application.
+ */
 export async function getTransactionDataCounts(
   connection: PoolConnection,
   routeKey: string | number
@@ -70,10 +74,12 @@ export async function getTransactionDataCounts(
   return rows;
 }
 
+/** Returns today's starting-load and imported-inventory totals for a route. */
 export async function getImportInventoryCounts(
   connection: PoolConnection,
   routeCode: string | number
 ) {
+  // Imported inventory is compared against the latest closed route day.
   const routeKey = await getLatestClosedRouteKey(connection, routeCode);
   const [loadRows] = await connection.execute<RowDataPacket[]>(
     `
@@ -97,6 +103,7 @@ export async function getImportInventoryCounts(
     { routeKey }
   );
 
+  // TTYPE keys are part of the legacy mobile response contract.
   return [
     { TTYPE: 'SLD', CloudCount: loadRows[0]?.CloudCount ?? 0 },
     { TTYPE: 'ISD', CloudCount: inventoryRows[0]?.CloudCount ?? 0 }

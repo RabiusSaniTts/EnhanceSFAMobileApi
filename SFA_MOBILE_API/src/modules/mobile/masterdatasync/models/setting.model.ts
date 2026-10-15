@@ -2,6 +2,7 @@ import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { buildInClause, getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
 import type { GenericRow } from '../../../../shared/utils/commonUtils';
 
+/** Applies route sync side effects and returns all setting-related response sections. */
 export async function getSettingSyncSections(
   connection: PoolConnection,
   input: Record<string, any>
@@ -47,6 +48,7 @@ export async function getSettingSyncSections(
   };
 }
 
+/** Recreates stored-procedure side effects required before route settings are read. */
 async function maintainRouteSyncSideEffects(
   connection: PoolConnection,
   input: { routeId: number; latestRouteKey: number }
@@ -120,6 +122,7 @@ async function maintainRouteSyncSideEffects(
   await updateRouteSequenceNumbers(connection, input.routeId);
 }
 
+/** Advances invoice, order, AR, document, and odometer sequence values for a route. */
 async function updateRouteSequenceNumbers(
   connection: PoolConnection,
   routeId: number
@@ -198,6 +201,7 @@ async function updateRouteSequenceNumbers(
   );
 }
 
+/** Returns the highest invoice number currently stored for the route. */
 async function getMaxInvoiceNumber(
   connection: PoolConnection,
   routeId: number,
@@ -221,6 +225,7 @@ async function getMaxInvoiceNumber(
   return String(rows[0]?.invoicenumber ?? '0');
 }
 
+/** Returns the highest AR document number currently stored for the route. */
 async function getMaxArNumber(
   connection: PoolConnection,
   routeId: number
@@ -239,6 +244,7 @@ async function getMaxArNumber(
   return String(rows[0]?.invoicenumber ?? '0');
 }
 
+/** Returns the highest sales-order number currently stored for the route. */
 async function getMaxSalesOrderNumber(
   connection: PoolConnection,
   routeId: number
@@ -257,6 +263,7 @@ async function getMaxSalesOrderNumber(
   return String(rows[0]?.invoicenumber ?? '0');
 }
 
+/** Returns the highest document number across route transaction tables. */
 async function getMaxDocumentNumber(
   connection: PoolConnection,
   routeId: number
@@ -290,6 +297,7 @@ async function getMaxDocumentNumber(
   return String(rows[0]?.maxdocumentnumber ?? '0');
 }
 
+/** Converts a maximum document number into the next route sequence component. */
 function toRouteTransactionSequence(
   value: string,
   routeId: number,
@@ -306,6 +314,7 @@ function toRouteTransactionSequence(
   return Number.isNaN(sequence) ? 0 : sequence;
 }
 
+/** Resolves all route codes whose sequence state participates in this sync. */
 async function getSyncRouteCodes(
   connection: PoolConnection,
   routeId: number
@@ -368,6 +377,7 @@ async function getSyncRouteCodes(
   return routeCodes.length > 0 ? routeCodes : [routeId];
 }
 
+/** Returns the ControlPanel feature flags consumed by mobile. */
 async function getControlPanel(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -380,16 +390,19 @@ async function getControlPanel(connection: PoolConnection): Promise<GenericRow[]
   return rows;
 }
 
+/** Returns the Setup configuration section. */
 async function getSetup(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>('SELECT * FROM setup');
   return rows;
 }
 
+/** Returns company identity and configuration details. */
 async function getCompanyDetail(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>('SELECT * FROM company');
   return rows;
 }
 
+/** Returns the salesman assigned to the requested route. */
 async function getSalesmanMaster(
   connection: PoolConnection,
   routeId: number
@@ -428,6 +441,7 @@ async function getSalesmanMaster(
   return rows;
 }
 
+/** Returns the route configuration with Zend-compatible defaults. */
 async function getRouteMaster(
   connection: PoolConnection,
   routeCodes: number[]
@@ -606,6 +620,7 @@ async function getRouteMaster(
   return rows;
 }
 
+/** Returns route-day state required for mobile session recovery. */
 async function getStartEndDay(
   connection: PoolConnection,
   routeId: number
@@ -625,6 +640,7 @@ async function getStartEndDay(
   return rows;
 }
 
+/** Returns database synchronization date and time. */
 async function getSyncTime(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     'SELECT CURRENT_DATE() AS synctime'
@@ -632,6 +648,7 @@ async function getSyncTime(connection: PoolConnection): Promise<GenericRow[]> {
   return rows;
 }
 
+/** Returns supported currency configuration. */
 async function getCurrencyMaster(
   connection: PoolConnection,
   routeId: number

@@ -1,5 +1,6 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
+/** Inserts a customer operation once and prevents duplicate upload records. */
 export async function saveCustomerOperationControl(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
@@ -58,6 +59,7 @@ export async function saveCustomerOperationControl(connection: PoolConnection, i
     }
     return Number(item.routekey) > 0;
 }
+/** Saves a customer visit event used for route activity reporting. */
 export async function saveCustomerVisitLog(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     await connection.execute(`
       INSERT INTO customervisitlog SET
@@ -93,6 +95,7 @@ export async function saveCustomerVisitLog(connection: PoolConnection, item: Rec
     });
     return Number(item.routekey) > 0;
 }
+/** Applies mobile route/odometer state changes to routemaster. */
 export async function updateRouteMasterFromUpload(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     await connection.execute(`
       UPDATE routemaster
@@ -120,6 +123,7 @@ export async function updateRouteMasterFromUpload(connection: PoolConnection, it
     });
     return Number(item.routecode) > 0;
 }
+/** Inserts or updates a customer's route sequence for the requested day. */
 export async function saveCustomerSequence(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     await connection.execute(`
       INSERT INTO temp_cust_seq_sts SET
@@ -196,6 +200,7 @@ export async function saveCustomerSequence(connection: PoolConnection, item: Rec
     });
     return Number(item.routekey) > 0;
 }
+/** Checks the composite sequence identity before choosing insert or update. */
 async function customerSequenceExists(connection: PoolConnection, item: Record<string, any>): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
