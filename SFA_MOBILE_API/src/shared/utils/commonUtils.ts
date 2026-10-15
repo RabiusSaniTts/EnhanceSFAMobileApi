@@ -1,5 +1,7 @@
 import path from 'path';
+import type { FastifyRequest } from 'fastify';
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
+import { ApiError } from '../middleware/errors';
 
 export type GenericRow = RowDataPacket & Record<string, unknown>;
 
@@ -45,6 +47,15 @@ export function toLegacyNumber(value: unknown): number {
   return Number.isNaN(numberValue) ? 0 : numberValue;
 }
 
+export function toFixedDecimalString(value: unknown): unknown {
+  if (value === null || value === undefined || value === '') {
+    return value;
+  }
+
+  const numberValue = Number(value);
+  return Number.isFinite(numberValue) ? numberValue.toFixed(4) : value;
+}
+
 export function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
@@ -87,6 +98,96 @@ export function normalizeLegacyRecords(value: unknown): Record<string, unknown>[
   }
 
   return [];
+}
+
+export function parseLegacyBodyValues(
+  body: unknown,
+  invalidJsonMessage: string
+): Record<string, unknown> {
+  if (body === undefined || body === null || body === '') {
+    return {};
+  }
+
+  if (typeof body !== 'string') {
+    return isPlainObject(body) ? body : {};
+  }
+
+  const trimmedBody = body.trim();
+
+  if (trimmedBody === '') {
+    return {};
+  }
+
+  if (!trimmedBody.startsWith('{')) {
+    return Object.fromEntries(new URLSearchParams(trimmedBody));
+  }
+
+  try {
+    const parsed = JSON.parse(trimmedBody);
+    return isPlainObject(parsed) ? parsed : {};
+  } catch {
+    throw new ApiError(400, invalidJsonMessage);
+  }
+}
+
+export function parseLegacyRecordArray(
+  value: unknown,
+  invalidPayloadMessage: string,
+  allowObjectValues = false
+): Record<string, unknown>[] {
+  if (value === undefined || value === null || value === '') {
+    return [];
+  }
+
+  if (Array.isArray(value)) {
+    return value.filter(isPlainObject);
+  }
+
+  if (typeof value !== 'string') {
+    return [];
+  }
+
+  try {
+    const parsed = JSON.parse(value);
+    return allowObjectValues
+      ? normalizeLegacyRecords(parsed)
+      : Array.isArray(parsed)
+        ? parsed.filter(isPlainObject)
+        : [];
+  } catch {
+    throw new ApiError(400, invalidPayloadMessage);
+  }
+}
+
+export function readOptionalRequestParam(
+  request: FastifyRequest,
+  field: string,
+  invalidJsonMessage: string
+): string | undefined {
+  const params = (request.params as Record<string, unknown> | undefined) ?? {};
+  const query = (request.query as Record<string, unknown> | undefined) ?? {};
+  const value =
+    params[field] ??
+    query[field] ??
+    parseLegacyBodyValues(request.body, invalidJsonMessage)[field];
+
+  return value === undefined || value === null || value === ''
+    ? undefined
+    : String(value);
+}
+
+export function readRequiredRequestParam(
+  request: FastifyRequest,
+  field: string,
+  invalidJsonMessage: string
+): string {
+  const value = readOptionalRequestParam(request, field, invalidJsonMessage);
+
+  if (value === undefined) {
+    throw new ApiError(400, `Missing ${field}`);
+  }
+
+  return value;
 }
 
 export function asRecords<T>(items: unknown[]): T[] {

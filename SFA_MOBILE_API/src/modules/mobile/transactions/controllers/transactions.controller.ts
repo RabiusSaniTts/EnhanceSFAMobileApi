@@ -7,8 +7,8 @@ import { withTransaction } from '../../../../shared/db/transaction';
 import { ApiError } from '../../../../shared/middleware/errors';
 import {
   asRecords,
-  isPlainObject,
-  normalizeLegacyRecords,
+  parseLegacyBodyValues,
+  parseLegacyRecordArray,
   readScalar,
   sanitizeFileName
 } from '../../../../shared/utils/commonUtils';
@@ -566,11 +566,15 @@ export async function uploadArTransactionDetails(
 }
 
 function parseSendDataPayload(request: FastifyRequest): Record<string, any> {
-  const rawValues = readLegacyBodyValues(request.body);
+  const rawValues = parseLegacyBodyValues(request.body, 'Invalid sync/senddata JSON payload');
   const payload = createEmptySendDataPayload();
 
   for (const field of SEND_DATA_ARRAY_FIELDS) {
-    payload[field] = parseLegacyArrayField(field, rawValues[field]);
+    payload[field] = parseLegacyRecordArray(
+      rawValues[field],
+      `Invalid ${field} payload`,
+      true
+    );
   }
 
   payload.routekey = readScalar(rawValues.routekey);
@@ -586,52 +590,10 @@ function parseLegacyRequestArrayField(
   field: string
 ): Record<string, unknown>[] {
   const params = {
-    ...readLegacyBodyValues(request.body),
+    ...parseLegacyBodyValues(request.body, 'Invalid sync/senddata JSON payload'),
     ...((request.query as Record<string, unknown> | undefined) ?? {})
   };
-  const value = params[field];
-
-  if (value === undefined || value === null || value === '') {
-    return [];
-  }
-
-  if (Array.isArray(value)) {
-    return value.filter(isPlainObject);
-  }
-
-  try {
-    const parsed = JSON.parse(String(value));
-    return normalizeLegacyRecords(parsed);
-  } catch {
-    throw new ApiError(400, `Invalid ${field} payload`);
-  }
-}
-
-function readLegacyBodyValues(body: unknown): Record<string, unknown> {
-  if (body === undefined || body === null || body === '') {
-    return {};
-  }
-
-  if (typeof body === 'string') {
-    const trimmedBody = body.trim();
-
-    if (trimmedBody === '') {
-      return {};
-    }
-
-    if (trimmedBody.startsWith('{')) {
-      try {
-        const parsed = JSON.parse(trimmedBody);
-        return isPlainObject(parsed) ? parsed : {};
-      } catch {
-        throw new ApiError(400, 'Invalid sync/senddata JSON payload');
-      }
-    }
-
-    return Object.fromEntries(new URLSearchParams(trimmedBody));
-  }
-
-  return isPlainObject(body) ? body : {};
+  return parseLegacyRecordArray(params[field], `Invalid ${field} payload`, true);
 }
 
 function parseCustomerSequenceItems(
@@ -678,27 +640,6 @@ function createEmptySendDataResponse(): Record<string, Record<string, any>[]> {
   }
 
   return response;
-}
-
-function parseLegacyArrayField(field: string, value: unknown): unknown[] {
-  if (value === undefined || value === null || value === '') {
-    return [];
-  }
-
-  if (Array.isArray(value)) {
-    return value;
-  }
-
-  if (typeof value !== 'string') {
-    return [];
-  }
-
-  try {
-    const parsed = JSON.parse(value);
-    return normalizeLegacyRecords(parsed);
-  } catch {
-    throw new ApiError(400, `Invalid ${field} payload`);
-  }
 }
 
 function pruneEmptySendDataResponse(response: Record<string, Record<string, any>[]>): Record<string, any> {

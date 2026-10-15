@@ -1,7 +1,11 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { withTransaction } from '../../../../shared/db/transaction';
 import { ApiError } from '../../../../shared/middleware/errors';
-import { isPlainObject } from '../../../../shared/utils/commonUtils';
+import {
+  parseLegacyBodyValues,
+  parseLegacyRecordArray,
+  readRequiredRequestParam
+} from '../../../../shared/utils/commonUtils';
 import {
   createStartDay,
   getDatabaseCurrentDate,
@@ -31,7 +35,7 @@ async function processStartDay(
   request: FastifyRequest,
   _reply: FastifyReply
 ) {
-  const items = parseStartDayItems(request);
+  const items = parseWsArrayItems(request, 'startday');
 
   if (items.length === 0) {
     return { startday: [] };
@@ -89,7 +93,7 @@ async function processEndDay(
   request: FastifyRequest,
   _reply: FastifyReply
 ) {
-  const items = parseEndDayItems(request);
+  const items = parseWsArrayItems(request, 'endday');
 
   if (items.length === 0) {
     return { endday: [] };
@@ -118,7 +122,7 @@ async function processLogout(
   request: FastifyRequest,
   _reply: FastifyReply
 ): Promise<void> {
-  const items = parseLogoutItems(request);
+  const items = parseWsArrayItems(request, 'logout');
 
   if (items.length === 0) {
     return;
@@ -261,8 +265,8 @@ async function processCustomerMaster(
     query: Record<string, string | undefined>;
   }
 ) {
-  const routeCode = readRequestParam(request, 'routecode');
-  const customerCode = readRequestParam(request, 'customercode');
+  const routeCode = readRequiredRequestParam(request, 'routecode', 'Invalid WS JSON payload');
+  const customerCode = readRequiredRequestParam(request, 'customercode', 'Invalid WS JSON payload');
 
   const customer = await withTransaction((connection) =>
     findCustomerMaster(connection, routeCode, customerCode)
@@ -277,7 +281,7 @@ async function processTransactionData(
     query: Record<string, string | undefined>;
   }
 ) {
-  const routeKey = readTransactionParam(request, 'routekey');
+  const routeKey = readRequiredRequestParam(request, 'routekey', 'Invalid WS JSON payload');
 
   return withTransaction((connection) => getTransactionDataCounts(connection, routeKey));
 }
@@ -288,53 +292,26 @@ async function processImportInventoryCount(
     query: Record<string, string | undefined>;
   }
 ) {
-  const routeCode = readTransactionParam(request, 'routecode');
+  const routeCode = readRequiredRequestParam(request, 'routecode', 'Invalid WS JSON payload');
 
   return withTransaction((connection) => getImportInventoryCounts(connection, routeCode));
 }
 
-function parseStartDayItems(request: FastifyRequest): Record<string, any>[] {
-  const rawStartDay = readLegacyParams(request).startday;
+function parseWsArrayItems(
+  request: FastifyRequest,
+  field: string
+): Record<string, any>[] {
+  const value = readLegacyParams(request)[field];
 
-  if (rawStartDay === undefined || rawStartDay === null || rawStartDay === '') {
+  if (value === undefined || value === null || value === '') {
     return [];
   }
 
   try {
-    const parsed = JSON.parse(String(rawStartDay));
+    const parsed = JSON.parse(String(value));
     return Array.isArray(parsed) ? parsed : [];
   } catch {
-    throw new ApiError(400, 'Invalid startday payload');
-  }
-}
-
-function parseEndDayItems(request: FastifyRequest): Record<string, any>[] {
-  const rawEndDay = readLegacyParams(request).endday;
-
-  if (rawEndDay === undefined || rawEndDay === null || rawEndDay === '') {
-    return [];
-  }
-
-  try {
-    const parsed = JSON.parse(String(rawEndDay));
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    throw new ApiError(400, 'Invalid endday payload');
-  }
-}
-
-function parseLogoutItems(request: FastifyRequest): Record<string, any>[] {
-  const rawLogout = readLegacyParams(request).logout;
-
-  if (rawLogout === undefined || rawLogout === null || rawLogout === '') {
-    return [];
-  }
-
-  try {
-    const parsed = JSON.parse(String(rawLogout));
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    throw new ApiError(400, 'Invalid logout payload');
+    throw new ApiError(400, `Invalid ${field} payload`);
   }
 }
 
@@ -344,93 +321,17 @@ function normalizeDate(value: string): string {
 
 function readLegacyParams(request: FastifyRequest): Record<string, any> {
   return {
-    ...readLegacyBodyParams(request.body),
+    ...parseLegacyBodyValues(request.body, 'Invalid WS JSON payload'),
     ...((request.params as Record<string, any> | undefined) ?? {}),
     ...((request.query as Record<string, any> | undefined) ?? {})
   };
-}
-
-function readLegacyBodyParams(body: unknown): Record<string, any> {
-  if (body === undefined || body === null || body === '') {
-    return {};
-  }
-
-  if (typeof body === 'string') {
-    const trimmedBody = body.trim();
-
-    if (trimmedBody === '') {
-      return {};
-    }
-
-    if (trimmedBody.startsWith('{')) {
-      try {
-        const parsed = JSON.parse(trimmedBody);
-        return isPlainObject(parsed) ? parsed : {};
-      } catch {
-        throw new ApiError(400, 'Invalid WS JSON payload');
-      }
-    }
-
-    return Object.fromEntries(new URLSearchParams(trimmedBody));
-  }
-
-  return isPlainObject(body) ? body : {};
-}
-
-function readRequestParam(
-  request: FastifyRequest & {
-    params: Record<string, string | undefined>;
-    query: Record<string, string | undefined>;
-  },
-  field: string
-): string {
-  const value =
-    request.params[field] ?? request.query[field] ?? readLegacyBodyParams(request.body)[field];
-
-  if (value === undefined || value === null || value === '') {
-    throw new ApiError(400, `Missing ${field}`);
-  }
-
-  return String(value);
-}
-
-function readTransactionParam(
-  request: FastifyRequest & {
-    params: Record<string, string | undefined>;
-    query: Record<string, string | undefined>;
-  },
-  field: string
-): string {
-  const value =
-    request.params[field] ?? request.query[field] ?? readLegacyBodyParams(request.body)[field];
-
-  if (value === undefined || value === null || value === '') {
-    throw new ApiError(400, `Missing ${field}`);
-  }
-
-  return String(value);
 }
 
 function parseLegacyArrayParam(
   params: Record<string, any>,
   field: string
 ): Record<string, any>[] {
-  const value = params[field];
-
-  if (value === undefined || value === null || value === '') {
-    return [];
-  }
-
-  if (Array.isArray(value)) {
-    return value.filter(isPlainObject);
-  }
-
-  try {
-    const parsed = JSON.parse(String(value));
-    return Array.isArray(parsed) ? parsed.filter(isPlainObject) : [];
-  } catch {
-    throw new ApiError(400, `Invalid ${field} payload`);
-  }
+  return parseLegacyRecordArray(params[field], `Invalid ${field} payload`);
 }
 
 function requireParam(params: Record<string, any>, field: string): string | number {
