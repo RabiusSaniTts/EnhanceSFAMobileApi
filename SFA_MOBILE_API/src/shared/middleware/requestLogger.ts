@@ -8,6 +8,8 @@ import { env } from '../../config/env';
 import { isPlainObject } from '../utils/commonUtils';
 import { writeRequestFileLog } from './fileLogger';
 
+const responsePayloads = new WeakMap<FastifyRequest, unknown>();
+
 function getRequestContext(request: FastifyRequest) {
   const params = isPlainObject(request.params) ? request.params : {};
   const query = isPlainObject(request.query) ? request.query : {};
@@ -32,6 +34,15 @@ export async function registerRequestLogger(app: FastifyInstance): Promise<void>
     );
   });
 
+  // Capture the serialized response for optional file logging after completion.
+  app.addHook('onSend', async (request, _reply, payload) => {
+    if (env.FILE_LOG_ENABLED && env.FILE_LOG_RESPONSE_ENABLED) {
+      responsePayloads.set(request, payload);
+    }
+
+    return payload;
+  });
+
   app.addHook('onResponse', async (request, reply) => {
     request.log.info(
       {
@@ -46,7 +57,10 @@ export async function registerRequestLogger(app: FastifyInstance): Promise<void>
       event: 'request.completed',
       level: 'info',
       statusCode: reply.statusCode,
-      responseTime: reply.elapsedTime
+      responseTime: reply.elapsedTime,
+      responsePayload: responsePayloads.get(request)
     });
+
+    responsePayloads.delete(request);
   });
 }

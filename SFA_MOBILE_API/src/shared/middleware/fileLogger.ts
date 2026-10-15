@@ -16,6 +16,7 @@ interface FileLogDetails {
   level: FileLogLevel;
   statusCode: number;
   responseTime?: number;
+  responsePayload?: unknown;
   error?: Error;
 }
 
@@ -42,6 +43,7 @@ export async function writeRequestFileLog(
       moduleName
     );
     const logFilePath = path.join(logDirectory, path.basename(env.FILE_LOG_NAME));
+    const responseDetails = formatResponsePayload(details.responsePayload);
     const logRecord = {
       timestamp: new Date().toISOString(),
       level: details.level,
@@ -55,6 +57,7 @@ export async function writeRequestFileLog(
       responseTime: details.responseTime,
       queryKeys: isPlainObject(request.query) ? Object.keys(request.query) : [],
       bodyKeys: isPlainObject(request.body) ? Object.keys(request.body) : [],
+      ...responseDetails,
       error: details.error
         ? {
             name: details.error.name,
@@ -68,6 +71,72 @@ export async function writeRequestFileLog(
   } catch (error) {
     request.log.warn({ err: error }, 'file log write failed');
   }
+}
+
+/** Serializes, redacts, and size-limits the response before file logging. */
+function formatResponsePayload(payload: unknown): Record<string, unknown> {
+  if (!env.FILE_LOG_RESPONSE_ENABLED || payload === undefined) {
+    return {};
+  }
+
+  const redactedPayload = redactSensitiveValues(normalizeResponsePayload(payload));
+  const serializedPayload =
+    typeof redactedPayload === 'string' ? redactedPayload : JSON.stringify(redactedPayload);
+  const responseTruncated = serializedPayload.length > env.FILE_LOG_MAX_RESPONSE_LENGTH;
+
+  return {
+    response: responseTruncated
+      ? serializedPayload.slice(0, env.FILE_LOG_MAX_RESPONSE_LENGTH)
+      : redactedPayload,
+    responseTruncated
+  };
+}
+
+/** Converts Fastify string or Buffer output into a loggable value. */
+function normalizeResponsePayload(payload: unknown): unknown {
+  const value = Buffer.isBuffer(payload) ? payload.toString('utf8') : payload;
+
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  const trimmedValue = value.trim();
+
+  if (trimmedValue.startsWith('{') || trimmedValue.startsWith('[')) {
+    try {
+      return JSON.parse(trimmedValue);
+    } catch {
+      return value;
+    }
+  }
+
+  return value;
+}
+
+/** Redacts credential and token fields recursively. */
+function redactSensitiveValues(value: unknown): unknown {
+  if (Array.isArray(value)) {
+    return value.map(redactSensitiveValues);
+  }
+
+  if (!isPlainObject(value)) {
+    return value;
+  }
+
+  return Object.fromEntries(
+    Object.entries(value).map(([key, nestedValue]) => [
+      key,
+      isSensitiveField(key) ? '[REDACTED]' : redactSensitiveValues(nestedValue)
+    ])
+  );
+}
+
+/** Identifies values that must never be persisted in logs. */
+function isSensitiveField(field: string): boolean {
+  const normalizedField = field.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return ['password', 'userpassword', 'dbpassword', 'token', 'accesstoken', 'refreshtoken'].includes(
+    normalizedField
+  );
 }
 
 /** Maps endpoint families to stable directory names. */

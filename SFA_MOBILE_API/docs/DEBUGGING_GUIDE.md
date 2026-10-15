@@ -181,6 +181,8 @@ Optional production-oriented text logging is controlled through `.env`:
 FILE_LOG_ENABLED=true
 FILE_LOG_PATH=./logs
 FILE_LOG_NAME=api-log.txt
+FILE_LOG_RESPONSE_ENABLED=true
+FILE_LOG_MAX_RESPONSE_LENGTH=1048576
 ```
 
 Files are created automatically using this layout:
@@ -202,4 +204,8 @@ status, duration, query/body field names, and safe error details. Raw payloads,
 password-bearing URLs, and customer transaction data are not written.
 
 Set `FILE_LOG_ENABLED=false` to disable file logging without a code change.
+Set `FILE_LOG_RESPONSE_ENABLED=false` to keep request/status logs while omitting
+response bodies. `FILE_LOG_MAX_RESPONSE_LENGTH` limits each stored response;
+larger responses are truncated and marked with `responseTruncated: true`.
+Credential and token fields are always replaced with `[REDACTED]`.
 
