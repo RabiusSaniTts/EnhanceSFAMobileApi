@@ -27,6 +27,7 @@ const GET_SYNC_DATA_TABLE_NAMES = [
   'custnrp', 'deletemaster', 'customeritemgrp', 'customeritemmap'
 ] as const;
 
+/** Loads all sync sections in one transaction and returns the Zend-compatible payload. */
 export async function masterDataSyncAction(
   request: FastifyRequest<{ Params: Record<string, string | undefined> }>,
   reply: FastifyReply
@@ -35,12 +36,14 @@ export async function masterDataSyncAction(
   const result = await withTransaction(async (connection) => {
     const routeId = Number(params.routeid);
     const userId = Number(params.userid);
+    const deviceId = params.deviceid;
+
     const settingSections = await getSettingSyncSections(connection, { routeId });
     const masterDataSections = await getMasterDataSyncSections(connection, { routeId });
     const transactionDataSections = await getTransactionDataSyncSections(connection, {
       routeId,
       userId,
-      deviceId: params.deviceid
+      deviceId
     });
 
     const { ControlPanel, Setup, companydetail, SalesmanMaster, RouteMaster, startendday, synctime, CurrencyMaster } = settingSections;
@@ -73,6 +76,7 @@ export async function masterDataSyncAction(
   await reply.send(result);
 }
 
+/** Orders every response section and supplies an empty array for missing data. */
 function buildMasterDataSyncResponse(sections: Record<string, any>) {
   const response: Record<string, any> = {};
 
@@ -85,6 +89,7 @@ function buildMasterDataSyncResponse(sections: Record<string, any>) {
   return response;
 }
 
+/** Builds the legacy synccount array, including duplicated item-must count entries. */
 function buildSyncCount(response: Record<string, any>) {
   const syncCount = GET_SYNC_DATA_TABLE_NAMES.map((tableName) => ({
     tablename: tableName,
@@ -108,6 +113,7 @@ function buildSyncCount(response: Record<string, any>) {
   return syncCount;
 }
 
+/** Converts selected decimal values to the fixed-width strings returned by Zend. */
 function applyZendValueFormatting(response: Record<string, any>): void {
   formatDecimalFields(response.CustomerMaster, [
     'creditlimit',
@@ -118,6 +124,7 @@ function applyZendValueFormatting(response: Record<string, any>): void {
   formatDecimalFields(response.RouteMaster, ['minsaleslimit', 'maxsaleslimit']);
 }
 
+/** Applies legacy decimal formatting to named fields in each response row. */
 function formatDecimalFields(rows: any[], fields: string[]): void {
   for (const row of rows ?? []) {
     for (const field of fields) {
@@ -126,6 +133,7 @@ function formatDecimalFields(rows: any[], fields: string[]): void {
   }
 }
 
+/** Represents an empty table count as an empty string, matching the legacy API. */
 function toZendTableCount(count: number) {
   return count === 0 ? '' : count;
 }

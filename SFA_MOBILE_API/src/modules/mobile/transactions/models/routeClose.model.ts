@@ -1,6 +1,10 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { required } from '../../../../shared/utils/commonUtils';
 
+/**
+ * Runs legacy work that must occur after all upload sections are saved: sync
+ * logging and, for closed routes, suggested-sales and posting recalculation.
+ */
 export async function runSendDataPostProcessing(
   connection: PoolConnection,
   params: Record<string, any>
@@ -14,6 +18,7 @@ export async function runSendDataPostProcessing(
   }
 }
 
+/** Adds the upload to synclog when user and route identifiers are valid. */
 async function insertSyncLog(
   connection: PoolConnection,
   params: Record<string, any>
@@ -62,6 +67,7 @@ async function insertSyncLog(
   );
 }
 
+/** Returns whether the uploaded route day is marked closed. */
 async function isRouteClosed(
   connection: PoolConnection,
   routeKey: string | number
@@ -79,6 +85,7 @@ async function isRouteClosed(
   return Number(rows[0]?.count ?? 0) > 0;
 }
 
+/** Rebuilds suggested sales for customers remaining after route filtering. */
 async function rebuildSuggestedSalesInvoiceAfterRouteFilter(
   connection: PoolConnection,
   routeCode: string | number
@@ -131,6 +138,7 @@ async function rebuildSuggestedSalesInvoiceAfterRouteFilter(
   );
 }
 
+/** Inserts suggested-sales quantities derived from route-type history. */
 async function insertRouteTypeSuggestedSales(
   connection: PoolConnection,
   routeCode: string | number,
@@ -189,6 +197,7 @@ async function insertRouteTypeSuggestedSales(
   );
 }
 
+/** Inserts suggested-sales quantities derived from delivery-route history. */
 async function insertDeliveryRouteSuggestedSales(
   connection: PoolConnection,
   routeCode: string | number,
@@ -239,6 +248,7 @@ async function insertDeliveryRouteSuggestedSales(
   );
 }
 
+/** Rounds suggested quantities to complete cases where route settings require it. */
 async function roundSuggestedSalesToCases(
   connection: PoolConnection,
   routeCode: string | number
@@ -258,6 +268,7 @@ async function roundSuggestedSalesToCases(
   );
 }
 
+/** Marks uploaded records as posted after a route has been closed. */
 async function updateDataPosting(
   connection: PoolConnection,
   routeCode: string | number
@@ -319,6 +330,7 @@ async function updateDataPosting(
   );
 }
 
+/** Recalculates average sales quantities used by the next master-data sync. */
 async function rebuildAverageSalesQuantity(
   connection: PoolConnection,
   routeCode: string | number

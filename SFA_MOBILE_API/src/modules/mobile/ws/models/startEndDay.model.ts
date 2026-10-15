@@ -1,6 +1,7 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { required } from '../../../../shared/utils/commonUtils';
 
+/** Returns MySQL's current date in YYYY-MM-DD format for start-day validation. */
 export async function getDatabaseCurrentDate(connection: PoolConnection): Promise<string> {
   const [rows] = await connection.execute<RowDataPacket[]>(
     "SELECT DATE_FORMAT(CURDATE(), '%Y-%m-%d') AS currentDate"
@@ -9,6 +10,7 @@ export async function getDatabaseCurrentDate(connection: PoolConnection): Promis
   return rows[0]?.currentDate;
 }
 
+/** Returns the configured version rule for a route, or null if unrestricted. */
 export async function getRouteVersion(
   connection: PoolConnection,
   routeCode: string | number
@@ -28,6 +30,7 @@ export async function getRouteVersion(
   return rows[0] ?? null;
 }
 
+/** Returns the latest routeclosed state; 2 means no previous route day exists. */
 export async function getLatestRouteClosedStatus(
   connection: PoolConnection,
   routeCode: string | number
@@ -46,6 +49,7 @@ export async function getLatestRouteClosedStatus(
   return Number(rows[0]?.routeclosed ?? 2);
 }
 
+/** Loads hierarchy values copied into a new startendday row. */
 export async function getRouteHierarchy(
   connection: PoolConnection,
   routeCode: string | number
@@ -90,6 +94,7 @@ export async function getRouteHierarchy(
   );
 }
 
+/** Creates a route day and returns its generated key and persisted start values. */
 export async function createStartDay(
   connection: PoolConnection,
   item: Record<string, any>,
@@ -148,6 +153,7 @@ export async function createStartDay(
   return rows[0];
 }
 
+/** Closes a route day, updates its odometer, and returns persisted end values. */
 export async function updateEndDay(
   connection: PoolConnection,
   item: Record<string, any>
@@ -227,6 +233,7 @@ export async function updateEndDay(
   return rows[0] ?? null;
 }
 
+/** Finds the currently open tablet-trip route key; zero means no open route. */
 export async function resolveLogoutRouteKey(
   connection: PoolConnection,
   item: Record<string, any>
@@ -246,6 +253,7 @@ export async function resolveLogoutRouteKey(
   return Number(rows[0]?.routekey ?? 0);
 }
 
+/** Resolves the tablet-trip route code used for the odometer update. */
 async function getTabletTripRouteCode(
   connection: PoolConnection,
   routeKey: string | number

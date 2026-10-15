@@ -1,5 +1,6 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
+/** Saves an order header and returns the existing or generated transaction key. */
 export async function saveSalesOrderHeader(connection: PoolConnection, item: Record<string, any>): Promise<number> {
     const existingTransactionKey = await getSalesOrderTransactionKey(connection, required(item.invoicenumber));
     if (existingTransactionKey !== null) {
@@ -97,6 +98,7 @@ export async function saveSalesOrderHeader(connection: PoolConnection, item: Rec
     });
     return insertResult.insertId;
 }
+/** Saves an order line linked to its header transaction key. */
 export async function saveSalesOrderDetail(connection: PoolConnection, item: Record<string, any>, transactionKey: number): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
@@ -169,6 +171,7 @@ export async function saveSalesOrderDetail(connection: PoolConnection, item: Rec
     });
     return true;
 }
+/** Saves order prescription/Rx detail linked to its order header. */
 export async function saveOrderRxdDetail(connection: PoolConnection, item: Record<string, any>, transactionKey: number): Promise<boolean> {
     const [rows] = await connection.execute<(RowDataPacket & {
         count: number;
@@ -213,6 +216,7 @@ export async function saveOrderRxdDetail(connection: PoolConnection, item: Recor
     });
     return true;
 }
+/** Finds an existing order key so a retried header is updated, not duplicated. */
 async function getSalesOrderTransactionKey(connection: PoolConnection, invoiceNumber: string | number): Promise<number | null> {
     const [rows] = await connection.execute<(RowDataPacket & {
         transactionkey: number;
@@ -224,6 +228,7 @@ async function getSalesOrderTransactionKey(connection: PoolConnection, invoiceNu
     `, { invoiceNumber });
     return rows[0]?.transactionkey ?? null;
 }
+/** Allocates the next sales-order document number for a route. */
 async function getNextSalesOrderDocumentNumber(connection: PoolConnection, routeCode: string | number): Promise<number> {
     const [rows] = await connection.execute<(RowDataPacket & {
         documentNumber: number;

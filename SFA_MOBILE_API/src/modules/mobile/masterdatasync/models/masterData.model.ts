@@ -5,6 +5,7 @@ import {
 } from "../../../../shared/utils/commonUtils";
 import type { GenericRow } from "../../../../shared/utils/commonUtils";
 
+/** Loads all product, customer, promotion, survey, reason, and reference sections. */
 export async function getMasterDataSyncSections(
   connection: PoolConnection,
   input: Record<string, any>,
@@ -206,6 +207,7 @@ export async function getMasterDataSyncSections(
   };
 }
 
+/** Returns item groups available to the route. */
 async function getItemGroup(
   connection: PoolConnection,
   routeId: number,
@@ -240,6 +242,7 @@ async function getItemGroup(
   return rows;
 }
 
+/** Returns active route items using the exact mobile ItemMaster column contract. */
 async function getItemMaster(
   connection: PoolConnection,
   routeId: number,
@@ -299,6 +302,7 @@ async function getItemMaster(
   return rows;
 }
 
+/** Returns package and units-per-case definitions. */
 async function getItemPackageMaster(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -317,6 +321,7 @@ async function getItemPackageMaster(
   return rows;
 }
 
+/** Returns item/category goals assigned to the route. */
 async function getRouteGoal(
   connection: PoolConnection,
   routeId: number,
@@ -350,6 +355,7 @@ async function getRouteGoal(
   return rows;
 }
 
+/** Returns route-level average sales quantities used for ordering suggestions. */
 async function getAverageSalesQty(
   connection: PoolConnection,
   routeId: number,
@@ -366,6 +372,7 @@ async function getAverageSalesQty(
   return rows;
 }
 
+/** Returns customer-specific outlet item-code mappings. */
 async function getOutletItemCodes(
   connection: PoolConnection,
   routeId: number,
@@ -394,6 +401,7 @@ async function getOutletItemCodes(
   return rows;
 }
 
+/** Returns tax definitions required for mobile calculations. */
 async function getTaxMaster(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -411,6 +419,7 @@ async function getTaxMaster(connection: PoolConnection): Promise<GenericRow[]> {
   return rows;
 }
 
+/** Returns mandatory-item rule headers assigned to route customers. */
 async function getItemMustHeader(
   connection: PoolConnection,
   routeId: number,
@@ -438,6 +447,7 @@ async function getItemMustHeader(
   return rows;
 }
 
+/** Returns mandatory-item rule details assigned to route customers. */
 async function getItemMustDetail(
   connection: PoolConnection,
   routeId: number,
@@ -465,6 +475,7 @@ async function getItemMustDetail(
   return rows;
 }
 
+/** Returns item-level non-returnable-product configuration. */
 async function getItemNrp(
   connection: PoolConnection,
   routeId: number,
@@ -497,6 +508,7 @@ async function getItemNrp(
   return rows;
 }
 
+/** Returns customer-level non-returnable-product configuration. */
 async function getCustomerNrp(
   connection: PoolConnection,
   routeId: number,
@@ -523,6 +535,7 @@ async function getCustomerNrp(
   return rows;
 }
 
+/** Returns customer item-group headers used by route customers. */
 async function getCustomerItemGroups(
   connection: PoolConnection,
   routeId: number,
@@ -559,6 +572,7 @@ async function getCustomerItemGroups(
   return rows;
 }
 
+/** Returns items mapped to the synchronized customer item groups. */
 async function getCustomerItemMap(
   connection: PoolConnection,
   routeId: number,
@@ -593,6 +607,7 @@ async function getCustomerItemMap(
   return rows;
 }
 
+/** Resolves customer codes eligible for the route on the current call day. */
 async function getRouteCustomerCodes(
   connection: PoolConnection,
   routeId: number,
@@ -632,6 +647,7 @@ async function getRouteCustomerCodes(
   );
 }
 
+/** Executes a customer-code selection query and returns normalized scalar codes. */
 async function selectCustomerCodes(
   connection: PoolConnection,
   sql: string,
@@ -643,6 +659,7 @@ async function selectCustomerCodes(
   return rows.map((row) => row.customercode);
 }
 
+/** Maps a weekday number to the corresponding route call-restriction column. */
 function getCallRestrictionColumn(dayNumber: number): string {
   switch (dayNumber) {
     case 1:
@@ -662,6 +679,7 @@ function getCallRestrictionColumn(dayNumber: number): string {
   }
 }
 
+/** Resolves the current route-sequence week used by journey-plan filtering. */
 async function getRouteSequenceWeek(
   connection: PoolConnection,
 ): Promise<number> {
@@ -687,6 +705,7 @@ async function getRouteSequenceWeek(
   return Number(weekRows[0]?.rp32weeknumber ?? 9);
 }
 
+/** Returns route customers and templates with the exact Zend response columns. */
 async function getCustomerMaster(
   connection: PoolConnection,
   routeId: number,
@@ -1434,6 +1453,7 @@ async function getCustomerMaster(
   return rows;
 }
 
+/** Returns the sales calendar used for route week/date calculations. */
 async function getSalesCalendar(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -1448,6 +1468,7 @@ async function getSalesCalendar(
   return rows;
 }
 
+/** Returns the filtered journey-plan sequence for synchronized customers. */
 async function getRouteSequence(
   connection: PoolConnection,
   routeId: number,
@@ -1489,6 +1510,7 @@ async function getRouteSequence(
   return rows;
 }
 
+/** Returns outstanding customer invoices when the route configuration enables them. */
 async function getCustomerInvoice(
   connection: PoolConnection,
   routeId: number,
@@ -1601,6 +1623,7 @@ async function getCustomerInvoice(
   return rows;
 }
 
+/** Returns discount rule headers. */
 async function getDiscountKeyHeader(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -1615,6 +1638,7 @@ async function getDiscountKeyHeader(
   return rows;
 }
 
+/** Returns discount rule detail tiers. */
 async function getDiscountKeyDetail(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -1628,6 +1652,7 @@ async function getDiscountKeyDetail(
   return rows;
 }
 
+/** Returns product-distribution rule details. */
 async function getDistributionKeyDetails(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -1641,6 +1666,7 @@ async function getDistributionKeyDetails(
   return rows;
 }
 
+/** Returns route-relevant promotion product-group headers. */
 async function getProductGroupHeader(
   connection: PoolConnection,
   routeId: number,
@@ -1701,6 +1727,7 @@ async function getProductGroupHeader(
   return rows;
 }
 
+/** Returns items belonging to route-relevant promotion product groups. */
 async function getProductGroupDetail(
   connection: PoolConnection,
   routeId: number,
@@ -1747,6 +1774,7 @@ async function getProductGroupDetail(
   return rows;
 }
 
+/** Returns promotion-key headers applicable to the route. */
 async function getPromoKeyHeader(
   connection: PoolConnection,
   routeId: number,
@@ -1769,6 +1797,7 @@ async function getPromoKeyHeader(
   return rows;
 }
 
+/** Returns promotion-key conditions and rewards. */
 async function getPromoKeyDetail(
   connection: PoolConnection,
   routeId: number,
@@ -1809,6 +1838,7 @@ async function getPromoKeyDetail(
   return rows;
 }
 
+/** Returns active promotion-plan headers available to the route. */
 async function getPromoPlanHeader(
   connection: PoolConnection,
   routeId: number,
@@ -1840,6 +1870,7 @@ async function getPromoPlanHeader(
   return rows;
 }
 
+/** Returns promotion-plan detail rules. */
 async function getPromoPlanDetail(
   connection: PoolConnection,
   routeId: number,
@@ -1882,6 +1913,7 @@ async function getPromoPlanDetail(
   return rows;
 }
 
+/** Returns advanced customer/item promotion assignments. */
 async function getPromotionAssignmentAdvanced(
   connection: PoolConnection,
   routeId: number,
@@ -1925,6 +1957,7 @@ async function getPromotionAssignmentAdvanced(
   return rows;
 }
 
+/** Returns customer pricing assignments for route customers. */
 async function getCustomerPricing1(
   connection: PoolConnection,
   routeId: number,
@@ -1961,6 +1994,7 @@ async function getCustomerPricing1(
   return rows;
 }
 
+/** Returns price-list details referenced by synchronized customers. */
 async function getPricingDetail1(
   connection: PoolConnection,
   routeId: number,
@@ -2009,6 +2043,7 @@ async function getPricingDetail1(
   return rows;
 }
 
+/** Returns POS equipment master records. */
 async function getPosMaster(connection: PoolConnection): Promise<GenericRow[]> {
   if (!(await tableExists(connection, "posmaster"))) {
     return [];
@@ -2035,6 +2070,7 @@ async function getPosMaster(connection: PoolConnection): Promise<GenericRow[]> {
   return rows;
 }
 
+/** Returns POS equipment currently assigned to customers. */
 async function getCustomerPosInventory(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2052,6 +2088,7 @@ async function getCustomerPosInventory(
   return rows;
 }
 
+/** Returns customer POS allocation limits. */
 async function getCustomerPosLimit(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2069,6 +2106,7 @@ async function getCustomerPosLimit(
   return rows;
 }
 
+/** Returns POS placement/change instruction definitions. */
 async function getPosInstructions(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2093,6 +2131,7 @@ async function getPosInstructions(
   return rows;
 }
 
+/** Returns survey plans assigned to customers. */
 async function getCustomerSurveyPlan(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2115,6 +2154,7 @@ async function getCustomerSurveyPlan(
   return rows;
 }
 
+/** Returns survey-key plan assignments. */
 async function getCustomerSurveyKeyPlan(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2132,6 +2172,7 @@ async function getCustomerSurveyKeyPlan(
   return rows;
 }
 
+/** Returns survey keys referenced by customer plans. */
 async function getCustomerSurveyKey(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2158,6 +2199,7 @@ async function getCustomerSurveyKey(
   return rows;
 }
 
+/** Returns survey questions and response definitions. */
 async function getCustomerSurveyDefinition(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2191,6 +2233,7 @@ async function getCustomerSurveyDefinition(
   return rows;
 }
 
+/** Returns survey-definition assignment rows. */
 async function getCustomerSurveyDefAssign(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2208,6 +2251,7 @@ async function getCustomerSurveyDefAssign(
   return rows;
 }
 
+/** Returns lookup values referenced by survey responses. */
 async function getLookupIndexDetail(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2225,6 +2269,7 @@ async function getLookupIndexDetail(
   return rows;
 }
 
+/** Returns permitted non-service reason codes. */
 async function getNonServiceReasons(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2242,6 +2287,7 @@ async function getNonServiceReasons(
   return rows;
 }
 
+/** Returns route expense reason codes. */
 async function getExpenseReasons(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2259,6 +2305,7 @@ async function getExpenseReasons(
   return rows;
 }
 
+/** Returns expiry-return reason codes. */
 async function getExpiryReturnReasons(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2276,6 +2323,7 @@ async function getExpiryReturnReasons(
   return rows;
 }
 
+/** Returns item-return reason codes. */
 async function getReturnItemReasons(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2293,6 +2341,7 @@ async function getReturnItemReasons(
   return rows;
 }
 
+/** Returns manual free-good reason codes. */
 async function getFreeGoodReasons(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2310,6 +2359,7 @@ async function getFreeGoodReasons(
   return rows;
 }
 
+/** Returns transaction void reason codes. */
 async function getVoidReasons(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2327,6 +2377,7 @@ async function getVoidReasons(
   return rows;
 }
 
+/** Returns route-book history for synchronized customers. */
 async function getRouteBook(
   connection: PoolConnection,
   routeId: number,
@@ -2347,6 +2398,7 @@ async function getRouteBook(
   return rows;
 }
 
+/** Returns route/customer sales trend history. */
 async function getSalesTrend(
   connection: PoolConnection,
   routeId: number,
@@ -2367,6 +2419,7 @@ async function getSalesTrend(
   return rows;
 }
 
+/** Returns temporary customer inventory captured for the route. */
 async function getTempCustomerInventory(
   connection: PoolConnection,
   routeId: number,
@@ -2388,6 +2441,7 @@ async function getTempCustomerInventory(
   return rows;
 }
 
+/** Returns active customer messages displayed by mobile. */
 async function getCustomerMessages(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2421,6 +2475,7 @@ async function getCustomerMessages(
   return rows;
 }
 
+/** Returns active salesman messages displayed by mobile. */
 async function getSalesmanMessages(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2454,6 +2509,7 @@ async function getSalesmanMessages(
   return rows;
 }
 
+/** Returns van/vehicle master records. */
 async function getVanMaster(connection: PoolConnection): Promise<GenericRow[]> {
   if (!(await tableExists(connection, "vanmaster"))) {
     return [];
@@ -2481,6 +2537,7 @@ async function getVanMaster(connection: PoolConnection): Promise<GenericRow[]> {
   return rows;
 }
 
+/** Returns bank definitions used for collection entry. */
 async function getBankMaster(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2510,6 +2567,7 @@ async function getBankMaster(
   return rows;
 }
 
+/** Returns cash denomination descriptions used during settlement. */
 async function getCashDescription(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {
@@ -2527,6 +2585,7 @@ async function getCashDescription(
   return rows;
 }
 
+/** Returns inventory location definitions used by mobile stock transactions. */
 async function getInventoryLocation(
   connection: PoolConnection,
 ): Promise<GenericRow[]> {

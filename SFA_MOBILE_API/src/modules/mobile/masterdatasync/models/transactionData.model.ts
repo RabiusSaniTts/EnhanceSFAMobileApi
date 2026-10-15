@@ -2,6 +2,7 @@ import type { PoolConnection, RowDataPacket } from "mysql2/promise";
 import { getLatestClosedRouteKey, tableExists } from "../../../../shared/utils/commonUtils";
 import type { GenericRow } from "../../../../shared/utils/commonUtils";
 
+/** Returns today's pending starting-load lines for the route. */
 async function getStartingLoadDetail(
   connection: PoolConnection,
   routeId: number
@@ -45,6 +46,7 @@ async function getStartingLoadDetail(
   return rows;
 }
 
+/** Returns the route's current mobile inventory summary. */
 async function getInventorySummaryDetail(
   connection: PoolConnection,
   routeId: number
@@ -149,6 +151,7 @@ async function getInventorySummaryDetail(
   return rows;
 }
 
+/** Returns sales-order headers required for mobile transaction recovery. */
 async function getSalesOrderHeader(
   connection: PoolConnection,
   routeId: number
@@ -171,6 +174,7 @@ async function getSalesOrderHeader(
   return rows;
 }
 
+/** Returns sales-order details associated with synchronized headers. */
 async function getSalesOrderDetail(
   connection: PoolConnection,
   routeId: number
@@ -198,6 +202,7 @@ async function getSalesOrderDetail(
   return rows;
 }
 
+/** Returns suggested sales quantities prepared for the route. */
 async function getSuggestedSalesInvoice(
   connection: PoolConnection,
   routeId: number
@@ -218,6 +223,7 @@ async function getSuggestedSalesInvoice(
   return rows;
 }
 
+/** Returns inventory transaction lines belonging to the route day. */
 async function getInventoryTransactionDetail(
   connection: PoolConnection,
   routeKey: number
@@ -240,6 +246,7 @@ async function getInventoryTransactionDetail(
   return rows;
 }
 
+/** Returns customer free-of-charge balances for the route. */
 async function getCustomerFocBalance(
   connection: PoolConnection,
   routeId: number
@@ -267,6 +274,7 @@ async function getCustomerFocBalance(
   return rows;
 }
 
+/** Returns free-of-charge transaction details for route customers. */
 async function getCustomerFocDetail(
   connection: PoolConnection,
   routeId: number
@@ -294,6 +302,7 @@ async function getCustomerFocDetail(
   return rows;
 }
 
+/** Returns journey-plan credit-limit overrides. */
 async function getJourneyPlanCreditLimit(
   connection: PoolConnection
 ): Promise<GenericRow[]> {
@@ -311,6 +320,7 @@ async function getJourneyPlanCreditLimit(
   return rows;
 }
 
+/** Returns batch and expiry records needed for transaction recovery. */
 async function getBatchExpiryDetail(
   connection: PoolConnection,
   routeKey: number
@@ -331,6 +341,7 @@ async function getBatchExpiryDetail(
   return rows;
 }
 
+/** Returns customer free-of-charge entitlement master rows. */
 async function getCustomerFoc(
   connection: PoolConnection,
   routeId: number
@@ -396,6 +407,7 @@ const DELETE_MASTER_TABLES = [
   'customerpricing1'
 ] as const;
 
+/** Returns deletion instructions created since the device's last sync. */
 async function getDeleteMaster(
   connection: PoolConnection,
   input: Record<string, any>
@@ -446,6 +458,7 @@ async function getDeleteMaster(
   }));
 }
 
+/** Resolves the device/user sync timestamp used to filter deletions. */
 async function getSyncDate(
   connection: PoolConnection,
   input: Record<string, any>
@@ -467,6 +480,7 @@ async function getSyncDate(
   return rows[0]?.syncdate ?? null;
 }
 
+/** Resolves the primary-key column used to serialize a delete instruction. */
 async function getPrimaryKeyByTable(
   connection: PoolConnection,
   rows: { tablename: string }[]
@@ -503,6 +517,7 @@ async function getPrimaryKeyByTable(
   return primaryKeyByTable;
 }
 
+/** Loads all transaction-related arrays included in the master-sync response. */
 export async function getTransactionDataSyncSections(
   connection: PoolConnection,
   input: Record<string, any>,

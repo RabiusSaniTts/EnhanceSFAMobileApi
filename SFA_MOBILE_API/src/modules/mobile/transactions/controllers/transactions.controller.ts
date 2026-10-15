@@ -76,14 +76,21 @@ const SEND_DATA_ARRAY_FIELDS = [
 
 const CUSTOMER_IMAGE_DIR = path.resolve(process.cwd(), 'public', 'customerimage');
 
-export async function sendData(
+/**
+ * Parses and uploads every transaction section sent by the mobile application.
+ * All sections share one transaction: any database error rolls back the entire
+ * request, and the response includes acknowledgements only for saved records.
+ */
+export async function sendDataAction(
   request: FastifyRequest,
-  _reply: FastifyReply
-): Promise<Record<string, any>> {
+  reply: FastifyReply
+): Promise<void> {
   const payload = parseSendDataPayload(request);
 
-  return withTransaction(async (connection) => {
+  const result = await withTransaction(async (connection) => {
+    // Response arrays use the same names as incoming mobile transaction sections.
     const response = createEmptySendDataResponse();
+    // Generated header keys connect detail records that arrive in the same payload.
     const invoiceTransactionKeys = new Map<string, number>();
     const orderTransactionKeys = new Map<string, number>();
     const arTransactionKeys = new Map<string, number>();
@@ -498,12 +505,16 @@ export async function sendData(
 
     return pruneEmptySendDataResponse(response);
   });
+
+  // Zend returned JSON as text, so preserve that content type and serialization.
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
-export async function customerSequence(
+/** Uploads customer route-sequence records and returns the legacy success object. */
+export async function customerSequenceAction(
   request: FastifyRequest,
-  _reply: FastifyReply
-): Promise<Record<string, any>> {
+  reply: FastifyReply
+): Promise<void> {
   const items = parseCustomerSequenceItems(request);
 
   await withTransaction(async (connection) => {
@@ -512,21 +523,25 @@ export async function customerSequence(
     }
   });
 
-  return {
+  const result = {
     code: 200,
     message: 'Load Data !'
   };
+
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
-export async function uploadInvoiceTransactionDetails(
-  request: FastifyRequest
-): Promise<Record<string, any>> {
+/** Uploads invoice details separately and acknowledges each successfully saved item. */
+export async function invoiceTransactionDetailAction(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
   const items = parseLegacyRequestArrayField(
     request,
     'invoicedetail'
   ) as Record<string, any>[];
 
-  return withTransaction(async (connection) => {
+  const result = await withTransaction(async (connection) => {
     const invoicedetail: Record<string, any>[] = [];
 
     for (const item of items) {
@@ -541,14 +556,18 @@ export async function uploadInvoiceTransactionDetails(
 
     return { invoicedetail };
   });
+
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
-export async function uploadArTransactionDetails(
-  request: FastifyRequest
-): Promise<Record<string, any>> {
+/** Uploads AR details separately and acknowledges each successfully saved item. */
+export async function arTransactionDetailAction(
+  request: FastifyRequest,
+  reply: FastifyReply
+): Promise<void> {
   const items = parseLegacyRequestArrayField(request, 'ardetail') as Record<string, any>[];
 
-  return withTransaction(async (connection) => {
+  const result = await withTransaction(async (connection) => {
     const ardetail: Record<string, any>[] = [];
 
     for (const item of items) {
@@ -563,8 +582,11 @@ export async function uploadArTransactionDetails(
 
     return { ardetail };
   });
+
+  await reply.type('text/plain').send(JSON.stringify(result));
 }
 
+/** Converts the legacy senddata body into a predictable object of array sections. */
 function parseSendDataPayload(request: FastifyRequest): Record<string, any> {
   const rawValues = parseLegacyBodyValues(request.body, 'Invalid sync/senddata JSON payload');
   const payload = createEmptySendDataPayload();
@@ -585,6 +607,7 @@ function parseSendDataPayload(request: FastifyRequest): Record<string, any> {
   return payload;
 }
 
+/** Reads one JSON-array field from legacy body or query parameters. */
 function parseLegacyRequestArrayField(
   request: FastifyRequest,
   field: string
@@ -596,6 +619,7 @@ function parseLegacyRequestArrayField(
   return parseLegacyRecordArray(params[field], `Invalid ${field} payload`, true);
 }
 
+/** Accepts customer-sequence input as an array or a JSON-encoded array body. */
 function parseCustomerSequenceItems(
   request: FastifyRequest
 ): Record<string, any>[] {
@@ -617,6 +641,7 @@ function parseCustomerSequenceItems(
   }
 }
 
+/** Creates the complete upload payload shape with null scalars and empty arrays. */
 function createEmptySendDataPayload(): Record<string, any> {
   const payload = {
     routekey: null,
@@ -632,6 +657,7 @@ function createEmptySendDataPayload(): Record<string, any> {
   return payload;
 }
 
+/** Creates one empty acknowledgement array for every supported upload section. */
 function createEmptySendDataResponse(): Record<string, Record<string, any>[]> {
   const response = {} as Record<string, Record<string, any>[]>;
 
@@ -642,41 +668,14 @@ function createEmptySendDataResponse(): Record<string, Record<string, any>[]> {
   return response;
 }
 
+/** Removes empty acknowledgement arrays to match the compact Zend response. */
 function pruneEmptySendDataResponse(response: Record<string, Record<string, any>[]>): Record<string, any> {
   return Object.fromEntries(
     Object.entries(response).filter(([, items]) => Array.isArray(items) && items.length > 0)
   ) as Record<string, any>;
 }
 
-export async function sendDataAction(request: FastifyRequest, reply: FastifyReply): Promise<void> {
-  const result = await sendData(request, reply);
-  await reply.type('text/plain').send(JSON.stringify(result));
-}
-
-export async function customerSequenceAction(
-  request: FastifyRequest,
-  reply: FastifyReply
-): Promise<void> {
-  const result = await customerSequence(request, reply);
-  await reply.type('text/plain').send(JSON.stringify(result));
-}
-
-export async function invoiceTransactionDetailAction(
-  request: FastifyRequest,
-  reply: FastifyReply
-): Promise<void> {
-  const result = await uploadInvoiceTransactionDetails(request);
-  await reply.type('text/plain').send(JSON.stringify(result));
-}
-
-export async function arTransactionDetailAction(
-  request: FastifyRequest,
-  reply: FastifyReply
-): Promise<void> {
-  const result = await uploadArTransactionDetails(request);
-  await reply.type('text/plain').send(JSON.stringify(result));
-}
-
+/** Validates and stores one multipart customer image using a sanitized filename. */
 export async function uploadImageAction(
   request: FastifyRequest,
   reply: FastifyReply

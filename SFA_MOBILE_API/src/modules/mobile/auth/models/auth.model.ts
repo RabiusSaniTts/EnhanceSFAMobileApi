@@ -1,5 +1,13 @@
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 
+/**
+ * Registers a previously unknown handset. `INSERT IGNORE` makes repeated
+ * device-check calls safe and leaves an existing registration unchanged.
+ *
+ * @param connection Active database transaction connection.
+ * @param deviceId Mobile handset identifier stored in tbl_device.
+ * @returns Resolves after the registration attempt completes.
+ */
 export async function ensureDeviceRegistered(
   connection: PoolConnection,
   deviceId: string
@@ -17,6 +25,10 @@ export async function ensureDeviceRegistered(
   );
 }
 
+/**
+ * @param connection Active database transaction connection.
+ * @returns The configured application URL/version row, or null when absent.
+ */
 export async function findLatestAppVersion(
   connection: PoolConnection
 ): Promise<RowDataPacket | null> {
@@ -24,9 +36,19 @@ export async function findLatestAppVersion(
     'SELECT url, verno FROM tbl_version LIMIT 1'
   );
 
+  // Device check returns only the first configured version, matching Zend.
   return rows[0] ?? null;
 }
 
+/**
+ * Assigns the calling device to a salesman whose route is enabled for automatic
+ * device registration.
+ *
+ * @param connection Active database transaction connection.
+ * @param username Salesman username used to locate the route.
+ * @param deviceId Handset identifier written to routemaster.
+ * @returns Resolves after the route update completes.
+ */
 export async function autoAssignDeviceForRegisteredRoute(
   connection: PoolConnection,
   username: string,
@@ -52,6 +74,12 @@ export async function autoAssignDeviceForRegisteredRoute(
   );
 }
 
+/**
+ * @param connection Active database transaction connection.
+ * @param username Username received from the login URL.
+ * @param password Trimmed password received from the login URL.
+ * @returns Number of matching salesman rows; zero means invalid credentials.
+ */
 export async function countSalesmanByCredentials(
   connection: PoolConnection,
   username: string,
@@ -67,9 +95,16 @@ export async function countSalesmanByCredentials(
     { username, password }
   );
 
+  // COUNT(*) produces one row; zero is retained as a defensive fallback.
   return rows[0]?.count ?? 0;
 }
 
+/**
+ * @param connection Active database transaction connection.
+ * @param username Validated salesman username.
+ * @param password Validated salesman password.
+ * @returns Assigned device ID, or `-` when no assignment exists.
+ */
 export async function findAssignedDeviceIdByCredentials(
   connection: PoolConnection,
   username: string,
@@ -91,9 +126,16 @@ export async function findAssignedDeviceIdByCredentials(
     { username, password }
   );
 
+  // The dash is required because the controller converts it to STATUS 3.
   return rows[0]?.deviceId ?? '-';
 }
 
+/**
+ * Reproduces the legacy environment-based encryption flag.
+ *
+ * @param connection Active database transaction connection.
+ * @returns 1 for an Ubuntu MySQL build; otherwise 0.
+ */
 export async function getUseEncryptionFlag(
   connection: PoolConnection
 ): Promise<0 | 1> {
@@ -101,9 +143,19 @@ export async function getUseEncryptionFlag(
     "SELECT CASE WHEN INSTR(VERSION(), 'ubuntu') THEN 1 ELSE 0 END AS useencription"
   );
 
+  // The misspelled key is intentional and belongs to the mobile contract.
   return rows[0]?.useencription ?? 0;
 }
 
+/**
+ * Loads the successful-login response without renaming database columns.
+ *
+ * @param connection Active database transaction connection.
+ * @param username Validated salesman username.
+ * @param password Validated salesman password.
+ * @param useEncryption Legacy flag returned as `useencription`.
+ * @returns Salesman/route rows containing STATUS 0.
+ */
 export async function findSalesmanLoginSuccessRows(
   connection: PoolConnection,
   username: string,
@@ -143,9 +195,15 @@ export async function findSalesmanLoginSuccessRows(
     { username, password, useEncryption }
   );
 
+  // Direct rows preserve the field names and value shapes consumed by mobile.
   return rows;
 }
 
+/**
+ * @param connection Active database transaction connection.
+ * @param routeCode Route checked before start-day processing.
+ * @returns Route version rule, or null when no restriction is configured.
+ */
 export async function findRouteVersion(
   connection: PoolConnection,
   routeCode: string
@@ -163,6 +221,11 @@ export async function findRouteVersion(
   return rows[0] ?? null;
 }
 
+/**
+ * @param connection Active database transaction connection.
+ * @param userId Salesman code supplied by the synchronization request.
+ * @returns The salesman's route code, or null when no mapping exists.
+ */
 export async function findRouteCodeBySalesman(
   connection: PoolConnection,
   userId: string | number
@@ -180,6 +243,13 @@ export async function findRouteCodeBySalesman(
   return rows[0]?.routecode ?? null;
 }
 
+/**
+ * Inserts the primary synchronization audit row.
+ *
+ * @param connection Active database transaction connection.
+ * @param params User, device, route, route-key, and route-closed values.
+ * @returns Resolves after tbl_syncservice is updated.
+ */
 export async function insertSyncService(
   connection: PoolConnection,
   params: Record<string, string | number | null>
@@ -192,6 +262,7 @@ export async function insertSyncService(
         (:userId, :deviceId, CURDATE(), CURTIME(), :routeCode, '1', :routeClosed, :routeKey)
     `,
     {
+      // Explicit bindings prevent undefined values from reaching mysql2.
       userId: params.userId,
       deviceId: params.deviceId,
       routeCode: params.routeCode,
@@ -201,20 +272,32 @@ export async function insertSyncService(
   );
 }
 
+/**
+ * Inserts the secondary sync log for an active route day. Requests with a zero
+ * user ID or route key intentionally produce no synclog row, as Zend did.
+ *
+ * @param connection Active database transaction connection.
+ * @param params User, route-state, and synchronization-type values.
+ * @returns Resolves after insertion or after an intentional early return.
+ */
 export async function insertSyncLog(
   connection: PoolConnection,
   params: Record<string, string | number | null>
 ): Promise<void> {
+  // Login/initial-sync calls may not have an active route day yet.
   if (Number(params.userId) === 0 || Number(params.routeKey) === 0) {
     return;
   }
 
+  // Resolve route code again so synclog uses the authoritative route mapping.
   const routeCode = await findRouteCodeBySalesman(connection, params.userId ?? 0);
 
   if (routeCode === null) {
+    // A salesman without a route cannot produce a valid synclog record.
     return;
   }
 
+  // Use the currently open database route key instead of trusting the request.
   const [routeKeyRows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT COALESCE(MAX(routekey), 0) AS routekey
@@ -231,6 +314,7 @@ export async function insertSyncLog(
       VALUES(:userId, CURDATE(), :routeCode, CURTIME(), :syncType, :routeClosed, :routeKey)
     `,
     {
+      // Normalize booleans/strings to the legacy '1' or '0' database value.
       userId: params.userId,
       routeCode,
       syncType: params.syncType,

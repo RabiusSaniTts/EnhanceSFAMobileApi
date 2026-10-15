@@ -16,6 +16,7 @@ The user confirmed the mobile app was tested after the recent refactor and every
 
 ### 2026-10-15 Maintainability Refactor
 
+- Mobile route registration is split by module into `auth.routes.ts`, `masterdatasync.routes.ts`, `transactions.routes.ts`, and `ws.routes.ts`. `mobile.routes.ts` is now only the central registrar; all 41 existing endpoint URLs and HTTP methods are preserved.
 - Customer master and inventory summary uploads now use explicit query-level parameter and SQL mappings. Dynamic column constants and generated assignment SQL were removed from `customerService.model.ts` and `inventory.model.ts`.
 - Transaction parameter mapper functions were removed so bind values are visible beside their SQL operations.
 - `transactions/models/shared.model.ts` was removed. Its generic `required()` and `nullable()` helpers now live in `src/shared/utils/commonUtils.ts`.
