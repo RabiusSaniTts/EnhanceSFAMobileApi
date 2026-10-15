@@ -6,6 +6,7 @@
 import type { FastifyInstance, FastifyRequest } from 'fastify';
 import { env } from '../../config/env';
 import { isPlainObject } from '../utils/commonUtils';
+import { writeRequestFileLog } from './fileLogger';
 
 function getRequestContext(request: FastifyRequest) {
   const params = isPlainObject(request.params) ? request.params : {};
@@ -40,5 +41,12 @@ export async function registerRequestLogger(app: FastifyInstance): Promise<void>
       },
       'request completed'
     );
+
+    await writeRequestFileLog(request, {
+      event: 'request.completed',
+      level: 'info',
+      statusCode: reply.statusCode,
+      responseTime: reply.elapsedTime
+    });
   });
 }
