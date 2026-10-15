@@ -180,7 +180,7 @@ Optional production-oriented text logging is controlled through `.env`:
 ```env
 FILE_LOG_ENABLED=true
 FILE_LOG_PATH=./logs
-FILE_LOG_NAME=api-log.txt
+FILE_LOG_NAME=api-log.jsonl
 FILE_LOG_RESPONSE_ENABLED=true
 FILE_LOG_MAX_RESPONSE_LENGTH=1048576
 ```
@@ -194,7 +194,7 @@ Files are created automatically using this layout:
 Example:
 
 ```text
-logs/2026-10-15/1818/transactions/api-log.txt
+logs/2026-10-15/1818/transactions/api-log.jsonl
 ```
 
 Supported module folders are `auth`, `masterdatasync`, `transactions`, `ws`,
@@ -202,6 +202,10 @@ and `system`. When a request has no route code, it is written under
 `unknown-route`. Each line is a JSON object containing request ID, route,
 status, duration, query/body field names, and safe error details. Raw payloads,
 password-bearing URLs, and customer transaction data are not written.
+
+The `.jsonl` extension means JSON Lines: every line is an independent valid
+JSON object. This format is designed for append-only production logs and avoids
+rewriting a large JSON array for every concurrent API request.
 
 Set `FILE_LOG_ENABLED=false` to disable file logging without a code change.
 Set `FILE_LOG_RESPONSE_ENABLED=false` to keep request/status logs while omitting
