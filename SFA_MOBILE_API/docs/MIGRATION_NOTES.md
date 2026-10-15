@@ -22,3 +22,12 @@ Current developer references:
 - `docs/MOBILE_API_ENDPOINT_MAP.md`
 - `docs/DEVELOPMENT_GUIDELINES.md`
 - `docs/SESSION_HANDOFF.md`
+
+## 2026-10-15 Development Checkpoint
+
+- Added maintenance documentation directly in auth, WS, transactions, and master-data sync TypeScript files.
+- Removed one-use WS `process*` wrappers and moved their workflows into exported route handlers.
+- Merged transaction implementation/action pairs so each transaction endpoint has one controller function.
+- Preserved all mobile endpoint paths, HTTP methods, request parsing, database transaction behavior, and Zend-compatible response formats.
+- Confirmed the configured MySQL connection pool limit is 10 connections; queued requests wait for a released connection.
+- Verified the checkpoint with `npm run typecheck` and `npm run build`.
