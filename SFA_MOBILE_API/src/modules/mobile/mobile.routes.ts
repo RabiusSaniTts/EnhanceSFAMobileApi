@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { FastifyInstance } from 'fastify';
 import { authRoutes } from './auth/auth.routes';
 import { masterDataSyncRoutes } from './masterdatasync/masterdatasync.routes';

@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
 /** Inserts a customer operation once and prevents duplicate upload records. */

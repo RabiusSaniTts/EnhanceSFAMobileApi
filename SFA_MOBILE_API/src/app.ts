@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import cors from '@fastify/cors';
 import multipart from '@fastify/multipart';
 import Fastify from 'fastify';

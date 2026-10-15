@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import { env } from './env';
 
 export const databaseConfig = {

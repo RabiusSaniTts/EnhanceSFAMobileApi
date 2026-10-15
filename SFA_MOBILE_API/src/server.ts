@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import { buildApp } from './app';
 import { env } from './config/env';
 

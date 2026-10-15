@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { withTransaction } from '../../../../shared/db/transaction';
 import { ApiError } from '../../../../shared/middleware/errors';
