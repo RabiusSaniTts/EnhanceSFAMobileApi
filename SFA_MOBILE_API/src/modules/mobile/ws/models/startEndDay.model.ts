@@ -1,5 +1,5 @@
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
-import { nullable, required } from '../../../../shared/utils/commonUtils';
+import { required } from '../../../../shared/utils/commonUtils';
 
 export async function getDatabaseCurrentDate(connection: PoolConnection): Promise<string> {
   const [rows] = await connection.execute<RowDataPacket[]>(
@@ -185,17 +185,17 @@ export async function updateEndDay(
       routeKey: required(item.routekey),
       routeEndDate: required(item.routeenddate),
       routeEndOdometer: required(item.routeendodometer),
-      totalDocuments: zeroWhenMissing(item.totaldocuments),
-      totalCash: zeroWhenMissing(item.totalcash),
-      totalChecks: zeroWhenMissing(item.totalchecks),
-      totalOrderAmount: zeroWhenMissing(item.totalorderamount),
-      totalInvoiceAmount: zeroWhenMissing(item.totalinvoiceamount),
-      totalChargeSales: zeroWhenMissing(item.totalchargesales),
-      totalCashSales: zeroWhenMissing(item.totalcashsales),
-      totalAccountsReceivable: zeroWhenMissing(item.totalacctsreceivable),
-      totalExpenses: zeroWhenMissing(item.totalexpenses),
-      inventoryVariance: zeroWhenMissing(item.inventoryvariance),
-      cashVariance: zeroWhenMissing(item.cashvariance)
+      totalDocuments: required(item.totaldocuments),
+      totalCash: required(item.totalcash),
+      totalChecks: required(item.totalchecks),
+      totalOrderAmount: required(item.totalorderamount),
+      totalInvoiceAmount: required(item.totalinvoiceamount),
+      totalChargeSales: required(item.totalchargesales),
+      totalCashSales: required(item.totalcashsales),
+      totalAccountsReceivable: required(item.totalacctsreceivable),
+      totalExpenses: required(item.totalexpenses),
+      inventoryVariance: required(item.inventoryvariance),
+      cashVariance: required(item.cashvariance)
     }
   );
 
@@ -225,10 +225,6 @@ export async function updateEndDay(
   );
 
   return rows[0] ?? null;
-}
-
-function zeroWhenMissing(value: unknown): string | number {
-  return nullable(value) ?? 0;
 }
 
 export async function resolveLogoutRouteKey(

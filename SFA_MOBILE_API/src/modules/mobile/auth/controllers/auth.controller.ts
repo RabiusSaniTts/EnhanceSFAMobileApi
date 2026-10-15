@@ -1,7 +1,10 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { withTransaction } from '../../../../shared/db/transaction';
 import { ApiError } from '../../../../shared/middleware/errors';
-import { isPlainObject } from '../../../../shared/utils/commonUtils';
+import {
+  readOptionalRequestParam,
+  readRequiredRequestParam
+} from '../../../../shared/utils/commonUtils';
 import {
   autoAssignDeviceForRegisteredRoute,
   countSalesmanByCredentials,
@@ -101,12 +104,25 @@ export async function updateSyncDate(
   }>,
   reply: FastifyReply
 ) {
-  const userId = readParam(request, 'userid');
-  const deviceId = readParam(request, 'deviceid');
+  const userId = readRequiredRequestParam(
+    request,
+    'userid',
+    'Invalid index/updatesyncdate JSON payload'
+  );
+  const deviceId = readRequiredRequestParam(
+    request,
+    'deviceid',
+    'Invalid index/updatesyncdate JSON payload'
+  );
   const routeCodeParam =
-    readOptionalParam(request, 'routecode') ?? readOptionalParam(request, 'routeid');
-  const routeKey = readOptionalParam(request, 'routekey') ?? '0';
-  const routeClosed = readOptionalParam(request, 'routeclosed') ?? '0';
+    readOptionalRequestParam(request, 'routecode', 'Invalid index/updatesyncdate JSON payload') ??
+    readOptionalRequestParam(request, 'routeid', 'Invalid index/updatesyncdate JSON payload');
+  const routeKey =
+    readOptionalRequestParam(request, 'routekey', 'Invalid index/updatesyncdate JSON payload') ??
+    '0';
+  const routeClosed =
+    readOptionalRequestParam(request, 'routeclosed', 'Invalid index/updatesyncdate JSON payload') ??
+    '0';
 
   await withTransaction(async (connection) => {
     const routeCode = (await findRouteCodeBySalesman(connection, userId)) ?? routeCodeParam;
@@ -133,59 +149,4 @@ export async function updateSyncDate(
   });
 
   await reply.send({ status: 'success' });
-}
-
-function readParam(
-  request: FastifyRequest<{
-    Params: Record<string, string | undefined>;
-    Querystring: Record<string, string | undefined>;
-  }>,
-  field: string
-): string {
-  const value = readOptionalParam(request, field);
-
-  if (value === undefined || value === null || value === '') {
-    throw new ApiError(400, `Missing ${field}`);
-  }
-
-  return value;
-}
-
-function readOptionalParam(
-  request: FastifyRequest<{
-    Params: Record<string, string | undefined>;
-    Querystring: Record<string, string | undefined>;
-  }>,
-  field: string
-): string | undefined {
-  const value = request.params[field] ?? request.query[field] ?? readBodyField(request.body, field);
-
-  return value === undefined || value === null || value === '' ? undefined : String(value);
-}
-
-function readBodyField(body: unknown, field: string): unknown {
-  if (body === undefined || body === null || body === '') {
-    return undefined;
-  }
-
-  if (typeof body === 'string') {
-    const trimmedBody = body.trim();
-
-    if (trimmedBody === '' || trimmedBody === '{}') {
-      return undefined;
-    }
-
-    if (trimmedBody.startsWith('{')) {
-      try {
-        const parsed = JSON.parse(trimmedBody);
-        return isPlainObject(parsed) ? parsed[field] : undefined;
-      } catch {
-        throw new ApiError(400, 'Invalid index/updatesyncdate JSON payload');
-      }
-    }
-
-    return new URLSearchParams(trimmedBody).get(field) ?? undefined;
-  }
-
-  return isPlainObject(body) ? body[field] : undefined;
 }

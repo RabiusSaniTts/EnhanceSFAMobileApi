@@ -1,15 +1,35 @@
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
-import { buildInClause, tableExists } from "../../../../shared/utils/commonUtils";
+import {
+  buildInClause,
+  tableExists,
+} from "../../../../shared/utils/commonUtils";
 import type { GenericRow } from "../../../../shared/utils/commonUtils";
 
 export async function getMasterDataSyncSections(
   connection: PoolConnection,
   input: Record<string, any>,
 ) {
-  const routeCustomerCodes = await getRouteCustomerCodes(connection, input.routeId);
+  const routeCustomerCodes = await getRouteCustomerCodes(
+    connection,
+    input.routeId,
+  );
   const routeWeek = await getRouteSequenceWeek(connection);
 
-  const [itemgroup, ItemMaster, itempackagemaster, routegoal, avgsalesqty, outletitemcodes, taxmaster, itemmustheader, itemmustdetail, itemnrp, custnrp, customeritemgrp, customeritemmap] = await Promise.all([
+  const [
+    itemgroup,
+    ItemMaster,
+    itempackagemaster,
+    routegoal,
+    avgsalesqty,
+    outletitemcodes,
+    taxmaster,
+    itemmustheader,
+    itemmustdetail,
+    itemnrp,
+    custnrp,
+    customeritemgrp,
+    customeritemmap,
+  ] = await Promise.all([
     getItemGroup(connection, input.routeId),
     getItemMaster(connection, input.routeId),
     getItemPackageMaster(connection),
@@ -25,14 +45,33 @@ export async function getMasterDataSyncSections(
     getCustomerItemMap(connection, input.routeId),
   ]);
 
-  const [CustomerMaster, salescalender, routesequence, customerinvoice] = await Promise.all([
-    getCustomerMaster(connection, input.routeId, routeCustomerCodes),
-    getSalesCalendar(connection),
-    getRouteSequence(connection, input.routeId, routeCustomerCodes, routeWeek),
-    getCustomerInvoice(connection, input.routeId, routeCustomerCodes),
-  ]);
+  const [CustomerMaster, salescalender, routesequence, customerinvoice] =
+    await Promise.all([
+      getCustomerMaster(connection, input.routeId, routeCustomerCodes),
+      getSalesCalendar(connection),
+      getRouteSequence(
+        connection,
+        input.routeId,
+        routeCustomerCodes,
+        routeWeek,
+      ),
+      getCustomerInvoice(connection, input.routeId, routeCustomerCodes),
+    ]);
 
-  const [discountkeyheader, discountkeydetail, distributionkeydetails, productgroupheader, productgroupdetail, promokeyheader, promokeydetail, promoplanheader, promoplandetail, promotionassignmentadvanced, customerpricing1, pricingdetail1] = await Promise.all([
+  const [
+    discountkeyheader,
+    discountkeydetail,
+    distributionkeydetails,
+    productgroupheader,
+    productgroupdetail,
+    promokeyheader,
+    promokeydetail,
+    promoplanheader,
+    promoplandetail,
+    promotionassignmentadvanced,
+    customerpricing1,
+    pricingdetail1,
+  ] = await Promise.all([
     getDiscountKeyHeader(connection),
     getDiscountKeyDetail(connection),
     getDistributionKeyDetails(connection),
@@ -47,7 +86,18 @@ export async function getMasterDataSyncSections(
     getPricingDetail1(connection, input.routeId),
   ]);
 
-  const [POSmaster, customerposinventory, customerposlimit, posinstructions, customersurveyplan, customersurveykeyplan, customersurveykey, customersurveydefinition, customersurveydefassign, lookupindexdetail] = await Promise.all([
+  const [
+    POSmaster,
+    customerposinventory,
+    customerposlimit,
+    posinstructions,
+    customersurveyplan,
+    customersurveykeyplan,
+    customersurveykey,
+    customersurveydefinition,
+    customersurveydefassign,
+    lookupindexdetail,
+  ] = await Promise.all([
     getPosMaster(connection),
     getCustomerPosInventory(connection),
     getCustomerPosLimit(connection),
@@ -60,7 +110,14 @@ export async function getMasterDataSyncSections(
     getLookupIndexDetail(connection),
   ]);
 
-  const [nonservreasons, expreasons, expiryreturnreasons, retitmreasons, freegoodreasons, voidreasons] = await Promise.all([
+  const [
+    nonservreasons,
+    expreasons,
+    expiryreturnreasons,
+    retitmreasons,
+    freegoodreasons,
+    voidreasons,
+  ] = await Promise.all([
     getNonServiceReasons(connection),
     getExpenseReasons(connection),
     getExpiryReturnReasons(connection),
@@ -75,7 +132,14 @@ export async function getMasterDataSyncSections(
     getTempCustomerInventory(connection, input.routeId),
   ]);
 
-  const [customermessages, salesmanmessages, vanmaster, bankmaster, cashdesc, inventorylocation] = await Promise.all([
+  const [
+    customermessages,
+    salesmanmessages,
+    vanmaster,
+    bankmaster,
+    cashdesc,
+    inventorylocation,
+  ] = await Promise.all([
     getCustomerMessages(connection),
     getSalesmanMessages(connection),
     getVanMaster(connection),
@@ -142,10 +206,9 @@ export async function getMasterDataSyncSections(
   };
 }
 
-
 async function getItemGroup(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -171,7 +234,7 @@ async function getItemGroup(
           AND rm.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -179,7 +242,7 @@ async function getItemGroup(
 
 async function getItemMaster(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -230,14 +293,14 @@ async function getItemMaster(
       WHERE item.activeitem = 1
       AND rm.routecode = :routeId
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
 }
 
 async function getItemPackageMaster(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -248,7 +311,7 @@ async function getItemPackageMaster(
         arbpackagedescription,
         activestatus
       FROM itempackagemaster
-    `
+    `,
   );
 
   return rows;
@@ -256,7 +319,7 @@ async function getItemPackageMaster(
 
 async function getRouteGoal(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -281,7 +344,7 @@ async function getRouteGoal(
       WHERE routecode = :routeId
       AND CURDATE() BETWEEN fromdate AND todate
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -289,7 +352,7 @@ async function getRouteGoal(
 
 async function getAverageSalesQty(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -297,7 +360,7 @@ async function getAverageSalesQty(
       FROM averagesalesqty
       WHERE routecode = :routeId
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -305,7 +368,7 @@ async function getAverageSalesQty(
 
 async function getOutletItemCodes(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -325,7 +388,7 @@ async function getOutletItemCodes(
       AND 1 = 0
       ORDER BY itemcode
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -342,7 +405,7 @@ async function getTaxMaster(connection: PoolConnection): Promise<GenericRow[]> {
         taxpercentage,
         taxbase
       FROM tbltaxmaster
-    `
+    `,
   );
 
   return rows;
@@ -350,11 +413,11 @@ async function getTaxMaster(connection: PoolConnection): Promise<GenericRow[]> {
 
 async function getItemMustHeader(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   if (
-    !(await tableExists(connection, 'itemmustheader')) ||
-    !(await tableExists(connection, 'customermaster'))
+    !(await tableExists(connection, "itemmustheader")) ||
+    !(await tableExists(connection, "customermaster"))
   ) {
     return [];
   }
@@ -369,7 +432,7 @@ async function getItemMustHeader(
         WHERE routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -377,11 +440,11 @@ async function getItemMustHeader(
 
 async function getItemMustDetail(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   if (
-    !(await tableExists(connection, 'itemmustdetail')) ||
-    !(await tableExists(connection, 'customermaster'))
+    !(await tableExists(connection, "itemmustdetail")) ||
+    !(await tableExists(connection, "customermaster"))
   ) {
     return [];
   }
@@ -396,7 +459,7 @@ async function getItemMustDetail(
         WHERE routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -404,13 +467,13 @@ async function getItemMustDetail(
 
 async function getItemNrp(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   if (
-    !(await tableExists(connection, 'itemmaster')) ||
-    !(await tableExists(connection, 'divisionmaster')) ||
-    !(await tableExists(connection, 'routeitemmapping')) ||
-    !(await tableExists(connection, 'routemaster'))
+    !(await tableExists(connection, "itemmaster")) ||
+    !(await tableExists(connection, "divisionmaster")) ||
+    !(await tableExists(connection, "routeitemmapping")) ||
+    !(await tableExists(connection, "routemaster"))
   ) {
     return [];
   }
@@ -428,7 +491,7 @@ async function getItemNrp(
       LEFT JOIN routemaster rm ON rm.routeitemgrpcode = rim.routeitemgrpcode
       WHERE rm.routecode = :routeId
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -436,11 +499,11 @@ async function getItemNrp(
 
 async function getCustomerNrp(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   if (
-    !(await tableExists(connection, 'customermaster')) ||
-    !(await tableExists(connection, 'routesequence'))
+    !(await tableExists(connection, "customermaster")) ||
+    !(await tableExists(connection, "routesequence"))
   ) {
     return [];
   }
@@ -454,7 +517,7 @@ async function getCustomerNrp(
       INNER JOIN routesequence rs ON cn.customercode = rs.customercode
       WHERE rs.routecode = :routeId
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -462,12 +525,12 @@ async function getCustomerNrp(
 
 async function getCustomerItemGroups(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   if (
-    !(await tableExists(connection, 'customeritemgrp')) ||
-    !(await tableExists(connection, 'customermaster')) ||
-    !(await tableExists(connection, 'routesequence'))
+    !(await tableExists(connection, "customeritemgrp")) ||
+    !(await tableExists(connection, "customermaster")) ||
+    !(await tableExists(connection, "routesequence"))
   ) {
     return [];
   }
@@ -490,7 +553,7 @@ async function getCustomerItemGroups(
       WHERE rs.routecode = :routeId
       ORDER BY cig.customeritemgrpcode
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -498,13 +561,13 @@ async function getCustomerItemGroups(
 
 async function getCustomerItemMap(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   if (
-    !(await tableExists(connection, 'customeritemmapping')) ||
-    !(await tableExists(connection, 'customeritemgrp')) ||
-    !(await tableExists(connection, 'customermaster')) ||
-    !(await tableExists(connection, 'routesequence'))
+    !(await tableExists(connection, "customeritemmapping")) ||
+    !(await tableExists(connection, "customeritemgrp")) ||
+    !(await tableExists(connection, "customermaster")) ||
+    !(await tableExists(connection, "routesequence"))
   ) {
     return [];
   }
@@ -524,7 +587,7 @@ async function getCustomerItemMap(
       WHERE rs.routecode = :routeId
       ORDER BY cim.itemcode
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -532,28 +595,26 @@ async function getCustomerItemMap(
 
 async function getRouteCustomerCodes(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<Array<number | string>> {
   const [setupRows] = await connection.execute<
     (RowDataPacket & {
       journeyplanflag: number | null;
       routesequenceplanflag: number | null;
     })[]
-  >(
-    'SELECT journeyplanflag, routesequenceplanflag FROM setup LIMIT 1'
-  );
+  >("SELECT journeyplanflag, routesequenceplanflag FROM setup LIMIT 1");
 
-  const journeyPlanFlag = String(setupRows[0]?.journeyplanflag ?? '');
-  const [dayRows] = await connection.execute<(RowDataPacket & { dayNumber: number })[]>(
-    'SELECT DAYOFWEEK(CURRENT_DATE()) AS dayNumber'
-  );
+  const journeyPlanFlag = String(setupRows[0]?.journeyplanflag ?? "");
+  const [dayRows] = await connection.execute<
+    (RowDataPacket & { dayNumber: number })[]
+  >("SELECT DAYOFWEEK(CURRENT_DATE()) AS dayNumber");
   const dayNumber = dayRows[0]?.dayNumber ?? 0;
 
-  if (journeyPlanFlag === '2') {
+  if (journeyPlanFlag === "2") {
     return selectCustomerCodes(
       connection,
-      'SELECT DISTINCT customercode FROM routesequence WHERE routecode = ?',
-      [routeId]
+      "SELECT DISTINCT customercode FROM routesequence WHERE routecode = ?",
+      [routeId],
     );
   }
 
@@ -567,14 +628,14 @@ async function getRouteCustomerCodes(
       WHERE ${dayColumn} = 1
       AND routecode = ?
     `,
-    [routeId]
+    [routeId],
   );
 }
 
 async function selectCustomerCodes(
   connection: PoolConnection,
   sql: string,
-  values: unknown[]
+  values: unknown[],
 ): Promise<Array<number | string>> {
   const [rows] = await connection.query<
     (RowDataPacket & { customercode: number })[]
@@ -585,30 +646,30 @@ async function selectCustomerCodes(
 function getCallRestrictionColumn(dayNumber: number): string {
   switch (dayNumber) {
     case 1:
-      return 'callrestrictiondays7';
+      return "callrestrictiondays7";
     case 2:
-      return 'callrestrictiondays1';
+      return "callrestrictiondays1";
     case 3:
-      return 'callrestrictiondays2';
+      return "callrestrictiondays2";
     case 4:
-      return 'callrestrictiondays3';
+      return "callrestrictiondays3";
     case 5:
-      return 'callrestrictiondays4';
+      return "callrestrictiondays4";
     case 6:
-      return 'callrestrictiondays5';
+      return "callrestrictiondays5";
     default:
-      return 'callrestrictiondays6';
+      return "callrestrictiondays6";
   }
 }
 
-async function getRouteSequenceWeek(connection: PoolConnection): Promise<number> {
+async function getRouteSequenceWeek(
+  connection: PoolConnection,
+): Promise<number> {
   const [setupRows] = await connection.execute<
     (RowDataPacket & { routesequenceplanflag: number | null })[]
-  >(
-    'SELECT routesequenceplanflag FROM setup LIMIT 1'
-  );
+  >("SELECT routesequenceplanflag FROM setup LIMIT 1");
 
-  if (String(setupRows[0]?.routesequenceplanflag ?? '') === '1') {
+  if (String(setupRows[0]?.routesequenceplanflag ?? "") === "1") {
     return 9;
   }
 
@@ -620,7 +681,7 @@ async function getRouteSequenceWeek(connection: PoolConnection): Promise<number>
       FROM salescalender
       WHERE CURRENT_DATE() BETWEEN weekstartdate AND weekenddate
       LIMIT 1
-    `
+    `,
   );
 
   return Number(weekRows[0]?.rp32weeknumber ?? 9);
@@ -629,7 +690,7 @@ async function getRouteSequenceWeek(connection: PoolConnection): Promise<number>
 async function getCustomerMaster(
   connection: PoolConnection,
   routeId: number,
-  routeCustomerCodes: Array<number | string>
+  routeCustomerCodes: Array<number | string>,
 ): Promise<GenericRow[]> {
   const [routeRows] = await connection.execute<
     (RowDataPacket & {
@@ -645,7 +706,7 @@ async function getCustomerMaster(
       WHERE routecode = :routeId
       LIMIT 1
     `,
-    { routeId }
+    { routeId },
   );
 
   const division = routeRows[0]?.division ?? 0;
@@ -1366,17 +1427,22 @@ async function getCustomerMaster(
       ? [defaultItemMustKey, division, ...routeCustomerCodes]
       : [];
 
-  const [rows] = await connection.query<GenericRow[]>(customerMasterSql, values);
+  const [rows] = await connection.query<GenericRow[]>(
+    customerMasterSql,
+    values,
+  );
   return rows;
 }
 
-async function getSalesCalendar(connection: PoolConnection): Promise<GenericRow[]> {
+async function getSalesCalendar(
+  connection: PoolConnection,
+): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
       SELECT salesyear, weeknumber, weekstartdate, weekenddate, rp32weeknumber, salesperiod
       FROM salescalender
       WHERE salesyear = YEAR(CURRENT_DATE())
-    `
+    `,
   );
 
   return rows;
@@ -1386,7 +1452,7 @@ async function getRouteSequence(
   connection: PoolConnection,
   routeId: number,
   routeCustomerCodes: Array<number | string>,
-  routeWeek: number
+  routeWeek: number,
 ): Promise<GenericRow[]> {
   if (routeCustomerCodes.length === 0) {
     return [];
@@ -1417,7 +1483,7 @@ async function getRouteSequence(
       AND rs.rp32weeknumber = ?
       AND rs.routecode = ?
     `,
-    [...routeCustomerCodes, routeWeek, routeId]
+    [...routeCustomerCodes, routeWeek, routeId],
   );
 
   return rows;
@@ -1426,7 +1492,7 @@ async function getRouteSequence(
 async function getCustomerInvoice(
   connection: PoolConnection,
   routeId: number,
-  routeCustomerCodes: Array<number | string>
+  routeCustomerCodes: Array<number | string>,
 ): Promise<GenericRow[]> {
   if (routeCustomerCodes.length === 0) {
     return [];
@@ -1441,10 +1507,12 @@ async function getCustomerInvoice(
       WHERE cm.customercode IN (${buildInClause(routeCustomerCodes)})
       AND NOT (cm.invoicepaymentterms > 1 AND cm.enablearcollection = 0)
     `,
-    routeCustomerCodes
+    routeCustomerCodes,
   );
 
-  const eligibleCustomerCodes = eligibleCustomerRows.map((row) => row.customercode);
+  const eligibleCustomerCodes = eligibleCustomerRows.map(
+    (row) => row.customercode,
+  );
 
   if (eligibleCustomerCodes.length === 0) {
     return [];
@@ -1458,7 +1526,7 @@ async function getCustomerInvoice(
       FROM controlpanel
       WHERE flagid = 51
       LIMIT 1
-    `
+    `,
   );
 
   const allowAllRoutes = flagRows[0]?.status === 1;
@@ -1527,43 +1595,47 @@ async function getCustomerInvoice(
       AND ci.duedate IS NOT NULL
       ${routeFilter}
     `,
-    values
+    values,
   );
 
   return rows;
 }
 
-async function getDiscountKeyHeader(connection: PoolConnection): Promise<GenericRow[]> {
+async function getDiscountKeyHeader(
+  connection: PoolConnection,
+): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
       SELECT discountkey, description, arbdescription, startdate, enddate, active
       FROM discountkeyheader
       WHERE enddate >= CURRENT_DATE()
-    `
+    `,
   );
 
   return rows;
 }
 
-async function getDiscountKeyDetail(connection: PoolConnection): Promise<GenericRow[]> {
+async function getDiscountKeyDetail(
+  connection: PoolConnection,
+): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
       SELECT discountkey, actualitemcode, mindiscount, maxdiscount
       FROM discountkeydetail
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getDistributionKeyDetails(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
       SELECT distributionkey, item, value
       FROM distributionkeydetails
-    `
+    `,
   );
 
   return rows;
@@ -1571,7 +1643,7 @@ async function getDistributionKeyDetails(
 
 async function getProductGroupHeader(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1623,7 +1695,7 @@ async function getProductGroupHeader(
         )
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1631,7 +1703,7 @@ async function getProductGroupHeader(
 
 async function getProductGroupDetail(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1669,7 +1741,7 @@ async function getProductGroupDetail(
         )
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1677,7 +1749,7 @@ async function getProductGroupDetail(
 
 async function getPromoKeyHeader(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1691,7 +1763,7 @@ async function getPromoKeyHeader(
           AND rs.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1699,7 +1771,7 @@ async function getPromoKeyHeader(
 
 async function getPromoKeyDetail(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1731,7 +1803,7 @@ async function getPromoKeyDetail(
           AND rs.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1739,7 +1811,7 @@ async function getPromoKeyDetail(
 
 async function getPromoPlanHeader(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1762,7 +1834,7 @@ async function getPromoPlanHeader(
           AND rs.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1770,7 +1842,7 @@ async function getPromoPlanHeader(
 
 async function getPromoPlanDetail(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1804,7 +1876,7 @@ async function getPromoPlanDetail(
           AND rs.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1812,11 +1884,11 @@ async function getPromoPlanDetail(
 
 async function getPromotionAssignmentAdvanced(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const hasAdvancedAssignments = await tableExists(
     connection,
-    'promotionassignmentadvanced'
+    "promotionassignmentadvanced",
   );
 
   if (!hasAdvancedAssignments) {
@@ -1847,7 +1919,7 @@ async function getPromotionAssignmentAdvanced(
           AND rs.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1855,7 +1927,7 @@ async function getPromotionAssignmentAdvanced(
 
 async function getCustomerPricing1(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1883,7 +1955,7 @@ async function getCustomerPricing1(
           AND rs.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -1891,7 +1963,7 @@ async function getCustomerPricing1(
 
 async function getPricingDetail1(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
     `
@@ -1931,14 +2003,14 @@ async function getPricingDetail1(
           AND rs.routecode = :routeId
       )
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
 }
 
 async function getPosMaster(connection: PoolConnection): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'posmaster'))) {
+  if (!(await tableExists(connection, "posmaster"))) {
     return [];
   }
 
@@ -1957,16 +2029,16 @@ async function getPosMaster(connection: PoolConnection): Promise<GenericRow[]> {
         mdat,
         activestatus
       FROM posmaster
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCustomerPosInventory(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customerposinventory'))) {
+  if (!(await tableExists(connection, "customerposinventory"))) {
     return [];
   }
 
@@ -1974,16 +2046,16 @@ async function getCustomerPosInventory(
     `
       SELECT customercode, itemcode, quantity, serialnumber
       FROM customerposinventory
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCustomerPosLimit(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customerposlimit'))) {
+  if (!(await tableExists(connection, "customerposlimit"))) {
     return [];
   }
 
@@ -1991,16 +2063,16 @@ async function getCustomerPosLimit(
     `
       SELECT customercode, poslimit, posbalance
       FROM customerposlimit
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getPosInstructions(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'posinstructions'))) {
+  if (!(await tableExists(connection, "posinstructions"))) {
     return [];
   }
 
@@ -2015,16 +2087,16 @@ async function getPosInstructions(
         modified,
         mdat
       FROM posinstructions
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCustomerSurveyPlan(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customersurveyplan'))) {
+  if (!(await tableExists(connection, "customersurveyplan"))) {
     return [];
   }
 
@@ -2037,16 +2109,16 @@ async function getCustomerSurveyPlan(
         surveydescription,
         arbsurveydescription
       FROM customersurveyplan
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCustomerSurveyKeyPlan(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customersurveykeyplan'))) {
+  if (!(await tableExists(connection, "customersurveykeyplan"))) {
     return [];
   }
 
@@ -2054,16 +2126,16 @@ async function getCustomerSurveyKeyPlan(
     `
       SELECT primary_key, surveyplankey, surveykey
       FROM customersurveykeyplan
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCustomerSurveyKey(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customersurveykey'))) {
+  if (!(await tableExists(connection, "customersurveykey"))) {
     return [];
   }
 
@@ -2080,16 +2152,16 @@ async function getCustomerSurveyKey(
         mdat,
         activestatus
       FROM customersurveykey
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCustomerSurveyDefinition(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customersurveydefinition'))) {
+  if (!(await tableExists(connection, "customersurveydefinition"))) {
     return [];
   }
 
@@ -2113,16 +2185,16 @@ async function getCustomerSurveyDefinition(
         modified,
         mdat
       FROM customersurveydefinition
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCustomerSurveyDefAssign(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customersurveydefassign'))) {
+  if (!(await tableExists(connection, "customersurveydefassign"))) {
     return [];
   }
 
@@ -2130,16 +2202,16 @@ async function getCustomerSurveyDefAssign(
     `
       SELECT surveyplankey, surveydefkey
       FROM customersurveydefassign
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getLookupIndexDetail(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'lookupindexdetail'))) {
+  if (!(await tableExists(connection, "lookupindexdetail"))) {
     return [];
   }
 
@@ -2147,16 +2219,16 @@ async function getLookupIndexDetail(
     `
       SELECT primary_key, transactionkey, description, arbdescription
       FROM lookupindexdetail
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getNonServiceReasons(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'nonservreasons'))) {
+  if (!(await tableExists(connection, "nonservreasons"))) {
     return [];
   }
 
@@ -2164,16 +2236,16 @@ async function getNonServiceReasons(
     `
       SELECT code, alternatecode, description, arbdescription, hhcdescription, created, cdat, modified, mdat
       FROM nonservreasons
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getExpenseReasons(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'expreasons'))) {
+  if (!(await tableExists(connection, "expreasons"))) {
     return [];
   }
 
@@ -2181,16 +2253,16 @@ async function getExpenseReasons(
     `
       SELECT code, alternatecode, description, arbdescription, hhcdescription, created, cdat, modified, mdat
       FROM expreasons
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getExpiryReturnReasons(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'expiryreturnreasons'))) {
+  if (!(await tableExists(connection, "expiryreturnreasons"))) {
     return [];
   }
 
@@ -2198,16 +2270,16 @@ async function getExpiryReturnReasons(
     `
       SELECT code, alternatecode, description, arbdescription, hhcdescription, created, cdat, modified, mdat
       FROM expiryreturnreasons
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getReturnItemReasons(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'retitmreasons'))) {
+  if (!(await tableExists(connection, "retitmreasons"))) {
     return [];
   }
 
@@ -2215,16 +2287,16 @@ async function getReturnItemReasons(
     `
       SELECT code, alternatecode, description, arbdescription, hhcdescription, created, cdat, modified, mdat
       FROM retitmreasons
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getFreeGoodReasons(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'freegoodreasons'))) {
+  if (!(await tableExists(connection, "freegoodreasons"))) {
     return [];
   }
 
@@ -2232,14 +2304,16 @@ async function getFreeGoodReasons(
     `
       SELECT reason_code, alternatereasoncode, reason_desc, reason_arb_desc, created, cdat, modified, mdat
       FROM freegoodreasons
-    `
+    `,
   );
 
   return rows;
 }
 
-async function getVoidReasons(connection: PoolConnection): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'voidreasons'))) {
+async function getVoidReasons(
+  connection: PoolConnection,
+): Promise<GenericRow[]> {
+  if (!(await tableExists(connection, "voidreasons"))) {
     return [];
   }
 
@@ -2247,7 +2321,7 @@ async function getVoidReasons(connection: PoolConnection): Promise<GenericRow[]>
     `
       SELECT code, alternatecode, description, arbdescription, hhcdescription, created, cdat, modified, mdat
       FROM voidreasons
-    `
+    `,
   );
 
   return rows;
@@ -2255,9 +2329,9 @@ async function getVoidReasons(connection: PoolConnection): Promise<GenericRow[]>
 
 async function getRouteBook(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'routebook'))) {
+  if (!(await tableExists(connection, "routebook"))) {
     return [];
   }
 
@@ -2267,7 +2341,7 @@ async function getRouteBook(
       FROM routebook
       WHERE routecode = :routeId
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -2275,9 +2349,9 @@ async function getRouteBook(
 
 async function getSalesTrend(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'salestrend'))) {
+  if (!(await tableExists(connection, "salestrend"))) {
     return [];
   }
 
@@ -2287,7 +2361,7 @@ async function getSalesTrend(
       FROM salestrend
       WHERE routecode = :routeId
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
@@ -2295,9 +2369,9 @@ async function getSalesTrend(
 
 async function getTempCustomerInventory(
   connection: PoolConnection,
-  routeId: number
+  routeId: number,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'tempcustomerinventory'))) {
+  if (!(await tableExists(connection, "tempcustomerinventory"))) {
     return [];
   }
 
@@ -2308,16 +2382,16 @@ async function getTempCustomerInventory(
       WHERE entryflag = 0
       AND routecode = :routeId
     `,
-    { routeId }
+    { routeId },
   );
 
   return rows;
 }
 
 async function getCustomerMessages(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'customermessages'))) {
+  if (!(await tableExists(connection, "customermessages"))) {
     return [];
   }
 
@@ -2341,16 +2415,16 @@ async function getCustomerMessages(
         mdat,
         activestatus
       FROM customermessages
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getSalesmanMessages(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'salesmanmessages'))) {
+  if (!(await tableExists(connection, "salesmanmessages"))) {
     return [];
   }
 
@@ -2374,14 +2448,14 @@ async function getSalesmanMessages(
         mdat,
         activestatus
       FROM salesmanmessages
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getVanMaster(connection: PoolConnection): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'vanmaster'))) {
+  if (!(await tableExists(connection, "vanmaster"))) {
     return [];
   }
 
@@ -2401,14 +2475,16 @@ async function getVanMaster(connection: PoolConnection): Promise<GenericRow[]> {
         modified,
         mdat
       FROM vanmaster
-    `
+    `,
   );
 
   return rows;
 }
 
-async function getBankMaster(connection: PoolConnection): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'bankmaster'))) {
+async function getBankMaster(
+  connection: PoolConnection,
+): Promise<GenericRow[]> {
+  if (!(await tableExists(connection, "bankmaster"))) {
     return [];
   }
 
@@ -2428,16 +2504,16 @@ async function getBankMaster(connection: PoolConnection): Promise<GenericRow[]> 
         type,
         acnumber
       FROM bankmaster
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getCashDescription(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'cashdesc'))) {
+  if (!(await tableExists(connection, "cashdesc"))) {
     return [];
   }
 
@@ -2445,16 +2521,16 @@ async function getCashDescription(
     `
       SELECT code, alternatecode, description, arbdescription, hhcdescription, created, cdat, modified, mdat
       FROM cashdesc
-    `
+    `,
   );
 
   return rows;
 }
 
 async function getInventoryLocation(
-  connection: PoolConnection
+  connection: PoolConnection,
 ): Promise<GenericRow[]> {
-  if (!(await tableExists(connection, 'inventorylocation'))) {
+  if (!(await tableExists(connection, "inventorylocation"))) {
     return [];
   }
 
@@ -2462,11 +2538,8 @@ async function getInventoryLocation(
     `
       SELECT code, alternatecode, description, arbdescription, hhcdescription
       FROM inventorylocation
-    `
+    `,
   );
 
   return rows;
 }
-
-
-

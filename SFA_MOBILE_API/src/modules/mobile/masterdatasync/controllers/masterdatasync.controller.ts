@@ -1,5 +1,6 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { withTransaction } from '../../../../shared/db/transaction';
+import { toFixedDecimalString } from '../../../../shared/utils/commonUtils';
 import { getSettingSyncSections } from '../models/setting.model';
 import { getMasterDataSyncSections } from '../models/masterData.model';
 import { getTransactionDataSyncSections } from '../models/transactionData.model';
@@ -123,15 +124,6 @@ function formatDecimalFields(rows: any[], fields: string[]): void {
       row[field] = toFixedDecimalString(row[field]);
     }
   }
-}
-
-function toFixedDecimalString(value: any) {
-  if (value === null || value === undefined || value === '') {
-    return value;
-  }
-
-  const numberValue = Number(value);
-  return Number.isFinite(numberValue) ? numberValue.toFixed(4) : value;
 }
 
 function toZendTableCount(count: number) {

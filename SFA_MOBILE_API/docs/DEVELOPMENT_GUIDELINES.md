@@ -59,29 +59,20 @@ Routes:
 Controllers:
 
 - receive Fastify request/reply
-- call service
+- parse legacy request formats and orchestrate workflows
+- call models in the required business order
+- manage transaction boundaries for multi-table workflows
 - send response
 - set legacy content type if needed
 
-Services:
-
-- parse payloads
-- orchestrate workflow
-- manage transaction boundaries
-- call repositories in business order
-- build response objects
-
-Repositories:
+Models:
 
 - own SQL
 - own table reads/writes
 - map JS values into SQL params
 - never depend on Fastify request/reply
 
-Types:
-
-- document payload and response contracts
-- keep mobile upload structures readable
+The mobile modules use strict MVC and do not have separate service, repository, mapper, or type layers.
 
 ## Utility Rules
 
@@ -90,6 +81,10 @@ Use `commonUtils.ts` for reusable technical helpers:
 - generic object checks
 - generic string/scalar conversions
 - generic legacy record normalization
+- legacy JSON/form body and array parsing
+- required and optional request parameter reading
+- required/nullable mysql2 bind normalization
+- shared four-decimal string formatting
 - generic SQL placeholder helpers
 - shared MySQL row type
 - table existence checks
@@ -97,11 +92,9 @@ Use `commonUtils.ts` for reusable technical helpers:
 
 Keep helpers local when tied to business meaning:
 
-- invoice/order/customer SQL param mappers
 - route sequence calculations
 - Zend response table counts
-- end-day defaulting
-- mapper-specific formatting
+- table-specific response formatting
 
 ## Adding A New API
 
@@ -110,12 +103,11 @@ Keep helpers local when tied to business meaning:
 3. Find stored procedure or SQL behavior.
 4. Add or update route in `mobile.routes.ts`.
 5. Add controller function.
-6. Add service workflow.
-7. Add repository SQL.
-8. Add or update types.
-9. Match Zend response shape.
-10. Test with mobile app.
-11. Run:
+6. Add workflow orchestration in the controller.
+7. Add direct SQL in the relevant model.
+8. Match Zend response shape.
+9. Test with mobile app.
+10. Run:
 
 ```bash
 npm run typecheck
@@ -132,8 +124,7 @@ mobile screen
 -> API URL/method/payload
 -> mobile.routes.ts
 -> controller
--> service
--> repository SQL
+-> model SQL
 -> old Zend behavior
 -> database state
 -> server logs
