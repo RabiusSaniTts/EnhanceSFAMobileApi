@@ -6,12 +6,15 @@
 import type { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 import { ApiError } from './errors';
 import { isPlainObject } from '../utils/commonUtils';
+import { writeRequestFileLog } from './fileLogger';
 
 export async function errorHandler(
   error: FastifyError | Error,
   request: FastifyRequest,
   reply: FastifyReply
 ): Promise<void> {
+  const statusCode = error instanceof ApiError ? error.statusCode : 500;
+
   request.log.error(
     {
       err: error,
@@ -23,6 +26,13 @@ export async function errorHandler(
     },
     'request failed'
   );
+
+  await writeRequestFileLog(request, {
+    event: 'request.failed',
+    level: 'error',
+    statusCode,
+    error
+  });
 
   if (error instanceof ApiError) {
     await reply.status(error.statusCode).send({

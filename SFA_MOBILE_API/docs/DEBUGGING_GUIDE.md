@@ -173,3 +173,33 @@ npm run build
 
 Then test the same mobile screen again.
 
+# Route And Module File Logs
+
+Optional production-oriented text logging is controlled through `.env`:
+
+```env
+FILE_LOG_ENABLED=true
+FILE_LOG_PATH=./logs
+FILE_LOG_NAME=api-log.txt
+```
+
+Files are created automatically using this layout:
+
+```text
+<FILE_LOG_PATH>/<YYYY-MM-DD>/<routecode>/<module>/<FILE_LOG_NAME>
+```
+
+Example:
+
+```text
+logs/2026-10-15/1818/transactions/api-log.txt
+```
+
+Supported module folders are `auth`, `masterdatasync`, `transactions`, `ws`,
+and `system`. When a request has no route code, it is written under
+`unknown-route`. Each line is a JSON object containing request ID, route,
+status, duration, query/body field names, and safe error details. Raw payloads,
+password-bearing URLs, and customer transaction data are not written.
+
+Set `FILE_LOG_ENABLED=false` to disable file logging without a code change.
+
