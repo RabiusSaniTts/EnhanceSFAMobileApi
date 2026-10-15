@@ -530,12 +530,10 @@ Recommendation:
 
 ```text
 src/modules/mobile/auth/
-  auth.routes.ts
-  auth.controller.ts
-  auth.service.ts
-  auth.mapper.ts
-  repository/
-    auth.repository.ts
+  controllers/
+    auth.controller.ts
+  models/
+    auth.model.ts
 
 src/modules/mobile/masterdatasync/
   masterdatasync.controller.ts

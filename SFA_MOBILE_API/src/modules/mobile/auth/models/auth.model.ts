@@ -19,10 +19,8 @@ export async function ensureDeviceRegistered(
 
 export async function findLatestAppVersion(
   connection: PoolConnection
-): Promise<{ url: string | null; verno: string | null } | null> {
-  const [rows] = await connection.execute<
-    (RowDataPacket & { url: string | null; verno: string | null })[]
-  >(
+): Promise<RowDataPacket | null> {
+  const [rows] = await connection.execute<RowDataPacket[]>(
     'SELECT url, verno FROM tbl_version LIMIT 1'
   );
 
@@ -59,7 +57,7 @@ export async function countSalesmanByCredentials(
   username: string,
   password: string
 ): Promise<number> {
-  const [rows] = await connection.execute<(RowDataPacket & { count: number })[]>(
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT COUNT(*) AS count
       FROM salesman
@@ -77,7 +75,7 @@ export async function findAssignedDeviceIdByCredentials(
   username: string,
   password: string
 ): Promise<string> {
-  const [rows] = await connection.execute<(RowDataPacket & { deviceId: string })[]>(
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT
         CASE
@@ -99,7 +97,7 @@ export async function findAssignedDeviceIdByCredentials(
 export async function getUseEncryptionFlag(
   connection: PoolConnection
 ): Promise<0 | 1> {
-  const [rows] = await connection.execute<(RowDataPacket & { useencription: 0 | 1 })[]>(
+  const [rows] = await connection.execute<RowDataPacket[]>(
     "SELECT CASE WHEN INSTR(VERSION(), 'ubuntu') THEN 1 ELSE 0 END AS useencription"
   );
 
@@ -111,58 +109,8 @@ export async function findSalesmanLoginSuccessRows(
   username: string,
   password: string,
   useEncryption: 0 | 1
-): Promise<
-  Array<{
-    STATUS: 0;
-    routecode: number | null;
-    cdat: string | null;
-    salesmancode: number;
-    salesmanname1: string | null;
-    salesmanname2: string | null;
-    arbsalesmanname1: string | null;
-    messagekey: number | null;
-    pricingkey: number | null;
-    created: string | null;
-    modified: string | null;
-    mdat: string | null;
-    memo1: string | null;
-    memo2: string | null;
-    alternatesalesmancode: string | null;
-    type: number | null;
-    activestatus: number | null;
-    parentcompany: number | null;
-    ansalesmancode: string | null;
-    username: string | null;
-    userpassword: string | null;
-    useencription: 0 | 1;
-  }>
-> {
-  const [rows] = await connection.execute<
-    (RowDataPacket & {
-      STATUS: 0;
-      routecode: number | null;
-      cdat: string | null;
-      salesmancode: number;
-      salesmanname1: string | null;
-      salesmanname2: string | null;
-      arbsalesmanname1: string | null;
-      messagekey: number | null;
-      pricingkey: number | null;
-      created: string | null;
-      modified: string | null;
-      mdat: string | null;
-      memo1: string | null;
-      memo2: string | null;
-      alternatesalesmancode: string | null;
-      type: number | null;
-      activestatus: number | null;
-      parentcompany: number | null;
-      ansalesmancode: string | null;
-      username: string | null;
-      userpassword: string | null;
-      useencription: 0 | 1;
-    })[]
-  >(
+): Promise<RowDataPacket[]> {
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT
         0 AS STATUS,
@@ -201,10 +149,8 @@ export async function findSalesmanLoginSuccessRows(
 export async function findRouteVersion(
   connection: PoolConnection,
   routeCode: string
-): Promise<{ VER_NO: string | null; VER_STS: string | null } | null> {
-  const [rows] = await connection.execute<
-    (RowDataPacket & { VER_NO: string | null; VER_STS: string | null })[]
-  >(
+): Promise<RowDataPacket | null> {
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT VER_NO, VER_STS
       FROM route_version_map
@@ -221,9 +167,7 @@ export async function findRouteCodeBySalesman(
   connection: PoolConnection,
   userId: string | number
 ): Promise<number | null> {
-  const [rows] = await connection.execute<
-    (RowDataPacket & { routecode: number | null })[]
-  >(
+  const [rows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT routecode
       FROM routemaster
@@ -238,13 +182,7 @@ export async function findRouteCodeBySalesman(
 
 export async function insertSyncService(
   connection: PoolConnection,
-  params: {
-    userId: string | number;
-    deviceId: string;
-    routeCode: string | number;
-    routeKey: string | number | null;
-    routeClosed: string | number;
-  }
+  params: Record<string, string | number | null>
 ): Promise<void> {
   await connection.execute(
     `
@@ -265,27 +203,19 @@ export async function insertSyncService(
 
 export async function insertSyncLog(
   connection: PoolConnection,
-  params: {
-    userId: string | number;
-    routeCode: string | number;
-    routeKey: string | number;
-    routeClosed: string | number;
-    syncType: string | number;
-  }
+  params: Record<string, string | number | null>
 ): Promise<void> {
   if (Number(params.userId) === 0 || Number(params.routeKey) === 0) {
     return;
   }
 
-  const routeCode = await findRouteCodeBySalesman(connection, params.userId);
+  const routeCode = await findRouteCodeBySalesman(connection, params.userId ?? 0);
 
   if (routeCode === null) {
     return;
   }
 
-  const [routeKeyRows] = await connection.execute<
-    (RowDataPacket & { routekey: number | null })[]
-  >(
+  const [routeKeyRows] = await connection.execute<RowDataPacket[]>(
     `
       SELECT COALESCE(MAX(routekey), 0) AS routekey
       FROM startendday
