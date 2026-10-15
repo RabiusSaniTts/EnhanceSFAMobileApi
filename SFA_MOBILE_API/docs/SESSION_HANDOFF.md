@@ -24,6 +24,16 @@ auth/models/auth.model.ts
 - Auth endpoint paths, request parameters, SQL behavior, and Zend-compatible responses remain unchanged.
 - The auth module follows strict MVC: routes call `auth.controller.ts`, and the controller calls `auth.model.ts` directly. It has no service or mapper file.
 - The auth module intentionally has no custom field-by-field interfaces or type aliases. Controllers use generic `Record` request params and models use `RowDataPacket` for query rows.
+- The WS module also follows strict MVC with no service layer:
+
+```text
+ws/controllers/ws.controller.ts
+ws/models/startEndDay.model.ts
+ws/models/wsLookup.model.ts
+ws/models/transactionLookup.model.ts
+```
+
+- WS route paths, GET/POST compatibility, request parsing, `text/plain` response behavior, and database transactions remain unchanged.
 - Master sync `customerinvoice` is now implemented from the legacy `sp_ws_syncicsdata_customers` logic instead of returning an empty array.
 - Compatibility type cleanup was completed:
   - removed `auth.types.ts`

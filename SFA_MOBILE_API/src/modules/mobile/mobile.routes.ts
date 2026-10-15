@@ -29,7 +29,7 @@ import {
   logout,
   transactionData,
   wsSendData
-} from './ws/ws.controller';
+} from './ws/controllers/ws.controller';
 
 export async function registerMobileRoutes(app: FastifyInstance): Promise<void> {
   app.route({

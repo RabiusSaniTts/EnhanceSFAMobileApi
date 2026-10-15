@@ -367,14 +367,13 @@ Handles legacy `/api/ws/...` endpoints used by start day, end day, logout, load 
 Important files:
 
 ```text
-ws.controller.ts
-ws.service.ts
-repository/startEndDay.repository.ts
-repository/transactionLookup.repository.ts
-repository/wsLookup.repository.ts
+controllers/ws.controller.ts
+models/startEndDay.model.ts
+models/transactionLookup.model.ts
+models/wsLookup.model.ts
 ```
 
-Small WS request/response types are defined beside the controller, service, or repository functions that use them.
+The WS module follows strict MVC. Request parsing and workflow logic stay in the controller, while SQL and database operations stay in the models.
 
 Main endpoints:
 

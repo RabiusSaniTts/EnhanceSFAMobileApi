@@ -217,9 +217,10 @@ Current file layout:
 
 ```text
 ws/ws.routes.ts
-ws/ws.controller.ts
-ws/ws.service.ts
-ws/repository/startEndDay.repository.ts
+ws/controllers/ws.controller.ts
+ws/models/startEndDay.model.ts
+ws/models/wsLookup.model.ts
+ws/models/transactionLookup.model.ts
 transactions/transactions.routes.ts
 transactions/transactions.controller.ts
 transactions/transactions.service.ts
@@ -254,8 +255,8 @@ Service responsibility split:
 | File | Responsibility |
 | --- | --- |
 | `ws/ws.routes.ts` | Registers `/api/ws/*` URLs including start day, end day, and logout. |
-| `ws/ws.controller.ts` | Fastify request/reply bridge for WS endpoints. |
-| `ws/ws.service.ts` | Handles `/api/ws/senddata` start day, `/api/ws/endday`, and `/api/ws/logout`. |
+| `ws/controllers/ws.controller.ts` | Handles WS request parsing, workflow, and legacy response formatting. |
+| `ws/models/startEndDay.model.ts` | Handles start-day, end-day, logout, and route version/date database operations. |
 | `transactions/transactions.routes.ts` | Registers `/api/sync/senddata` and `/api/sync/custseq`. |
 | `transactions/transactions.controller.ts` | Fastify request/reply bridge for sync transaction endpoints. |
 | `transactions/transactions.service.ts` | Handles `POST /api/sync/senddata` batch upload and `POST /api/sync/custseq` customer sequence status. |
@@ -264,7 +265,7 @@ Type responsibility split:
 
 | File | Responsibility |
 | --- | --- |
-| `ws/ws.controller.ts` / `ws/ws.service.ts` / `ws/repository/startEndDay.repository.ts` | Start-day, end-day, logout, route hierarchy, and created start-day response types are kept beside the functions that use them. |
+| `ws/controllers/ws.controller.ts` / `ws/models/startEndDay.model.ts` | Start-day, end-day, logout, route hierarchy, and response types are kept beside the functions that use them. |
 | `transactions/types/shared.types.ts` | Shared Fastify request/reply aliases and generic legacy upload item shape. |
 | `transactions/types/routeActivity.types.ts` | Customer operation control, visit log, route master upload, and route sequence status types. |
 | `transactions/types/sales.types.ts` | Invoice, invoice detail, invoice RX detail, promotion detail, customer invoice, and batch expiry types. |
@@ -276,7 +277,7 @@ Repository responsibility split:
 
 | File | Responsibility |
 | --- | --- |
-| `ws/repository/startEndDay.repository.ts` | Start-day, end-day, logout route-key lookup, and route version/date checks. |
+| `ws/models/startEndDay.model.ts` | Start-day, end-day, logout route-key lookup, and route version/date checks. |
 | `transactions/repository/transaction.repository.ts` | Barrel export for backward-compatible transaction imports. No SQL implementation should be added here. |
 | `transactions/repository/shared.repository.ts` | Shared row types and value helpers used by transaction repositories. |
 | `transactions/repository/routeActivity.repository.ts` | Customer operation control, visit log, route master upload, and customer route sequence status. |
