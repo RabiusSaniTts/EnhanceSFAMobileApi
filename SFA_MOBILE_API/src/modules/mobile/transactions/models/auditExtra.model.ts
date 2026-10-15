@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { PoolConnection, ResultSetHeader, RowDataPacket } from 'mysql2/promise';
 import { nullable, required } from '../../../../shared/utils/commonUtils';
 
@@ -70,7 +75,6 @@ export async function saveSurveyAuditDetail(
 
   return Number(item.routekey) > 0;
 }
-
 /** Saves a POS equipment change scoped to route, visit, and item. */
 export async function savePosEquipmentChangeDetail(
   connection: PoolConnection,
@@ -134,7 +138,6 @@ export async function savePosEquipmentChangeDetail(
 
   return Number(item.routekey) > 0;
 }
-
 /** Updates mobile-managed values for an existing POS master record. */
 export async function savePosMaster(
   connection: PoolConnection,

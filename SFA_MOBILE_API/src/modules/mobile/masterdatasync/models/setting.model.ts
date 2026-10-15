@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { buildInClause, getLatestClosedRouteKey } from '../../../../shared/utils/commonUtils';
 import type { GenericRow } from '../../../../shared/utils/commonUtils';
@@ -389,19 +394,16 @@ async function getControlPanel(connection: PoolConnection): Promise<GenericRow[]
 
   return rows;
 }
-
 /** Returns the Setup configuration section. */
 async function getSetup(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>('SELECT * FROM setup');
   return rows;
 }
-
 /** Returns company identity and configuration details. */
 async function getCompanyDetail(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>('SELECT * FROM company');
   return rows;
 }
-
 /** Returns the salesman assigned to the requested route. */
 async function getSalesmanMaster(
   connection: PoolConnection,
@@ -440,7 +442,6 @@ async function getSalesmanMaster(
 
   return rows;
 }
-
 /** Returns the route configuration with Zend-compatible defaults. */
 async function getRouteMaster(
   connection: PoolConnection,
@@ -619,7 +620,6 @@ async function getRouteMaster(
 
   return rows;
 }
-
 /** Returns route-day state required for mobile session recovery. */
 async function getStartEndDay(
   connection: PoolConnection,
@@ -639,7 +639,6 @@ async function getStartEndDay(
 
   return rows;
 }
-
 /** Returns database synchronization date and time. */
 async function getSyncTime(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
@@ -668,3 +667,4 @@ async function getCurrencyMaster(
 
   return rows;
 }
+

@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { PoolConnection } from 'mysql2/promise';
 import { mysqlPool } from './mysqlPool';
 

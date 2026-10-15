@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 
 /**
@@ -24,7 +29,6 @@ export async function ensureDeviceRegistered(
     }
   );
 }
-
 /**
  * @param connection Active database transaction connection.
  * @returns The configured application URL/version row, or null when absent.
@@ -73,7 +77,6 @@ export async function autoAssignDeviceForRegisteredRoute(
     { username, deviceId }
   );
 }
-
 /**
  * @param connection Active database transaction connection.
  * @param username Username received from the login URL.
@@ -271,7 +274,6 @@ export async function insertSyncService(
     }
   );
 }
-
 /**
  * Inserts the secondary sync log for an active route day. Requests with a zero
  * user ID or route key intentionally produce no synclog row, as Zend did.

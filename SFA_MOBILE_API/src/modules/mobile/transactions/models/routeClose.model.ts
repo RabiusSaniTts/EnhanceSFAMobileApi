@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { PoolConnection, RowDataPacket } from 'mysql2/promise';
 import { required } from '../../../../shared/utils/commonUtils';
 
@@ -66,7 +71,6 @@ async function insertSyncLog(
     }
   );
 }
-
 /** Returns whether the uploaded route day is marked closed. */
 async function isRouteClosed(
   connection: PoolConnection,
@@ -137,7 +141,6 @@ async function rebuildSuggestedSalesInvoiceAfterRouteFilter(
     { routeCode }
   );
 }
-
 /** Inserts suggested-sales quantities derived from route-type history. */
 async function insertRouteTypeSuggestedSales(
   connection: PoolConnection,
@@ -196,7 +199,6 @@ async function insertRouteTypeSuggestedSales(
     { routeCode, offtakeDays }
   );
 }
-
 /** Inserts suggested-sales quantities derived from delivery-route history. */
 async function insertDeliveryRouteSuggestedSales(
   connection: PoolConnection,
@@ -247,7 +249,6 @@ async function insertDeliveryRouteSuggestedSales(
     { routeCode, offtakeDays }
   );
 }
-
 /** Rounds suggested quantities to complete cases where route settings require it. */
 async function roundSuggestedSalesToCases(
   connection: PoolConnection,
@@ -267,7 +268,6 @@ async function roundSuggestedSalesToCases(
     { routeCode }
   );
 }
-
 /** Marks uploaded records as posted after a route has been closed. */
 async function updateDataPosting(
   connection: PoolConnection,
@@ -329,7 +329,6 @@ async function updateDataPosting(
     { routeKey }
   );
 }
-
 /** Recalculates average sales quantities used by the next master-data sync. */
 async function rebuildAverageSalesQuantity(
   connection: PoolConnection,
@@ -375,3 +374,4 @@ async function rebuildAverageSalesQuantity(
     { routeCode }
   );
 }
+

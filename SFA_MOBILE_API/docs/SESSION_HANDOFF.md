@@ -16,6 +16,16 @@ The user confirmed the mobile app was tested after the recent refactor and every
 
 ### 2026-10-15 Maintainability Refactor
 
+- Developer comments were added across the complete auth, WS, transactions, and master-data sync modules. Comments document route compatibility, request parsing, legacy status values, transaction boundaries, query purpose, generated-key relationships, retry behavior, response envelopes, and stored-procedure replacement side effects.
+- Thin one-use controller wrapper functions were removed. Each exported route handler now contains its request parsing, model call, transaction handling, and response serialization directly.
+- The WS controller no longer contains `process*` wrappers. Start day, end day, logout, customer inventory, delivery, customer lookups, stock lookups, and transaction-count workflows are visible in their exported handlers.
+- Transaction controller implementation/action pairs were merged:
+  - `sendData` into `sendDataAction`
+  - `customerSequence` into `customerSequenceAction`
+  - `uploadInvoiceTransactionDetails` into `invoiceTransactionDetailAction`
+  - `uploadArTransactionDetails` into `arTransactionDetailAction`
+- Reusable parsing and response-construction helpers remain separate where they remove duplication. Business workflows and SQL behavior were not changed by the wrapper cleanup.
+- The MySQL pool currently permits 10 concurrent connections through `DB_CONNECTION_LIMIT=10`. Each `withTransaction()` call acquires one connection, reuses it for the complete transaction, and releases it after commit or rollback. Additional requests wait because `waitForConnections` is enabled.
 - Mobile route registration is split by module into `auth.routes.ts`, `masterdatasync.routes.ts`, `transactions.routes.ts`, and `ws.routes.ts`. `mobile.routes.ts` is now only the central registrar; all 41 existing endpoint URLs and HTTP methods are preserved.
 - Customer master and inventory summary uploads now use explicit query-level parameter and SQL mappings. Dynamic column constants and generated assignment SQL were removed from `customerService.model.ts` and `inventory.model.ts`.
 - Transaction parameter mapper functions were removed so bind values are visible beside their SQL operations.
@@ -66,6 +76,7 @@ masterdatasync/models/transactionData.model.ts
   - removed `ws/types/wsLookup.types.ts`
   - removed all transaction type files
 - Transactions now use strict MVC with `controllers/transactions.controller.ts` and business SQL files under `models/`. Upload order, transaction rollback behavior, endpoint responses, and image upload behavior remain unchanged.
+- All comment and wrapper-removal changes were verified with `npm run typecheck`, `npm run build`, and targeted `git diff --check` commands.
 
 - Master sync models were simplified so top-level sync functions directly show each returned array.
 - Unused wrapper functions were removed from:

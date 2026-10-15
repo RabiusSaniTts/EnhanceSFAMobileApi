@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import { withTransaction } from '../../../../shared/db/transaction';
 import { ApiError } from '../../../../shared/middleware/errors';
@@ -150,7 +155,6 @@ export async function endDay(
 
   await reply.type('text/plain').send(JSON.stringify(result));
 }
-
 /** Processes logout and returns the empty response expected by mobile. */
 export async function logout(
   request: FastifyRequest<{ Querystring: Record<string, string | undefined> }>,
@@ -187,7 +191,6 @@ export async function getCustomerInvoice(
   const result = {};
   await reply.type('text/plain').send(JSON.stringify(result));
 }
-
 /** Sends customer balance rows in the legacy response envelope. */
 export async function getCustomerBalance(
   request: FastifyRequest,
@@ -209,7 +212,6 @@ export async function getCustomerBalance(
 
   await reply.type('text/plain').send(JSON.stringify(result));
 }
-
 /** Sends customer item-group sections as JSON text. */
 export async function getCustomerItemGroup(
   request: FastifyRequest,
@@ -222,7 +224,6 @@ export async function getCustomerItemGroup(
 
   await reply.type('text/plain').send(JSON.stringify(result));
 }
-
 /** Sends a single customer-master result as JSON text. */
 export async function customerMaster(
   request: FastifyRequest<{
@@ -240,7 +241,6 @@ export async function customerMaster(
 
   await reply.type('text/plain').send(JSON.stringify(result));
 }
-
 /** Sends transaction reconciliation counts for a route key. */
 export async function transactionData(
   request: FastifyRequest<{
@@ -256,7 +256,6 @@ export async function transactionData(
 
   await reply.type('text/plain').send(JSON.stringify(result));
 }
-
 /** Sends starting-load and imported-inventory counts for a route. */
 export async function importInventoryCount(
   request: FastifyRequest<{
@@ -399,4 +398,5 @@ export async function wsSendData(
 
   await reply.type('text/plain').send(JSON.stringify(result));
 }
+
 

@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 export class ApiError extends Error {
   public readonly statusCode: number;
 
@@ -6,7 +11,6 @@ export class ApiError extends Error {
     this.statusCode = statusCode;
   }
 }
-
 export class NotImplementedApiError extends ApiError {
   constructor(endpointName: string) {
     super(501, `${endpointName} migration is not implemented yet`);

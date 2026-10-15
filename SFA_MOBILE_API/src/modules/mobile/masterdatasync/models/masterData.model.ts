@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { PoolConnection, RowDataPacket } from "mysql2/promise";
 import {
   buildInClause,
@@ -241,7 +246,6 @@ async function getItemGroup(
 
   return rows;
 }
-
 /** Returns active route items using the exact mobile ItemMaster column contract. */
 async function getItemMaster(
   connection: PoolConnection,
@@ -301,7 +305,6 @@ async function getItemMaster(
 
   return rows;
 }
-
 /** Returns package and units-per-case definitions. */
 async function getItemPackageMaster(
   connection: PoolConnection,
@@ -320,7 +323,6 @@ async function getItemPackageMaster(
 
   return rows;
 }
-
 /** Returns item/category goals assigned to the route. */
 async function getRouteGoal(
   connection: PoolConnection,
@@ -354,7 +356,6 @@ async function getRouteGoal(
 
   return rows;
 }
-
 /** Returns route-level average sales quantities used for ordering suggestions. */
 async function getAverageSalesQty(
   connection: PoolConnection,
@@ -371,7 +372,6 @@ async function getAverageSalesQty(
 
   return rows;
 }
-
 /** Returns customer-specific outlet item-code mappings. */
 async function getOutletItemCodes(
   connection: PoolConnection,
@@ -400,7 +400,6 @@ async function getOutletItemCodes(
 
   return rows;
 }
-
 /** Returns tax definitions required for mobile calculations. */
 async function getTaxMaster(connection: PoolConnection): Promise<GenericRow[]> {
   const [rows] = await connection.execute<GenericRow[]>(
@@ -2602,3 +2601,4 @@ async function getInventoryLocation(
 
   return rows;
 }
+

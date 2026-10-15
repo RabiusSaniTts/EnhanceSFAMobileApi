@@ -1,3 +1,8 @@
+/**
+ * @author MD.Rabius Sani Raju
+ * @date 2026-10-15
+ */
+
 import type { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 import { ApiError } from './errors';
 import { isPlainObject } from '../utils/commonUtils';
